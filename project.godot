@@ -10,6 +10,51 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeDeepParallax",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/deep_parallax.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeDepth",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/depth.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeDepthWorldPosition",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/depth_world_position.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeDistanceFade",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/distance_fade.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeDither",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/dither.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeEmissionAdd",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/emission_add.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeEmissionMultiply",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/emission_multiply.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeFlowMap",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/common/flowmap.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeFlowMapAddUV",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/common/flowmap_add_uv.gd"
+}, {
+"base": "VisualShaderNodeCustom",
 "class": "VisualShaderNodeNoiseGeneric2d",
 "language": "GDScript",
 "path": "res://addons/shaderV/rgba/noise/generic2d.gd"
@@ -113,6 +158,16 @@ _global_script_classes=[ {
 "class": "VisualShaderNodeNoiseWorley3dFractal",
 "language": "GDScript",
 "path": "res://addons/shaderV/rgba/noise/fractal/worley3d_fractal.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeObjectWorldPosition",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/object_world_position.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeProximityFade",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/proximity_fade.gd"
 }, {
 "base": "VisualShaderNodeCustom",
 "class": "VisualShaderNodeRGBAadjustmentBCS",
@@ -310,6 +365,31 @@ _global_script_classes=[ {
 "path": "res://addons/shaderV/rgba/blur/zoomBlur.gd"
 }, {
 "base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeReadNormalMap",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/common/read_normalmap.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeRefraction",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/refraction.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeRotation2D",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/common/rotation_2d.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeRotation3D",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/common/rotation_3d.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeScreenSpaceRefraction",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/screenspace_refraction.gd"
+}, {
+"base": "VisualShaderNodeCustom",
 "class": "VisualShaderNodeUVclampAlpha",
 "language": "GDScript",
 "path": "res://addons/shaderV/rgba/clamp.gd"
@@ -470,6 +550,15 @@ _global_script_classes=[ {
 "path": "res://addons/shaderV/tools/vec2Compose.gd"
 } ]
 _global_script_class_icons={
+"VisualShaderNodeDeepParallax": "",
+"VisualShaderNodeDepth": "",
+"VisualShaderNodeDepthWorldPosition": "",
+"VisualShaderNodeDistanceFade": "",
+"VisualShaderNodeDither": "",
+"VisualShaderNodeEmissionAdd": "",
+"VisualShaderNodeEmissionMultiply": "",
+"VisualShaderNodeFlowMap": "",
+"VisualShaderNodeFlowMapAddUV": "",
 "VisualShaderNodeNoiseGeneric2d": "",
 "VisualShaderNodeNoiseGeneric2dFractal": "",
 "VisualShaderNodeNoisePerlin2d": "",
@@ -491,6 +580,8 @@ _global_script_class_icons={
 "VisualShaderNodeNoiseWorley2x2x2": "",
 "VisualShaderNodeNoiseWorley3d": "",
 "VisualShaderNodeNoiseWorley3dFractal": "",
+"VisualShaderNodeObjectWorldPosition": "",
+"VisualShaderNodeProximityFade": "",
 "VisualShaderNodeRGBAadjustmentBCS": "",
 "VisualShaderNodeRGBAblackNwhite": "",
 "VisualShaderNodeRGBAblend": "",
@@ -530,6 +621,11 @@ _global_script_class_icons={
 "VisualShaderNodeRGBAturnCGA4Palette": "",
 "VisualShaderNodeRGBAturnGameBoyPalette": "",
 "VisualShaderNodeRGBAzoomBlur": "",
+"VisualShaderNodeReadNormalMap": "",
+"VisualShaderNodeRefraction": "",
+"VisualShaderNodeRotation2D": "",
+"VisualShaderNodeRotation3D": "",
+"VisualShaderNodeScreenSpaceRefraction": "",
 "VisualShaderNodeUVclampAlpha": "",
 "VisualShaderNodeUVdistortion": "",
 "VisualShaderNodeUVdistortionAnimated": "",
@@ -567,6 +663,7 @@ _global_script_class_icons={
 [application]
 
 config/name="hanseaticGalaxy"
+run/main_scene="res://assets/scenes/Weltall.tscn"
 config/icon="res://icon.png"
 
 [rendering]
