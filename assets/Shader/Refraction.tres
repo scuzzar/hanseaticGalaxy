@@ -4,9 +4,9 @@
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/tint = Color( 0.0784314, 0.121569, 0.788235, 0.376471 )
-shader_param/specular = 0.791
-shader_param/roughness = 0.61
-shader_param/metallic = 0.597
-shader_param/strength = 16.897
+shader_param/tint = Color( 0.0784314, 0.254902, 0.788235, 0.45098 )
+shader_param/specular = 0.9
+shader_param/roughness = 0.4
+shader_param/metallic = 0.5
+shader_param/strength = 1.0
 shader_param/use_normal_map = false
