@@ -20,6 +20,6 @@ surfaces/0 = {
 [node name="body" type="Spatial"]
 
 [node name="Sphere" type="MeshInstance" parent="."]
-transform = Transform( 96.7031, 0, 0, 0, 96.7031, 0, 0, 0, 96.7031, 0, 0, 0 )
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
