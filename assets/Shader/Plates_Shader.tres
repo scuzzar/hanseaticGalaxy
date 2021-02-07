@@ -147,9 +147,9 @@ nodes/fragment/connections = PoolIntArray( 6, 2, 7, 0, 7, 0, 0, 8, 8, 0, 0, 2, 9
 
 [resource]
 shader = SubResource( 8 )
-shader_param/Metalic = 0.993
-shader_param/Roughness = 0.875
-shader_param/Specular = 3.896
-shader_param/bumpStrength = 1.063
+shader_param/Metalic = 0.568
+shader_param/Roughness = 1.093
+shader_param/Specular = 0.0
+shader_param/bumpStrength = 0.561
 shader_param/ColorMap = ExtResource( 3 )
 shader_param/higthMap = ExtResource( 1 )

@@ -10,15 +10,15 @@
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.527963, 0.84744, -0.00899386 )
 
 [node name="Artemiss" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.0754995, 0, 0, 0, 0.0754995, 0, 0, 0, 0.0754995, -16.4824, 12.629, -12.6989 )
+transform = Transform( 0.0754995, 0, 0, 0, 0.0754995, 0, 0, 0, 0.0754995, -16.4824, 12.629, -8.82121 )
 
 [node name="Camera" type="Camera" parent="Artemiss"]
-transform = Transform( -5.87846, 6.06382, -10.2033, 0, 11.3861, 6.76679, 11.8692, 3.00324, -5.0534, -17.0528, 11.2122, -10.5507 )
+transform = Transform( -5.87844, 6.06384, -10.2033, 0, 11.3861, 6.7668, 11.8692, 3.00324, -5.05338, -17.6206, 11.2122, -9.40425 )
 environment = ExtResource( 3 )
-fov = 45.7
+fov = 56.2
 near = 0.01
 far = 8192.0
 
 [node name="DirectionalLight" type="DirectionalLight" parent="Artemiss"]
-transform = Transform( -2.53761, 5.63949, -11.7128, -4.92325, 10.628, 6.18383, 12.0314, 5.53843, 0.0600041, 0, 0, 0 )
+transform = Transform( -12.2207, 4.63726, -2.14069, 2.68284, 10.552, 7.54254, 4.34616, 6.5256, -10.6752, 0, 0, 0 )
 shadow_enabled = true
