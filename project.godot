@@ -663,9 +663,10 @@ _global_script_class_icons={
 [application]
 
 config/name="hanseaticGalaxy"
-run/main_scene="res://assets/scenes/Weltall.tscn"
+run/main_scene="res://scenes/Weltall.tscn"
 config/icon="res://icon.png"
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_clear_color=Color( 0, 0, 0, 1 )
+environment/default_environment="res://scenes/Weltall.tres"
