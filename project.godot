@@ -663,8 +663,13 @@ _global_script_class_icons={
 [application]
 
 config/name="hanseaticGalaxy"
-run/main_scene="res://scenes/Weltall.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://scenes/CameraTest.tscn"
+config/icon="res://Artemis.png"
+config/windows_native_icon="res://Artemis.ico"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "orbit_camera" )
 
 [rendering]
 

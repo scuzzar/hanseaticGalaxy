@@ -95,3 +95,7 @@ transform = Transform( 1, 0, 0, 0, -0.0492856, -0.998785, 0, 0.998785, -0.049285
 
 [node name="particel4" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, -0.0492856, -0.998785, 0, 0.998785, -0.0492856, 3.63939, 0.829245, 7.21306 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 13.2451, 0, 0, 0, -10.7986, 7.66963, 0, -7.66963, -10.7986, -0.152016, 9.93736, -14.6271 )
+spot_range = 2.3
