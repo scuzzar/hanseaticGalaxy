@@ -1,28 +1,81 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/models/body.tscn" type="PackedScene" id=1]
-[ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=2]
 [ext_resource path="res://assets/models/Artemiss.tscn" type="PackedScene" id=3]
 
+[sub_resource type="SpatialMaterial" id=2]
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color( 1, 0, 0, 1 )
+emission_energy = 0.06
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Camera
+
+onready var pointer = $\"../Artemiss\"
+
+var lastDrag
+var dragging = false
+var _move_speed: Vector3
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+func _input(event):
+	if event is InputEventMouseButton :
+		if Input.is_mouse_button_pressed(BUTTON_WHEEL_UP):
+			self.translate(Vector3(0,0,1))
+		if Input.is_mouse_button_pressed(BUTTON_WHEEL_DOWN):
+			self.translate(Vector3(0,0,-1))
+
+func _on_floor_input_event(camera, event, click_position, click_normal, shape_idx):
+	if Input.is_mouse_button_pressed(BUTTON_LEFT):
+		pointer.translation = click_position
+	
+	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
+		click_position.y = 0
+		if(!dragging):
+			dragging = true
+			lastDrag = click_position	
+		self.global_translate(lastDrag - click_position)
+	elif(dragging):
+		dragging = false
+
+
+"
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 100, 0, 100 )
+
 [node name="Map" type="Spatial"]
+
+[node name="pointer" type="CSGSphere" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -3.15838, 0.428981, -0.607463 )
+radius = 0.2
+material = SubResource( 2 )
+
+[node name="RTS_Camera" type="Camera" parent="."]
+transform = Transform( 0.999902, 0.0138488, 0.0020144, -0.00878013, 0.508715, 0.86089, 0.0108975, -0.860824, 0.508787, 0, 10, 10 )
+script = SubResource( 1 )
+
+[node name="floor" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0558624, -0.0365667, -0.00101089 )
+shape = SubResource( 3 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.581369, 0 )
 shadow_enabled = true
 omni_range = 1000.0
 
-[node name="Artemiss" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.012487, 0, -0.0744597, 0, 0.0754995, 0, 0.0744597, 0, 0.012487, -14.199, 2.85421, -15.5681 )
-
-[node name="Spatial" type="Spatial" parent="Artemiss"]
-transform = Transform( 13.2451, 0, 0, 0, 13.2451, 0, 0, 0, 13.2451, 0.800079, -2.52631e-05, 3.62907 )
-
-[node name="OrbitCamera" type="Camera" parent="Artemiss/Spatial"]
-script = ExtResource( 2 )
-SCROLL_SPEED = 100.0
-DEFAULT_DISTANCE = 50.0
-ROTATE_SPEED = 0.2
-ANCHOR_NODE_PATH = NodePath("..")
+[node name="Artemiss" parent="." groups=[
+"playerShip",
+] instance=ExtResource( 3 )]
+transform = Transform( 0.012487, 0, -0.0744597, 0, 0.0754995, 0, 0.0744597, 0, 0.012487, -14.199, 0, -10.729 )
 
 [node name="body" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -31.1546, 0.328752, -4.16698 )
@@ -59,7 +112,4 @@ transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -14.18, 0
 
 [node name="body12" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, 23.2179, 0.328755, 27.2043 )
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 1.90735e-06, 30, 30 )
-visible = false
+[connection signal="input_event" from="floor" to="RTS_Camera" method="_on_floor_input_event"]

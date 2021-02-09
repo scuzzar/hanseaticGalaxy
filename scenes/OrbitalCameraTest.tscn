@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/models/Artemiss.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/models/body.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=3]
+
+[node name="Map" type="Spatial"]
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.581369, 0 )
+shadow_enabled = true
+omni_range = 1000.0
+
+[node name="Artemiss" parent="." groups=[
+"playerShip",
+] instance=ExtResource( 1 )]
+transform = Transform( 0.012487, 0, -0.0744597, 0, 0.0754995, 0, 0.0744597, 0, 0.012487, -14.199, 0, -10.703 )
+
+[node name="Spatial" type="Spatial" parent="Artemiss"]
+transform = Transform( 13.2451, 0, 0, 0, 13.2451, 0, 0, 0, 13.2451, 0.800079, -2.52631e-05, 3.62907 )
+
+[node name="OrbitCamera" type="Camera" parent="Artemiss/Spatial"]
+script = ExtResource( 3 )
+SCROLL_SPEED = 100.0
+DEFAULT_DISTANCE = 50.0
+ROTATE_SPEED = 0.2
+ANCHOR_NODE_PATH = NodePath("..")
+
+[node name="body" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -31.1546, 0.328752, -4.16698 )
+
+[node name="Body" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, 0, 0, -44.6059 )
+
+[node name="body2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, 29.325, 0.600472, -32.666 )
+
+[node name="body3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -7.01727, 1.61296, -36.7736 )
+
+[node name="body4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, 1.92671, 0.328752, 33.3186 )
+
+[node name="body5" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, 25.4782, 0.252656, -3.97762 )
+
+[node name="body6" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -38.2512, 0.328752, -33.191 )
+
+[node name="body8" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -26.5338, 0.328748, 28.4538 )
+
+[node name="body9" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, 11.0525, 0.328752, -23.6041 )
+
+[node name="body10" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -18.172, 0, 7.791 )
+
+[node name="body11" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -14.18, 0, -15.994 )
+
+[node name="body12" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, 23.2179, 0.328755, 27.2043 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 1.90735e-06, 30, 30 )
+visible = false
