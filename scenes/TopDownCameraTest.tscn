@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/models/body.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/PathFollow.gd" type="Script" id=2]
 [ext_resource path="res://assets/models/Artemiss.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -14,7 +15,7 @@ emission_on_uv2 = false
 [sub_resource type="GDScript" id=2]
 script/source = "extends Camera
 
-onready var pointer = $\"../Artemiss\"
+onready var path = $\"../Path\"
 
 var lastDrag
 var dragging = false
@@ -33,7 +34,7 @@ func _input(event):
 
 func _on_floor_input_event(camera, event, click_position, click_normal, shape_idx):
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
-		pointer.translation = click_position
+		path.translation = click_position
 	
 	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
 		click_position.y = 0
@@ -49,6 +50,13 @@ func _on_floor_input_event(camera, event, click_position, click_normal, shape_id
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 100, 0, 100 )
+
+[sub_resource type="Curve3D" id=4]
+bake_interval = 45.99
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -21.6477, 0, 7.08643, 0, 0, 0, 0, 0, 0, -21.6477, 0, 7.08643 ),
+"tilts": PoolRealArray( 0, 0 )
+}
 
 [node name="Map" type="Spatial"]
 
@@ -72,10 +80,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.581369, 0 )
 shadow_enabled = true
 omni_range = 1000.0
 
-[node name="Artemiss" parent="." groups=[
+[node name="Path" type="Path" parent="."]
+transform = Transform( 0.012487, 0, -0.0744597, 0, 0.0754995, 0, 0.0744597, 0, 0.012487, -14.199, 0, -10.729 )
+curve = SubResource( 4 )
+
+[node name="PathFollow" type="PathFollow" parent="Path"]
+transform = Transform( -0.982142, 0, 0.188144, 0, 1, 0, -0.188145, 0, -0.982137, -21.6477, 0, 7.08643 )
+offset = 413.122
+rotation_mode = 4
+script = ExtResource( 2 )
+
+[node name="Artemiss" parent="Path/PathFollow" groups=[
 "playerShip",
 ] instance=ExtResource( 3 )]
-transform = Transform( 0.012487, 0, -0.0744597, 0, 0.0754995, 0, 0.0744597, 0, 0.012487, -14.199, 0, -10.729 )
+transform = Transform( -0.991587, -0.0618852, 0.113676, -0.0571041, 0.99736, 0.0448457, -0.116153, 0.0379777, -0.992507, 0.13089, -0.46527, 0.409592 )
 
 [node name="body" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -31.1546, 0.328752, -4.16698 )

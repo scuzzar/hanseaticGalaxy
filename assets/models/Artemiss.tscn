@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/mesh/Artemiss_Cocpit.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/mesh/Artemiss_Container.tres" type="ArrayMesh" id=2]
@@ -6,9 +6,11 @@
 [ext_resource path="res://assets/Shader/Plates_Shader.tres" type="Material" id=4]
 [ext_resource path="res://assets/Shader/Refraction.tres" type="Material" id=5]
 [ext_resource path="res://assets/particel/drive.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/models/Ship.gd" type="Script" id=7]
 
 [node name="Artemiss" type="Spatial"]
 transform = Transform( 0.0754995, 0, 0, 0, 0.0754995, 0, 0, 0, 0.0754995, 0, 0, 0 )
+script = ExtResource( 7 )
 
 [node name="Artemiss" type="Spatial" parent="."]
 transform = Transform( -2.54, 9.89112e-07, -2.88765e-13, 7.21911e-14, 9.08375e-07, 2.54, 9.89112e-07, 2.54, -9.08375e-07, 0, -1.86355e-13, -0.571096 )
