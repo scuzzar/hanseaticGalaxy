@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/models/body.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/PathFollow.gd" type="Script" id=2]
+[ext_resource path="res://scenes/PlayGorund/PathFollow.gd" type="Script" id=1]
+[ext_resource path="res://assets/models/body.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/models/Artemiss.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -88,46 +88,46 @@ curve = SubResource( 4 )
 transform = Transform( -0.982142, 0, 0.188144, 0, 1, 0, -0.188145, 0, -0.982137, -21.6477, 0, 7.08643 )
 offset = 413.122
 rotation_mode = 4
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 
 [node name="Artemiss" parent="Path/PathFollow" groups=[
 "playerShip",
 ] instance=ExtResource( 3 )]
 transform = Transform( -0.991587, -0.0618852, 0.113676, -0.0571041, 0.99736, 0.0448457, -0.116153, 0.0379777, -0.992507, 0.13089, -0.46527, 0.409592 )
 
-[node name="body" parent="." instance=ExtResource( 1 )]
+[node name="body" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -31.1546, 0.328752, -4.16698 )
 
-[node name="Body" parent="." instance=ExtResource( 1 )]
+[node name="Body" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, 0, 0, -44.6059 )
 
-[node name="body2" parent="." instance=ExtResource( 1 )]
+[node name="body2" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, 29.325, 0.600472, -32.666 )
 
-[node name="body3" parent="." instance=ExtResource( 1 )]
+[node name="body3" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -7.01727, 1.61296, -36.7736 )
 
-[node name="body4" parent="." instance=ExtResource( 1 )]
+[node name="body4" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, 1.92671, 0.328752, 33.3186 )
 
-[node name="body5" parent="." instance=ExtResource( 1 )]
+[node name="body5" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, 25.4782, 0.252656, -3.97762 )
 
-[node name="body6" parent="." instance=ExtResource( 1 )]
+[node name="body6" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -38.2512, 0.328752, -33.191 )
 
-[node name="body8" parent="." instance=ExtResource( 1 )]
+[node name="body8" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -26.5338, 0.328748, 28.4538 )
 
-[node name="body9" parent="." instance=ExtResource( 1 )]
+[node name="body9" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, 11.0525, 0.328752, -23.6041 )
 
-[node name="body10" parent="." instance=ExtResource( 1 )]
+[node name="body10" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -18.172, 0, 7.791 )
 
-[node name="body11" parent="." instance=ExtResource( 1 )]
+[node name="body11" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -14.18, 0, -15.994 )
 
-[node name="body12" parent="." instance=ExtResource( 1 )]
+[node name="body12" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, 23.2179, 0.328755, 27.2043 )
 [connection signal="input_event" from="floor" to="RTS_Camera" method="_on_floor_input_event"]

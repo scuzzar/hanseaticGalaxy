@@ -663,7 +663,7 @@ _global_script_class_icons={
 [application]
 
 config/name="hanseaticGalaxy"
-run/main_scene="res://scenes/TopDownCameraTest.tscn"
+run/main_scene="res://scenes/PlayGorund/TopDownCameraTest.tscn"
 config/icon="res://Artemis.png"
 config/windows_native_icon="res://Artemis.ico"
 
