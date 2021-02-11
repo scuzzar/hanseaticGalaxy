@@ -1,4 +1,3 @@
-
 # Hanseatic Galaxy
 <p align="left">
     <img src="Artemis.png" alt="Hanseatic Galaxy Logo">
