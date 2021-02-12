@@ -101,6 +101,7 @@ transform = Transform( 0.999902, 0.0138488, 0.0020144, -0.00878013, 0.508715, 0.
 script = SubResource( 1 )
 
 [node name="Sun" type="Spatial" parent="."]
+transform = Transform( 4.15004, 0, 0, 0, 4.15004, 0, 0, 0, 4.15004, 0, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Sun"]
 mesh = SubResource( 2 )
