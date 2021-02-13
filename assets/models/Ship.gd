@@ -1,11 +1,17 @@
 extends Spatial
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	print("ready")
+	trust_forward_on()
+
+func trust_forward_on():
+	$particel.on()
+	$particel2.on()
+	$particel3.on()
+	$particel4.on()
+
+func trust_forward_off():
+	$particel.off()
+	$particel2.off()
+	$particel3.off()
+	$particel4.off()

@@ -12,75 +12,75 @@
 transform = Transform( 0.0754995, 0, 0, 0, 0.0754995, 0, 0, 0, 0.0754995, 0, 0, 0 )
 script = ExtResource( 7 )
 
-[node name="Artemiss" type="Spatial" parent="."]
+[node name="Mesh" type="Spatial" parent="."]
 transform = Transform( -2.54, 9.89112e-07, -2.88765e-13, 7.21911e-14, 9.08375e-07, 2.54, 9.89112e-07, 2.54, -9.08375e-07, 0, -1.86355e-13, -0.571096 )
 
-[node name="Cassy" type="MeshInstance" parent="Artemiss"]
+[node name="Cassy" type="MeshInstance" parent="Mesh"]
 transform = Transform( 1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, -2.41016e-13, -0.580309, 0.331056 )
 mesh = ExtResource( 3 )
 material/0 = ExtResource( 4 )
 
-[node name="Cocpit" type="MeshInstance" parent="Artemiss"]
+[node name="Cocpit" type="MeshInstance" parent="Mesh"]
 transform = Transform( -2.38419e-07, -1.49012e-07, -1, -1, -1.19209e-07, 2.68221e-07, -1.49012e-07, 1, -1.19209e-07, 0.407777, -2.26041, -0.168663 )
 mesh = ExtResource( 1 )
 material/0 = ExtResource( 4 )
 material/1 = ExtResource( 5 )
 
-[node name="Container1" type="Spatial" parent="Artemiss"]
+[node name="Container1" type="Spatial" parent="Mesh"]
 transform = Transform( 2.7308e-07, 0, 1, -2.84217e-14, 1, 2.84217e-14, -0.763588, 0, 3.57628e-07, 0.16472, -0.803056, -0.211282 )
 
-[node name="left" type="MeshInstance" parent="Artemiss/Container1"]
+[node name="left" type="MeshInstance" parent="Mesh/Container1"]
 transform = Transform( 1, 2.84217e-14, -1.6569e-14, 0, 1, 0, 2.10762e-14, -5.68434e-14, 1, 0, 0, 0 )
 mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
 
-[node name="right" type="MeshInstance" parent="Artemiss/Container1"]
+[node name="right" type="MeshInstance" parent="Mesh/Container1"]
 transform = Transform( 1, 2.84217e-14, -1.6569e-14, 2.84217e-14, 1, 0, 2.10763e-14, -5.68434e-14, 1, -4.76837e-07, 0, -1.00541 )
 mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
 
-[node name="Container2" type="Spatial" parent="Artemiss"]
+[node name="Container2" type="Spatial" parent="Mesh"]
 transform = Transform( 2.7308e-07, 0, 1, -2.84217e-14, 1, 8.52651e-14, -0.763588, 0, 3.57628e-07, 0.16472, 0.261991, -0.211282 )
 
-[node name="left" type="MeshInstance" parent="Artemiss/Container2"]
+[node name="left" type="MeshInstance" parent="Mesh/Container2"]
 transform = Transform( 1, 2.84217e-14, -1.6569e-14, 0, 1, 0, 2.10762e-14, -5.68434e-14, 1, 0, 0, 0 )
 mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
 
-[node name="right" type="MeshInstance" parent="Artemiss/Container2"]
+[node name="right" type="MeshInstance" parent="Mesh/Container2"]
 transform = Transform( 1, 2.84217e-14, -1.6569e-14, 2.84217e-14, 1, 0, 2.10763e-14, -5.68434e-14, 1, -4.76837e-07, 0, -1.00541 )
 mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
 
-[node name="Container3" type="Spatial" parent="Artemiss"]
+[node name="Container3" type="Spatial" parent="Mesh"]
 transform = Transform( 2.7308e-07, 0, 1, -2.84217e-14, 1, 8.52651e-14, -0.763588, 0, 3.57628e-07, 0.164721, 1.30555, -0.211283 )
 
-[node name="left" type="MeshInstance" parent="Artemiss/Container3"]
+[node name="left" type="MeshInstance" parent="Mesh/Container3"]
 transform = Transform( 1, 2.84217e-14, -1.6569e-14, 0, 1, 0, 2.10762e-14, -5.68434e-14, 1, 0, 0, 0 )
 mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
 
-[node name="right" type="MeshInstance" parent="Artemiss/Container3"]
+[node name="right" type="MeshInstance" parent="Mesh/Container3"]
 transform = Transform( 1, 2.84217e-14, -1.6569e-14, 2.84217e-14, 1, 0, 2.10763e-14, -5.68434e-14, 1, -4.76837e-07, 0, -1.00541 )
 mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
 
-[node name="Container4" type="Spatial" parent="Artemiss"]
+[node name="Container4" type="Spatial" parent="Mesh"]
 transform = Transform( 2.7308e-07, 0, 1, -2.84217e-14, 1, 8.52651e-14, -0.763588, 0, 3.57628e-07, 0.164721, 2.37356, -0.211283 )
 
-[node name="left" type="MeshInstance" parent="Artemiss/Container4"]
+[node name="left" type="MeshInstance" parent="Mesh/Container4"]
 transform = Transform( 1, 2.84217e-14, -1.6569e-14, 0, 1, 0, 2.10762e-14, -5.68434e-14, 1, 0, 0, 0 )
 mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
 
-[node name="right" type="MeshInstance" parent="Artemiss/Container4"]
+[node name="right" type="MeshInstance" parent="Mesh/Container4"]
 transform = Transform( 1, 2.84217e-14, -1.6569e-14, 2.84217e-14, 1, 0, 2.10763e-14, -5.68434e-14, 1, -4.76837e-07, 0, -1.00541 )
 mesh = ExtResource( 2 )
 material/0 = null

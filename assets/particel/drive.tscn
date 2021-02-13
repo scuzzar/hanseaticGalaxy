@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/particel/fire_02.png" type="Texture" id=1]
 [ext_resource path="res://assets/particel/smoke_04.png" type="Texture" id=2]
 [ext_resource path="res://assets/particel/fire_01.png" type="Texture" id=3]
+[ext_resource path="res://assets/particel/drive.gd" type="Script" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
@@ -79,10 +80,10 @@ func _ready():
 "
 
 [node name="particel" type="Spatial"]
+script = ExtResource( 4 )
 
 [node name="Fire1" type="CPUParticles" parent="."]
 transform = Transform( 0.998251, -0.0479305, 0.0346076, 0.0468094, 0.998375, 0.0325107, -0.0361096, -0.0308339, 0.998872, 0, 0, 0 )
-visible = false
 amount = 32
 lifetime = 0.89
 lifetime_randomness = 0.28
@@ -103,7 +104,6 @@ color_ramp = SubResource( 3 )
 
 [node name="Fire2" type="CPUParticles" parent="."]
 transform = Transform( 0.998251, -0.0479305, 0.0346076, 0.0468094, 0.998375, 0.0325107, -0.0361096, -0.0308339, 0.998872, 0, 0, 0 )
-visible = false
 amount = 32
 lifetime = 0.89
 lifetime_randomness = 0.28

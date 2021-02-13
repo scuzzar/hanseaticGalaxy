@@ -40,6 +40,10 @@ func _on_floor_input_event(camera, event, click_position, click_normal, shape_id
 		dragging = false
 
 
+
+
+func _on_Ship_trust_forward():
+	pass # Replace with function body.
 "
 
 [sub_resource type="SphereMesh" id=2]
@@ -139,7 +143,7 @@ transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -31.1546,
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, 19.9815, 0.600472, 18.7618 )
 
 [node name="Ship" type="RigidBody" parent="."]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.1184, -0.0380654, -13.7523 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1184, -0.0380654, -13.7523 )
 collision_layer = 2
 collision_mask = 2
 gravity_scale = 0.0
@@ -150,12 +154,13 @@ axis_lock_angular_z = true
 script = ExtResource( 5 )
 
 [node name="CollisionBox" type="CollisionShape" parent="Ship"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0565962 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.53674e-07, 0, 0 )
 shape = SubResource( 10 )
 
 [node name="Artemiss" parent="Ship" groups=[
 "playerShip",
 ] instance=ExtResource( 2 )]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+transform = Transform( -0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, -9.53674e-07, 0, -0.0565958 )
 script = null
 [connection signal="input_event" from="floor" to="RTS_Camera" method="_on_floor_input_event"]
+[connection signal="trust_forward" from="Ship" to="Ship/Artemiss" method="_on_Ship_trust_forward"]
