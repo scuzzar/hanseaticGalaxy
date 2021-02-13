@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/models/body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/models/Artemiss.tscn" type="PackedScene" id=2]
@@ -59,29 +59,36 @@ material = SubResource( 7 )
 [sub_resource type="BoxShape" id=9]
 extents = Vector3( 100, 0, 100 )
 
-[sub_resource type="BoxShape" id=10]
-extents = Vector3( 0.425556, 0.196835, 0.80876 )
-
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=10]
 script/source = "extends Camera
 
-onready var path = $\"../Artemiss\"
+onready var ship = $\"../Ship\"
 
 var lastDrag
 var dragging = false
 var _move_speed: Vector3
+export var offset = 5  
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	_snapToShip()
+
+func _process(delta):
+	_snapToShip()
+
+func _snapToShip():
+	self.translation.x = ship.translation.x
+	self.translation.z = ship.translation.z + offset
 
 func _input(event):
 	if event is InputEventMouseButton :
 		if Input.is_mouse_button_pressed(BUTTON_WHEEL_UP):
-			self.translate(Vector3(0,0,1))
+			self.translate_object_local(Vector3(0,1,0))
+			
 		if Input.is_mouse_button_pressed(BUTTON_WHEEL_DOWN):
-			self.translate(Vector3(0,0,-1))
-
+			self.translate_object_local(Vector3(0,-1,0))
+			
+ 
 func _on_floor_input_event(camera, event, click_position, click_normal, shape_idx):
 #	if Input.is_mouse_button_pressed(BUTTON_LEFT):
 #		path.translation = click_position
@@ -100,6 +107,43 @@ func _on_floor_input_event(camera, event, click_position, click_normal, shape_id
 
 func _on_Ship_trust_forward():
 	pass # Replace with function body.
+"
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 0.425556, 0.196835, 0.80876 )
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+onready var ship = $\"../Ship\"
+
+var past = []
+var color = Color(0,1,0)
+var width = 3
+export var lenth = 50
+
+func _draw():
+	if(past.size()>1):
+		for i in range(past.size()-1):
+			var v1 = get_viewport().get_camera().unproject_position(past[i])
+			var v2 = get_viewport().get_camera().unproject_position(past[i+1])
+			draw_line(v1,v2,color,width,true)
+		var v1 = get_viewport().get_camera().unproject_position(past.back())
+		var v2 = get_viewport().get_camera().unproject_position(ship.position_state)
+		draw_line(v1,v2,color,width,true)
+
+func _process(delta):
+	update()
+
+func appendHistory():	
+	past.append(ship.position_state)
+	#print(ship.position_state)
+	if(past.size()>lenth):
+		past.pop_front()
+	pass
+
+func _on_historyTimer_timeout():
+	appendHistory()	
 "
 
 [node name="Map" type="Spatial"]
@@ -129,6 +173,11 @@ draw_pass_1 = SubResource( 8 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0558624, -0.0365667, -0.00101089 )
 shape = SubResource( 9 )
 
+[node name="RTS_Camera" type="Camera" parent="."]
+transform = Transform( 0.999902, 0.0138488, 0.00201442, -0.00878013, 0.508715, 0.86089, 0.0108975, -0.860824, 0.508787, -16.4854, 7.79921, -2.76127 )
+script = SubResource( 10 )
+offset = 7
+
 [node name="Body1" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -11.4247, 3.8147e-06, -17.8816 )
 
@@ -139,10 +188,9 @@ transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, -31.1546,
 transform = Transform( 0.237272, 0, 0, 0, 0.237272, 0, 0, 0, 0.237272, 19.9815, 0.600472, 18.7618 )
 
 [node name="Ship" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1184, -0.0380654, -13.7523 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3417, -0.0380654, -9.5573 )
 collision_layer = 2
 collision_mask = 2
-gravity_scale = 0.0
 can_sleep = false
 axis_lock_linear_y = true
 axis_lock_angular_x = true
@@ -151,11 +199,20 @@ script = ExtResource( 5 )
 
 [node name="CollisionBox" type="CollisionShape" parent="Ship"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.53674e-07, 0, 0 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="Artemiss" parent="Ship" instance=ExtResource( 2 )]
 
-[node name="RTS_Camera" type="Camera" parent="Ship"]
-transform = Transform( 0.999902, 0.0138488, 0.00201442, -0.00878013, 0.508715, 0.86089, 0.0108975, -0.860824, 0.508787, 0, 5.11274, 3.38959 )
+[node name="path" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
 script = SubResource( 1 )
-[connection signal="input_event" from="floor" to="Ship/RTS_Camera" method="_on_floor_input_event"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="historyTimer" type="Timer" parent="path"]
+wait_time = 0.28
+autostart = true
+[connection signal="input_event" from="floor" to="RTS_Camera" method="_on_floor_input_event"]
+[connection signal="timeout" from="path/historyTimer" to="path" method="_on_historyTimer_timeout"]

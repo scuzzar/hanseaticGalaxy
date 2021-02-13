@@ -2,6 +2,9 @@ extends RigidBody
 
 export var turn_rate = 3
 export var trust = 10
+
+var position_state = self.translation
+
 func _ready():
 	pass # Replace with function body.
 
@@ -18,7 +21,10 @@ func _integrate_forces(state):
 	
 	if Input.is_action_pressed("turn_right"):
 		_rotation(state,turn_rate*-1)	
-
+	
+	
+	position_state = state.center_of_mass
+	
 
 func _rotation(state, angle):
 	state.set_angular_velocity(Vector3(0,angle,0))
