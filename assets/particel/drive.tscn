@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/particel/smoke_04.png" type="Texture" id=2]
 [ext_resource path="res://assets/particel/fire_01.png" type="Texture" id=3]
 
-[sub_resource type="SpatialMaterial" id=10]
+[sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
 flags_unshaded = true
 flags_do_not_receive_shadows = true
@@ -16,8 +16,8 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 albedo_texture = ExtResource( 3 )
 
-[sub_resource type="QuadMesh" id=11]
-material = SubResource( 10 )
+[sub_resource type="QuadMesh" id=2]
+material = SubResource( 1 )
 
 [sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.496689, 0.834234, 1 )
@@ -82,10 +82,11 @@ func _ready():
 
 [node name="Fire1" type="CPUParticles" parent="."]
 transform = Transform( 0.998251, -0.0479305, 0.0346076, 0.0468094, 0.998375, 0.0325107, -0.0361096, -0.0308339, 0.998872, 0, 0, 0 )
+visible = false
 amount = 32
 lifetime = 0.89
 lifetime_randomness = 0.28
-mesh = SubResource( 11 )
+mesh = SubResource( 2 )
 direction = Vector3( 0, 1, 0 )
 spread = 0.0
 gravity = Vector3( 0, 0, 0 )
@@ -102,6 +103,7 @@ color_ramp = SubResource( 3 )
 
 [node name="Fire2" type="CPUParticles" parent="."]
 transform = Transform( 0.998251, -0.0479305, 0.0346076, 0.0468094, 0.998375, 0.0325107, -0.0361096, -0.0308339, 0.998872, 0, 0, 0 )
+visible = false
 amount = 32
 lifetime = 0.89
 lifetime_randomness = 0.28
@@ -122,6 +124,7 @@ color_ramp = SubResource( 3 )
 
 [node name="smoke" type="CPUParticles" parent="."]
 transform = Transform( 0.998251, -0.0479305, 0.0346076, 0.0468094, 0.998375, 0.0325107, -0.0361096, -0.0308339, 0.998872, -0.00065732, 0, -0.00689006 )
+visible = false
 emitting = false
 amount = 36
 lifetime = 1.27

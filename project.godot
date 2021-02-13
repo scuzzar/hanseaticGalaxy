@@ -663,13 +663,41 @@ _global_script_class_icons={
 [application]
 
 config/name="hanseaticGalaxy"
-run/main_scene="res://scenes/PlayGorund/TopDownCameraTest.tscn"
+run/main_scene="res://scenes/Sol.tscn"
 config/icon="res://Artemis.png"
 config/windows_native_icon="res://Artemis.ico"
 
 [editor_plugins]
 
 enabled=PoolStringArray( "orbit_camera" )
+
+[input]
+
+burn_forward={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+burn_backward={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+turn_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+trun_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+3d_physics/layer_1="gui"
+3d_physics/layer_2="space"
 
 [rendering]
 
