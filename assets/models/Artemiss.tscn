@@ -88,15 +88,19 @@ material/1 = null
 
 [node name="particel" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, -0.0492856, -0.998785, 0, 0.998785, -0.0492856, -3.62834, 0.829245, -0.68176 )
+visible = false
 
 [node name="particel2" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, -0.0492856, -0.998785, 0, 0.998785, -0.0492856, -3.62834, 0.829245, 7.21306 )
+visible = false
 
 [node name="particel3" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, -0.0492856, -0.998785, 0, 0.998785, -0.0492856, 3.63939, 0.829245, -0.68176 )
+visible = false
 
 [node name="particel4" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, -0.0492856, -0.998785, 0, 0.998785, -0.0492856, 3.63939, 0.829245, 7.21306 )
+visible = false
 
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 13.2451, 0, 0, 0, -10.7986, 7.66963, 0, -7.66963, -10.7986, -0.152016, 9.93736, -14.6271 )
