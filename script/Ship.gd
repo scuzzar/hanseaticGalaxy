@@ -5,12 +5,11 @@ export var trust = 10
 func _ready():
 	pass # Replace with function body.
 
-signal trust_forward
 
 func _integrate_forces(state):
-	
+	$Artemiss.trust_forward_off()
 	if Input.is_action_pressed("burn_forward"):	
-		emit_signal("trust_forward")
+		$Artemiss.trust_forward_on()
 		_burn_forward(state)
 	
 	_rotation(state,0)
@@ -26,7 +25,7 @@ func _rotation(state, angle):
 
 func _get_forward_vector():
 	var orientation = self.rotation.y
-	var v = Vector3(0,0,1)
+	var v = Vector3(0,0,-1)
 	v = v.rotated(Vector3(0,1,0), orientation)
 	return v
 

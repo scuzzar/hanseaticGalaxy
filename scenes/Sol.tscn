@@ -6,46 +6,6 @@
 [ext_resource path="res://assets/particel/fire_01.png" type="Texture" id=4]
 [ext_resource path="res://script/Ship.gd" type="Script" id=5]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Camera
-
-onready var path = $\"../Artemiss\"
-
-var lastDrag
-var dragging = false
-var _move_speed: Vector3
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-func _input(event):
-	if event is InputEventMouseButton :
-		if Input.is_mouse_button_pressed(BUTTON_WHEEL_UP):
-			self.translate(Vector3(0,0,1))
-		if Input.is_mouse_button_pressed(BUTTON_WHEEL_DOWN):
-			self.translate(Vector3(0,0,-1))
-
-func _on_floor_input_event(camera, event, click_position, click_normal, shape_idx):
-#	if Input.is_mouse_button_pressed(BUTTON_LEFT):
-#		path.translation = click_position
-	
-	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
-		click_position.y = 0
-		if(!dragging):
-			dragging = true
-			lastDrag = click_position	
-		self.global_translate(lastDrag - click_position)
-	elif(dragging):
-		dragging = false
-
-
-
-
-func _on_Ship_trust_forward():
-	pass # Replace with function body.
-"
-
 [sub_resource type="SphereMesh" id=2]
 
 [sub_resource type="SpatialMaterial" id=3]
@@ -102,11 +62,47 @@ extents = Vector3( 100, 0, 100 )
 [sub_resource type="BoxShape" id=10]
 extents = Vector3( 0.425556, 0.196835, 0.80876 )
 
-[node name="Map" type="Spatial"]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Camera
 
-[node name="RTS_Camera" type="Camera" parent="."]
-transform = Transform( 0.999902, 0.0138488, 0.00201442, -0.00878013, 0.508715, 0.86089, 0.0108975, -0.860824, 0.508787, -9.10344, 10, -4.61928 )
-script = SubResource( 1 )
+onready var path = $\"../Artemiss\"
+
+var lastDrag
+var dragging = false
+var _move_speed: Vector3
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+func _input(event):
+	if event is InputEventMouseButton :
+		if Input.is_mouse_button_pressed(BUTTON_WHEEL_UP):
+			self.translate(Vector3(0,0,1))
+		if Input.is_mouse_button_pressed(BUTTON_WHEEL_DOWN):
+			self.translate(Vector3(0,0,-1))
+
+func _on_floor_input_event(camera, event, click_position, click_normal, shape_idx):
+#	if Input.is_mouse_button_pressed(BUTTON_LEFT):
+#		path.translation = click_position
+	
+	#if Input.is_mouse_button_pressed(BUTTON_RIGHT):
+	#	click_position.y = 0
+	#	if(!dragging):
+	#		dragging = true
+	#		lastDrag = click_position	
+	#	self.global_translate(lastDrag - click_position)
+	#elif(dragging):
+	#	dragging = false
+	pass
+
+
+
+func _on_Ship_trust_forward():
+	pass # Replace with function body.
+"
+
+[node name="Map" type="Spatial"]
 
 [node name="Sun" type="Spatial" parent="."]
 transform = Transform( 4.15004, 0, 0, 0, 4.15004, 0, 0, 0, 4.15004, 0, 0, 0 )
@@ -157,10 +153,9 @@ script = ExtResource( 5 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.53674e-07, 0, 0 )
 shape = SubResource( 10 )
 
-[node name="Artemiss" parent="Ship" groups=[
-"playerShip",
-] instance=ExtResource( 2 )]
-transform = Transform( -0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, -9.53674e-07, 0, -0.0565958 )
-script = null
-[connection signal="input_event" from="floor" to="RTS_Camera" method="_on_floor_input_event"]
-[connection signal="trust_forward" from="Ship" to="Ship/Artemiss" method="_on_Ship_trust_forward"]
+[node name="Artemiss" parent="Ship" instance=ExtResource( 2 )]
+
+[node name="RTS_Camera" type="Camera" parent="Ship"]
+transform = Transform( 0.999902, 0.0138488, 0.00201442, -0.00878013, 0.508715, 0.86089, 0.0108975, -0.860824, 0.508787, 0, 5.11274, 3.38959 )
+script = SubResource( 1 )
+[connection signal="input_event" from="floor" to="Ship/RTS_Camera" method="_on_floor_input_event"]
