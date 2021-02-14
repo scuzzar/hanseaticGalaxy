@@ -1,10 +1,24 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/models/body.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/models/Artemiss.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/models/TinTinRocket.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/textures/2k_sun.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/particel/fire_01.png" type="Texture" id=4]
 [ext_resource path="res://script/Ship.gd" type="Script" id=5]
+[ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=6]
+
+[sub_resource type="GDScript" id=12]
+script/source = "extends Spatial
+
+onready var ship = $\"../Ship\"
+
+func _process(delta):
+	_snapToShip()
+
+func _snapToShip():
+	self.translation = ship.translation
+	self.translation = ship.translation
+"
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -56,61 +70,9 @@ distance_fade_max_distance = 2.0
 [sub_resource type="QuadMesh" id=7]
 material = SubResource( 6 )
 
-[sub_resource type="BoxShape" id=8]
-extents = Vector3( 100, 0, 100 )
-
-[sub_resource type="GDScript" id=9]
-script/source = "extends Camera
-
-onready var ship = $\"../Ship\"
-
-var lastDrag
-var dragging = false
-var _move_speed: Vector3
-export var offset = 5  
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	_snapToShip()
-
-func _process(delta):
-	_snapToShip()
-
-func _snapToShip():
-	self.translation.x = ship.translation.x
-	self.translation.z = ship.translation.z + offset
-
-func _input(event):
-	if event is InputEventMouseButton :
-		if Input.is_mouse_button_pressed(BUTTON_WHEEL_UP):
-			self.translate_object_local(Vector3(0,1,0))
-			
-		if Input.is_mouse_button_pressed(BUTTON_WHEEL_DOWN):
-			self.translate_object_local(Vector3(0,-1,0))
-			
- 
-func _on_floor_input_event(camera, event, click_position, click_normal, shape_idx):
-#	if Input.is_mouse_button_pressed(BUTTON_LEFT):
-#		path.translation = click_position
-	
-	#if Input.is_mouse_button_pressed(BUTTON_RIGHT):
-	#	click_position.y = 0
-	#	if(!dragging):
-	#		dragging = true
-	#		lastDrag = click_position	
-	#	self.global_translate(lastDrag - click_position)
-	#elif(dragging):
-	#	dragging = false
-	pass
-
-
-
-func _on_Ship_trust_forward():
-	pass # Replace with function body.
-"
-
-[sub_resource type="BoxShape" id=10]
-extents = Vector3( 0.425556, 0.196835, 0.80876 )
+[sub_resource type="CylinderShape" id=13]
+radius = 0.503518
+height = 1.21033
 
 [sub_resource type="GDScript" id=11]
 script/source = "extends Control
@@ -148,6 +110,19 @@ func _on_historyTimer_timeout():
 
 [node name="Map" type="Spatial"]
 
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 1.77636e-15, 1, 0, -4.37114e-08, -0.00898266, -0.1809, 27.2426 )
+script = SubResource( 12 )
+
+[node name="OrbitCamera" type="Camera" parent="Spatial"]
+transform = Transform( -4.37114e-08, -5.96047e-08, 1, 1.77636e-15, 1, 5.96047e-08, -1, 2.6054e-15, -4.37114e-08, 6.74451, 5, -0.698007 )
+far = 10000.0
+script = ExtResource( 6 )
+ZOOM_SPEED = 50.0
+ROTATE_SPEED = 1.0
+ANCHOR_NODE_PATH = NodePath("..")
+MOUSE_ZOOM_SPEED = 50.0
+
 [node name="Sun" type="Spatial" parent="."]
 transform = Transform( 4.15004, 0, 0, 0, 4.15004, 0, 0, 0, 4.15004, 0, 0, 178.089 )
 
@@ -157,7 +132,7 @@ material/0 = SubResource( 2 )
 
 [node name="Light" type="OmniLight" parent="Sun"]
 light_color = Color( 1, 0.984314, 0.862745, 1 )
-shadow_enabled = true
+light_indirect_energy = 3.25
 omni_range = 1000.0
 
 [node name="Particles" type="Particles" parent="Sun"]
@@ -167,38 +142,32 @@ amount = 80
 process_material = SubResource( 5 )
 draw_pass_1 = SubResource( 7 )
 
-[node name="floor" type="StaticBody" parent="."]
+[node name="Mars" parent="." instance=ExtResource( 1 )]
+transform = Transform( 3.54113, 0, 0, 0, 3.54113, 0, 0, 0, 3.54113, 0, 0, 0 )
 
-[node name="CollisionShape" type="CollisionShape" parent="floor"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0558624, -0.0365667, -0.00101089 )
-shape = SubResource( 8 )
-
-[node name="RTS_Camera" type="Camera" parent="."]
-transform = Transform( 0.999902, 0.0138488, 0.00201442, -0.00878013, 0.508715, 0.86089, 0.0108975, -0.860824, 0.508787, -16.4854, 7.79921, -2.76127 )
-script = SubResource( 9 )
-offset = 7
-
-[node name="Body1" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1.34956, 0, 0, 0, 1.34956, 0, 0, 0, 1.34956, 0, 0, 0 )
+[node name="Moon" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.312513, 0, 0, 0, -0.312513, 0, 0, 0, -0.312513, 47.1891, 0, 55.7322 )
 
 [node name="Ship" type="RigidBody" parent="."]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.00898266, -0.180901, 27.2426 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 1.77636e-15, 1, 0, -4.37114e-08, -0.00898266, -0.1809, 41.5712 )
 collision_layer = 2
 collision_mask = 2
-mass = 2.0
+mass = 200.0
 can_sleep = false
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-linear_velocity = Vector3( 23, 0, 0 )
+linear_velocity = Vector3( 9, 0, 0 )
 linear_damp = 0.0
 script = ExtResource( 5 )
+trust = 1000
 
 [node name="CollisionBox" type="CollisionShape" parent="Ship"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.53674e-07, 0, 0 )
-shape = SubResource( 10 )
+transform = Transform( -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, 0, 0, 0 )
+shape = SubResource( 13 )
 
-[node name="Artemiss" parent="Ship" instance=ExtResource( 2 )]
+[node name="Model" parent="Ship" instance=ExtResource( 2 )]
+transform = Transform( 0.0754995, 0, 0, 0, 0.0754995, -2.5625e-31, 0, 0, 0.0754995, 0, 0, 0 )
 
 [node name="path" type="Control" parent="."]
 margin_right = 40.0
@@ -211,5 +180,4 @@ __meta__ = {
 [node name="historyTimer" type="Timer" parent="path"]
 wait_time = 0.28
 autostart = true
-[connection signal="input_event" from="floor" to="RTS_Camera" method="_on_floor_input_event"]
 [connection signal="timeout" from="path/historyTimer" to="path" method="_on_historyTimer_timeout"]

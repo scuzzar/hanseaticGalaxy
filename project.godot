@@ -705,9 +705,8 @@ trun_left={
 
 [physics]
 
-common/physics_fps=200
-common/physics_jitter_fix=0.01
 3d/physics_engine="Bullet"
+3d/active_soft_world=false
 3d/default_linear_damp=0.0
 3d/default_angular_damp=0.0
 

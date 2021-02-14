@@ -10,9 +10,9 @@ func _ready():
 
 
 func _integrate_forces(state):
-	$Artemiss.trust_forward_off()
+	$Model.trust_forward_off()
 	if Input.is_action_pressed("burn_forward"):	
-		$Artemiss.trust_forward_on()
+		$Model.trust_forward_on()
 		_burn_forward(state)
 	
 	_rotation(state,0)
