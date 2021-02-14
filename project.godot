@@ -663,7 +663,7 @@ _global_script_class_icons={
 [application]
 
 config/name="hanseaticGalaxy"
-run/main_scene="res://scenes/Sol.tscn"
+run/main_scene="res://scenes/PlayGorund/GravetyTest.tscn"
 config/icon="res://Artemis.png"
 config/windows_native_icon="res://Artemis.ico"
 
@@ -702,6 +702,14 @@ trun_left={
 
 3d_physics/layer_1="gui"
 3d_physics/layer_2="space"
+
+[physics]
+
+common/physics_fps=200
+common/physics_jitter_fix=0.01
+3d/physics_engine="Bullet"
+3d/default_linear_damp=0.0
+3d/default_angular_damp=0.0
 
 [rendering]
 
