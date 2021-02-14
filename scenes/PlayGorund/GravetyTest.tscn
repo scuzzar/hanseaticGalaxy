@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/models/body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/models/TinTinRocket.tscn" type="PackedScene" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://assets/particel/fire_01.png" type="Texture" id=4]
 [ext_resource path="res://script/Ship.gd" type="Script" id=5]
 [ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=6]
+[ext_resource path="res://scenes/Weltall.tres" type="Environment" id=7]
 
-[sub_resource type="GDScript" id=12]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
 
 onready var ship = $\"../Ship\"
@@ -20,9 +21,9 @@ func _snapToShip():
 	self.translation = ship.translation
 "
 
-[sub_resource type="SphereMesh" id=1]
+[sub_resource type="SphereMesh" id=2]
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=3]
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource( 3 )
 emission_enabled = true
@@ -32,14 +33,14 @@ emission_operator = 0
 emission_on_uv2 = false
 emission_texture = ExtResource( 3 )
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0.109589, 0.342466, 0.630137, 1 )
 colors = PoolColorArray( 0.986328, 1, 0, 1, 0.937255, 0.188235, 0.188235, 1, 1, 0.47451, 0.0117647, 0.921569, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=6]
 lifetime_randomness = 0.15
 emission_shape = 1
 emission_sphere_radius = 0.95
@@ -50,9 +51,9 @@ radial_accel_random = 1.0
 tangential_accel = -1.0
 tangential_accel_random = 1.0
 scale_random = 0.55
-color_ramp = SubResource( 4 )
+color_ramp = SubResource( 5 )
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=7]
 flags_transparent = true
 flags_unshaded = true
 flags_do_not_receive_shadows = true
@@ -67,14 +68,14 @@ distance_fade_mode = 1
 distance_fade_min_distance = 0.0
 distance_fade_max_distance = 2.0
 
-[sub_resource type="QuadMesh" id=7]
-material = SubResource( 6 )
+[sub_resource type="QuadMesh" id=8]
+material = SubResource( 7 )
 
-[sub_resource type="CylinderShape" id=13]
+[sub_resource type="CylinderShape" id=9]
 radius = 0.503518
 height = 1.21033
 
-[sub_resource type="GDScript" id=11]
+[sub_resource type="GDScript" id=10]
 script/source = "extends Control
 
 onready var ship = $\"../Ship\"
@@ -112,7 +113,7 @@ func _on_historyTimer_timeout():
 
 [node name="Spatial" type="Spatial" parent="."]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 1.77636e-15, 1, 0, -4.37114e-08, -0.00898266, -0.1809, 27.2426 )
-script = SubResource( 12 )
+script = SubResource( 1 )
 
 [node name="OrbitCamera" type="Camera" parent="Spatial"]
 transform = Transform( -4.37114e-08, -5.96047e-08, 1, 1.77636e-15, 1, 5.96047e-08, -1, 2.6054e-15, -4.37114e-08, 6.74451, 5, -0.698007 )
@@ -127,8 +128,8 @@ MOUSE_ZOOM_SPEED = 50.0
 transform = Transform( 4.15004, 0, 0, 0, 4.15004, 0, 0, 0, 4.15004, 0, 0, 178.089 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Sun"]
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
 
 [node name="Light" type="OmniLight" parent="Sun"]
 light_color = Color( 1, 0.984314, 0.862745, 1 )
@@ -139,8 +140,8 @@ omni_range = 1000.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0124102, -1.19209e-07, 0.00327873 )
 visible = false
 amount = 80
-process_material = SubResource( 5 )
-draw_pass_1 = SubResource( 7 )
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 8 )
 
 [node name="Mars" parent="." instance=ExtResource( 1 )]
 transform = Transform( 3.54113, 0, 0, 0, 3.54113, 0, 0, 0, 3.54113, 0, 0, 0 )
@@ -164,7 +165,7 @@ trust = 1000
 
 [node name="CollisionBox" type="CollisionShape" parent="Ship"]
 transform = Transform( -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, 0, 0, 0 )
-shape = SubResource( 13 )
+shape = SubResource( 9 )
 
 [node name="Model" parent="Ship" instance=ExtResource( 2 )]
 transform = Transform( 0.0754995, 0, 0, 0, 0.0754995, -2.5625e-31, 0, 0, 0.0754995, 0, 0, 0 )
@@ -172,7 +173,7 @@ transform = Transform( 0.0754995, 0, 0, 0, 0.0754995, -2.5625e-31, 0, 0, 0.07549
 [node name="path" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-script = SubResource( 11 )
+script = SubResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -180,4 +181,7 @@ __meta__ = {
 [node name="historyTimer" type="Timer" parent="path"]
 wait_time = 0.28
 autostart = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 7 )
 [connection signal="timeout" from="path/historyTimer" to="path" method="_on_historyTimer_timeout"]
