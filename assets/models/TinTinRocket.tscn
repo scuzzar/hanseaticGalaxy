@@ -1,13 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/materials/Metal scratched_001.material" type="Material" id=1]
+[ext_resource path="res://assets/materials/DarkMetall.material" type="Material" id=1]
 [ext_resource path="res://assets/mesh/Artemiss_Container.tres" type="ArrayMesh" id=2]
 [ext_resource path="res://assets/materials/Plates.material" type="Material" id=3]
+[ext_resource path="res://assets/materials/CocpitGlass.material" type="Material" id=4]
 [ext_resource path="res://assets/particel/drive.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/models/Ship.gd" type="Script" id=7]
 
 [sub_resource type="CapsuleMesh" id=1]
-material = ExtResource( 3 )
 radius = 1.578
 mid_height = 2.156
 
@@ -28,7 +28,7 @@ material/0 = ExtResource( 3 )
 [node name="MeshInstance2" type="MeshInstance" parent="Mesh"]
 transform = Transform( 0.584057, -2.2744e-07, -2.2744e-07, -2.2744e-07, -2.55298e-08, -0.584057, 2.2744e-07, 0.584057, -2.55299e-08, -6.84406e-07, -1.75753, 6.28541e-07 )
 mesh = SubResource( 1 )
-material/0 = ExtResource( 1 )
+material/0 = ExtResource( 4 )
 
 [node name="Container1" type="Spatial" parent="Mesh"]
 transform = Transform( 2.7308e-07, 0, 1, -2.84217e-14, 1, 8.52651e-14, -0.763588, 0, 3.57628e-07, 0.164721, 2.60482, 1.32125 )

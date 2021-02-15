@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/models/body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/models/TinTinRocket.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://script/Ship.gd" type="Script" id=5]
 [ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=6]
 [ext_resource path="res://scenes/Weltall.tres" type="Environment" id=7]
+[ext_resource path="res://assets/materials/Moon.material" type="Material" id=8]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
@@ -82,7 +83,7 @@ onready var ship = $\"../Ship\"
 
 var past = []
 var color = Color(0,1,0)
-var width = 3
+var width = 1
 export var lenth = 50
 
 func _draw():
@@ -90,7 +91,8 @@ func _draw():
 		for i in range(past.size()-1):
 			var v1 = get_viewport().get_camera().unproject_position(past[i])
 			var v2 = get_viewport().get_camera().unproject_position(past[i+1])
-			draw_line(v1,v2,color,width,true)
+			if(get_viewport_rect().has_point(v2) or get_viewport_rect().has_point(v1)):
+				draw_line(v1,v2,color,width,true)
 		var v1 = get_viewport().get_camera().unproject_position(past.back())
 		var v2 = get_viewport().get_camera().unproject_position(ship.position_state)
 		draw_line(v1,v2,color,width,true)
@@ -125,16 +127,19 @@ ANCHOR_NODE_PATH = NodePath("..")
 MOUSE_ZOOM_SPEED = 50.0
 
 [node name="Sun" type="Spatial" parent="."]
-transform = Transform( 4.15004, 0, 0, 0, 4.15004, 0, 0, 0, 4.15004, 0, 0, 178.089 )
+transform = Transform( 4.15004, 0, 0, 0, 4.15004, 0, 0, 0, 4.15004, 0, 2.87016, 178.089 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Sun"]
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
 [node name="Light" type="OmniLight" parent="Sun"]
+transform = Transform( 0.240962, 0, 0, 0, 0.240962, 0, 0, 0, 0.240962, 0, 0, 0 )
+layers = 2147483651
 light_color = Color( 1, 0.984314, 0.862745, 1 )
 light_indirect_energy = 3.25
-omni_range = 1000.0
+light_bake_mode = 0
+omni_range = 4096.0
 
 [node name="Particles" type="Particles" parent="Sun"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0124102, -1.19209e-07, 0.00327873 )
@@ -148,6 +153,7 @@ transform = Transform( 3.54113, 0, 0, 0, 3.54113, 0, 0, 0, 3.54113, 0, 0, 0 )
 
 [node name="Moon" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.312513, 0, 0, 0, -0.312513, 0, 0, 0, -0.312513, 47.1891, 0, 55.7322 )
+material = ExtResource( 8 )
 
 [node name="Ship" type="RigidBody" parent="."]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 1.77636e-15, 1, 0, -4.37114e-08, -0.00898266, -0.1809, 41.5712 )

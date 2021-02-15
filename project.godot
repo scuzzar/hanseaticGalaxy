@@ -712,10 +712,5 @@ trun_left={
 
 [rendering]
 
-quality/intended_usage/framebuffer_allocation.mobile=2
-quality/shadows/filter_mode.mobile=1
-quality/shading/force_vertex_shading.mobile=false
-quality/shading/force_blinn_over_ggx.mobile=false
 environment/default_clear_color=Color( 0, 0, 0, 1 )
-quality/depth/hdr.mobile=true
 environment/default_environment="res://scenes/Weltall.tres"

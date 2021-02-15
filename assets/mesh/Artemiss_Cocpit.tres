@@ -1,11 +1,7 @@
 [gd_resource type="ArrayMesh" load_steps=3 format=2]
 
-[ext_resource path="res://assets/materials/Plates.material" type="Material" id=1]
-
-[sub_resource type="SpatialMaterial" id=1]
-resource_name = "Plastic Glass Shader"
-params_cull_mode = 2
-metallic = 1.0
+[ext_resource path="res://assets/materials/PlatesBump.material" type="Material" id=1]
+[ext_resource path="res://assets/materials/CocpitGlass.material" type="Material" id=2]
 
 [resource]
 surfaces/0 = {
@@ -28,7 +24,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 97591,
 "index_count": 3456,
-"material": SubResource( 1 ),
+"material": ExtResource( 2 ),
 "name": "Cockpit",
 "primitive": 4,
 "skeleton_aabb": [  ],
