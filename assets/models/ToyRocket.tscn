@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/mesh/ToyRocket.tres" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/particel/drive.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/models/Ship.gd" type="Script" id=7]
+
+[node name="TinTin" type="Spatial"]
+transform = Transform( 0.0754995, 0, 0, 0, 0.0754995, 0, 0, 0, 0.0754995, 0, 0, 0 )
+script = ExtResource( 7 )
+
+[node name="ToyRocket" type="MeshInstance" parent="."]
+transform = Transform( 4.64904, 0, 0, 0, -1.88879e-07, 4.64904, 0, -4.64904, -1.88879e-07, -9.86838e-08, -1.97368e-07, -7.89471e-07 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="particel" parent="." instance=ExtResource( 6 )]
+transform = Transform( 4.0549, 0, 0, 0, -0.197602, -4.0522, 0, 4.0522, -0.197602, 0, 0, 8.18491 )
