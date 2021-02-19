@@ -3,7 +3,6 @@
 [ext_resource path="res://assets/materials/Gold.material" type="Material" id=1]
 [ext_resource path="res://assets/materials/DarkMetall.material" type="Material" id=2]
 
-
 [resource]
 surfaces/0 = {
 "aabb": AABB( -0.766897, -0.516897, -0.116897, 1.53379, 1.03379, 0.933793 ),
