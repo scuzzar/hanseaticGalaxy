@@ -32,6 +32,7 @@ func _integrate_forces(state):
 		_rotation(state,turn_rate*-1)	
 
 
+
 func _rotation(state, angle):
 	state.set_angular_velocity(Vector3(0,angle,0))
 
