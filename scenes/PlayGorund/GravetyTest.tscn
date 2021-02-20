@@ -145,7 +145,7 @@ __meta__ = {
 }
 g_comp_color = Color( 0.87451, 0, 1, 1 )
 simulation_steps = 0
-history_lenth = 300
+history_lenth = 3000
 gravety_sum = true
 gravety_components = false
 
