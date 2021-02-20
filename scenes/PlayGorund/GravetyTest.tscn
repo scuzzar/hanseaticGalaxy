@@ -4,6 +4,7 @@
 [ext_resource path="res://assets/models/ToyRocket.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/textures/2k_sun.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/particel/fire_01.png" type="Texture" id=4]
+[ext_resource path="res://scenes/PlayGorund/DebugPath.tres.gd" type="Script" id=5]
 [ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=6]
 [ext_resource path="res://scenes/Weltall.tres" type="Environment" id=7]
 [ext_resource path="res://assets/materials/Moon.material" type="Material" id=8]
@@ -77,88 +78,6 @@ material = SubResource( 7 )
 radius = 0.414582
 height = 1.35903
 
-[sub_resource type="GDScript" id=10]
-script/source = "extends Control
-
-onready var ship = $\"../Ship\"
-
-var past = []
-export var history_color = Color(0,1,0)
-export var g_color = Color(0,0,1)
-export var g_comp_color = Color(0,0,1)
-export var sim_color = Color(1,0,0)
-
-var simulation = []
-export var simulation_steps = 50
-export var simulation_delta_t = 0.1
-export var simulation_orbit_treshold = 0.3
-
-
-var width = 1
-export var history_lenth = 50
-export var gravety_sum = false
-export var gravety_components = true
-
-func _draw():
-	if(history_lenth>0): _draw_list(past, history_color)
-	if(gravety_sum): _draw_gravety_sum()
-	if(gravety_components): _draw_gravety_components()
-	if(simulation_steps>0): _draw_list(simulation,sim_color)
-
-func _draw_gravety_components():
-	for comp in ship.Gravety_acceleration_components:		
-		var v1 = get_viewport().get_camera().unproject_position(ship.translation)
-		var v2 = get_viewport().get_camera().unproject_position(ship.translation+comp)
-		draw_line(v1,v2,g_comp_color,width,true)
-
-func _draw_gravety_sum():
-	var v1 = get_viewport().get_camera().unproject_position(ship.translation)
-	var v2 = get_viewport().get_camera().unproject_position(ship.translation+ship.Gravety_acceleration_sum)
-	draw_line(v1,v2,g_color,width,true)
-
-
-func _draw_list(list, color):
-	if(list.size()>1):
-		for i in range(list.size()-1):			
-			var v1 = get_viewport().get_camera().unproject_position(list[i])
-			var v2 = get_viewport().get_camera().unproject_position(list[i+1])
-			if(get_viewport_rect().has_point(v2) or get_viewport_rect().has_point(v1)):
-				draw_line(v1,v2,color,width,true)
-		#var v1 = get_viewport().get_camera().unproject_position(list.back())
-		#var v2 = get_viewport().get_camera().unproject_position(ship.translation)
-		#draw_line(v1,v2,color,width,true)
-
-func _process(delta):
-	update()
-
-func appendHistory():	
-	past.append(ship.translation)
-	if(past.size()>history_lenth):
-		past.pop_front()
-	pass
-
-func _simulate():
-	var sim_ship_start_pos = ship.translation
-	var sim_ship_pos = sim_ship_start_pos
-	var sim_ship_val = ship.velocety
-	var g_force = Universe.g_force(sim_ship_pos)	
-	simulation = [sim_ship_pos]
-	for i in simulation_steps:		
-		sim_ship_val += g_force * simulation_delta_t / ship.mass /2
-		sim_ship_pos += sim_ship_val * simulation_delta_t
-		
-		g_force = Universe.g_force(sim_ship_pos)	
-		sim_ship_val += g_force * simulation_delta_t / ship.mass /2
-		
-		simulation.append(sim_ship_pos)
-		if sim_ship_pos.distance_to(sim_ship_start_pos) < simulation_orbit_treshold:
-			break
-
-func _on_historyTimer_timeout():
-	appendHistory()	
-	_simulate()
-"
-
 [node name="Map" type="Spatial"]
 
 [node name="Spatial" type="Spatial" parent="."]
@@ -199,7 +118,7 @@ draw_pass_1 = SubResource( 8 )
 
 [node name="Moon" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.312513, 0, 0, 0, -0.312513, 0, 0, 0, -0.312513, 76.292, 0, 82.9409 )
-mass = 1000
+mass = 0
 material = ExtResource( 8 )
 
 [node name="Mars" parent="." instance=ExtResource( 1 )]
@@ -211,6 +130,7 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 1.77636e-15, 1, 0, -4.37114e-0
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 10 )
+velocety = Vector3( 30, 0, 0 )
 
 [node name="CollisionBox" type="CollisionShape" parent="Ship"]
 transform = Transform( -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, 0, 0, 0.0193536 )
@@ -222,19 +142,19 @@ transform = Transform( 0.0754995, 0, 0, 0, 0.0754995, -2.5625e-31, 0, 0, 0.07549
 [node name="path" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-script = SubResource( 10 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 g_comp_color = Color( 0.87451, 0, 1, 1 )
-simulation_steps = 100
-simulation_delta_t = 1.0
-history_lenth = 0
+simulation_steps = 0
+simulation_delta_t = 0.1
+history_lenth = 300
 gravety_sum = true
 gravety_components = false
 
 [node name="historyTimer" type="Timer" parent="path"]
-wait_time = 0.095
+wait_time = 0.1
 autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

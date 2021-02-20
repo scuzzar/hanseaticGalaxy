@@ -1,6 +1,6 @@
 extends Node
 
-export var G = 10
+export var G = 100
 onready var bodys = get_tree().get_nodes_in_group("bodys")
 
 func g_force(position):

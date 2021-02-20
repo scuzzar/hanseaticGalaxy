@@ -671,10 +671,6 @@ config/windows_native_icon="res://Artemis.ico"
 
 Universe="*res://scenes/PlayGorund/Universe.gd"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [editor_plugins]
 
 enabled=PoolStringArray( "orbit_camera" )
@@ -710,7 +706,6 @@ trun_left={
 
 3d_physics/layer_1="gui"
 3d_physics/layer_2="space"
-3d_physics/layer_3="nBody"
 
 [physics]
 

@@ -14,12 +14,17 @@ var g_force = Vector3(0,0,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	g_force = Universe.g_force(translation)
 
 func _physics_process(delta):
-	g_force = Universe.g_force(self.translation)
+	#g_force = Universe.g_force(self.translation)
 	velocety += g_force * delta / mass / 2
-	move_and_collide(velocety*delta)
+	
+	self.translation += velocety * delta
+	
+	#move_and_slide(velocety*delta)
+	
+	#move_and_collide(velocety*delta)
 	
 	g_force = Universe.g_force(self.translation)
 	velocety += g_force * delta / mass / 2
