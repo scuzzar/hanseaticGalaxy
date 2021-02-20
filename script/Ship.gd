@@ -13,13 +13,11 @@ func _ready():
 	pass # Replace with function body.
 
 
-func _integrate_forces(state):
-	
+func _integrate_forces(state):	
 	state.add_central_force(Gravety_acceleration_sum /2)
-	
 	Gravety_acceleration_sum = Universe.g_force(self.translation)
-	
 	state.add_central_force(Gravety_acceleration_sum /2)
+	
 	$Model.trust_forward_off()
 	if Input.is_action_pressed("burn_forward"):	
 		$Model.trust_forward_on()
