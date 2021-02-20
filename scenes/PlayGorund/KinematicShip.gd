@@ -20,11 +20,11 @@ func _physics_process(delta):
 	#g_force = Universe.g_force(self.translation)
 	velocety += g_force * delta / mass / 2
 	
-	self.translation += velocety * delta
+	#self.translation += velocety * delta
 	
 	#move_and_slide(velocety*delta)
 	
-	#move_and_collide(velocety*delta)
+	print(move_and_collide(velocety*delta))
 	
 	g_force = Universe.g_force(self.translation)
 	velocety += g_force * delta / mass / 2

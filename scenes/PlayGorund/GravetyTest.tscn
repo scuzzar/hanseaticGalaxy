@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/models/body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/models/ToyRocket.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/materials/Moon.material" type="Material" id=8]
 [ext_resource path="res://scenes/PlayGorund/Sun.gd" type="Script" id=9]
 [ext_resource path="res://scenes/PlayGorund/KinematicShip.gd" type="Script" id=10]
+[ext_resource path="res://assets/materials/Mars.material" type="Material" id=11]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
@@ -100,21 +101,16 @@ script = ExtResource( 9 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
-[node name="Light" type="OmniLight" parent="Sun"]
-transform = Transform( 0.240962, 0, 0, 0, 0.240962, 0, 0, 0, 0.240962, 0, 0, 0 )
-layers = 2147483651
-light_color = Color( 1, 0.984314, 0.862745, 1 )
-light_indirect_energy = 3.25
-light_bake_mode = 0
-shadow_enabled = true
-omni_range = 4096.0
-
 [node name="Particles" type="Particles" parent="Sun"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0124102, -1.19209e-07, 0.00327873 )
 visible = false
 amount = 80
 process_material = SubResource( 6 )
 draw_pass_1 = SubResource( 8 )
+
+[node name="OmniLight" type="OmniLight" parent="Sun"]
+shadow_enabled = true
+omni_range = 4096.0
 
 [node name="Moon" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.312513, 0, 0, 0, -0.312513, 0, 0, 0, -0.312513, 76.292, 0, 82.9409 )
@@ -124,12 +120,14 @@ material = ExtResource( 8 )
 [node name="Mars" parent="." instance=ExtResource( 1 )]
 transform = Transform( 3.54113, 0, 0, 0, 3.54113, 0, 0, 0, 3.54113, 0, 0, -1.52588e-05 )
 mass = 50000
+material = ExtResource( 11 )
 
 [node name="Ship" type="KinematicBody" parent="."]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 1.77636e-15, 1, 0, -4.37114e-08, -0.00898266, -0.1809, 41.5712 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 10 )
+trust = 100
 velocety = Vector3( 30, 0, 0 )
 
 [node name="CollisionBox" type="CollisionShape" parent="Ship"]
