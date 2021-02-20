@@ -199,7 +199,7 @@ draw_pass_1 = SubResource( 8 )
 
 [node name="Moon" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.312513, 0, 0, 0, -0.312513, 0, 0, 0, -0.312513, 76.292, 0, 82.9409 )
-mass = 0
+mass = 7000
 material = ExtResource( 8 )
 
 [node name="Mars" parent="." instance=ExtResource( 1 )]
@@ -235,9 +235,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 g_comp_color = Color( 0.87451, 0, 1, 1 )
-simulation_steps = 1000
+simulation_steps = 500
 simulation_delta_t = 0.3
-history_lenth = 0
+history_lenth = 500
 gravety_sum = true
 gravety_components = false
 

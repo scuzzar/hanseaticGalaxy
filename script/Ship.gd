@@ -7,8 +7,6 @@ export var trust = 10
 var Gravety_acceleration_sum : Vector3
 var Gravety_acceleration_components : Array
 
-
-
 var position_state = self.translation
 
 func _ready():
@@ -16,9 +14,12 @@ func _ready():
 
 
 func _integrate_forces(state):
-	Gravety_acceleration_sum = Universe.g_force(self.translation)
-	state.add_central_force(Gravety_acceleration_sum)
 	
+	state.add_central_force(Gravety_acceleration_sum /2)
+	
+	Gravety_acceleration_sum = Universe.g_force(self.translation)
+	
+	state.add_central_force(Gravety_acceleration_sum /2)
 	$Model.trust_forward_off()
 	if Input.is_action_pressed("burn_forward"):	
 		$Model.trust_forward_on()
