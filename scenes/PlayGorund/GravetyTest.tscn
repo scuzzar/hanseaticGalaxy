@@ -127,7 +127,6 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 1.77636e-15, 1, 0, -4.37114e-0
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 10 )
-trust = 100
 velocety = Vector3( 30, 0, 0 )
 
 [node name="CollisionBox" type="CollisionShape" parent="Ship"]
@@ -146,7 +145,6 @@ __meta__ = {
 }
 g_comp_color = Color( 0.87451, 0, 1, 1 )
 simulation_steps = 0
-simulation_delta_t = 0.1
 history_lenth = 300
 gravety_sum = true
 gravety_components = false
