@@ -4,11 +4,11 @@
 [ext_resource path="res://assets/models/ToyRocket.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/textures/2k_sun.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/particel/fire_01.png" type="Texture" id=4]
-[ext_resource path="res://script/Ship.gd" type="Script" id=5]
 [ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=6]
 [ext_resource path="res://scenes/Weltall.tres" type="Environment" id=7]
 [ext_resource path="res://assets/materials/Moon.material" type="Material" id=8]
 [ext_resource path="res://scenes/PlayGorund/Sun.gd" type="Script" id=9]
+[ext_resource path="res://scenes/PlayGorund/KinematicShip.gd" type="Script" id=10]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
@@ -140,7 +140,7 @@ func appendHistory():
 func _simulate():
 	var sim_ship_start_pos = ship.translation
 	var sim_ship_pos = sim_ship_start_pos
-	var sim_ship_val = ship.linear_velocity
+	var sim_ship_val = ship.velocety
 	var g_force = Universe.g_force(sim_ship_pos)	
 	simulation = [sim_ship_pos]
 	for i in simulation_steps:		
@@ -199,33 +199,25 @@ draw_pass_1 = SubResource( 8 )
 
 [node name="Moon" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.312513, 0, 0, 0, -0.312513, 0, 0, 0, -0.312513, 76.292, 0, 82.9409 )
-mass = 0
+mass = 1000
 material = ExtResource( 8 )
 
 [node name="Mars" parent="." instance=ExtResource( 1 )]
 transform = Transform( 3.54113, 0, 0, 0, 3.54113, 0, 0, 0, 3.54113, 0, 0, -1.52588e-05 )
 mass = 50000
 
-[node name="Ship" type="RigidBody" parent="."]
+[node name="Ship" type="KinematicBody" parent="."]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 1.77636e-15, 1, 0, -4.37114e-08, -0.00898266, -0.1809, 41.5712 )
-collision_layer = 4
-collision_mask = 0
-mass = 200.0
-can_sleep = false
-axis_lock_linear_y = true
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-linear_velocity = Vector3( 9, 0, 0 )
-linear_damp = 0.0
-script = ExtResource( 5 )
-trust = 600
-
-[node name="Model" parent="Ship" instance=ExtResource( 2 )]
-transform = Transform( 0.0754995, 0, 0, 0, 0.0754995, -2.5625e-31, 0, 0, 0.0754995, 0, 0, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 10 )
 
 [node name="CollisionBox" type="CollisionShape" parent="Ship"]
 transform = Transform( -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, 4.37114e-08, -1, 4.37114e-08, 0, 0, 0.0193536 )
 shape = SubResource( 9 )
+
+[node name="Model" parent="Ship" instance=ExtResource( 2 )]
+transform = Transform( 0.0754995, 0, 0, 0, 0.0754995, -2.5625e-31, 0, 0, 0.0754995, 0, 0, 0 )
 
 [node name="path" type="Control" parent="."]
 margin_right = 40.0
@@ -235,8 +227,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 g_comp_color = Color( 0.87451, 0, 1, 1 )
-simulation_steps = 1000
-simulation_delta_t = 0.3
+simulation_steps = 100
+simulation_delta_t = 1.0
 history_lenth = 0
 gravety_sum = true
 gravety_components = false

@@ -3,19 +3,17 @@ extends RigidBody
 export var turn_rate = 3
 export var trust = 10
 
-
 var Gravety_acceleration_sum : Vector3
 var Gravety_acceleration_components : Array
 
 
-
-var position_state = self.translation
 
 func _ready():
 	pass # Replace with function body.
 
 
 func _integrate_forces(state):
+	
 	Gravety_acceleration_sum = Universe.g_force(self.translation)
 	state.add_central_force(Gravety_acceleration_sum)
 	
@@ -29,7 +27,9 @@ func _integrate_forces(state):
 		_rotation(state,turn_rate)	
 	
 	if Input.is_action_pressed("turn_right"):
-		_rotation(state,turn_rate*-1)	
+		_rotation(state,turn_rate*-1)
+		
+	
 
 
 
