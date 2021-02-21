@@ -15,7 +15,7 @@ var simulation_update_timer = 0
 
 var history = []
 export var history_lenth = 100
-var history_update_interfall = 0.3
+var history_update_interfall = 0.03
 var history_update_timer = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -28,8 +28,9 @@ func _process(delta):
 	if simulation_update_timer >= simulatoin_update_interfall:
 		simulation_update_timer -= simulatoin_update_interfall
 		simulate()
-	if history_update_timer >= history_update_interfall:
-		history_update_timer -= simulatoin_update_interfall
+	print(history_update_timer)
+	if history_update_timer >= history_update_interfall:		
+		history_update_timer -= history_update_interfall
 		appendHistory()
 
 func _physics_process(delta):

@@ -1,15 +1,7 @@
 extends nBody
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 export var turn_rate = 3
 export var trust = 10
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 #func _physics_process(delta):
 #	$Model.trust_forward_off()
