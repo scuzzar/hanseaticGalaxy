@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=3 format=2]
 
-[ext_resource path="res://assets/materials/PlatesBump.material" type="Material" id=1]
+[ext_resource path="res://assets/materials/Plates.material" type="Material" id=1]
 [ext_resource path="res://assets/materials/CocpitGlass.material" type="Material" id=2]
 
 [resource]
