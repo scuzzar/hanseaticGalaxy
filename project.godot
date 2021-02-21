@@ -677,6 +677,10 @@ config/windows_native_icon="res://Artemis.ico"
 
 Universe="*res://scenes/PlayGorund/Universe.gd"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [editor_plugins]
 
 enabled=PoolStringArray( "orbit_camera" )
