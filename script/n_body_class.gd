@@ -37,7 +37,9 @@ func _physics_process(delta):
 
 func _leap_frog_integration(delta):
 	velocety += g_force * delta / mass / 2
-	print(move_and_collide(velocety*delta))	
+	var collision = move_and_collide(velocety*delta)
+	if collision != null:
+		print(collision)
 	g_force = Universe.g_force(self.translation)
 	velocety += g_force * delta / mass / 2
 
@@ -51,14 +53,14 @@ func simulate():
 	var sim_ship_start_pos = translation
 	var sim_ship_pos = sim_ship_start_pos
 	var sim_ship_val = velocety
-	g_force = Universe.g_force(sim_ship_pos)	
+	var sim_g_force = Universe.g_force(sim_ship_pos)	
 	simulation = [sim_ship_pos]
 	for i in simulation_steps:		
-		sim_ship_val += g_force * simulation_delta_t / mass /2
+		sim_ship_val += sim_g_force * simulation_delta_t / mass /2
 		sim_ship_pos += sim_ship_val * simulation_delta_t
 		
-		g_force = Universe.g_force(sim_ship_pos)	
-		sim_ship_val += g_force * simulation_delta_t / mass /2
+		sim_g_force = Universe.g_force(sim_ship_pos)	
+		sim_ship_val += sim_g_force * simulation_delta_t / mass /2
 		
 		simulation.append(sim_ship_pos)
 		if sim_ship_pos.distance_to(sim_ship_start_pos) < simulation_orbit_treshold:
