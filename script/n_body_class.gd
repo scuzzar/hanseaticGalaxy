@@ -3,8 +3,11 @@ extends KinematicBody
 class_name nBody
 
 export var mass = 200
-export var velocety = Vector3(9,0,0)
+export var velocety = Vector3(0,0,0)
 var g_force = Vector3(0,0,0)
+
+export var G = 100
+onready var bodys = get_tree().get_nodes_in_group("bodys")
 
 var simulation = []
 export var simulation_steps = 100
@@ -20,7 +23,8 @@ var history_update_timer = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	g_force = Universe.g_force(translation)
+	g_force = g_force(translation)
+	#self.add_to_group("bodys")
 
 func _process(delta):
 	simulation_update_timer += delta
@@ -40,7 +44,7 @@ func _leap_frog_integration(delta):
 	var collision = move_and_collide(velocety*delta)
 	if collision != null:
 		print(collision)
-	g_force = Universe.g_force(self.translation)
+	g_force = g_force(self.translation)
 	velocety += g_force * delta / mass / 2
 
 func appendHistory():	
@@ -53,15 +57,25 @@ func simulate():
 	var sim_ship_start_pos = translation
 	var sim_ship_pos = sim_ship_start_pos
 	var sim_ship_val = velocety
-	var sim_g_force = Universe.g_force(sim_ship_pos)	
+	var sim_g_force = g_force(sim_ship_pos)	
 	simulation = [sim_ship_pos]
 	for i in simulation_steps:		
 		sim_ship_val += sim_g_force * simulation_delta_t / mass /2
 		sim_ship_pos += sim_ship_val * simulation_delta_t
 		
-		sim_g_force = Universe.g_force(sim_ship_pos)	
+		sim_g_force = g_force(sim_ship_pos)	
 		sim_ship_val += sim_g_force * simulation_delta_t / mass /2
 		
 		simulation.append(sim_ship_pos)
 		if sim_ship_pos.distance_to(sim_ship_start_pos) < simulation_orbit_treshold:
 			break
+
+func g_force(position):
+	var sum = Vector3(0,0,0)
+	for body in bodys :
+		var sqrDst = position.distance_squared_to(body.translation)		
+		var forcDir = position.direction_to(body.translation).normalized()		
+		var acceleration = forcDir * G *body.mass / sqrDst
+		sum += acceleration
+		#Gravety_acceleration_components.append(acceleration)
+	return sum
