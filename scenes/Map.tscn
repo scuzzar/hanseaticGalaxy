@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Ship.gd" type="Script" id=1]
 [ext_resource path="res://assets/models/ToyRocket.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/models/body.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/orbit.gd" type="Script" id=4]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.399473
@@ -21,13 +22,21 @@ collision_mask = 2
 script = ExtResource( 1 )
 velocety = Vector3( 0, 0, -30 )
 simulation_steps = 0
-history_lenth = 0
+history_lenth = 300
 
 [node name="Model" parent="nBody" instance=ExtResource( 2 )]
 
 [node name="CollisionShape" type="CollisionShape" parent="nBody"]
 transform = Transform( 0.999965, 0.00827503, 0.00084609, -0.000745598, -0.0121389, 0.999926, 0.00828469, -0.999892, -0.0121323, 0, 0, 0 )
 shape = SubResource( 1 )
+
+[node name="orbit" type="Control" parent="nBody"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.833047, 0.000318565, 0.553203, -0.553203, 0.000479715, 0.833046, 0, -1, 0.000575856, 0, 6.33717, 0 )
