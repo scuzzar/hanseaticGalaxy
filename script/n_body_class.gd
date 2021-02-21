@@ -15,7 +15,7 @@ var simulation_update_timer = 0
 
 var history = []
 export var history_lenth = 100
-var history_update_interfall = 0.03
+var history_update_interfall = 0.1
 var history_update_timer = 0
 
 # Called when the node enters the scene tree for the first time.

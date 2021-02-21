@@ -22,7 +22,7 @@ collision_mask = 2
 script = ExtResource( 4 )
 velocety = Vector3( 0, 0, -50 )
 simulation_steps = 0
-history_lenth = 300
+history_lenth = 2000
 
 [node name="Model" parent="nBody" instance=ExtResource( 2 )]
 
