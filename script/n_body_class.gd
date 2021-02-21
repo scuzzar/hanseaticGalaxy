@@ -27,8 +27,7 @@ func _process(delta):
 	history_update_timer += delta
 	if simulation_update_timer >= simulatoin_update_interfall:
 		simulation_update_timer -= simulatoin_update_interfall
-		simulate()
-	print(history_update_timer)
+		simulate()	
 	if history_update_timer >= history_update_interfall:		
 		history_update_timer -= history_update_interfall
 		appendHistory()

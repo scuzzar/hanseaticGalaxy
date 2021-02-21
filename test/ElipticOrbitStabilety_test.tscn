@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scenes/Ship.gd" type="Script" id=1]
+[ext_resource path="res://scenes/orbit.gd" type="Script" id=1]
 [ext_resource path="res://assets/models/ToyRocket.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/models/body.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/orbit.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Ship.gd" type="Script" id=4]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.399473
@@ -16,11 +16,11 @@ transform = Transform( 0.999965, 0.00827503, 0.00084609, -0.000745598, -0.012138
 mass = 50000
 
 [node name="nBody" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1527, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.354, 0, 0 )
 collision_layer = 2
 collision_mask = 2
-script = ExtResource( 1 )
-velocety = Vector3( 0, 0, -30 )
+script = ExtResource( 4 )
+velocety = Vector3( 0, 0, -50 )
 simulation_steps = 0
 history_lenth = 300
 
@@ -33,7 +33,7 @@ shape = SubResource( 1 )
 [node name="orbit" type="Control" parent="nBody"]
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 4 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -42,5 +42,5 @@ __meta__ = {
 transform = Transform( 0.833047, 0.000318565, 0.553203, -0.553203, 0.000479715, 0.833046, 0, -1, 0.000575856, 0, 6.33717, 0 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 4.37114e-08, -1, 4.37114e-08, -8.74228e-08, 4.37114e-08, 1, -1, -4.37114e-08, -8.74228e-08, -0.866751, 41.6328, 0 )
+transform = Transform( 4.37114e-08, -1, 4.37114e-08, -8.74228e-08, 4.37114e-08, 1, -1, -4.37114e-08, -8.74228e-08, -14.1822, 62.0066, 0 )
 far = 8192.0
