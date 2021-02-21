@@ -12,7 +12,7 @@ height = 1.41389
 [node name="Map" type="Spatial"]
 
 [node name="body" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.999965, 0.00827503, 0.00084609, -0.000745598, -0.0121389, 0.999926, 0.00828469, -0.999892, -0.0121323, -0.882736, 1.89385, -0.554414 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.554 )
 mass = 50000
 
 [node name="nBody" type="KinematicBody" parent="."]
@@ -20,9 +20,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.354, 0, 0 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 4 )
-velocety = Vector3( 0, 0, -50 )
+velocety = Vector3( 0, 0, -55 )
 simulation_steps = 0
-history_lenth = 2000
+history_lenth = 20000
 
 [node name="Model" parent="nBody" instance=ExtResource( 2 )]
 

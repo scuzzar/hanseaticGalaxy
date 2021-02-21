@@ -3,6 +3,9 @@ extends nBody
 export var turn_rate = 3
 export var trust = 10
 
+func _ready():
+	history_update_timer = 0.01
+
 #func _physics_process(delta):
 #	$Model.trust_forward_off()
 #	if Input.is_action_pressed("burn_forward"):	
