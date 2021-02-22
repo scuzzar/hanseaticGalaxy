@@ -4,9 +4,13 @@ class_name nBody
 
 export var mass = 200
 export var velocety = Vector3(0,0,0)
+
+export var isGravetySource = false
+
 var g_force = Vector3(0,0,0)
 
-export var G = 100
+var G = 100
+
 onready var bodys = get_tree().get_nodes_in_group("bodys")
 
 var simulation = []
@@ -21,10 +25,11 @@ export var history_lenth = 100
 var history_update_interfall = 0.1
 var history_update_timer = 0
 
+func _enter_tree():
+	if isGravetySource : self.add_to_group("bodys")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	g_force = g_force(translation)
-	#self.add_to_group("bodys")
+	g_force = g_force(translation)	
 
 func _process(delta):
 	simulation_update_timer += delta
@@ -43,7 +48,7 @@ func _leap_frog_integration(delta):
 	velocety += g_force * delta / mass / 2
 	var collision = move_and_collide(velocety*delta)
 	if collision != null:
-		print(collision)
+		velocety = velocety.bounce(collision.normal)
 	g_force = g_force(self.translation)
 	velocety += g_force * delta / mass / 2
 
@@ -73,9 +78,11 @@ func simulate():
 func g_force(position):
 	var sum = Vector3(0,0,0)
 	for body in bodys :
-		var sqrDst = position.distance_squared_to(body.translation)		
-		var forcDir = position.direction_to(body.translation).normalized()		
-		var acceleration = forcDir * G *body.mass / sqrDst
-		sum += acceleration
+		if body != self:
+			var sqrDst = position.distance_squared_to(body.translation)		
+			var forcDir = position.direction_to(body.translation).normalized()		
+			var acceleration = forcDir * G *body.mass / sqrDst
+			sum += acceleration
 		#Gravety_acceleration_components.append(acceleration)
 	return sum
+

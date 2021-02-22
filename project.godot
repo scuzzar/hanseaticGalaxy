@@ -669,7 +669,7 @@ _global_script_class_icons={
 [application]
 
 config/name="hanseaticGalaxy"
-run/main_scene="res://test/ElipticOrbitStabilety_test.tscn"
+run/main_scene="res://test/nBody_test.tscn"
 config/icon="res://Artemis.png"
 config/windows_native_icon="res://Artemis.ico"
 
