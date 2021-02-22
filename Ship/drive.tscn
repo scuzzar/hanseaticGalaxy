@@ -1,0 +1,159 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Ship/drive.gd" type="Script" id=1]
+[ext_resource path="res://assets/particel/fire_02.png" type="Texture" id=2]
+[ext_resource path="res://assets/particel/smoke_04.png" type="Texture" id=3]
+[ext_resource path="res://assets/particel/fire_01.png" type="Texture" id=4]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+flags_unshaded = true
+flags_do_not_receive_shadows = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="QuadMesh" id=2]
+material = SubResource( 1 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.496689, 0.834234, 1 )
+colors = PoolColorArray( 0.980392, 0.0117647, 0.0117647, 1, 0.964844, 0.723633, 0, 1, 0.376471, 0.364706, 0.364706, 0.937255, 0, 0, 0, 0 )
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+flags_unshaded = true
+flags_do_not_receive_shadows = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="QuadMesh" id=5]
+material = SubResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_transparent = true
+flags_unshaded = true
+flags_do_not_receive_shadows = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="QuadMesh" id=7]
+material = SubResource( 6 )
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0.582781, 0.84106 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.622047, 0.622047, 0.622047, 1, 1, 1, 1, 0.396078 )
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends OmniLight
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():	
+	var tween = get_node(\"Tween\")
+	tween.interpolate_property(self, \"light_energy\",0.2, 1, 1,	Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	#tween.start()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[node name="particel" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Fire1" type="CPUParticles" parent="."]
+transform = Transform( 0.998251, -0.0479305, 0.0346076, 0.0468094, 0.998375, 0.0325107, -0.0361096, -0.0308339, 0.998872, 0, 0, 0 )
+amount = 32
+lifetime = 0.89
+lifetime_randomness = 0.28
+mesh = SubResource( 2 )
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 3.67
+initial_velocity_random = 0.71
+angular_velocity = 70.0
+angular_velocity_random = 1.0
+linear_accel = 2.76
+linear_accel_random = 0.39
+angle = 31.0
+scale_amount = 2.0
+scale_amount_random = 0.74
+color_ramp = SubResource( 3 )
+
+[node name="Fire2" type="CPUParticles" parent="."]
+transform = Transform( 0.998251, -0.0479305, 0.0346076, 0.0468094, 0.998375, 0.0325107, -0.0361096, -0.0308339, 0.998872, 0, 0, 0 )
+amount = 32
+lifetime = 0.89
+lifetime_randomness = 0.28
+mesh = SubResource( 5 )
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 3.67
+initial_velocity_random = 0.71
+angular_velocity = 70.0
+angular_velocity_random = 1.0
+linear_accel = 2.76
+linear_accel_random = 0.39
+angle = 31.0
+scale_amount = 2.0
+scale_amount_random = 0.74
+color_ramp = SubResource( 3 )
+
+[node name="smoke" type="CPUParticles" parent="."]
+transform = Transform( 0.998251, -0.0479305, 0.0346076, 0.0468094, 0.998375, 0.0325107, -0.0361096, -0.0308339, 0.998872, -0.00065732, 0, -0.00689006 )
+visible = false
+emitting = false
+amount = 36
+lifetime = 1.27
+lifetime_randomness = 0.28
+mesh = SubResource( 7 )
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 3.67
+initial_velocity_random = 0.71
+angular_velocity = 70.0
+angular_velocity_random = 1.0
+linear_accel = 2.76
+linear_accel_random = 0.39
+angle = 31.0
+scale_amount = 2.0
+scale_amount_random = 0.74
+color_ramp = SubResource( 8 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.387533, 0 )
+light_color = Color( 0.945098, 0.866667, 0.027451, 1 )
+light_energy = 7.37
+shadow_enabled = true
+omni_range = 0.372108
+script = SubResource( 9 )
+
+[node name="Tween" type="Tween" parent="OmniLight"]
+repeat = true
+playback_speed = 7.0
+playback/repeat = true
+playback/speed = 7.0
