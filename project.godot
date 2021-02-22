@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "RigidBody",
+"class": "RiggednBody",
+"language": "GDScript",
+"path": "res://script/n_body_class_rigged.gd"
+}, {
 "base": "VisualShaderNodeCustom",
 "class": "VisualShaderNodeDeepParallax",
 "language": "GDScript",
@@ -555,6 +560,7 @@ _global_script_classes=[ {
 "path": "res://script/n_body_class.gd"
 } ]
 _global_script_class_icons={
+"RiggednBody": "",
 "VisualShaderNodeDeepParallax": "",
 "VisualShaderNodeDepth": "",
 "VisualShaderNodeDepthWorldPosition": "",
