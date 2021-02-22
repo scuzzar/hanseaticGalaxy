@@ -1,6 +1,6 @@
 extends RigidBody
 
-class_name RiggednBody
+class_name Rigid_N_Body
 
 #export var mass = 200
 export var velocety = Vector3(0,0,0)
@@ -27,6 +27,7 @@ var history_update_timer = 0
 
 func _enter_tree():
 	if isGravetySource : self.add_to_group("bodys")
+	self.gravity_scale = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	g_force = g_force(translation)	
@@ -41,16 +42,16 @@ func _process(delta):
 		history_update_timer -= history_update_interfall
 		appendHistory()
 
-func _physics_process(delta):
-	_leap_frog_integration(delta)
+func _integrate_forces(state):	
+	g_force = g_force(self.translation)
+	state.add_central_force(g_force / 2)
+	state.add_central_force(g_force / 2)
 
 func _leap_frog_integration(delta):
-	#linear_velocity += g_force * delta / mass / 2
+	velocety += g_force * delta / mass / 2
 	#var collision = move_and_collide(velocety*delta)
-	#if collision != null:
-	#	velocety = velocety.bounce(collision.normal)
 	g_force = g_force(self.translation)
-	#linear_velocity += g_force * delta / mass / 2
+	velocety += g_force * delta / mass / 2
 
 func appendHistory():	
 	history.append(translation)

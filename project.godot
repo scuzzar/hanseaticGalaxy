@@ -10,9 +10,9 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "RigidBody",
-"class": "RiggednBody",
+"class": "Rigid_N_Body",
 "language": "GDScript",
-"path": "res://script/n_body_class_rigged.gd"
+"path": "res://script/rigid_n_body_class.gd"
 }, {
 "base": "VisualShaderNodeCustom",
 "class": "VisualShaderNodeDeepParallax",
@@ -560,7 +560,7 @@ _global_script_classes=[ {
 "path": "res://script/n_body_class.gd"
 } ]
 _global_script_class_icons={
-"RiggednBody": "",
+"Rigid_N_Body": "",
 "VisualShaderNodeDeepParallax": "",
 "VisualShaderNodeDepth": "",
 "VisualShaderNodeDepthWorldPosition": "",
@@ -675,7 +675,7 @@ _global_script_class_icons={
 [application]
 
 config/name="hanseaticGalaxy"
-run/main_scene="res://test/nBody_test.tscn"
+run/main_scene="res://test/ElipticOrbitStabilety_test_rigged.tscn"
 config/icon="res://Artemis.png"
 config/windows_native_icon="res://Artemis.ico"
 
