@@ -553,11 +553,6 @@ _global_script_classes=[ {
 "class": "VisualShaderToolsvec2Compose",
 "language": "GDScript",
 "path": "res://addons/shaderV/tools/vec2Compose.gd"
-}, {
-"base": "KinematicBody",
-"class": "nBody",
-"language": "GDScript",
-"path": "res://script/n_body_class.gd"
 } ]
 _global_script_class_icons={
 "Rigid_N_Body": "",
@@ -668,14 +663,13 @@ _global_script_class_icons={
 "VisualShaderToolsSinTIME": "",
 "VisualShaderToolsSphericalToCartesian": "",
 "VisualShaderToolsTIMEscaled": "",
-"VisualShaderToolsvec2Compose": "",
-"nBody": ""
+"VisualShaderToolsvec2Compose": ""
 }
 
 [application]
 
 config/name="hanseaticGalaxy"
-run/main_scene="res://test/ElipticOrbitStabilety_test_rigged.tscn"
+run/main_scene="res://test/ElipticOrbitStabilety.tscn"
 config/icon="res://Artemis.png"
 config/windows_native_icon="res://Artemis.ico"
 
