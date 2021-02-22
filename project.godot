@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "RigidBody",
 "class": "Rigid_N_Body",
 "language": "GDScript",
-"path": "res://script/rigid_n_body_class.gd"
+"path": "res://N_Body/rigid_n_body_class.gd"
 }, {
 "base": "VisualShaderNodeCustom",
 "class": "VisualShaderNodeDeepParallax",
