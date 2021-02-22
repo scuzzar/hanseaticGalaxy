@@ -93,5 +93,6 @@ shape = SubResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Mars"]
 transform = Transform( 17, 0, 0, 0, 17, 0, 0, 0, 17, 0, 0, 0 )
+material_override = ExtResource( 4 )
 mesh = ExtResource( 3 )
-material/0 = ExtResource( 4 )
+material/0 = null
