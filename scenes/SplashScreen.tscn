@@ -1,8 +1,11 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/models/Artemiss.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Ship/Artemiss/Artemiss.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/models/body.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Weltall.tres" type="Environment" id=3]
+
+
+
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial

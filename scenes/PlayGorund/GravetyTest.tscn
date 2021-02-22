@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/models/body.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/models/ToyRocket.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Ship/SimpleRocket/ToyRocket.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/textures/2k_sun.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/particel/fire_01.png" type="Texture" id=4]
 [ext_resource path="res://scenes/PlayGorund/DebugPath.tres.gd" type="Script" id=5]
@@ -10,7 +10,11 @@
 [ext_resource path="res://assets/materials/Moon.material" type="Material" id=8]
 [ext_resource path="res://scenes/PlayGorund/Sun.gd" type="Script" id=9]
 [ext_resource path="res://scenes/PlayGorund/KinematicShip.gd" type="Script" id=10]
-[ext_resource path="res://assets/materials/Mars.material" type="Material" id=11]
+[ext_resource path="res://Bodys/Mars.material" type="Material" id=11]
+
+
+
+
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
