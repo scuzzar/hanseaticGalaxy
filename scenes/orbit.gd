@@ -35,11 +35,12 @@ func _draw():
 
 func _draw_list(list, color):
 	if(list.size()>1):
-		for i in range(list.size()-1):			
-			var v1 = get_viewport().get_camera().unproject_position(list[i])
-			var v2 = get_viewport().get_camera().unproject_position(list[i+1])
-			if(get_viewport_rect().has_point(v2) or get_viewport_rect().has_point(v1)):
-				draw_line(v1,v2,color,width,true)
+		for i in range(list.size()-1):
+			if(!get_viewport().get_camera().is_position_behind(list[i]) and !get_viewport().get_camera().is_position_behind(list[i+1])):
+				var v1 = get_viewport().get_camera().unproject_position(list[i])
+				var v2 = get_viewport().get_camera().unproject_position(list[i+1])
+				if(get_viewport_rect().has_point(v2) or get_viewport_rect().has_point(v1)):
+					draw_line(v1,v2,color,width,true)
 		#var v1 = get_viewport().get_camera().unproject_position(list.back())
 		#var v2 = get_viewport().get_camera().unproject_position(ship.translation)
 		#draw_line(v1,v2,color,width,true)
