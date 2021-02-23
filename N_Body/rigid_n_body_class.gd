@@ -30,7 +30,9 @@ func _enter_tree():
 	self.gravity_scale = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	g_force = g_force(translation)	
+	self.linear_velocity = velocety
+	g_force = g_force(translation)
+	
 
 func _process(delta):
 	simulation_update_timer += delta
@@ -46,6 +48,7 @@ func _integrate_forces(state):
 	g_force = g_force(self.translation)
 	state.add_central_force(g_force / 2)
 	state.add_central_force(g_force / 2)
+	self.velocety = state.linear_velocity
 
 func _leap_frog_integration(delta):
 	velocety += g_force * delta / mass / 2

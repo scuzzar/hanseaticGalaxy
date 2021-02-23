@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Ship/SimpleRocket/ToyRocket.tscn" type="PackedScene" id=1]
-[ext_resource path="res://N_Body/rigid_n_body_class.gd" type="Script" id=2]
-[ext_resource path="res://Bodys/body.tres" type="ArrayMesh" id=3]
-[ext_resource path="res://Bodys/Mars.material" type="Material" id=4]
+[ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Bodys/Moon.material" type="Material" id=3]
 [ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=5]
 [ext_resource path="res://Bodys/Ship.gd" type="Script" id=6]
 [ext_resource path="res://scenes/orbit.gd" type="Script" id=7]
@@ -28,9 +27,6 @@ func _snapToShip():
 radius = 0.415856
 height = 1.4136
 
-[sub_resource type="SphereShape" id=4]
-radius = 17.0
-
 [node name="Sol" type="Spatial"]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
@@ -51,17 +47,16 @@ ROTATE_SPEED = 1.0
 ANCHOR_NODE_PATH = NodePath("..")
 
 [node name="Ship" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1886, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.7901, 0, 0 )
 mass = 200.0
 axis_lock_linear_y = true
-linear_velocity = Vector3( 0, 0, -3 )
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
 }
-simulation_steps = 0
-history_lenth = 3000
-trust = 1200
+velocety = Vector3( 0, 0, -6 )
+history_lenth = 700
+trust = 500
 
 [node name="Model" parent="Ship" instance=ExtResource( 1 )]
 
@@ -77,23 +72,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Mars" type="RigidBody" parent="."]
-mode = 1
-mass = 5000.0
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="Mars" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1.66551, 0, 0, 0, 1.66551, 0, 0, 0, 1.66551, 0, 0, 0 )
 isGravetySource = true
 simulation_steps = 0
 history_lenth = 0
 
-[node name="CollisionShape" type="CollisionShape" parent="Mars"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
-shape = SubResource( 4 )
+[node name="Phobos " parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.430164, 0, 0, 0, 0.430164, 0, 0, 0, 0.430164, 48.8292, 0, -65.3987 )
+mass = 1000.0
+velocety = Vector3( -5, 0, 0 )
+isGravetySource = true
+simulation_steps = 0
+history_lenth = 0
+material = ExtResource( 3 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Mars"]
-transform = Transform( 17, 0, 0, 0, 17, 0, 0, 0, 17, 0, 0, 0 )
-material_override = ExtResource( 4 )
-mesh = ExtResource( 3 )
-material/0 = null
+[node name="Deimos " parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.430164, 0, 0, 0, 0.430164, 0, 0, 0, 0.430164, 148.308, 7.62939e-06, -2.09491 )
+mass = 700.0
+isGravetySource = true
+simulation_steps = 0
+history_lenth = 0
+material = ExtResource( 3 )
