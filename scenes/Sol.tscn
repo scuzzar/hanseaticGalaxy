@@ -106,14 +106,13 @@ __meta__ = {
 
 [node name="Deimos " parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.430164, 0, 0, 0, 0.430164, 0, 0, 0, 0.430164, 148.308, 7.62939e-06, -2.09491 )
-visible = false
+mode = 3
 mass = 700.0
+script = ExtResource( 4 )
 velocety = Vector3( 0, 0, -2.4 )
-update_simulation = false
-history_lenth = 0
+isGravetySource = true
 
 [node name="Control3" type="Control" parent="Deimos "]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 7 )
