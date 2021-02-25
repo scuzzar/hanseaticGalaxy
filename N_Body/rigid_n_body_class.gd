@@ -7,11 +7,14 @@ export var velocety = Vector3(0,0,0)
 
 export var isGravetySource = false
 
+export(NodePath) var SOI_Body
+onready var soi_node = self.get_node(SOI_Body)
+
 var g_force = Vector3(0,0,0)
 
 var G = 100
 
-onready var bodys = get_tree().get_nodes_in_group("bodys")
+onready var bodys = []
 
 var simulation = []
 export var simulation_steps = 100
@@ -31,10 +34,14 @@ func _enter_tree():
 	self.gravity_scale = 0
 
 func _ready():
+	if soi_node != null:
+		bodys = [soi_node]
+	else:
+		bodys = get_tree().get_nodes_in_group("bodys")
 	self.linear_velocity = velocety
 	g_force = g_force(translation)
 	self.simulate()
-	
+
 
 func _process(delta):
 	simulation_update_timer += delta

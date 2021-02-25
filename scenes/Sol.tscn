@@ -59,6 +59,7 @@ __meta__ = {
 "_edit_group_": true
 }
 simulation_steps = 0
+update_simulation = false
 trust = 700
 
 [node name="Model" parent="Ship" instance=ExtResource( 1 )]
@@ -93,6 +94,7 @@ sleeping = true
 script = ExtResource( 4 )
 velocety = Vector3( 0, 0, -2.5 )
 isGravetySource = true
+SOI_Body = NodePath("../Mars")
 update_simulation = false
 history_lenth = 0
 
@@ -111,6 +113,7 @@ mass = 700.0
 script = ExtResource( 4 )
 velocety = Vector3( 0, 0, -2.4 )
 isGravetySource = true
+SOI_Body = NodePath("../Mars")
 
 [node name="Control3" type="Control" parent="Deimos "]
 margin_right = 40.0
