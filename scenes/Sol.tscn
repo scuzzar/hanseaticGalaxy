@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Ship/SimpleRocket/ToyRocket.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Bodys/Moon.material" type="Material" id=3]
+[ext_resource path="res://Bodys/Planet.gd" type="Script" id=4]
 [ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=5]
 [ext_resource path="res://Bodys/Ship.gd" type="Script" id=6]
 [ext_resource path="res://scenes/orbit.gd" type="Script" id=7]
@@ -27,6 +27,9 @@ func _snapToShip():
 radius = 0.415856
 height = 1.4136
 
+[sub_resource type="PhysicsMaterial" id=4]
+absorbent = true
+
 [node name="Sol" type="Spatial"]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
@@ -43,20 +46,20 @@ script = SubResource( 2 )
 [node name="OrbitCamera" type="Camera" parent="CamCenter"]
 far = 8192.0
 script = ExtResource( 5 )
+DEFAULT_DISTANCE = 70.0
 ROTATE_SPEED = 1.0
 ANCHOR_NODE_PATH = NodePath("..")
 
 [node name="Ship" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.7901, 0, 0 )
-mass = 200.0
+transform = Transform( -0.0530332, 0, -0.998593, 0, 1, 0, 0.998593, 0, -0.0530332, 30.2557, 0, 0 )
+mass = 50.0
 axis_lock_linear_y = true
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
 }
-velocety = Vector3( 0, 0, -6 )
-history_lenth = 700
-trust = 500
+simulation_steps = 0
+trust = 700
 
 [node name="Model" parent="Ship" instance=ExtResource( 1 )]
 
@@ -74,23 +77,46 @@ __meta__ = {
 
 [node name="Mars" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1.66551, 0, 0, 0, 1.66551, 0, 0, 0, 1.66551, 0, 0, 0 )
+velocety = Vector3( 0, 0, -5 )
 isGravetySource = true
 simulation_steps = 0
 history_lenth = 0
 
 [node name="Phobos " parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.430164, 0, 0, 0, 0.430164, 0, 0, 0, 0.430164, 48.8292, 0, -65.3987 )
+transform = Transform( 0.430164, 0, 0, 0, 0.430164, 0, 0, 0, 0.430164, 84.4932, 0, -0.53846 )
+mode = 3
 mass = 1000.0
-velocety = Vector3( -5, 0, 0 )
+physics_material_override = SubResource( 4 )
+custom_integrator = true
+contact_monitor = true
+sleeping = true
+script = ExtResource( 4 )
+velocety = Vector3( 0, 0, -2.5 )
 isGravetySource = true
-simulation_steps = 0
+update_simulation = false
 history_lenth = 0
-material = ExtResource( 3 )
+
+[node name="Control2" type="Control" parent="Phobos "]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Deimos " parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.430164, 0, 0, 0, 0.430164, 0, 0, 0, 0.430164, 148.308, 7.62939e-06, -2.09491 )
+visible = false
 mass = 700.0
-isGravetySource = true
-simulation_steps = 0
+velocety = Vector3( 0, 0, -2.4 )
+update_simulation = false
 history_lenth = 0
-material = ExtResource( 3 )
+
+[node name="Control3" type="Control" parent="Deimos "]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
