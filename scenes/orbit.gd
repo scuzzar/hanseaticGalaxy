@@ -19,7 +19,7 @@ func _draw():
 	if(ship.history_lenth>0): _draw_list(ship.history + now, history_color)
 	#if(gravety_sum): _draw_gravety_sum()
 	#if(gravety_components): _draw_gravety_components()
-	if(ship.simulation_steps>0): _draw_list(ship.simulation,sim_color)
+	#if(ship.simulation_steps>0): _draw_list(ship.simulation,sim_color)
 
 #func _draw_gravety_components():
 #	for comp in ship.Gravety_acceleration_components:		
