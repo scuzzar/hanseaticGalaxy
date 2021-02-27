@@ -31,7 +31,7 @@ func _snapToShip():
 radius = 0.415856
 height = 1.4136
 
-[sub_resource type="PhysicsMaterial" id=11]
+[sub_resource type="PhysicsMaterial" id=10]
 friction = 0.5
 
 [sub_resource type="VisualShaderNodeTexture" id=5]
@@ -82,7 +82,7 @@ nodes/fragment/3/node = SubResource( 6 )
 nodes/fragment/3/position = Vector2( 280, 140 )
 nodes/fragment/connections = PoolIntArray( 3, 0, 0, 0, 2, 0, 0, 1 )
 
-[sub_resource type="ShaderMaterial" id=10]
+[sub_resource type="ShaderMaterial" id=11]
 shader = SubResource( 7 )
 
 [node name="Sol" type="Spatial"]
@@ -107,8 +107,8 @@ ANCHOR_NODE_PATH = NodePath("..")
 MOUSE_ZOOM_SPEED = 50.0
 
 [node name="Ship" type="RigidBody" parent="."]
-transform = Transform( -0.0530332, 0, -0.998593, 0, 1, 0, 0.998593, 0, -0.0530332, 26.8845, 0.803577, 926.112 )
-mass = 50.0
+transform = Transform( -0.0530332, 0, -0.998593, 0, 1, 0, 0.998593, 0, -0.0530332, 27.3387, -0.435437, 927.16 )
+mass = 100.0
 continuous_cd = true
 axis_lock_linear_y = true
 axis_lock_angular_x = true
@@ -118,7 +118,7 @@ __meta__ = {
 "_edit_group_": true
 }
 history_lenth = 20
-trust = 300
+trust = 250
 
 [node name="Control2" type="Control" parent="Ship"]
 margin_right = 40.0
@@ -153,9 +153,9 @@ mode = 3
 mass = 1500.0
 gravity_scale = 0.0
 custom_integrator = true
-linear_velocity = Vector3( 0.31, 0, 0 )
+linear_velocity = Vector3( 0.422, 0, 0 )
 script = ExtResource( 4 )
-velocety = Vector3( 0.573, 0, 0 )
+velocety = Vector3( 0.422, 0, 0 )
 isGravetySource = true
 SOI_Body = NodePath("../Sun")
 simulation_steps = 2000
@@ -168,9 +168,9 @@ mode = 3
 mass = 200.0
 gravity_scale = 0.0
 custom_integrator = true
-linear_velocity = Vector3( 0, 0, -3.097 )
+linear_velocity = Vector3( 0, 0, -1.459 )
 script = ExtResource( 4 )
-velocety = Vector3( 0, 0, -2.11 )
+velocety = Vector3( 0, 0, -1.459 )
 isGravetySource = true
 SOI_Body = NodePath("../Mars")
 material = ExtResource( 3 )
@@ -189,9 +189,9 @@ mode = 3
 mass = 300.0
 gravity_scale = 0.0
 custom_integrator = true
-linear_velocity = Vector3( 0, 0, -1.777 )
+linear_velocity = Vector3( 0, 0, -0.824 )
 script = ExtResource( 4 )
-velocety = Vector3( 0, 0, -1.128 )
+velocety = Vector3( 0, 0, -0.824 )
 isGravetySource = true
 SOI_Body = NodePath("../Mars")
 simulation_steps = 200
@@ -209,12 +209,12 @@ __meta__ = {
 transform = Transform( 0.845246, 0, 1.23918, 0, 1.5, 0, -1.23918, 0, 0.845246, 0, 0, 926.884 )
 mode = 3
 mass = 2000.0
-physics_material_override = SubResource( 11 )
+physics_material_override = SubResource( 10 )
 gravity_scale = 0.0
 custom_integrator = true
-linear_velocity = Vector3( 0.374, 0, 0 )
+linear_velocity = Vector3( 0.514, 0, 0 )
 script = ExtResource( 4 )
-velocety = Vector3( 0.757, 0, 0 )
+velocety = Vector3( 0.514, 0, 0 )
 isGravetySource = true
 SOI_Body = NodePath("../Sun")
 simulation_steps = 2000
@@ -223,7 +223,7 @@ material = ExtResource( 9 )
 
 [node name="Clouds" type="MeshInstance" parent="Earth"]
 transform = Transform( 17.1, 0, 0, 0, 17.1, 0, 0, 0, 17.1, 0, 0, 0 )
-material_override = SubResource( 10 )
+material_override = SubResource( 11 )
 mesh = ExtResource( 11 )
 material/0 = null
 
@@ -233,9 +233,9 @@ mode = 3
 mass = 200.0
 gravity_scale = 0.0
 custom_integrator = true
-linear_velocity = Vector3( 0, 0, 2.886 )
+linear_velocity = Vector3( 0, 0, 1.358 )
 script = ExtResource( 4 )
-velocety = Vector3( 0, 0, 1.913 )
+velocety = Vector3( 0, 0, 1.358 )
 isGravetySource = true
 SOI_Body = NodePath("../Earth")
 simulation_steps = 90

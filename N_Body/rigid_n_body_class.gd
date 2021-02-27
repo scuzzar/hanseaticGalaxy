@@ -12,7 +12,7 @@ onready var soi_node = self.get_node(SOI_Body)
 
 var g_force = Vector3(0,0,0)
 
-var G = 100
+var G = 50
 
 onready var bodys = []
 
