@@ -17,8 +17,7 @@ func _ready():
 	._ready()
 	orbit = preload("res://N_Body/3DOrbit.gd").new()
 	orbit.ship = self
-	self.add_child(orbit)
-	print("Planetread")
+	self.add_child(orbit)	
 	if(!Engine.editor_hint and self.soi_node!=null):
 		_start_SOI_distance = self.translation.distance_to(soi_node.translation)
 		_start_vel = self.linear_velocity.length()
@@ -31,16 +30,19 @@ func _process(delta):
 		orbitTimer = draw_orbit_intervall
 		_updateOrbitDisplay()
 
-func _integrate_forces(state):
-	
+func _integrate_forces(state):	
 	pass
 	
 func _physics_process(delta):
 	if !Engine.editor_hint:
 		self._leap_frog_integration(delta)
+		#self.rotate_y(delta*self.angular_velocity.y*0.000001)
 
 func _updateOrbitDisplay():	
 	orbit._draw_list(simulation)
+	
+
+func _print_SOI_Data():
 	if(!Engine.editor_hint and self.soi_node!=null):
 		var distance_str = String(self.translation.distance_to(soi_node.translation)-_start_SOI_distance)
 		var vel_str = String(self.linear_velocity.length()-_start_vel)
