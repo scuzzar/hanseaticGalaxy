@@ -107,8 +107,8 @@ ANCHOR_NODE_PATH = NodePath("..")
 MOUSE_ZOOM_SPEED = 50.0
 
 [node name="Ship" type="RigidBody" parent="."]
-transform = Transform( -0.0530332, 0, -0.998593, 0, 1, 0, 0.998593, 0, -0.0530332, 27.3387, -0.435437, 927.16 )
-mass = 100.0
+transform = Transform( -0.0530332, 0, -0.998593, 0, 1, 0, 0.998593, 0, -0.0530332, 48.4874, -0.435437, -1966.24 )
+mass = 25.0
 continuous_cd = true
 axis_lock_linear_y = true
 axis_lock_angular_x = true
@@ -118,7 +118,7 @@ __meta__ = {
 "_edit_group_": true
 }
 history_lenth = 20
-trust = 250
+trust = 70
 
 [node name="Control2" type="Control" parent="Ship"]
 margin_right = 40.0
@@ -148,9 +148,9 @@ history_lenth = 0
 material = ExtResource( 13 )
 
 [node name="Mars" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1.3, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, -1967.53 )
+transform = Transform( 1.80572, 0, 0, 0, 1.80572, 0, 0, 0, 1.80572, 0, 0, -1967.53 )
 mode = 3
-mass = 1500.0
+mass = 1000.0
 gravity_scale = 0.0
 custom_integrator = true
 linear_velocity = Vector3( 0.422, 0, 0 )
@@ -170,7 +170,7 @@ gravity_scale = 0.0
 custom_integrator = true
 linear_velocity = Vector3( 0, 0, -1.459 )
 script = ExtResource( 4 )
-velocety = Vector3( 0, 0, -1.459 )
+velocety = Vector3( 0, 0, -1.157 )
 isGravetySource = true
 SOI_Body = NodePath("../Mars")
 material = ExtResource( 3 )
@@ -191,7 +191,7 @@ gravity_scale = 0.0
 custom_integrator = true
 linear_velocity = Vector3( 0, 0, -0.824 )
 script = ExtResource( 4 )
-velocety = Vector3( 0, 0, -0.824 )
+velocety = Vector3( 0, 0, -0.677 )
 isGravetySource = true
 SOI_Body = NodePath("../Mars")
 simulation_steps = 200
@@ -206,7 +206,7 @@ __meta__ = {
 }
 
 [node name="Earth" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.845246, 0, 1.23918, 0, 1.5, 0, -1.23918, 0, 0.845246, 0, 0, 926.884 )
+transform = Transform( 1.12699, 0, 1.65224, 0, 2, 0, -1.65224, 0, 1.12699, 0, 0, 926.884 )
 mode = 3
 mass = 2000.0
 physics_material_override = SubResource( 10 )
