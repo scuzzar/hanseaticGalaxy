@@ -18,8 +18,8 @@ onready var bodys = []
 
 var simulation = []
 export var simulation_steps = 100
-var simulation_delta_t = 0.1
-var simulatoin_update_interfall = 0.3
+var simulation_delta_t = 0.01
+var simulatoin_update_interfall = 0.05
 var simulation_orbit_treshold = 0.1
 var simulation_update_timer = 0
 export var update_simulation = true
@@ -95,7 +95,7 @@ func g_force(position):
 		if body != self:
 			var sqrDst = position.distance_squared_to(body.translation)		
 			var forcDir = position.direction_to(body.translation).normalized()		
-			var acceleration = forcDir * G *body.mass / sqrDst
+			var acceleration = forcDir * G *body.mass * mass / sqrDst
 			sum += acceleration
 		#Gravety_acceleration_components.append(acceleration)
 	return sum

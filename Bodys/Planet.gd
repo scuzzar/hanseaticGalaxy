@@ -4,7 +4,7 @@ extends Rigid_N_Body
 export (Material) var material = preload("res://Bodys/Mars.material") 
 
 var orbit
-var draw_orbit_intervall  = 0.5
+var draw_orbit_intervall  = 0.1
 var orbitTimer = draw_orbit_intervall
 var _start_SOI_distance = 0;
 var _start_vel = 0;
@@ -12,7 +12,7 @@ var _start_vel = 0;
 func _ready():
 	self.mode = MODE_KINEMATIC
 	$Mesh.material_override = material
-	self.simulation_delta_t = 20
+	self.simulation_delta_t = 10
 	self.custom_integrator = true
 	._ready()
 	orbit = preload("res://N_Body/3DOrbit.gd").new()
