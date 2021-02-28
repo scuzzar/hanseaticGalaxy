@@ -10,7 +10,7 @@ var _start_SOI_distance = 0;
 var _start_vel = 0;
 
 func _ready():
-	self.mode = MODE_KINEMATIC
+	#self.mode = MODE_KINEMATIC
 	$Mesh.material_override = material
 	self.custom_integrator = true
 	._ready()
