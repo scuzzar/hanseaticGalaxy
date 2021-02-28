@@ -43,42 +43,12 @@ func _process(delta):
 #	draw_line(v1,v2,g_color,width,true)
 
 
-func _draw_list(list):
+func draw_list(list):
 	clear()
 	begin(Mesh.PRIMITIVE_LINE_STRIP)
 	if(list.size()>1):
 		for i in range(list.size()-1):
-			#print(list[i])
-			
+			print(list[i])
 			add_vertex(ship.transform.affine_inverse() * list[i] )				
 	end()
-		#var v1 = get_viewport().get_camera().unproject_position(list.back())
-		#var v2 = get_viewport().get_camera().unproject_position(ship.translation)
-		#draw_line(v1,v2,color,width,true)
 
-#func appendHistory():	
-#	past.append(ship.translation)
-#	if(past.size()>history_lenth):
-#		past.pop_front()
-#	pass
-
-#func _simulate():
-#	var sim_ship_start_pos = ship.translation
-#	var sim_ship_pos = sim_ship_start_pos
-#	var sim_ship_val = ship.velocety
-#	var g_force = Universe.g_force(sim_ship_pos)	
-#	simulation = [sim_ship_pos]
-#	for i in simulation_steps:		
-#		sim_ship_val += g_force * simulation_delta_t / ship.mass /2
-#		sim_ship_pos += sim_ship_val * simulation_delta_t
-#		
-#		g_force = Universe.g_force(sim_ship_pos)	
-#		sim_ship_val += g_force * simulation_delta_t / ship.mass /2
-#		
-#		simulation.append(sim_ship_pos)
-#		if sim_ship_pos.distance_to(sim_ship_start_pos) < simulation_orbit_treshold:
-#			break
-
-#func _on_historyTimer_timeout():
-#	appendHistory()	
-#	_simulate()

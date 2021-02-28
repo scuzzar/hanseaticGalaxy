@@ -17,13 +17,11 @@ var G = 50
 
 onready var bodys = []
 
-var simulation = []
-export var simulation_steps = 100
-var simulation_delta_t = 0.01
-var simulatoin_update_interfall = 0.05
-var simulation_orbit_treshold = 0.1
-var simulation_update_timer = 0
-export var update_simulation = true
+var simulation_pos = []
+var simulation_vel = []
+var simulation_chaned = false
+
+#export var update_simulation = true
 
 var history = []
 export var history_lenth = 100
@@ -42,22 +40,14 @@ func _ready():
 	else:
 		bodys = get_tree().get_nodes_in_group("bodys")
 	self.linear_velocity = velocety
-	g_force = g_force(translation)
-	self.simulate()
+	g_force = g_force(translation)	
 	orbit = preload("res://N_Body/3DOrbit.gd").new()
 	orbit.ship = self
 	self.add_child(orbit)	
 
-
-
 func _process(delta):
-	simulation_update_timer += delta
 	history_update_timer += delta
-	if update_simulation:
-		if simulation_update_timer >= simulatoin_update_interfall:
-			simulation_update_timer -= simulatoin_update_interfall
-			simulate()
-			orbit._draw_list(simulation)
+	#orbit._draw_list(simulation)
 	if history_update_timer >= history_update_interfall:		
 		history_update_timer -= history_update_interfall
 		appendHistory()
@@ -80,29 +70,17 @@ func appendHistory():
 		history.pop_front()
 	pass
 
-func simulate():
-	var sim_ship_start_pos = translation
-	var sim_ship_pos = sim_ship_start_pos
-	var sim_ship_val = velocety
-	var sim_g_force = g_force(sim_ship_pos)	
-	simulation = [sim_ship_pos]
-	for i in simulation_steps:		
-		sim_ship_val += sim_g_force * simulation_delta_t / mass /2
-		sim_ship_pos += sim_ship_val * simulation_delta_t
-		
-		sim_g_force = g_force(sim_ship_pos)	
-		sim_ship_val += sim_g_force * simulation_delta_t / mass /2
-		
-		simulation.append(sim_ship_pos)
-		if sim_ship_pos.distance_to(sim_ship_start_pos) < simulation_orbit_treshold:
-			break
-
-func g_force(position):
+func g_force(position,t_plus=0):
 	var sum = Vector3(0,0,0)
 	for body in bodys :
 		if body != self:
-			var sqrDst = position.distance_squared_to(body.translation)		
-			var forcDir = position.direction_to(body.translation).normalized()		
+			var other_translation
+			if(t_plus == 0):
+				other_translation = body.translation
+			else:
+				other_translation = body.simulation_pos[t_plus-1]			
+			var sqrDst = position.distance_squared_to(other_translation)		
+			var forcDir = position.direction_to(other_translation).normalized()		
 			var acceleration = forcDir * G *body.mass * mass / sqrDst
 			sum += acceleration
 		#Gravety_acceleration_components.append(acceleration)

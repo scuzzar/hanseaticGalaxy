@@ -24,8 +24,7 @@ func _process(delta):
 	_snapToShip()
 
 func _snapToShip():
-	self.translation = ship.translation
-	self.translation = ship.translation
+	self.translation = Vector3(0,0,0)
 "
 
 [sub_resource type="CylinderShape" id=2]
@@ -104,7 +103,7 @@ far = 8192.0
 script = ExtResource( 5 )
 SCROLL_SPEED = 50.0
 ZOOM_SPEED = 50.0
-DEFAULT_DISTANCE = 400.0
+DEFAULT_DISTANCE = 3000.0
 ROTATE_SPEED = 1.0
 ANCHOR_NODE_PATH = NodePath("..")
 MOUSE_ZOOM_SPEED = 50.0
@@ -145,8 +144,6 @@ gravity_scale = 0.0
 custom_integrator = true
 script = ExtResource( 4 )
 isGravetySource = true
-simulation_steps = 0
-update_simulation = false
 history_lenth = 0
 material = ExtResource( 13 )
 
@@ -161,9 +158,16 @@ script = ExtResource( 4 )
 velocety = Vector3( 0.862, 0, 0 )
 isGravetySource = true
 SOI_Body = NodePath("../Sun")
-simulation_steps = 0
 history_lenth = 0
 material = ExtResource( 8 )
+
+[node name="Control" type="Control" parent="Mars"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Phobos" parent="." instance=ExtResource( 2 )]
 transform = Transform( -0.416957, 0, 0, 0, -0.138052, 0.393439, 0, -0.393439, -0.138052, 191.171, -5.67155e-07, -3789.36 )
@@ -176,16 +180,7 @@ script = ExtResource( 4 )
 velocety = Vector3( 0, 0, -5.197 )
 isGravetySource = true
 SOI_Body = NodePath("../Mars")
-simulation_steps = 0
 material = ExtResource( 3 )
-
-[node name="Control" type="Control" parent="Phobos"]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Deimos" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.430164, 0, 0, 0, 0.430164, 0, 0, 0, 0.430164, -396.059, 5.06784e-06, -3786.66 )
@@ -198,7 +193,6 @@ script = ExtResource( 4 )
 velocety = Vector3( 0, 0, -3.568 )
 isGravetySource = true
 SOI_Body = NodePath("../Mars")
-simulation_steps = 0
 material = ExtResource( 3 )
 
 [node name="Control2" type="Control" parent="Deimos"]
@@ -230,6 +224,14 @@ material_override = SubResource( 7 )
 mesh = ExtResource( 11 )
 material/0 = null
 
+[node name="Control" type="Control" parent="Earth"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Moon" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.655364, 2.98023e-08, -7.45058e-09, 0, 0.216987, -0.6184, 0, 0.6184, 0.216987, 259.598, -5.67155e-07, 1829.95 )
 mode = 3
@@ -241,16 +243,7 @@ script = ExtResource( 4 )
 velocety = Vector3( 3.768, 0, 5.949 )
 isGravetySource = true
 SOI_Body = NodePath("../Earth")
-simulation_steps = 0
 material = ExtResource( 3 )
-
-[node name="Control" type="Control" parent="Moon"]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Simulator" type="Node" parent="."]
 script = ExtResource( 14 )
