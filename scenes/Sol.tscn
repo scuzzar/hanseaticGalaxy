@@ -24,7 +24,7 @@ func _process(delta):
 	_snapToShip()
 
 func _snapToShip():
-	self.translation = Vector3(0,0,0)
+	self.translation = ship.translation
 "
 
 [sub_resource type="CylinderShape" id=2]
@@ -103,7 +103,7 @@ far = 8192.0
 script = ExtResource( 5 )
 SCROLL_SPEED = 50.0
 ZOOM_SPEED = 50.0
-DEFAULT_DISTANCE = 3000.0
+DEFAULT_DISTANCE = 400.0
 ROTATE_SPEED = 1.0
 ANCHOR_NODE_PATH = NodePath("..")
 MOUSE_ZOOM_SPEED = 50.0
@@ -157,6 +157,7 @@ script = ExtResource( 4 )
 velocety = Vector3( 0.862, 0, 0 )
 isGravetySource = true
 SOI_Body = NodePath("../Sun")
+show_sim = false
 history_lenth = 0
 material = ExtResource( 8 )
 
@@ -171,6 +172,7 @@ script = ExtResource( 4 )
 velocety = Vector3( 0, 0, -5.197 )
 isGravetySource = true
 SOI_Body = NodePath("../Mars")
+show_sim = false
 material = ExtResource( 3 )
 
 [node name="Deimos" parent="." instance=ExtResource( 2 )]
@@ -184,6 +186,7 @@ script = ExtResource( 4 )
 velocety = Vector3( 0, 0, -3.568 )
 isGravetySource = true
 SOI_Body = NodePath("../Mars")
+show_sim = false
 material = ExtResource( 3 )
 
 [node name="Earth" parent="." instance=ExtResource( 2 )]
@@ -193,9 +196,9 @@ mass = 200.0
 physics_material_override = SubResource( 3 )
 gravity_scale = 0.0
 custom_integrator = true
-linear_velocity = Vector3( 3.768, 0, 0 )
+linear_velocity = Vector3( 1.219, 0, 0 )
 script = ExtResource( 4 )
-velocety = Vector3( 3.768, 0, 0 )
+velocety = Vector3( 1.219, 0, 0 )
 isGravetySource = true
 SOI_Body = NodePath("../Sun")
 history_lenth = 0
@@ -208,17 +211,18 @@ mesh = ExtResource( 11 )
 material/0 = null
 
 [node name="Moon" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.655364, 2.98023e-08, -7.45058e-09, 0, 0.216987, -0.6184, 0, 0.6184, 0.216987, 259.598, -5.67155e-07, 1829.95 )
+transform = Transform( 0.655364, 2.98023e-08, -7.45058e-09, 0, 0.216987, -0.6184, 0, 0.6184, 0.216987, 0.0757446, -3.05176e-05, 2101.58 )
 mode = 3
 mass = 30.0
 gravity_scale = 0.0
 custom_integrator = true
-linear_velocity = Vector3( 3.768, 0, 5.949 )
+linear_velocity = Vector3( 0, 0, 5.413 )
 script = ExtResource( 4 )
-velocety = Vector3( 3.768, 0, 5.949 )
+velocety = Vector3( -5.106, 0, 0 )
 isGravetySource = true
 SOI_Body = NodePath("../Earth")
 material = ExtResource( 3 )
 
 [node name="Simulator" type="Node" parent="."]
 script = ExtResource( 14 )
+on = true

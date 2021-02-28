@@ -9,7 +9,9 @@ export var velocety = Vector3(0,0,0)
 export var isGravetySource = false
 
 export(NodePath) var SOI_Body
+
 onready var soi_node = self.get_node(SOI_Body)
+export var show_soi_relativ_sim = true
 
 var g_force = Vector3(0,0,0)
 
@@ -19,9 +21,7 @@ onready var bodys = []
 
 var simulation_pos = []
 var simulation_vel = []
-var simulation_chaned = false
-
-#export var update_simulation = true
+export var show_sim = true
 
 var history = []
 export var history_lenth = 100
@@ -43,7 +43,7 @@ func _ready():
 	g_force = g_force(translation)	
 	orbit = preload("res://N_Body/3DOrbit.gd").new()
 	orbit.ship = self
-	self.add_child(orbit)	
+	self.get_parent().call_deferred("add_child", orbit)
 
 func _process(delta):
 	history_update_timer += delta
