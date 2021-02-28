@@ -1,3 +1,4 @@
+tool
 extends RigidBody
 
 class_name Rigid_N_Body
@@ -29,6 +30,8 @@ export var history_lenth = 100
 var history_update_interfall = 0.5
 var history_update_timer = 0
 
+var orbit
+
 func _enter_tree():
 	if isGravetySource : self.add_to_group("bodys")
 	self.gravity_scale = 0
@@ -41,6 +44,10 @@ func _ready():
 	self.linear_velocity = velocety
 	g_force = g_force(translation)
 	self.simulate()
+	orbit = preload("res://N_Body/3DOrbit.gd").new()
+	orbit.ship = self
+	self.add_child(orbit)	
+
 
 
 func _process(delta):
@@ -49,7 +56,8 @@ func _process(delta):
 	if update_simulation:
 		if simulation_update_timer >= simulatoin_update_interfall:
 			simulation_update_timer -= simulatoin_update_interfall
-			simulate()	
+			simulate()
+			orbit._draw_list(simulation)
 	if history_update_timer >= history_update_interfall:		
 		history_update_timer -= history_update_interfall
 		appendHistory()
