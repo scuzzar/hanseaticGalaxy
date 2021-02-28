@@ -17,14 +17,6 @@ func _ready():
 	if(!Engine.editor_hint and self.soi_node!=null):
 		_start_SOI_distance = self.translation.distance_to(soi_node.translation)
 		_start_vel = self.linear_velocity.length()
-	
-	
-func _process(delta):
-	._process(delta)
-	orbitTimer -= delta
-	if(orbitTimer<=0):
-		orbitTimer = draw_orbit_intervall
-		_updateOrbitDisplay()
 
 func _integrate_forces(state):	
 	pass

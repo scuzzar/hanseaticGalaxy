@@ -1,3 +1,4 @@
+tool
 extends Node
 
 export var simulation_steps = 1000
@@ -47,4 +48,4 @@ func simulate():
 			#if sim_ship_pos.distance_to(sim_ship_start_pos) < simulation_orbit_treshold:
 			#	break
 	for body in bodys:
-		body.orbit.draw_list(body.simulation)
+		body.orbit.draw_list(body.simulation_pos)

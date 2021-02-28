@@ -138,7 +138,6 @@ shape = SubResource( 2 )
 
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 transform = Transform( 7.20555, 0, 0, 0, 2.38572, -6.79914, 0, 6.79914, 2.38572, 0, 0, 0 )
-mode = 3
 mass = 53.11
 gravity_scale = 0.0
 custom_integrator = true
@@ -160,14 +159,6 @@ isGravetySource = true
 SOI_Body = NodePath("../Sun")
 history_lenth = 0
 material = ExtResource( 8 )
-
-[node name="Control" type="Control" parent="Mars"]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Phobos" parent="." instance=ExtResource( 2 )]
 transform = Transform( -0.416957, 0, 0, 0, -0.138052, 0.393439, 0, -0.393439, -0.138052, 191.171, -5.67155e-07, -3789.36 )
@@ -195,14 +186,6 @@ isGravetySource = true
 SOI_Body = NodePath("../Mars")
 material = ExtResource( 3 )
 
-[node name="Control2" type="Control" parent="Deimos"]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Earth" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1.12699, 0, 1.65224, 0, 2, 0, -1.65224, 0, 1.12699, 0, 0, 1830.43 )
 mode = 3
@@ -223,14 +206,6 @@ transform = Transform( 17.1, 0, 0, 0, 17.1, 0, 0, 0, 17.1, 0, 0, 0 )
 material_override = SubResource( 7 )
 mesh = ExtResource( 11 )
 material/0 = null
-
-[node name="Control" type="Control" parent="Earth"]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Moon" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.655364, 2.98023e-08, -7.45058e-09, 0, 0.216987, -0.6184, 0, 0.6184, 0.216987, 259.598, -5.67155e-07, 1829.95 )

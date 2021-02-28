@@ -47,8 +47,7 @@ func draw_list(list):
 	clear()
 	begin(Mesh.PRIMITIVE_LINE_STRIP)
 	if(list.size()>1):
-		for i in range(list.size()-1):
-			print(list[i])
+		for i in range(list.size()-1):			
 			add_vertex(ship.transform.affine_inverse() * list[i] )				
 	end()
 
