@@ -40,7 +40,7 @@ func _physics_process(delta):
 
 func _updateOrbitDisplay():	
 	orbit._draw_list(simulation)
-	
+	_print_SOI_Data()
 
 func _print_SOI_Data():
 	if(!Engine.editor_hint and self.soi_node!=null):

@@ -101,13 +101,15 @@ script = SubResource( 1 )
 [node name="OrbitCamera" type="Camera" parent="CamCenter"]
 far = 8192.0
 script = ExtResource( 5 )
+SCROLL_SPEED = 50.0
 ZOOM_SPEED = 50.0
+DEFAULT_DISTANCE = 400.0
 ROTATE_SPEED = 1.0
 ANCHOR_NODE_PATH = NodePath("..")
 MOUSE_ZOOM_SPEED = 50.0
 
 [node name="Ship" type="RigidBody" parent="."]
-transform = Transform( -0.0530332, 0, -0.998593, 0, 1, 0, 0.998593, 0, -0.0530332, 48.4874, -0.435437, -3793.31 )
+transform = Transform( -0.0530332, 0, -0.998593, 0, 1, 0, 0.998593, 0, -0.0530332, 39.6621, -0.435437, 1832.39 )
 mass = 25.0
 continuous_cd = true
 axis_lock_linear_y = true
@@ -118,7 +120,7 @@ __meta__ = {
 "_edit_group_": true
 }
 history_lenth = 20
-trust = 150
+trust = 250
 
 [node name="Control2" type="Control" parent="Ship"]
 margin_right = 40.0
@@ -158,7 +160,7 @@ script = ExtResource( 4 )
 velocety = Vector3( 0.862, 0, 0 )
 isGravetySource = true
 SOI_Body = NodePath("../Sun")
-simulation_steps = 2000
+simulation_steps = 0
 history_lenth = 0
 material = ExtResource( 8 )
 
@@ -173,6 +175,7 @@ script = ExtResource( 4 )
 velocety = Vector3( 0, 0, -5.197 )
 isGravetySource = true
 SOI_Body = NodePath("../Mars")
+simulation_steps = 0
 material = ExtResource( 3 )
 
 [node name="Control" type="Control" parent="Phobos"]
@@ -194,7 +197,7 @@ script = ExtResource( 4 )
 velocety = Vector3( 0, 0, -3.568 )
 isGravetySource = true
 SOI_Body = NodePath("../Mars")
-simulation_steps = 200
+simulation_steps = 0
 material = ExtResource( 3 )
 
 [node name="Control2" type="Control" parent="Deimos"]
@@ -217,7 +220,7 @@ script = ExtResource( 4 )
 velocety = Vector3( 3.768, 0, 0 )
 isGravetySource = true
 SOI_Body = NodePath("../Sun")
-simulation_steps = 2000
+simulation_steps = 0
 history_lenth = 0
 material = ExtResource( 9 )
 
@@ -228,17 +231,17 @@ mesh = ExtResource( 11 )
 material/0 = null
 
 [node name="Moon" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.655364, 0, 0, 0, 0.216987, -0.6184, 0, 0.6184, 0.216987, 259.598, -5.67155e-07, 1816.35 )
+transform = Transform( 0.655364, 2.98023e-08, -7.45058e-09, 0, 0.216987, -0.6184, 0, 0.6184, 0.216987, 259.598, -5.67155e-07, 1829.95 )
 mode = 3
-mass = 200.0
+mass = 30.0
 gravity_scale = 0.0
 custom_integrator = true
-linear_velocity = Vector3( 0, 0, 5.949 )
+linear_velocity = Vector3( 3.768, 0, 5.949 )
 script = ExtResource( 4 )
-velocety = Vector3( 0, 0, 5.949 )
+velocety = Vector3( 3.768, 0, 5.949 )
 isGravetySource = true
 SOI_Body = NodePath("../Earth")
-simulation_steps = 90
+simulation_steps = 0
 material = ExtResource( 3 )
 
 [node name="Control" type="Control" parent="Moon"]

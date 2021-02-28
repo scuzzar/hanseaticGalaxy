@@ -673,10 +673,6 @@ run/main_scene="res://scenes/Sol.tscn"
 config/icon="res://Artemis.png"
 config/windows_native_icon="res://Artemis.ico"
 
-[autoload]
-
-Universe="*res://scenes/PlayGorund/Universe.gd"
-
 [editor_plugins]
 
 enabled=PoolStringArray( "orbit_camera" )
