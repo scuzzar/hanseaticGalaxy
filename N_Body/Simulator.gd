@@ -1,9 +1,10 @@
 tool
 extends Node
 
-export var simulation_steps = 1000
+export var simulation_time = 100
 export var simulation_delta_t = 1.0
 export var simulatoin_update_interfall = 1
+
 export var on = false
 
 export var relativ_to_soi = false
@@ -30,7 +31,7 @@ func simulate():
 	for body in bodys:
 		body.simulation_pos = []
 		body.simulation_vel = []
-	
+	var simulation_steps = simulation_time/simulation_delta_t
 	for t in simulation_steps:
 		for body in bodys:
 			var sim_ship_pos
@@ -62,7 +63,7 @@ func simulate():
 					soi_rel_simulaiton_pos.append(body.simulation_pos[t]-body.soi_node.simulation_pos[t]+body.soi_node.translation)
 				body.orbit.draw_list(soi_rel_simulaiton_pos)
 			else:
-				body.orbit.draw_list(body.simulation_pos)
+				body.orbit.draw_list([body.translation] + body.simulation_pos)
 		else:
 			body.orbit.clear()
 		

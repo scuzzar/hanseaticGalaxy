@@ -137,8 +137,6 @@ shape = SubResource( 2 )
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 transform = Transform( 7.20555, 0, 0, 0, 2.38572, -6.79914, 0, 6.79914, 2.38572, 0, 0, 0 )
 mass = 53.11
-gravity_scale = 0.0
-custom_integrator = true
 isGravetySource = true
 history_lenth = 0
 material = ExtResource( 13 )
@@ -147,8 +145,6 @@ material = ExtResource( 13 )
 transform = Transform( 1.80572, 0, 0, 0, 1.80572, 0, 0, 0, 1.80572, 0.883575, 0, -3787.64 )
 mode = 3
 mass = 100.0
-gravity_scale = 0.0
-custom_integrator = true
 linear_velocity = Vector3( 0.862, 0, 0 )
 velocety = Vector3( 0.862, 0, 0 )
 isGravetySource = true
@@ -160,8 +156,6 @@ history_lenth = 0
 transform = Transform( -0.416957, 0, 0, 0, -0.138052, 0.393439, 0, -0.393439, -0.138052, 191.171, -5.67155e-07, -3789.36 )
 mode = 3
 mass = 20.0
-gravity_scale = 0.0
-custom_integrator = true
 linear_velocity = Vector3( 0, 0, -5.197 )
 velocety = Vector3( 0, 0, -5.197 )
 isGravetySource = true
@@ -173,8 +167,6 @@ material = ExtResource( 3 )
 transform = Transform( 0.430164, 0, 0, 0, 0.430164, 0, 0, 0, 0.430164, -396.059, 5.06784e-06, -3786.66 )
 mode = 3
 mass = 30.0
-gravity_scale = 0.0
-custom_integrator = true
 linear_velocity = Vector3( 0, 0, -3.568 )
 velocety = Vector3( 0, 0, -3.568 )
 isGravetySource = true
@@ -183,12 +175,10 @@ show_sim = false
 material = ExtResource( 3 )
 
 [node name="Earth" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1.12699, 0, 1.65224, 0, 2, 0, -1.65224, 0, 1.12699, 0, 0, 1830.43 )
+transform = Transform( 0.563495, 0, 0.82612, 0, 1, 0, -0.82612, 0, 0.563495, 0, 0, 1830.43 )
 mode = 3
 mass = 200.0
 physics_material_override = SubResource( 3 )
-gravity_scale = 0.0
-custom_integrator = true
 linear_velocity = Vector3( 1.219, 0, 0 )
 velocety = Vector3( 1.219, 0, 0 )
 isGravetySource = true
@@ -197,7 +187,7 @@ history_lenth = 0
 material = ExtResource( 9 )
 
 [node name="Clouds" type="MeshInstance" parent="Earth"]
-transform = Transform( 17.1, 0, 0, 0, 17.1, 0, 0, 0, 17.1, 0, 0, 0 )
+transform = Transform( 34.1, 0, 0, 0, 34.1, 0, 0, 0, 34.1, 0, 0, 0 )
 material_override = SubResource( 7 )
 mesh = ExtResource( 11 )
 material/0 = null
@@ -206,8 +196,6 @@ material/0 = null
 transform = Transform( 0.655364, 2.98023e-08, -7.45058e-09, 0, 0.216987, -0.6184, 0, 0.6184, 0.216987, 0.0757446, -3.05176e-05, 2101.58 )
 mode = 3
 mass = 30.0
-gravity_scale = 0.0
-custom_integrator = true
 linear_velocity = Vector3( -5.106, 0, 0 )
 velocety = Vector3( -5.106, 0, 0 )
 isGravetySource = true
@@ -216,4 +204,5 @@ material = ExtResource( 3 )
 
 [node name="Simulator" type="Node" parent="."]
 script = ExtResource( 14 )
-on = true
+simulation_time = 1000
+simulation_delta_t = 0.1

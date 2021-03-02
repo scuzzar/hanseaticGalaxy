@@ -21,8 +21,8 @@ background_sky = SubResource( 2 )
 
 [node name="Simulator" type="Node" parent="."]
 script = ExtResource( 8 )
-simulation_delta_t = 0.1
-on = true
+simulation_time = 10
+simulation_delta_t = 0.01
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.833047, 0.000318565, 0.553203, -0.553203, 0.000479715, 0.833046, 0, -1, 0.000575856, 0, 6.33717, 0 )
@@ -55,7 +55,7 @@ __meta__ = {
 }
 velocety = Vector3( 0, 0, 50 )
 show_soi_relativ_sim = false
-history_lenth = 5000
+history_lenth = 50000
 history_update_interfall = 0.01
 
 [node name="Station" parent="Station" instance=ExtResource( 2 )]
@@ -74,7 +74,7 @@ __meta__ = {
 show_history = true
 
 [node name="Station2" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.7258, 0, -1.29592 )
+transform = Transform( 0.228605, 0, 0, 0, 0.228605, 0, 0, 0, 0.228605, 26.7258, 0, -1.29592 )
 mass = 600.0
 gravity_scale = 0.0
 linear_velocity = Vector3( 0, 0, 41.959 )
@@ -84,14 +84,10 @@ __meta__ = {
 }
 velocety = Vector3( 0, 0, 41.959 )
 show_soi_relativ_sim = false
-history_lenth = 5000
+history_lenth = 50000
 history_update_interfall = 0.01
 
 [node name="Station" parent="Station2" instance=ExtResource( 2 )]
-
-[node name="CollisionShape" type="CollisionShape" parent="Station2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.269279, 0 )
-shape = SubResource( 1 )
 
 [node name="Control" type="Control" parent="Station2"]
 margin_right = 40.0
@@ -104,23 +100,19 @@ show_history = true
 
 [node name="Station3" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.7349, 0, -1.29592 )
-mass = 600.0
+mass = 58.17
 gravity_scale = 0.0
-linear_velocity = Vector3( 0, 0, 41.959 )
+linear_velocity = Vector3( 0, 0, 27.917 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
-velocety = Vector3( 0, 0, 41.959 )
+velocety = Vector3( 0, 0, 27.917 )
 show_soi_relativ_sim = false
-history_lenth = 5000
+history_lenth = 50000
 history_update_interfall = 0.01
 
 [node name="Station" parent="Station3" instance=ExtResource( 2 )]
-
-[node name="CollisionShape" type="CollisionShape" parent="Station3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.269279, 0 )
-shape = SubResource( 1 )
 
 [node name="Control" type="Control" parent="Station3"]
 margin_right = 40.0
