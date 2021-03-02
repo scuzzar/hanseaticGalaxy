@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Rigid_N_Body",
+"class": "Planet",
+"language": "GDScript",
+"path": "res://Bodys/Planet.gd"
+}, {
 "base": "RigidBody",
 "class": "Rigid_N_Body",
 "language": "GDScript",
@@ -555,6 +560,7 @@ _global_script_classes=[ {
 "path": "res://addons/shaderV/tools/vec2Compose.gd"
 } ]
 _global_script_class_icons={
+"Planet": "",
 "Rigid_N_Body": "",
 "VisualShaderNodeDeepParallax": "",
 "VisualShaderNodeDepth": "",

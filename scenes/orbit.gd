@@ -5,19 +5,16 @@ onready var ship = self.get_parent()
 
 var past = []
 export var history_color = Color(0,1,0)
-export var g_color = Color(0,0,1)
-export var g_comp_color = Color(0,0,1)
 export var sim_color = Color(1,0,0)
-
+export var show_sim = false
+export var show_history = false
 
 var width = 1
-export var gravety_sum = false
-export var gravety_components = true
 
 func _draw():
 	var now = [ship.translation]
-	if(ship.history.size()>0): _draw_list(ship.history + now, history_color)	
-	if(ship.simulation_pos.size()>0): _draw_list(ship.simulation_pos,sim_color)
+	if(show_history and ship.history.size()>0): _draw_list(ship.history + now, history_color)	
+	if(show_sim and ship.simulation_pos.size()>0): _draw_list(ship.simulation_pos,sim_color)
 
 func _draw_list(list, color):
 	if(list.size()>1):

@@ -1,149 +1,135 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Ship/SimpleRocket/ToyRocket.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Station/Station.tscn" type="PackedScene" id=2]
 [ext_resource path="res://N_Body/rigid_n_body_class.gd" type="Script" id=3]
 [ext_resource path="res://scenes/orbit.gd" type="Script" id=4]
-[ext_resource path="res://Bodys/Mars.material" type="Material" id=5]
-[ext_resource path="res://Bodys/body.tres" type="ArrayMesh" id=6]
+[ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=5]
 [ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=7]
+[ext_resource path="res://N_Body/Simulator.gd" type="Script" id=8]
 
 [sub_resource type="CylinderShape" id=1]
-radius = 0.397007
-height = 1.42783
-
-[sub_resource type="SphereShape" id=2]
-radius = 0.989379
-
-[sub_resource type="CylinderShape" id=3]
 radius = 2.64884
 height = 0.738925
 
+[sub_resource type="ProceduralSky" id=2]
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+background_sky = SubResource( 2 )
+
 [node name="Map" type="Spatial"]
+
+[node name="Simulator" type="Node" parent="."]
+script = ExtResource( 8 )
+simulation_delta_t = 0.1
+on = true
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.833047, 0.000318565, 0.553203, -0.553203, 0.000479715, 0.833046, 0, -1, 0.000575856, 0, 6.33717, 0 )
 
-[node name="RiggednBody" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.196, 0, 0 )
-mass = 300.0
+[node name="Mars" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.516146, 0, 0, 0, 0.516146, 0, 0, 0, 0.516146, 0, 0, 0 )
+mass = 860.66
 gravity_scale = 0.0
-axis_lock_linear_y = true
-linear_velocity = Vector3( 0, 0, -45 )
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
-simulation_steps = 0
-history_lenth = 4000
-
-[node name="Model" parent="RiggednBody" instance=ExtResource( 1 )]
-transform = Transform( 0.0587392, 0, 0, 0, 0.0587392, 0, 0, 0, 0.0587392, 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="RiggednBody"]
-transform = Transform( 0.777978, 0.00643804, 0.000658264, -0.000580081, -0.00944412, 0.777948, 0.00644555, -0.777925, -0.00943905, 0, 0, 0 )
-shape = SubResource( 1 )
-
-[node name="orbit" type="Control" parent="RiggednBody"]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Planet" type="RigidBody" parent="."]
-mode = 1
-mass = 50000.0
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
+custom_integrator = true
 isGravetySource = true
 
-[node name="Planet" type="MeshInstance" parent="Planet"]
-transform = Transform( 9.73, 0, 0, 0, 9.73, 0, 0, 0, 9.73, 0, 0, 0 )
-mesh = ExtResource( 6 )
-material/0 = ExtResource( 5 )
+[node name="RotationCenter" type="Spatial" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="Planet"]
-transform = Transform( 9.73, 0, 0, 0, 9.73, 0, 0, 0, 9.73, 0, 0, 0 )
-shape = SubResource( 2 )
-
-[node name="RotationCenter" type="Spatial" parent="Planet"]
-
-[node name="OrbitCamera" type="Camera" parent="Planet/RotationCenter"]
+[node name="OrbitCamera" type="Camera" parent="RotationCenter"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.1973, 0, 0 )
+far = 8192.0
 script = ExtResource( 7 )
 DEFAULT_DISTANCE = 80.0
 ROTATE_SPEED = 1.0
 ANCHOR_NODE_PATH = NodePath("../../RotationCenter")
 
 [node name="Station" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9855, -6.16621, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7662, 0, -1.29592 )
 mass = 600.0
-linear_velocity = Vector3( 0, 0, 20 )
+gravity_scale = 0.0
+linear_velocity = Vector3( 0, 0, 50 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="orbit2" type="Control" parent="Station"]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+velocety = Vector3( 0, 0, 50 )
+show_soi_relativ_sim = false
+history_lenth = 5000
+history_update_interfall = 0.01
 
 [node name="Station" parent="Station" instance=ExtResource( 2 )]
 
 [node name="CollisionShape" type="CollisionShape" parent="Station"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.269279, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
-[node name="Station2" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2447, 4.41247, 0 )
-mass = 600.0
-linear_velocity = Vector3( 0, 0, -20 )
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="orbit2" type="Control" parent="Station2"]
+[node name="Control" type="Control" parent="Station"]
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+show_history = true
+
+[node name="Station2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.7258, 0, -1.29592 )
+mass = 600.0
+gravity_scale = 0.0
+linear_velocity = Vector3( 0, 0, 41.959 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+velocety = Vector3( 0, 0, 41.959 )
+show_soi_relativ_sim = false
+history_lenth = 5000
+history_update_interfall = 0.01
 
 [node name="Station" parent="Station2" instance=ExtResource( 2 )]
 
 [node name="CollisionShape" type="CollisionShape" parent="Station2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.269279, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
-[node name="Station3" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37829, 18.1147, 0 )
-mass = 600.0
-linear_velocity = Vector3( 0, 0, -20 )
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="orbit2" type="Control" parent="Station3"]
+[node name="Control" type="Control" parent="Station2"]
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+show_history = true
+
+[node name="Station3" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.7349, 0, -1.29592 )
+mass = 600.0
+gravity_scale = 0.0
+linear_velocity = Vector3( 0, 0, 41.959 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+velocety = Vector3( 0, 0, 41.959 )
+show_soi_relativ_sim = false
+history_lenth = 5000
+history_update_interfall = 0.01
 
 [node name="Station" parent="Station3" instance=ExtResource( 2 )]
 
 [node name="CollisionShape" type="CollisionShape" parent="Station3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.269279, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
+
+[node name="Control" type="Control" parent="Station3"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+show_history = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )

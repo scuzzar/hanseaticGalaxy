@@ -1,6 +1,8 @@
 tool
 extends Rigid_N_Body
 
+class_name Planet
+
 export (Material) var material = preload("res://Bodys/Mars.material") 
 
 

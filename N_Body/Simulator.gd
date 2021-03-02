@@ -2,7 +2,7 @@ tool
 extends Node
 
 export var simulation_steps = 1000
-export var simulation_delta_t = 1
+export var simulation_delta_t = 1.0
 export var simulatoin_update_interfall = 1
 export var on = false
 
@@ -15,7 +15,7 @@ var bodys
 
 func _ready():
 	bodys = get_tree().get_nodes_in_group("bodys")
-	simulate()
+	#simulate()
 	pass # Replace with function body.
 
 func _process(delta):
@@ -25,6 +25,8 @@ func _process(delta):
 		if(on):simulate()
 
 func simulate():
+	if(bodys==null):return
+	
 	for body in bodys:
 		body.simulation_pos = []
 		body.simulation_vel = []
@@ -42,7 +44,7 @@ func simulate():
 			
 			if(body.mode != body.MODE_STATIC):
 				var sim_g_force = body.g_force(sim_ship_pos,t)	
-				
+				#print(body.name + ":" +String(sim_g_force) + "g")
 				sim_ship_val += sim_g_force * simulation_delta_t / body.mass /2
 				sim_ship_pos += sim_ship_val * simulation_delta_t
 					

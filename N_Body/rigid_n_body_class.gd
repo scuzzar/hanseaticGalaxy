@@ -25,14 +25,17 @@ export var show_sim = true
 
 var history = []
 export var history_lenth = 100
-var history_update_interfall = 0.5
+export var history_update_interfall = 0.5
 var history_update_timer = 0
 
 var orbit
 
 func _enter_tree():
-	if isGravetySource : self.add_to_group("bodys")
+	self.add_to_group("bodys")
 	self.gravity_scale = 0
+	orbit = preload("res://N_Body/3DOrbit.gd").new()
+	
+	self.get_parent().call_deferred("add_child", orbit)
 
 func _ready():
 	if soi_node != null:
@@ -41,9 +44,7 @@ func _ready():
 		bodys = get_tree().get_nodes_in_group("bodys")
 	self.linear_velocity = velocety
 	g_force = g_force(translation)	
-	orbit = preload("res://N_Body/3DOrbit.gd").new()
-	orbit.ship = self
-	self.get_parent().call_deferred("add_child", orbit)
+
 
 func _process(delta):
 	history_update_timer += delta
@@ -72,8 +73,11 @@ func appendHistory():
 
 func g_force(position,t_plus=0):
 	var sum = Vector3(0,0,0)
+	if(bodys==null):
+		print("no bodys")
+		return Vector3(0,0,0)
 	for body in bodys :
-		if body != self:
+		if body != self && body.isGravetySource:
 			var other_translation
 			if(t_plus == 0):
 				other_translation = body.translation
