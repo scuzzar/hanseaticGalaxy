@@ -4,19 +4,15 @@
 [ext_resource path="res://Ship/drive.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=7]
 
-
-
-
 [node name="TinTin" type="Spatial"]
-transform = Transform( 0.0754995, 0, 0, 0, 0.0754995, 0, 0, 0, 0.0754995, 0, 0, 0 )
 script = ExtResource( 7 )
 
 [node name="ToyRocket" type="MeshInstance" parent="."]
-transform = Transform( 4.64904, 0, 0, 0, -1.88879e-07, 4.64904, 0, -4.64904, -1.88879e-07, -9.86838e-08, -1.97368e-07, -7.89471e-07 )
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -9.86838e-08, -1.97368e-07, -7.89471e-07 )
 mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null
 material/2 = null
 
 [node name="particel" parent="." instance=ExtResource( 6 )]
-transform = Transform( 4.0549, 0, 0, 0, -0.197602, -4.0522, 0, 4.0522, -0.197602, 0, 0, 8.18491 )
+transform = Transform( 0.754556, 0, 0, 0, -0.0367516, -0.75366, 0, 0.75366, -0.0367516, 0, 0, 1.0215 )
