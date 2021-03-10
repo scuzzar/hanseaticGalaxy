@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Ship/SimpleRocket/ToyRocket.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=2]
@@ -25,6 +25,9 @@ func _process(delta):
 func _snapToShip():
 	self.translation = ship.translation
 "
+
+[sub_resource type="PhysicsMaterial" id=9]
+friction = 3.0
 
 [sub_resource type="BoxShape" id=8]
 extents = Vector3( 0.500469, 1, 0.407267 )
@@ -109,6 +112,7 @@ MOUSE_ZOOM_SPEED = 50.0
 [node name="Ship" type="RigidBody" parent="."]
 transform = Transform( -0.0530332, 0, -0.998593, 0, 1, 0, 0.998593, 0, -0.0530332, 35.0016, -0.435437, 1830.94 )
 mass = 25.0
+physics_material_override = SubResource( 9 )
 continuous_cd = true
 axis_lock_linear_y = true
 axis_lock_angular_x = true
