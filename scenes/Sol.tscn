@@ -26,22 +26,22 @@ func _snapToShip():
 	self.translation = ship.translation
 "
 
-[sub_resource type="PhysicsMaterial" id=9]
+[sub_resource type="PhysicsMaterial" id=2]
 friction = 3.0
 
-[sub_resource type="BoxShape" id=8]
+[sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.500469, 1, 0.407267 )
 
-[sub_resource type="PhysicsMaterial" id=3]
+[sub_resource type="PhysicsMaterial" id=4]
 friction = 0.5
 
-[sub_resource type="VisualShaderNodeTexture" id=4]
+[sub_resource type="VisualShaderNodeTexture" id=5]
 output_port_for_preview = 0
 texture = ExtResource( 10 )
 
-[sub_resource type="VisualShaderNodeColorConstant" id=5]
+[sub_resource type="VisualShaderNodeColorConstant" id=6]
 
-[sub_resource type="VisualShader" id=6]
+[sub_resource type="VisualShader" id=7]
 code = "shader_type spatial;
 render_mode specular_schlick_ggx;
 
@@ -77,14 +77,14 @@ void light() {
 "
 graph_offset = Vector2( 11, 115 )
 nodes/fragment/0/position = Vector2( 840, 180 )
-nodes/fragment/2/node = SubResource( 4 )
+nodes/fragment/2/node = SubResource( 5 )
 nodes/fragment/2/position = Vector2( 60, 100 )
-nodes/fragment/3/node = SubResource( 5 )
+nodes/fragment/3/node = SubResource( 6 )
 nodes/fragment/3/position = Vector2( 280, 140 )
 nodes/fragment/connections = PoolIntArray( 3, 0, 0, 0, 2, 0, 0, 1 )
 
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 6 )
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
 
 [node name="Sol" type="Spatial"]
 
@@ -112,7 +112,7 @@ MOUSE_ZOOM_SPEED = 50.0
 [node name="Ship" type="RigidBody" parent="."]
 transform = Transform( -0.0530332, 0, -0.998593, 0, 1, 0, 0.998593, 0, -0.0530332, 35.0016, -0.435437, 1830.94 )
 mass = 25.0
-physics_material_override = SubResource( 9 )
+physics_material_override = SubResource( 2 )
 continuous_cd = true
 axis_lock_linear_y = true
 axis_lock_angular_x = true
@@ -136,7 +136,7 @@ __meta__ = {
 
 [node name="CollisionShape" type="CollisionShape" parent="Ship"]
 transform = Transform( 1, 0, 2.22045e-16, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00268555, 0, 0.0500793 )
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 transform = Transform( 7.20555, 0, 0, 0, 2.38572, -6.79914, 0, 6.79914, 2.38572, 0, 0, 0 )
@@ -156,7 +156,7 @@ SOI_Body = NodePath("../Sun")
 show_sim = false
 history_lenth = 0
 
-[node name="Port" parent="Mars" instance=ExtResource( 4 )]
+[node name="port" parent="Mars" instance=ExtResource( 4 )]
 transform = Transform( -3.30088e-08, 0.553796, 0, 2.42072e-08, 1.05813e-15, -0.553796, -0.553796, -3.30088e-08, -2.42072e-08, 33.6978, 0, 0 )
 
 [node name="Phobos" parent="." instance=ExtResource( 2 )]
@@ -185,7 +185,7 @@ material = ExtResource( 3 )
 transform = Transform( 0.563495, 0, 0.82612, 0, 1, 0, -0.82612, 0, 0.563495, 0, 0, 1830.43 )
 mode = 3
 mass = 200.0
-physics_material_override = SubResource( 3 )
+physics_material_override = SubResource( 4 )
 linear_velocity = Vector3( 1.219, 0, 0 )
 velocety = Vector3( 1.219, 0, 0 )
 isGravetySource = true
@@ -195,7 +195,7 @@ material = ExtResource( 9 )
 
 [node name="Clouds" type="MeshInstance" parent="Earth"]
 transform = Transform( 34.1, 0, 0, 0, 34.1, 0, 0, 0, 34.1, 0, 0, 0 )
-material_override = SubResource( 7 )
+material_override = SubResource( 8 )
 mesh = ExtResource( 11 )
 material/0 = null
 
@@ -217,5 +217,8 @@ material = ExtResource( 3 )
 
 [node name="Simulator" type="Node" parent="."]
 script = ExtResource( 14 )
-simulation_time = 1000
-simulation_delta_t = 0.1
+simulation_time = 10000
+simulation_delta_t = 1.0
+simulatoin_update_interfall = 1
+on = false
+relativ_to_soi = false

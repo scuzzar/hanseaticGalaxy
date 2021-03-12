@@ -33,6 +33,10 @@ void fragment() {
 		//}
 	}
 	
+	float alpha = 0.;
+	
+	if(draw_wire){
+	
 	float d = 0.1;
 	float w =d*pixel_size.x;
 	float h = d*pixel_size.y;
@@ -51,12 +55,12 @@ void fragment() {
 		
 	vec4 sobel = sqrt((sobel_edge_h * sobel_edge_h) + (sobel_edge_v * sobel_edge_v));
 		
-	float alpha = sobel.r;
+	alpha = sobel.r;
     alpha += sobel.g;
 	alpha +=  sobel.b;
     alpha /= 3.0;
 	alpha;
-	
+	}
 	vec4 albedo_tex = texture(texture_albedo,UV);
 	
 	albedo_tex.rgb = mix(pow((albedo_tex.rgb + vec3(0.055)) * (1.0 / (1.0 + 0.055)),vec3(2.4)),albedo_tex.rgb.rgb * (1.0 / 12.92),lessThan(albedo_tex.rgb,vec3(0.04045)));
