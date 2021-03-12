@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://HUD/HUD.gd" type="Script" id=1]
+[ext_resource path="res://HUD/NormalFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://HUD/uipackSpace_sheet.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 200, 200, 100, 100 )
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Label
+
+func setValue(value : String):
+	self.text = value
+"
+
+[node name="HUD" type="MarginContainer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -54.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 54.0
+alignment = 1
+
+[node name="Fule_Box" type="NinePatchRect" parent="Bar"]
+margin_left = 387.0
+margin_right = 637.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 250, 0 )
+hint_tooltip = "The Deta V left"
+mouse_filter = 1
+texture = SubResource( 1 )
+region_rect = Rect2( 0, 0, 98, 100 )
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="Fuel" type="HBoxContainer" parent="Bar/Fule_Box"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -71.5
+margin_top = -10.5
+margin_right = 71.5
+margin_bottom = 10.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lable" type="Label" parent="Bar/Fule_Box/Fuel"]
+margin_right = 101.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 2 )
+text = "delta V:"
+align = 2
+script = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Bar/Fule_Box/Fuel"]
+margin_left = 105.0
+margin_right = 143.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 2 )
+text = "100"
+align = 2
+script = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

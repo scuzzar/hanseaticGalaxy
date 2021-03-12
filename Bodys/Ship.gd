@@ -1,12 +1,20 @@
 extends Rigid_N_Body
 
-export var turn_rate = 3
-export var trust = 100
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+class_name Ship
 
-func _integrate_forces(state):
+export var turn_rate = 3
+export var trust = 100.0
+export var dispay_name = "Neubeckum II"
+export var fuel_cap = 5000.0
+var fuel = fuel_cap
+
+func _ready():
+	._ready()
+	emit_signal("fuel_changed",fuel)
+
+signal fuel_changed(fuel)
+
+func _integrate_forces(state:PhysicsDirectBodyState):
 	._integrate_forces(state)
 	$Model.trust_forward_off()
 	if Input.is_action_pressed("burn_forward"):	
@@ -21,7 +29,7 @@ func _integrate_forces(state):
 		_rotation(state,turn_rate*-1)
 		
 	
-func _rotation(state, angle):
+func _rotation(state :PhysicsDirectBodyState, angle: float):
 	state.set_angular_velocity(Vector3(0,angle,0))
 
 func _get_forward_vector():
@@ -30,6 +38,8 @@ func _get_forward_vector():
 	v = v.rotated(Vector3(0,1,0), orientation)
 	return v
 
-func _burn_forward(state):
+func _burn_forward(state:PhysicsDirectBodyState):
 	var force = _get_forward_vector()*trust
 	state.add_force(force, Vector3(0,0,0))
+	fuel = fuel - trust * state.step
+	emit_signal("fuel_changed",fuel)

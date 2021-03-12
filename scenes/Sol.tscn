@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Ship/SimpleRocket/ToyRocket.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=5]
 [ext_resource path="res://Bodys/Ship.gd" type="Script" id=6]
 [ext_resource path="res://scenes/orbit.gd" type="Script" id=7]
+[ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Bodys/Earth.material" type="Material" id=9]
 [ext_resource path="res://Bodys/tex/ifb56sns.bmp" type="Texture" id=10]
 [ext_resource path="res://Bodys/body.tres" type="ArrayMesh" id=11]
@@ -88,6 +89,28 @@ shader = SubResource( 7 )
 
 [node name="Sol" type="Spatial"]
 
+[node name="HUD" parent="." instance=ExtResource( 8 )]
+
+[node name="Fule_Box" parent="HUD/Bar" index="0"]
+margin_left = 432.0
+margin_right = 592.0
+rect_min_size = Vector2( 160, 0 )
+size_flags_horizontal = 4
+
+[node name="Fuel" parent="HUD/Bar/Fule_Box" index="0"]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 16.0
+margin_right = 143.0
+
+[node name="Lable" parent="HUD/Bar/Fule_Box/Fuel" index="0"]
+margin_right = 66.0
+text = "Fuel:"
+
+[node name="Value" parent="HUD/Bar/Fule_Box/Fuel" index="1"]
+margin_left = 70.0
+margin_right = 108.0
+
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( -4.36425e-08, -0.056118, 0.998424, -2.45297e-09, 0.998424, 0.056118, -1, 2.57572e-14, -4.37114e-08, 51.8427, 11.8139, 0 )
 shadow_enabled = true
@@ -122,7 +145,7 @@ __meta__ = {
 "_edit_group_": true
 }
 history_lenth = 20
-trust = 250
+trust = 300.0
 
 [node name="Control2" type="Control" parent="Ship"]
 margin_right = 40.0
@@ -131,6 +154,7 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+show_history = true
 
 [node name="Model" parent="Ship" instance=ExtResource( 1 )]
 
@@ -217,8 +241,8 @@ material = ExtResource( 3 )
 
 [node name="Simulator" type="Node" parent="."]
 script = ExtResource( 14 )
-simulation_time = 10000
-simulation_delta_t = 1.0
-simulatoin_update_interfall = 1
-on = false
-relativ_to_soi = false
+simulation_time = 1000
+simulation_delta_t = 0.1
+[connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]
+
+[editable path="HUD"]
