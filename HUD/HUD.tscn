@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://HUD/NormalFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://HUD/uipackSpace_sheet.png" type="Texture" id=3]
+[ext_resource path="res://HUD/FuelBar.atlastex" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -14,6 +15,15 @@ script/source = "extends Label
 func setValue(value : String):
 	self.text = value
 "
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 19, 26 )
+margin_left = 6.99298
+margin_right = 6.62493
+margin_top = 4.9687
+margin_bottom = 4.60065
+axis_stretch_horizontal = 1
 
 [node name="HUD" type="MarginContainer"]
 anchor_top = 1.0
@@ -31,8 +41,8 @@ margin_bottom = 54.0
 alignment = 1
 
 [node name="Fule_Box" type="NinePatchRect" parent="Bar"]
-margin_left = 387.0
-margin_right = 637.0
+visible = false
+margin_right = 250.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 250, 0 )
 hint_tooltip = "The Deta V left"
@@ -79,3 +89,13 @@ script = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="FuelBar" type="ProgressBar" parent="Bar"]
+margin_top = 16.0
+margin_right = 1024.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_styles/fg = SubResource( 3 )
+custom_fonts/font = ExtResource( 2 )
+value = 70.0

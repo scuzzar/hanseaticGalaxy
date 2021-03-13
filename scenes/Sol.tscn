@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Ship/SimpleRocket/ToyRocket.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://scenes/Weltall.tres" type="Environment" id=12]
 [ext_resource path="res://Bodys/Sun.material" type="Material" id=13]
 [ext_resource path="res://N_Body/Simulator.gd" type="Script" id=14]
+[ext_resource path="res://Bodys/Mars.material" type="Material" id=15]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
@@ -92,8 +93,7 @@ shader = SubResource( 7 )
 [node name="HUD" parent="." instance=ExtResource( 8 )]
 
 [node name="Fule_Box" parent="HUD/Bar" index="0"]
-margin_left = 432.0
-margin_right = 592.0
+margin_right = 160.0
 rect_min_size = Vector2( 160, 0 )
 size_flags_horizontal = 4
 
@@ -165,8 +165,13 @@ shape = SubResource( 3 )
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 transform = Transform( 7.20555, 0, 0, 0, 2.38572, -6.79914, 0, 6.79914, 2.38572, 0, 0, 0 )
 mass = 53.11
+velocety = Vector3( 0, 0, 0 )
 isGravetySource = true
+SOI_Body = NodePath("")
+show_soi_relativ_sim = true
+show_sim = true
 history_lenth = 0
+history_update_interfall = 0.5
 material = ExtResource( 13 )
 
 [node name="Mars" parent="." instance=ExtResource( 2 )]
@@ -177,8 +182,11 @@ linear_velocity = Vector3( 0.862, 0, 0 )
 velocety = Vector3( 0.862, 0, 0 )
 isGravetySource = true
 SOI_Body = NodePath("../Sun")
+show_soi_relativ_sim = true
 show_sim = false
 history_lenth = 0
+history_update_interfall = 0.5
+material = ExtResource( 15 )
 
 [node name="port" parent="Mars" instance=ExtResource( 4 )]
 transform = Transform( -3.30088e-08, 0.553796, 0, 2.42072e-08, 1.05813e-15, -0.553796, -0.553796, -3.30088e-08, -2.42072e-08, 33.6978, 0, 0 )
@@ -191,7 +199,10 @@ linear_velocity = Vector3( 0, 0, -5.197 )
 velocety = Vector3( 0, 0, -5.197 )
 isGravetySource = true
 SOI_Body = NodePath("../Mars")
+show_soi_relativ_sim = true
 show_sim = false
+history_lenth = 100
+history_update_interfall = 0.5
 material = ExtResource( 3 )
 
 [node name="Deimos" parent="." instance=ExtResource( 2 )]
@@ -202,7 +213,10 @@ linear_velocity = Vector3( 0, 0, -3.568 )
 velocety = Vector3( 0, 0, -3.568 )
 isGravetySource = true
 SOI_Body = NodePath("../Mars")
+show_soi_relativ_sim = true
 show_sim = false
+history_lenth = 100
+history_update_interfall = 0.5
 material = ExtResource( 3 )
 
 [node name="Earth" parent="." instance=ExtResource( 2 )]
@@ -214,7 +228,10 @@ linear_velocity = Vector3( 1.219, 0, 0 )
 velocety = Vector3( 1.219, 0, 0 )
 isGravetySource = true
 SOI_Body = NodePath("../Sun")
+show_soi_relativ_sim = true
+show_sim = true
 history_lenth = 0
+history_update_interfall = 0.5
 material = ExtResource( 9 )
 
 [node name="Clouds" type="MeshInstance" parent="Earth"]
@@ -237,12 +254,19 @@ linear_velocity = Vector3( -5.106, 0, 0 )
 velocety = Vector3( -5.106, 0, 0 )
 isGravetySource = true
 SOI_Body = NodePath("../Earth")
+show_soi_relativ_sim = true
+show_sim = true
+history_lenth = 100
+history_update_interfall = 0.5
 material = ExtResource( 3 )
 
 [node name="Simulator" type="Node" parent="."]
 script = ExtResource( 14 )
 simulation_time = 1000
 simulation_delta_t = 0.1
+simulatoin_update_interfall = 1
+on = false
+relativ_to_soi = false
 [connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]
 
 [editable path="HUD"]
