@@ -149,7 +149,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.387533, 0 )
 light_color = Color( 0.945098, 0.866667, 0.027451, 1 )
 light_energy = 7.37
 shadow_enabled = true
-omni_range = 0.372108
+omni_range = 0.790428
 script = SubResource( 9 )
 
 [node name="Tween" type="Tween" parent="OmniLight"]

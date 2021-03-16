@@ -3,6 +3,11 @@ shader_type spatial;
 uniform sampler2D texture_albedo : hint_albedo;
 uniform float cavety_distance;
 uniform float cavety_transparence;
+
+uniform float roughness = 1;
+uniform float metallic = 0;
+
+
 uniform bool draw_wire;
 float rand(vec2 co){
     return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
@@ -68,11 +73,8 @@ void fragment() {
 	//ALBEDO = vec3(result);
 	ALBEDO *= 1.-(result*(1.-cavety_transparence));
 	
-	METALLIC = 0.;
-	ROUGHNESS = 1.;
-	SPECULAR = 0.;
-	
-	//METALLIC = 1. - result;
-	//ROUGHNESS = 1.0 - result;
+	METALLIC = metallic;
+	ROUGHNESS = roughness;
+
 	if(draw_wire) EMISSION = vec3(alpha*0.1);	
 }

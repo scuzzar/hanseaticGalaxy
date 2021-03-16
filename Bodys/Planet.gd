@@ -26,6 +26,7 @@ func _integrate_forces(state):
 func _physics_process(delta):
 	if !Engine.editor_hint:
 		self._leap_frog_integration(delta)
+		self.rotate_y(delta*0.002)
 		#self.rotate_y(delta*self.angular_velocity.y*0.000001)
 
 #func _updateOrbitDisplay():	
