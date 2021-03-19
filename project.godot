@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Spatial",
+"class": "MissionContainer",
+"language": "GDScript",
+"path": "res://Station/Container.gd"
+}, {
 "base": "Rigid_N_Body",
 "class": "Planet",
 "language": "GDScript",
 "path": "res://Bodys/Planet.gd"
+}, {
+"base": "Spatial",
+"class": "Port",
+"language": "GDScript",
+"path": "res://Station/spacePort.gd"
 }, {
 "base": "RigidBody",
 "class": "Rigid_N_Body",
@@ -565,7 +575,9 @@ _global_script_classes=[ {
 "path": "res://addons/shaderV/tools/vec2Compose.gd"
 } ]
 _global_script_class_icons={
+"MissionContainer": "",
 "Planet": "",
+"Port": "",
 "Rigid_N_Body": "",
 "Ship": "",
 "VisualShaderNodeDeepParallax": "",
@@ -730,7 +742,4 @@ trun_left={
 
 [rendering]
 
-quality/filters/anisotropic_filter_level=16
-quality/shadows/filter_mode=2
-quality/filters/use_nearest_mipmap_filter=true
 environment/default_clear_color=Color( 0, 0, 0, 1 )

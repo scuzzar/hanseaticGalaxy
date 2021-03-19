@@ -11,6 +11,7 @@ var fuel = fuel_cap
 func _ready():
 	._ready()
 	emit_signal("fuel_changed",fuel)
+	
 
 signal fuel_changed(fuel)
 
@@ -43,3 +44,4 @@ func _burn_forward(state:PhysicsDirectBodyState):
 	state.add_force(force, Vector3(0,0,0))
 	fuel = fuel - trust * state.step
 	emit_signal("fuel_changed",fuel)
+	

@@ -10,7 +10,7 @@ export var isGravetySource = false
 
 export(NodePath) var SOI_Body
 
-onready var soi_node = self.get_node(SOI_Body)
+onready var soi_node = self.get_node_or_null(SOI_Body)
 export var show_soi_relativ_sim = true
 
 var g_force = Vector3(0,0,0)
