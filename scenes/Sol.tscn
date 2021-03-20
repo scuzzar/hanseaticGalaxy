@@ -88,7 +88,7 @@ __meta__ = {
 "_edit_group_": true
 }
 history_lenth = 20
-trust = 300.0
+trust = 200.0
 
 [node name="Control2" type="Control" parent="Ship"]
 margin_right = 40.0
@@ -169,7 +169,7 @@ material = ExtResource( 9 )
 transform = Transform( 0.826119, 0.563495, 3.61108e-08, 4.37114e-08, 1.91069e-15, -1, -0.563495, 0.826119, -2.46311e-08, 37.4452, 0, 54.9419 )
 
 [node name="Container" parent="Earth/BrasiliaPort" instance=ExtResource( 10 )]
-transform = Transform( 1.81812, 0, 0, 0, 1.81812, 1.01644e-20, 0, 0, 1.81812, 0, 0.721901, 2.28032 )
+transform = Transform( 1.81812, 0, 0, 0, 1.81812, 1.35525e-20, 0, -6.77626e-21, 1.81812, 0, 1.73373, 2.28032 )
 destination_path = NodePath("../../PhilipinPort")
 origin_path = NodePath("..")
 
@@ -190,7 +190,9 @@ material = ExtResource( 3 )
 script = ExtResource( 14 )
 simulation_time = 1000
 simulation_delta_t = 0.1
-
+simulatoin_update_interfall = 1
+on = false
+relativ_to_soi = false
 [connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]
 
 [editable path="HUD"]
