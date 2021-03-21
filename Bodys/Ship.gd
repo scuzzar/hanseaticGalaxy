@@ -62,7 +62,7 @@ func _burn_forward(state:PhysicsDirectBodyState):
 func reward(reward_credits : int):
 	credits += reward_credits
 	print(credits)
-	emit_signal("fuel_changed",credits)
+	emit_signal("credits_changed",credits)
 
 func load_containter(c : MissionContainer) -> bool:
 	var added = $Inventory.addContainerOnFree(c)
