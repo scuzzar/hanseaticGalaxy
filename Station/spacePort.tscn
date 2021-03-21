@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Station/SpacePort.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://Station/Inventory.gd" type="Script" id=2]
 [ext_resource path="res://Station/spacePort.gd" type="Script" id=3]
+[ext_resource path="res://Station/Container.scn" type="PackedScene" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 5.44332, 1, 1 )
@@ -50,17 +52,29 @@ gravity = 0.0
 transform = Transform( 1.00141, 0, 0, 0, 1.00141, 0, 0, 0, 1.00141, 0, -0.906102, 0 )
 shape = SubResource( 2 )
 
-[node name="slot1" type="Position3D" parent="."]
+[node name="Inventory" type="Spatial" parent="."]
+script = ExtResource( 2 )
+
+[node name="slot1" type="Position3D" parent="Inventory"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12365, 0.974701, 2.68617 )
 
-[node name="slot2" type="Position3D" parent="."]
+[node name="dummy" parent="Inventory/slot1" instance=ExtResource( 4 )]
+
+[node name="slot2" type="Position3D" parent="Inventory"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.611891, 0.974701, 2.68617 )
 
-[node name="slot3" type="Position3D" parent="."]
+[node name="dummy" parent="Inventory/slot2" instance=ExtResource( 4 )]
+
+[node name="slot3" type="Position3D" parent="Inventory"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.886896, 0.974701, 2.68617 )
 
-[node name="slot4" type="Position3D" parent="."]
+[node name="dummy" parent="Inventory/slot3" instance=ExtResource( 4 )]
+
+[node name="slot4" type="Position3D" parent="Inventory"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16223, 0.974701, 2.68617 )
+
+[node name="dummy" parent="Inventory/slot4" instance=ExtResource( 4 )]
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
+[connection signal="container_clicked" from="Inventory" to="." method="_on_container_clicked"]

@@ -64,16 +64,15 @@ func reward(reward_credits : int):
 	print(credits)
 	emit_signal("fuel_changed",credits)
 
-func load_containter(c : MissionContainer):	
-	self.add_child(c)
-	c.connect("clicked",self,"container_clicked")
-	c.translation = Vector3(0,0,-3)
-	c.loaded = true	
+func load_containter(c : MissionContainer) -> bool:
+	var added = $Inventory.addContainerOnFree(c)
+	return added
 
 func unload_containter(c : MissionContainer):	
-	self.remove_child(c)
-	c.disconnect("clicked",self,"container_clicked")
-	c.loaded = false	
+	$Inventory.removeContainer(c)	
+
+func can_load_container() -> bool:
+	return $Inventory.hadSpace()
 
 func dock(target: Node):
 	self.docking_location = target
