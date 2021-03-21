@@ -7,13 +7,17 @@ export var trust = 100.0
 export var dispay_name = "Neubeckum II"
 export var fuel_cap = 5000.0
 var fuel = fuel_cap
+export var credits = 0
+
+var docking_location: Node
 
 func _ready():
 	._ready()
-	emit_signal("fuel_changed",fuel)
 	
+	emit_signal("fuel_changed",fuel)
 
 signal fuel_changed(fuel)
+signal credits_changed(credits)
 
 func _integrate_forces(state:PhysicsDirectBodyState):
 	._integrate_forces(state)
@@ -55,3 +59,31 @@ func _burn_forward(state:PhysicsDirectBodyState):
 	state.add_force(force, Vector3(0,0,0))
 	self.burn_fuel(trust * state.step)
 	
+func reward(reward_credits : int):
+	credits += reward_credits
+	print(credits)
+	emit_signal("fuel_changed",credits)
+
+func load_containter(c : MissionContainer):	
+	self.add_child(c)
+	c.connect("clicked",self,"container_clicked")
+	c.translation = Vector3(0,0,-3)
+	c.loaded = true	
+
+func unload_containter(c : MissionContainer):	
+	self.remove_child(c)
+	c.disconnect("clicked",self,"container_clicked")
+	c.loaded = false	
+
+func dock(target: Node):
+	self.docking_location = target
+
+func undock():
+	self.docking_location = null
+
+func container_clicked(c: MissionContainer):	
+	if(self.docking_location == c.destination):
+		self.reward(c.reward)
+		self.unload_containter(c)		
+	else:
+		print("container hit on Ship:" + c.destination.name)

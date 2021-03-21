@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Ship/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=5]
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Bodys/Earth.material" type="Material" id=9]
-[ext_resource path="res://Station/Container.scn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Weltall.tres" type="Environment" id=12]
 [ext_resource path="res://Bodys/Sun.material" type="Material" id=13]
 [ext_resource path="res://N_Body/Simulator.gd" type="Script" id=14]
@@ -94,6 +93,7 @@ history_lenth = 0
 
 [node name="OlympusPort" parent="Mars" instance=ExtResource( 4 )]
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 66.7469, 0, 0 )
+defaultMissionDestination_path = NodePath("../../Earth/BrasiliaPort")
 
 [node name="Phobos" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.2, 0, 0, 0, 0.0662189, -0.18872, 0, 0.18872, 0.0662189, 191.171, -5.67155e-07, -3789.36 )
@@ -132,14 +132,11 @@ material = ExtResource( 9 )
 
 [node name="BrasiliaPort" parent="Earth" instance=ExtResource( 4 )]
 transform = Transform( 0.826119, 0.563495, 3.61108e-08, 4.37114e-08, 1.91069e-15, -1, -0.563495, 0.826119, -2.46311e-08, 37.4452, 0, 54.9419 )
-
-[node name="Container" parent="Earth/BrasiliaPort" instance=ExtResource( 10 )]
-transform = Transform( 1.81812, 0, 0, 0, 1.81812, 1.35525e-20, 0, -6.77626e-21, 1.81812, 0, 1.73373, 2.28032 )
-destination_path = NodePath("../../PhilipinPort")
-origin_path = NodePath("..")
+defaultMissionDestination_path = NodePath("../PhilipinPort")
 
 [node name="PhilipinPort" parent="Earth" instance=ExtResource( 4 )]
 transform = Transform( -0.901832, -0.432083, -3.94204e-08, 4.37114e-08, 1.91069e-15, -1, 0.432083, -0.901832, 1.88869e-08, -32.5841, 0, -58.159 )
+defaultMissionDestination_path = NodePath("../../Mars/OlympusPort")
 
 [node name="Moon" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.4, 0, 0, 0, 0.132438, -0.377439, 0, 0.377439, 0.132438, 0.0757446, -3.05176e-05, 2101.58 )
