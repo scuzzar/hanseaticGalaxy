@@ -12,10 +12,10 @@ export var credits = 0
 var docking_location: Node
 
 func _ready():
-	._ready()
-	
+	._ready()	
 	emit_signal("fuel_changed",fuel)
-
+	emit_signal("credits_changed",credits)
+	
 signal fuel_changed(fuel)
 signal credits_changed(credits)
 

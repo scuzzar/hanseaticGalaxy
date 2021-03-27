@@ -3,7 +3,7 @@ extends Control
 var ship : Ship
 
 onready var fuel_bar = $Fuel/FuelBar
-onready var credit_labe = $Credits/HSplitContainer/Value
+onready var credit_labe = $Credits/Value
 func _enter_tree():
 	ship = $"../Ship"
 

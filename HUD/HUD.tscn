@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://HUD/FuelBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://HUD/Credits.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HUD/theme/default_theme.theme" type="Theme" id=4]
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -15,5 +17,18 @@ __meta__ = {
 [node name="Credits" parent="." instance=ExtResource( 3 )]
 
 [node name="Fuel" parent="." instance=ExtResource( 2 )]
-margin_left = -220.0
-margin_right = 240.0
+margin_left = 45.0959
+margin_right = 505.096
+
+[node name="Consol" type="Label" parent="." groups=[
+"consol",
+]]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -21.0
+margin_right = 153.0
+theme = ExtResource( 4 )
+text = "Destination:"
+__meta__ = {
+"_edit_use_anchors_": false
+}

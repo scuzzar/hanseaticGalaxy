@@ -16,4 +16,9 @@ func _on_input_event(camera, event, click_position, click_normal, shape_idx):
 		emit_signal("clicked",self)	
 
 func _on_mouse_entered():
+	if(self.get_tree()!=null): self.get_tree().get_nodes_in_group("consol")[0].text = destination.name
 	print("Destination:" + destination.name)	
+
+
+func _on_mouse_exited():
+	if(self.get_tree()!=null): 	self.get_tree().get_nodes_in_group("consol")[0].text = ""

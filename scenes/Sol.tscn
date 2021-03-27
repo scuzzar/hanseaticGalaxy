@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Ship/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Bodys/Moon.material" type="Material" id=3]
 [ext_resource path="res://Station/spacePort.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=5]
+[ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Bodys/Earth.material" type="Material" id=9]
 [ext_resource path="res://scenes/Weltall.tres" type="Environment" id=12]
 [ext_resource path="res://Bodys/Sun.material" type="Material" id=13]
@@ -43,6 +44,8 @@ DEFAULT_DISTANCE = 50.0
 ROTATE_SPEED = 1.0
 ANCHOR_NODE_PATH = NodePath("..")
 MOUSE_ZOOM_SPEED = 50.0
+
+[node name="HUD" parent="." instance=ExtResource( 8 )]
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 69.3185, 1.52588e-05, 1830.99 )
@@ -130,3 +133,6 @@ material = ExtResource( 3 )
 script = ExtResource( 14 )
 simulation_time = 1000
 simulation_delta_t = 0.1
+
+[connection signal="credits_changed" from="Ship" to="HUD" method="_on_Ship_credits_changed"]
+[connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]
