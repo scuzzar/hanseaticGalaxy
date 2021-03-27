@@ -1,101 +1,19 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=1]
-[ext_resource path="res://HUD/NormalFont.tres" type="DynamicFont" id=2]
-[ext_resource path="res://HUD/uipackSpace_sheet.png" type="Texture" id=3]
-[ext_resource path="res://HUD/FuelBar.atlastex" type="Texture" id=4]
+[ext_resource path="res://HUD/FuelBar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://HUD/Credits.tscn" type="PackedScene" id=3]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 3 )
-region = Rect2( 200, 200, 100, 100 )
-
-[sub_resource type="GDScript" id=2]
-script/source = "extends Label
-
-func setValue(value : String):
-	self.text = value
-"
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 19, 26 )
-margin_left = 6.99298
-margin_right = 6.62493
-margin_top = 4.9687
-margin_bottom = 4.60065
-axis_stretch_horizontal = 1
-
-[node name="HUD" type="MarginContainer"]
-anchor_top = 1.0
+[node name="HUD" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -54.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bar" type="HBoxContainer" parent="."]
-margin_right = 1024.0
-margin_bottom = 54.0
-alignment = 1
+[node name="Credits" parent="." instance=ExtResource( 3 )]
 
-[node name="Fule_Box" type="NinePatchRect" parent="Bar"]
-visible = false
-margin_right = 250.0
-margin_bottom = 54.0
-rect_min_size = Vector2( 250, 0 )
-hint_tooltip = "The Deta V left"
-mouse_filter = 1
-texture = SubResource( 1 )
-region_rect = Rect2( 0, 0, 98, 100 )
-patch_margin_left = 15
-patch_margin_top = 15
-patch_margin_right = 15
-patch_margin_bottom = 15
-
-[node name="Fuel" type="HBoxContainer" parent="Bar/Fule_Box"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -71.5
-margin_top = -10.5
-margin_right = 71.5
-margin_bottom = 10.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Lable" type="Label" parent="Bar/Fule_Box/Fuel"]
-margin_right = 101.0
-margin_bottom = 21.0
-custom_fonts/font = ExtResource( 2 )
-text = "delta V:"
-align = 2
-script = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Value" type="Label" parent="Bar/Fule_Box/Fuel"]
-margin_left = 105.0
-margin_right = 143.0
-margin_bottom = 21.0
-custom_fonts/font = ExtResource( 2 )
-text = "100"
-align = 2
-script = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FuelBar" type="ProgressBar" parent="Bar"]
-margin_top = 16.0
-margin_right = 1024.0
-margin_bottom = 37.0
-size_flags_horizontal = 3
-size_flags_vertical = 4
-custom_styles/fg = SubResource( 3 )
-custom_fonts/font = ExtResource( 2 )
-value = 70.0
+[node name="Fuel" parent="." instance=ExtResource( 2 )]
+margin_left = -220.0
+margin_right = 240.0
