@@ -131,8 +131,9 @@ material = ExtResource( 3 )
 
 [node name="Simulator" type="Node" parent="."]
 script = ExtResource( 14 )
-simulation_time = 1000
-simulation_delta_t = 0.1
+simulation_time = 10000
+simulatoin_update_interfall = 10
+relativ_to_soi = true
 
 [connection signal="credits_changed" from="Ship" to="HUD" method="_on_Ship_credits_changed"]
 [connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]

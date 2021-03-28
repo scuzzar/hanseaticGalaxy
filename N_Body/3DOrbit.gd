@@ -2,11 +2,12 @@ tool
 extends ImmediateGeometry
 
 func _ready():
+	self.material_override = load("res://N_Body/OrbitMaterial.tres")
 	pass
 	
 #onready var body = self.get_parent()
 
-export var sim_color = Color(1,1,0)
+export var sim_color = Color(1,0,0)
 
 
 var width = 1
