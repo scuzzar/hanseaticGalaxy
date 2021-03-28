@@ -577,7 +577,7 @@ _global_script_classes=[ {
 "base": "RigidBody",
 "class": "simpelBody",
 "language": "GDScript",
-"path": "res://Bodys/Moon_try.gd"
+"path": "res://Bodys/simpelPlanet.gd"
 } ]
 _global_script_class_icons={
 "MissionContainer": "",
