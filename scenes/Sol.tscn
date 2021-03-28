@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Ship/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Bodys/Moon.material" type="Material" id=3]
 [ext_resource path="res://Station/spacePort.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=5]
-[ext_resource path="res://Bodys/Moon_try.gd" type="Script" id=6]
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Bodys/Earth.material" type="Material" id=9]
 [ext_resource path="res://scenes/Weltall.tres" type="Environment" id=12]
@@ -49,13 +48,11 @@ MOUSE_ZOOM_SPEED = 50.0
 [node name="HUD" parent="." instance=ExtResource( 8 )]
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 29.5739, 1.52588e-05, 2078.84 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 43.4386, 1.14441e-05, 1891.46 )
 
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 transform = Transform( 2, 0, 0, 0, 0.66219, -1.88719, 0, 1.88719, 0.66219, 0, 0, 0 )
 mass = 53.11
-isGravetySource = true
-history_lenth = 0
 material = ExtResource( 13 )
 
 [node name="OmniLight" type="OmniLight" parent="Sun"]
@@ -67,35 +64,24 @@ transform = Transform( 0.698854, 0, 0, 0, 0.698854, 0, 0, 0, 0.698854, 0.883575,
 mode = 3
 mass = 100.0
 linear_velocity = Vector3( 0.862, 0, 0 )
-velocety = Vector3( 0.862, 0, 0 )
-isGravetySource = true
-SOI_Body = NodePath("../Sun")
-history_lenth = 0
+orbital_speed = 3
 
 [node name="OlympusPort" parent="Mars" instance=ExtResource( 4 )]
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 66.7469, 0, 0 )
 defaultMissionDestination_path = NodePath("../../Earth/BrasiliaPort")
 
-[node name="Phobos" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.2, 0, 0, 0, 0.0662189, -0.18872, 0, 0.18872, 0.0662189, 191.171, -5.67155e-07, -3789.36 )
-mode = 3
-mass = 20.0
-linear_velocity = Vector3( 0, 0, -5.197 )
-velocety = Vector3( 0, 0, -5.197 )
-isGravetySource = true
-SOI_Body = NodePath("../Mars")
-show_sim = false
-material = ExtResource( 3 )
-
-[node name="Deimos" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -396.059, 5.06784e-06, -3786.66 )
+[node name="Deimos" parent="Mars" instance=ExtResource( 2 )]
+transform = Transform( 0.286183, 0, 0, 0, 0.286183, 0, 0, 0, 0.286183, -567.991, 7.25164e-06, 1.40234 )
 mode = 3
 mass = 30.0
 linear_velocity = Vector3( 0, 0, -3.568 )
-velocety = Vector3( 0, 0, -3.568 )
-isGravetySource = true
-SOI_Body = NodePath("../Mars")
-show_sim = false
+material = ExtResource( 3 )
+
+[node name="Phobos" parent="Mars" instance=ExtResource( 2 )]
+transform = Transform( 0.286183, 0, 0, 0, 0.0947535, -0.270042, 0, 0.270042, 0.0947535, 272.285, -8.1155e-07, -2.46143 )
+mode = 3
+mass = 20.0
+linear_velocity = Vector3( 0, 0, -5.197 )
 material = ExtResource( 3 )
 
 [node name="Earth" parent="." instance=ExtResource( 2 )]
@@ -105,11 +91,8 @@ mass = 200.0
 physics_material_override = SubResource( 2 )
 linear_velocity = Vector3( 1.219, 0, 0 )
 angular_velocity = Vector3( 0, 0.01, 0 )
-velocety = Vector3( 1.219, 0, 0 )
-isGravetySource = true
-SOI_Body = NodePath("../Sun")
-history_lenth = 0
 material = ExtResource( 9 )
+orbital_speed = 2
 
 [node name="BrasiliaPort" parent="Earth" instance=ExtResource( 4 )]
 transform = Transform( 0.826119, 0.563495, 3.61108e-08, 4.37114e-08, 1.91069e-15, -1, -0.563495, 0.826119, -2.46311e-08, 37.4452, 0, 54.9419 )
@@ -122,10 +105,14 @@ defaultMissionDestination_path = NodePath("../../Mars/OlympusPort")
 [node name="Moon" parent="Earth" groups=[
 "bodys",
 ] instance=ExtResource( 2 )]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 256.579 )
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 376.989 )
 mode = 3
-mass = 300.0
-script = ExtResource( 6 )
+mass = 100.0
+material = ExtResource( 3 )
+
+[node name="ApolloPort" parent="Earth/Moon" instance=ExtResource( 4 )]
+transform = Transform( -0.901832, -0.432083, -3.94204e-08, 4.37114e-08, 1.91069e-15, -1, 0.432083, -0.901832, 1.88869e-08, -32.5841, 0, -58.159 )
+defaultMissionDestination_path = NodePath("../../PhilipinPort")
 
 [node name="Simulator" type="Node" parent="."]
 script = ExtResource( 14 )
