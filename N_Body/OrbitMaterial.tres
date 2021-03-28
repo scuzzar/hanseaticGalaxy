@@ -3,3 +3,4 @@
 [resource]
 flags_unshaded = true
 vertex_color_use_as_albedo = true
+params_line_width = 9.2

@@ -50,7 +50,7 @@ func hasContainer(container:MissionContainer) -> bool:
 func removeContainer(container:MissionContainer) -> bool :	
 	for slot in slots:
 		if(slot.get_child_count() == 1 and slot.get_child(0)==container):
-			slot.remove_child(container)
+			slot.remove_child(container)			
 			container.disconnect("clicked",self,"_on_container_clicked")
 			container.loaded = false	
 			return true

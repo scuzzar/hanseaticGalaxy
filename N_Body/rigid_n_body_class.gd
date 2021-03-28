@@ -13,7 +13,7 @@ export(NodePath) var SOI_Body
 onready var soi_node = self.get_node_or_null(SOI_Body)
 export var show_soi_relativ_sim = true
 
-var g_force = Vector3(0,0,0)
+var last_g_force = Vector3(0,0,0)
 
 var G = 50
 
@@ -43,7 +43,7 @@ func _ready():
 	else:
 		bodys = get_tree().get_nodes_in_group("bodys")
 	self.linear_velocity = velocety
-	g_force = g_force(translation)	
+	last_g_force = g_force(translation)	
 
 
 func _process(delta):
@@ -54,16 +54,16 @@ func _process(delta):
 		appendHistory()
 
 func _integrate_forces(state):	
-	g_force = g_force(self.translation)
-	state.add_central_force(g_force / 2)
-	state.add_central_force(g_force / 2)
+	last_g_force = g_force(self.translation)
+	state.add_central_force(last_g_force / 2)
+	state.add_central_force(last_g_force / 2)
 	self.velocety = state.linear_velocity
 
 func _leap_frog_integration(delta):
-	velocety += g_force * delta / mass / 2
+	velocety += last_g_force * delta / mass / 2
 	self.translation += velocety*delta
-	g_force = g_force(self.translation)
-	velocety += g_force * delta / mass / 2
+	last_g_force = g_force(self.translation)
+	velocety += last_g_force * delta / mass / 2
 
 func appendHistory():	
 	history.append(translation)
@@ -77,10 +77,14 @@ func g_force(position,t_plus=0):
 		print("no bodys")
 		return Vector3(0,0,0)
 	for body in bodys :
-		if body != self && body.isGravetySource:
+		if body != self && body.isGravetySource:			
 			var other_translation
 			if(t_plus == 0):
-				other_translation = body.translation
+				other_translation = body.get_parent().to_global(body.translation)
+				#print(body.name)
+				#print(body.translation)
+				#print(body.get_parent().translation)
+				#print(body.get_parent().to_global(body.translation))
 			else:
 				other_translation = body.simulation_pos[t_plus-1]			
 			var sqrDst = position.distance_squared_to(other_translation)		
