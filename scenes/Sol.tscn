@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Ship/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Bodys/Moon.material" type="Material" id=3]
 [ext_resource path="res://Station/spacePort.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=5]
+[ext_resource path="res://Bodys/Saturn_Rings.material" type="Material" id=6]
+[ext_resource path="res://Bodys/Saturn.material" type="Material" id=7]
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Bodys/Earth.material" type="Material" id=9]
 [ext_resource path="res://scenes/Weltall.tres" type="Environment" id=12]
@@ -23,7 +25,10 @@ func _snapToShip():
 	self.translation = ship.translation
 "
 
-[sub_resource type="PhysicsMaterial" id=2]
+[sub_resource type="QuadMesh" id=2]
+size = Vector2( 300, 300 )
+
+[sub_resource type="PhysicsMaterial" id=3]
 friction = 0.5
 
 [node name="Sol" type="Spatial"]
@@ -36,7 +41,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1886, 0, -67.6791 )
 script = SubResource( 1 )
 
 [node name="OrbitCamera" type="Camera" parent="CamCenter"]
-far = 8192.0
+far = 81920.0
 script = ExtResource( 5 )
 SCROLL_SPEED = 50.0
 ZOOM_SPEED = 50.0
@@ -48,7 +53,7 @@ MOUSE_ZOOM_SPEED = 50.0
 [node name="HUD" parent="." instance=ExtResource( 8 )]
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 43.4386, 1.14441e-05, 1891.46 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 75.5545, 1.14441e-05, 1836.79 )
 
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 transform = Transform( 2, 0, 0, 0, 0.66219, -1.88719, 0, 1.88719, 0.66219, 0, 0, 0 )
@@ -60,11 +65,12 @@ transform = Transform( 1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 10.668
 omni_range = 11247.7
 
 [node name="Mars" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.698854, 0, 0, 0, 0.698854, 0, 0, 0, 0.698854, 0.883575, 0, -3787.64 )
+transform = Transform( 0.698854, 0, 0, 0, 0.698854, 0, 0, 0, 0.698854, 3819.27, 0, -25.0007 )
 mode = 3
 mass = 100.0
 linear_velocity = Vector3( 0.862, 0, 0 )
 orbital_speed = 3
+show_orbit = true
 
 [node name="OlympusPort" parent="Mars" instance=ExtResource( 4 )]
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 66.7469, 0, 0 )
@@ -84,15 +90,48 @@ mass = 20.0
 linear_velocity = Vector3( 0, 0, -5.197 )
 material = ExtResource( 3 )
 
+[node name="Saturn" parent="." instance=ExtResource( 2 )]
+transform = Transform( -2.54093, 0, 0, 0, -2.54093, 0, 0, 0, -2.54093, -8153.98, 0, 1.98169 )
+mode = 3
+mass = 100.0
+linear_velocity = Vector3( 0.862, 0, 0 )
+material = ExtResource( 7 )
+orbital_speed = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="Saturn"]
+transform = Transform( 1.41148, -1.18231e-08, -0.27048, -0.27048, -6.16978e-08, -1.41148, 0, 1.43716, -6.28205e-08, -3.4895, 1.9145, 0 )
+material_override = ExtResource( 6 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Misma" parent="Saturn" instance=ExtResource( 2 )]
+transform = Transform( 0.286183, 0, 0, 0, 0.286183, 0, 0, 0, 0.286183, -567.991, 7.25164e-06, 1.40234 )
+mode = 3
+mass = 30.0
+linear_velocity = Vector3( 0, 0, -3.568 )
+material = ExtResource( 3 )
+
+[node name="OlympusPort" parent="Saturn/Misma" instance=ExtResource( 4 )]
+transform = Transform( -1.52739e-07, 3.49427, -1.52739e-07, 0, -1.52739e-07, -3.49427, -3.49427, -1.52739e-07, 6.67646e-15, 3002.2, -2.53392e-05, -4.90015 )
+defaultMissionDestination_path = NodePath("../../../Earth/BrasiliaPort")
+
+[node name="Titan" parent="Saturn" instance=ExtResource( 2 )]
+transform = Transform( 0.286183, 0, 0, 0, 0.0947535, -0.270042, 0, 0.270042, 0.0947535, 272.285, -8.1155e-07, -2.46143 )
+mode = 3
+mass = 20.0
+linear_velocity = Vector3( 0, 0, -5.197 )
+material = ExtResource( 3 )
+
 [node name="Earth" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1830.17 )
 mode = 3
 mass = 200.0
-physics_material_override = SubResource( 2 )
+physics_material_override = SubResource( 3 )
 linear_velocity = Vector3( 1.219, 0, 0 )
 angular_velocity = Vector3( 0, 0.01, 0 )
 material = ExtResource( 9 )
 orbital_speed = 2
+show_orbit = true
 
 [node name="BrasiliaPort" parent="Earth" instance=ExtResource( 4 )]
 transform = Transform( 0.826119, 0.563495, 3.61108e-08, 4.37114e-08, 1.91069e-15, -1, -0.563495, 0.826119, -2.46311e-08, 37.4452, 0, 54.9419 )

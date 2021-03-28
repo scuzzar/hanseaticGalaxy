@@ -13,7 +13,7 @@ var isGravetySource = true
 var orbit
 var angle = 0
 export var orbital_speed = 1
-export var show_orbit = false
+export var show_orbit = false setget set_show_orbit
 var angular_speed = 0 
 
 func _enter_tree():
@@ -50,7 +50,21 @@ func _physics_process(delta):
 		self.translation = Vector3(sin(angle)*radius,0,cos(angle)*radius)
 		angle += (angular_speed *delta)
 		if(angle >= 2*PI): angle -= 2*PI
+
+func set_show_orbit(value):
+	show_orbit = value
+	if(orbit!=null):
+		orbit.clear()
+		if(show_orbit):
+			var start = translation
+			var result = [start]
+			for i in range(360):
+				var a = 2*PI/360*i
+				start = Vector3(sin(a)*radius,0,cos(a)*radius)
+				result.append(start)		
+			orbit.draw_list(result)
 	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
