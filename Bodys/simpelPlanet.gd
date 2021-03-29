@@ -28,28 +28,29 @@ func _ready():
 	isGravetySource = true
 	if(radius>0.5):
 		angular_speed = 2*PI/(2*PI*radius/orbital_speed)	
-		angle = acos(translation.z/radius)
+		angle = asin(translation.x/radius)	
 		var start = translation
 		var result = [start]
-		for i in range(360):
-			var a = 2*PI/360*i
-			start = Vector3(sin(a)*radius,0,cos(a)*radius)
-			result.append(start)		
-		orbit.draw_list(result)
-		orbit.hide()
+		#for i in range(360):
+		#	var a = 2*PI/360*i
+		#	start = Vector3(sin(a)*radius,0,cos(a)*radius)
+		#	result.append(start)		
+		#orbit.draw_list(result)
+		#orbit.hide()
 
-func _process(delta):
-	if Engine.editor_hint:	
-		if(show_orbit):
-			orbit.show()
-		else:
-			orbit.hide()
+#func _process(delta):
+	#if Engine.editor_hint:	
+	#	if(show_orbit):
+	#		orbit.show()
+	#	else:
+	#		orbit.hide()
 	
 func _physics_process(delta):
-	if !Engine.editor_hint:		
-		self.translation = Vector3(sin(angle)*radius,0,cos(angle)*radius)
-		angle += (angular_speed *delta)
+	if !Engine.editor_hint:	
+		angle += (angular_speed *delta)	
 		if(angle >= 2*PI): angle -= 2*PI
+		self.translation = Vector3(sin(angle)*radius,0,cos(angle)*radius)
+		
 
 func set_show_orbit(value):
 	show_orbit = value
