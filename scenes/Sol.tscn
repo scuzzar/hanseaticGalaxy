@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Ship/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Bodys/Sun.material" type="Material" id=13]
 [ext_resource path="res://N_Body/Simulator.gd" type="Script" id=14]
 [ext_resource path="res://Bodys/Phobos.material" type="Material" id=15]
+[ext_resource path="res://Bodys/tex/NASA/mar2kuu2.jpg" type="Texture" id=16]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
@@ -28,10 +29,13 @@ func _snapToShip():
 	self.translation = ship.translation
 "
 
-[sub_resource type="QuadMesh" id=2]
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 16 )
+
+[sub_resource type="QuadMesh" id=3]
 size = Vector2( 300, 300 )
 
-[sub_resource type="PhysicsMaterial" id=3]
+[sub_resource type="PhysicsMaterial" id=4]
 friction = 0.5
 
 [node name="Sol" type="Spatial"]
@@ -84,10 +88,10 @@ transform = Transform( 0.286183, 0, 0, 0, 0.286183, 0, 0, 0, 0.286183, -567.991,
 mode = 3
 mass = 30.0
 linear_velocity = Vector3( 0, 0, -3.568 )
-material = ExtResource( 3 )
+material = SubResource( 2 )
 
 [node name="Phobos" parent="Mars" instance=ExtResource( 2 )]
-transform = Transform( 0.286183, 0, 0, 0, 0.0947535, -0.270042, 0, 0.270042, 0.0947535, 272.285, -8.1155e-07, -2.46143 )
+transform = Transform( 0.286183, 0, 0, 0, 0.286183, 0, 0, 0, 0.286183, 272.285, -8.1155e-07, -2.46143 )
 mode = 3
 mass = 20.0
 linear_velocity = Vector3( 0, 0, -5.197 )
@@ -103,7 +107,13 @@ orbital_speed = 3
 [node name="Rings" type="MeshInstance" parent="Saturn"]
 transform = Transform( 1.35762, -4.00414e-08, 0.471497, -0.471497, -4.57076e-08, 1.35762, -2.23517e-08, -1.43716, -1.19209e-07, -3.4895, 1.91455, -5.96046e-08 )
 material_override = ExtResource( 6 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Rings2" type="MeshInstance" parent="Saturn"]
+transform = Transform( -1.35762, 4.00414e-08, -0.471497, 0.471497, 4.57076e-08, -1.35762, -2.23517e-08, -1.43716, -1.19209e-07, -3.4895, 1.91455, -5.96046e-08 )
+material_override = ExtResource( 6 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Mimas" parent="Saturn" instance=ExtResource( 2 )]
@@ -128,7 +138,7 @@ defaultMissionDestination_path = NodePath("../../../Earth/Moon/ApolloPort")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1830.17 )
 mode = 3
 mass = 200.0
-physics_material_override = SubResource( 3 )
+physics_material_override = SubResource( 4 )
 linear_velocity = Vector3( 1.219, 0, 0 )
 angular_velocity = Vector3( 0, 0.01, 0 )
 material = ExtResource( 9 )
