@@ -1,10 +1,10 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Ship/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Bodys/Moon.material" type="Material" id=3]
 [ext_resource path="res://Station/spacePort.tscn" type="PackedScene" id=4]
-[ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=5]
+[ext_resource path="res://Ship/ShipCamera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Bodys/Saturn_Rings.material" type="Material" id=6]
 [ext_resource path="res://Bodys/Saturn.material" type="Material" id=7]
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=8]
@@ -13,29 +13,16 @@
 [ext_resource path="res://Bodys/Mimas.material" type="Material" id=11]
 [ext_resource path="res://scenes/Weltall.tres" type="Environment" id=12]
 [ext_resource path="res://Bodys/Sun.material" type="Material" id=13]
-[ext_resource path="res://N_Body/Simulator.gd" type="Script" id=14]
 [ext_resource path="res://Bodys/Phobos.material" type="Material" id=15]
 [ext_resource path="res://Bodys/tex/NASA/mar2kuu2.jpg" type="Texture" id=16]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Spatial
-
-onready var ship = $\"../Ship\"
-
-func _process(delta):
-	_snapToShip()
-
-func _snapToShip():
-	self.translation = ship.translation
-"
-
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 16 )
 
-[sub_resource type="QuadMesh" id=3]
+[sub_resource type="QuadMesh" id=2]
 size = Vector2( 300, 300 )
 
-[sub_resource type="PhysicsMaterial" id=4]
+[sub_resource type="PhysicsMaterial" id=3]
 friction = 0.5
 
 [node name="Sol" type="Spatial"]
@@ -43,27 +30,17 @@ friction = 0.5
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 12 )
 
-[node name="CamCenter" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1886, 0, -67.6791 )
-script = SubResource( 1 )
-
-[node name="OrbitCamera" type="Camera" parent="CamCenter"]
-far = 81920.0
-script = ExtResource( 5 )
-SCROLL_SPEED = 50.0
-ZOOM_SPEED = 50.0
-DEFAULT_DISTANCE = 50.0
-ROTATE_SPEED = 1.0
-ANCHOR_NODE_PATH = NodePath("..")
-MOUSE_ZOOM_SPEED = 50.0
-
 [node name="HUD" parent="." instance=ExtResource( 8 )]
+
+[node name="Camera" parent="." instance=ExtResource( 5 )]
+min_zoom = 1.0
+max_zoom = 500.0
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7556.08, 1.14441e-05, 78.163 )
 show_soi_relativ_sim = false
 show_sim = false
-history_lenth = 0
+history_lenth = 30
 
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 transform = Transform( 2, 0, 0, 0, 0.66219, -1.88719, 0, 1.88719, 0.66219, 0, 0, 0 )
@@ -91,7 +68,7 @@ transform = Transform( 0.286183, 0, 0, 0, 0.286183, 0, 0, 0, 0.286183, -567.991,
 mode = 3
 mass = 30.0
 linear_velocity = Vector3( 0, 0, -3.568 )
-material = SubResource( 2 )
+material = SubResource( 1 )
 
 [node name="Phobos" parent="Mars" instance=ExtResource( 2 )]
 transform = Transform( 0.286183, 0, 0, 0, 0.286183, 0, 0, 0, 0.286183, 272.285, -8.1155e-07, -2.46143 )
@@ -110,13 +87,13 @@ orbital_speed = 3
 [node name="Rings" type="MeshInstance" parent="Saturn"]
 transform = Transform( 1.35762, -4.00414e-08, 0.471497, -0.471497, -4.57076e-08, 1.35762, -2.23517e-08, -1.43716, -1.19209e-07, -3.4895, 1.91455, -5.96046e-08 )
 material_override = ExtResource( 6 )
-mesh = SubResource( 3 )
+mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Rings2" type="MeshInstance" parent="Saturn"]
 transform = Transform( -1.35762, 4.00414e-08, -0.471497, 0.471497, 4.57076e-08, -1.35762, -2.23517e-08, -1.43716, -1.19209e-07, -3.4895, 1.91455, -5.96046e-08 )
 material_override = ExtResource( 6 )
-mesh = SubResource( 3 )
+mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Mimas" parent="Saturn" instance=ExtResource( 2 )]
@@ -141,7 +118,7 @@ defaultMissionDestination_path = NodePath("../../../Earth/Moon/ApolloPort")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1830.17 )
 mode = 3
 mass = 200.0
-physics_material_override = SubResource( 4 )
+physics_material_override = SubResource( 3 )
 linear_velocity = Vector3( 1.219, 0, 0 )
 angular_velocity = Vector3( 0, 0.01, 0 )
 material = ExtResource( 9 )
@@ -167,12 +144,6 @@ material = ExtResource( 3 )
 [node name="ApolloPort" parent="Earth/Moon" instance=ExtResource( 4 )]
 transform = Transform( -0.901832, -0.432083, -3.94204e-08, 4.37114e-08, 1.91069e-15, -1, 0.432083, -0.901832, 1.88869e-08, -32.5841, 0, -58.159 )
 defaultMissionDestination_path = NodePath("../../PhilipinPort")
-
-[node name="Simulator" type="Node" parent="."]
-script = ExtResource( 14 )
-simulation_time = 10000
-simulation_delta_t = 10.0
-relativ_to_soi = true
 
 [connection signal="credits_changed" from="Ship" to="HUD" method="_on_Ship_credits_changed"]
 [connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]
