@@ -34,7 +34,6 @@ environment = ExtResource( 12 )
 
 [node name="Camera" parent="." instance=ExtResource( 5 )]
 min_zoom = 1.0
-max_zoom = 500.0
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7556.08, 1.14441e-05, 78.163 )
