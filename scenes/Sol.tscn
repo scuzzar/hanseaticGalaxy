@@ -61,6 +61,9 @@ MOUSE_ZOOM_SPEED = 50.0
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7556.08, 1.14441e-05, 78.163 )
+show_soi_relativ_sim = false
+show_sim = false
+history_lenth = 0
 
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 transform = Transform( 2, 0, 0, 0, 0.66219, -1.88719, 0, 1.88719, 0.66219, 0, 0, 0 )
