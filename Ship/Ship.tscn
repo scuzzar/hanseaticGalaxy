@@ -14,7 +14,10 @@
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 3.0
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.500469, 1, 0.407267 )
+
+[sub_resource type="SpatialMaterial" id=4]
 flags_transparent = true
 flags_unshaded = true
 flags_do_not_receive_shadows = true
@@ -26,27 +29,12 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 albedo_texture = ExtResource( 6 )
 
-[sub_resource type="QuadMesh" id=3]
-material = SubResource( 2 )
+[sub_resource type="QuadMesh" id=5]
+material = SubResource( 4 )
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0, 0.496689, 0.834234, 1 )
 colors = PoolColorArray( 0.980392, 0.0117647, 0.0117647, 1, 0.964844, 0.723633, 0, 1, 0.376471, 0.364706, 0.364706, 0.937255, 0, 0, 0, 0 )
-
-[sub_resource type="SpatialMaterial" id=5]
-flags_transparent = true
-flags_unshaded = true
-flags_do_not_receive_shadows = true
-vertex_color_use_as_albedo = true
-params_blend_mode = 1
-params_billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-albedo_texture = ExtResource( 5 )
-
-[sub_resource type="QuadMesh" id=6]
-material = SubResource( 5 )
 
 [sub_resource type="SpatialMaterial" id=7]
 flags_transparent = true
@@ -58,16 +46,31 @@ params_billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
-albedo_texture = ExtResource( 7 )
+albedo_texture = ExtResource( 5 )
 
 [sub_resource type="QuadMesh" id=8]
 material = SubResource( 7 )
 
-[sub_resource type="Gradient" id=9]
+[sub_resource type="SpatialMaterial" id=9]
+flags_transparent = true
+flags_unshaded = true
+flags_do_not_receive_shadows = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 7 )
+
+[sub_resource type="QuadMesh" id=10]
+material = SubResource( 9 )
+
+[sub_resource type="Gradient" id=11]
 offsets = PoolRealArray( 0, 0.582781, 0.84106 )
 colors = PoolColorArray( 0, 0, 0, 1, 0.622047, 0.622047, 0.622047, 1, 1, 1, 1, 0.396078 )
 
-[sub_resource type="GDScript" id=10]
+[sub_resource type="GDScript" id=12]
 script/source = "extends OmniLight
 
 
@@ -87,9 +90,6 @@ func _ready():
 #func _process(delta):
 #	pass
 "
-
-[sub_resource type="BoxShape" id=11]
-extents = Vector3( 0.500469, 1, 0.407267 )
 
 [node name="Ship" type="RigidBody"]
 mass = 30.0
@@ -127,6 +127,10 @@ __meta__ = {
 }
 show_history = true
 
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 2.22045e-16, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00268555, 0, 0.0500793 )
+shape = SubResource( 2 )
+
 [node name="Model" type="Spatial" parent="."]
 script = ExtResource( 2 )
 
@@ -144,7 +148,7 @@ transform = Transform( 0.998251, -0.0479305, 0.0346076, 0.0468094, 0.998375, 0.0
 amount = 32
 lifetime = 0.89
 lifetime_randomness = 0.28
-mesh = SubResource( 3 )
+mesh = SubResource( 5 )
 direction = Vector3( 0, 1, 0 )
 spread = 0.0
 gravity = Vector3( 0, 0, 0 )
@@ -157,34 +161,12 @@ linear_accel_random = 0.39
 angle = 31.0
 scale_amount = 2.0
 scale_amount_random = 0.74
-color_ramp = SubResource( 4 )
+color_ramp = SubResource( 6 )
 
 [node name="Fire2" type="CPUParticles" parent="Model/particel"]
 transform = Transform( 0.998251, -0.0479305, 0.0346076, 0.0468094, 0.998375, 0.0325107, -0.0361096, -0.0308339, 0.998872, 0, 0, 0 )
 amount = 32
 lifetime = 0.89
-lifetime_randomness = 0.28
-mesh = SubResource( 6 )
-direction = Vector3( 0, 1, 0 )
-spread = 0.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 3.67
-initial_velocity_random = 0.71
-angular_velocity = 70.0
-angular_velocity_random = 1.0
-linear_accel = 2.76
-linear_accel_random = 0.39
-angle = 31.0
-scale_amount = 2.0
-scale_amount_random = 0.74
-color_ramp = SubResource( 4 )
-
-[node name="smoke" type="CPUParticles" parent="Model/particel"]
-transform = Transform( 0.998251, -0.0479305, 0.0346076, 0.0468094, 0.998375, 0.0325107, -0.0361096, -0.0308339, 0.998872, -0.00065732, 0, -0.00689006 )
-visible = false
-emitting = false
-amount = 36
-lifetime = 1.27
 lifetime_randomness = 0.28
 mesh = SubResource( 8 )
 direction = Vector3( 0, 1, 0 )
@@ -199,7 +181,29 @@ linear_accel_random = 0.39
 angle = 31.0
 scale_amount = 2.0
 scale_amount_random = 0.74
-color_ramp = SubResource( 9 )
+color_ramp = SubResource( 6 )
+
+[node name="smoke" type="CPUParticles" parent="Model/particel"]
+transform = Transform( 0.998251, -0.0479305, 0.0346076, 0.0468094, 0.998375, 0.0325107, -0.0361096, -0.0308339, 0.998872, -0.00065732, 0, -0.00689006 )
+visible = false
+emitting = false
+amount = 36
+lifetime = 1.27
+lifetime_randomness = 0.28
+mesh = SubResource( 10 )
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 3.67
+initial_velocity_random = 0.71
+angular_velocity = 70.0
+angular_velocity_random = 1.0
+linear_accel = 2.76
+linear_accel_random = 0.39
+angle = 31.0
+scale_amount = 2.0
+scale_amount_random = 0.74
+color_ramp = SubResource( 11 )
 
 [node name="OmniLight" type="OmniLight" parent="Model/particel"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.387533, 0 )
@@ -207,16 +211,12 @@ light_color = Color( 0.945098, 0.866667, 0.027451, 1 )
 light_energy = 7.37
 shadow_enabled = true
 omni_range = 0.790428
-script = SubResource( 10 )
+script = SubResource( 12 )
 
 [node name="Tween" type="Tween" parent="Model/particel/OmniLight"]
 repeat = true
 playback_speed = 7.0
 playback/repeat = true
 playback/speed = 7.0
-
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 2.22045e-16, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00268555, 0, 0.0500793 )
-shape = SubResource( 11 )
 
 [connection signal="container_clicked" from="Inventory" to="." method="container_clicked"]

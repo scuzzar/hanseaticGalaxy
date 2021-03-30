@@ -36,7 +36,7 @@ environment = ExtResource( 12 )
 min_zoom = 1.0
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7556.08, 1.14441e-05, 78.163 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 51.112, 1.14441e-05, 1891.8 )
 show_soi_relativ_sim = false
 show_sim = false
 history_lenth = 30
@@ -125,11 +125,11 @@ orbital_speed = 2
 show_orbit = true
 
 [node name="BrasiliaPort" parent="Earth" instance=ExtResource( 4 )]
-transform = Transform( 0.826119, 0.563495, 3.61108e-08, 4.37114e-08, 1.91069e-15, -1, -0.563495, 0.826119, -2.46311e-08, 37.4452, 0, 54.9419 )
+transform = Transform( -0.75811, 0.652126, -5.57647e-08, -1.15933e-07, -4.92623e-08, 1, 0.652126, 0.75811, 1.12949e-07, 37.4452, 0, 54.9419 )
 defaultMissionDestination_path = NodePath("../PhilipinPort")
 
 [node name="PhilipinPort" parent="Earth" instance=ExtResource( 4 )]
-transform = Transform( -0.901832, -0.432083, -3.94204e-08, 4.37114e-08, 1.91069e-15, -1, 0.432083, -0.901832, 1.88869e-08, -32.5841, 0, -58.159 )
+transform = Transform( 0.86472, -0.502251, -3.44638e-08, -5.9375e-09, -7.88407e-08, 1, -0.502251, -0.86472, -7.11574e-08, -29.1698, 0, -59.7739 )
 defaultMissionDestination_path = NodePath("../../Mars/OlympusPort")
 
 [node name="Moon" parent="Earth" groups=[

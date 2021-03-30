@@ -9,8 +9,9 @@ func _ready():
 	
 func _remove_dummys():
 	for slot in slots:
-		if(slot.get_child_count()==1 and slot.get_child(0).name =="dummy"):
-			self.removeContainer(slot.get_child(0))
+		for child in slot.get_children():
+			if(child.name=="dummy"):
+				self.removeContainer(slot.get_child(0))
 
 func addContainter(container:MissionContainer, i : int):
 	var slot = slots[i] as Position3D

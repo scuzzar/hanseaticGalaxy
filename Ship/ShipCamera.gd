@@ -21,7 +21,7 @@ func _ready():
 func _process(delta):	
 	self.translation = ship.translation
 	
-	self.look_at(ship.last_g_force+self.translation,Vector3(0,1,0))
+	#self.look_at(ship.last_g_force-self.translation,Vector3(0,1,0))
 
 func _set_zoom_level(value: float) -> void:	
 	_zoom_level = clamp(value, min_zoom, max_zoom)

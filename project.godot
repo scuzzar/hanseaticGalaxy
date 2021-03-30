@@ -110,6 +110,7 @@ zoom_in={
 
 3d/physics_engine="Bullet"
 3d/active_soft_world=false
+3d/default_gravity=0.0
 3d/default_linear_damp=0.0
 3d/default_angular_damp=0.0
 
