@@ -10,9 +10,13 @@ export var zoom_factor := 1
 export var zoom_factor_factor := 0.2
 export var zoom_duration := 0.2
 
+export var rotation_speed := 0.5
+
 var _zoom_level := 1.0 setget _set_zoom_level
 
 onready var tween: Tween = $ZoomTween
+
+var _next_rotation = Vector2(0,0)
 
 func _ready():
 	_zoom_level = camera.translation[2]
@@ -20,8 +24,9 @@ func _ready():
 
 func _process(delta):	
 	self.translation = ship.translation
-	
-	#self.look_at(ship.last_g_force-self.translation,Vector3(0,1,0))
+	self.rotate_y(_next_rotation.x * rotation_speed * delta)
+	tilt.rotate_x(_next_rotation.y * rotation_speed * delta)
+	_next_rotation = Vector2(0,0)
 
 func _set_zoom_level(value: float) -> void:	
 	_zoom_level = clamp(value, min_zoom, max_zoom)
@@ -45,7 +50,10 @@ func _input(event):
 		zoom_factor = _zoom_level * zoom_factor_factor
 		zoom_factor = clamp(zoom_factor,1,max_zoom*0.2)
 		_set_zoom_level(_zoom_level + zoom_factor)		
-	
-	print(zoom_factor)
-	print(_zoom_level)
+	if  event is InputEventMouseMotion:
+		_rotate_camera(event as InputEventMouseMotion)
+
+func _rotate_camera(event:InputEventMouseMotion):
+	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
+		_next_rotation = event.relative
 
