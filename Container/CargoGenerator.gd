@@ -9,12 +9,13 @@ var MissionContainerScene = preload("res://Container/Container.scn")
 
 func _ready():
 	$GenTimer.wait_time = self.wait_time
+	$GenTimer.start()
 
-func _on_GenTimer_timeout():
-	
+func _on_GenTimer_timeout():	
 	if(port.has_Space() and port.stock(cargo)<max_store):
 		var c = _generate_mission()
 		port.add_container(c)
+		
 
 func _generate_mission() -> MissionContainer:
 	var c = MissionContainerScene.instance()	

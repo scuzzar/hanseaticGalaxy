@@ -2,6 +2,16 @@ extends Node
 
 onready var slots = self.get_children()
 
+var stock ={
+	MissionContainer.CARGO.METALS:0,
+	MissionContainer.CARGO.FOOD:0,
+	MissionContainer.CARGO.MACHINES:0,
+	MissionContainer.CARGO.ELECTRONICS:0,
+	MissionContainer.CARGO.CONSUMERS:0,
+	MissionContainer.CARGO.RARE_METALS:0,
+	MissionContainer.CARGO.LUXUS:0
+}
+
 signal container_clicked(container)
 
 func _ready():
@@ -20,6 +30,7 @@ func addContainter(container:MissionContainer, i : int):
 	container.translation = Vector3(0,0,0)
 	container.connect("clicked",self,"_on_container_clicked")
 	container.loaded = true	
+	stock[container.cargo] = stock[container.cargo]+1
 
 func getContainer(i : int) -> MissionContainer:
 	var slot = slots[i] as Position3D
@@ -48,18 +59,19 @@ func hasContainer(container:MissionContainer) -> bool:
 	return false
 
 func stock(cargo)->int:
-	var stock = 0
-	for slot in slots:
-		if(slot.get_child_count() == 1 and slot.get_child(0).cargo == cargo):
-			stock += 1
-	return stock
+	#var stock = 0
+	#for slot in slots:
+	#	if(slot.get_child_count() == 1 and slot.get_child(0).cargo == cargo):
+	#		stock += 1
+	return stock[cargo]
 	
 func removeContainer(container:MissionContainer) -> bool :	
 	for slot in slots:
 		if(slot.get_child_count() == 1 and slot.get_child(0)==container):
 			slot.remove_child(container)			
 			container.disconnect("clicked",self,"_on_container_clicked")
-			container.loaded = false	
+			container.loaded = false
+			stock[container.cargo] = stock[container.cargo]-1
 			return true
 	return false
 
