@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Ship/drive.gd" type="Script" id=1]
-[ext_resource path="res://assets/particel/fire_02.png" type="Texture" id=2]
-[ext_resource path="res://assets/particel/smoke_04.png" type="Texture" id=3]
-[ext_resource path="res://assets/particel/fire_01.png" type="Texture" id=4]
+[ext_resource path="res://Ship/particel/fire_01.png" type="Texture" id=2]
+[ext_resource path="res://Ship/particel/smoke_07.png" type="Texture" id=3]
+[ext_resource path="res://Ship/particel/fire_02.png" type="Texture" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
