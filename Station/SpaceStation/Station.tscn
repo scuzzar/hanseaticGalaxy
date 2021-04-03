@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Station/Metal scratched_001.material" type="Material" id=1]
-[ext_resource path="res://Station/Fenster.tres" type="Material" id=2]
-[ext_resource path="res://Station/Metal Plates.material" type="Material" id=3]
+[ext_resource path="res://Station/SpaceStation/Metal scratched_001.material" type="Material" id=1]
+[ext_resource path="res://Station/SpaceStation/Fenster.tres" type="Material" id=2]
+[ext_resource path="res://Station/SpaceStation/Metal Plates.material" type="Material" id=3]
 [ext_resource path="res://assets/materials/Plates.material" type="Material" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
