@@ -53,5 +53,11 @@ func _on_container_clicked(container:MissionContainer):
 		print(docked_ship)
 		print_debug("mission_accepted hit, but not executed!")
 
+func add_container(c: MissionContainer):
+	$Inventory.addContainerOnFree(c)
 
+func has_Space() -> bool:
+	return $Inventory.hasSpace()
 
+func stock(cargo)->int:
+	return $Inventory.stock(cargo)

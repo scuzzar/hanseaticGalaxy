@@ -34,7 +34,7 @@ func addContainerOnFree(container:MissionContainer) -> bool:
 			return true
 	return false
 
-func hadSpace() -> bool:
+func hasSpace() -> bool:
 	for i in slots.size():
 		var slot = slots[i]
 		if(slot.get_child_count() == 0):			
@@ -47,7 +47,13 @@ func hasContainer(container:MissionContainer) -> bool:
 			return true
 	return false
 
-
+func stock(cargo)->int:
+	var stock = 0
+	for slot in slots:
+		if(slot.get_child_count() == 1 and slot.get_child(0).cargo == cargo):
+			stock += 1
+	return stock
+	
 func removeContainer(container:MissionContainer) -> bool :	
 	for slot in slots:
 		if(slot.get_child_count() == 1 and slot.get_child(0)==container):

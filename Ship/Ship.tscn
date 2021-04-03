@@ -5,7 +5,7 @@
 [ext_resource path="res://Bodys/Ship.gd" type="Script" id=3]
 [ext_resource path="res://Ship/drive.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Ship/SimpleRocket/SimpleRocket.mesh" type="ArrayMesh" id=8]
-[ext_resource path="res://Station/SpaceStation/Inventory.gd" type="Script" id=9]
+[ext_resource path="res://Container/Inventory.gd" type="Script" id=9]
 [ext_resource path="res://Container/Container.scn" type="PackedScene" id=10]
 
 [sub_resource type="PhysicsMaterial" id=1]

@@ -72,7 +72,7 @@ func unload_containter(c : MissionContainer):
 	$Inventory.removeContainer(c)	
 
 func can_load_container() -> bool:
-	return $Inventory.hadSpace()
+	return $Inventory.hasSpace()
 
 func dock(target: Node):
 	self.docking_location = target

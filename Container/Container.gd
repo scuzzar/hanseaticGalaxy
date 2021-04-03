@@ -8,7 +8,7 @@ var origin :Node
 var loaded = false
 var reward = 100
 
-enum GOOD{
+enum CARGO{
 	METALS,
 	FOOD,
 	MACHINES,
@@ -18,12 +18,12 @@ enum GOOD{
 	LUXUS
 }
 
-export(GOOD) var good  
+export(CARGO) var cargo  
 
 signal clicked(sender)
 
 func _ready():
-	_set_good(good)
+	_set_cargo(cargo)
 
 func _on_input_event(camera, event, click_position, click_normal, shape_idx):
 	if(event is InputEventMouseButton and event.is_pressed()):
@@ -38,7 +38,8 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	if(self.get_tree()!=null): 	self.get_tree().get_nodes_in_group("consol")[0].text = ""
 
-func _set_good(good):
+func _set_cargo(pcargo):
+	self.cargo = pcargo
 	$Mesh/Metals.hide()
 	$Mesh/Food.hide()
 	$Mesh/Machines.hide()
@@ -48,19 +49,19 @@ func _set_good(good):
 	$Mesh/LuxusGoods.hide()
 	
 	
-	match good:
-		GOOD.METALS:
+	match cargo:
+		CARGO.METALS:
 			$Mesh/Metals.show()
-		GOOD.FOOD:
+		CARGO.FOOD:
 			$Mesh/Food.show()
-		GOOD.MACHINES:
+		CARGO.MACHINES:
 			$Mesh/Machines.show()
-		GOOD.ELECTRONICS:
+		CARGO.ELECTRONICS:
 			$Mesh/Electronics.show()
-		GOOD.CONSUMERS:
+		CARGO.CONSUMERS:
 			$Mesh/ConsomerGoods.show()
-		GOOD.RARE_METALS:
+		CARGO.RARE_METALS:
 			$Mesh/RareMetal.show()
-		GOOD.LUXUS:
+		CARGO.LUXUS:
 			$Mesh/LuxusGoods.show()
 			

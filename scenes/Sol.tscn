@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Ship/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Bodys/Mimas.material" type="Material" id=11]
 [ext_resource path="res://scenes/Weltall.tres" type="Environment" id=12]
 [ext_resource path="res://Bodys/Sun.material" type="Material" id=13]
+[ext_resource path="res://Container/CargoGenerator.scn" type="PackedScene" id=14]
 [ext_resource path="res://Bodys/Phobos.material" type="Material" id=15]
 [ext_resource path="res://Bodys/tex/NASA/mar2kuu2.jpg" type="Texture" id=16]
 
@@ -127,6 +128,10 @@ show_orbit = true
 [node name="BrasiliaPort" parent="Earth" instance=ExtResource( 4 )]
 transform = Transform( -0.75811, 0.652126, -5.57647e-08, -1.15933e-07, -4.92623e-08, 1, 0.652126, 0.75811, 1.12949e-07, 37.4452, 0, 54.9419 )
 defaultMissionDestination_path = NodePath("../PhilipinPort")
+
+[node name="CargoGenerator" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
+cargo = 6
+wait_time = 1.0
 
 [node name="PhilipinPort" parent="Earth" instance=ExtResource( 4 )]
 transform = Transform( 0.86472, -0.502251, -3.44638e-08, -5.9375e-09, -7.88407e-08, 1, -0.502251, -0.86472, -7.11574e-08, -29.1698, 0, -59.7739 )
