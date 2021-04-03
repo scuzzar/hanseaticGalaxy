@@ -3,7 +3,7 @@ extends Spatial
 class_name Port
 
 
-var MissionContainerScene = preload("res://Station/Container/Container.scn")
+var MissionContainerScene = preload("res://Container/Container.scn")
 
 export(NodePath) var defaultMissionDestination_path
 var defaultMissionDestination :Node

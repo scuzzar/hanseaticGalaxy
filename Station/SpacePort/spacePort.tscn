@@ -3,7 +3,7 @@
 [ext_resource path="res://Station/SpacePort/SpacePort.mesh" type="ArrayMesh" id=1]
 [ext_resource path="res://Station/SpaceStation/Inventory.gd" type="Script" id=2]
 [ext_resource path="res://Station/SpacePort/spacePort.gd" type="Script" id=3]
-[ext_resource path="res://Station/Container/Container.scn" type="PackedScene" id=4]
+[ext_resource path="res://Container/Container.scn" type="PackedScene" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 5.44332, 1, 1 )

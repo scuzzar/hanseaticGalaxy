@@ -6,7 +6,7 @@
 [ext_resource path="res://Ship/drive.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Ship/SimpleRocket/SimpleRocket.mesh" type="ArrayMesh" id=8]
 [ext_resource path="res://Station/SpaceStation/Inventory.gd" type="Script" id=9]
-[ext_resource path="res://Station/Container/Container.scn" type="PackedScene" id=10]
+[ext_resource path="res://Container/Container.scn" type="PackedScene" id=10]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 3.0
@@ -37,7 +37,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -
 [node name="dummy" parent="Inventory/slot1" instance=ExtResource( 10 )]
 
 [node name="slot2" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -2.06426 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1.3629 )
 
 [node name="dummy" parent="Inventory/slot2" instance=ExtResource( 10 )]
 

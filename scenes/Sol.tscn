@@ -143,6 +143,3 @@ material = ExtResource( 3 )
 [node name="ApolloPort" parent="Earth/Moon" instance=ExtResource( 4 )]
 transform = Transform( -0.901832, -0.432083, -3.94204e-08, 4.37114e-08, 1.91069e-15, -1, 0.432083, -0.901832, 1.88869e-08, -32.5841, 0, -58.159 )
 defaultMissionDestination_path = NodePath("../../PhilipinPort")
-
-[connection signal="credits_changed" from="Ship" to="HUD" method="_on_Ship_credits_changed"]
-[connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]

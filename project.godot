@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "MissionContainer",
 "language": "GDScript",
-"path": "res://Station/Container/Container.gd"
+"path": "res://Container/Container.gd"
 }, {
 "base": "Rigid_N_Body",
 "class": "Planet",
