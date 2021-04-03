@@ -129,9 +129,15 @@ show_orbit = true
 transform = Transform( -0.75811, 0.652126, -5.57647e-08, -1.15933e-07, -4.92623e-08, 1, 0.652126, 0.75811, 1.12949e-07, 37.4452, 0, 54.9419 )
 defaultMissionDestination_path = NodePath("../PhilipinPort")
 
-[node name="CargoGenerator" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
+[node name="Luxus" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
 cargo = 6
+wait_time = 5.0
+max_store = 3
+
+[node name="Food" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
+cargo = 1
 wait_time = 1.0
+max_store = 5
 
 [node name="PhilipinPort" parent="Earth" instance=ExtResource( 4 )]
 transform = Transform( 0.86472, -0.502251, -3.44638e-08, -5.9375e-09, -7.88407e-08, 1, -0.502251, -0.86472, -7.11574e-08, -29.1698, 0, -59.7739 )
@@ -148,3 +154,6 @@ material = ExtResource( 3 )
 [node name="ApolloPort" parent="Earth/Moon" instance=ExtResource( 4 )]
 transform = Transform( -0.901832, -0.432083, -3.94204e-08, 4.37114e-08, 1.91069e-15, -1, 0.432083, -0.901832, 1.88869e-08, -32.5841, 0, -58.159 )
 defaultMissionDestination_path = NodePath("../../PhilipinPort")
+
+[connection signal="credits_changed" from="Ship" to="HUD" method="_on_Ship_credits_changed"]
+[connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]

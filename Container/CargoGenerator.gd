@@ -17,8 +17,10 @@ func _on_GenTimer_timeout():
 		port.add_container(c)
 		
 
+
 func _generate_mission() -> MissionContainer:
 	var c = MissionContainerScene.instance()	
 	c.destination = port.defaultMissionDestination
 	c._set_cargo(cargo)
+	c.reward = c.getPrice()
 	return c

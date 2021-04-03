@@ -6,7 +6,7 @@ var destination :Node
 var origin :Node
 
 var loaded = false
-var reward = 100
+
 
 enum CARGO{
 	METALS,
@@ -16,6 +16,16 @@ enum CARGO{
 	CONSUMERS,
 	RARE_METALS,
 	LUXUS
+}
+var reward = 0
+var price ={
+	CARGO.METALS:100,
+	CARGO.FOOD:150,
+	CARGO.MACHINES:500,
+	CARGO.ELECTRONICS:800,
+	CARGO.CONSUMERS:200,
+	CARGO.RARE_METALS:350,
+	CARGO.LUXUS:1400
 }
 
 export(CARGO) var cargo  
@@ -34,6 +44,8 @@ func _on_mouse_entered():
 	if(self.get_tree()!=null): self.get_tree().get_nodes_in_group("consol")[0].text = destination.name
 	print("Destination:" + destination.name)	
 
+func getPrice()-> int:
+	return price[cargo]
 
 func _on_mouse_exited():
 	if(self.get_tree()!=null): 	self.get_tree().get_nodes_in_group("consol")[0].text = ""
