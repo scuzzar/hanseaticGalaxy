@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Port",
 "language": "GDScript",
-"path": "res://Station/SpacePort/spacePort.gd"
+"path": "res://SpacePort/spacePort.gd"
 }, {
 "base": "RigidBody",
 "class": "Rigid_N_Body",

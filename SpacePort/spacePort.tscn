@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://SpacePort/SpacePort.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://Container/Inventory.gd" type="Script" id=2]
+[ext_resource path="res://SpacePort/spacePort.gd" type="Script" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 5.44332, 1, 1 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 4.53114, 0.496045, 1.21608 )
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="OmniLight3" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.131518, 1.75514, -3.00055 )
+light_bake_mode = 2
+shadow_enabled = true
+omni_range = 5.5363
+
+[node name="OmniLight4" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59898, 3.70193, -2.22423 )
+shadow_enabled = true
+omni_range = 10.9499
+
+[node name="tanklight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.19472, 3.94149, -5.2051 )
+shadow_enabled = true
+omni_range = 5.14374
+
+[node name="RigidBody" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+mode = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.161, -1, -0.004 )
+shape = SubResource( 1 )
+
+[node name="Mesh" type="MeshInstance" parent="."]
+transform = Transform( 0.973207, 0, -0.229931, 0, 1, 0, 0.229931, 0, 0.973207, 0, 1, 0 )
+use_in_baked_light = true
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82234, 0 )
+gravity = 0.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1.00141, 0, 0, 0, 1.00141, 0, 0, 0, 1.00141, 0, -0.906102, 0 )
+shape = SubResource( 2 )
+
+[node name="Inventory" type="Spatial" parent="."]
+script = ExtResource( 2 )
+
+[node name="slot1" type="Position3D" parent="Inventory"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12365, 0.974701, 2.98059 )
+
+[node name="slot2" type="Position3D" parent="Inventory"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4572, 0.974701, 2.98059 )
+
+[node name="slot3" type="Position3D" parent="Inventory"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.878462, 0.974701, 2.98059 )
+
+[node name="slot4" type="Position3D" parent="Inventory"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.332042, 0.974701, 2.98059 )
+
+[node name="slot5" type="Position3D" parent="Inventory"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.222436, 0.974701, 2.98059 )
+
+[node name="slot6" type="Position3D" parent="Inventory"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.88889, 0.974701, 2.98059 )
+
+[node name="slot7" type="Position3D" parent="Inventory"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46762, 0.974701, 2.98059 )
+
+[node name="slot8" type="Position3D" parent="Inventory"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01404, 0.974701, 2.98059 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
+[connection signal="container_clicked" from="Inventory" to="." method="_on_container_clicked"]
