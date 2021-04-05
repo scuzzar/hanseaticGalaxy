@@ -1,8 +1,11 @@
 extends Node
 
 export(MissionContainer.CARGO) var cargo
+onready var cargoName = MissionContainer.new().names[cargo]
 export(float) var wait_time = 10
 export(int) var max_store = 100
+
+const groupTag = "_TARGET"
 
 onready var port:Port = self.get_parent()
 var MissionContainerScene = preload("res://Container/Container.scn")
@@ -19,8 +22,28 @@ func _on_GenTimer_timeout():
 
 
 func _generate_mission() -> MissionContainer:
-	var c = MissionContainerScene.instance()	
-	c.destination = port.defaultMissionDestination
+	var c = MissionContainerScene.instance()
+	c.origin = port
+	c.destination = self._select_destination()	
 	c._set_cargo(cargo)
-	c.reward = c.getPrice()
+	
+	var distance = c.getDistance()
+	print(distance)
+	c.reward = round(c.getPrice() * log(distance))
 	return c
+
+func _select_destination()->Port:
+	var target:CargoTarget 	
+	var possibleTargets = self.get_tree().get_nodes_in_group(cargoName+groupTag)
+	if(possibleTargets.size()>0):
+		target = possibleTargets[randi()%possibleTargets.size()]
+		return target.get_Port()
+	else:
+		return port.defaultMissionDestination
+
+
+	
+	
+	
+	
+	

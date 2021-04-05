@@ -2,8 +2,8 @@ extends Spatial
 
 class_name MissionContainer
 
-var destination :Node
-var origin :Node
+var destination :Spatial
+var origin :Spatial
 
 var loaded = false
 
@@ -28,6 +28,16 @@ var price ={
 	CARGO.LUXUS:1400
 }
 
+var names ={
+	CARGO.METALS:"Metals",
+	CARGO.FOOD:"Food",
+	CARGO.MACHINES:"Machines",
+	CARGO.ELECTRONICS:"Electronics",
+	CARGO.CONSUMERS:"ConsumerGoods",
+	CARGO.RARE_METALS:"RareMetals",
+	CARGO.LUXUS:"Luxus"
+}
+
 export(CARGO) var cargo  
 
 signal clicked(sender)
@@ -41,11 +51,16 @@ func _on_input_event(camera, event, click_position, click_normal, shape_idx):
 		emit_signal("clicked",self)	
 
 func _on_mouse_entered():
-	if(self.get_tree()!=null): self.get_tree().get_nodes_in_group("consol")[0].text = destination.name
-	print("Destination:" + destination.name)	
+	var text = "Destination: " + destination.name + " (" + str(self.reward) +"c) " + str(round(getDistance())) + "km"
+	if(self.get_tree()!=null): self.get_tree().get_nodes_in_group("consol")[0].text = text
+	print(text)	
 
 func getPrice()-> int:
 	return price[cargo]
+
+func getDistance()->float:
+	if(origin==null or destination==null): return 0.0	
+	return origin.global_transform.origin.distance_to(destination.global_transform.origin) 
 
 func _on_mouse_exited():
 	if(self.get_tree()!=null): 	self.get_tree().get_nodes_in_group("consol")[0].text = ""

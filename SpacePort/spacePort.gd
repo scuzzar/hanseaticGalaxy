@@ -6,7 +6,7 @@ class_name Port
 var MissionContainerScene = preload("res://Container/Container.scn")
 
 export(NodePath) var defaultMissionDestination_path
-var defaultMissionDestination :Node
+var defaultMissionDestination :Port
 
 var docked_ship: Ship
 

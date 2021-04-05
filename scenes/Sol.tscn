@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Ship/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Container/CargoGenerator.scn" type="PackedScene" id=14]
 [ext_resource path="res://Bodys/Phobos.material" type="Material" id=15]
 [ext_resource path="res://Bodys/tex/NASA/mar2kuu2.jpg" type="Texture" id=16]
+[ext_resource path="res://scenes/CargoTarget.gd" type="Script" id=17]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 16 )
@@ -62,6 +63,10 @@ show_orbit = true
 [node name="OlympusPort" parent="Mars" instance=ExtResource( 4 )]
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 66.7469, 0, 0 )
 defaultMissionDestination_path = NodePath("../../Earth/BrasiliaPort")
+
+[node name="Food_T" type="Node" parent="Mars/OlympusPort"]
+script = ExtResource( 17 )
+cargo = 1
 
 [node name="Deimos" parent="Mars" instance=ExtResource( 2 )]
 transform = Transform( 0.286183, 0, 0, 0, 0.286183, 0, 0, 0, 0.286183, -567.991, 7.25164e-06, 1.40234 )
@@ -129,12 +134,12 @@ show_orbit = true
 transform = Transform( -0.75811, 0.652126, -5.57647e-08, -1.15933e-07, -4.92623e-08, 1, 0.652126, 0.75811, 1.12949e-07, 37.4452, 0, 54.9419 )
 defaultMissionDestination_path = NodePath("../PhilipinPort")
 
-[node name="Luxus" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
+[node name="LuxusGen" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
 cargo = 6
 wait_time = 5.0
 max_store = 3
 
-[node name="Food" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
+[node name="FoodGen" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
 cargo = 1
 wait_time = 1.0
 max_store = 5
@@ -154,6 +159,10 @@ material = ExtResource( 3 )
 [node name="ApolloPort" parent="Earth/Moon" instance=ExtResource( 4 )]
 transform = Transform( -0.901832, -0.432083, -3.94204e-08, 4.37114e-08, 1.91069e-15, -1, 0.432083, -0.901832, 1.88869e-08, -32.5841, 0, -58.159 )
 defaultMissionDestination_path = NodePath("../../PhilipinPort")
+
+[node name="Food_T" type="Node" parent="Earth/Moon/ApolloPort"]
+script = ExtResource( 17 )
+cargo = 1
 
 [connection signal="credits_changed" from="Ship" to="HUD" method="_on_Ship_credits_changed"]
 [connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]
