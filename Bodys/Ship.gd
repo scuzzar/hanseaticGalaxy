@@ -11,14 +11,15 @@ export var credits = 0
 
 var docking_location: Node
 
+signal fuel_changed(fuel, fuel_cap)
+signal credits_changed(credits)
+signal mass_changed(mass,trust)
+
 func _ready():
 	._ready()	
-	emit_signal("fuel_changed",fuel)
+	emit_signal("fuel_changed",fuel, fuel_cap)
 	emit_signal("credits_changed",credits)
-	print("ship:",trust/mass)
-	
-signal fuel_changed(fuel)
-signal credits_changed(credits)
+	emit_signal("mass_changed",mass,trust)	
 
 func _integrate_forces(state:PhysicsDirectBodyState):
 	._integrate_forces(state)
@@ -53,7 +54,7 @@ func burn_fuel(fuel_cost:float):
 	
 func set_fuel(pFuel:float):
 	fuel = pFuel
-	emit_signal("fuel_changed",fuel)
+	emit_signal("fuel_changed",fuel, fuel_cap)
 
 func _burn_forward(state:PhysicsDirectBodyState):	
 	var force = _get_forward_vector()*trust
@@ -69,12 +70,14 @@ func load_containter(c : MissionContainer) -> bool:
 	var added = $Inventory.addContainerOnFree(c)
 	self.mass += c.getMass()
 	print("ship:",trust/mass)
+	emit_signal("mass_changed",mass,trust)
 	return added
 
 func unload_containter(c : MissionContainer):
-	self.mass -= c.getMass()
-	print("ship:",trust/mass)
+	self.mass -= c.getMass()	
 	$Inventory.removeContainer(c)	
+	print("ship:",trust/mass)
+	emit_signal("mass_changed",mass,trust)
 
 func can_load_container() -> bool:
 	return $Inventory.hasSpace()

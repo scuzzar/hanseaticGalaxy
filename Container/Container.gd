@@ -19,12 +19,12 @@ enum CARGO{
 }
 var reward = 0
 var price ={
-	CARGO.METALS:100,
-	CARGO.FOOD:150,
-	CARGO.MACHINES:500,
-	CARGO.ELECTRONICS:800,
-	CARGO.CONSUMERS:200,
-	CARGO.RARE_METALS:350,
+	CARGO.METALS:2000,
+	CARGO.FOOD:400,
+	CARGO.MACHINES:1700,
+	CARGO.ELECTRONICS:1000,
+	CARGO.CONSUMERS:900,
+	CARGO.RARE_METALS:2500,
 	CARGO.LUXUS:1400
 }
 
@@ -66,12 +66,15 @@ func _on_mouse_entered():
 func _to_string()->String:
 	if(destination!=null):
 	#var text = "Destination: " + destination.name + " (" + str(self.reward) +"c) " + str(round(getDistance())) + "km"
-		return "> " + destination.name + "  " + str(self.reward) +" c "
+		return  getCargoName() + " >    " + destination.name + "    C:" + str(self.reward) +"    MASS:" + str(self.getMass())
 	else:
 		return "nullDestination"
 
 func getPrice()-> int:
 	return price[cargo]
+
+func getCargoName()-> String:
+	return names[cargo]
 
 func getDistance()->float:
 	if(origin==null or destination==null): return 0.0	

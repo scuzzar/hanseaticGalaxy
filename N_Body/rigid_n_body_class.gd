@@ -13,8 +13,11 @@ export(NodePath) var SOI_Body
 onready var soi_node = self.get_node_or_null(SOI_Body)
 export var show_soi_relativ_sim = true
 
-var last_g_force = Vector3(0,0,0)
+signal g_force_update(force)
 
+var last_g_force = Vector3(0,0,0)
+var last_g_force_strongest_Body
+var last_g_force_strongest_Body_force
 var G = 50
 
 onready var bodys = []
@@ -55,6 +58,7 @@ func _process(delta):
 
 func _integrate_forces(state):	
 	last_g_force = g_force(self.translation)
+	emit_signal("g_force_update",last_g_force)
 	state.add_central_force(last_g_force / 2)
 	state.add_central_force(last_g_force / 2)
 	self.velocety = state.linear_velocity

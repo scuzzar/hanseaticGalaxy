@@ -1,11 +1,14 @@
 extends Control
 
-var ship : Ship
+
 
 onready var fuel_bar = $Fuel/FuelBar
 onready var credit_labe = $Credits/Value
-func _enter_tree():
-	ship = $"../Ship"
+onready var tmr_labe = $TMR/Value
+onready var g_labe = $G_Meter/Value
+onready var mass_labe = $MASS/Value
+
+var ship_mass = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():	
@@ -15,10 +18,20 @@ func _process(delta):
 	#$Fuel.text = String(ship.fuel)
 	pass
 
-func _on_Ship_fuel_changed(fuel):
+func _on_Ship_fuel_changed(fuel,fuel_cap):
 	#fuel_label.text = String(round(fuel))
-	fuel_bar.value = int(fuel / ship.fuel_cap *100)
+	fuel_bar.value = int(fuel / fuel_cap *100)
 
 
 func _on_Ship_credits_changed(credits):
 	credit_labe.text = str(credits)
+
+
+func _on_Ship_mass_changed(mass, trust):
+	ship_mass = mass
+	mass_labe.text = str(mass)
+	tmr_labe.text = str("%0.2f" % (trust/mass))
+
+
+func _on_Ship_g_force_update(force):
+	g_labe.text = str("%0.2f" % (force.length()/ship_mass))

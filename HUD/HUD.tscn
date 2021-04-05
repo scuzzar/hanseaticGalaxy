@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://HUD/FuelBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://HUD/Credits.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD/theme/default_theme.theme" type="Theme" id=4]
+[ext_resource path="res://HUD/TMR.tscn" type="PackedScene" id=5]
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
@@ -16,17 +17,81 @@ __meta__ = {
 
 [node name="Credits" parent="." instance=ExtResource( 3 )]
 
+[node name="MASS" type="HSplitContainer" parent="."]
+margin_left = 8.81942
+margin_top = 6.2996
+margin_right = 205.821
+margin_bottom = 46.2996
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MASS"]
+margin_top = 9.0
+margin_right = 70.0
+margin_bottom = 30.0
+theme = ExtResource( 4 )
+text = "MASS:"
+
+[node name="Value" type="Label" parent="MASS"]
+margin_left = 82.0
+margin_top = 9.0
+margin_right = 197.001
+margin_bottom = 30.0
+theme = ExtResource( 4 )
+text = "100000"
+
+[node name="TMR" parent="." instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 31.498
+margin_top = 28.9781
+margin_right = 228.499
+margin_bottom = 68.9781
+
+[node name="G_Meter" type="HSplitContainer" parent="."]
+margin_left = 57.957
+margin_top = 54.1766
+margin_right = 254.957
+margin_bottom = 94.1766
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="G_Meter"]
+margin_top = 9.0
+margin_right = 21.0
+margin_bottom = 30.0
+theme = ExtResource( 4 )
+text = "g:"
+
+[node name="Value" type="Label" parent="G_Meter"]
+margin_left = 33.0
+margin_top = 9.0
+margin_right = 197.0
+margin_bottom = 30.0
+theme = ExtResource( 4 )
+text = "100000"
+
 [node name="Fuel" parent="." instance=ExtResource( 2 )]
-margin_left = 45.0959
-margin_right = 505.096
+margin_left = 28.7169
+margin_top = -47.4584
+margin_right = 488.717
+margin_bottom = -26.4584
 
 [node name="Consol" type="Label" parent="." groups=[
 "consol",
 ]]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -21.0
-margin_right = 153.0
+margin_left = 20.1587
+margin_top = -48.7183
+margin_right = 173.159
+margin_bottom = -27.7183
 theme = ExtResource( 4 )
 text = "Destination:"
 __meta__ = {

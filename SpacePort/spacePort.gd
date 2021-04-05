@@ -6,14 +6,18 @@ class_name Port
 var MissionContainerScene = preload("res://Container/Container.scn")
 
 export(NodePath) var defaultMissionDestination_path
-var defaultMissionDestination :Port
+var _defaultMissionDestination :Port
 
 var docked_ship: Ship
 
 func _ready():	
 	docked_ship = null
-	defaultMissionDestination =  get_node_or_null(defaultMissionDestination_path)
+	#_defaultMissionDestination =  get_node_or_null(defaultMissionDestination_path)
 
+func get_default_location()->Port:
+	if(_defaultMissionDestination==null):
+		_defaultMissionDestination =  get_node_or_null(defaultMissionDestination_path)
+	return _defaultMissionDestination
 
 func _on_Area_body_entered(body):
 	if(body is Ship):		
