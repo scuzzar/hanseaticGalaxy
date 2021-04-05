@@ -15,6 +15,7 @@ func _ready():
 	._ready()	
 	emit_signal("fuel_changed",fuel)
 	emit_signal("credits_changed",credits)
+	print("ship:",trust/mass)
 	
 signal fuel_changed(fuel)
 signal credits_changed(credits)
@@ -86,3 +87,4 @@ func container_clicked(c: MissionContainer):
 		self.unload_containter(c)		
 	else:
 		print("container hit on Ship:" + c.destination.name)
+

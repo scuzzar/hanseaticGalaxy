@@ -26,3 +26,9 @@ material_override = ExtResource( 2 )
 use_in_baked_light = true
 mesh = ExtResource( 3 )
 material/0 = null
+
+[node name="CSGBox" type="CSGBox" parent="."]
+visible = false
+width = 135.201
+height = 135.145
+depth = 134.34

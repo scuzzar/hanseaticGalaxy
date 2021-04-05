@@ -42,6 +42,7 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 51.112,
 show_soi_relativ_sim = false
 show_sim = false
 history_lenth = 30
+trust = 300.0
 
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 transform = Transform( 2, 0, 0, 0, 0.66219, -1.88719, 0, 1.88719, 0.66219, 0, 0, 0 )
@@ -168,6 +169,7 @@ angular_velocity = Vector3( 0, 0.01, 0 )
 material = ExtResource( 9 )
 orbital_speed = 2
 show_orbit = true
+surface_g = 9.81
 
 [node name="BrasiliaPort" parent="Earth" instance=ExtResource( 4 )]
 transform = Transform( -0.75811, 0.652126, -5.57647e-08, -1.15933e-07, -4.92623e-08, 1, 0.652126, 0.75811, 1.12949e-07, 37.4452, 0, 54.9419 )
@@ -215,6 +217,7 @@ mode = 3
 mass = 100.0
 material = ExtResource( 3 )
 radius = 2500.0
+surface_g = 1.62
 
 [node name="ApolloPort" parent="Earth/Moon" instance=ExtResource( 4 )]
 transform = Transform( -0.901832, -0.432083, -3.94204e-08, 4.37114e-08, 1.91069e-15, -1, 0.432083, -0.901832, 1.88869e-08, -10.1735, 3.8147e-06, -23.4263 )

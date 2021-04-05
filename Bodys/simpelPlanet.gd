@@ -15,6 +15,7 @@ var angle = 0
 export var orbital_speed = 1
 export var show_orbit = false setget set_show_orbit
 export var radius:float = 6371
+export(float) var surface_g = 5
 var angular_speed = 0 
 
 func _enter_tree():
@@ -27,28 +28,25 @@ func _enter_tree():
 func _ready():
 	$Shape/Mesh.material_override = material
 	isGravetySource = true
-	var s = radius/6371.0*68
-	print(s)
+	
+	var s = radius/6371.0*68	
 	$Shape.scale = Vector3(s,s,s)
+	
+	
+	
+	var r = $Shape/Mesh.get_aabb().get_longest_axis_size()*s/2
+	#var g = 50 *self.mass  /(r*r)
+	mass = (surface_g*r*r)/50
+	
+	#var surface_g_force = 
+	
 	if(orbit_radius>0.5):
 		angular_speed = 2*PI/(2*PI*orbit_radius/orbital_speed)	
 		angle = asin(translation.x/orbit_radius)	
 		var start = translation
 		var result = [start]
-		#for i in range(360):
-		#	var a = 2*PI/360*i
-		#	start = Vector3(sin(a)*radius,0,cos(a)*radius)
-		#	result.append(start)		
-		#orbit.draw_list(result)
-		#orbit.hide()
-
-#func _process(delta):
-	#if Engine.editor_hint:	
-	#	if(show_orbit):
-	#		orbit.show()
-	#	else:
-	#		orbit.hide()
 	
+
 func _physics_process(delta):
 	if !Engine.editor_hint:	
 		angle += (angular_speed *delta)	

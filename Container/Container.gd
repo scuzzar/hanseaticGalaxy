@@ -50,11 +50,15 @@ func _on_input_event(camera, event, click_position, click_normal, shape_idx):
 		print("hit")
 		emit_signal("clicked",self)	
 
-func _on_mouse_entered():
+func _on_mouse_entered():	
+	if(self.get_tree()!=null): self.get_tree().get_nodes_in_group("consol")[0].text = str(self)
+	
+func _to_string()->String:
+	if(destination!=null):
 	#var text = "Destination: " + destination.name + " (" + str(self.reward) +"c) " + str(round(getDistance())) + "km"
-	var text = "Destination: " + destination.name + "  " + str(self.reward) +" c "
-	if(self.get_tree()!=null): self.get_tree().get_nodes_in_group("consol")[0].text = text
-	print(text)	
+		return "> " + destination.name + "  " + str(self.reward) +" c "
+	else:
+		return "nullDestination"
 
 func getPrice()-> int:
 	return price[cargo]
