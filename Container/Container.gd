@@ -38,6 +38,16 @@ var names ={
 	CARGO.LUXUS:"Luxus"
 }
 
+var mass ={
+	CARGO.METALS:20,
+	CARGO.FOOD:5,
+	CARGO.MACHINES:15,
+	CARGO.ELECTRONICS:8,
+	CARGO.CONSUMERS:6,
+	CARGO.RARE_METALS:18,
+	CARGO.LUXUS:5
+}
+
 export(CARGO) var cargo  
 
 signal clicked(sender)
@@ -66,6 +76,9 @@ func getPrice()-> int:
 func getDistance()->float:
 	if(origin==null or destination==null): return 0.0	
 	return origin.global_transform.origin.distance_to(destination.global_transform.origin) 
+
+func getMass()->float:
+	return mass[cargo]
 
 func _on_mouse_exited():
 	if(self.get_tree()!=null): 	self.get_tree().get_nodes_in_group("consol")[0].text = ""

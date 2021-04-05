@@ -66,10 +66,14 @@ func reward(reward_credits : int):
 	emit_signal("credits_changed",credits)
 
 func load_containter(c : MissionContainer) -> bool:
-	var added = $Inventory.addContainerOnFree(c)	
+	var added = $Inventory.addContainerOnFree(c)
+	self.mass += c.getMass()
+	print("ship:",trust/mass)
 	return added
 
-func unload_containter(c : MissionContainer):	
+func unload_containter(c : MissionContainer):
+	self.mass -= c.getMass()
+	print("ship:",trust/mass)
 	$Inventory.removeContainer(c)	
 
 func can_load_container() -> bool:
