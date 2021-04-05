@@ -76,19 +76,20 @@ script = ExtResource( 17 )
 [node name="G_Machine" parent="Mars/OlympusPort" instance=ExtResource( 14 )]
 cargo = 2
 wait_time = 120.0
-max_store = 3
+max_store = 5
+init_store = 3
 
 [node name="G_Food" parent="Mars/OlympusPort" instance=ExtResource( 14 )]
 cargo = 1
 wait_time = 60.0
-max_store = 2
+max_store = 4
 init_store = 3
 
 [node name="G_Consumers" parent="Mars/OlympusPort" instance=ExtResource( 14 )]
 cargo = 4
 wait_time = 20.0
-max_store = 3
-init_store = 2
+max_store = 6
+init_store = 4
 
 [node name="Deimos" parent="Mars" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -567.991, 7.25164e-06, 1.40234 )
@@ -173,6 +174,33 @@ radius = 5000.0
 transform = Transform( 0.826119, 0.563495, 3.61108e-08, 4.37114e-08, 1.91069e-15, -1, -0.563495, 0.826119, -2.46311e-08, 31.1943, 6.81196e-07, 41.7144 )
 defaultMissionDestination_path = NodePath("../../../Earth/Moon/ApolloPort")
 
+[node name="G_Electronics" parent="Saturn/Titan/TitanPort" instance=ExtResource( 14 )]
+cargo = 3
+wait_time = 20.0
+max_store = 5
+init_store = 5
+
+[node name="G_Rare" parent="Saturn/Titan/TitanPort" instance=ExtResource( 14 )]
+cargo = 5
+wait_time = 60.0
+max_store = 1
+
+[node name="T_Food" type="Node" parent="Saturn/Titan/TitanPort"]
+script = ExtResource( 17 )
+cargo = 1
+
+[node name="T_Machine" type="Node" parent="Saturn/Titan/TitanPort"]
+script = ExtResource( 17 )
+cargo = 2
+
+[node name="T_Consumers" type="Node" parent="Saturn/Titan/TitanPort"]
+script = ExtResource( 17 )
+cargo = 4
+
+[node name="T_Luxus" type="Node" parent="Saturn/Titan/TitanPort"]
+script = ExtResource( 17 )
+cargo = 6
+
 [node name="Earth" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.160339, -0.8367, 1830.62 )
 mode = 3
@@ -244,7 +272,13 @@ transform = Transform( -0.901832, -0.432083, -3.94204e-08, 4.37114e-08, 1.91069e
 defaultMissionDestination_path = NodePath("../../PhilipinPort")
 
 [node name="G_Metal" parent="Earth/Moon/ApolloPort" instance=ExtResource( 14 )]
-max_store = 3
+wait_time = 60.0
+max_store = 2
+
+[node name="G_Electronics" parent="Earth/Moon/ApolloPort" instance=ExtResource( 14 )]
+cargo = 3
+wait_time = 20.0
+max_store = 5
 init_store = 3
 
 [node name="T_Food" type="Node" parent="Earth/Moon/ApolloPort"]

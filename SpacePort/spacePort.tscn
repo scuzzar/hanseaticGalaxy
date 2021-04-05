@@ -78,6 +78,30 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46762, 0.974701, 2.98059 )
 [node name="slot8" type="Position3D" parent="Inventory"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01404, 0.974701, 2.98059 )
 
+[node name="slot9" type="Position3D" parent="Inventory"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12365, 0.974701, 2.32713 )
+
+[node name="slot10" type="Position3D" parent="Inventory"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4572, 0.974701, 2.32713 )
+
+[node name="slot11" type="Position3D" parent="Inventory"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.878462, 0.974701, 2.32713 )
+
+[node name="slot12" type="Position3D" parent="Inventory"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.332042, 0.974701, 2.32713 )
+
+[node name="slot13" type="Position3D" parent="Inventory"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.222436, 0.974701, 2.32713 )
+
+[node name="slot14" type="Position3D" parent="Inventory"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.88889, 0.974701, 2.32713 )
+
+[node name="slot15" type="Position3D" parent="Inventory"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46762, 0.974701, 2.32713 )
+
+[node name="slot16" type="Position3D" parent="Inventory"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01404, 0.974701, 2.32713 )
+
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
 [connection signal="container_clicked" from="Inventory" to="." method="_on_container_clicked"]
