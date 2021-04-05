@@ -11,7 +11,8 @@ onready var port:Port = self.get_parent()
 var MissionContainerScene = preload("res://Container/Container.scn")
 
 func _ready():
-	$GenTimer.wait_time = self.wait_time
+	self._generate_mission()	
+	$GenTimer.wait_time = self.wait_time	
 	$GenTimer.start()
 
 func _on_GenTimer_timeout():	

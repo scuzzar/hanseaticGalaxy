@@ -12,15 +12,7 @@ var docked_ship: Ship
 
 func _ready():	
 	docked_ship = null
-	self._generate_mission()
-	self._generate_mission()
 
-func _generate_mission():
-	var c = MissionContainerScene.instance()
-	defaultMissionDestination =  get_node_or_null(defaultMissionDestination_path)
-	c.destination = defaultMissionDestination	
-	#print(self.name + " d_dest:" + defaultMissionDestination.name)	
-	$Inventory.addContainerOnFree(c)
 
 func _on_Area_body_entered(body):
 	if(body is Ship):		

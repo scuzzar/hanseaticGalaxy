@@ -68,12 +68,38 @@ defaultMissionDestination_path = NodePath("../../Earth/BrasiliaPort")
 script = ExtResource( 17 )
 cargo = 1
 
+[node name="T_Rare_Metal" type="Node" parent="Mars/OlympusPort"]
+script = ExtResource( 17 )
+cargo = 5
+
+[node name="G_Machine" parent="Mars/OlympusPort" instance=ExtResource( 14 )]
+cargo = 2
+wait_time = 120.0
+max_store = 3
+
 [node name="Deimos" parent="Mars" instance=ExtResource( 2 )]
 transform = Transform( 0.286183, 0, 0, 0, 0.286183, 0, 0, 0, 0.286183, -567.991, 7.25164e-06, 1.40234 )
 mode = 3
 mass = 30.0
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = SubResource( 1 )
+
+[node name="DeimosPort" parent="Mars/Deimos" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 66.7469, 0, 0 )
+defaultMissionDestination_path = NodePath("../../Earth/BrasiliaPort")
+
+[node name="T_Food" type="Node" parent="Mars/Deimos/DeimosPort"]
+script = ExtResource( 17 )
+cargo = 1
+
+[node name="G_Rare" parent="Mars/Deimos/DeimosPort" instance=ExtResource( 14 )]
+cargo = 5
+wait_time = 60.0
+max_store = 3
+
+[node name="T_Machine" type="Node" parent="Mars/Deimos/DeimosPort"]
+script = ExtResource( 17 )
+cargo = 2
 
 [node name="Phobos" parent="Mars" instance=ExtResource( 2 )]
 transform = Transform( 0.286183, 0, 0, 0, 0.286183, 0, 0, 0, 0.286183, 272.285, -8.1155e-07, -2.46143 )
@@ -132,21 +158,37 @@ show_orbit = true
 
 [node name="BrasiliaPort" parent="Earth" instance=ExtResource( 4 )]
 transform = Transform( -0.75811, 0.652126, -5.57647e-08, -1.15933e-07, -4.92623e-08, 1, 0.652126, 0.75811, 1.12949e-07, 37.4452, 0, 54.9419 )
-defaultMissionDestination_path = NodePath("../PhilipinPort")
+defaultMissionDestination_path = NodePath("../Moon/ApolloPort")
 
-[node name="LuxusGen" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
+[node name="G_Luxus" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
 cargo = 6
-wait_time = 5.0
+wait_time = 20.0
 max_store = 3
 
-[node name="FoodGen" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
+[node name="G_Food" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
 cargo = 1
-wait_time = 1.0
+wait_time = 5.0
 max_store = 5
+
+[node name="T_Rare_Metal" type="Node" parent="Earth/BrasiliaPort"]
+script = ExtResource( 17 )
+cargo = 5
 
 [node name="PhilipinPort" parent="Earth" instance=ExtResource( 4 )]
 transform = Transform( 0.86472, -0.502251, -3.44638e-08, -5.9375e-09, -7.88407e-08, 1, -0.502251, -0.86472, -7.11574e-08, -29.1698, 0, -59.7739 )
 defaultMissionDestination_path = NodePath("../../Mars/OlympusPort")
+
+[node name="G_Machine" parent="Earth/PhilipinPort" instance=ExtResource( 14 )]
+cargo = 2
+wait_time = 120.0
+max_store = 3
+
+[node name="T_Food" type="Node" parent="Earth/PhilipinPort"]
+script = ExtResource( 17 )
+cargo = 1
+
+[node name="T_Metal" type="Node" parent="Earth/PhilipinPort"]
+script = ExtResource( 17 )
 
 [node name="Moon" parent="Earth" groups=[
 "bodys",
@@ -160,9 +202,12 @@ material = ExtResource( 3 )
 transform = Transform( -0.901832, -0.432083, -3.94204e-08, 4.37114e-08, 1.91069e-15, -1, 0.432083, -0.901832, 1.88869e-08, -32.5841, 0, -58.159 )
 defaultMissionDestination_path = NodePath("../../PhilipinPort")
 
-[node name="Food_T" type="Node" parent="Earth/Moon/ApolloPort"]
+[node name="T_Food" type="Node" parent="Earth/Moon/ApolloPort"]
 script = ExtResource( 17 )
 cargo = 1
+
+[node name="G_Metal" parent="Earth/Moon/ApolloPort" instance=ExtResource( 14 )]
+max_store = 3
 
 [connection signal="credits_changed" from="Ship" to="HUD" method="_on_Ship_credits_changed"]
 [connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]
