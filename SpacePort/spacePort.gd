@@ -12,6 +12,7 @@ var docked_ship: Ship
 
 func _ready():	
 	docked_ship = null
+	defaultMissionDestination =  get_node_or_null(defaultMissionDestination_path)
 
 
 func _on_Area_body_entered(body):

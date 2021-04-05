@@ -40,7 +40,7 @@ func _select_destination()->Port:
 		target = possibleTargets[randi()%possibleTargets.size()]
 		return target.get_Port()
 	else:
-		return port.defaultMissionDestination
+		return port.defaultMissionDestination as Port
 
 
 	

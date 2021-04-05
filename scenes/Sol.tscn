@@ -64,13 +64,17 @@ show_orbit = true
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 66.7469, 0, 0 )
 defaultMissionDestination_path = NodePath("../../Earth/BrasiliaPort")
 
-[node name="Food_T" type="Node" parent="Mars/OlympusPort"]
+[node name="T_Food" type="Node" parent="Mars/OlympusPort"]
 script = ExtResource( 17 )
 cargo = 1
 
 [node name="T_Rare_Metal" type="Node" parent="Mars/OlympusPort"]
 script = ExtResource( 17 )
 cargo = 5
+
+[node name="T_Luxus" type="Node" parent="Mars/OlympusPort"]
+script = ExtResource( 17 )
+cargo = 6
 
 [node name="G_Machine" parent="Mars/OlympusPort" instance=ExtResource( 14 )]
 cargo = 2
@@ -92,14 +96,18 @@ defaultMissionDestination_path = NodePath("../../Earth/BrasiliaPort")
 script = ExtResource( 17 )
 cargo = 1
 
+[node name="T_Machine" type="Node" parent="Mars/Deimos/DeimosPort"]
+script = ExtResource( 17 )
+cargo = 2
+
 [node name="G_Rare" parent="Mars/Deimos/DeimosPort" instance=ExtResource( 14 )]
 cargo = 5
 wait_time = 60.0
 max_store = 3
 
-[node name="T_Machine" type="Node" parent="Mars/Deimos/DeimosPort"]
+[node name="T_Luxus" type="Node" parent="Mars/Deimos/DeimosPort"]
 script = ExtResource( 17 )
-cargo = 2
+cargo = 6
 
 [node name="Phobos" parent="Mars" instance=ExtResource( 2 )]
 transform = Transform( 0.286183, 0, 0, 0, 0.286183, 0, 0, 0, 0.286183, 272.285, -8.1155e-07, -2.46143 )
@@ -190,6 +198,10 @@ cargo = 1
 [node name="T_Metal" type="Node" parent="Earth/PhilipinPort"]
 script = ExtResource( 17 )
 
+[node name="T_Luxus" type="Node" parent="Earth/PhilipinPort"]
+script = ExtResource( 17 )
+cargo = 6
+
 [node name="Moon" parent="Earth" groups=[
 "bodys",
 ] instance=ExtResource( 2 )]
@@ -208,6 +220,10 @@ cargo = 1
 
 [node name="G_Metal" parent="Earth/Moon/ApolloPort" instance=ExtResource( 14 )]
 max_store = 3
+
+[node name="T_Luxus" type="Node" parent="Earth/Moon/ApolloPort"]
+script = ExtResource( 17 )
+cargo = 6
 
 [connection signal="credits_changed" from="Ship" to="HUD" method="_on_Ship_credits_changed"]
 [connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]
