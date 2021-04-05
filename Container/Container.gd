@@ -51,7 +51,8 @@ func _on_input_event(camera, event, click_position, click_normal, shape_idx):
 		emit_signal("clicked",self)	
 
 func _on_mouse_entered():
-	var text = "Destination: " + destination.name + " (" + str(self.reward) +"c) " + str(round(getDistance())) + "km"
+	#var text = "Destination: " + destination.name + " (" + str(self.reward) +"c) " + str(round(getDistance())) + "km"
+	var text = "Destination: " + destination.name + "  " + str(self.reward) +" c "
 	if(self.get_tree()!=null): self.get_tree().get_nodes_in_group("consol")[0].text = text
 	print(text)	
 
