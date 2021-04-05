@@ -17,13 +17,12 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Mesh" type="MeshInstance" parent="."]
+[node name="Shape" type="CollisionShape" parent="."]
 transform = Transform( 68, 0, 0, 0, 68, 0, 0, 0, 68, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="Mesh" type="MeshInstance" parent="Shape"]
 material_override = ExtResource( 2 )
 use_in_baked_light = true
 mesh = ExtResource( 3 )
 material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 68, 0, 0, 0, 68, 0, 0, 0, 68, 0, 0, 0 )
-shape = SubResource( 1 )
