@@ -13,6 +13,7 @@ func post_import(ship):
 			new_slot.set_owner(ship)
 			#slots.append(new_slot)
 			new_slot.translation = c.translation
-			ship.remove_child(c)
+			new_slot.rotation = c.rotation
+			ship.remove_child(c)			
 	return ship 
 
