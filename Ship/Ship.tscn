@@ -11,7 +11,7 @@
 friction = 3.0
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.33735, 0.621956, 0.391661 )
+extents = Vector3( 0.318761, 0.621956, 0.391661 )
 
 [node name="Ship" type="RigidBody"]
 mass = 30.0
@@ -29,7 +29,7 @@ trust = 200.0
 
 [node name="Inventory" type="Spatial" parent="."]
 script = ExtResource( 9 )
-slot_parent_path = NodePath("../SimpleRocket")
+slot_parent_path = NodePath("../Model/SimpleRocket")
 
 [node name="Control2" type="Control" parent="."]
 margin_right = 40.0
@@ -41,16 +41,16 @@ __meta__ = {
 show_history = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 2.22045e-16, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00268555, 0, -0.636996 )
+transform = Transform( 1, 0, 2.22045e-16, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00268555, 0, -0.625144 )
 shape = SubResource( 2 )
-
-[node name="SimpleRocket" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 
 [node name="Model" type="Spatial" parent="."]
 script = ExtResource( 2 )
 
 [node name="particel" parent="Model" instance=ExtResource( 4 )]
 transform = Transform( 0.481952, 0, 0, 0, -2.10668e-08, -0.481952, 0, 0.481952, -2.10668e-08, 0, 0, 0.0192077 )
+
+[node name="SimpleRocket" parent="Model" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 
 [connection signal="container_clicked" from="Inventory" to="." method="container_clicked"]
