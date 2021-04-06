@@ -1,6 +1,8 @@
 extends Node
 
-onready var slots = self.get_children()
+export(NodePath) var slot_parent_path
+onready var slot_parent:Node
+var slots = []
 
 var stock ={
 	MissionContainer.CARGO.METALS:0,
@@ -15,13 +17,11 @@ var stock ={
 signal container_clicked(container)
 
 func _ready():
-	_remove_dummys()
-	
-func _remove_dummys():
-	for slot in slots:
-		for child in slot.get_children():
-			if(child.name=="dummy"):
-				self.removeContainer(slot.get_child(0))
+	slot_parent = self.get_node_or_null(slot_parent_path)
+	if slot_parent == null: slot_parent=self
+	for c in slot_parent.get_children():
+		if c is Position3D:
+			slots.append(c)
 
 func addContainter(container:MissionContainer, i : int):
 	var slot = slots[i] as Position3D

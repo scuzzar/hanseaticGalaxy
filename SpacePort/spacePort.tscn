@@ -53,6 +53,7 @@ shape = SubResource( 2 )
 
 [node name="Inventory" type="Spatial" parent="."]
 script = ExtResource( 2 )
+slot_parent_path = NodePath(".")
 
 [node name="slot1" type="Position3D" parent="Inventory"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12365, 0.974701, 2.98059 )

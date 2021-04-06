@@ -15,7 +15,7 @@ signal fuel_changed(fuel, fuel_cap)
 signal credits_changed(credits)
 signal mass_changed(mass,trust)
 
-func _ready():
+func _ready():	
 	._ready()	
 	emit_signal("fuel_changed",fuel, fuel_cap)
 	emit_signal("credits_changed",credits)

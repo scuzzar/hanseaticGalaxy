@@ -1,18 +1,17 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/orbit.gd" type="Script" id=1]
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=2]
 [ext_resource path="res://Bodys/Ship.gd" type="Script" id=3]
 [ext_resource path="res://Ship/drive.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Ship/SimpleRocket/SimpleRocket.mesh" type="ArrayMesh" id=8]
+[ext_resource path="res://Ship/SimpleRocket/SimpleRocket.escn" type="PackedScene" id=5]
 [ext_resource path="res://Container/Inventory.gd" type="Script" id=9]
-[ext_resource path="res://Container/Container.scn" type="PackedScene" id=10]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 3.0
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.500469, 1, 0.407267 )
+extents = Vector3( 0.33735, 0.621956, 0.391661 )
 
 [node name="Ship" type="RigidBody"]
 mass = 30.0
@@ -30,16 +29,7 @@ trust = 200.0
 
 [node name="Inventory" type="Spatial" parent="."]
 script = ExtResource( 9 )
-
-[node name="slot1" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1.03359 )
-
-[node name="dummy" parent="Inventory/slot1" instance=ExtResource( 10 )]
-
-[node name="slot2" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1.3629 )
-
-[node name="dummy" parent="Inventory/slot2" instance=ExtResource( 10 )]
+slot_parent_path = NodePath("../SimpleRocket")
 
 [node name="Control2" type="Control" parent="."]
 margin_right = 40.0
@@ -51,18 +41,16 @@ __meta__ = {
 show_history = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 2.22045e-16, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00268555, 0, 0.0500793 )
+transform = Transform( 1, 0, 2.22045e-16, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00268555, 0, -0.636996 )
 shape = SubResource( 2 )
+
+[node name="SimpleRocket" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 
 [node name="Model" type="Spatial" parent="."]
 script = ExtResource( 2 )
 
-[node name="Mesh" type="MeshInstance" parent="Model"]
-transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -9.86838e-08, -1.97368e-07, -7.89471e-07 )
-mesh = ExtResource( 8 )
-material/0 = null
-
 [node name="particel" parent="Model" instance=ExtResource( 4 )]
-transform = Transform( 0.481952, 0, 0, 0, -2.10668e-08, -0.481952, 0, 0.481952, -2.10668e-08, 0, 0, 0.985588 )
+transform = Transform( 0.481952, 0, 0, 0, -2.10668e-08, -0.481952, 0, 0.481952, -2.10668e-08, 0, 0, 0.0192077 )
 
 [connection signal="container_clicked" from="Inventory" to="." method="container_clicked"]

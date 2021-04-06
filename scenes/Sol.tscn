@@ -38,7 +38,7 @@ environment = ExtResource( 12 )
 min_zoom = 1.0
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3898.91, 1.14441e-05, 15.4827 )
+transform = Transform( 4.37114e-08, -8.74228e-08, 1, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 8.74228e-08, 3898.91, 1.14441e-05, 15.4827 )
 show_soi_relativ_sim = false
 show_sim = false
 history_lenth = 30
