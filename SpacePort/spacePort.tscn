@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://SpacePort/SpacePort.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://SpacePort/SpacePort.escn" type="PackedScene" id=1]
 [ext_resource path="res://Container/Inventory.gd" type="Script" id=2]
 [ext_resource path="res://SpacePort/spacePort.gd" type="Script" id=3]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 5.44332, 1, 1 )
+extents = Vector3( 1.87527, 1, 1 )
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 4.53114, 0.496045, 1.21608 )
+extents = Vector3( 1.77978, 0.496045, 1.21608 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 3 )
@@ -34,74 +34,22 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 mode = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.161, -1, -0.004 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703545, -1.9025, -0.004 )
 shape = SubResource( 1 )
-
-[node name="Mesh" type="MeshInstance" parent="."]
-transform = Transform( 0.973207, 0, -0.229931, 0, 1, 0, 0.229931, 0, 0.973207, 0, 1, 0 )
-use_in_baked_light = true
-mesh = ExtResource( 1 )
-material/0 = null
 
 [node name="Area" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82234, 0 )
 gravity = 0.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 1.00141, 0, 0, 0, 1.00141, 0, 0, 0, 1.00141, 0, -0.906102, 0 )
+transform = Transform( 1.00141, 0, 0, 0, 1.00141, 0, 0, 0, 1.00141, 0, -1.95535, 0 )
 shape = SubResource( 2 )
+
+[node name="SpacePort" parent="." instance=ExtResource( 1 )]
 
 [node name="Inventory" type="Spatial" parent="."]
 script = ExtResource( 2 )
-slot_parent_path = NodePath(".")
-
-[node name="slot1" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12365, 0.974701, 2.98059 )
-
-[node name="slot2" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4572, 0.974701, 2.98059 )
-
-[node name="slot3" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.878462, 0.974701, 2.98059 )
-
-[node name="slot4" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.332042, 0.974701, 2.98059 )
-
-[node name="slot5" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.222436, 0.974701, 2.98059 )
-
-[node name="slot6" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.88889, 0.974701, 2.98059 )
-
-[node name="slot7" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46762, 0.974701, 2.98059 )
-
-[node name="slot8" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01404, 0.974701, 2.98059 )
-
-[node name="slot9" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12365, 0.974701, 2.32713 )
-
-[node name="slot10" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4572, 0.974701, 2.32713 )
-
-[node name="slot11" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.878462, 0.974701, 2.32713 )
-
-[node name="slot12" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.332042, 0.974701, 2.32713 )
-
-[node name="slot13" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.222436, 0.974701, 2.32713 )
-
-[node name="slot14" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.88889, 0.974701, 2.32713 )
-
-[node name="slot15" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46762, 0.974701, 2.32713 )
-
-[node name="slot16" type="Position3D" parent="Inventory"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01404, 0.974701, 2.32713 )
+slot_parent_path = NodePath("../SpacePort")
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
