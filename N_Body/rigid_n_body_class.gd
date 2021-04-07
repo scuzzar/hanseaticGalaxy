@@ -31,6 +31,9 @@ export var history_lenth = 100
 export var history_update_interfall = 0.5
 var history_update_timer = 0
 
+export var timeWarpFactor = 10
+var timeWarp = false
+
 var orbit
 
 func _enter_tree():
@@ -62,10 +65,14 @@ func _integrate_forces(state):
 	state.add_central_force(last_g_force / 2)
 	state.add_central_force(last_g_force / 2)
 	self.velocety = state.linear_velocity
+	if(timeWarp):
+		print("warp")		
 
 func _leap_frog_integration(delta):
 	velocety += last_g_force * delta / mass / 2
+
 	self.translation += velocety*delta
+	
 	last_g_force = g_force(self.translation)
 	velocety += last_g_force * delta / mass / 2
 

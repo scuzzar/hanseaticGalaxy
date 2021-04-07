@@ -9,7 +9,7 @@ points = PoolVector3Array( 0.160653, 0.552901, -0.807658, 1.67638e-08, 0.380845,
 
 [node name="Planet" type="RigidBody"]
 mode = 1
-mass = 5000.0
+mass = 453.56
 gravity_scale = 0.0
 custom_integrator = true
 script = ExtResource( 1 )

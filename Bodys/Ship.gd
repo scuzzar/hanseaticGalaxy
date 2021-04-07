@@ -24,6 +24,7 @@ func _ready():
 func _integrate_forces(state:PhysicsDirectBodyState):
 	._integrate_forces(state)
 	$Model.trust_forward_off()
+	timeWarp  = false
 	if Input.is_action_pressed("burn_forward"):
 		var fuelcost =  trust * state.step
 		if(fuel - fuelcost > 0):
@@ -39,6 +40,9 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 	
 	if Input.is_action_pressed("cheat_fuel"):
 		self.set_fuel(fuel_cap)
+	
+	if Input.is_action_pressed("time_warp"):
+		timeWarp = true
 	
 func _rotation(state :PhysicsDirectBodyState, angle: float):
 	state.set_angular_velocity(Vector3(0,angle,0))
