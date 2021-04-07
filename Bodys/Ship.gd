@@ -9,6 +9,9 @@ export var fuel_cap = 5000.0
 var fuel = fuel_cap
 export var credits = 0
 
+export var timeWarpFactor = 10
+var timeWarp = false
+
 var docking_location: Node
 
 signal fuel_changed(fuel, fuel_cap)
@@ -25,6 +28,8 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 	._integrate_forces(state)
 	$Model.trust_forward_off()
 	timeWarp  = false
+	Engine.time_scale = 1
+	
 	if Input.is_action_pressed("burn_forward"):
 		var fuelcost =  trust * state.step
 		if(fuel - fuelcost > 0):
@@ -43,6 +48,7 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 	
 	if Input.is_action_pressed("time_warp"):
 		timeWarp = true
+		Engine.time_scale = timeWarpFactor
 	
 func _rotation(state :PhysicsDirectBodyState, angle: float):
 	state.set_angular_velocity(Vector3(0,angle,0))
