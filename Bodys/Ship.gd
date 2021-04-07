@@ -9,7 +9,7 @@ export var fuel_cap = 5000.0
 var fuel = fuel_cap
 export var credits = 0
 
-export var timeWarpFactor = 10
+export var MaxtimeWarpFactor = 50
 var timeWarp = false
 
 var docking_location: Node
@@ -48,7 +48,8 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 	
 	if Input.is_action_pressed("time_warp"):
 		timeWarp = true
-		Engine.time_scale = timeWarpFactor
+		var factor = clamp(1 / self.last_g_force.length()*mass,3,MaxtimeWarpFactor)		
+		Engine.time_scale =  factor
 	
 func _rotation(state :PhysicsDirectBodyState, angle: float):
 	state.set_angular_velocity(Vector3(0,angle,0))
