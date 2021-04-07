@@ -562,6 +562,50 @@ mesh = SubResource(3)
 visible = true
 transform = Transform(0.38303, 0.0, -0.0962088, 0.0, 0.394928, 0.0, 0.0962088, 0.0, 0.38303, -0.0298361, 0.0671667, 0.204692)
 
+[node name="Point" type="OmniLight" parent="."]
+
+light_specular = 1.0
+light_color = Color(1.0, 1.0, 1.0, 1.0)
+shadow_color = Color(0.0, 0.0, 0.0, 1.0)
+light_energy = 1.0
+omni_range = 3.0
+transform = Transform(1.0, 0.0, 0.0, 0.0, -4.37114e-08, 1.0, 0.0, -1.0, -4.37114e-08, -0.96001, 0.354322, -1.15389)
+light_negative = false
+shadow_enabled = false
+
+[node name="Point001" type="OmniLight" parent="."]
+
+light_specular = 1.0
+light_color = Color(1.0, 1.0, 1.0, 1.0)
+shadow_color = Color(0.0, 0.0, 0.0, 1.0)
+light_energy = 1.0
+omni_range = 3.0
+transform = Transform(0.858304, -0.373806, 0.351546, -0.502765, -0.749677, 0.430362, 0.102674, -0.546127, -0.831387, 1.10702, 1.08579, -0.989734)
+light_negative = false
+shadow_enabled = true
+
+[node name="Point002" type="OmniLight" parent="."]
+
+light_specular = 1.0
+light_color = Color(1.0, 1.0, 1.0, 1.0)
+shadow_color = Color(0.0, 0.0, 0.0, 1.0)
+light_energy = 1.0
+omni_range = 3.0
+transform = Transform(1.0, 0.0, 0.0, 0.0, -4.37114e-08, 1.0, 0.0, -1.0, -4.37114e-08, -0.0685043, 0.377714, -0.999026)
+light_negative = false
+shadow_enabled = true
+
+[node name="Point003" type="OmniLight" parent="."]
+
+light_specular = 1.0
+light_color = Color(1.0, 1.0, 1.0, 1.0)
+shadow_color = Color(0.0, 0.0, 0.0, 1.0)
+light_energy = 1.0
+omni_range = 3.0
+transform = Transform(0.858304, -0.373806, 0.351546, -0.502765, -0.749677, 0.430362, 0.102674, -0.546127, -0.831387, 0.616896, 1.21455, 3.62703)
+light_negative = false
+shadow_enabled = true
+
 [node name="slot001" type="MeshInstance" parent="."]
 
 mesh = SubResource(4)

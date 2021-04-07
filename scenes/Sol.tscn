@@ -38,7 +38,7 @@ environment = ExtResource( 12 )
 min_zoom = 1.0
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
-transform = Transform( 4.37114e-08, -8.74228e-08, 1, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 8.74228e-08, 3898.91, 1.14441e-05, 15.4827 )
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 3898.91, 1.14441e-05, 15.4827 )
 show_soi_relativ_sim = false
 show_sim = false
 history_lenth = 30
@@ -93,6 +93,7 @@ init_store = 4
 
 [node name="Deimos" parent="Mars" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -567.991, 7.25164e-06, 1.40234 )
+visible = false
 mode = 3
 mass = 41.9035
 linear_velocity = Vector3( 0, 0, -3.568 )
@@ -127,6 +128,7 @@ max_store = 3
 
 [node name="Phobos" parent="Mars" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 272.285, -8.1155e-07, -2.46143 )
+visible = false
 mode = 3
 mass = 8.93942
 linear_velocity = Vector3( 0, 0, -5.197 )

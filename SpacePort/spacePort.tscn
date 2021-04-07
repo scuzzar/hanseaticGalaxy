@@ -13,22 +13,6 @@ extents = Vector3( 1.77978, 0.496045, 1.21608 )
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 3 )
 
-[node name="OmniLight3" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.131518, 1.75514, -3.00055 )
-light_bake_mode = 2
-shadow_enabled = true
-omni_range = 5.5363
-
-[node name="OmniLight4" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59898, 3.70193, -2.22423 )
-shadow_enabled = true
-omni_range = 10.9499
-
-[node name="tanklight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.19472, 3.94149, -5.2051 )
-shadow_enabled = true
-omni_range = 5.14374
-
 [node name="RigidBody" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 mode = 3
