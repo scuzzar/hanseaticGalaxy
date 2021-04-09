@@ -4,9 +4,10 @@ extends Control
 
 onready var fuel_bar = $Fuel/FuelBar
 onready var credit_labe = $Credits/Value
-onready var tmr_labe = $TMR/Value
-onready var g_labe = $G_Meter/Value
-onready var mass_labe = $MASS/Value
+onready var tmr_labe = $DataBox/TMR/Value
+onready var g_labe = $DataBox/G_Meter/Value
+onready var mass_labe = $DataBox/MASS/Value
+onready var v_labe = $DataBox/V_Meter/Value
 
 var ship_mass = 0
 
@@ -35,3 +36,7 @@ func _on_Ship_mass_changed(mass, trust):
 
 func _on_Ship_g_force_update(force):
 	g_labe.text = str("%0.2f" % (force.length()/ship_mass))
+
+
+func _on_Ship_velocety_changed(velocety):
+	v_labe.text = str("%0.2f" % (velocety.length()))

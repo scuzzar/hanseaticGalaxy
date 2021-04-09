@@ -19,14 +19,14 @@
 [ext_resource path="res://scenes/CargoTarget.gd" type="Script" id=17]
 [ext_resource path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" type="PackedScene" id=18]
 
+[sub_resource type="PhysicsMaterial" id=3]
+friction = 0.5
+
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 16 )
 
 [sub_resource type="QuadMesh" id=2]
 size = Vector2( 300, 300 )
-
-[sub_resource type="PhysicsMaterial" id=3]
-friction = 0.5
 
 [node name="Sol" type="Spatial"]
 
@@ -48,10 +48,114 @@ trust = 300.0
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 transform = Transform( 2, 0, 0, 0, 0.66219, -1.88719, 0, 1.88719, 0.66219, 0, 0, 0 )
 material = ExtResource( 13 )
+surface_g = 120.0
 
 [node name="OmniLight" type="OmniLight" parent="Sun"]
 transform = Transform( 1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 10.6688, 3.74349 )
 omni_range = 11247.7
+
+[node name="Earth" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.160339, -0.8367, 1830.62 )
+mode = 3
+mass = 889.885
+physics_material_override = SubResource( 3 )
+linear_velocity = Vector3( 1.219, 0, 0 )
+angular_velocity = Vector3( 0, 0.01, 0 )
+material = ExtResource( 9 )
+orbital_speed = 2
+show_orbit = true
+surface_g = 9.81
+
+[node name="PlanetAthmosphere" parent="Earth" instance=ExtResource( 18 )]
+planet_radius = 67.0
+atmosphere_height = 10.0
+sun_path = NodePath("../../Sun")
+shader_params/u_day_color0 = Color( 0.29, 0.39, 0.92, 1 )
+shader_params/u_day_color1 = Color( 0.76, 0.9, 1, 1 )
+shader_params/u_night_color0 = Color( 0.15, 0.1, 0.33, 1 )
+shader_params/u_night_color1 = Color( 0, 0, 0, 1 )
+shader_params/u_density = 0.01
+shader_params/u_attenuation_distance = 0.0
+
+[node name="BrasiliaPort" parent="Earth" instance=ExtResource( 4 )]
+transform = Transform( -0.75811, 0.652126, -5.57647e-08, -1.15933e-07, -4.92623e-08, 1, 0.652126, 0.75811, 1.12949e-07, 39.5011, 0, 54.2845 )
+defaultMissionDestination_path = NodePath("../Moon/ApolloPort")
+
+[node name="G_Luxus" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
+cargo = 6
+wait_time = 20.0
+max_store = 3
+
+[node name="G_Food" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
+cargo = 1
+wait_time = 5.0
+max_store = 5
+
+[node name="T_Rare_Metal" type="Node" parent="Earth/BrasiliaPort"]
+script = ExtResource( 17 )
+cargo = 5
+
+[node name="G_Consumers" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
+cargo = 4
+wait_time = 20.0
+max_store = 3
+init_store = 2
+
+[node name="PhilipinPort" parent="Earth" instance=ExtResource( 4 )]
+transform = Transform( 0.887395, -0.461006, -3.10774e-08, -5.9375e-09, -7.88407e-08, 1, -0.461006, -0.887395, -7.27003e-08, -28.0023, 0, -61.1177 )
+defaultMissionDestination_path = NodePath("../../Mars/OlympusPort")
+
+[node name="G_Machine" parent="Earth/PhilipinPort" instance=ExtResource( 14 )]
+cargo = 2
+wait_time = 120.0
+max_store = 3
+
+[node name="T_Food" type="Node" parent="Earth/PhilipinPort"]
+script = ExtResource( 17 )
+cargo = 1
+
+[node name="T_Metal" type="Node" parent="Earth/PhilipinPort"]
+script = ExtResource( 17 )
+
+[node name="T_Luxus" type="Node" parent="Earth/PhilipinPort"]
+script = ExtResource( 17 )
+cargo = 6
+
+[node name="Moon" parent="Earth" groups=[
+"bodys",
+] instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 376.989 )
+mode = 3
+mass = 22.6279
+material = ExtResource( 3 )
+radius = 2500.0
+surface_g = 1.62
+
+[node name="ApolloPort" parent="Earth/Moon" instance=ExtResource( 4 )]
+transform = Transform( -0.901832, -0.432083, -3.94204e-08, 4.37114e-08, 1.91069e-15, -1, 0.432083, -0.901832, 1.88869e-08, -10.3149, 3.8147e-06, -24.2249 )
+defaultMissionDestination_path = NodePath("../../PhilipinPort")
+
+[node name="G_Metal" parent="Earth/Moon/ApolloPort" instance=ExtResource( 14 )]
+wait_time = 60.0
+max_store = 2
+
+[node name="G_Electronics" parent="Earth/Moon/ApolloPort" instance=ExtResource( 14 )]
+cargo = 3
+wait_time = 20.0
+max_store = 5
+init_store = 3
+
+[node name="T_Food" type="Node" parent="Earth/Moon/ApolloPort"]
+script = ExtResource( 17 )
+cargo = 1
+
+[node name="T_Machine" type="Node" parent="Earth/Moon/ApolloPort"]
+script = ExtResource( 17 )
+cargo = 2
+
+[node name="T_Consumers" type="Node" parent="Earth/Moon/ApolloPort"]
+script = ExtResource( 17 )
+cargo = 4
 
 [node name="Mars" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3819.27, 0, -25.0007 )
@@ -213,110 +317,8 @@ cargo = 4
 script = ExtResource( 17 )
 cargo = 6
 
-[node name="Earth" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.160339, -0.8367, 1830.62 )
-mode = 3
-mass = 889.885
-physics_material_override = SubResource( 3 )
-linear_velocity = Vector3( 1.219, 0, 0 )
-angular_velocity = Vector3( 0, 0.01, 0 )
-material = ExtResource( 9 )
-orbital_speed = 2
-show_orbit = true
-surface_g = 9.81
-
-[node name="PlanetAthmosphere" parent="Earth" instance=ExtResource( 18 )]
-planet_radius = 67.0
-atmosphere_height = 10.0
-sun_path = NodePath("../../Sun")
-shader_params/u_day_color0 = Color( 0.29, 0.39, 0.92, 1 )
-shader_params/u_day_color1 = Color( 0.76, 0.9, 1, 1 )
-shader_params/u_night_color0 = Color( 0.15, 0.1, 0.33, 1 )
-shader_params/u_night_color1 = Color( 0, 0, 0, 1 )
-shader_params/u_density = 0.01
-shader_params/u_attenuation_distance = 0.0
-
-[node name="BrasiliaPort" parent="Earth" instance=ExtResource( 4 )]
-transform = Transform( -0.75811, 0.652126, -5.57647e-08, -1.15933e-07, -4.92623e-08, 1, 0.652126, 0.75811, 1.12949e-07, 39.5011, 0, 54.2845 )
-defaultMissionDestination_path = NodePath("../Moon/ApolloPort")
-
-[node name="G_Luxus" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
-cargo = 6
-wait_time = 20.0
-max_store = 3
-
-[node name="G_Food" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
-cargo = 1
-wait_time = 5.0
-max_store = 5
-
-[node name="T_Rare_Metal" type="Node" parent="Earth/BrasiliaPort"]
-script = ExtResource( 17 )
-cargo = 5
-
-[node name="G_Consumers" parent="Earth/BrasiliaPort" instance=ExtResource( 14 )]
-cargo = 4
-wait_time = 20.0
-max_store = 3
-init_store = 2
-
-[node name="PhilipinPort" parent="Earth" instance=ExtResource( 4 )]
-transform = Transform( 0.887395, -0.461006, -3.10774e-08, -5.9375e-09, -7.88407e-08, 1, -0.461006, -0.887395, -7.27003e-08, -28.0023, 0, -61.1177 )
-defaultMissionDestination_path = NodePath("../../Mars/OlympusPort")
-
-[node name="G_Machine" parent="Earth/PhilipinPort" instance=ExtResource( 14 )]
-cargo = 2
-wait_time = 120.0
-max_store = 3
-
-[node name="T_Food" type="Node" parent="Earth/PhilipinPort"]
-script = ExtResource( 17 )
-cargo = 1
-
-[node name="T_Metal" type="Node" parent="Earth/PhilipinPort"]
-script = ExtResource( 17 )
-
-[node name="T_Luxus" type="Node" parent="Earth/PhilipinPort"]
-script = ExtResource( 17 )
-cargo = 6
-
-[node name="Moon" parent="Earth" groups=[
-"bodys",
-] instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 376.989 )
-mode = 3
-mass = 22.6279
-material = ExtResource( 3 )
-radius = 2500.0
-surface_g = 1.62
-
-[node name="ApolloPort" parent="Earth/Moon" instance=ExtResource( 4 )]
-transform = Transform( -0.901832, -0.432083, -3.94204e-08, 4.37114e-08, 1.91069e-15, -1, 0.432083, -0.901832, 1.88869e-08, -10.3149, 3.8147e-06, -24.2249 )
-defaultMissionDestination_path = NodePath("../../PhilipinPort")
-
-[node name="G_Metal" parent="Earth/Moon/ApolloPort" instance=ExtResource( 14 )]
-wait_time = 60.0
-max_store = 2
-
-[node name="G_Electronics" parent="Earth/Moon/ApolloPort" instance=ExtResource( 14 )]
-cargo = 3
-wait_time = 20.0
-max_store = 5
-init_store = 3
-
-[node name="T_Food" type="Node" parent="Earth/Moon/ApolloPort"]
-script = ExtResource( 17 )
-cargo = 1
-
-[node name="T_Machine" type="Node" parent="Earth/Moon/ApolloPort"]
-script = ExtResource( 17 )
-cargo = 2
-
-[node name="T_Consumers" type="Node" parent="Earth/Moon/ApolloPort"]
-script = ExtResource( 17 )
-cargo = 4
-
 [connection signal="credits_changed" from="Ship" to="HUD" method="_on_Ship_credits_changed"]
 [connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]
 [connection signal="g_force_update" from="Ship" to="HUD" method="_on_Ship_g_force_update"]
 [connection signal="mass_changed" from="Ship" to="HUD" method="_on_Ship_mass_changed"]
+[connection signal="velocety_changed" from="Ship" to="HUD" method="_on_Ship_velocety_changed"]

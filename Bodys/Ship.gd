@@ -17,6 +17,7 @@ var docking_location: Node
 signal fuel_changed(fuel, fuel_cap)
 signal credits_changed(credits)
 signal mass_changed(mass,trust)
+signal velocety_changed(velocety)
 
 func _ready():	
 	._ready()	
@@ -44,12 +45,15 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 		_rotation(state,turn_rate*-1)
 	
 	if Input.is_action_pressed("cheat_fuel"):
-		self.set_fuel(fuel_cap)
+		#pay extra for emergancy refuel	
+		self.pay(get_refule_costs()*2)
+		self.set_fuel(fuel_cap)	
 	
 	if Input.is_action_pressed("time_warp"):
 		timeWarp = true
-		var factor = clamp(1 / self.last_g_force.length()*mass,3,MaxtimeWarpFactor)		
+		var factor = clamp(1 / self.last_g_force.length()*mass,5,MaxtimeWarpFactor)		
 		Engine.time_scale =  factor
+	emit_signal("velocety_changed",state.linear_velocity)
 	
 func _rotation(state :PhysicsDirectBodyState, angle: float):
 	state.set_angular_velocity(Vector3(0,angle,0))
@@ -73,21 +77,28 @@ func _burn_forward(state:PhysicsDirectBodyState):
 	self.burn_fuel(trust * state.step)
 	
 func reward(reward_credits : int):
-	credits += reward_credits
-	print(credits)
+	credits += reward_credits	
 	emit_signal("credits_changed",credits)
+
+func pay(credits_to_pay : int):
+	self.credits -= credits_to_pay
+	emit_signal("credits_changed",credits)
+
+func get_refule_costs():
+	var fuelprice = MissionContainer.price[MissionContainer.CARGO.FUEL]
+	var fuel_to_By = self.fuel_cap - fuel
+	var credits_to_pay = fuel_to_By*fuelprice/1000
+	return credits_to_pay
 
 func load_containter(c : MissionContainer) -> bool:
 	var added = $Inventory.addContainerOnFree(c)
-	self.mass += c.getMass()
-	print("ship:",trust/mass)
+	self.mass += c.getMass()	
 	emit_signal("mass_changed",mass,trust)
 	return added
 
 func unload_containter(c : MissionContainer):
 	self.mass -= c.getMass()	
 	$Inventory.removeContainer(c)	
-	print("ship:",trust/mass)
 	emit_signal("mass_changed",mass,trust)
 
 func can_load_container() -> bool:

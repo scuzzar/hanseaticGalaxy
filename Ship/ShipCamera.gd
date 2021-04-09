@@ -24,8 +24,8 @@ func _ready():
 
 func _process(delta):	
 	self.translation = ship.translation
-	self.rotate_y(_next_rotation.x * rotation_speed * delta *-1)
-	tilt.rotate_x(_next_rotation.y * rotation_speed * delta *-1)
+	self.rotate_y(_next_rotation.x * rotation_speed * delta /Engine.time_scale *-1)
+	tilt.rotate_x(_next_rotation.y * rotation_speed * delta /Engine.time_scale *-1)
 	_next_rotation = Vector2(0,0)
 
 func _set_zoom_level(value: float) -> void:	

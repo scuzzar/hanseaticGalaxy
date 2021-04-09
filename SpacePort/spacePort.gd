@@ -30,6 +30,7 @@ func _on_Area_body_exited(body):
 func _on_Area_Ship_enterd(ship : Ship):
 	ship.dock(self)
 	self.docked_ship = ship
+	ship.pay(ship.get_refule_costs())
 	ship.set_fuel(ship.fuel_cap)
 	print("ship landed")
 	
@@ -58,3 +59,6 @@ func has_Space() -> bool:
 
 func stock(cargo)->int:
 	return $Inventory.stock(cargo)
+
+func getBody()->Planet:
+	return self.get_parent() as Planet

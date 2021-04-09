@@ -15,37 +15,41 @@ enum CARGO{
 	ELECTRONICS,
 	CONSUMERS,
 	RARE_METALS,
-	LUXUS
+	LUXUS,
+	FUEL
 }
 var reward = 0
-var price ={
+const price ={
 	CARGO.METALS:2000,
-	CARGO.FOOD:400,
+	CARGO.FOOD:650,
 	CARGO.MACHINES:1700,
 	CARGO.ELECTRONICS:1000,
 	CARGO.CONSUMERS:900,
 	CARGO.RARE_METALS:2500,
-	CARGO.LUXUS:1400
+	CARGO.LUXUS:1400,
+	CARGO.FUEL:1000
 }
 
-var names ={
+const names ={
 	CARGO.METALS:"Metals",
 	CARGO.FOOD:"Food",
 	CARGO.MACHINES:"Machines",
 	CARGO.ELECTRONICS:"Electronics",
 	CARGO.CONSUMERS:"ConsumerGoods",
 	CARGO.RARE_METALS:"RareMetals",
-	CARGO.LUXUS:"Luxus"
+	CARGO.LUXUS:"Luxus",
+	CARGO.FUEL:"Fuel"
 }
 
-var mass ={
+const mass ={
 	CARGO.METALS:20,
-	CARGO.FOOD:5,
+	CARGO.FOOD:4,
 	CARGO.MACHINES:15,
 	CARGO.ELECTRONICS:8,
 	CARGO.CONSUMERS:6,
 	CARGO.RARE_METALS:18,
-	CARGO.LUXUS:5
+	CARGO.LUXUS:5,
+	CARGO.FUEL:0
 }
 
 export(CARGO) var cargo  
@@ -66,7 +70,7 @@ func _on_mouse_entered():
 func _to_string()->String:
 	if(destination!=null):
 	#var text = "Destination: " + destination.name + " (" + str(self.reward) +"c) " + str(round(getDistance())) + "km"
-		return  getCargoName() + " >    " + destination.name + "    C:" + str(self.reward) +"    MASS:" + str(self.getMass())
+		return  getCargoName() + " > " + destination.name + " C:" + str(self.reward) +" MASS:" + str(self.getMass()) #+ " D:" + str(getDistance()) 
 	else:
 		return "nullDestination"
 
