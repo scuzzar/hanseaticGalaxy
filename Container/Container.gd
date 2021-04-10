@@ -60,9 +60,10 @@ func _ready():
 	_set_cargo(cargo)
 
 func _on_input_event(camera, event, click_position, click_normal, shape_idx):
-	if(event is InputEventMouseButton and event.is_pressed()):
-		print("hit")
-		emit_signal("clicked",self)	
+	if(event is InputEventMouseButton and event.is_pressed() ):
+		#event = event as InputEventMouseButton
+		if(event.button_index == 1):
+			emit_signal("clicked",self)	
 
 func _on_mouse_entered():	
 	if(self.get_tree()!=null): self.get_tree().get_nodes_in_group("consol")[0].text = str(self)
