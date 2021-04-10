@@ -10,6 +10,8 @@ onready var mass_labe = $DataBox/MASS/Value
 onready var v_labe = $DataBox/V_Meter/Value
 
 var ship_mass = 0
+var strongest_body:simpelBody = null
+var ship_position:Vector3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():	
@@ -34,9 +36,17 @@ func _on_Ship_mass_changed(mass, trust):
 	tmr_labe.text = str("%0.2f" % (trust/mass))
 
 
-func _on_Ship_g_force_update(force):
-	g_labe.text = str("%0.2f" % (force.length()/ship_mass))
+func _on_Ship_g_force_update(force,p_stronges_body,strongest_force):
+	self.strongest_body = p_stronges_body as simpelBody
+	g_labe.text = str("%0.2f" % (force.length()/ship_mass)) + " (" + strongest_body.name + ")"	
 
-
-func _on_Ship_velocety_changed(velocety):
-	v_labe.text = str("%0.2f" % (velocety.length()))
+func _on_Ship_telemetry_changed(position,velocety):
+	self.ship_position = position
+	velocety -= strongest_body.linear_velocity
+	
+	var r = strongest_body.global_transform.origin.distance_to(ship_position)
+	var G = 50
+	var M = strongest_body.mass
+	var kosmic = sqrt(G*M/r)
+	
+	v_labe.text = str("%0.1f" % (velocety.length())) + "  cosmic:" + str("%0.1f" % kosmic)

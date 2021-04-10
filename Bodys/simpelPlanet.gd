@@ -18,6 +18,8 @@ export var radius:float = 6371
 export(float) var surface_g = 5
 var angular_speed = 0 
 
+
+
 func _enter_tree():
 	self.add_to_group("bodys")
 	self.gravity_scale = 0

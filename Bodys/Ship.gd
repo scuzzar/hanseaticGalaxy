@@ -17,7 +17,7 @@ var docking_location: Node
 signal fuel_changed(fuel, fuel_cap)
 signal credits_changed(credits)
 signal mass_changed(mass,trust)
-signal velocety_changed(velocety)
+signal telemetry_changed(position,velocety)
 
 func _ready():	
 	._ready()	
@@ -53,7 +53,7 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 		timeWarp = true
 		var factor = clamp(1 / self.last_g_force.length()*mass,5,MaxtimeWarpFactor)		
 		Engine.time_scale =  factor
-	emit_signal("velocety_changed",state.linear_velocity)
+	emit_signal("telemetry_changed", self.translation, state.linear_velocity)
 	
 func _rotation(state :PhysicsDirectBodyState, angle: float):
 	state.set_angular_velocity(Vector3(0,angle,0))
