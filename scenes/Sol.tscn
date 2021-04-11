@@ -317,7 +317,6 @@ cargo = 4
 [node name="T_Luxus" type="Node" parent="Saturn/Titan/TitanPort"]
 script = ExtResource( 17 )
 cargo = 6
-
 [connection signal="credits_changed" from="Ship" to="HUD" method="_on_Ship_credits_changed"]
 [connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]
 [connection signal="g_force_update" from="Ship" to="HUD" method="_on_Ship_g_force_update"]
