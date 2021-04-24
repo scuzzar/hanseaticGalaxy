@@ -49,6 +49,11 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 		self.pay(get_refule_costs()*2)
 		self.set_fuel(fuel_cap)	
 	
+	if Input.is_action_pressed("time_delay"):
+		timeWarp = true
+		var factor = clamp(1 / self.last_g_force.length()*mass,0.001,0.001)		
+		Engine.time_scale =  factor
+	
 	if Input.is_action_pressed("time_warp"):
 		timeWarp = true
 		var factor = clamp(1 / self.last_g_force.length()*mass,5,MaxtimeWarpFactor)		

@@ -39,7 +39,7 @@ environment = ExtResource( 12 )
 min_zoom = 1.0
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, -1.1921e-07, 0, 1, 0, 1.1921e-07, 0, 1, 3819.89, 0.169907, -67.567 )
+transform = Transform( 1, 0, -1.1921e-07, 0, 1, 0, 1.1921e-07, 0, 1, 3837.34, -0.221175, -57.597 )
 show_soi_relativ_sim = false
 show_sim = false
 history_lenth = 30
@@ -156,7 +156,7 @@ script = ExtResource( 17 )
 cargo = 4
 
 [node name="Mars" parent="." instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3819.27, 0, 1.27441 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3837.55, 0, 10.798 )
 mode = 3
 mass = 334.727
 linear_velocity = Vector3( 0.862, 0, 0 )
@@ -317,6 +317,7 @@ cargo = 4
 [node name="T_Luxus" type="Node" parent="Saturn/Titan/TitanPort"]
 script = ExtResource( 17 )
 cargo = 6
+
 [connection signal="credits_changed" from="Ship" to="HUD" method="_on_Ship_credits_changed"]
 [connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]
 [connection signal="g_force_update" from="Ship" to="HUD" method="_on_Ship_g_force_update"]
