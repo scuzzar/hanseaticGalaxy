@@ -29,6 +29,15 @@ func _physics_process(delta):
 		self.rotate_y(delta*0.002)
 		#self.rotate_y(delta*self.angular_velocity.y*0.000001)
 
+func _leap_frog_integration(delta):
+	velocety += last_g_force * delta / mass / 2
+
+	self.translation += velocety*delta
+	
+	last_g_force = g_force(self.translation)
+	velocety += last_g_force * delta / mass / 2
+#	pass
+
 #func _updateOrbitDisplay():	
 	#orbit._draw_list(simulation)
 	#_print_SOI_Data()

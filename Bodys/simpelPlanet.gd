@@ -14,7 +14,8 @@ var orbit
 var angle = 0
 export var orbital_speed = 1
 export var show_orbit = false setget set_show_orbit
-export var radius:float = 6371
+export var radius_description:float = 6371
+var radius
 export(float) var surface_g = 5
 var angular_speed = 0 
 
@@ -31,14 +32,14 @@ func _ready():
 	$Shape/Mesh.material_override = material
 	isGravetySource = true
 	
-	var s = radius/6371.0*68	
+	var s = radius_description/6371.0*68	
 	$Shape.scale = Vector3(s,s,s)
 	
 	
 	
-	var r = $Shape/Mesh.get_aabb().get_longest_axis_size()*s/2
+	radius = $Shape/Mesh.get_aabb().get_longest_axis_size()*s/2
 	#var g = 50 *self.mass  /(r*r)
-	mass = (surface_g*r*r)/50
+	mass = (surface_g*radius*radius)/50
 	
 	#var surface_g_force = 
 	

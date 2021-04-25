@@ -56,20 +56,14 @@ func _process(delta):
 		history_update_timer -= history_update_interfall
 		appendHistory()
 
-func _integrate_forces(state):	
+func _integrate_forces(state):
+	state.add_central_force(last_g_force / 2)
 	last_g_force = g_force(self.translation)
 	emit_signal("g_force_update",last_g_force,last_g_force_strongest_Body,last_g_force_strongest_Body_force)
-	state.add_central_force(last_g_force / 2)
+	
 	state.add_central_force(last_g_force / 2)
 	self.velocety = state.linear_velocity
 
-func _leap_frog_integration(delta):
-	velocety += last_g_force * delta / mass / 2
-
-	self.translation += velocety*delta
-	
-	last_g_force = g_force(self.translation)
-	velocety += last_g_force * delta / mass / 2
 
 func appendHistory():	
 	history.append(translation)
@@ -77,7 +71,7 @@ func appendHistory():
 		history.pop_front()
 	pass
 
-func g_force(position,t_plus=0):
+func g_force(position):
 	
 	last_g_force_strongest_Body = null
 	last_g_force_strongest_Body_force = Vector3(0,0,0)
@@ -89,14 +83,7 @@ func g_force(position,t_plus=0):
 	for body in bodys :
 		if body != self && body.isGravetySource:			
 			var other_translation
-			if(t_plus == 0):
-				other_translation = body.get_parent().to_global(body.translation)
-				#print(body.name)
-				#print(body.translation)
-				#print(body.get_parent().translation)
-				#print(body.get_parent().to_global(body.translation))
-			else:
-				other_translation = body.simulation_pos[t_plus-1]			
+			other_translation = body.get_parent().to_global(body.translation)				
 			var sqrDst = position.distance_squared_to(other_translation)		
 			var forcDir = position.direction_to(other_translation).normalized()		
 			var acceleration = forcDir * G *body.mass * mass / sqrDst

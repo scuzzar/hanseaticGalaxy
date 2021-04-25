@@ -28,10 +28,7 @@ func _process(delta):
 
 func simulate():
 	if(bodys==null):return
-	
-	#for body in bodys:
-	#	body.simulation_pos = []
-	#	body.simulation_vel = []
+
 	var simulation_steps = simulation_time/simulation_delta_t
 	
 	var sim_obj_pos = _simulation_Object.translation
@@ -39,21 +36,32 @@ func simulate():
 	
 	var simulation_pos = [sim_obj_pos]
 	#var simulation_val = [sim_obj_val]
+	var collision = false
 	
-	for t in simulation_steps:
+	for i in simulation_steps:
+		var t = i * simulation_delta_t
+		
+		if(collision): break
+		var sim_g_force = Vector3(0,0,0)
 		for body in bodys:
-			var planet:simpelPlanet= body as simpelPlanet	
-			if planet != self && planet.isGravetySource:
-			
-				var other_translation = planet.predictGlobalPosition(t)
-				
+			var planet:simpelPlanet= body as simpelPlanet		
+			if planet != self && planet.isGravetySource:			
+				var other_translation = planet.predictGlobalPosition(t)	
+						
 				var sqrDst = sim_obj_pos.distance_squared_to(other_translation)		
 				var forcDir = sim_obj_pos.direction_to(other_translation).normalized()		
-				var acceleration = forcDir * _simulation_Object.G *planet.mass * _simulation_Object.mass / sqrDst
-				sim_obj_val += acceleration
-		sim_obj_pos += sim_obj_val
+				var acceleration = forcDir * _simulation_Object.G *planet.mass  / sqrDst
+				sim_g_force += acceleration
+				var sqrRadius = planet.radius*planet.radius
+				if(sqrDst < sqrRadius):
+					collision = true
+					print("collision")
+					#break
+		sim_obj_val += sim_g_force   * simulation_delta_t /2
+		sim_obj_pos += sim_obj_val * simulation_delta_t
+		sim_obj_val += sim_g_force   * simulation_delta_t /2
 		simulation_pos.append(sim_obj_pos)
-
+			
 		if(_simulation_Object.show_sim):
 			_simulation_Object.orbit.draw_list(simulation_pos)
 		else:
