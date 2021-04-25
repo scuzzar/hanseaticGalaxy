@@ -1,7 +1,7 @@
 tool
 extends RigidBody
 
-class_name simpelBody
+class_name simpelPlanet
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -54,7 +54,13 @@ func _physics_process(delta):
 		angle += (angular_speed *delta)	
 		if(angle >= 2*PI): angle -= 2*PI
 		self.translation = Vector3(sin(angle)*orbit_radius,0,cos(angle)*orbit_radius)
-		
+
+func predictGlobalPosition(delta):
+	var sim_angle = angle +  (angular_speed *delta)	
+	if(sim_angle >= 2*PI): sim_angle -= 2*PI
+	var local_prediction = Vector3(sin(sim_angle)*orbit_radius,0,cos(sim_angle)*orbit_radius)
+	var global_prediction = get_parent().to_global(local_prediction)
+	return global_prediction
 
 func set_show_orbit(value):
 	show_orbit = value

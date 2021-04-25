@@ -40,7 +40,7 @@ _global_script_classes=[ {
 "path": "res://Bodys/Ship.gd"
 }, {
 "base": "RigidBody",
-"class": "simpelBody",
+"class": "simpelPlanet",
 "language": "GDScript",
 "path": "res://Bodys/simpelPlanet.gd"
 } ]
@@ -51,7 +51,7 @@ _global_script_class_icons={
 "Port": "",
 "Rigid_N_Body": "",
 "Ship": "",
-"simpelBody": ""
+"simpelPlanet": ""
 }
 
 [application]

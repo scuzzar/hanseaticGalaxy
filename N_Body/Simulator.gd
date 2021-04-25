@@ -1,24 +1,25 @@
-tool
 extends Node
 
 export var simulation_time = 100
 export var simulation_delta_t = 1.0
 export var simulatoin_update_interfall = 1
 
+export(NodePath) var _simulation_object_path
+onready var _simulation_Object:Rigid_N_Body = get_node_or_null(_simulation_object_path)
+
 export var on = false
 
 export var relativ_to_soi = false
 
-var simulation_orbit_treshold = 0.1
+
+#var simulation_orbit_treshold = 0.1
 var simulation_update_timer = 0
 
-var bodys
+var bodys = []
 
 func _ready():
-	bodys = get_tree().get_nodes_in_group("bodys")
-	#simulate()
-	pass # Replace with function body.
-
+	bodys = get_tree().get_nodes_in_group("bodys")	
+	
 func _process(delta):
 	simulation_update_timer += delta	
 	if simulation_update_timer >= simulatoin_update_interfall:
@@ -28,42 +29,33 @@ func _process(delta):
 func simulate():
 	if(bodys==null):return
 	
-	for body in bodys:
-		body.simulation_pos = []
-		body.simulation_vel = []
+	#for body in bodys:
+	#	body.simulation_pos = []
+	#	body.simulation_vel = []
 	var simulation_steps = simulation_time/simulation_delta_t
+	
+	var sim_obj_pos = _simulation_Object.translation
+	var sim_obj_val = _simulation_Object.velocety
+	
+	var simulation_pos = [sim_obj_pos]
+	#var simulation_val = [sim_obj_val]
+	
 	for t in simulation_steps:
 		for body in bodys:
-			var sim_ship_pos
-			var sim_ship_val
-			if(t==0):
-				sim_ship_pos = body.translation
-				sim_ship_val = body.velocety				
-			else:
-				sim_ship_pos = body.simulation_pos[t-1]
-				sim_ship_val = body.simulation_vel[t-1]				
+			var planet:simpelPlanet= body as simpelPlanet	
+			if planet != self && planet.isGravetySource:
 			
-			if(body.mode != body.MODE_STATIC):
-				var sim_g_force = body.g_force(sim_ship_pos,t)	
-				#print(body.name + ":" +String(sim_g_force) + "g")
-				sim_ship_val += sim_g_force * simulation_delta_t / body.mass /2
-				sim_ship_pos += sim_ship_val * simulation_delta_t
-					
-				sim_g_force = body.g_force(sim_ship_pos,t)	
-				sim_ship_val += sim_g_force * simulation_delta_t / body.mass /2
-			
-			body.simulation_pos.append(sim_ship_pos)
-			body.simulation_vel.append(sim_ship_val)
+				var other_translation = planet.predictGlobalPosition(t)
+				
+				var sqrDst = sim_obj_pos.distance_squared_to(other_translation)		
+				var forcDir = sim_obj_pos.direction_to(other_translation).normalized()		
+				var acceleration = forcDir * _simulation_Object.G *planet.mass * _simulation_Object.mass / sqrDst
+				sim_obj_val += acceleration
+		sim_obj_pos += sim_obj_val
+		simulation_pos.append(sim_obj_pos)
 
-	for body in bodys:
-		if(body.show_sim):
-			if(body.soi_node !=null and body.show_soi_relativ_sim):
-				var soi_rel_simulaiton_pos = []
-				for t in body.simulation_pos.size():
-					soi_rel_simulaiton_pos.append(body.simulation_pos[t]-body.soi_node.simulation_pos[t]+body.soi_node.translation)
-				body.orbit.draw_list(soi_rel_simulaiton_pos)
-			else:
-				body.orbit.draw_list([body.translation] + body.simulation_pos)
+		if(_simulation_Object.show_sim):
+			_simulation_Object.orbit.draw_list(simulation_pos)
 		else:
-			body.orbit.clear()
+			_simulation_Object.orbit.clear()
 		

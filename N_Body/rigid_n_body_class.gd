@@ -34,7 +34,7 @@ var history_update_timer = 0
 var orbit
 
 func _enter_tree():
-	self.add_to_group("bodys")
+	#self.add_to_group("bodys")
 	self.gravity_scale = 0
 	orbit = preload("res://N_Body/3DOrbit.gd").new()
 	
