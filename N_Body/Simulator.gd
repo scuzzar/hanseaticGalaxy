@@ -38,6 +38,8 @@ func simulate():
 	#var simulation_val = [sim_obj_val]
 	var collision = false
 	
+	_simulation_Object.simulation_pos = []
+	
 	for i in simulation_steps:
 		var t = i * simulation_delta_t
 		
@@ -60,10 +62,8 @@ func simulate():
 		sim_obj_val += sim_g_force   * simulation_delta_t /2
 		sim_obj_pos += sim_obj_val * simulation_delta_t
 		sim_obj_val += sim_g_force   * simulation_delta_t /2
-		simulation_pos.append(sim_obj_pos)
-			
-		if(_simulation_Object.show_sim):
-			_simulation_Object.orbit.draw_list(simulation_pos)
-		else:
-			_simulation_Object.orbit.clear()
 		
+		simulation_pos.append(sim_obj_pos)
+		
+		#var new_relativ_point = sim_obj_pos-_simulation_Object.last_g_force_strongest_Body.global_transform.origin	
+		_simulation_Object.simulation_pos.append(sim_obj_pos)

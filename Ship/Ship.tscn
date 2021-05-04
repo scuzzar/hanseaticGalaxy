@@ -31,7 +31,7 @@ trust = 200.0
 script = ExtResource( 9 )
 slot_parent_path = NodePath("../Model/SimpleRocket")
 
-[node name="Control2" type="Control" parent="."]
+[node name="Tail" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 1 )

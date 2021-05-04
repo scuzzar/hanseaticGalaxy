@@ -13,17 +13,20 @@ var width = 1
 
 func _draw():
 	var now = [ship.translation]
-	if(show_history and ship.history.size()>0): _draw_list(ship.history + now, history_color)	
-	if(show_sim and ship.simulation_pos.size()>0): _draw_list(ship.simulation_pos,sim_color)
+	var relativ_to = ship.last_g_force_strongest_Body.global_transform.origin
+	if(show_history and ship.history.size()>0): _draw_list(ship.history ,relativ_to, history_color)	
+	if(show_sim and ship.simulation_pos.size()>0): _draw_list(ship.simulation_pos,relativ_to,sim_color)
 
-func _draw_list(list, color):
+func _draw_list(list, relativ_to, color):
 	if(list.size()>1):
 		for i in range(list.size()-1):
-			if(!get_viewport().get_camera().is_position_behind(list[i]) and !get_viewport().get_camera().is_position_behind(list[i+1])):
-				var v1 = get_viewport().get_camera().unproject_position(list[i])
-				var v2 = get_viewport().get_camera().unproject_position(list[i+1])
-				if(get_viewport_rect().has_point(v2) or get_viewport_rect().has_point(v1)):
-					draw_line(v1,v2,color,width,true)
+			var v1 = list[i]+relativ_to
+			var v2 = list[i+1]+relativ_to
+			if(!get_viewport().get_camera().is_position_behind(v1) and !get_viewport().get_camera().is_position_behind(v2)):
+				var p1 = get_viewport().get_camera().unproject_position(v1)
+				var p2 = get_viewport().get_camera().unproject_position(v2)
+				if(get_viewport_rect().has_point(p2) or get_viewport_rect().has_point(p1)):
+					draw_line(p1,p2,color,width,true)
 
 func _process(delta):
 	update()

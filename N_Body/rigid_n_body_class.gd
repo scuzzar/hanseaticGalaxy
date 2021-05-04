@@ -16,8 +16,9 @@ export var show_soi_relativ_sim = true
 signal g_force_update(force,strogest_body,strongest_body_force)
 
 var last_g_force = Vector3(0,0,0)
-var last_g_force_strongest_Body = null
-var last_g_force_strongest_Body_force = 0
+var last_g_force_strongest_Body : RigidBody
+var last_g_force_strongest_Body_force = Vector3(0,0,0)
+var g_force_strongest_Body_changed = false
 var G = 50
 
 onready var bodys = []
@@ -36,8 +37,7 @@ var orbit
 func _enter_tree():
 	#self.add_to_group("bodys")
 	self.gravity_scale = 0
-	orbit = preload("res://N_Body/3DOrbit.gd").new()
-	
+	orbit = preload("res://N_Body/3DOrbit.gd").new()	
 	self.get_parent().call_deferred("add_child", orbit)
 
 func _ready():
@@ -55,24 +55,30 @@ func _process(delta):
 	if history_update_timer >= history_update_interfall:		
 		history_update_timer -= history_update_interfall
 		appendHistory()
+	if(show_sim):
+		orbit.draw_list(simulation_pos)
+	else:
+		orbit.clear()
 
 func _integrate_forces(state):
 	state.add_central_force(last_g_force / 2)
 	last_g_force = g_force(self.translation)
 	emit_signal("g_force_update",last_g_force,last_g_force_strongest_Body,last_g_force_strongest_Body_force)
-	
+	print(last_g_force_strongest_Body.name)
 	state.add_central_force(last_g_force / 2)
 	self.velocety = state.linear_velocity
 
 
-func appendHistory():	
-	history.append(translation)
+func appendHistory():
+	if(g_force_strongest_Body_changed): history = []
+	var new_relativ_point = translation-last_g_force_strongest_Body.global_transform.origin	
+	history.append(new_relativ_point)
 	if(history.size()>history_lenth):
 		history.pop_front()
 	pass
 
 func g_force(position):
-	
+	g_force_strongest_Body_changed = false
 	last_g_force_strongest_Body = null
 	last_g_force_strongest_Body_force = Vector3(0,0,0)
 	
@@ -91,6 +97,5 @@ func g_force(position):
 			if(last_g_force_strongest_Body_force.length()<acceleration.length()):
 				last_g_force_strongest_Body_force = acceleration
 				last_g_force_strongest_Body = body
-		#Gravety_acceleration_components.append(acceleration)	
 	return sum	
 

@@ -40,7 +40,7 @@ environment = ExtResource( 12 )
 min_zoom = 1.0
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, -1.1921e-07, 0, 1, 0, 1.1921e-07, 0, 1, 3837.34, -0.221175, -57.597 )
+transform = Transform( 1, 0, -1.1921e-07, 0, 1, 0, 1.1921e-07, 0, 1, 5588.24, -0.221175, -56.8106 )
 show_soi_relativ_sim = false
 history_lenth = 30
 trust = 300.0
@@ -57,14 +57,14 @@ transform = Transform( 1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 10.668
 omni_range = 11247.7
 
 [node name="Earth" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.160339, -0.8367, 1830.62 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.160339, -0.8367, 3569.05 )
 mode = 3
 mass = 889.885
 physics_material_override = SubResource( 1 )
 linear_velocity = Vector3( 1.219, 0, 0 )
 angular_velocity = Vector3( 0, 0.01, 0 )
 material = ExtResource( 9 )
-orbital_speed = 2
+orbital_speed = 18
 show_orbit = true
 surface_g = 9.81
 
@@ -123,6 +123,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 376.989 )
 mode = 3
 mass = 22.6279
 material = ExtResource( 3 )
+orbital_speed = 10
 radius_description = 2500.0
 surface_g = 1.62
 
@@ -157,11 +158,11 @@ script = ExtResource( 17 )
 cargo = 4
 
 [node name="Mars" parent="." instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3837.55, 0, 10.798 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5587.91, 0, 10.798 )
 mode = 3
 mass = 334.727
 linear_velocity = Vector3( 0.862, 0, 0 )
-orbital_speed = 3
+orbital_speed = 15
 show_orbit = true
 surface_g = 3.69
 
@@ -253,7 +254,7 @@ radius_description = 2000.0
 surface_g = 1.0
 
 [node name="Saturn" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8153.98, 0, 1.98169 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10269.2, 0, 1.98169 )
 mode = 3
 mass = 3229.37
 material = ExtResource( 7 )
@@ -321,11 +322,10 @@ cargo = 6
 
 [node name="Simulator" type="Node" parent="."]
 script = ExtResource( 19 )
-simulation_time = 150
+simulation_time = 2000
 simulation_delta_t = 2.0
 simulatoin_update_interfall = 3
 _simulation_object_path = NodePath("../Ship")
-on = true
 
 [connection signal="credits_changed" from="Ship" to="HUD" method="_on_Ship_credits_changed"]
 [connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]
