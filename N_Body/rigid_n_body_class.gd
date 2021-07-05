@@ -37,8 +37,8 @@ var orbit
 func _enter_tree():
 	#self.add_to_group("bodys")
 	self.gravity_scale = 0
-	orbit = preload("res://N_Body/3DOrbit.gd").new()	
-	self.get_parent().call_deferred("add_child", orbit)
+	#orbit = preload("res://N_Body/3DOrbit.gd").new()	
+	#self.get_parent().call_deferred("add_child", orbit)
 
 func _ready():
 	if soi_node != null:
@@ -55,16 +55,15 @@ func _process(delta):
 	if history_update_timer >= history_update_interfall:		
 		history_update_timer -= history_update_interfall
 		appendHistory()
-	if(show_sim):
-		orbit.draw_list(simulation_pos)
-	else:
-		orbit.clear()
+	#if(show_sim):
+		#orbit.draw_list(simulation_pos)
+	#else:
+		#orbit.clear()
 
 func _integrate_forces(state):
 	state.add_central_force(last_g_force / 2)
 	last_g_force = g_force(self.translation)
-	emit_signal("g_force_update",last_g_force,last_g_force_strongest_Body,last_g_force_strongest_Body_force)
-	print(last_g_force_strongest_Body.name)
+	emit_signal("g_force_update",last_g_force,last_g_force_strongest_Body,last_g_force_strongest_Body_force)	
 	state.add_central_force(last_g_force / 2)
 	self.velocety = state.linear_velocity
 

@@ -13,9 +13,10 @@ var width = 1
 
 func _draw():
 	var now = [ship.translation]
-	var relativ_to = ship.last_g_force_strongest_Body.global_transform.origin
-	if(show_history and ship.history.size()>0): _draw_list(ship.history ,relativ_to, history_color)	
-	if(show_sim and ship.simulation_pos.size()>0): _draw_list(ship.simulation_pos,relativ_to,sim_color)
+	if(ship.last_g_force_strongest_Body!=null):
+		var relativ_to = ship.last_g_force_strongest_Body.global_transform.origin
+		if(show_history and ship.history.size()>0): _draw_list(ship.history ,relativ_to, history_color)	
+		if(show_sim and ship.simulation_pos.size()>0): _draw_list(ship.simulation_pos,relativ_to,sim_color)
 
 func _draw_list(list, relativ_to, color):
 	if(list.size()>1):

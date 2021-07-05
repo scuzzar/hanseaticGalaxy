@@ -3,45 +3,37 @@ extends RigidBody
 
 class_name simpelPlanet
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 export (Material) var material = preload("res://Bodys/Mars.material") 
 
-onready var orbit_radius = translation.length()
-var isGravetySource = true
-var orbit
-var angle = 0
+
 export var orbital_speed = 1
-export var show_orbit = false setget set_show_orbit
 export var radius_description:float = 6371
-var radius
 export(float) var surface_g = 5
+
+onready var orbit_radius = translation.length()
+
+#var orbit
+var angle = 0
+var radius
+var isGravetySource = false
 var angular_speed = 0 
-
-
 
 func _enter_tree():
 	self.add_to_group("bodys")
 	self.gravity_scale = 0
-	orbit = preload("res://N_Body/3DOrbit.gd").new()	
-	self.get_parent().call_deferred("add_child", orbit)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Shape/Mesh.material_override = material
-	isGravetySource = true
+	isGravetySource = (surface_g>0)
 	
 	var s = radius_description/6371.0*68	
-	$Shape.scale = Vector3(s,s,s)
-	
-	
+	$Shape.scale = Vector3(s,s,s)	
 	
 	radius = $Shape/Mesh.get_aabb().get_longest_axis_size()*s/2
-	#var g = 50 *self.mass  /(r*r)
-	mass = (surface_g*radius*radius)/50
 	
-	#var surface_g_force = 
+	mass = (surface_g*radius*radius)/Globals.G
+	
 	
 	if(orbit_radius>0.5):
 		angular_speed = 2*PI/(2*PI*orbit_radius/orbital_speed)	
@@ -62,21 +54,3 @@ func predictGlobalPosition(delta):
 	var local_prediction = Vector3(sin(sim_angle)*orbit_radius,0,cos(sim_angle)*orbit_radius)
 	var global_prediction = get_parent().to_global(local_prediction)
 	return global_prediction
-
-func set_show_orbit(value):
-	show_orbit = value
-	if(orbit!=null):
-		orbit.clear()
-		if(show_orbit):
-			var start = translation
-			var result = [start]
-			for i in range(360):
-				var a = 2*PI/360*i
-				start = Vector3(sin(a)*orbit_radius,0,cos(a)*orbit_radius)
-				result.append(start)		
-			orbit.draw_list(result)
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

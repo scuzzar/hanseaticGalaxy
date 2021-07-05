@@ -30,7 +30,7 @@ func _generate_mission() -> MissionContainer:
 	c._set_cargo(cargo)	
 	var distance = c.getDistance()	
 	c.reward = round(c.getPrice() * sqrt(distance*12)/30)
-	print(port.name + " > ",str(c))
+	#print_debug(port.name + " > ",str(c))
 	return c
 
 func _select_destination()->Port:

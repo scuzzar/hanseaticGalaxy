@@ -32,12 +32,12 @@ func _on_Area_Ship_enterd(ship : Ship):
 	self.docked_ship = ship
 	ship.pay(ship.get_refule_costs())
 	ship.set_fuel(ship.fuel_cap)
-	print("ship landed")
+	print_debug("ship landed")
 	
 func _on_Area_Ship_exited(ship : Ship):
 	ship.undock()
 	self.docked_ship = null
-	print("ship started")
+	print_debug("ship started")
 
 func _on_container_clicked(container:MissionContainer):
 	if($Inventory.hasContainer(container) and docked_ship != null):		
