@@ -19,8 +19,7 @@ export var sim_color = Color(1,0,0)
 var width = 1
 
 func _process(delta):
-	self.update_orbit()
-	print("here")
+	self.update_orbit()	
 
 func update_orbit():	
 	clear()	

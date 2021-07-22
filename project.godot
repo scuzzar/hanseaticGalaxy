@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "CargoTarget",
 "language": "GDScript",
-"path": "res://scenes/CargoTarget.gd"
+"path": "res://SpacePort/CargoTarget.gd"
 }, {
 "base": "Spatial",
 "class": "MissionContainer",
@@ -63,13 +63,13 @@ _global_script_class_icons={
 [application]
 
 config/name="hanseaticGalaxy"
-run/main_scene="res://scenes/Loading Screen.tscn"
+run/main_scene="res://scenes/LoadingScreen/Loading Screen.tscn"
 config/icon="res://Artemis.png"
 config/windows_native_icon="res://Artemis.ico"
 
 [autoload]
 
-Globals="*res://scenes/Globals.gd"
+Globals="*res://Singeltons/Globals.gd"
 
 [editor_plugins]
 

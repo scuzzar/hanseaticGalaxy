@@ -5,7 +5,7 @@ var loader : ResourceInteractiveLoader
 
 
 func _ready():
-	loader = ResourceLoader.load_interactive("res://scenes/Sol.tscn")
+	loader = ResourceLoader.load_interactive("res://scenes/sol/Sol.tscn")
 	if loader == null: # Check for errors.
 		print("ERROR")
 		return	
