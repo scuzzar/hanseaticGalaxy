@@ -3,7 +3,7 @@ extends RigidBody
 
 class_name simpelPlanet
 
-export (Material) var material = preload("res://Bodys/Mars.material") 
+export (Material) var material = preload("res://Bodys/materials/Mars.material") 
 
 
 export var orbital_speed = 1

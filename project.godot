@@ -37,12 +37,12 @@ _global_script_classes=[ {
 "base": "Rigid_N_Body",
 "class": "Ship",
 "language": "GDScript",
-"path": "res://Bodys/Ship.gd"
+"path": "res://Ship/Ship.gd"
 }, {
 "base": "ImmediateGeometry",
 "class": "SimplePlanetOrbit",
 "language": "GDScript",
-"path": "res://N_Body/SimplePlanetOrbit.gd"
+"path": "res://Bodys/SimplePlanetOrbit.gd"
 }, {
 "base": "RigidBody",
 "class": "simpelPlanet",

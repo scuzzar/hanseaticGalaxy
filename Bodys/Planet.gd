@@ -3,7 +3,7 @@ extends Rigid_N_Body
 
 class_name Planet
 
-export (Material) var material = preload("res://Bodys/Mars.material") 
+export (Material) var material = preload("res://Bodys/materials/Mars.material") 
 
 
 var draw_orbit_intervall  = 0.1
