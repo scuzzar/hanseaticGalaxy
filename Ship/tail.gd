@@ -26,7 +26,6 @@ func appendHistory():
 	#if(g_force_strongest_Body_changed): history = []
 	#var new_relativ_point = translation-last_g_force_strongest_Body.global_transform.origin	
 	history.append(tracked_Node.translation)
-	print(tracked_Node.translation)
 	if(history.size()>history_lenth):
 		history.pop_front()
 	pass
