@@ -1,22 +1,43 @@
 extends Control
 
 
-onready var ship = self.get_parent()
+onready var tracked_Node = self.get_parent()
 
 var past = []
 export var history_color = Color(0,1,0)
 export var sim_color = Color(1,0,0)
-export var show_sim = false
-export var show_history = false
+
+var history = []
+export var history_lenth = 100
+export var history_update_interfall = 0.5
+var history_update_timer = 0
 
 var width = 1
 
+func _process(delta):
+	history_update_timer += delta
+	#orbit._draw_list(simulation)
+	if history_update_timer >= history_update_interfall:		
+		history_update_timer -= history_update_interfall
+		appendHistory()
+	update()
+
+func appendHistory():
+	#if(g_force_strongest_Body_changed): history = []
+	#var new_relativ_point = translation-last_g_force_strongest_Body.global_transform.origin	
+	history.append(tracked_Node.translation)
+	print(tracked_Node.translation)
+	if(history.size()>history_lenth):
+		history.pop_front()
+	pass
+
 func _draw():
-	var now = [ship.translation]
-	if(ship.last_g_force_strongest_Body!=null):
-		var relativ_to = ship.last_g_force_strongest_Body.global_transform.origin
-		if(show_history and ship.history.size()>0): _draw_list(ship.history ,relativ_to, history_color)	
-		if(show_sim and ship.simulation_pos.size()>0): _draw_list(ship.simulation_pos,relativ_to,sim_color)
+	var now = [tracked_Node.translation]
+	if(tracked_Node.last_g_force_strongest_Body!=null):
+		var relativ_to = Vector3(0,0,0) #ship.last_g_force_strongest_Body.global_transform.origin
+		if(history.size()>0): _draw_list(history + now ,relativ_to, history_color)	
+
+
 
 func _draw_list(list, relativ_to, color):
 	if(list.size()>1):
@@ -28,7 +49,5 @@ func _draw_list(list, relativ_to, color):
 				var p2 = get_viewport().get_camera().unproject_position(v2)
 				if(get_viewport_rect().has_point(p2) or get_viewport_rect().has_point(p1)):
 					draw_line(p1,p2,color,width,true)
-
-func _process(delta):
-	update()
+	
 

@@ -27,10 +27,7 @@ var simulation_pos = []
 var simulation_vel = []
 export var show_sim = true
 
-var history = []
-export var history_lenth = 100
-export var history_update_interfall = 0.5
-var history_update_timer = 0
+
 
 var orbit
 
@@ -49,12 +46,7 @@ func _ready():
 	last_g_force = g_force(translation)	
 
 
-func _process(delta):
-	history_update_timer += delta
-	#orbit._draw_list(simulation)
-	if history_update_timer >= history_update_interfall:		
-		history_update_timer -= history_update_interfall
-		appendHistory()
+
 	#if(show_sim):
 		#orbit.draw_list(simulation_pos)
 	#else:
@@ -68,13 +60,7 @@ func _integrate_forces(state):
 	self.velocety = state.linear_velocity
 
 
-func appendHistory():
-	if(g_force_strongest_Body_changed): history = []
-	var new_relativ_point = translation-last_g_force_strongest_Body.global_transform.origin	
-	history.append(new_relativ_point)
-	if(history.size()>history_lenth):
-		history.pop_front()
-	pass
+
 
 func g_force(position):
 	g_force_strongest_Body_changed = false
