@@ -14,7 +14,6 @@ var history = []
 export var history_lenth = 100
 export var history_update_interfall = 0.2
 var history_update_timer = 0
-
 var width = 1
 
 func _process(delta):
@@ -56,3 +55,15 @@ func _draw_list(list, relativ_to, color):
 					draw_line(p1,p2,color,width,true)
 	
 
+func _on_reference_changed(old_body, new_body):
+	history.clear()
+	self.frameOfReference_Node = new_body
+
+func _stop():
+	history.clear()
+	self.hide()
+	self.set_process(false)
+
+func _start():
+	self.show()
+	self.set_process(true)

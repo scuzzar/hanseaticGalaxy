@@ -18,12 +18,15 @@ signal fuel_changed(fuel, fuel_cap)
 signal credits_changed(credits)
 signal mass_changed(mass,trust)
 signal telemetry_changed(position,velocety)
+signal docked()
+signal undocked()
 
 func _ready():	
 	._ready()	
 	emit_signal("fuel_changed",fuel, fuel_cap)
 	emit_signal("credits_changed",credits)
 	emit_signal("mass_changed",mass,trust)	
+
 
 func _integrate_forces(state:PhysicsDirectBodyState):
 	._integrate_forces(state)
@@ -111,8 +114,10 @@ func can_load_container() -> bool:
 
 func dock(target: Node):
 	self.docking_location = target
+	emit_signal("docked")
 
 func undock():
+	emit_signal("undocked")
 	self.docking_location = null
 
 func container_clicked(c: MissionContainer):	

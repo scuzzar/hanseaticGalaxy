@@ -71,6 +71,10 @@ config/windows_native_icon="res://Artemis.ico"
 
 Globals="*res://Singeltons/Globals.gd"
 
+[display]
+
+window/tablet_driver=""
+
 [editor_plugins]
 
 enabled=PoolStringArray(  )

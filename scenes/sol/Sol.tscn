@@ -336,7 +336,10 @@ simulatoin_update_interfall = 3
 _simulation_object_path = NodePath("../Ship")
 
 [connection signal="credits_changed" from="Ship" to="HUD" method="_on_Ship_credits_changed"]
+[connection signal="docked" from="Ship" to="Ship/Tail" method="_stop"]
 [connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]
 [connection signal="g_force_update" from="Ship" to="HUD" method="_on_Ship_g_force_update"]
 [connection signal="mass_changed" from="Ship" to="HUD" method="_on_Ship_mass_changed"]
+[connection signal="strongest_body_changed" from="Ship" to="Ship/Tail" method="_on_reference_changed"]
 [connection signal="telemetry_changed" from="Ship" to="HUD" method="_on_Ship_telemetry_changed"]
+[connection signal="undocked" from="Ship" to="Ship/Tail" method="_start"]
