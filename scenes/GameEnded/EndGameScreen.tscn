@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/GameEnded/EndGameScreen.gd" type="Script" id=1]
+[ext_resource path="res://HUD/theme/default_theme.theme" type="Theme" id=2]
+
+[node name="CenterContainer" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 42.0
+margin_top = 8.0
+margin_right = 42.0
+margin_bottom = 8.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+margin_left = 471.0
+margin_top = 276.0
+margin_right = 552.0
+margin_bottom = 323.0
+
+[node name="Score" type="Label" parent="VSplitContainer"]
+margin_right = 81.0
+margin_bottom = 21.0
+theme = ExtResource( 2 )
+text = "Score:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="VSplitContainer"]
+margin_top = 33.0
+margin_right = 81.0
+margin_bottom = 47.0
+columns = 2
+
+[node name="MoneyLable" type="Label" parent="VSplitContainer/GridContainer"]
+margin_right = 45.0
+margin_bottom = 14.0
+text = "Credits"
+
+[node name="MoneyValue" type="Label" parent="VSplitContainer/GridContainer"]
+margin_left = 49.0
+margin_right = 73.0
+margin_bottom = 14.0
+text = "000"
