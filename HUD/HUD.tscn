@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://HUD/FuelBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://HUD/Credits.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD/theme/default_theme.theme" type="Theme" id=4]
+[ext_resource path="res://HUD/EngineLifeBar.tscn" type="PackedScene" id=5]
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
@@ -124,10 +125,10 @@ text = "100000"
 [node name="Credits" parent="." instance=ExtResource( 3 )]
 
 [node name="Fuel" parent="." instance=ExtResource( 2 )]
-margin_left = 28.7169
-margin_top = -47.4584
-margin_right = 488.717
-margin_bottom = -26.4584
+margin_left = 26.5956
+margin_top = -54.5294
+margin_right = 486.596
+margin_bottom = -33.5294
 
 [node name="Consol" type="Label" parent="." groups=[
 "consol",
@@ -143,3 +144,9 @@ text = "Destination:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Life" parent="." instance=ExtResource( 5 )]
+margin_left = -481.0
+margin_top = -25.0
+margin_right = 488.0
+margin_bottom = -4.0

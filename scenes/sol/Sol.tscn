@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Bodys/materials/Sun.material" type="Material" id=1]
 [ext_resource path="res://Bodys/materials/Moon.material" type="Material" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://scenes/sol/Weltall.tres" type="Environment" id=20]
 [ext_resource path="res://Bodys/tex/NASA/mar2kuu2.jpg" type="Texture" id=21]
 [ext_resource path="res://Ship/Tail.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenes/sol/GameRoot.gd" type="Script" id=23]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.5
@@ -33,6 +34,7 @@ albedo_texture = ExtResource( 21 )
 size = Vector2( 300, 300 )
 
 [node name="Sol" type="Spatial"]
+script = ExtResource( 23 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 20 )
@@ -335,7 +337,6 @@ simulation_delta_t = 2.0
 simulatoin_update_interfall = 3
 _simulation_object_path = NodePath("../Ship")
 
-[connection signal="credits_changed" from="Ship" to="HUD" method="_on_Ship_credits_changed"]
 [connection signal="docked" from="Ship" to="Ship/Tail" method="_stop"]
 [connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]
 [connection signal="g_force_update" from="Ship" to="HUD" method="_on_Ship_g_force_update"]

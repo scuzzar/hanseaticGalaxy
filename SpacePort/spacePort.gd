@@ -30,7 +30,7 @@ func _on_Area_body_exited(body):
 func _on_Area_Ship_enterd(ship : Ship):
 	ship.dock(self)
 	self.docked_ship = ship
-	ship.pay(ship.get_refule_costs())
+	Player.pay(ship.get_refule_costs())
 	ship.set_fuel(ship.fuel_cap)
 	print_debug("ship landed")
 	

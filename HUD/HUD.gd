@@ -1,8 +1,7 @@
 extends Control
 
-
-
 onready var fuel_bar = $Fuel/FuelBar
+onready var live_bar = $Life/FuelBar
 onready var credit_labe = $Credits/Value
 onready var tmr_labe = $DataBox/TMR/Value
 onready var g_labe = $DataBox/G_Meter/Value
@@ -15,10 +14,11 @@ var ship_position:Vector3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():	
+	Player.connect("credits_changed",self,"_on_credits_changed")
 	pass
 
 func _process(delta):
-	#$Fuel.text = String(ship.fuel)
+	live_bar.value = int(Player.engine_fuel_left/Player.max_engine_fuel *100)
 	pass
 
 func _on_Ship_fuel_changed(fuel,fuel_cap):
@@ -26,7 +26,7 @@ func _on_Ship_fuel_changed(fuel,fuel_cap):
 	fuel_bar.value = int(fuel / fuel_cap *100)
 
 
-func _on_Ship_credits_changed(credits):
+func _on_credits_changed(credits):
 	credit_labe.text = str(credits)
 
 
