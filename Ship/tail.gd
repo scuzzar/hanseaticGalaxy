@@ -56,8 +56,9 @@ func _draw_list(list, relativ_to, color):
 	
 
 func _on_reference_changed(old_body, new_body):
+	print("now in SOI of" + str(new_body.name))
 	history.clear()
-	self.frameOfReference_Node = new_body
+	self._frameOfReference = new_body
 
 func _stop():
 	history.clear()
