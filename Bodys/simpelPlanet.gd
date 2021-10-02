@@ -43,6 +43,8 @@ func _ready():
 	
 
 func _physics_process(delta):
+	# TO DO: Change. This causes the Glitching of the Planet Position on TimeWarp
+	# Physics bodys shall not be moved every frame (See Doc)
 	if !Engine.editor_hint:	
 		angle += (angular_speed *delta)	
 		if(angle >= 2*PI): angle -= 2*PI
