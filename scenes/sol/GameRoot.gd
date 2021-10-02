@@ -16,7 +16,7 @@ func _process(delta):
 		call_deferred("setTimeScale",factor)
 	if Input.is_action_pressed("time_warp"):		
 		var factor = clamp(1 / ship.last_g_force.length()*ship.mass,5,MaxtimeWarpFactor)		
-		call_deferred("setTimeScale",factor)
+		call_deferred("setTimeScale",50)
 	
 	if Input.is_action_pressed("cheat_fuel"):
 		Player.pay(ship.get_refule_costs()*2)
