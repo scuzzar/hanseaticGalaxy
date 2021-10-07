@@ -34,7 +34,11 @@ albedo_texture = ExtResource( 21 )
 size = Vector2( 300, 300 )
 
 [node name="Sol" type="Spatial"]
+
+[node name="GameControlls" type="Node" parent="."]
 script = ExtResource( 23 )
+
+[node name="TimeWarp" type="Tween" parent="GameControlls"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 20 )
@@ -65,7 +69,6 @@ omni_range = 11247.7
 
 [node name="Earth" parent="." instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.160339, -0.8367, 3569.05 )
-mode = 3
 mass = 889.885
 physics_material_override = SubResource( 1 )
 linear_velocity = Vector3( 1.219, 0, 0 )
@@ -126,7 +129,6 @@ script = ExtResource( 8 )
 "bodys",
 ] instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 376.989 )
-mode = 3
 mass = 22.6279
 material = ExtResource( 2 )
 orbital_speed = 10
@@ -165,7 +167,6 @@ cargo = 4
 
 [node name="Mars" parent="." instance=ExtResource( 16 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5587.91, 0, 10.798 )
-mode = 3
 mass = 334.727
 linear_velocity = Vector3( 0.862, 0, 0 )
 orbital_speed = 15
@@ -217,7 +218,6 @@ init_store = 4
 
 [node name="Deimos" parent="Mars" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -567.991, 7.25164e-06, 1.40234 )
-mode = 3
 mass = 26.8183
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = SubResource( 2 )
@@ -251,7 +251,6 @@ max_store = 3
 
 [node name="Phobos" parent="Mars" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 272.285, -8.1155e-07, -2.46143 )
-mode = 3
 mass = 8.93942
 linear_velocity = Vector3( 0, 0, -5.197 )
 material = ExtResource( 4 )
@@ -265,7 +264,6 @@ script = ExtResource( 9 )
 
 [node name="Saturn" parent="." instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10269.2, 0, 1.98169 )
-mode = 3
 mass = 3229.37
 material = ExtResource( 11 )
 orbital_speed = 3
@@ -285,7 +283,6 @@ material/0 = null
 
 [node name="Mimas" parent="Saturn" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.375, 7.25164e-06, 1139.07 )
-mode = 3
 mass = 136.885
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = ExtResource( 7 )
@@ -293,7 +290,6 @@ radius_description = 3500.0
 
 [node name="Titan" parent="Saturn" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1067.75, -8.1155e-07, -2.46143 )
-mode = 3
 mass = 226.279
 linear_velocity = Vector3( 0, 0, -5.197 )
 material = ExtResource( 12 )
