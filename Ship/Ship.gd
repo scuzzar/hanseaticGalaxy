@@ -23,7 +23,8 @@ func _ready():
 
 func _integrate_forces(state:PhysicsDirectBodyState):
 	._integrate_forces(state)
-	$Model.trust_forward_off()	
+	$Model.trust_forward_off()
+	Engine.time_scale = 1
 	
 	if Input.is_action_pressed("burn_forward"):
 		var fuelcost =  trust * state.step
