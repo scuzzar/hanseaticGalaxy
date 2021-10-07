@@ -42,21 +42,13 @@ func _ready():
 		var result = [start]
 		
 
-func _integrate_forces(state):
-	angle += (angular_speed *0.1)	
-	if(angle >= 2*PI): angle -= 2*PI
-	var target = Vector3(sin(angle)*orbit_radius,0,cos(angle)*orbit_radius)
-	
-	state.linear_velocity = target - state.transform.origin 
-	print(state.linear_velocity.length())
-
 func _physics_process(delta):
 	# TO DO: Change. This causes the Glitching of the Planet Position on TimeWarp
 	# Physics bodys shall not be moved every frame (See Doc)
-	#if !Engine.editor_hint:	
-	#	angle += (angular_speed *delta)	
-	#	if(angle >= 2*PI): angle -= 2*PI
-	#	self.translation = Vector3(sin(angle)*orbit_radius,0,cos(angle)*orbit_radius)
+	if !Engine.editor_hint:	
+		angle += (angular_speed *delta)	
+		if(angle >= 2*PI): angle -= 2*PI
+		self.translation = Vector3(sin(angle)*orbit_radius,0,cos(angle)*orbit_radius)
 	pass
 
 func predictGlobalPosition(delta):
