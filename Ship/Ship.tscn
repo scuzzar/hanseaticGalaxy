@@ -1,20 +1,30 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Ship/ModelControl.gd" type="Script" id=2]
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=3]
 [ext_resource path="res://Ship/drive.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Ship/SimpleRocket/SimpleRocket.escn" type="PackedScene" id=5]
+[ext_resource path="res://HUD/theme/window.atlastex" type="Texture" id=6]
+[ext_resource path="res://HUD/theme/NormalFont.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Container/Inventory.gd" type="Script" id=9]
 
-[sub_resource type="PhysicsMaterial" id=1]
+[sub_resource type="PhysicsMaterial" id=4]
 friction = 3.0
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="BoxShape" id=5]
 extents = Vector3( 0.318761, 0.621956, 0.391661 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0.179565, -0.259403, 99.837, 99.2813 )
+margin_left = 14.6329
+margin_right = 14.6329
+margin_top = 12.4102
+margin_bottom = 14.2624
 
 [node name="Ship" type="RigidBody"]
 mass = 30.0
-physics_material_override = SubResource( 1 )
+physics_material_override = SubResource( 4 )
 continuous_cd = true
 axis_lock_linear_y = true
 axis_lock_angular_x = true
@@ -31,7 +41,7 @@ slot_parent_path = NodePath("../Model/SimpleRocket")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 2.22045e-16, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00268555, 0, -0.625144 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="Model" type="Spatial" parent="."]
 script = ExtResource( 2 )
@@ -41,5 +51,19 @@ transform = Transform( 0.481952, 0, 0, 0, -2.10668e-08, -0.481952, 0, 0.481952, 
 
 [node name="SimpleRocket" parent="Model" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+
+[node name="ShipInfoWindow" type="WindowDialog" parent="."]
+visible = true
+margin_left = 739.335
+margin_top = 131.457
+margin_right = 995.335
+margin_bottom = 429.457
+custom_styles/panel = SubResource( 3 )
+custom_fonts/title_font = ExtResource( 7 )
+custom_colors/title_color = Color( 1, 1, 1, 1 )
+window_title = "Ship Details"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="container_clicked" from="Inventory" to="." method="container_clicked"]

@@ -38,8 +38,9 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 	
 	if Input.is_action_pressed("turn_right"):
 		_rotation(state,turn_rate*-1)
-	
-
+		
+	if Input.is_action_pressed("info"):
+		$ShipInfoWindow.popup()
 	
 	emit_signal("telemetry_changed", self.translation, state.linear_velocity)
 	
