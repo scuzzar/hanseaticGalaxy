@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://HUD/theme/default_theme.theme" type="Theme" id=1]
+[gd_scene format=2]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -79,7 +77,6 @@ margin_left = 622.0
 margin_right = 722.0
 margin_bottom = 27.0
 rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 1 )
 text = "Buy"
 expand_icon = true
 __meta__ = {

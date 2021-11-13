@@ -1,14 +1,16 @@
 extends Panel
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var rawScene = preload("res://Container/Shop/raw.tscn")
+onready var vBox = $"Container/VBoxContainer"
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	add_raw("test","test","test","test")
+	add_raw("test","test","test","test")
+	add_raw("test","test","test","test")
 	pass # Replace with function body.
 
 func add_raw(good,destination,distance,reward):
+	var newRaw = rawScene.instance()
+	vBox.add_child(newRaw) # Add it as a child of this node.
 	pass
