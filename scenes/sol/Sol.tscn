@@ -122,9 +122,7 @@ max_store = 3
 [node name="T_Metal" type="Node" parent="Earth/PhilipinPort"]
 script = ExtResource( 8 )
 
-[node name="Moon" parent="Earth" groups=[
-"bodys",
-] instance=ExtResource( 16 )]
+[node name="Moon" parent="Earth" groups=["bodys"] instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 376.989 )
 mode = 3
 mass = 22.6279

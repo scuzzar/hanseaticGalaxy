@@ -58,9 +58,9 @@ margin_left = 739.335
 margin_top = 131.457
 margin_right = 995.335
 margin_bottom = 429.457
-custom_styles/panel = SubResource( 3 )
-custom_fonts/title_font = ExtResource( 7 )
 custom_colors/title_color = Color( 1, 1, 1, 1 )
+custom_fonts/title_font = ExtResource( 7 )
+custom_styles/panel = SubResource( 3 )
 window_title = "Ship Details"
 __meta__ = {
 "_edit_use_anchors_": false

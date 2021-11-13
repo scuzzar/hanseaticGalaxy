@@ -130,9 +130,7 @@ margin_top = -54.5294
 margin_right = 486.596
 margin_bottom = -33.5294
 
-[node name="Consol" type="Label" parent="." groups=[
-"consol",
-]]
+[node name="Consol" type="Label" parent="." groups=["consol"]]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 20.1587
