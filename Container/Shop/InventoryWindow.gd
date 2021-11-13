@@ -1,4 +1,4 @@
-extends WindowDialog
+extends Panel
 
 
 # Declare member variables here. Examples:
@@ -8,9 +8,7 @@ extends WindowDialog
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.popup()
+	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func add_raw(good,destination,distance,reward):
+	pass
