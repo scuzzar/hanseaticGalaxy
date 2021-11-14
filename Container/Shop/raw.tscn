@@ -1,4 +1,6 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Container/Shop/raw.gd" type="Script" id=1]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -7,6 +9,7 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 700, 40 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -31,50 +34,52 @@ __meta__ = {
 }
 
 [node name="Good" type="Label" parent="raw/HBoxContainer"]
-margin_left = 56.0
+margin_left = 504.0
 margin_top = 6.0
-margin_right = 156.0
+margin_right = 604.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 100, 0 )
 text = "Erz"
-align = 1
+clip_text = true
 
 [node name="Destination" type="Label" parent="raw/HBoxContainer"]
-margin_left = 160.0
+margin_left = 608.0
 margin_top = 6.0
-margin_right = 310.0
+margin_right = 758.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 150, 0 )
 text = "Apollo"
-align = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Distance" type="Label" parent="raw/HBoxContainer"]
-margin_left = 314.0
+[node name="Mass" type="Label" parent="raw/HBoxContainer"]
+margin_left = 762.0
 margin_top = 6.0
-margin_right = 464.0
+margin_right = 912.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 150, 0 )
 text = "78000"
-align = 1
+align = 2
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Reward" type="Label" parent="raw/HBoxContainer"]
-margin_left = 468.0
+margin_left = 916.0
 margin_top = 6.0
-margin_right = 618.0
+margin_right = 1066.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 150, 0 )
 text = "7899"
-align = 1
+align = 2
+clip_text = true
 
 [node name="Buy" type="Button" parent="raw/HBoxContainer"]
-margin_left = 622.0
-margin_right = 722.0
+margin_left = 1070.0
+margin_right = 1170.0
 margin_bottom = 27.0
 rect_min_size = Vector2( 100, 0 )
 text = "Buy"
@@ -82,3 +87,5 @@ expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="pressed" from="raw/HBoxContainer/Buy" to="." method="_on_Buy_pressed"]

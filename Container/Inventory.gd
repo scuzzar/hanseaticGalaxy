@@ -15,6 +15,8 @@ var stock ={
 }
 
 signal container_clicked(container)
+signal container_added(container)
+signal container_removed(container)
 
 func _ready():
 	slot_parent = self.get_node_or_null(slot_parent_path)
@@ -31,12 +33,21 @@ func addContainter(container:MissionContainer, i : int):
 	container.connect("clicked",self,"_on_container_clicked")
 	container.loaded = true	
 	stock[container.cargo] = stock[container.cargo]+1
+	emit_signal("container_added")
 
 func getContainer(i : int) -> MissionContainer:
 	var slot = slots[i] as Position3D
 	assert(slot.get_child_count()==1)	
 	return slot.get_child(0)
 
+func getAllContainter():
+	var result = []
+	for i in slots.size():
+		var slot = slots[i]
+		if(slot.get_child_count() != 0):
+			result.append(slot.get_child(0))
+	return result 
+	
 func addContainerOnFree(container:MissionContainer) -> bool:
 	for i in slots.size():
 		var slot = slots[i]
@@ -72,6 +83,7 @@ func removeContainer(container:MissionContainer) -> bool :
 			container.disconnect("clicked",self,"_on_container_clicked")
 			container.loaded = false
 			stock[container.cargo] = stock[container.cargo]-1
+			emit_signal("container_removed",container)
 			return true
 	return false
 
