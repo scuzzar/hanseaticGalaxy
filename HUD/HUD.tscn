@@ -151,9 +151,8 @@ margin_right = 488.0
 margin_bottom = -4.0
 
 [node name="InventoryWindow" parent="." instance=ExtResource( 6 )]
-anchor_left = 0.0
-anchor_right = 0.0
-margin_left = 36.9995
-margin_top = 151.361
-margin_right = 805.999
-margin_bottom = 600.361
+anchor_bottom = 1.0
+margin_left = 44.4882
+margin_top = 164.0
+margin_right = 554.488
+margin_bottom = -249.0
