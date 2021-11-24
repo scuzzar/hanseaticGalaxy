@@ -8,7 +8,7 @@
 extents = Vector3( 1.87527, 1, 1 )
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 1.77978, 0.496045, 1.21608 )
+extents = Vector3( 1.77978, 0.280095, 1.21608 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 3 )
