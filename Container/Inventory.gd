@@ -43,8 +43,7 @@ func _addToDestinationMap(container:MissionContainer):
 	if(!destinationMap.has(dest)||destinationMap[dest]==[]):
 		destinationMap[dest] = [container]
 	else:
-		destinationMap[dest].append(container)		
-	print(destinationMap)
+		destinationMap[dest].append(container)
 
 func _removeFromDestinationMap(container:MissionContainer):
 	var dest = container.destination.name
