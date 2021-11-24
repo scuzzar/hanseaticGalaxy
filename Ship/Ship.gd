@@ -12,8 +12,8 @@ var docking_location: Node
 signal fuel_changed(fuel, fuel_cap)
 signal mass_changed(mass,trust)
 signal telemetry_changed(position,velocety)
-signal docked()
-signal undocked()
+signal docked(port)
+signal undocked(port)
 
 func _ready():	
 	._ready()	
@@ -88,10 +88,10 @@ func can_load_container() -> bool:
 
 func dock(target: Node):
 	self.docking_location = target
-	emit_signal("docked")
+	emit_signal("docked", self.docking_location)
 
 func undock():
-	emit_signal("undocked")
+	emit_signal("undocked",  self.docking_location)
 	self.docking_location = null
 
 func container_clicked(c: MissionContainer):	

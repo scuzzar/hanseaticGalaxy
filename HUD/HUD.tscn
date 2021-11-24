@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://HUD/FuelBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://HUD/Credits.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD/theme/default_theme.theme" type="Theme" id=4]
 [ext_resource path="res://HUD/EngineLifeBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Container/Shop/InventoryWindow.tscn" type="PackedScene" id=6]
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
@@ -148,3 +149,11 @@ margin_left = -481.0
 margin_top = -25.0
 margin_right = 488.0
 margin_bottom = -4.0
+
+[node name="InventoryWindow" parent="." instance=ExtResource( 6 )]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 36.9995
+margin_top = 151.361
+margin_right = 805.999
+margin_bottom = 600.361

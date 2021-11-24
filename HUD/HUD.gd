@@ -50,3 +50,10 @@ func _on_Ship_telemetry_changed(position,velocety):
 	var kosmic = sqrt(G*M/r)
 	
 	v_labe.text = str("%0.1f" % (velocety.length())) + "  cosmic:" + str("%0.1f" % kosmic)
+
+
+func _on_Ship_docked(port:Port):
+	$InventoryWindow.setPort(port)
+
+func _on_Ship_undocked(port):
+	$InventoryWindow.clearPort(port)

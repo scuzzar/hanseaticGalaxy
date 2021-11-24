@@ -3,25 +3,40 @@ extends Panel
 var rawScene = preload("res://Container/Shop/raw.tscn")
 onready var vBox = $"Container/VBoxContainer"
 
+var destinationMap={}
+
 var inventor
 signal accepted(container)
 
-func _ready():
-	inventor = self.get_parent()
+func _ready():	
 	hide()
-	#add_raw("test","test","test","test")
-	#add_raw("test","test","test","test")
-	#add_raw("test","test","test","test")
-	pass # Replace with function body.
+	pass 
 
 func update():
 	if(self.visible):
 		for n in vBox.get_children():
 			vBox.remove_child(n)
 			n.queue_free()
-		var container = inventor.getAllContainter()
-		for c in container:
-			add_container(c)
+		var container# = inventor.getAllContainter()		
+		var destMap = inventor.destinationMap
+		
+		for dest in destMap.keys():			
+			container = destMap[dest]
+			for c in container:
+				add_container(c)
+
+func setPort(port:Port):
+	self.inventor = port.inventory
+	self.show()
+	self.update()
+	self.connect("accepted",port,"_on_container_clicked")
+	port.inventory.connect("container_added", self, "add_container")
+
+func clearPort(port:Port):
+	self.inventor = null
+	self.hide()
+	self.disconnect("accepted",port,"_on_container_clicked")
+	port.inventory.disconnect("container_added", self, "add_container")
 
 func add_container(container:MissionContainer):
 	var newRaw = rawScene.instance()	

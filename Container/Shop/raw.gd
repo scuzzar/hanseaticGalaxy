@@ -1,10 +1,5 @@
 extends Control
 
-onready var good_lable = $raw/HBoxContainer/Good
-onready var destination_lable = $raw/HBoxContainer/Destination
-onready var distance_lable = $raw/HBoxContainer/Distance
-onready var reward_lable = $raw/HBoxContainer/Reward
-
 var container
 
 signal accepted(container)

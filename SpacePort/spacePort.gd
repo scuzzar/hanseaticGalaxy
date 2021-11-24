@@ -2,12 +2,11 @@ extends Spatial
 
 class_name Port
 
-
 var MissionContainerScene = preload("res://Container/Container.scn")
 
 export(NodePath) var defaultMissionDestination_path
 var _defaultMissionDestination :Port
-
+onready var inventory = $Inventory
 var docked_ship: Ship
 
 func _ready():	
@@ -32,13 +31,11 @@ func _on_Area_Ship_enterd(ship : Ship):
 	self.docked_ship = ship
 	Player.pay(ship.get_refule_costs())
 	ship.set_fuel(ship.fuel_cap)
-	$Inventory/InventoryWindow.show()
 	print_debug("ship landed")
 	
 func _on_Area_Ship_exited(ship : Ship):
 	ship.undock()
-	self.docked_ship = null
-	$Inventory/InventoryWindow.hide()
+	self.docked_ship = null	
 	print_debug("ship started")
 
 func _on_container_clicked(container:MissionContainer):

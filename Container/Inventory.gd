@@ -4,6 +4,8 @@ export(NodePath) var slot_parent_path
 onready var slot_parent:Node
 var slots = []
 
+var destinationMap={}
+
 var stock ={
 	MissionContainer.CARGO.METALS:0,
 	MissionContainer.CARGO.FOOD:0,
@@ -33,8 +35,22 @@ func addContainter(container:MissionContainer, i : int):
 	container.connect("clicked",self,"_on_container_clicked")
 	container.loaded = true	
 	stock[container.cargo] = stock[container.cargo]+1
-	emit_signal("container_added")
+	_addToDestinationMap(container)	
+	emit_signal("container_added",container)
 
+func _addToDestinationMap(container:MissionContainer):
+	var dest = container.destination.name
+	if(!destinationMap.has(dest)||destinationMap[dest]==[]):
+		destinationMap[dest] = [container]
+	else:
+		destinationMap[dest].append(container)		
+	print(destinationMap)
+
+func _removeFromDestinationMap(container:MissionContainer):
+	var dest = container.destination.name
+	var mapList = destinationMap[dest]
+	mapList.erase(container)
+	
 func getContainer(i : int) -> MissionContainer:
 	var slot = slots[i] as Position3D
 	assert(slot.get_child_count()==1)	
@@ -83,6 +99,7 @@ func removeContainer(container:MissionContainer) -> bool :
 			container.disconnect("clicked",self,"_on_container_clicked")
 			container.loaded = false
 			stock[container.cargo] = stock[container.cargo]-1
+			_removeFromDestinationMap(container)
 			emit_signal("container_removed",container)
 			return true
 	return false
