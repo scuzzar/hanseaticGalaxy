@@ -74,8 +74,8 @@ Player="*res://scenes/Player.gd"
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
+window/size/width=1620
+window/size/height=869
 window/tablet_driver=""
 
 [editor_plugins]

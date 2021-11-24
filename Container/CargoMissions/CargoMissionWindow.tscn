@@ -1,19 +1,19 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Container/Shop/raw.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Container/Shop/InventoryWindow.gd" type="Script" id=3]
+[ext_resource path="res://Container/CargoMissions/raw.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Container/CargoMissions/CargoMissionWindow.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.207843, 0.207843, 0.207843, 1 )
 
-[node name="InventoryWindow" type="Panel"]
+[node name="CargoMissionWindow" type="Panel"]
 anchor_left = -0.000775099
 anchor_right = -0.000775099
 margin_left = 57.4882
 margin_top = 266.0
 margin_right = 562.488
 margin_bottom = 572.0
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -5,7 +5,7 @@
 [ext_resource path="res://HUD/Credits.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD/theme/default_theme.theme" type="Theme" id=4]
 [ext_resource path="res://HUD/EngineLifeBar.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Container/Shop/InventoryWindow.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Container/CargoMissions/CargoMissionWindow.tscn" type="PackedScene" id=6]
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
@@ -152,7 +152,7 @@ margin_bottom = -4.0
 
 [node name="InventoryWindow" parent="." instance=ExtResource( 6 )]
 anchor_bottom = 1.0
-margin_left = 44.4882
-margin_top = 164.0
-margin_right = 554.488
-margin_bottom = -249.0
+margin_left = 42.3678
+margin_top = 147.01
+margin_right = 552.368
+margin_bottom = -139.99
