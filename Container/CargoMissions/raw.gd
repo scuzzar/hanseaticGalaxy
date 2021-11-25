@@ -4,6 +4,7 @@ var container
 
 signal buttonPressed(container)
 
+
 func setContent(container:MissionContainer):
 	self.container = container
 	$raw/HBoxContainer/Good.text = container.getCargoName()
@@ -13,3 +14,6 @@ func setContent(container:MissionContainer):
 
 func _on_Buy_pressed():
 	emit_signal("buttonPressed",container)	
+
+func disable():
+	$raw/HBoxContainer/Buy.disabled = true

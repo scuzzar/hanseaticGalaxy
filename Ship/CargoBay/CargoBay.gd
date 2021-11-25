@@ -50,7 +50,10 @@ func _Inventory_added_container(container:MissionContainer):
 func _add_container(container:MissionContainer):	
 	var newRaw = rawScene.instance()	
 	newRaw.setContent(container)
-	newRaw.connect("buttonPressed",self,"_on_buttonPressed")
+	if(container.destination  == ship.docking_location):
+		newRaw.connect("buttonPressed",self,"_on_buttonPressed")
+	else:
+		newRaw.disable()
 	vBox.add_child(newRaw) # Add it as a child of this node.
 
 func _on_buttonPressed(container:MissionContainer):
