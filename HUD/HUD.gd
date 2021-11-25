@@ -6,9 +6,14 @@ onready var credit_labe = $Credits/Value
 onready var tmr_labe = $DataBox/TMR/Value
 onready var g_labe = $DataBox/G_Meter/Value
 onready var mass_labe = $DataBox/MASS/Value
-onready var v_labe = $DataBox/V_Meter/Value
-onready var v_cosmic = $DataBox/V_cosmic/Value
-onready var v_escape = $DataBox/V_escape/Value
+
+#onready var v_labe = $DataBox/V_Meter/Value
+#onready var v_cosmic = $DataBox/V_cosmic/Value
+#onready var v_escape = $DataBox/V_escape/Value
+
+onready var v_labe = $CenterHUB/V_Meter/Value
+onready var v_cosmic = $CenterHUB/V_cosmic/Value
+onready var v_escape = $CenterHUB/V_escape/Value
 
 var ship_mass = 0
 var strongest_body:simpelPlanet = null
@@ -59,6 +64,8 @@ func _on_Ship_telemetry_changed(position,velocety):
 
 func _on_Ship_docked(port:Port):
 	$InventoryWindow.setPort(port)
+	$CenterHUB.hide()
 
 func _on_Ship_undocked(port):
 	$InventoryWindow.clearPort(port)
+	$CenterHUB.show()
