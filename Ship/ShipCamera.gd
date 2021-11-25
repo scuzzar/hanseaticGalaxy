@@ -24,9 +24,11 @@ func _ready():
 
 func _process(delta):	
 	self.translation = ship.translation
-	self.rotate_y(_next_rotation.x * rotation_speed * delta /Engine.time_scale *-1)
-	tilt.rotate_x(_next_rotation.y * rotation_speed * delta /Engine.time_scale *-1)
+	self.rotate_y(_next_rotation.x * rotation_speed * delta /Engine.time_scale *-1)	
+	if(abs(tilt.rotation.x+_next_rotation.y * rotation_speed * delta /Engine.time_scale *-1)<=1.4):		
+		tilt.rotate_x(_next_rotation.y * rotation_speed * delta /Engine.time_scale *-1)
 	_next_rotation = Vector2(0,0)
+	print(tilt.rotation)
 
 func _set_zoom_level(value: float) -> void:	
 	_zoom_level = clamp(value, min_zoom, max_zoom)
@@ -55,5 +57,5 @@ func _input(event):
 
 func _rotate_camera(event:InputEventMouseMotion):
 	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
-		_next_rotation = event.relative
+		_next_rotation = event.relative		
 
