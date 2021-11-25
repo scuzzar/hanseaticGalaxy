@@ -17,19 +17,18 @@ __meta__ = {
 }
 
 [node name="DataBox" type="VBoxContainer" parent="."]
-margin_left = -11.2132
-margin_top = 0.221825
-margin_right = 175.787
-margin_bottom = 104.222
+margin_left = 9.7868
+margin_top = 9.22182
+margin_right = 213.787
+margin_bottom = 155.222
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MASS" type="HBoxContainer" parent="DataBox"]
-margin_top = 4.0
 margin_right = 204.0
-margin_bottom = 25.0
+margin_bottom = 21.0
 alignment = 1
 __meta__ = {
 "_edit_group_": true
@@ -52,9 +51,9 @@ theme = ExtResource( 4 )
 text = "100000"
 
 [node name="TMR" type="HBoxContainer" parent="DataBox"]
-margin_top = 29.0
+margin_top = 25.0
 margin_right = 204.0
-margin_bottom = 50.0
+margin_bottom = 46.0
 alignment = 1
 
 [node name="Label" type="Label" parent="DataBox/TMR"]
@@ -74,9 +73,9 @@ theme = ExtResource( 4 )
 text = "100000"
 
 [node name="G_Meter" type="HBoxContainer" parent="DataBox"]
-margin_top = 54.0
+margin_top = 50.0
 margin_right = 204.0
-margin_bottom = 75.0
+margin_bottom = 71.0
 alignment = 1
 __meta__ = {
 "_edit_group_": true
@@ -99,9 +98,9 @@ theme = ExtResource( 4 )
 text = "100000"
 
 [node name="V_Meter" type="HBoxContainer" parent="DataBox"]
-margin_top = 79.0
+margin_top = 75.0
 margin_right = 204.0
-margin_bottom = 100.0
+margin_bottom = 96.0
 alignment = 1
 __meta__ = {
 "_edit_group_": true
@@ -116,6 +115,56 @@ text = "V:"
 align = 2
 
 [node name="Value" type="Label" parent="DataBox/V_Meter"]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 100, 0 )
+theme = ExtResource( 4 )
+text = "100000"
+
+[node name="V_cosmic" type="HBoxContainer" parent="DataBox"]
+margin_top = 100.0
+margin_right = 204.0
+margin_bottom = 121.0
+alignment = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="DataBox/V_cosmic"]
+margin_right = 100.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 100, 0 )
+theme = ExtResource( 4 )
+text = "Cosmic:"
+align = 2
+
+[node name="Value" type="Label" parent="DataBox/V_cosmic"]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 100, 0 )
+theme = ExtResource( 4 )
+text = "100000"
+
+[node name="V_escape" type="HBoxContainer" parent="DataBox"]
+margin_top = 125.0
+margin_right = 204.0
+margin_bottom = 146.0
+alignment = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="DataBox/V_escape"]
+margin_right = 100.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 100, 0 )
+theme = ExtResource( 4 )
+text = "escape:"
+align = 2
+
+[node name="Value" type="Label" parent="DataBox/V_escape"]
 margin_left = 104.0
 margin_right = 204.0
 margin_bottom = 21.0
@@ -152,7 +201,7 @@ margin_bottom = -4.0
 
 [node name="InventoryWindow" parent="." instance=ExtResource( 6 )]
 anchor_bottom = 1.0
-margin_left = 42.3678
-margin_top = 147.01
-margin_right = 552.368
-margin_bottom = -139.99
+margin_left = 41.3678
+margin_top = 175.01
+margin_right = 551.368
+margin_bottom = -111.99

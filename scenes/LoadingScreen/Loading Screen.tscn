@@ -13,14 +13,15 @@ __meta__ = {
 }
 
 [node name="S1" type="Sprite" parent="."]
-position = Vector2( 968.739, 539.438 )
+position = Vector2( 837.328, 474.402 )
+scale = Vector2( 1.04076, 1.04076 )
 texture = ExtResource( 3 )
 
 [node name="Loading_Lable" type="Label" parent="."]
-margin_left = 912.0
-margin_top = 529.0
-margin_right = 1008.0
-margin_bottom = 550.0
+margin_left = 762.0
+margin_top = 424.0
+margin_right = 858.0
+margin_bottom = 445.0
 theme = ExtResource( 2 )
 text = "Loading"
 __meta__ = {
@@ -29,10 +30,10 @@ __meta__ = {
 
 [node name="Start" type="Button" parent="."]
 visible = false
-margin_left = 919.0
-margin_top = 530.0
-margin_right = 1001.0
-margin_bottom = 550.0
+margin_left = 769.0
+margin_top = 424.0
+margin_right = 851.0
+margin_bottom = 444.0
 text = "New Game"
 
 [connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]

@@ -7,6 +7,8 @@ onready var tmr_labe = $DataBox/TMR/Value
 onready var g_labe = $DataBox/G_Meter/Value
 onready var mass_labe = $DataBox/MASS/Value
 onready var v_labe = $DataBox/V_Meter/Value
+onready var v_cosmic = $DataBox/V_cosmic/Value
+onready var v_escape = $DataBox/V_escape/Value
 
 var ship_mass = 0
 var strongest_body:simpelPlanet = null
@@ -48,8 +50,11 @@ func _on_Ship_telemetry_changed(position,velocety):
 	var G = 50
 	var M = strongest_body.mass
 	var kosmic = sqrt(G*M/r)
+	var escape = kosmic * sqrt(2)
 	
-	v_labe.text = str("%0.1f" % (velocety.length())) + "  cosmic:" + str("%0.1f" % kosmic)
+	v_labe.text = str("%0.1f" % (velocety.length())) 
+	v_cosmic.text = str("%0.1f" % kosmic) 
+	v_escape.text = str("%0.1f" % escape)
 
 
 func _on_Ship_docked(port:Port):
