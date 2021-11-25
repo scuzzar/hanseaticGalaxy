@@ -3,13 +3,18 @@ extends Panel
 var rawScene = preload("res://Container/CargoMissions/raw.tscn")
 onready var vBox = $"Container/VBoxContainer"
 
-var destinationMap={}
+onready var mass_value = $Footer/mass_value
+onready var max_mass_value = $Footer/max_mass_value
+
+#var destinationMap={}
+
+var ship:Ship
 
 var inventor
 signal accepted(container)
 
 func _ready():	
-	hide()
+	hide()	
 	pass 
 
 func update():
@@ -20,7 +25,9 @@ func update():
 		var container = inventor.getAllContainter()
 		container.sort_custom(self,"_sortByDistance")
 		for c in container:
-			_add_container(c)		
+			_add_container(c)
+	mass_value.text = str(ship.mass)
+	
 
 func _sortByDistance(a,b):	
 	return a.getDistance() < b.getDistance()
@@ -54,3 +61,7 @@ func _on_accepted(container:MissionContainer):
 func _on_visibility_changed():
 	if(self.is_visible_in_tree()):
 		update()
+		max_mass_value.text  = str("%0.2f" % ship.getMaxStartMass())	
+		
+func setShip(ship:Ship):
+	self.ship = ship

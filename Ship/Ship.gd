@@ -20,7 +20,6 @@ func _ready():
 	emit_signal("fuel_changed",fuel, fuel_cap)	
 	emit_signal("mass_changed",mass,trust)	
 
-
 func _integrate_forces(state:PhysicsDirectBodyState):
 	._integrate_forces(state)
 	$Model.trust_forward_off()
@@ -101,3 +100,6 @@ func container_clicked(c: MissionContainer):
 	else:
 		print("container hit on Ship:" + c.destination.name)
 
+func getMaxStartMass():
+	var result = trust/last_g_force.length()*mass
+	return result

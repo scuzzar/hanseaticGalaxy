@@ -20,16 +20,17 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 9.0
 margin_right = 214.0
-margin_bottom = 92.0
+margin_bottom = 62.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MASS" type="HBoxContainer" parent="DataBox"]
-margin_top = 6.0
+visible = false
+margin_top = 18.0
 margin_right = 204.0
-margin_bottom = 27.0
+margin_bottom = 39.0
 alignment = 1
 __meta__ = {
 "_edit_group_": true
@@ -52,9 +53,9 @@ theme = ExtResource( 4 )
 text = "100000"
 
 [node name="TMR" type="HBoxContainer" parent="DataBox"]
-margin_top = 31.0
+margin_top = 3.0
 margin_right = 204.0
-margin_bottom = 52.0
+margin_bottom = 24.0
 alignment = 1
 
 [node name="Label" type="Label" parent="DataBox/TMR"]
@@ -74,9 +75,9 @@ theme = ExtResource( 4 )
 text = "100000"
 
 [node name="G_Meter" type="HBoxContainer" parent="DataBox"]
-margin_top = 56.0
+margin_top = 28.0
 margin_right = 204.0
-margin_bottom = 77.0
+margin_bottom = 49.0
 alignment = 1
 __meta__ = {
 "_edit_group_": true
@@ -185,6 +186,7 @@ margin_right = 486.596
 margin_bottom = -33.5294
 
 [node name="Consol" type="Label" parent="." groups=["consol"]]
+visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 20.1587
@@ -238,7 +240,7 @@ margin_right = 100.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 100, 0 )
 theme = ExtResource( 4 )
-custom_colors/font_color = Color( 0.0313726, 1, 0, 1 )
+custom_colors/font_color = Color( 0.0196078, 0.364706, 0.0117647, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "C:"
 align = 2
@@ -249,7 +251,7 @@ margin_right = 204.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 100, 0 )
 theme = ExtResource( 4 )
-custom_colors/font_color = Color( 0.0313726, 1, 0, 1 )
+custom_colors/font_color = Color( 0.0196078, 0.364706, 0.0117647, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "100000"
 
@@ -267,6 +269,7 @@ margin_right = 100.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 100, 0 )
 theme = ExtResource( 4 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "V:"
 align = 2
 
@@ -276,6 +279,7 @@ margin_right = 204.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 100, 0 )
 theme = ExtResource( 4 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "100000"
 
 [node name="V_escape" type="HBoxContainer" parent="CenterHUB"]
@@ -292,7 +296,7 @@ margin_right = 100.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 100, 0 )
 theme = ExtResource( 4 )
-custom_colors/font_color = Color( 0.00784314, 0, 1, 1 )
+custom_colors/font_color = Color( 0.00392157, 0, 0.364706, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "e:"
 align = 2
@@ -303,6 +307,6 @@ margin_right = 204.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 100, 0 )
 theme = ExtResource( 4 )
-custom_colors/font_color = Color( 0.00784314, 0, 1, 1 )
+custom_colors/font_color = Color( 0.00392157, 0, 0.364706, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "100000"

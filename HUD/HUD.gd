@@ -18,10 +18,10 @@ onready var v_escape = $CenterHUB/V_escape/Value
 var ship_mass = 0
 var strongest_body:simpelPlanet = null
 var ship_position:Vector3
-
+var ship:Ship
 # Called when the node enters the scene tree for the first time.
 func _ready():	
-	Player.connect("credits_changed",self,"_on_credits_changed")
+	Player.connect("credits_changed",self,"_on_credits_changed")	
 	pass
 
 func _process(delta):
@@ -65,7 +65,9 @@ func _on_Ship_telemetry_changed(position,velocety):
 func _on_Ship_docked(port:Port):
 	$InventoryWindow.setPort(port)
 	$CenterHUB.hide()
+	$DataBox.hide()
 
 func _on_Ship_undocked(port):
 	$InventoryWindow.clearPort(port)
 	$CenterHUB.show()
+	$DataBox.show()
