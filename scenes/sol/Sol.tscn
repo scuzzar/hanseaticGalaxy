@@ -1,11 +1,10 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Bodys/materials/Sun.material" type="Material" id=1]
 [ext_resource path="res://Bodys/materials/Moon.material" type="Material" id=2]
 [ext_resource path="res://Bodys/materials/Earth.material" type="Material" id=3]
 [ext_resource path="res://Bodys/materials/Phobos.material" type="Material" id=4]
 [ext_resource path="res://Bodys/materials/Saturn_Rings.material" type="Material" id=5]
-[ext_resource path="res://N_Body/Simulator.gd" type="Script" id=6]
 [ext_resource path="res://Bodys/materials/Mimas.material" type="Material" id=7]
 [ext_resource path="res://SpacePort/CargoTarget.gd" type="Script" id=8]
 [ext_resource path="res://Bodys/SimplePlanetOrbit.gd" type="Script" id=9]
@@ -327,13 +326,6 @@ cargo = 4
 [node name="T_Luxus" type="Node" parent="Saturn/Titan/TitanPort"]
 script = ExtResource( 8 )
 cargo = 6
-
-[node name="Simulator" type="Node" parent="."]
-script = ExtResource( 6 )
-simulation_time = 2000
-simulation_delta_t = 2.0
-simulatoin_update_interfall = 3
-_simulation_object_path = NodePath("../Ship")
 
 [connection signal="docked" from="Ship" to="HUD" method="_on_Ship_docked"]
 [connection signal="docked" from="Ship" to="Ship/Tail" method="_stop"]
