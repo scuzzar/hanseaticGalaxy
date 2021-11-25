@@ -38,7 +38,7 @@ func _on_Area_Ship_exited(ship : Ship):
 	self.docked_ship = null	
 	print_debug("ship started")
 
-func _on_container_clicked(container:MissionContainer):
+func accept_Mission(container:MissionContainer):
 	if($Inventory.hasContainer(container) and docked_ship != null):		
 		if(docked_ship.can_load_container()):
 			$Inventory.removeContainer(container)

@@ -9,6 +9,8 @@ export var fuel_cap = 5000.0
 var fuel = fuel_cap
 var docking_location: Node
 
+onready var inventory = $Inventory
+
 signal fuel_changed(fuel, fuel_cap)
 signal mass_changed(mass,trust)
 signal telemetry_changed(position,velocety)
@@ -93,7 +95,8 @@ func undock():
 	emit_signal("undocked",  self.docking_location)
 	self.docking_location = null
 
-func container_clicked(c: MissionContainer):	
+func deliver_Container(c: MissionContainer):	
+	print("deliver_Ship")
 	if(self.docking_location == c.destination):
 		Player.reward(c.reward)
 		self.unload_containter(c)		

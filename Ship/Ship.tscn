@@ -67,4 +67,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="container_clicked" from="Inventory" to="." method="container_clicked"]
+[connection signal="container_clicked" from="Inventory" to="." method="deliver_Container"]

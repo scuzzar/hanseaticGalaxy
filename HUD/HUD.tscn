@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://HUD/FuelBar.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://HUD/theme/default_theme.theme" type="Theme" id=4]
 [ext_resource path="res://HUD/EngineLifeBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Container/CargoMissions/CargoMissionWindow.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Ship/CargoBay/CargoBay.tscn" type="PackedScene" id=7]
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
@@ -212,6 +213,12 @@ margin_top = 175.01
 margin_right = 551.368
 margin_bottom = -111.99
 
+[node name="CargoBay" parent="." instance=ExtResource( 7 )]
+margin_left = -548.0
+margin_top = 175.0
+margin_right = -43.0
+margin_bottom = -112.0
+
 [node name="CenterHUB" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -310,3 +317,6 @@ theme = ExtResource( 4 )
 custom_colors/font_color = Color( 0.00392157, 0, 0.364706, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "100000"
+
+[connection signal="accepted" from="InventoryWindow" to="." method="_on_InventoryWindow_accepted"]
+[connection signal="deliver" from="CargoBay" to="." method="_on_CargoBay_deliver"]

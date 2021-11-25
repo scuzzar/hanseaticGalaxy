@@ -21,7 +21,7 @@ var ship_position:Vector3
 var ship:Ship
 # Called when the node enters the scene tree for the first time.
 func _ready():	
-	Player.connect("credits_changed",self,"_on_credits_changed")	
+	Player.connect("credits_changed",self,"_on_credits_changed")
 	pass
 
 func _process(delta):
@@ -63,11 +63,22 @@ func _on_Ship_telemetry_changed(position,velocety):
 
 
 func _on_Ship_docked(port:Port):
+	#$CargoBay.ship = ship	
 	$InventoryWindow.setPort(port)
 	$CenterHUB.hide()
 	$DataBox.hide()
+	$CargoBay.show()
 
 func _on_Ship_undocked(port):
 	$InventoryWindow.clearPort(port)
 	$CenterHUB.show()
 	$DataBox.show()
+	$CargoBay.hide()
+
+
+func _on_InventoryWindow_accepted(container):
+	ship.docking_location.accept_Mission(container)
+	$CargoBay.update()
+	
+func _on_CargoBay_deliver(container):
+	ship.deliver_Container(container)

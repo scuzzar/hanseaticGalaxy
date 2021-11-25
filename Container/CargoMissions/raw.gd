@@ -2,7 +2,7 @@ extends Control
 
 var container
 
-signal accepted(container)
+signal buttonPressed(container)
 
 func setContent(container:MissionContainer):
 	self.container = container
@@ -12,4 +12,4 @@ func setContent(container:MissionContainer):
 	$raw/HBoxContainer/Reward.text = str(container.reward)
 
 func _on_Buy_pressed():
-	emit_signal("accepted",container)	
+	emit_signal("buttonPressed",container)	

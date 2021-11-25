@@ -9,6 +9,7 @@ export var MaxtimeWarpFactor = 50
 func _ready():
 	$HUD.ship = ship
 	$HUD/InventoryWindow.setShip(ship)
+	$HUD/CargoBay.ship = ship
 
 func _process(delta):
 	if Input.is_action_pressed("endGame"):	
