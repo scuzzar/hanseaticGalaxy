@@ -319,4 +319,5 @@ custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "100000"
 
 [connection signal="accepted" from="InventoryWindow" to="." method="_on_InventoryWindow_accepted"]
+[connection signal="about" from="CargoBay" to="." method="_on_CargoBay_about"]
 [connection signal="deliver" from="CargoBay" to="." method="_on_CargoBay_deliver"]

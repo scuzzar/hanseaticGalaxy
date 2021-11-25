@@ -11,6 +11,7 @@ onready var max_mass_value = $Footer/max_mass_value
 var ship:Ship
 
 signal deliver(container)
+signal about(container)
 
 func _ready():	
 	hide()	
@@ -51,14 +52,18 @@ func _add_container(container:MissionContainer):
 	var newRaw = rawScene.instance()	
 	newRaw.setContent(container)
 	if(container.destination  == ship.docking_location):
-		newRaw.connect("buttonPressed",self,"_on_buttonPressed")
+		newRaw.connect("buttonPressed",self,"_on_deliver")
 	else:
-		newRaw.disable()
+		newRaw.setAbout()
+		newRaw.connect("buttonPressed",self,"_on_about")
 	vBox.add_child(newRaw) # Add it as a child of this node.
 
-func _on_buttonPressed(container:MissionContainer):
+func _on_deliver(container:MissionContainer):
 	emit_signal("deliver",container)	
 	update()
+
+func _on_about(container:MissionContainer):
+	emit_signal("about",container)
 
 func _on_visibility_changed():
 	if(self.is_visible_in_tree()):

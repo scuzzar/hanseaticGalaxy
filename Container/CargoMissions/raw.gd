@@ -15,5 +15,5 @@ func setContent(container:MissionContainer):
 func _on_Buy_pressed():
 	emit_signal("buttonPressed",container)	
 
-func disable():
-	$raw/HBoxContainer/Buy.disabled = true
+func setAbout():
+	$raw/HBoxContainer/Buy.text = "About"	

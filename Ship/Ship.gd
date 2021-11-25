@@ -96,12 +96,15 @@ func undock():
 	self.docking_location = null
 
 func deliver_Container(c: MissionContainer):	
-	print("deliver_Ship")
 	if(self.docking_location == c.destination):
 		Player.reward(c.reward)
 		self.unload_containter(c)		
 	else:
 		print("container hit on Ship:" + c.destination.name)
+
+func about_Container(c:MissionContainer):
+	self.unload_containter(c)
+	Player.pay(c.reward* 0.2)
 
 func getMaxStartMass():
 	var result = trust/last_g_force.length()*mass

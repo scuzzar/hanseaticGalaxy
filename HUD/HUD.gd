@@ -82,3 +82,9 @@ func _on_InventoryWindow_accepted(container):
 	
 func _on_CargoBay_deliver(container):
 	ship.deliver_Container(container)
+	$CargoBay.update()
+
+func _on_CargoBay_about(container):
+	ship.about_Container(container)
+	$CargoBay.update()
+	$InventoryWindow.update()
