@@ -4,7 +4,7 @@ var endScreen = preload("res://scenes/GameEnded/EndGameScreen.tscn")
 #var loader : ResourceInteractiveLoader
 onready var ship = $Ship
 
-export var MaxtimeWarpFactor = 50
+export var MaxtimeWarpFactor = 200
 
 func _ready():
 	$HUD.ship = ship
@@ -40,3 +40,10 @@ func _loadScore():
 func setTimeScale(factor):
 	Engine.time_scale =  factor
 
+
+
+func _on_Ship_strongest_body_changed(old_body, new_body):
+	if(new_body.name == "Sun"):
+		$Simulator.on = true
+	else:
+		$Simulator.on = false

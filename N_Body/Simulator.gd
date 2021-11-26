@@ -19,18 +19,26 @@ var bodys = []
 
 func _ready():
 	bodys = get_tree().get_nodes_in_group("bodys")	
-	
+
+func start():
+	on = true
+
+func stop():
+	on = false
+	$Path.path = []
+
 func _process(delta):
 	simulation_update_timer += delta	
 	if simulation_update_timer >= simulatoin_update_interfall:
 		simulation_update_timer -= simulatoin_update_interfall
-		if(on):simulate()
+		if(on):
+			simulate()
+			$Path.path = _simulation_Object.simulation_pos
 
 func simulate():
 	if(bodys==null):return
 
 	var simulation_steps = simulation_time/simulation_delta_t
-	
 	var sim_obj_pos = _simulation_Object.translation
 	var sim_obj_val = _simulation_Object.velocety
 	

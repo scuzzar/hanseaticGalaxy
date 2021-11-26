@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://N_Body/Simulator.gd" type="Script" id=1]
+[ext_resource path="res://N_Body/SimPath.gd" type="Script" id=2]
+
+[node name="Simulator" type="Control"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Path" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+color = Color( 0.0352941, 0.231373, 0.894118, 1 )

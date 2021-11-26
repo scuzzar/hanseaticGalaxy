@@ -28,10 +28,6 @@ var simulation_pos = []
 var simulation_vel = []
 export var show_sim = true
 
-
-
-var orbit
-
 func _enter_tree():
 	#self.add_to_group("bodys")
 	self.gravity_scale = 0
