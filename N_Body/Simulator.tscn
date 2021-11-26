@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://N_Body/Simulator.gd" type="Script" id=1]
 [ext_resource path="res://N_Body/SimPath.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=2]
+params_blend_mode = 1
+albedo_color = Color( 0.0941176, 0.0392157, 0.85098, 0.168627 )
+
+[sub_resource type="SphereShape" id=1]
 
 [node name="Simulator" type="Control"]
 script = ExtResource( 1 )
@@ -17,3 +23,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 color = Color( 0.0352941, 0.231373, 0.894118, 1 )
+
+[node name="TargetPoint" type="StaticBody" parent="."]
+
+[node name="TargetBall" type="CSGSphere" parent="TargetPoint"]
+material_override = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="TargetPoint"]
+shape = SubResource( 1 )
