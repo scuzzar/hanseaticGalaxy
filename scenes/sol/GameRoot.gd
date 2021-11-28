@@ -10,6 +10,7 @@ func _ready():
 	$HUD.ship = ship
 	$HUD/InventoryWindow.setShip(ship)
 	$HUD/CargoBay.ship = ship
+	self.load_game()
 
 func _process(delta):
 	if Input.is_action_pressed("endGame"):	
@@ -42,7 +43,7 @@ func _loadScore():
 		print("Game over")
 	else:
 		print("faild to load Scene!")
-		
+
 func setTimeScale(factor):
 	Engine.time_scale =  factor
 
@@ -57,8 +58,9 @@ func _quicksave():
 	print("game Saved")
 	
 func _quickload():
-	load_game()
-	print("laod")
+	self.get_tree().reload_current_scene()
+	#load_game()
+	#print("laod")
 
 func save_game():
 	var save_game = File.new()
@@ -79,6 +81,7 @@ func save_game():
 
 		# Call the node's save function.
 		var node_data = node.call("save")
+		node_data["nodePath"] = node.get_path()
 		dataList.append(node_data)
 		# Store the save dictionary as a new line in the save file.
 	
@@ -104,8 +107,8 @@ func load_game():
 	# project, so take care with this step.
 	# For our example, we will accomplish this by deleting saveable objects.
 	var save_nodes = get_tree().get_nodes_in_group("persist")
-	for i in save_nodes:
-		i.queue_free()
+	#for i in save_nodes:
+	#	i.queue_free()
 
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
@@ -115,9 +118,10 @@ func load_game():
 		var node_data = parse_json(save_game.get_line())
 
 		# Firstly, we need to create the object and add it to the tree and set its position.
-		var new_object = load(node_data["filename"]).instance()
-		get_node(node_data["parent"]).add_child(new_object)
-		new_object.load_save(node_data)
+		#var new_object = load(node_data["filename"]).instance()
+		var laoded_node = get_node(node_data["nodePath"])
+		#get_node(node_data["parent"]).add_child(new_object)
+		laoded_node.load_save(node_data)
 		#new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
 
 		# Now we set the remaining variables.
@@ -127,4 +131,4 @@ func load_game():
 		#	new_object.set(i, node_data[i])
 	save_game.close()
 	all = self.get_children()
-	print(all)
+
