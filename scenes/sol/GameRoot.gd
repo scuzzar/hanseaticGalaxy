@@ -10,7 +10,8 @@ func _ready():
 	$HUD.ship = ship
 	$HUD/InventoryWindow.setShip(ship)
 	$HUD/CargoBay.ship = ship
-	self.load_game()
+	if(Globals.loadPath !=null):
+		self.load_game()
 
 func _process(delta):
 	if Input.is_action_pressed("endGame"):	
@@ -55,16 +56,16 @@ func _on_Ship_strongest_body_changed(old_body, new_body):
 
 func _quicksave():
 	save_game()
+	
 	print("game Saved")
 	
 func _quickload():
+	Globals.loadPath = Globals.QUICKSAVE_PATH
 	self.get_tree().reload_current_scene()
-	#load_game()
-	#print("laod")
 
 func save_game():
 	var save_game = File.new()
-	save_game.open("user://savegame.save", File.WRITE)
+	save_game.open(Globals.QUICKSAVE_PATH, File.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("persist")
 	print(save_nodes)
 	var dataList = []
@@ -82,6 +83,7 @@ func save_game():
 		node_data["nodePath"] = node.get_path()
 		dataList.append(node_data)
 
+	dataList.append(Player.save())
 	#Sort, so that parents come first in file.
 	dataList.sort_custom(self,"_sortNasedLast")
 	
@@ -95,14 +97,16 @@ func _sortNasedLast(a,b):
 func load_game():
 	var all = self.get_children()
 	var save_game = File.new()
-	if not save_game.file_exists("user://savegame.save"):
+	if not save_game.file_exists(Globals.QUICKSAVE_PATH):
 		return # Error! We don't have a save to load.
 
-	save_game.open("user://savegame.save", File.READ)
+	save_game.open(Globals.QUICKSAVE_PATH, File.READ)
 	while save_game.get_position() < save_game.get_len():
 		var node_data = parse_json(save_game.get_line())
+		if(node_data["nodePath"]=="Player"):
+			Player.load_save(node_data)
+			continue
 		var laoded_node = get_node(node_data["nodePath"])
-
 		laoded_node.load_save(node_data)
 
 	save_game.close()

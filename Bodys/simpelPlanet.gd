@@ -58,8 +58,7 @@ func predictGlobalPosition(delta):
 func save():
 	var save_dict = {
 		"filename" : get_filename(),
-		"parent" : get_parent().get_path(),
-		"name" : name,
+		"parent" : get_parent().get_path(),		
 		"angle" : angle,
 		"orbit_radius" : orbit_radius
 	}
@@ -68,5 +67,4 @@ func save():
 func load_save(dict):
 	angle=dict["angle"]
 	orbit_radius=dict["orbit_radius"]
-	name = dict["name"]
 	

@@ -60,11 +60,11 @@ func _on_reference_changed(old_body, new_body):
 	history.clear()
 	self._frameOfReference = new_body
 
-func _stop():
+func _stop(port):
 	history.clear()
 	self.hide()
 	self.set_process(false)
 
-func _start():
+func _start(port):
 	self.show()
 	self.set_process(true)

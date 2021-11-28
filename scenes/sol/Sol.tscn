@@ -38,7 +38,7 @@ environment = ExtResource( 20 )
 
 [node name="HUD" parent="." instance=ExtResource( 17 )]
 
-[node name="Camera" parent="." instance=ExtResource( 18 )]
+[node name="Camera" parent="." groups=["persist"] instance=ExtResource( 18 )]
 min_zoom = 1.0
 
 [node name="Ship" parent="." instance=ExtResource( 19 )]

@@ -59,3 +59,18 @@ func _rotate_camera(event:InputEventMouseMotion):
 	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
 		_next_rotation = event.relative		
 
+func save():
+	var save_dict = {
+		"nodePath" : "Player",
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),	
+		"tilt.rotation.x": tilt.rotation.x,
+		"rotation.y" :rotation.y
+	}
+	print(self.get_signal_connection_list("fuel_changed"))
+	return save_dict
+
+func load_save(dict):	
+	tilt.rotation.x = dict["tilt.rotation.x"]
+	rotation.y = dict["rotation.y"]
+
