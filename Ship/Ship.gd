@@ -127,21 +127,9 @@ func save():
 
 func load_save(dict):	
 	transform.origin = Vector3(dict["pos_x"], dict["pos_y"],dict["pos_z"])	
-	velocety=Vector3(dict["velocety_x"], dict["velocety_y"],dict["velocety_z"])	
+	self.linear_velocity = Vector3(dict["velocety_x"], dict["velocety_y"],dict["velocety_z"])	
 	rotation.y = dict["rotation"]	
-	last_g_force = Vector3(0,0,0)	
-	connetToSol()
+	last_g_force = Vector3(0,0,0)
 	pass
 
-func connetToSol():
-	#HUD
-	self.connect("docked",$"../HUD","_on_Ship_docked")
-	self.connect("fuel_changed",$"../HUD","_on_Ship_fuel_changed")
-	self.connect("g_force_update",$"../HUD","_on_Ship_g_force_update")
-	self.connect("mass_changed",$"../HUD","_on_Ship_mass_changed")
-	self.connect("strongest_body_changed",$"..","_on_Ship_strongest_body_changed")
-	self.connect("telemetry_changed",$"../HUD","_on_Ship_telemetry_changed")
-	self.connect("undocked",$"../HUD","_on_Ship_undocked")
-	$"../Camera".ship=self
-	$"../HUD".ship =self
-	$"..".ship = self
+
