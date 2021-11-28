@@ -54,3 +54,19 @@ func predictGlobalPosition(delta):
 	var local_prediction = Vector3(sin(sim_angle)*orbit_radius,0,cos(sim_angle)*orbit_radius)
 	var global_prediction = get_parent().to_global(local_prediction)
 	return global_prediction
+
+func save():
+	var save_dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"name" : name,
+		"angle" : angle,
+		"orbit_radius" : orbit_radius
+	}
+	return save_dict
+
+func load_save(dict):
+	angle=dict["angle"]
+	orbit_radius=dict["orbit_radius"]
+	name = dict["name"]
+	

@@ -20,7 +20,7 @@ signal undocked(port)
 func _ready():	
 	._ready()	
 	emit_signal("fuel_changed",fuel, fuel_cap)	
-	emit_signal("mass_changed",mass,trust)	
+	emit_signal("mass_changed",mass,trust)		
 
 func _integrate_forces(state:PhysicsDirectBodyState):
 	._integrate_forces(state)
@@ -109,3 +109,39 @@ func about_Container(c:MissionContainer):
 func getMaxStartMass():
 	var result = trust/last_g_force.length()*mass
 	return result
+
+func save():
+	var save_dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : self.translation.x,
+		"pos_y" : self.translation.y,
+		"pos_z" : self.translation.z,
+		"velocety_x" : velocety.x,
+		"velocety_y" : velocety.y,
+		"velocety_z" : velocety.z,
+		"rotation" : rotation.y		
+	}
+	print(self.get_signal_connection_list("fuel_changed"))
+	return save_dict
+
+func load_save(dict):	
+	transform.origin = Vector3(dict["pos_x"], dict["pos_y"],dict["pos_z"])	
+	velocety=Vector3(dict["velocety_x"], dict["velocety_y"],dict["velocety_z"])	
+	rotation.y = dict["rotation"]	
+	last_g_force = Vector3(0,0,0)	
+	connetToSol()
+	pass
+
+func connetToSol():
+	#HUD
+	self.connect("docked",$"../HUD","_on_Ship_docked")
+	self.connect("fuel_changed",$"../HUD","_on_Ship_fuel_changed")
+	self.connect("g_force_update",$"../HUD","_on_Ship_g_force_update")
+	self.connect("mass_changed",$"../HUD","_on_Ship_mass_changed")
+	self.connect("strongest_body_changed",$"..","_on_Ship_strongest_body_changed")
+	self.connect("telemetry_changed",$"../HUD","_on_Ship_telemetry_changed")
+	self.connect("undocked",$"../HUD","_on_Ship_undocked")
+	$"../Camera".ship=self
+	$"../HUD".ship =self
+	$"..".ship = self

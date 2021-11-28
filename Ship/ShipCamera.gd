@@ -23,7 +23,8 @@ func _ready():
 	print(ship.name)
 
 func _process(delta):	
-	self.translation = ship.translation
+	if(ship!=null):
+		self.translation = ship.translation
 	self.rotate_y(_next_rotation.x * rotation_speed * delta /Engine.time_scale *-1)	
 	if(abs(tilt.rotation.x+_next_rotation.y * rotation_speed * delta /Engine.time_scale *-1)<=1.4):		
 		tilt.rotate_x(_next_rotation.y * rotation_speed * delta /Engine.time_scale *-1)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
+[ext_resource path="res://Ship/Tail.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ship/ModelControl.gd" type="Script" id=2]
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=3]
 [ext_resource path="res://Ship/drive.tscn" type="PackedScene" id=4]
@@ -23,7 +24,7 @@ margin_right = 14.6329
 margin_top = 12.4102
 margin_bottom = 14.2624
 
-[node name="Ship" type="RigidBody"]
+[node name="Ship" type="RigidBody" groups=["persist"]]
 input_ray_pickable = false
 mass = 30.0
 physics_material_override = SubResource( 1 )
@@ -54,6 +55,9 @@ transform = Transform( 0.481952, 0, 0, 0, -2.10668e-08, -0.481952, 0, 0.481952, 
 [node name="SimpleRocket" parent="Model" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 
+[node name="Tail" parent="." instance=ExtResource( 1 )]
+frameOfReference_Node = NodePath("../Model")
+
 [node name="ShipInfoWindow" type="WindowDialog" parent="."]
 margin_left = 739.335
 margin_top = 131.457
@@ -67,4 +71,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="docked" from="." to="Tail" method="_stop"]
+[connection signal="strongest_body_changed" from="." to="Tail" method="_on_reference_changed"]
+[connection signal="undocked" from="." to="Tail" method="_start"]
 [connection signal="container_clicked" from="Inventory" to="." method="deliver_Container"]
