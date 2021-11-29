@@ -1,7 +1,7 @@
 extends Spatial
 
 func _ready():
-	pass # Replace with function body.
+	self.off()
 
 func on():
 	$Fire1.emitting = true

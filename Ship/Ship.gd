@@ -112,12 +112,12 @@ func getMaxStartMass():
 	return result
 
 func save():
-	var collisions = self.get_colliding_bodies()
-	var savePos = self.translation
-	#if(collisions.size()>0):
+	#Offset to avoid collisions on loading.
+	var savePos = self.translation	
 	var offset :Vector3 = self.last_g_force 
 	offset = offset.normalized()*-0.4
 	savePos = savePos + offset
+	
 	var save_dict = {
 		"filename" : get_filename(),
 		"parent" : get_parent().get_path(),
@@ -139,7 +139,8 @@ func load_save(dict):
 	rotation.y = dict["rotation"]	
 	self.set_fuel(dict["fuel"])
 	fuel_cap = dict["fuel_cap"]
-	last_g_force = Vector3(0,0,0)	
+	last_g_force = Vector3(0,0,0)
+	#Send signal so HUD can update
 	self.get_signal_connection_list("fuel_changed")
 	pass
 
