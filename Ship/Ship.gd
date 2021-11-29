@@ -20,7 +20,8 @@ signal undocked(port)
 func _ready():	
 	._ready()	
 	emit_signal("fuel_changed",fuel, fuel_cap)	
-	emit_signal("mass_changed",mass,trust)		
+	emit_signal("mass_changed",mass,trust)
+	$Model.trust_forward_off()
 
 func _integrate_forces(state:PhysicsDirectBodyState):
 	._integrate_forces(state)
@@ -111,20 +112,28 @@ func getMaxStartMass():
 	return result
 
 func save():
+	var collisions = self.get_colliding_bodies()
+	var savePos = self.translation
+	if(collisions.size()>0):
+		var offset :Vector3 = self.last_g_force *-1
+		offset = offset.normalized()
+		savePos = savePos + offset
 	var save_dict = {
 		"filename" : get_filename(),
 		"parent" : get_parent().get_path(),
-		"pos_x" : self.translation.x,
-		"pos_y" : self.translation.y,
-		"pos_z" : self.translation.z,
+		"pos_x" : savePos.x,
+		"pos_y" : savePos.y,
+		"pos_z" : savePos.z,
 		"velocety_x" : velocety.x,
 		"velocety_y" : velocety.y,
 		"velocety_z" : velocety.z,
 		"rotation" : rotation.y,
 		"fuel": fuel,
 		"fuel_cap" :fuel_cap
-	}
-	print(self.get_signal_connection_list("fuel_changed"))
+	}	
+		
+	
+	
 	return save_dict
 
 func load_save(dict):	
@@ -133,7 +142,8 @@ func load_save(dict):
 	rotation.y = dict["rotation"]	
 	self.set_fuel(dict["fuel"])
 	fuel_cap = dict["fuel_cap"]
-	last_g_force = Vector3(0,0,0)
+	last_g_force = Vector3(0,0,0)	
+	self.get_signal_connection_list("fuel_changed")
 	pass
 
 

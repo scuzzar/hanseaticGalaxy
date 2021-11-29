@@ -65,7 +65,8 @@ func save():
 		"filename" : get_filename(),
 		"parent" : get_parent().get_path(),	
 		"tilt.rotation.x": tilt.rotation.x,
-		"rotation.y" :rotation.y
+		"rotation.y" :rotation.y,
+		"_zoom_level" : _zoom_level
 	}
 	print(self.get_signal_connection_list("fuel_changed"))
 	return save_dict
@@ -73,4 +74,5 @@ func save():
 func load_save(dict):	
 	tilt.rotation.x = dict["tilt.rotation.x"]
 	rotation.y = dict["rotation.y"]
+	camera.translation.z = dict["_zoom_level"]
 
