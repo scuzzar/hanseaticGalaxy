@@ -114,10 +114,10 @@ func getMaxStartMass():
 func save():
 	var collisions = self.get_colliding_bodies()
 	var savePos = self.translation
-	if(collisions.size()>0):
-		var offset :Vector3 = self.last_g_force *-1
-		offset = offset.normalized()
-		savePos = savePos + offset
+	#if(collisions.size()>0):
+	var offset :Vector3 = self.last_g_force 
+	offset = offset.normalized()*-0.4
+	savePos = savePos + offset
 	var save_dict = {
 		"filename" : get_filename(),
 		"parent" : get_parent().get_path(),
@@ -130,10 +130,7 @@ func save():
 		"rotation" : rotation.y,
 		"fuel": fuel,
 		"fuel_cap" :fuel_cap
-	}	
-		
-	
-	
+	}
 	return save_dict
 
 func load_save(dict):	
