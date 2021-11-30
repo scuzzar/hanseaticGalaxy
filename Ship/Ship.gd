@@ -129,7 +129,8 @@ func save():
 		"velocety_z" : velocety.z,
 		"rotation" : rotation.y,
 		"fuel": fuel,
-		"fuel_cap" :fuel_cap
+		"fuel_cap" :fuel_cap,
+		"mass" : mass
 	}
 	return save_dict
 
@@ -139,6 +140,7 @@ func load_save(dict):
 	rotation.y = dict["rotation"]	
 	self.set_fuel(dict["fuel"])
 	fuel_cap = dict["fuel_cap"]
+	mass = dict["mass"]
 	last_g_force = Vector3(0,0,0)
 	#Send signal so HUD can update
 	self.get_signal_connection_list("fuel_changed")
