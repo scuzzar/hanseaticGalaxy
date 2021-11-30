@@ -118,3 +118,22 @@ func _set_cargo(pcargo):
 		CARGO.LUXUS:
 			$Mesh/LuxusGoods.show()
 			
+
+func save():	
+	var save_dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"destination" : destination.get_path(),
+		"origin" : origin.get_path(),
+		"cargo" : cargo,
+		"reward" : reward
+			
+	}
+	return save_dict
+
+func load_save(dict):	
+	_set_cargo( CARGO.values()[dict["cargo"]])
+	reward = dict["reward"]
+	destination = get_node(dict["destination"])
+	origin = get_node(dict["origin"])
+	pass

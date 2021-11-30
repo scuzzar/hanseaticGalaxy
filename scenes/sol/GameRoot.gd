@@ -12,6 +12,12 @@ func _ready():
 	$HUD/CargoBay.ship = ship
 	if(Globals.loadPath !=null):
 		self.load_game()
+	else:
+		generateInitialCargo()
+	
+func generateInitialCargo():
+	for cg in get_tree().get_nodes_in_group("cargoGenerator"):
+		cg.generateInitialStock()
 
 func _process(delta):
 	if Input.is_action_pressed("endGame"):	
@@ -67,7 +73,7 @@ func save_game():
 	var save_game = File.new()
 	save_game.open(Globals.QUICKSAVE_PATH, File.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("persist")
-	print(save_nodes)
+	
 	var dataList = []
 	for node in save_nodes:
 
@@ -107,6 +113,10 @@ func load_game():
 			Player.load_save(node_data)
 			continue
 		var laoded_node = get_node(node_data["nodePath"])
+		# Handel Dynamic Instanciation
+		if(laoded_node==null):
+			laoded_node = load(node_data["filename"]).instance()
+			get_node(node_data["parent"]).add_child(laoded_node)
 		laoded_node.load_save(node_data)
 
 	save_game.close()

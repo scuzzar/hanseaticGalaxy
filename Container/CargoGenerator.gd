@@ -11,10 +11,12 @@ const groupTag = "TARGET"
 onready var port:Port = self.get_parent()
 var MissionContainerScene = preload("res://Container/Container.scn")
 
-func _ready():	
-	for i in init_store : port.add_container(self._generate_mission())
+func _ready():		
 	$GenTimer.wait_time = self.wait_time	
 	$GenTimer.start()
+
+func generateInitialStock():
+	for i in init_store : port.add_container(self._generate_mission())
 
 func _on_GenTimer_timeout():	
 	if(port.has_Space() and port.stock(cargo)<max_store):
