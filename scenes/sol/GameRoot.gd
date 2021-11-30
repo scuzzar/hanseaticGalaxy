@@ -112,7 +112,7 @@ func load_game():
 		if(node_data["nodePath"]=="Player"):
 			Player.load_save(node_data)
 			continue
-		var laoded_node = get_node(node_data["nodePath"])
+		var laoded_node = get_node_or_null(node_data["nodePath"])
 		# Handel Dynamic Instanciation
 		if(laoded_node==null):
 			laoded_node = load(node_data["filename"]).instance()
