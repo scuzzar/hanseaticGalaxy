@@ -2,12 +2,13 @@ extends Rigid_N_Body
 
 class_name Ship
 
-export var turn_rate = 3
+export var turn_rate = 100
 export var trust = 100.0
 export var dispay_name = "Neubeckum II"
 export var fuel_cap = 5000.0
 var fuel = fuel_cap
 var docking_location: Node
+export var playerControl = false
 
 onready var inventory = $Inventory
 
@@ -22,30 +23,32 @@ func _ready():
 	emit_signal("fuel_changed",fuel, fuel_cap)	
 	emit_signal("mass_changed",mass,trust)
 	$Model.trust_forward_off()
+	self.angular_damp = 6
 
 func _integrate_forces(state:PhysicsDirectBodyState):
 	._integrate_forces(state)
+	
 	$Model.trust_forward_off()	
-	if Input.is_action_pressed("burn_forward"):
-		var fuelcost =  trust * state.step
-		if(fuel - fuelcost > 0):
-			$Model.trust_forward_on()
-			_burn_forward(state)
-	
-	_rotation(state,0)
-	if Input.is_action_pressed("trun_left"):
-		_rotation(state,turn_rate)	
-	
-	if Input.is_action_pressed("turn_right"):
-		_rotation(state,turn_rate*-1)
+	if(playerControl):
+		if Input.is_action_pressed("burn_forward"):
+			var fuelcost =  trust * state.step
+			if(fuel - fuelcost > 0):
+				$Model.trust_forward_on()
+				_burn_forward(state)
+
+		if Input.is_action_pressed("trun_left"):
+			_rotation(turn_rate*state.step)	
 		
-	if Input.is_action_pressed("info"):
-		$ShipInfoWindow.popup()
-	
-	emit_signal("telemetry_changed", self.translation, state.linear_velocity)
-	
-func _rotation(state :PhysicsDirectBodyState, angle: float):
-	state.set_angular_velocity(Vector3(0,angle,0))
+		if Input.is_action_pressed("turn_right"):
+			_rotation(turn_rate*-1*state.step)
+			
+		if Input.is_action_pressed("info"):
+			$ShipInfoWindow.popup()
+		
+		emit_signal("telemetry_changed", self.translation, state.linear_velocity)
+
+func _rotation( angle: float):
+	self.apply_torque_impulse(Vector3(0,angle,0))
 
 func _get_forward_vector():
 	var orientation = self.rotation.y
