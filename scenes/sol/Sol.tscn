@@ -42,7 +42,7 @@ environment = ExtResource( 20 )
 min_zoom = 1.0
 
 [node name="Ship" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5592.3, 0, -86.0415 )
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 5588.58, 4.76837e-07, -57.4822 )
 
 [node name="Sun" parent="." instance=ExtResource( 16 )]
 transform = Transform( 2, 0, 0, 0, 0.66219, -1.88719, 0, 1.88719, 0.66219, 0, 0, 0 )
@@ -318,3 +318,4 @@ cargo = 6
 [node name="Simulator" parent="." instance=ExtResource( 6 )]
 simulation_time = 1000
 simulation_delta_t = 6.0
+_simulation_object_path = NodePath("../Ship")
