@@ -27,13 +27,15 @@ func _process(delta):
 	if Input.is_action_pressed("endGame"):	
 		print("you ended the game!")	
 		call_deferred("_loadScore")		
-		
+	
+	Engine.time_scale =  1
+	
 	if Input.is_action_pressed("time_delay"):	
 		var factor = clamp(1 / ship.last_g_force.length()*ship.mass,0.001,0.001)		
-		call_deferred("setTimeScale",factor)
+		Engine.time_scale =  factor
 	if Input.is_action_pressed("time_warp"):		
 		var factor = clamp(1 / ship.last_g_force.length()*ship.mass,5,MaxtimeWarpFactor)		
-		call_deferred("setTimeScale",factor)
+		Engine.time_scale =  factor
 	
 	if Input.is_action_just_pressed("cheat_fuel"):
 		Player.pay(ship.get_refule_costs()*2)
@@ -54,9 +56,6 @@ func _loadScore():
 		print("Game over")
 	else:
 		print("faild to load Scene!")
-
-func setTimeScale(factor):
-	Engine.time_scale =  factor
 
 func _on_Ship_strongest_body_changed(old_body, new_body):
 	if(new_body.name == "Sun"):

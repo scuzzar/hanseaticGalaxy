@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Ship/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ship/SkyCrane/SkyCrane.escn" type="PackedScene" id=2]
+[ext_resource path="res://Ship/drive.tscn" type="PackedScene" id=3]
 
 [node name="Ship" instance=ExtResource( 1 )]
+mass = 40.0
+trust = 180.0
+fuel_cap = 15000.0
 
 [node name="Inventory" parent="." index="0"]
 slot_parent_path = NodePath("../Model/SkyCrane")
 
 [node name="SkyCrane" parent="Model" index="0" instance=ExtResource( 2 )]
+
+[node name="particel" parent="Model" index="1" instance=ExtResource( 3 )]
+transform = Transform( 0.481952, 0, 0, 0, -0.481952, 4.21336e-08, 0, -4.21336e-08, -0.481952, 0, 8.39595e-10, 0.0192077 )
