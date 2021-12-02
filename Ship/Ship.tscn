@@ -1,10 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Ship/Tail.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ship/ModelControl.gd" type="Script" id=2]
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=3]
-[ext_resource path="res://Ship/drive.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Ship/SimpleRocket/SimpleRocket.escn" type="PackedScene" id=5]
 [ext_resource path="res://HUD/theme/window.atlastex" type="Texture" id=6]
 [ext_resource path="res://HUD/theme/NormalFont.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Container/Inventory.gd" type="Script" id=9]
@@ -13,8 +11,8 @@
 friction = 3.0
 
 [sub_resource type="CylinderShape" id=4]
-radius = 0.366544
-height = 1.13797
+radius = 0.274328
+height = 1.21122
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 6 )
@@ -40,20 +38,13 @@ trust = 200.0
 
 [node name="Inventory" type="Spatial" parent="."]
 script = ExtResource( 9 )
-slot_parent_path = NodePath("../Model/SimpleRocket")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 2.22045e-16, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00268555, 0, -0.58712 )
+transform = Transform( 1, 0, 2.22045e-16, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0.608244, 0 )
 shape = SubResource( 4 )
 
 [node name="Model" type="Spatial" parent="."]
 script = ExtResource( 2 )
-
-[node name="particel" parent="Model" instance=ExtResource( 4 )]
-transform = Transform( 0.481952, 0, 0, 0, -2.10668e-08, -0.481952, 0, 0.481952, -2.10668e-08, 0, 0, 0.0192077 )
-
-[node name="SimpleRocket" parent="Model" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 
 [node name="Tail" parent="." instance=ExtResource( 1 )]
 frameOfReference_Node = NodePath("../Model")

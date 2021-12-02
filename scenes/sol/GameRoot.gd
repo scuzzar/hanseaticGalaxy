@@ -7,14 +7,18 @@ onready var ship = $Ship
 export var MaxtimeWarpFactor = 200
 
 func _ready():
-	$HUD.ship = ship
-	$HUD/InventoryWindow.setShip(ship)
-	$HUD/CargoBay.ship = ship
+	setShip(ship)
 	if(Globals.loadPath !=null):
 		self.load_game()
 	else:
 		generateInitialCargo()
 	
+func setShip(ship:Ship):
+	ship.connect("strongest_body_changed",self,"_on_Ship_strongest_body_changed")
+	$HUD.setShip(ship)
+	$HUD/InventoryWindow.setShip(ship)
+	$HUD/CargoBay.ship = ship
+
 func generateInitialCargo():
 	for cg in get_tree().get_nodes_in_group("cargoGenerator"):
 		cg.generateInitialStock()

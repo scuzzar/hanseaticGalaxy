@@ -28,6 +28,15 @@ func _process(delta):
 	live_bar.value = int(Player.engine_fuel_left/Player.max_engine_fuel *100)
 	pass
 
+func setShip(ship:Ship):
+	self.ship = ship
+	ship.connect("docked",self,"_on_Ship_docked")	
+	ship.connect("fuel_changed",self,"_on_Ship_fuel_changed")
+	ship.connect("g_force_update",self,"_on_Ship_g_force_update")
+	ship.connect("mass_changed",self,"_on_Ship_mass_changed")
+	ship.connect("telemetry_changed",self,"_on_Ship_telemetry_changed")
+	ship.connect("undocked",self,"_on_Ship_undocked")
+
 func _on_Ship_fuel_changed(fuel,fuel_cap):
 	#fuel_label.text = String(round(fuel))
 	fuel_bar.value = int(fuel / fuel_cap *100)
