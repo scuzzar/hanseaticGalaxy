@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Ship/ShipCamera.gd" type="Script" id=1]
+[ext_resource path="res://Camera/ShipCamera.gd" type="Script" id=1]
 
 [node name="RotateAxis" type="Spatial"]
 transform = Transform( -1, -1.75458e-10, -8.74226e-08, 0, 0.999998, -0.00200701, 8.74228e-08, -0.00200701, -0.999998, 0, 0, 0 )
