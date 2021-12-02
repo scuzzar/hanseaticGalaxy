@@ -8,6 +8,7 @@
 [ext_resource path="res://N_Body/Simulator.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Bodys/materials/Mimas.material" type="Material" id=7]
 [ext_resource path="res://SpacePort/CargoTarget.gd" type="Script" id=8]
+[ext_resource path="res://Ship/SimpleRocket/SimpelRocket.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Bodys/materials/Saturn.material" type="Material" id=11]
 [ext_resource path="res://Bodys/materials/Titan.material" type="Material" id=12]
 [ext_resource path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" type="PackedScene" id=13]
@@ -16,7 +17,6 @@
 [ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=16]
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Camera/ShipCamera.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Ship/Ship.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/sol/Weltall.tres" type="Environment" id=20]
 [ext_resource path="res://Bodys/tex/NASA/mar2kuu2.jpg" type="Texture" id=21]
 [ext_resource path="res://scenes/sol/GameRoot.gd" type="Script" id=23]
@@ -41,10 +41,7 @@ environment = ExtResource( 20 )
 [node name="Camera" parent="." groups=["persist"] instance=ExtResource( 18 )]
 min_zoom = 1.0
 
-[node name="Ship" parent="." instance=ExtResource( 19 )]
-transform = Transform( 1, 0, -1.1921e-07, 1.1921e-07, -4.37114e-08, 1, -5.21083e-15, -1, -4.37114e-08, 5588.24, -0.221176, -57.5425 )
-show_soi_relativ_sim = false
-trust = 300.0
+[node name="Ship" parent="." instance=ExtResource( 9 )]
 
 [node name="Sun" parent="." instance=ExtResource( 16 )]
 transform = Transform( 2, 0, 0, 0, 0.66219, -1.88719, 0, 1.88719, 0.66219, 0, 0, 0 )
@@ -320,14 +317,3 @@ cargo = 6
 [node name="Simulator" parent="." instance=ExtResource( 6 )]
 simulation_time = 1000
 simulation_delta_t = 6.0
-_simulation_object_path = NodePath("../Ship")
-
-[connection signal="docked" from="Ship" to="HUD" method="_on_Ship_docked"]
-[connection signal="fuel_changed" from="Ship" to="HUD" method="_on_Ship_fuel_changed"]
-[connection signal="g_force_update" from="Ship" to="HUD" method="_on_Ship_g_force_update"]
-[connection signal="mass_changed" from="Ship" to="HUD" method="_on_Ship_mass_changed"]
-[connection signal="strongest_body_changed" from="Ship" to="." method="_on_Ship_strongest_body_changed"]
-[connection signal="telemetry_changed" from="Ship" to="HUD" method="_on_Ship_telemetry_changed"]
-[connection signal="undocked" from="Ship" to="HUD" method="_on_Ship_undocked"]
-
-[editable path="Ship"]

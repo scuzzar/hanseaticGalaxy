@@ -30,6 +30,7 @@ func _process(delta):
 
 func setShip(ship:Ship):
 	self.ship = ship
+	ship_mass = ship.mass
 	ship.connect("docked",self,"_on_Ship_docked")	
 	ship.connect("fuel_changed",self,"_on_Ship_fuel_changed")
 	ship.connect("g_force_update",self,"_on_Ship_g_force_update")
