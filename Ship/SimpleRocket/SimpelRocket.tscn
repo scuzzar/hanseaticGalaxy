@@ -5,11 +5,16 @@
 [ext_resource path="res://Ship/drive.tscn" type="PackedScene" id=3]
 
 [node name="Ship" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 
 [node name="Inventory" parent="." index="0"]
 slot_parent_path = NodePath("../Model/SimpleRocket")
 
+[node name="CollisionShape" parent="." index="1"]
+transform = Transform( 1, 0, 2.22045e-16, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0.0179735, 2.58016e-08 )
+
 [node name="SimpleRocket" parent="Model" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.59521, 2.60175e-08 )
 
 [node name="particel" parent="Model" index="1" instance=ExtResource( 3 )]
-transform = Transform( 0.481952, 0, 0, 0, -0.481952, 4.21336e-08, 0, -4.21336e-08, -0.481952, 0, 8.39595e-10, 0.0192077 )
+transform = Transform( 0.481952, 0, 0, 0, -0.481952, 4.21336e-08, 0, -4.21336e-08, -0.481952, 0, -0.594554, 0.0192077 )

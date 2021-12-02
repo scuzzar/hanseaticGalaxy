@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Bodys/materials/Sun.material" type="Material" id=1]
 [ext_resource path="res://Bodys/materials/Moon.material" type="Material" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://N_Body/Simulator.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Bodys/materials/Mimas.material" type="Material" id=7]
 [ext_resource path="res://SpacePort/CargoTarget.gd" type="Script" id=8]
-[ext_resource path="res://Ship/SimpleRocket/SimpelRocket.tscn" type="PackedScene" id=9]
+[ext_resource path="res://SpaceWarft/Warft.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Bodys/materials/Saturn.material" type="Material" id=11]
 [ext_resource path="res://Bodys/materials/Titan.material" type="Material" id=12]
 [ext_resource path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" type="PackedScene" id=13]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=16]
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Camera/ShipCamera.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Ship/SkyCrane/SkyCrane.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/sol/Weltall.tres" type="Environment" id=20]
 [ext_resource path="res://Bodys/tex/NASA/mar2kuu2.jpg" type="Texture" id=21]
 [ext_resource path="res://scenes/sol/GameRoot.gd" type="Script" id=23]
@@ -41,9 +42,9 @@ environment = ExtResource( 20 )
 [node name="Camera" parent="." groups=["persist"] instance=ExtResource( 18 )]
 min_zoom = 1.0
 
-[node name="Ship" parent="." instance=ExtResource( 9 )]
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 5588.58, 4.76837e-07, -57.8551 )
-angular_damp = -1.0
+[node name="Ship" parent="." instance=ExtResource( 19 )]
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 5588.32, 0, -57.7251 )
+linear_velocity = Vector3( 0.82, 0, 0 )
 playerControl = true
 
 [node name="Sun" parent="." instance=ExtResource( 16 )]
@@ -162,6 +163,9 @@ mass = 334.727
 linear_velocity = Vector3( 0.862, 0, 0 )
 orbital_speed = 15
 surface_g = 3.69
+
+[node name="Warft" parent="Mars" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100.005, 0, 0 )
 
 [node name="Athmosphere" parent="Mars" instance=ExtResource( 13 )]
 planet_radius = 67.0

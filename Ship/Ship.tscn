@@ -11,8 +11,8 @@
 friction = 3.0
 
 [sub_resource type="CylinderShape" id=4]
-radius = 0.274328
-height = 1.21122
+radius = 0.355626
+height = 1.62002
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 6 )
@@ -23,7 +23,7 @@ margin_top = 12.4102
 margin_bottom = 14.2624
 
 [node name="Ship" type="RigidBody" groups=["persist"]]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.587339 )
 input_ray_pickable = false
 mass = 30.0
 physics_material_override = SubResource( 1 )
@@ -42,7 +42,7 @@ trust = 200.0
 script = ExtResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 2.22045e-16, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0.608244, 0 )
+transform = Transform( 1, 0, 2.22045e-16, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0.583273, 1.09152e-09 )
 shape = SubResource( 4 )
 
 [node name="Model" type="Spatial" parent="."]

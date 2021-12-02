@@ -1,0 +1,63 @@
+extends Spatial
+
+class_name Warft
+onready var orbit_radius = translation.length()
+
+var angle = 0
+var angular_speed = 0 
+var docked_ship = null
+
+func _ready():
+	var r = orbit_radius
+	var G = Globals.G
+	var M = get_parent().mass
+	var kosmic = sqrt(G*M/r)
+	
+	if(orbit_radius>0.5):
+		angular_speed = 2*PI/(2*PI*orbit_radius/kosmic)	
+		angle = asin(translation.x/orbit_radius)	
+		var start = translation
+		var result = [start]
+
+
+func _process(delta):
+	angle += (angular_speed *delta)		
+	if(angle >= 2*PI): angle -= 2*PI
+	self.translation = Vector3(sin(angle)*orbit_radius,0,cos(angle)*orbit_radius)
+
+func _on_Area_body_entered(body):
+	if(body is Ship):		
+		self._on_Area_Ship_enterd(body)
+
+func _on_Area_body_exited(body):
+	if(body is Ship):		
+		self._on_Area_Ship_exited(body)
+
+func _on_Area_Ship_enterd(ship : Ship):
+	#ship.dock(self)
+	#ship.translation = Vector3(0,0,0)
+	#self.add_child(ship)
+	#ship.mode = ship.MODE_STATIC
+	self.docked_ship = ship
+	Player.pay(ship.get_refule_costs())
+	ship.set_fuel(ship.fuel_cap)
+	print_debug("ship landed")
+	
+func _on_Area_Ship_exited(ship : Ship):
+	print_debug("ship started")
+
+func save():
+	var save_dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),		
+		"angle" : angle,
+		"angular_speed" : angular_speed,
+		"orbit_radius" : orbit_radius
+	}
+	return save_dict
+
+func load_save(dict):
+	angle=dict["angle"]
+	orbit_radius=dict["orbit_radius"]
+	angular_speed = dict["angular_speed"]
+	

@@ -62,7 +62,7 @@ func _on_Ship_telemetry_changed(position,velocety):
 	velocety -= strongest_body.linear_velocity
 	
 	var r = strongest_body.global_transform.origin.distance_to(ship_position)
-	var G = 50
+	var G = Globals.G
 	var M = strongest_body.mass
 	var kosmic = sqrt(G*M/r)
 	var escape = kosmic * sqrt(2)

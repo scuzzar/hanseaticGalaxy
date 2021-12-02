@@ -58,7 +58,7 @@ func _loadScore():
 		print("faild to load Scene!")
 
 func _on_Ship_strongest_body_changed(old_body, new_body):
-	if(new_body.name == "Sun"):
+	if(new_body!=null and new_body.name == "Sun"):
 		$Simulator.on = true
 	else:
 		$Simulator.on = false

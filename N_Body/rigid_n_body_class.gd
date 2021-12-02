@@ -47,10 +47,19 @@ func _integrate_forces(state):
 	last_g_force = g_force(self.translation)
 	emit_signal("g_force_update",last_g_force,last_g_force_strongest_Body,last_g_force_strongest_Body_force)	
 	state.add_central_force(last_g_force / 2)
+	#state.add_central_force(magnet_force()*mass*20)
+	
 	self.velocety = state.linear_velocity
 
-
-
+func magnet_force():
+	var magnets = get_tree().get_nodes_in_group("magnet")
+	for m in magnets:
+		var m_area :Area = m
+		if(m_area.overlaps_body(self)):
+			var area_translation = m_area.get_parent().to_global(m_area.translation)
+			var forcDir = self.translation.direction_to(area_translation).normalized()			
+			return forcDir
+	return Vector3(0,0,0)
 
 func g_force(position):
 	#Slow
