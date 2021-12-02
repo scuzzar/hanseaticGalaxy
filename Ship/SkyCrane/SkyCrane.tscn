@@ -8,4 +8,4 @@
 [node name="Inventory" parent="." index="0"]
 slot_parent_path = NodePath("../Model/SkyCrane")
 
-[node name="SkyCrane" parent="Model" index="1" instance=ExtResource( 2 )]
+[node name="SkyCrane" parent="Model" index="0" instance=ExtResource( 2 )]

@@ -12,4 +12,4 @@ slot_parent_path = NodePath("../Model/SimpleRocket")
 [node name="SimpleRocket" parent="Model" index="0" instance=ExtResource( 2 )]
 
 [node name="particel" parent="Model" index="1" instance=ExtResource( 3 )]
-transform = Transform( 0.481952, 0, 0, 0, -2.10668e-08, -0.481952, 0, 0.481952, -2.10668e-08, 0, 0, 0.0192077 )
+transform = Transform( 0.481952, 0, 0, 0, -0.481952, 4.21336e-08, 0, -4.21336e-08, -0.481952, 0, 8.39595e-10, 0.0192077 )

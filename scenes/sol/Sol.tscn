@@ -42,6 +42,7 @@ environment = ExtResource( 20 )
 min_zoom = 1.0
 
 [node name="Ship" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5592.3, 0, -86.0415 )
 
 [node name="Sun" parent="." instance=ExtResource( 16 )]
 transform = Transform( 2, 0, 0, 0, 0.66219, -1.88719, 0, 1.88719, 0.66219, 0, 0, 0 )

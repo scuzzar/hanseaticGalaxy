@@ -23,6 +23,7 @@ margin_top = 12.4102
 margin_bottom = 14.2624
 
 [node name="Ship" type="RigidBody" groups=["persist"]]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 input_ray_pickable = false
 mass = 30.0
 physics_material_override = SubResource( 1 )

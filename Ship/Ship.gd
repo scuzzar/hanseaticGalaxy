@@ -51,7 +51,7 @@ func _rotation(state :PhysicsDirectBodyState, angle: float):
 
 func _get_forward_vector():
 	var orientation = self.rotation.y
-	var v = Vector3(0,0,-1)
+	var v = Vector3(0,0,1)
 	v = v.rotated(Vector3(0,1,0), orientation)
 	return v
 
