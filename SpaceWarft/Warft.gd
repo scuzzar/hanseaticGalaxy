@@ -24,13 +24,10 @@ func _ready():
 func _process(delta):
 	angle += (angular_speed *delta)		
 	if(angle >= 2*PI): angle -= 2*PI
-	global_translation = self.global_transform.origin
-	var old_Position = self.global_transform.origin
+
+	
 	self.translation = Vector3(sin(angle)*orbit_radius,0,cos(angle)*orbit_radius)
 	var new_Position = self.global_transform.origin
-	self.velocity = (new_Position-old_Position)
-	self.velocity = self.velocity / delta
-	#print(velocity)
 	if(docked_ship!=null):
 		docked_ship.transform.origin = self.global_transform.origin
 
@@ -48,18 +45,10 @@ func _on_Area_Ship_enterd(ship : Ship):
 		ship.dock(self)
 		Player.pay(ship.get_refule_costs())
 		ship.set_fuel(ship.fuel_cap)
-		ship.transform.origin = self.global_transform.origin
-		_get_relative_Velocety(ship)
-		#ship.velocety = Vector3(0,0,0) 
+		
 		ship.connect("undocked",self,"on_ship_undocked")
 		print_debug("ship landed")
 
-func _get_relative_Velocety(ship : Ship):
-	print("Warft:")
-	print(self.velocity)
-	print("Ship:")
-	print(ship.linear_velocity)
-	print((self.velocity-ship.velocety).length())
 
 func on_ship_undocked(target:Port):
 	docked_ship.disconnect("undocked",self,"on_ship_undocked")
