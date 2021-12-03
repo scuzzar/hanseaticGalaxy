@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://SpaceWarft/Warft.gd" type="Script" id=1]
 [ext_resource path="res://SpaceWarft/Station.escn" type="PackedScene" id=2]
+[ext_resource path="res://Container/Inventory.gd" type="Script" id=3]
 
 [sub_resource type="SphereShape" id=1]
 radius = 2.63205
@@ -19,5 +20,9 @@ angular_damp = 3.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 1 )
+
+[node name="Inventory" type="Spatial" parent="."]
+script = ExtResource( 3 )
+slot_parent_path = NodePath("../Station")
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

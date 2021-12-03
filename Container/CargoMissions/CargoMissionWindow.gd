@@ -32,17 +32,17 @@ func update():
 func _sortByDistance(a,b):	
 	return a.getDistance() < b.getDistance()
 
-func setPort(port:Port):
-	self.inventor = port.inventory
+func setPort(target):
+	self.inventor = target.inventory
 	self.show()
 	self.update()
 	
-	port.inventory.connect("container_added", self, "_Inventory_added_container")
+	target.inventory.connect("container_added", self, "_Inventory_added_container")
 
-func clearPort(port:Port):
+func clearPort(target):
 	self.inventor = null
 	self.hide()	
-	port.inventory.disconnect("container_added", self, "_Inventory_added_container")
+	target.inventory.disconnect("container_added", self, "_Inventory_added_container")
 
 func _Inventory_added_container(container:MissionContainer):
 	update()

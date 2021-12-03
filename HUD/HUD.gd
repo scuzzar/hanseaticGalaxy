@@ -72,9 +72,9 @@ func _on_Ship_telemetry_changed(position,velocety):
 	v_escape.text = str("%0.1f" % escape)
 
 
-func _on_Ship_docked(port:Port):
+func _on_Ship_docked(target):
 	#$CargoBay.ship = ship	
-	$InventoryWindow.setPort(port)
+	$InventoryWindow.setPort(target)
 	$CenterHUB.hide()
 	$DataBox.hide()
 	$CargoBay.show()
