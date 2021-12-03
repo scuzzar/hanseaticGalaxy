@@ -45,6 +45,7 @@ min_zoom = 1.0
 [node name="Ship" parent="." instance=ExtResource( 19 )]
 transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 5588.32, 0, -57.7251 )
 linear_velocity = Vector3( 0.82, 0, 0 )
+velocety = Vector3( 0, 0, -14 )
 playerControl = true
 
 [node name="Sun" parent="." instance=ExtResource( 16 )]

@@ -35,8 +35,7 @@ func _sortByDistance(a,b):
 func setPort(target):
 	self.inventor = target.inventory
 	self.show()
-	self.update()
-	
+	self.update()	
 	target.inventory.connect("container_added", self, "_Inventory_added_container")
 
 func clearPort(target):

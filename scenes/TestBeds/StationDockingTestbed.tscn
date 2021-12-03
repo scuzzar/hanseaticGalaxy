@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/sol/Sol.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Container/CargoGenerator.scn" type="PackedScene" id=2]
 
 [node name="Sol" instance=ExtResource( 1 )]
 
@@ -8,3 +9,10 @@
 transform = Transform( 1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, 5595.72, 0, -89.5352 )
 linear_velocity = Vector3( 0, 0, 0 )
 velocety = Vector3( -15, 0, -15 )
+
+[node name="Warft" parent="Mars" index="2"]
+defaultMissionDestination_path = NodePath("../OlympusPort")
+
+[node name="CargoGenerator" parent="Mars/Warft" index="3" instance=ExtResource( 2 )]
+cargo = 1
+init_store = 2

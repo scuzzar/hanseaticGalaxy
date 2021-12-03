@@ -49,7 +49,7 @@ func _integrate_forces(state):
 	state.add_central_force(last_g_force / 2)
 	#state.add_central_force(magnet_force()*mass*20)
 	
-	self.velocety = state.linear_velocity
+	#self.velocety = self.linear_velocity
 
 func magnet_force():
 	var magnets = get_tree().get_nodes_in_group("magnet")

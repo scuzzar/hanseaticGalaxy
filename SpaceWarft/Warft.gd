@@ -1,12 +1,12 @@
-extends Spatial
+extends Port
 
 class_name Warft
 onready var orbit_radius = translation.length()
-
+var velocity = Vector3(0,0,0)
 var angle = 0
 var angular_speed = 0 
-var docked_ship = null
-onready var inventory = $Inventory 
+var global_translation = Vector3(0,0,0)
+
 
 func _ready():
 	var r = orbit_radius
@@ -24,30 +24,46 @@ func _ready():
 func _process(delta):
 	angle += (angular_speed *delta)		
 	if(angle >= 2*PI): angle -= 2*PI
+	global_translation = self.global_transform.origin
+	var old_Position = self.global_transform.origin
 	self.translation = Vector3(sin(angle)*orbit_radius,0,cos(angle)*orbit_radius)
+	var new_Position = self.global_transform.origin
+	self.velocity = (new_Position-old_Position)
+	self.velocity = self.velocity / delta
+	#print(velocity)
 	if(docked_ship!=null):
 		docked_ship.transform.origin = self.global_transform.origin
 
-func _on_Area_body_entered(body):
-	if(body is Ship):		
-		self._on_Area_Ship_enterd(body)
+#func _on_Area_body_entered(body):
+#	if(body is Ship):		
+#		self._on_Area_Ship_enterd(body)
 
-func _on_Area_body_exited(body):
-	if(body is Ship):		
-		self._on_Area_Ship_exited(body)
+#func _on_Area_body_exited(body):
+#	if(body is Ship):		
+#		self._on_Area_Ship_exited(body)
 
-func _on_Area_Ship_enterd(ship : Ship):
-	#ship.dock(self)
+func _on_Area_Ship_enterd(ship : Ship):	
 	if(docked_ship==null):
 		self.docked_ship = ship	
 		ship.dock(self)
 		Player.pay(ship.get_refule_costs())
 		ship.set_fuel(ship.fuel_cap)
 		ship.transform.origin = self.global_transform.origin
+		_get_relative_Velocety(ship)
 		#ship.velocety = Vector3(0,0,0) 
+		ship.connect("undocked",self,"on_ship_undocked")
 		print_debug("ship landed")
-	
-func _on_Area_Ship_exited(ship : Ship):
+
+func _get_relative_Velocety(ship : Ship):
+	print("Warft:")
+	print(self.velocity)
+	print("Ship:")
+	print(ship.linear_velocity)
+	print((self.velocity-ship.velocety).length())
+
+func on_ship_undocked(target:Port):
+	docked_ship.disconnect("undocked",self,"on_ship_undocked")
+	self.docked_ship = null
 	print_debug("ship started")
 
 func save():

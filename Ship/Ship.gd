@@ -31,6 +31,8 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 	$Model.trust_forward_off()	
 	if(playerControl):
 		if Input.is_action_pressed("burn_forward"):
+			if(self.docking_location!=null):
+				self.undock()
 			var fuelcost =  trust * state.step
 			if(fuel - fuelcost > 0):
 				$Model.trust_forward_on()
@@ -94,8 +96,9 @@ func dock(target: Node):
 	emit_signal("docked", self.docking_location)
 
 func undock():
-	emit_signal("undocked",  self.docking_location)
-	self.docking_location = null
+	if(self.docking_location!=null):
+		emit_signal("undocked",  self.docking_location)
+		self.docking_location = null
 
 func deliver_Container(c: MissionContainer):	
 	if(self.docking_location == c.destination):

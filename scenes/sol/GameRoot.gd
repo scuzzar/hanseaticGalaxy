@@ -11,42 +11,43 @@ func _ready():
 	if(Globals.loadPath !=null):
 		self.load_game()
 	else:
-		generateInitialCargo()
-	
+		newGameSetup()
+
+func newGameSetup():
+	for cg in get_tree().get_nodes_in_group("cargoGenerator"):
+		cg.generateInitialStock()
+
 func setShip(ship:Ship):
 	ship.connect("strongest_body_changed",self,"_on_Ship_strongest_body_changed")
 	$HUD.setShip(ship)
 	$HUD/InventoryWindow.setShip(ship)
 	$HUD/CargoBay.ship = ship
 
-func generateInitialCargo():
-	for cg in get_tree().get_nodes_in_group("cargoGenerator"):
-		cg.generateInitialStock()
-
 func _process(delta):
-	if Input.is_action_pressed("endGame"):	
-		print("you ended the game!")	
-		call_deferred("_loadScore")		
+	if Input.is_action_pressed("endGame"):
+		print("you ended the game!")
+		call_deferred("_loadScore")
 	
 	Engine.time_scale =  1
 	
-	if Input.is_action_pressed("time_delay"):	
-		var factor = clamp(1 / ship.last_g_force.length()*ship.mass,0.001,0.001)		
+	if Input.is_action_pressed("time_delay"):
+		var factor = clamp(1 / ship.last_g_force.length()*ship.mass,0.001,0.001)
 		Engine.time_scale =  factor
-	if Input.is_action_pressed("time_warp"):		
-		var factor = clamp(1 / ship.last_g_force.length()*ship.mass,5,MaxtimeWarpFactor)		
+	
+	if Input.is_action_pressed("time_warp"):
+		var factor = clamp(1 / ship.last_g_force.length()*ship.mass,5,MaxtimeWarpFactor)
 		Engine.time_scale =  factor
 	
 	if Input.is_action_just_pressed("cheat_fuel"):
 		Player.pay(ship.get_refule_costs()*2)
 		ship.set_fuel(ship.fuel_cap)	
-		
+	
 	if(Player.engine_fuel_left<= 0):
 		call_deferred("_loadScore")		
 	
 	if Input.is_action_just_pressed("quicksave"):
 		_quicksave()
-		
+	
 	if Input.is_action_just_pressed("quickload"):
 		_quickload()
 
@@ -64,8 +65,7 @@ func _on_Ship_strongest_body_changed(old_body, new_body):
 		$Simulator.on = false
 
 func _quicksave():
-	save_game()
-	
+	save_game()	
 	print("game Saved")
 	
 func _quickload():
