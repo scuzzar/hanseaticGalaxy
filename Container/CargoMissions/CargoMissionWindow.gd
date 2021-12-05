@@ -35,13 +35,17 @@ func _sortByDistance(a,b):
 func setPort(target):
 	self.inventor = target.inventory
 	self.show()
-	self.update()	
-	target.inventory.connect("container_added", self, "_Inventory_added_container")
+	self.update()
+	var existingConnection = target.inventory.is_connected("container_added", self, "_Inventory_added_container")
+	if(!existingConnection):	
+		target.inventory.connect("container_added", self, "_Inventory_added_container")
 
 func clearPort(target):
 	self.inventor = null
 	self.hide()	
-	target.inventory.disconnect("container_added", self, "_Inventory_added_container")
+	var existingConnection = target.inventory.is_connected("container_added", self, "_Inventory_added_container")
+	if(existingConnection):
+		target.inventory.disconnect("container_added", self, "_Inventory_added_container")
 
 func _Inventory_added_container(container:MissionContainer):
 	update()
