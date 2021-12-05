@@ -59,17 +59,18 @@ func _on_Ship_g_force_update(force,p_stronges_body,strongest_force):
 
 func _on_Ship_telemetry_changed(position,velocety):
 	self.ship_position = position
-	velocety -= strongest_body.linear_velocity
-	
-	var r = strongest_body.global_transform.origin.distance_to(ship_position)
-	var G = Globals.G
-	var M = strongest_body.mass
-	var kosmic = sqrt(G*M/r)
-	var escape = kosmic * sqrt(2)
-	
-	v_labe.text = str("%0.1f" % (velocety.length())) 
-	v_cosmic.text = str("%0.1f" % kosmic) 
-	v_escape.text = str("%0.1f" % escape)
+	if(strongest_body != null):
+		velocety -= strongest_body.linear_velocity
+		
+		var r = strongest_body.global_transform.origin.distance_to(ship_position)
+		var G = Globals.G
+		var M = strongest_body.mass
+		var kosmic = sqrt(G*M/r)
+		var escape = kosmic * sqrt(2)
+		
+		v_labe.text = str("%0.1f" % (velocety.length())) 
+		v_cosmic.text = str("%0.1f" % kosmic) 
+		v_escape.text = str("%0.1f" % escape)
 
 
 func _on_Ship_docked(target):

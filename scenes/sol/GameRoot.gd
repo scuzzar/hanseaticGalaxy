@@ -2,12 +2,13 @@ extends Spatial
 
 var endScreen = preload("res://scenes/GameEnded/EndGameScreen.tscn")
 #var loader : ResourceInteractiveLoader
-onready var ship = $Ship
+onready var ship:Ship = $Ship
 
 export var MaxtimeWarpFactor = 200
 
 func _ready():
 	setShip(ship)
+	var ShipingShip =$Mars/OlympusPort/Ship
 	if(Globals.loadPath !=null):
 		self.load_game()
 	else:
@@ -17,11 +18,14 @@ func newGameSetup():
 	for cg in get_tree().get_nodes_in_group("cargoGenerator"):
 		cg.generateInitialStock()
 
-func setShip(ship:Ship):
-	ship.connect("strongest_body_changed",self,"_on_Ship_strongest_body_changed")
-	$HUD.setShip(ship)
-	$HUD/InventoryWindow.setShip(ship)
-	$HUD/CargoBay.ship = ship
+func setShip(newShip:Ship):
+	newShip.connect("strongest_body_changed",self,"_on_Ship_strongest_body_changed")
+	$HUD.setShip(newShip)
+	$HUD/InventoryWindow.setShip(newShip)
+	$HUD/CargoBay.ship = newShip
+	$Camera.ship =newShip
+	$Simulator._simulation_Object = newShip
+	self.ship = newShip
 
 func _process(delta):
 	if Input.is_action_pressed("endGame"):
@@ -50,6 +54,13 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("quickload"):
 		_quickload()
+
+	if Input.is_action_just_pressed("cheatShip"):
+		var newShip = get_node_or_null("Mars/OlympusPort/Ship")
+		if(newShip!=null):
+			self.buyShip($Mars/OlympusPort/Ship)
+	
+			
 
 func _loadScore():
 	var result = get_tree().change_scene_to(endScreen)
@@ -102,6 +113,46 @@ func save_game():
 
 func _sortNasedLast(a,b):
 	return a["parent"].get_name_count()<b["parent"].get_name_count()
+
+func buyShip(newShip:Ship):
+	var ShoppingTransform = newShip.transform
+	var CurrentTransform = ship.transform
+	var Shop = newShip.get_parent()
+	
+	#Move new Ship to correct position in Tree
+	Shop.remove_child(newShip)
+	self.add_child(newShip)
+	newShip.owner = self
+	if(ship.docking_location!=null):
+		#var docking_location = ship.docking_location
+		#var docking_location = ship.docking_location
+		ship.undock()
+		#newShip.dock(docking_location)
+	
+	
+	#Copy Sate of Current Ship
+	newShip.transform = CurrentTransform
+	newShip.linear_velocity = ship.linear_velocity
+	var cargo = ship.getListOfContainer()
+	for c in cargo:
+		if(newShip.can_load_container()):
+			ship.unload_containter(c)
+			var success = newShip.load_containter(c)
+		else:
+			ship.about_Container(c)			
+	
+	#Deal With old Ship
+	ship.playerControl = false	
+	ship.physikAktiv = false
+	self.remove_child(ship)
+	Shop.add_child(ship)
+	ship.transform = ShoppingTransform
+	ship.owner = Shop
+		
+	#Activate New Ship	
+	newShip.physikAktiv = true
+	newShip.playerControl =true	
+	self.setShip(newShip)
 
 func load_game():
 	var all = self.get_children()

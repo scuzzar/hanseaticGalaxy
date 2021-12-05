@@ -9,6 +9,7 @@ export var fuel_cap = 5000.0
 var fuel = fuel_cap
 var docking_location: Node
 export var playerControl = false
+export var physikAktiv =true
 
 onready var inventory = $Inventory
 
@@ -26,7 +27,8 @@ func _ready():
 	self.angular_damp = 6
 
 func _integrate_forces(state:PhysicsDirectBodyState):
-	._integrate_forces(state)
+	if(physikAktiv):
+		._integrate_forces(state)
 	
 	$Model.trust_forward_off()	
 	if(playerControl):
@@ -88,12 +90,16 @@ func unload_containter(c : MissionContainer):
 	$Inventory.removeContainer(c)	
 	emit_signal("mass_changed",mass,trust)
 
+func getListOfContainer():
+	return $Inventory.getAllContainter()
+
 func can_load_container() -> bool:
 	return $Inventory.hasSpace()
 
 func dock(target: Node):
-	self.docking_location = target
-	emit_signal("docked", self.docking_location)
+	if(target!=self.docking_location):
+		self.docking_location = target
+		emit_signal("docked", self.docking_location)
 
 func undock():
 	if(self.docking_location!=null):
@@ -112,8 +118,11 @@ func about_Container(c:MissionContainer):
 	Player.pay(c.reward* 0.2)
 
 func getMaxStartMass():
-	var result = trust/last_g_force.length()*mass
-	return result
+	if(last_g_force.length()>0):
+		var result = trust/last_g_force.length()*mass
+		return result
+	else:
+		return 0
 
 func save():
 	#Offset to avoid collisions on loading.

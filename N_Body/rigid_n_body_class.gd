@@ -1,4 +1,3 @@
-tool
 extends RigidBody
 
 class_name Rigid_N_Body
@@ -39,8 +38,6 @@ func _ready():
 	else:
 		bodys = get_tree().get_nodes_in_group("bodys")
 	self.linear_velocity = velocety
-	last_g_force = g_force(translation)	
-
 
 func _integrate_forces(state):
 	state.add_central_force(last_g_force / 2)
