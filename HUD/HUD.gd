@@ -15,6 +15,10 @@ onready var v_labe = $CenterHUB/V_Meter/Value
 onready var v_cosmic = $CenterHUB/V_cosmic/Value
 onready var v_escape = $CenterHUB/V_escape/Value
 
+signal shipOrderd(ship)
+
+var inShipShop=false
+
 var ship_mass = 0
 var strongest_body:simpelPlanet = null
 var ship_position:Vector3
@@ -73,19 +77,27 @@ func _on_Ship_telemetry_changed(position,velocety):
 		v_escape.text = str("%0.1f" % escape)
 
 
-func _on_Ship_docked(target):
+func _on_Ship_docked(port:Port):
 	#$CargoBay.ship = ship	
-	$InventoryWindow.setPort(target)
+	$InventoryWindow.setPort(port)
 	$CenterHUB.hide()
 	$DataBox.hide()
 	$CargoBay.show()
+	if(!port.getShipsForSale().empty()):
+		$Button.show()
+		$ShipShop.setWarft(port)
+	else:
+		$Button.hide()
+		
 
-func _on_Ship_undocked(port):
+func _on_Ship_undocked(port:Port):
 	$InventoryWindow.clearPort(port)
 	$CenterHUB.show()
 	$DataBox.show()
 	$CargoBay.hide()
-
+	$Button.hide()
+	$ShipShop.hide()
+	inShipShop = false
 
 func _on_InventoryWindow_accepted(container):
 	ship.docking_location.accept_Mission(container)
@@ -99,3 +111,20 @@ func _on_CargoBay_about(container):
 	ship.about_Container(container)
 	$CargoBay.update()
 	$InventoryWindow.update()
+
+
+func _on_Button_pressed():
+	if(!inShipShop):
+		$CargoBay.hide()
+		$InventoryWindow.hide()
+		$ShipShop.show()
+		self.inShipShop=true
+	else:
+		$CargoBay.show()
+		$InventoryWindow.show()
+		$ShipShop.hide()
+		self.inShipShop=false
+
+
+func _on_shipOrderd(ship):
+	self.emit_signal("shipOrderd",ship)

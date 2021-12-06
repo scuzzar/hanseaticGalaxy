@@ -26,6 +26,9 @@ func _ready():
 	emit_signal("mass_changed",mass,trust)
 	$Model.trust_forward_off()
 	self.angular_damp = 6
+	$ShipInfo.ship = self
+	$ShipInfo.update()
+	$ShipInfo.hide()
 
 func _integrate_forces(state:PhysicsDirectBodyState):
 	if(physikAktiv):
@@ -47,8 +50,12 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 		if Input.is_action_pressed("turn_right"):
 			_rotation(turn_rate*-1*state.step)
 			
-		if Input.is_action_pressed("info"):
-			$ShipInfoWindow.popup()
+		if Input.is_action_just_pressed("info"):
+			if(!$ShipInfo.visible):
+				$ShipInfo.update()
+				$ShipInfo.show()
+			else:
+				$ShipInfo.hide()
 		
 		emit_signal("telemetry_changed", self.translation, state.linear_velocity)
 
@@ -117,6 +124,9 @@ func deliver_Container(c: MissionContainer):
 func about_Container(c:MissionContainer):
 	self.unload_containter(c)
 	Player.pay(c.reward* 0.2)
+
+func getCargoSlotCount():
+	return $Inventory.slots.size()
 
 func getMaxStartMass():
 	if(last_g_force.length()>0):

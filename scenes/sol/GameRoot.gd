@@ -55,12 +55,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("quickload"):
 		_quickload()
 
-	if Input.is_action_just_pressed("cheatShip"):
-		var newShip = get_node_or_null("Mars/OlympusPort/Ship")
-		if(newShip!=null):
-			self.buyShip($Mars/OlympusPort/Ship)
-	
-			
+	if Input.is_action_just_pressed("cheatCash"):
+		Player.reward(100000)
 
 func _loadScore():
 	var result = get_tree().change_scene_to(endScreen)
@@ -182,3 +178,5 @@ func load_game():
 	save_game.close()
 	all = self.get_children()
 
+func _on_HUD_shipOrderd(ship):
+	self.buyShip(ship)

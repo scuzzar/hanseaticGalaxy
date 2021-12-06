@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Ship/ShipInfoWindow/ShipInfo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SpacePort/Warft/ShipWarft.gd" type="Script" id=2]
+
+[node name="ShipShop" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 893.448, 452.206 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShipInfo" parent="." instance=ExtResource( 1 )]
+margin_left = -95.552
+margin_top = -314.0
+margin_right = 97.448
+margin_bottom = -54.0
+rect_pivot_offset = Vector2( 193, 318.854 )
+
+[node name="last" type="Button" parent="ShipInfo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -91.9955
+margin_top = 104.493
+margin_right = -46.9955
+margin_bottom = 124.493
+rect_pivot_offset = Vector2( 54.5208, 58.5574 )
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="next" type="Button" parent="ShipInfo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 46.0
+margin_top = 104.493
+margin_right = 91.0
+margin_bottom = 124.493
+rect_pivot_offset = Vector2( 54.5208, 58.5574 )
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buy" type="Button" parent="ShipInfo"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -28.5103
+margin_top = -25.5074
+margin_right = 34.4897
+margin_bottom = -5.50745
+text = "Buy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="ShipInfo/last" to="." method="_on_last_pressed"]
+[connection signal="pressed" from="ShipInfo/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="ShipInfo/Buy" to="." method="_on_Buy_pressed"]

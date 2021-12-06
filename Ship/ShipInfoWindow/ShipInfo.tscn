@@ -1,0 +1,197 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Ship/ShipInfoWindow/ShipInfo.gd" type="Script" id=1]
+
+[node name="ShipInfo" type="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.5
+margin_top = -130.0
+margin_right = 96.5
+margin_bottom = 130.0
+rect_pivot_offset = Vector2( 95.5286, 20.4843 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -60.0
+margin_right = 60.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 120, 0 )
+custom_colors/font_color = Color( 0.275299, 0.605068, 0.726563, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Ship Details"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -82.5
+margin_top = 34.4767
+margin_right = 82.5
+margin_bottom = 229.477
+grow_horizontal = 0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="nameLabel" type="Label" parent="Grid"]
+margin_right = 74.0
+margin_bottom = 14.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Name:"
+align = 2
+valign = 1
+
+[node name="name" type="Label" parent="Grid"]
+margin_left = 78.0
+margin_right = 165.0
+margin_bottom = 14.0
+text = "NeubeckumII"
+
+[node name="space" type="Label" parent="Grid"]
+margin_top = 18.0
+margin_right = 74.0
+margin_bottom = 32.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+align = 2
+valign = 1
+
+[node name="space2" type="Label" parent="Grid"]
+margin_left = 78.0
+margin_top = 18.0
+margin_right = 165.0
+margin_bottom = 32.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MassLable" type="Label" parent="Grid"]
+margin_top = 36.0
+margin_right = 74.0
+margin_bottom = 50.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Mass:"
+align = 2
+valign = 1
+
+[node name="mass" type="Label" parent="Grid"]
+margin_left = 78.0
+margin_top = 36.0
+margin_right = 165.0
+margin_bottom = 50.0
+text = "50"
+
+[node name="TrustLable" type="Label" parent="Grid"]
+margin_top = 54.0
+margin_right = 74.0
+margin_bottom = 68.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Trust:"
+align = 2
+valign = 1
+
+[node name="trust" type="Label" parent="Grid"]
+margin_left = 78.0
+margin_top = 54.0
+margin_right = 165.0
+margin_bottom = 68.0
+text = "300"
+
+[node name="TWLable" type="Label" parent="Grid"]
+margin_top = 72.0
+margin_right = 74.0
+margin_bottom = 86.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Empty T/M:"
+align = 2
+valign = 1
+
+[node name="tw" type="Label" parent="Grid"]
+margin_left = 78.0
+margin_top = 72.0
+margin_right = 165.0
+margin_bottom = 86.0
+text = "NeubeckumII"
+
+[node name="TurRateLabel" type="Label" parent="Grid"]
+margin_top = 90.0
+margin_right = 74.0
+margin_bottom = 104.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "TrunRate:"
+align = 2
+valign = 1
+
+[node name="turnRate" type="Label" parent="Grid"]
+margin_left = 78.0
+margin_top = 90.0
+margin_right = 165.0
+margin_bottom = 104.0
+text = "120"
+
+[node name="space3" type="Label" parent="Grid"]
+margin_top = 108.0
+margin_right = 74.0
+margin_bottom = 122.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+align = 2
+valign = 1
+
+[node name="space4" type="Label" parent="Grid"]
+margin_left = 78.0
+margin_top = 108.0
+margin_right = 165.0
+margin_bottom = 122.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SlotLable" type="Label" parent="Grid"]
+margin_top = 126.0
+margin_right = 74.0
+margin_bottom = 140.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Cargo Slots:"
+align = 2
+valign = 1
+
+[node name="slots" type="Label" parent="Grid"]
+margin_left = 78.0
+margin_top = 126.0
+margin_right = 165.0
+margin_bottom = 140.0
+text = "3"
+
+[node name="PriceLable" type="Label" parent="Grid"]
+margin_top = 144.0
+margin_right = 74.0
+margin_bottom = 158.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Price:"
+align = 2
+valign = 1
+
+[node name="price" type="Label" parent="Grid"]
+margin_left = 78.0
+margin_top = 144.0
+margin_right = 165.0
+margin_bottom = 158.0
+text = "120000"

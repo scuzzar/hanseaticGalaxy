@@ -50,6 +50,13 @@ func accept_Mission(container:MissionContainer):
 		print(docked_ship)
 		print_debug("mission_accepted hit, but not executed!")
 
+func getShipsForSale():
+	var result = []
+	for c in self.get_children():
+		if c is Ship :
+			result.append(c)
+	return result
+
 func add_container(c: MissionContainer):
 	$Inventory.addContainerOnFree(c)
 

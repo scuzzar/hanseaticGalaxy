@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://HUD/FuelBar.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://HUD/EngineLifeBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Container/CargoMissions/CargoMissionWindow.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Ship/CargoBay/CargoBay.tscn" type="PackedScene" id=7]
+[ext_resource path="res://SpacePort/Warft/ShipWarft.tscn" type="PackedScene" id=8]
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
@@ -318,6 +319,26 @@ custom_colors/font_color = Color( 0.00392157, 0, 0.364706, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "100000"
 
+[node name="ShipShop" parent="." instance=ExtResource( 8 )]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -810.0
+margin_right = 810.0
+margin_bottom = 869.0
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -37.0
+margin_top = 33.0
+margin_right = 37.0
+margin_bottom = 53.0
+text = "Ship Shop"
+
 [connection signal="accepted" from="InventoryWindow" to="." method="_on_InventoryWindow_accepted"]
 [connection signal="about" from="CargoBay" to="." method="_on_CargoBay_about"]
 [connection signal="deliver" from="CargoBay" to="." method="_on_CargoBay_deliver"]
+[connection signal="shipOrderd" from="ShipShop" to="." method="_on_shipOrderd"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

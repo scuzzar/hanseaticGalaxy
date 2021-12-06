@@ -209,6 +209,16 @@ defaultMissionDestination_path = NodePath("../Deimos/DeimosPort")
 [node name="Ship" parent="Mars/OlympusPort" instance=ExtResource( 19 )]
 transform = Transform( 1, -1.84741e-13, -1.37336e-15, 1.84741e-13, 1, 0, -8.04681e-21, 0, 1, -3.02734, 0.173756, -2.63424 )
 linear_velocity = Vector3( 0.82, 0, 0 )
+dispay_name = "Akapulko"
+physikAktiv = false
+
+[node name="Ship2" parent="Mars/OlympusPort" instance=ExtResource( 19 )]
+transform = Transform( 1, -1.84741e-13, -1.37336e-15, 1.84741e-13, 1, 0, -8.04681e-21, 0, 1, -2.22217, 0.173756, -3.36631 )
+linear_velocity = Vector3( 0.82, 0, 0 )
+price = 150000
+trust = 200.0
+dispay_name = "Hoplite"
+fuel_cap = 6000.0
 physikAktiv = false
 
 [node name="T_Luxus" type="Node" parent="Mars/OlympusPort"]
@@ -354,3 +364,5 @@ cargo = 6
 simulation_time = 1000
 simulation_delta_t = 6.0
 _simulation_object_path = NodePath("../Ship")
+
+[connection signal="shipOrderd" from="HUD" to="." method="_on_HUD_shipOrderd"]
