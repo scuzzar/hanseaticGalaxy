@@ -115,44 +115,50 @@ func _sortNasedLast(a,b):
 	return a["parent"].get_name_count()<b["parent"].get_name_count()
 
 func buyShip(newShip:Ship):
-	var ShoppingTransform = newShip.transform
-	var CurrentTransform = ship.transform
-	var Shop = newShip.get_parent()
-	
-	#Move new Ship to correct position in Tree
-	Shop.remove_child(newShip)
-	self.add_child(newShip)
-	newShip.owner = self
-	if(ship.docking_location!=null):
-		#var docking_location = ship.docking_location
-		#var docking_location = ship.docking_location
-		ship.undock()
-		#newShip.dock(docking_location)
-	
-	
-	#Copy Sate of Current Ship
-	newShip.transform = CurrentTransform
-	newShip.linear_velocity = ship.linear_velocity
-	var cargo = ship.getListOfContainer()
-	for c in cargo:
-		if(newShip.can_load_container()):
-			ship.unload_containter(c)
-			var success = newShip.load_containter(c)
-		else:
-			ship.about_Container(c)			
-	
-	#Deal With old Ship
-	ship.playerControl = false	
-	ship.physikAktiv = false
-	self.remove_child(ship)
-	Shop.add_child(ship)
-	ship.transform = ShoppingTransform
-	ship.owner = Shop
+	if(!Player.credits>=newShip.price-ship.price):
+		print("You miss: " + str((Player.credits-newShip.price+ship.price)*-1) + " Credits")
+	else:
+		var ShoppingTransform = newShip.transform
+		var CurrentTransform = ship.transform
+		var Shop = newShip.get_parent()
 		
-	#Activate New Ship	
-	newShip.physikAktiv = true
-	newShip.playerControl =true	
-	self.setShip(newShip)
+		#Move new Ship to correct position in Tree
+		Shop.remove_child(newShip)
+		self.add_child(newShip)
+		newShip.owner = self
+		if(ship.docking_location!=null):
+			#var docking_location = ship.docking_location
+			#var docking_location = ship.docking_location
+			ship.undock()
+			#newShip.dock(docking_location)
+		
+		
+		#Copy Sate of Current Ship
+		newShip.transform = CurrentTransform
+		newShip.linear_velocity = ship.linear_velocity
+		var cargo = ship.getListOfContainer()
+		for c in cargo:
+			if(newShip.can_load_container()):
+				ship.unload_containter(c)
+				var success = newShip.load_containter(c)
+			else:
+				ship.about_Container(c)			
+		
+		#Deal With old Ship
+		ship.playerControl = false	
+		ship.physikAktiv = false
+		ship.queue_free()
+		
+		#Finances
+		Player.reward(ship.price)
+		Player.pay(newShip.price)
+			
+		#Activate New Ship	
+		newShip.physikAktiv = true
+		newShip.playerControl =true	
+		self.setShip(newShip)
+	
+
 
 func load_game():
 	var all = self.get_children()

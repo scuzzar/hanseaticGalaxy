@@ -84,5 +84,3 @@ func removeContainer(container:MissionContainer) -> bool :
 			return true
 	return false
 
-func _on_container_clicked(container:MissionContainer):
-	emit_signal("container_clicked",container)

@@ -6,6 +6,7 @@
 
 [node name="Ship" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+price = 120000
 
 [node name="Inventory" parent="." index="0"]
 slot_parent_path = NodePath("../Model/SimpleRocket")

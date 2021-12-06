@@ -10,8 +10,8 @@ onready var _simulation_Object:Rigid_N_Body = get_node_or_null(_simulation_objec
 export var on = false
 export var relativ_to_soi = false
 
-export(NodePath) var _Target_object_path
-onready var _target_Object:Rigid_N_Body = get_node_or_null(_simulation_object_path)
+#export(NodePath) var _Target_object_path
+#onready var _target_Object:Rigid_N_Body = get_node_or_null(_simulation_object_path)
 
 #var simulation_orbit_treshold = 0.1
 var simulation_update_timer = 0

@@ -2,6 +2,7 @@ extends Rigid_N_Body
 
 class_name Ship
 
+export var price = 0
 export var turn_rate = 100
 export var trust = 100.0
 export var dispay_name = "Neubeckum II"
