@@ -21,12 +21,12 @@ mode = 3
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703545, -1.9025, -0.004 )
 shape = SubResource( 1 )
 
-[node name="Area" type="Area" parent="."]
+[node name="LandingArea" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82234, 0 )
 gravity = 0.0
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 1.00141, 0, 0, 0, 1.00141, 0, 0, 0, 1.00141, 0, -1.95535, 0 )
+[node name="CollisionShape" type="CollisionShape" parent="LandingArea"]
+transform = Transform( 1.00141, 0, 0, 0, 1.00141, 0, 0, 0, 1.00141, 0, -1.73712, 0 )
 shape = SubResource( 2 )
 
 [node name="SpacePort" parent="." instance=ExtResource( 1 )]
@@ -35,6 +35,6 @@ shape = SubResource( 2 )
 script = ExtResource( 2 )
 slot_parent_path = NodePath("../SpacePort")
 
-[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
-[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
+[connection signal="body_entered" from="LandingArea" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="LandingArea" to="." method="_on_Area_body_exited"]
 [connection signal="container_clicked" from="Inventory" to="." method="_on_container_clicked"]

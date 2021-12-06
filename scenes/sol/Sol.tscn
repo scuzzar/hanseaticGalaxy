@@ -166,8 +166,30 @@ linear_velocity = Vector3( 0.862, 0, 0 )
 orbital_speed = 15
 surface_g = 3.69
 
-[node name="Warft" parent="Mars" instance=ExtResource( 10 )]
+[node name="Station" parent="Mars" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 152.126, 0, 0 )
+
+[node name="T_Metal" type="Node" parent="Mars/Station"]
+script = ExtResource( 8 )
+
+[node name="T_Food" type="Node" parent="Mars/Station"]
+script = ExtResource( 8 )
+cargo = 1
+
+[node name="T_Luxus" type="Node" parent="Mars/Station"]
+script = ExtResource( 8 )
+cargo = 6
+
+[node name="G_Consumers" parent="Mars/Station" instance=ExtResource( 15 )]
+cargo = 4
+wait_time = 30.0
+max_store = 3
+
+[node name="G_Electronics" parent="Mars/Station" instance=ExtResource( 15 )]
+cargo = 3
+wait_time = 35.0
+max_store = 3
+init_store = 0
 
 [node name="Athmosphere" parent="Mars" instance=ExtResource( 13 )]
 planet_radius = 67.0
