@@ -178,8 +178,9 @@ func load_game():
 			var laoded_node = load(node_data["filename"]).instance()
 			laoded_node.load_save(node_data)
 			laoded_node.playerControl = true
+			laoded_node.name = "PlayerShip"
 			var laoded_node_parent = get_node(node_data["parent"])
-			laoded_node_parent.add_child(laoded_node)			
+			laoded_node_parent.add_child(laoded_node)	
 			self.setShip(laoded_node)
 			continue
 			
