@@ -7,7 +7,7 @@
 [ext_resource path="res://HUD/EngineLifeBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Container/CargoMissions/CargoMissionWindow.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Ship/CargoBay/CargoBay.tscn" type="PackedScene" id=7]
-[ext_resource path="res://SpacePort/Warft/ShipWarft.tscn" type="PackedScene" id=8]
+[ext_resource path="res://SpacePort/ShipShop/ShipShop.tscn" type="PackedScene" id=8]
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
