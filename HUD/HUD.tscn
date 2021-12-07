@@ -331,10 +331,10 @@ margin_bottom = 869.0
 [node name="Button" type="Button" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -37.0
-margin_top = 33.0
-margin_right = 37.0
-margin_bottom = 53.0
+margin_left = -46.0476
+margin_top = 27.0
+margin_right = 49.9524
+margin_bottom = 69.0
 text = "Ship Shop"
 
 [connection signal="accepted" from="InventoryWindow" to="." method="_on_InventoryWindow_accepted"]

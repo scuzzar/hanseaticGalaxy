@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var ship:Ship = get_node("../Ship")
+onready var ship:Ship = get_node("../PlayerShip")
 onready var tilt:Spatial = $TiltAxis
 onready var camera:Camera = $TiltAxis/Camera
 

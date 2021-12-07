@@ -44,7 +44,8 @@ func setShip(ship:Ship):
 
 func _on_Ship_fuel_changed(fuel,fuel_cap):
 	#fuel_label.text = String(round(fuel))
-	fuel_bar.value = int(fuel / fuel_cap *100)
+	#fuel_bar.value = int(fuel / fuel_cap *100)
+	fuel_bar.value = fuel / ship.mass
 
 
 func _on_credits_changed(credits):

@@ -2,13 +2,12 @@ extends Spatial
 
 var endScreen = preload("res://scenes/GameEnded/EndGameScreen.tscn")
 #var loader : ResourceInteractiveLoader
-onready var ship:Ship = $Ship
+onready var ship:Ship = $PlayerShip
 
 export var MaxtimeWarpFactor = 200
 
 func _ready():
-	setShip(ship)
-	var ShipingShip =$Mars/OlympusPort/Ship
+	setShip(ship)	
 	if(Globals.loadPath !=null):
 		self.load_game()
 	else:
@@ -140,18 +139,23 @@ func buyShip(newShip:Ship):
 			else:
 				ship.about_Container(c)			
 		
-		#Deal With old Ship
-		ship.playerControl = false	
-		ship.physikAktiv = false
-		ship.queue_free()
+
 		
 		#Finances
 		Player.reward(ship.price)
 		Player.pay(newShip.price)
 			
+		#Deal With old Ship
+		ship.playerControl = false	
+		ship.physikAktiv = false
+		ship.free()
+			
+			
 		#Activate New Ship	
 		newShip.physikAktiv = true
-		newShip.playerControl =true	
+		newShip.playerControl =true
+		newShip.name = "PlayerShip"
+		
 		self.setShip(newShip)
 	
 
@@ -168,11 +172,24 @@ func load_game():
 		if(node_data["nodePath"]=="Player"):
 			Player.load_save(node_data)
 			continue
+			
+		if(node_data["nodePath"]=="/root/Sol/PlayerShip"):
+			$PlayerShip.free()
+			var laoded_node = load(node_data["filename"]).instance()
+			laoded_node.load_save(node_data)
+			laoded_node.playerControl = true
+			var laoded_node_parent = get_node(node_data["parent"])
+			laoded_node_parent.add_child(laoded_node)			
+			self.setShip(laoded_node)
+			continue
+			
+			
 		var laoded_node = get_node_or_null(node_data["nodePath"])
 		# Handel Dynamic Instanciation
 		if(laoded_node==null):
 			laoded_node = load(node_data["filename"]).instance()
-			get_node(node_data["parent"]).add_child(laoded_node)
+			var laoded_node_parent = get_node(node_data["parent"])
+			laoded_node_parent.add_child(laoded_node)
 		laoded_node.load_save(node_data)
 
 	save_game.close()
