@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Ship/Ship.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Ship/Tender/Tender.escn" type="PackedScene" id=2]
+[ext_resource path="res://Ship/drive.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Ship/Tender/Model.gd" type="Script" id=4]
+
+[node name="Tender" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+mass = 10.0
+turn_rate = 25
+trust = 100.0
+fuel_cap = 2700.0
+
+[node name="Inventory" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.578891, 2.53041e-08 )
+slot_parent_path = NodePath("../Model/Tender")
+
+[node name="CollisionShape" parent="." index="1"]
+transform = Transform( 1, 0, 2.22045e-16, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0.0866584, 2.27992e-08 )
+
+[node name="Model" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.578891, 2.53041e-08 )
+script = ExtResource( 4 )
+
+[node name="Tender" parent="Model" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.254154, -1.11094e-08 )
+
+[node name="particel" parent="Model" index="1" instance=ExtResource( 3 )]
+transform = Transform( 0.109677, 0, 0, 0, -0.109677, 9.58825e-09, 0, -9.58825e-09, -0.109677, 0.172687, 0.268344, -0.184927 )
+
+[node name="particel2" parent="Model" index="2" instance=ExtResource( 3 )]
+transform = Transform( 0.109677, 0, 0, 0, -0.109677, 9.58825e-09, 0, -9.58825e-09, -0.109677, -0.18375, 0.268344, -0.184927 )
+
+[node name="particel3" parent="Model" index="3" instance=ExtResource( 3 )]
+transform = Transform( 0.109677, 0, 0, 0, -0.109677, 9.58825e-09, 0, -9.58825e-09, -0.109677, 0.172687, 0.268344, 0.180509 )
+
+[node name="particel4" parent="Model" index="4" instance=ExtResource( 3 )]
+transform = Transform( 0.109677, 0, 0, 0, -0.109677, 9.58825e-09, 0, -9.58825e-09, -0.109677, -0.18375, 0.268344, 0.180509 )

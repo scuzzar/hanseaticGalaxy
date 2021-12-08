@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Bodys/materials/Sun.material" type="Material" id=1]
 [ext_resource path="res://Bodys/materials/Moon.material" type="Material" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Ship/SkyCrane/SkyCrane.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/sol/Weltall.tres" type="Environment" id=20]
 [ext_resource path="res://Bodys/tex/NASA/mar2kuu2.jpg" type="Texture" id=21]
+[ext_resource path="res://Ship/Tender/Tender.tscn" type="PackedScene" id=22]
 [ext_resource path="res://scenes/sol/GameRoot.gd" type="Script" id=23]
 
 [sub_resource type="PhysicsMaterial" id=1]
@@ -43,11 +44,12 @@ environment = ExtResource( 20 )
 [node name="Camera" parent="." groups=["persist"] instance=ExtResource( 18 )]
 min_zoom = 1.0
 
-[node name="PlayerShip" parent="." instance=ExtResource( 9 )]
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 5588.4, 0, -58.0762 )
-sleeping = true
+[node name="PlayerShip" parent="." instance=ExtResource( 22 )]
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 5588.45, 0, -57.4095 )
 velocety = Vector3( 0, 0, -14 )
+price = 20000
 playerControl = true
+physikAktiv = true
 
 [node name="Sun" parent="." instance=ExtResource( 16 )]
 transform = Transform( 2, 0, 0, 0, 0.66219, -1.88719, 0, 1.88719, 0.66219, 0, 0, 0 )
@@ -195,7 +197,6 @@ init_store = 0
 transform = Transform( 0.249281, 0.968431, -4.23315e-08, -2.8478e-23, -4.37114e-08, -1, -0.968431, 0.249281, -1.08964e-08, 0.632935, -0.854731, -3.28711 )
 linear_velocity = Vector3( 0.82, 0, 0 )
 dispay_name = "Akapulko"
-physikAktiv = false
 
 [node name="Athmosphere" parent="Mars" instance=ExtResource( 13 )]
 planet_radius = 67.0
@@ -219,7 +220,10 @@ price = 150000
 trust = 200.0
 dispay_name = "Hoplite"
 fuel_cap = 6000.0
-physikAktiv = false
+
+[node name="SimpleRocket" parent="Mars/OlympusPort" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 6.35275e-21, 0, 1, 0, 0, 0, 1, -1.79443, 0.0951424, -3.49483 )
+sleeping = true
 
 [node name="T_Luxus" type="Node" parent="Mars/OlympusPort"]
 script = ExtResource( 8 )
