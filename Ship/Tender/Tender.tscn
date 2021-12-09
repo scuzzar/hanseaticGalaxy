@@ -8,7 +8,7 @@
 [node name="Tender" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 mass = 10.0
-turn_rate = 25
+turn_rate = 20
 trust = 100.0
 fuel_cap = 2700.0
 
@@ -28,12 +28,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.254154, -1.11094e-08 )
 
 [node name="particel" parent="Model" index="1" instance=ExtResource( 3 )]
 transform = Transform( 0.109677, 0, 0, 0, -0.109677, 9.58825e-09, 0, -9.58825e-09, -0.109677, 0.172687, 0.268344, -0.184927 )
+lightIntensity = 0.6
 
 [node name="particel2" parent="Model" index="2" instance=ExtResource( 3 )]
 transform = Transform( 0.109677, 0, 0, 0, -0.109677, 9.58825e-09, 0, -9.58825e-09, -0.109677, -0.18375, 0.268344, -0.184927 )
+lightIntensity = 0.6
 
 [node name="particel3" parent="Model" index="3" instance=ExtResource( 3 )]
 transform = Transform( 0.109677, 0, 0, 0, -0.109677, 9.58825e-09, 0, -9.58825e-09, -0.109677, 0.172687, 0.268344, 0.180509 )
+lightIntensity = 0.6
 
 [node name="particel4" parent="Model" index="4" instance=ExtResource( 3 )]
 transform = Transform( 0.109677, 0, 0, 0, -0.109677, 9.58825e-09, 0, -9.58825e-09, -0.109677, -0.18375, 0.268344, 0.180509 )
+lightIntensity = 0.6

@@ -175,13 +175,14 @@ func load_game():
 			
 		if(node_data["nodePath"]=="/root/Sol/PlayerShip"):
 			$PlayerShip.free()
-			var laoded_node = load(node_data["filename"]).instance()
-			laoded_node.load_save(node_data)
-			laoded_node.playerControl = true
-			laoded_node.name = "PlayerShip"
+			var laoded_PlayerShip :Ship = load(node_data["filename"]).instance()
+			laoded_PlayerShip.physikAktiv = true
+			laoded_PlayerShip.load_save(node_data)
+			laoded_PlayerShip.playerControl = true			
+			laoded_PlayerShip.name = "PlayerShip"
 			var laoded_node_parent = get_node(node_data["parent"])
-			laoded_node_parent.add_child(laoded_node)	
-			self.setShip(laoded_node)
+			laoded_node_parent.add_child(laoded_PlayerShip)			
+			self.setShip(laoded_PlayerShip)
 			continue
 			
 			

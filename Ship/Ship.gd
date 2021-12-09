@@ -160,7 +160,8 @@ func save():
 
 func load_save(dict):	
 	transform.origin = Vector3(dict["pos_x"], dict["pos_y"],dict["pos_z"])	
-	self.linear_velocity = Vector3(dict["velocety_x"], dict["velocety_y"],dict["velocety_z"])	
+	self.linear_velocity = Vector3(dict["velocety_x"], dict["velocety_y"],dict["velocety_z"])
+	self.velocety = Vector3(dict["velocety_x"], dict["velocety_y"],dict["velocety_z"])	
 	rotation.y = dict["rotation"]	
 	self.set_fuel(dict["fuel"])
 	fuel_cap = dict["fuel_cap"]
