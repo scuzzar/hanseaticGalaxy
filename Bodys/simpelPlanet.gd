@@ -34,8 +34,13 @@ func _ready():
 	
 	mass = (surface_g*radius*radius)/Globals.G
 	
-	
 	if(orbit_radius>0.5):
+		var r = orbit_radius
+		var G = Globals.G
+		var M = get_parent().mass
+		var kosmic = sqrt(G*M/r)
+		print(self.name + " O_Speed:" + str(kosmic))	
+		orbital_speed = kosmic
 		angular_speed = 2*PI/(2*PI*orbit_radius/orbital_speed)	
 		angle = asin(translation.x/orbit_radius)	
 		var start = translation

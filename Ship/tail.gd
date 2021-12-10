@@ -17,7 +17,8 @@ var history_update_timer = 0
 var width = 1
 
 func _process(delta):
-	history_update_timer += delta
+	if(owner.playerControl):
+		history_update_timer += delta
 	#orbit._draw_list(simulation)
 	if history_update_timer >= history_update_interfall:		
 		history_update_timer -= history_update_interfall
