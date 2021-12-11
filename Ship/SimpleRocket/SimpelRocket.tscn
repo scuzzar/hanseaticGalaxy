@@ -1,18 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Ship/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ship/SimpleRocket/SimpleRocket.escn" type="PackedScene" id=2]
 [ext_resource path="res://Ship/drive.tscn" type="PackedScene" id=3]
 
+[sub_resource type="CylinderShape" id=1]
+radius = 0.364907
+height = 1.24207
+
 [node name="Ship" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 price = 120000
+turn_rate = 60
+trust = 300.0
+fuel_cap = 15000.0
 
-[node name="Inventory" parent="." index="0"]
+[node name="CollisionShape" type="CollisionShape" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0297804, -1.30174e-09 )
+shape = SubResource( 1 )
+
+[node name="Inventory" parent="." index="1"]
 slot_parent_path = NodePath("../Model/SimpleRocket")
-
-[node name="CollisionShape" parent="." index="1"]
-transform = Transform( 1, 0, 2.22045e-16, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0.0179735, 2.58016e-08 )
 
 [node name="SimpleRocket" parent="Model" index="0" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.59521, 2.60175e-08 )

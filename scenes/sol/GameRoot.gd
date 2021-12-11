@@ -4,7 +4,7 @@ var endScreen = preload("res://scenes/GameEnded/EndGameScreen.tscn")
 #var loader : ResourceInteractiveLoader
 onready var ship:Ship = $PlayerShip
 
-export var MaxtimeWarpFactor = 200
+export var MaxtimeWarpFactor = 400
 
 func _ready():
 	setShip(ship)	
@@ -38,7 +38,7 @@ func _process(delta):
 		Engine.time_scale =  factor
 	
 	if Input.is_action_pressed("time_warp"):
-		var factor = clamp(1 / ship.last_g_force.length()*ship.mass,5,MaxtimeWarpFactor)
+		var factor = clamp(1 / ship.last_g_force.length()*200,5,MaxtimeWarpFactor)
 		Engine.time_scale =  factor
 	
 	if Input.is_action_just_pressed("cheat_fuel"):

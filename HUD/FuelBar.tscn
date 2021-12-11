@@ -12,15 +12,15 @@ margin_top = 4.9687
 margin_bottom = 4.60065
 axis_stretch_horizontal = 1
 
-[node name="Fuel" type="HSplitContainer"]
+[node name="Fuel" type="MarginContainer"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -145.0
+margin_left = -198.0
 margin_top = -21.0
-margin_right = 165.0
-split_offset = 4
+margin_right = 197.0
+grow_horizontal = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -35,14 +35,22 @@ __meta__ = {
 }
 
 [node name="FuelBar" type="ProgressBar" parent="."]
-margin_left = 82.0
-margin_right = 310.0
-margin_bottom = 21.0
+margin_left = 70.0
+rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme = ExtResource( 2 )
 custom_styles/fg = SubResource( 1 )
 value = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VD" type="Label" parent="."]
+margin_left = 300.0
+theme = ExtResource( 2 )
+text = "0 dV"
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

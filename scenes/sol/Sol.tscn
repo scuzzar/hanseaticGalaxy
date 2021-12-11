@@ -48,9 +48,8 @@ environment = ExtResource( 20 )
 min_zoom = 1.0
 
 [node name="PlayerShip" parent="." instance=ExtResource( 22 )]
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12002, -0.000488281, -74.7424 )
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000, -0.000488281, -68.4634 )
 velocety = Vector3( 0, 0, -15 )
-price = 20000
 playerControl = true
 physikAktiv = true
 
@@ -322,12 +321,12 @@ max_store = 6
 init_store = 4
 
 [node name="Deimos" parent="Sun/Mars" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -567.991, 7.25164e-06, 1.40234 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -767.006, -4.61062e-06, 1.40234 )
 mode = 3
 mass = 26.8183
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = SubResource( 2 )
-orbital_speed = 5.42824
+orbital_speed = 4.67123
 radius_description = 2000.0
 surface_g = 3.0
 
@@ -357,12 +356,12 @@ wait_time = 30.0
 max_store = 3
 
 [node name="Phobos" parent="Sun/Mars" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 272.285, -8.1155e-07, -2.46143 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 530.882, 1.46021e-05, -2.46191 )
 mode = 3
 mass = 8.93942
 linear_velocity = Vector3( 0, 0, -5.197 )
 material = ExtResource( 4 )
-orbital_speed = 7.83989
+orbital_speed = 5.61473
 radius_description = 2000.0
 surface_g = 1.0
 
@@ -404,7 +403,7 @@ mode = 3
 mass = 136.885
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = ExtResource( 7 )
-orbital_speed = 45.5156
+orbital_speed = 35.0436
 radius_description = 3500.0
 
 [node name="Titan" parent="Sun/Saturn" instance=ExtResource( 16 )]
@@ -413,7 +412,7 @@ mode = 3
 mass = 226.279
 linear_velocity = Vector3( 0, 0, -5.197 )
 material = ExtResource( 12 )
-orbital_speed = 47.0189
+orbital_speed = 24.5282
 radius_description = 4500.0
 
 [node name="TitanPort" parent="Sun/Saturn/Titan" instance=ExtResource( 14 )]

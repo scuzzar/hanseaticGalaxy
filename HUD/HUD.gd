@@ -1,6 +1,7 @@
 extends Control
 
 onready var fuel_bar = $Fuel/FuelBar
+onready var dV_labe = $Fuel/VD
 onready var live_bar = $Life/FuelBar
 onready var credit_labe = $Credits/Value
 onready var tmr_labe = $DataBox/TMR/Value
@@ -27,6 +28,7 @@ var ship:Ship
 func _ready():	
 	Player.connect("credits_changed",self,"_on_credits_changed")
 	$ShipShopButton.hide()
+	credit_labe.text = str(Player.credits)	
 	pass
 
 func _process(delta):
@@ -42,11 +44,13 @@ func setShip(ship:Ship):
 	ship.connect("mass_changed",self,"_on_Ship_mass_changed")
 	ship.connect("telemetry_changed",self,"_on_Ship_telemetry_changed")
 	ship.connect("undocked",self,"_on_Ship_undocked")
+	_on_Ship_fuel_changed(ship.fuel,ship.fuel_cap)
 
 func _on_Ship_fuel_changed(fuel,fuel_cap):
-	#fuel_label.text = String(round(fuel))
-	#fuel_bar.value = int(fuel / fuel_cap *100)
-	fuel_bar.value = fuel / ship.mass
+	var dV = fuel / ship.mass
+	dV_labe.text = str("%0.1f" %  dV) + " dV"
+	fuel_bar.value = int(fuel / fuel_cap *100)
+	#fuel_bar.value = fuel / ship.mass
 
 
 func _on_credits_changed(credits):

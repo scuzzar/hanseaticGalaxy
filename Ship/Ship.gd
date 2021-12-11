@@ -7,7 +7,7 @@ export var turn_rate = 100
 export var trust = 100.0
 export var dispay_name = "Neubeckum II"
 export var fuel_cap = 5000.0
-var fuel = fuel_cap
+var fuel = 0
 var docking_location: Node
 export var playerControl = false
 export var physikAktiv =true
@@ -22,6 +22,7 @@ signal undocked(port)
 
 func _ready():	
 	._ready()	
+	fuel = fuel_cap
 	emit_signal("fuel_changed",fuel, fuel_cap)	
 	emit_signal("mass_changed",mass,trust)
 	$Model.trust_forward_off()

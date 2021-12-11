@@ -182,10 +182,10 @@ text = "100000"
 [node name="Credits" parent="." instance=ExtResource( 3 )]
 
 [node name="Fuel" parent="." instance=ExtResource( 2 )]
-margin_left = 26.5956
-margin_top = -54.5294
-margin_right = 486.596
-margin_bottom = -33.5294
+margin_left = -322.0
+margin_top = -49.0
+margin_right = 488.0
+margin_bottom = -28.0
 
 [node name="Consol" type="Label" parent="." groups=["consol"]]
 visible = false

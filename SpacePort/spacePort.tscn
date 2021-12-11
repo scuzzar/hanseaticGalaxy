@@ -18,7 +18,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 mode = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703545, -1.9025, -0.004 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703545, -1.94373, -0.004 )
 shape = SubResource( 1 )
 
 [node name="LandingArea" type="Area" parent="."]
