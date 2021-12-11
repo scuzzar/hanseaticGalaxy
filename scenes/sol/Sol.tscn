@@ -112,15 +112,21 @@ cargo = 1
 script = ExtResource( 8 )
 cargo = 6
 
+[node name="G_Luxus" parent="Sun/Venus/VenusST" instance=ExtResource( 15 )]
+cargo = 6
+wait_time = 20.0
+max_store = 5
+init_store = 3
+
 [node name="G_Consumers" parent="Sun/Venus/VenusST" instance=ExtResource( 15 )]
 cargo = 4
 wait_time = 30.0
-max_store = 3
+max_store = 6
 
 [node name="G_Electronics" parent="Sun/Venus/VenusST" instance=ExtResource( 15 )]
 cargo = 3
 wait_time = 35.0
-max_store = 3
+max_store = 5
 init_store = 0
 
 [node name="Ship" parent="Sun/Venus/VenusST" instance=ExtResource( 19 )]
