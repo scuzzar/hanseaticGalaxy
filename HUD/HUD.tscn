@@ -328,7 +328,7 @@ margin_left = -810.0
 margin_right = 810.0
 margin_bottom = 869.0
 
-[node name="Button" type="Button" parent="."]
+[node name="ShipShopButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -46.0476
@@ -341,4 +341,4 @@ text = "Ship Shop"
 [connection signal="about" from="CargoBay" to="." method="_on_CargoBay_about"]
 [connection signal="deliver" from="CargoBay" to="." method="_on_CargoBay_deliver"]
 [connection signal="shipOrderd" from="ShipShop" to="." method="_on_shipOrderd"]
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="ShipShopButton" to="." method="_on_Button_pressed"]

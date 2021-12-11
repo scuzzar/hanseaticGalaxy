@@ -32,17 +32,12 @@ func _generate_mission() -> MissionContainer:
 	c._set_cargo(cargo)	
 	var distance = c.getDistance()	
 	c.reward = round(c.getPrice() * sqrt(distance)*12/30)
-	#print_debug(port.name + " > ",str(c))
 	return c
 
 func _select_destination()->Port:
 	var target:CargoTarget 	
 	var possibleTargets = self.get_tree().get_nodes_in_group(groupTag+str(cargo))	
 	if(possibleTargets.size()>0):
-		#print()
-		#print(port.name + " " + groupTag+str(cargo))
-		#for t in possibleTargets : print(t.get_Port().name)
-		
 		target = possibleTargets[randi()%possibleTargets.size()]
 		return target.get_Port()
 	else:

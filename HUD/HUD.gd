@@ -26,6 +26,7 @@ var ship:Ship
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	Player.connect("credits_changed",self,"_on_credits_changed")
+	$ShipShopButton.hide()
 	pass
 
 func _process(delta):
@@ -79,16 +80,15 @@ func _on_Ship_telemetry_changed(position,velocety):
 
 
 func _on_Ship_docked(port:Port):
-	#$CargoBay.ship = ship	
 	$InventoryWindow.setPort(port)
 	$CenterHUB.hide()
 	$DataBox.hide()
 	$CargoBay.show()
 	if(!port.getShipsForSale().empty()):
-		$Button.show()
+		$ShipShopButton.show()
 		$ShipShop.setWarft(port)
 	else:
-		$Button.hide()
+		$ShipShopButton.hide()
 		
 
 func _on_Ship_undocked(port:Port):
@@ -96,7 +96,7 @@ func _on_Ship_undocked(port:Port):
 	$CenterHUB.show()
 	$DataBox.show()
 	$CargoBay.hide()
-	$Button.hide()
+	$ShipShopButton.hide()
 	$ShipShop.hide()
 	inShipShop = false
 
@@ -129,3 +129,6 @@ func _on_Button_pressed():
 
 func _on_shipOrderd(ship):
 	self.emit_signal("shipOrderd",ship)
+	if($ShipShop.warft.getShipsForSale().empty()):
+		_on_Button_pressed()
+		$ShipShopButton.hide()
