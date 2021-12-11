@@ -47,14 +47,13 @@ environment = ExtResource( 20 )
 min_zoom = 1.0
 
 [node name="PlayerShip" parent="." instance=ExtResource( 22 )]
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 11197.6, 0, -57.4095 )
-velocety = Vector3( 0, 0, -14 )
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -1971.29, -0.000488281, -2.95337 )
+velocety = Vector3( 0, 0, 24 )
 price = 20000
 playerControl = true
 physikAktiv = true
 
 [node name="Sun" parent="." instance=ExtResource( 16 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 mass = 25142.1
 material = ExtResource( 1 )
 radius_description = 15000.0
@@ -65,24 +64,26 @@ transform = Transform( 1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 10.668
 omni_range = 500000.0
 
 [node name="Merkur" parent="Sun" instance=ExtResource( 16 )]
-transform = Transform( 0.5, 0, 0, 0, 0.500001, 0, 0, 0, 0.500001, -1019.4, -0.418351, 295.404 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2020, 0, 0 )
+mode = 3
+mass = 49.1898
+physics_material_override = SubResource( 1 )
+linear_velocity = Vector3( 1.219, 0, 0 )
+angular_velocity = Vector3( 0, 0.01, 0 )
+material = ExtResource( 24 )
+orbital_speed = 35.2797
+radius_description = 2439.0
+surface_g = 3.7
+
+[node name="Venus" parent="Sun" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1411.1, -0.836702, 2835.1 )
 mode = 3
 mass = 725.818
 physics_material_override = SubResource( 1 )
 linear_velocity = Vector3( 1.219, 0, 0 )
 angular_velocity = Vector3( 0, 0.01, 0 )
-material = ExtResource( 24 )
-radius_description = 2439.0
-surface_g = 3.7
-
-[node name="Venus" parent="Sun" instance=ExtResource( 16 )]
-transform = Transform( 0.5, 0, 0, 0, 0.500001, 0, 0, 0, 0.500001, 705.548, -0.418351, 1417.55 )
-mode = 3
-mass = 889.885
-physics_material_override = SubResource( 1 )
-linear_velocity = Vector3( 1.219, 0, 0 )
-angular_velocity = Vector3( 0, 0.01, 0 )
 material = ExtResource( 25 )
+orbital_speed = 28.1765
 radius_description = 6051.0
 surface_g = 8.87
 
@@ -128,14 +129,14 @@ linear_velocity = Vector3( 0.82, 0, 0 )
 dispay_name = "Akapulko"
 
 [node name="Earth" parent="Sun" instance=ExtResource( 16 )]
-transform = Transform( 0.5, 0, 0, 0, 0.500001, 0, 0, 0, 0.500001, 5.61789, -0.418351, 2963.75 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2358, -0.836702, 5927.5 )
 mode = 3
 mass = 889.885
 physics_material_override = SubResource( 1 )
 linear_velocity = Vector3( 1.219, 0, 0 )
 angular_velocity = Vector3( 0, 0.01, 0 )
 material = ExtResource( 3 )
-orbital_speed = 18
+orbital_speed = 20.5951
 surface_g = 9.81
 
 [node name="PlanetAthmosphere" parent="Sun/Earth" instance=ExtResource( 13 )]
@@ -191,7 +192,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 376.989 )
 mode = 3
 mass = 22.6279
 material = ExtResource( 2 )
-orbital_speed = 10
+orbital_speed = 10.8639
 radius_description = 2500.0
 surface_g = 1.62
 
@@ -226,11 +227,11 @@ script = ExtResource( 8 )
 cargo = 4
 
 [node name="Mars" parent="Sun" instance=ExtResource( 16 )]
-transform = Transform( -2.18557e-08, 0, 0.5, -2.98024e-08, 0.500001, -8.8818e-16, -0.500001, -2.98024e-08, -2.18557e-08, 5598.55, 2.38419e-07, 5.39901 )
+transform = Transform( -4.37114e-08, 0, 1, -5.96048e-08, 1, -1.77636e-15, -1, -5.96048e-08, -4.37114e-08, 11197.1, 4.76838e-07, 10.798 )
 mode = 3
 mass = 334.727
 linear_velocity = Vector3( 0.862, 0, 0 )
-orbital_speed = 15
+orbital_speed = 14.9847
 surface_g = 3.69
 
 [node name="MarsST" parent="Sun/Mars" instance=ExtResource( 10 )]
@@ -325,6 +326,7 @@ mode = 3
 mass = 26.8183
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = SubResource( 2 )
+orbital_speed = 5.42824
 radius_description = 2000.0
 surface_g = 3.0
 
@@ -359,15 +361,16 @@ mode = 3
 mass = 8.93942
 linear_velocity = Vector3( 0, 0, -5.197 )
 material = ExtResource( 4 )
+orbital_speed = 7.83989
 radius_description = 2000.0
 surface_g = 1.0
 
 [node name="Saturn" parent="Sun" instance=ExtResource( 16 )]
-transform = Transform( 0.5, 0, 0, 0, 0.500001, 0, 0, 0, 0.500001, -9628.59, 0, 0.990847 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19257.2, 0, 1.98169 )
 mode = 3
 mass = 3229.37
 material = ExtResource( 11 )
-orbital_speed = 3
+orbital_speed = 11.4263
 radius_description = 17000.0
 
 [node name="Rings" type="MeshInstance" parent="Sun/Saturn"]
@@ -388,6 +391,7 @@ mode = 3
 mass = 136.885
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = ExtResource( 7 )
+orbital_speed = 11.9041
 radius_description = 3500.0
 
 [node name="Titan" parent="Sun/Saturn" instance=ExtResource( 16 )]
@@ -396,6 +400,7 @@ mode = 3
 mass = 226.279
 linear_velocity = Vector3( 0, 0, -5.197 )
 material = ExtResource( 12 )
+orbital_speed = 12.2973
 radius_description = 4500.0
 
 [node name="TitanPort" parent="Sun/Saturn/Titan" instance=ExtResource( 14 )]

@@ -27,25 +27,30 @@ func _ready():
 	$Shape/Mesh.material_override = material
 	isGravetySource = (surface_g>0)
 	
-	var s = radius_description/6371.0*68	
-	$Shape.scale = Vector3(s,s,s)	
-	
-	radius = $Shape/Mesh.get_aabb().get_longest_axis_size()*s/2
-	
-	mass = (surface_g*radius*radius)/Globals.G
+	self.derive_mass()
 	
 	if(orbit_radius>0.5):
 		var r = orbit_radius
 		var G = Globals.G
+		var parent = get_parent()
+		if(parent is RigidBody):
+			parent.derive_mass()
 		var M = get_parent().mass
 		var kosmic = sqrt(G*M/r)
-		print(self.name + " O_Speed:" + str(kosmic))	
+		print(self.name + " O_Speed:" + str(kosmic))
+		print(self.name + " Mass:" + str(mass))
+		print(self.name + " P_Mass:" + str(M))
 		orbital_speed = kosmic
 		angular_speed = 2*PI/(2*PI*orbit_radius/orbital_speed)	
 		angle = asin(translation.x/orbit_radius)	
 		var start = translation
 		var result = [start]
-	
+
+func derive_mass():
+	var s = radius_description/6371.0*68	
+	$Shape.scale = Vector3(s,s,s)		
+	radius = $Shape/Mesh.get_aabb().get_longest_axis_size()*s/2	
+	mass = (surface_g*radius*radius)/Globals.G
 
 func _physics_process(delta):
 	if !Engine.editor_hint:	
