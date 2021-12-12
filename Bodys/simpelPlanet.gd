@@ -6,17 +6,17 @@ class_name simpelPlanet
 export (Material) var material = preload("res://Bodys/materials/Mars.material") 
 
 
-export var orbital_speed = 1
+export var orbital_speed :float = 1
 export var radius_description:float = 6371
 export(float) var surface_g = 5
 
 onready var orbit_radius = translation.length()
 
 #var orbit
-var angle = 0
-var radius
+var angle : float = 0
+var radius : float
 var isGravetySource = false
-var angular_speed = 0 
+var angular_speed : float = 0 
 
 func _enter_tree():
 	self.add_to_group("bodys")
@@ -29,7 +29,7 @@ func _ready():
 	
 	self.derive_mass()
 	
-	if(orbit_radius>0.5):
+	if(name != "Sun"):
 		var r = orbit_radius
 		var G = Globals.G
 		var parent = get_parent()
@@ -43,6 +43,8 @@ func _ready():
 		angle = asin(translation.x/orbit_radius)	
 		var start = translation
 		var result = [start]
+	else:
+		print(translation)
 
 func derive_mass():
 	var s = radius_description/6371.0*68	
