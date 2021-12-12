@@ -161,14 +161,17 @@ func buyShip(newShip:Ship):
 
 
 func load_game():
-	var all = self.get_children()
 	var save_game = File.new()
 	if not save_game.file_exists(Globals.QUICKSAVE_PATH):
 		return # Error! We don't have a save to load.
 
 	save_game.open(Globals.QUICKSAVE_PATH, File.READ)
 	while save_game.get_position() < save_game.get_len():
-		var node_data = parse_json(save_game.get_line())
+		var line = save_game.get_line()
+		var node_data = parse_json(line)
+		if(node_data==null): 
+			print(line)
+			continue
 		if(node_data["nodePath"]=="Player"):
 			Player.load_save(node_data)
 			continue
@@ -195,7 +198,6 @@ func load_game():
 		laoded_node.load_save(node_data)
 
 	save_game.close()
-	all = self.get_children()
-
+	
 func _on_HUD_shipOrderd(ship):
 	self.buyShip(ship)

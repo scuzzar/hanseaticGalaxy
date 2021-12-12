@@ -22,7 +22,7 @@ signal undocked(port)
 
 func _ready():	
 	._ready()	
-	fuel = fuel_cap
+	#fuel = fuel_cap
 	emit_signal("fuel_changed",fuel, fuel_cap)	
 	emit_signal("mass_changed",mass,trust)
 	$Model.trust_forward_off()
@@ -168,8 +168,6 @@ func load_save(dict):
 	fuel_cap = dict["fuel_cap"]
 	mass = dict["mass"]
 	last_g_force = Vector3(0,0,0)
-	#Send signal so HUD can update
-	self.get_signal_connection_list("fuel_changed")
-	pass
+
 
 

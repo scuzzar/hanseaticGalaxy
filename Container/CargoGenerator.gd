@@ -37,6 +37,9 @@ func _generate_mission() -> MissionContainer:
 func _select_destination()->Port:
 	var target:CargoTarget 	
 	var possibleTargets = self.get_tree().get_nodes_in_group(groupTag+str(cargo))	
+	var i = possibleTargets.find(port)
+	if(i != -1):
+		possibleTargets.remove(i)
 	if(possibleTargets.size()>0):
 		target = possibleTargets[randi()%possibleTargets.size()]
 		return target.get_Port()
