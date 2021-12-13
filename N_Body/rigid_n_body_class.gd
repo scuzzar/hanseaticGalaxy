@@ -60,7 +60,7 @@ func g_force(position):
 	#Slow
 	bodys = get_tree().get_nodes_in_group("bodys")
 	
-	var g_force_strongest_Body = null
+	var g_force_strongest_Body = last_g_force_strongest_Body
 	var g_force_strongest_Body_force = Vector3(0,0,0)
 	
 	var sum = Vector3(0,0,0)

@@ -37,7 +37,7 @@ func _ready():
 			parent.derive_mass()
 		var M = get_parent().mass
 		var kosmic = sqrt(G*M/r)
-		print(self.name + " O_Speed:" + str(kosmic))
+		#print(self.name + " O_Speed:" + str(kosmic))
 		orbital_speed = kosmic
 		angular_speed = 2*PI/(2*PI*orbit_radius/orbital_speed)	
 		angle = asin(translation.x/orbit_radius)	
@@ -56,7 +56,7 @@ func _physics_process(delta):
 	if !Engine.editor_hint:	
 		angle += (angular_speed *delta)	
 		if(angle >= 2*PI): angle -= 2*PI
-		self.translation = Vector3(sin(angle)*orbit_radius,0,cos(angle)*orbit_radius)
+		#self.translation = Vector3(sin(angle)*orbit_radius,0,cos(angle)*orbit_radius)
 
 func predictGlobalPosition(delta):
 	var sim_angle = angle +  (angular_speed *delta)	

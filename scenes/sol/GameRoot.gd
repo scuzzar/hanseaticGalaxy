@@ -3,7 +3,7 @@ extends Spatial
 var endScreen = preload("res://scenes/GameEnded/EndGameScreen.tscn")
 #var loader : ResourceInteractiveLoader
 onready var ship:Ship = $PlayerShip
-
+onready var all = self.get_children()
 export var MaxtimeWarpFactor = 400
 
 func _ready():

@@ -86,7 +86,7 @@ window/tablet_driver=""
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "res://addons/originShifter/plugin.cfg" )
 
 [global]
 
