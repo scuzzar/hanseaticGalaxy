@@ -12,6 +12,6 @@ transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0
 [node name="Camera" type="Camera" parent="TiltAxis"]
 transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 12.6018 )
 size = 20.0
-far = 81920.0
+far = 300000.0
 
 [node name="ZoomTween" type="Tween" parent="."]
