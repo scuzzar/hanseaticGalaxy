@@ -7,8 +7,10 @@ export (Material) var material = preload("res://Bodys/materials/Mars.material")
 
 export var isStar = false
 export var isPlanet = false
+export var doRotationShift = true
 
 var orbital_speed :float = 0
+export var planetaryRotation :float= 0
 export var radius_description:float = 6371
 export(float) var surface_g = 5
 
@@ -64,9 +66,9 @@ func _physics_process(delta):
 		if(angle >= 2*PI): angle -= 2*PI
 		self.pX = sin(angle)*orbit_radius
 		self.pZ = cos(angle)*orbit_radius
-		var dx = pX-translation.x
-		var dz = pZ-translation.z
 		self.translation = Vector3(pX,0,pZ)
+		#Needs further fixing
+		#self.rotate_y(planetaryRotation*delta)
 
 func predictGlobalPosition(delta):
 	var sim_angle = angle +  (angular_speed *delta)	

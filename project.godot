@@ -80,7 +80,6 @@ Player="*res://scenes/Player.gd"
 
 [debug]
 
-settings/stdout/print_fps=true
 gdscript/warnings/enable=false
 
 [display]

@@ -12,10 +12,13 @@ func _ready():
 
 func on_soi_planet_changed(newPlanet:simpelPlanet):
 	print(newPlanet)
-	if(newPlanet==null):
-		_unShift()
-	else:
-		_shiftToPlanet(newPlanet)		
+	if(activ):
+		if(newPlanet==null):
+			if(SOIPlanet!=null):
+				_unShift()
+		else:
+			if(newPlanet.doRotationShift):
+				_shiftToPlanet(newPlanet)		
 
 
 func _shiftToPlanet(newPlanet):	
@@ -32,13 +35,25 @@ func _shift(angilar_shift, vel_shift):
 	SOIPlanet.angular_speed += angilar_shift
 	angular_speed_shift += angilar_shift
 	
+	#TODO:add planetary Rotation
+	#SOIPlanet.planetaryRotation += angilar_shift
+	
 	#shift ship Speed
 	velocity_shift = vel_shift 
+	# dont shift ship if its first 
 	if(velocity_shift.length()<100):
 		if(logging):
 			print("Old Ship Vel"+ str($"../PlayerShip".linear_velocity))
 			$"../PlayerShip".linear_velocity += velocity_shift
 			print("new Ship Vel"+ str($"../PlayerShip".linear_velocity))
+	
+	var bodys = get_tree().get_nodes_in_group("bodys")
+	for b in bodys:
+		var p = b as simpelPlanet
+		if(p.isPlanet and SOIPlanet!=p):
+			p.angular_speed += angilar_shift
+	
+	$"../Sun".planetaryRotation += angilar_shift
 	
 	if(logging):
 		print("Roational Shift"+ str(angular_speed_shift))
