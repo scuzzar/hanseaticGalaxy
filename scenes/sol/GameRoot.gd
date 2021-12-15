@@ -57,6 +57,13 @@ func _process(delta):
 	if Input.is_action_just_pressed("cheatCash"):
 		Player.reward(100000)
 
+	if Input.is_action_pressed("camera_turn_right"):
+		$Camera._next_rotation.x += 3	
+		print("right")
+	if Input.is_action_pressed("camera_turn_left"):
+		$Camera._next_rotation.x -= 3
+		print("left")
+
 func _loadScore():
 	var result = get_tree().change_scene_to(endScreen)
 	if(result==OK):	

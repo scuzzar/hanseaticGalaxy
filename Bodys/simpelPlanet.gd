@@ -5,12 +5,12 @@ class_name simpelPlanet
 
 export (Material) var material = preload("res://Bodys/materials/Mars.material") 
 
-
-export var orbital_speed :float = 1
+export var isStar = false
+var orbital_speed :float = 0
 export var radius_description:float = 6371
 export(float) var surface_g = 5
 
-onready var orbit_radius = translation.length()
+onready var orbit_radius : float 
 
 #var orbit
 var angle : float = 0
@@ -24,12 +24,13 @@ func _enter_tree():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	orbit_radius = translation.length()
 	$Shape/Mesh.material_override = material
 	isGravetySource = (surface_g>0)
 	
 	self.derive_mass()
 	
-	if(name != "Sun"):
+	if(!isStar):
 		var r = orbit_radius
 		var G = Globals.G
 		var parent = get_parent()
@@ -53,10 +54,10 @@ func derive_mass():
 	mass = (surface_g*radius*radius)/Globals.G
 
 func _physics_process(delta):
-	if !Engine.editor_hint:	
+	if ! isStar and !Engine.editor_hint:	
 		angle += (angular_speed *delta)	
 		if(angle >= 2*PI): angle -= 2*PI
-		#self.translation = Vector3(sin(angle)*orbit_radius,0,cos(angle)*orbit_radius)
+		self.translation = Vector3(sin(angle)*orbit_radius,0,cos(angle)*orbit_radius)
 
 func predictGlobalPosition(delta):
 	var sim_angle = angle +  (angular_speed *delta)	
@@ -72,9 +73,16 @@ func save():
 		"angle" : angle,
 		"orbit_radius" : orbit_radius
 	}
+	if(isStar):
+		var savePos = self.translation		
+		save_dict["pos_x"] = savePos.x
+		save_dict["pos_y"] = savePos.y
+		save_dict["pos_z"] = savePos.z
 	return save_dict
 
 func load_save(dict):
 	angle=dict["angle"]
 	orbit_radius=dict["orbit_radius"]
+	if(isStar):
+		transform.origin = Vector3(dict["pos_x"], dict["pos_y"],dict["pos_z"])	
 	

@@ -7,7 +7,7 @@ transform = Transform( -1, -1.75458e-10, -8.74226e-08, 0, 0.999998, -0.00200701,
 script = ExtResource( 1 )
 
 [node name="TiltAxis" type="Spatial" parent="."]
-transform = Transform( 1, -1.23386e-07, 1.23882e-07, -3.50917e-10, 0.707107, 0.707107, -1.74845e-07, -0.707107, 0.707107, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="TiltAxis"]
 transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 12.6018 )

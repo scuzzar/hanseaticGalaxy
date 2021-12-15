@@ -51,8 +51,8 @@ func _input(event):
 	if event.is_action_pressed("zoom_out"):
 		zoom_factor = _zoom_level * zoom_factor_factor
 		zoom_factor = clamp(zoom_factor,1,max_zoom*0.2)
-		_set_zoom_level(_zoom_level + zoom_factor)		
-	if  event is InputEventMouseMotion:
+		_set_zoom_level(_zoom_level + zoom_factor)			
+	if  event is InputEventMouseMotion:		
 		_rotate_camera(event as InputEventMouseMotion)
 
 func _rotate_camera(event:InputEventMouseMotion):
