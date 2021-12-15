@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Container/Container.gd"
 }, {
-"base": "Rigid_N_Body",
-"class": "Planet",
-"language": "GDScript",
-"path": "res://Bodys/Planet.gd"
-}, {
 "base": "Spatial",
 "class": "Port",
 "language": "GDScript",
@@ -63,7 +58,6 @@ _global_script_class_icons={
 "CargoTarget": "",
 "GitAPI": "",
 "MissionContainer": "",
-"Planet": "",
 "Port": "",
 "Rigid_N_Body": "",
 "Ship": "",
@@ -84,6 +78,11 @@ config/windows_native_icon="res://Artemis.ico"
 Globals="*res://Singeltons/Globals.gd"
 Player="*res://scenes/Player.gd"
 
+[debug]
+
+settings/stdout/print_fps=true
+gdscript/warnings/enable=false
+
 [display]
 
 window/size/width=1620
@@ -101,6 +100,7 @@ singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
 [global]
 
 warn=false
+FPS=false
 
 [input]
 

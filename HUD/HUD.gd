@@ -43,7 +43,7 @@ func setShip(ship:Ship):
 	ship.connect("g_force_update",self,"_on_Ship_g_force_update")
 	ship.connect("mass_changed",self,"_on_Ship_mass_changed")
 	ship.connect("telemetry_changed",self,"_on_Ship_telemetry_changed")
-	ship.connect("undocked",self,"_on_Ship_undocked")
+	ship.connect("undocked",self,"_on_Ship_undocked")	
 	_on_Ship_fuel_changed(ship.fuel,ship.fuel_cap)
 
 func _on_Ship_fuel_changed(fuel,fuel_cap):

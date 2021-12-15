@@ -11,6 +11,7 @@ var fuel = 0
 var docking_location: Node
 export var playerControl = false
 export var physikAktiv =true
+var soiPlanet=null
 
 onready var inventory = $Inventory
 
@@ -19,6 +20,7 @@ onready var inventory = $Inventory
 signal fuel_changed(fuel, fuel_cap)
 signal mass_changed(mass,trust)
 signal telemetry_changed(position,velocety)
+signal soiPlanetChanged(newSOIPlanet)
 signal docked(port)
 signal undocked(port)
 
@@ -36,6 +38,11 @@ func _ready():
 func _integrate_forces(state:PhysicsDirectBodyState):
 	if(physikAktiv):
 		._integrate_forces(state)
+	
+	var currentSOIPlanet = self.getSOIPlanet()
+	if( currentSOIPlanet != soiPlanet):
+		soiPlanet=currentSOIPlanet
+		emit_signal("soiPlanetChanged",soiPlanet)
 	
 	$Model.trust_forward_off()	
 	if(playerControl):
@@ -61,6 +68,16 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 				$ShipInfo.hide()
 		
 		emit_signal("telemetry_changed", self.translation, state.linear_velocity)
+
+func getSOIPlanet():
+	if(last_g_force_strongest_Body==null):
+		return null
+	if(last_g_force_strongest_Body.isStar):
+		return null
+	if(last_g_force_strongest_Body.isPlanet):
+		return last_g_force_strongest_Body
+	else:
+		return last_g_force_strongest_Body.get_parent()	
 
 func rel_speed_to_Strongest_body():
 	var SB = last_g_force_strongest_Body
@@ -165,6 +182,7 @@ func save():
 		"rotation" : rotation.y,
 		"fuel": fuel,
 		"fuel_cap" :fuel_cap,
+		"trust" : trust,
 		"mass" : mass
 	}
 	return save_dict
@@ -177,6 +195,7 @@ func load_save(dict):
 	self.set_fuel(dict["fuel"])
 	fuel_cap = dict["fuel_cap"]
 	mass = dict["mass"]
+	trust = dict["trust"]
 	last_g_force = Vector3(0,0,0)
 
 

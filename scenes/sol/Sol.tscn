@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Bodys/materials/Sun.material" type="Material" id=1]
 [ext_resource path="res://Bodys/materials/Moon.material" type="Material" id=2]
@@ -27,9 +27,7 @@
 [ext_resource path="res://Bodys/materials/Merkur.material" type="Material" id=25]
 [ext_resource path="res://Bodys/materials/Jupiter.tres" type="Material" id=26]
 [ext_resource path="res://addons/originShifter/origin_shifter.gd" type="Script" id=27]
-
-[sub_resource type="QuadMesh" id=3]
-size = Vector2( 700, 700 )
+[ext_resource path="res://Bodys/RotationShifter.gd" type="Script" id=28]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.5
@@ -37,8 +35,15 @@ friction = 0.5
 [sub_resource type="SpatialMaterial" id=2]
 albedo_texture = ExtResource( 21 )
 
+[sub_resource type="QuadMesh" id=3]
+size = Vector2( 700, 700 )
+
 [node name="Sol" type="Spatial"]
 script = ExtResource( 23 )
+
+[node name="RotationShifter" type="Node" parent="."]
+script = ExtResource( 28 )
+logging = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 20 )
@@ -49,14 +54,19 @@ environment = ExtResource( 20 )
 min_zoom = 1.0
 
 [node name="PlayerShip" parent="." instance=ExtResource( 22 )]
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.7, 0, -68.0974 )
-velocety = Vector3( 0, 0, -15 )
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.7, 0, -78.4778 )
+velocety = Vector3( 0, 0, 0 )
+isGravetySource = false
+show_soi_relativ_sim = true
+show_sim = true
+price = 0
+trust = 100.0
+dispay_name = "Neubeckum II"
 playerControl = true
 physikAktiv = true
 
 [node name="Shifter" type="Node" parent="PlayerShip"]
 script = ExtResource( 27 )
-logging = true
 world_node_path = NodePath("../..")
 
 [node name="Sun" parent="." instance=ExtResource( 16 )]
@@ -65,72 +75,6 @@ material = ExtResource( 1 )
 isStar = true
 radius_description = 30000.0
 surface_g = 30.0
-
-[node name="Saturn" parent="Sun" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60000, 0, 0 )
-mode = 3
-mass = 47211.3
-material = ExtResource( 11 )
-radius_description = 65000.0
-
-[node name="Rings" type="MeshInstance" parent="Sun/Saturn"]
-transform = Transform( 4.45544, -1.31408e-07, 1.54736, -1.54736, -1.50003e-07, 4.45544, -7.33538e-08, -4.71647, -3.9122e-07, -3.48828, 1.91455, 0 )
-material_override = ExtResource( 5 )
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="Rings2" type="MeshInstance" parent="Sun/Saturn"]
-transform = Transform( -4.45544, 1.31408e-07, -1.54736, 1.54736, 1.50003e-07, -4.45544, -7.33538e-08, -4.71647, -3.9122e-07, -3.48828, 1.91455, 0 )
-material_override = ExtResource( 5 )
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="Mimas" parent="Sun/Saturn" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.375, 7.25164e-06, 1921.98 )
-mode = 3
-mass = 136.885
-linear_velocity = Vector3( 0, 0, -3.568 )
-material = ExtResource( 7 )
-radius_description = 3500.0
-
-[node name="Titan" parent="Sun/Saturn" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3923.59, -8.1155e-07, -2.46143 )
-mode = 3
-mass = 226.279
-linear_velocity = Vector3( 0, 0, -5.197 )
-material = ExtResource( 12 )
-radius_description = 4500.0
-
-[node name="TitanPort" parent="Sun/Saturn/Titan" instance=ExtResource( 14 )]
-transform = Transform( 0.826119, 0.563495, 3.61108e-08, 4.37114e-08, 1.91069e-15, -1, -0.563495, 0.826119, -2.46311e-08, 29.2983, 0.215228, 37.522 )
-defaultMissionDestination_path = NodePath("../../../Earth/Moon/ApolloPort")
-
-[node name="G_Electronics" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource( 15 )]
-cargo = 3
-wait_time = 20.0
-max_store = 5
-init_store = 5
-
-[node name="G_Rare" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource( 15 )]
-cargo = 5
-wait_time = 60.0
-max_store = 1
-
-[node name="T_Food" type="Node" parent="Sun/Saturn/Titan/TitanPort"]
-script = ExtResource( 8 )
-cargo = 1
-
-[node name="T_Machine" type="Node" parent="Sun/Saturn/Titan/TitanPort"]
-script = ExtResource( 8 )
-cargo = 2
-
-[node name="T_Consumers" type="Node" parent="Sun/Saturn/Titan/TitanPort"]
-script = ExtResource( 8 )
-cargo = 4
-
-[node name="T_Luxus" type="Node" parent="Sun/Saturn/Titan/TitanPort"]
-script = ExtResource( 8 )
-cargo = 6
 
 [node name="OmniLight" type="OmniLight" parent="Sun"]
 transform = Transform( 1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 10.6688, 3.74349 )
@@ -144,6 +88,7 @@ physics_material_override = SubResource( 1 )
 linear_velocity = Vector3( 1.219, 0, 0 )
 angular_velocity = Vector3( 0, 0.01, 0 )
 material = ExtResource( 24 )
+isPlanet = true
 radius_description = 2439.0
 surface_g = 3.7
 
@@ -155,6 +100,7 @@ physics_material_override = SubResource( 1 )
 linear_velocity = Vector3( 1.219, 0, 0 )
 angular_velocity = Vector3( 0, 0.01, 0 )
 material = ExtResource( 25 )
+isPlanet = true
 radius_description = 6051.0
 surface_g = 8.87
 
@@ -213,6 +159,7 @@ physics_material_override = SubResource( 1 )
 linear_velocity = Vector3( 1.219, 0, 0 )
 angular_velocity = Vector3( 0, 0.01, 0 )
 material = ExtResource( 3 )
+isPlanet = true
 surface_g = 9.81
 
 [node name="PlanetAthmosphere" parent="Sun/Earth" instance=ExtResource( 13 )]
@@ -306,6 +253,7 @@ transform = Transform( -4.37114e-08, 0, 1, -5.96048e-08, 1, -1.77636e-15, -1, -5
 mode = 3
 mass = 334.727
 linear_velocity = Vector3( 0.862, 0, 0 )
+isPlanet = true
 surface_g = 3.69
 
 [node name="MarsST" parent="Sun/Mars" instance=ExtResource( 10 )]
@@ -445,8 +393,76 @@ physics_material_override = SubResource( 1 )
 linear_velocity = Vector3( 1.219, 0, 0 )
 angular_velocity = Vector3( 0, 0.01, 0 )
 material = ExtResource( 26 )
+isPlanet = true
 radius_description = 71000.0
 surface_g = 3.7
+
+[node name="Saturn" parent="Sun" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60000, 0, 0 )
+mode = 3
+mass = 47211.3
+material = ExtResource( 11 )
+isPlanet = true
+radius_description = 65000.0
+
+[node name="Rings" type="MeshInstance" parent="Sun/Saturn"]
+transform = Transform( 4.45544, -1.31408e-07, 1.54736, -1.54736, -1.50003e-07, 4.45544, -7.33538e-08, -4.71647, -3.9122e-07, -3.48828, 1.91455, 0 )
+material_override = ExtResource( 5 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Rings2" type="MeshInstance" parent="Sun/Saturn"]
+transform = Transform( -4.45544, 1.31408e-07, -1.54736, 1.54736, 1.50003e-07, -4.45544, -7.33538e-08, -4.71647, -3.9122e-07, -3.48828, 1.91455, 0 )
+material_override = ExtResource( 5 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Mimas" parent="Sun/Saturn" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.375, 7.25164e-06, 1921.98 )
+mode = 3
+mass = 136.885
+linear_velocity = Vector3( 0, 0, -3.568 )
+material = ExtResource( 7 )
+radius_description = 3500.0
+
+[node name="Titan" parent="Sun/Saturn" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3923.59, -8.1155e-07, -2.46143 )
+mode = 3
+mass = 226.279
+linear_velocity = Vector3( 0, 0, -5.197 )
+material = ExtResource( 12 )
+radius_description = 4500.0
+
+[node name="TitanPort" parent="Sun/Saturn/Titan" instance=ExtResource( 14 )]
+transform = Transform( 0.826119, 0.563495, 3.61108e-08, 4.37114e-08, 1.91069e-15, -1, -0.563495, 0.826119, -2.46311e-08, 29.2983, 0.215228, 37.522 )
+defaultMissionDestination_path = NodePath("../../../Earth/Moon/ApolloPort")
+
+[node name="G_Electronics" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource( 15 )]
+cargo = 3
+wait_time = 20.0
+max_store = 5
+init_store = 5
+
+[node name="G_Rare" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource( 15 )]
+cargo = 5
+wait_time = 60.0
+max_store = 1
+
+[node name="T_Food" type="Node" parent="Sun/Saturn/Titan/TitanPort"]
+script = ExtResource( 8 )
+cargo = 1
+
+[node name="T_Machine" type="Node" parent="Sun/Saturn/Titan/TitanPort"]
+script = ExtResource( 8 )
+cargo = 2
+
+[node name="T_Consumers" type="Node" parent="Sun/Saturn/Titan/TitanPort"]
+script = ExtResource( 8 )
+cargo = 4
+
+[node name="T_Luxus" type="Node" parent="Sun/Saturn/Titan/TitanPort"]
+script = ExtResource( 8 )
+cargo = 6
 
 [node name="Simulator" parent="." instance=ExtResource( 6 )]
 simulation_time = 1000
@@ -454,5 +470,3 @@ simulation_delta_t = 6.0
 _simulation_object_path = NodePath("../PlayerShip")
 
 [connection signal="shipOrderd" from="HUD" to="." method="_on_HUD_shipOrderd"]
-[connection signal="docked" from="PlayerShip" to="Camera" method="_on_PlayerShip_docked"]
-[connection signal="undocked" from="PlayerShip" to="Camera" method="_on_PlayerShip_undocked"]

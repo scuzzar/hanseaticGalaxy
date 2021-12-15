@@ -6,6 +6,8 @@ class_name simpelPlanet
 export (Material) var material = preload("res://Bodys/materials/Mars.material") 
 
 export var isStar = false
+export var isPlanet = false
+
 var orbital_speed :float = 0
 export var radius_description:float = 6371
 export(float) var surface_g = 5

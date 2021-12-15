@@ -7,9 +7,9 @@ export var velocety = Vector3(0,0,0)
 
 export var isGravetySource = false
 
-export(NodePath) var SOI_Body
+#export(NodePath) var SOI_Body
 
-onready var soi_node = self.get_node_or_null(SOI_Body)
+#onready var soi_node = self.get_node_or_null(SOI_Body)
 export var show_soi_relativ_sim = true
 
 signal g_force_update(force,strogest_body,strongest_body_force)
@@ -33,10 +33,10 @@ func _enter_tree():
 
 
 func _ready():
-	if soi_node != null:
-		bodys = [soi_node]
-	else:
-		bodys = get_tree().get_nodes_in_group("bodys")
+#	if soi_node != null:
+#		bodys = [soi_node]
+#	else:
+	bodys = get_tree().get_nodes_in_group("bodys")
 	self.linear_velocity = velocety
 
 func _integrate_forces(state):
