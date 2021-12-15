@@ -18,6 +18,9 @@ var radius : float
 var isGravetySource = false
 var angular_speed : float = 0 
 
+var pX :float
+var pZ :float
+
 func _enter_tree():
 	self.add_to_group("bodys")
 	self.gravity_scale = 0
@@ -57,7 +60,11 @@ func _physics_process(delta):
 	if ! isStar and !Engine.editor_hint:	
 		angle += (angular_speed *delta)	
 		if(angle >= 2*PI): angle -= 2*PI
-		self.translation = Vector3(sin(angle)*orbit_radius,0,cos(angle)*orbit_radius)
+		self.pX = sin(angle)*orbit_radius
+		self.pZ = cos(angle)*orbit_radius
+		var dx = pX-translation.x
+		var dz = pZ-translation.z
+		self.translation = Vector3(pX,0,pZ)
 
 func predictGlobalPosition(delta):
 	var sim_angle = angle +  (angular_speed *delta)	
@@ -73,16 +80,14 @@ func save():
 		"angle" : angle,
 		"orbit_radius" : orbit_radius
 	}
-	if(isStar):
-		var savePos = self.translation		
-		save_dict["pos_x"] = savePos.x
-		save_dict["pos_y"] = savePos.y
-		save_dict["pos_z"] = savePos.z
+	var savePos = self.translation		
+	save_dict["pos_x"] = savePos.x
+	save_dict["pos_y"] = savePos.y
+	save_dict["pos_z"] = savePos.z
 	return save_dict
 
 func load_save(dict):
 	angle=dict["angle"]
 	orbit_radius=dict["orbit_radius"]
-	if(isStar):
-		transform.origin = Vector3(dict["pos_x"], dict["pos_y"],dict["pos_z"])	
+	transform.origin = Vector3(dict["pos_x"], dict["pos_y"],dict["pos_z"])	
 	

@@ -14,6 +14,8 @@ export var physikAktiv =true
 
 onready var inventory = $Inventory
 
+
+
 signal fuel_changed(fuel, fuel_cap)
 signal mass_changed(mass,trust)
 signal telemetry_changed(position,velocety)
@@ -59,6 +61,14 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 				$ShipInfo.hide()
 		
 		emit_signal("telemetry_changed", self.translation, state.linear_velocity)
+
+func rel_speed_to_Strongest_body():
+	var SB = last_g_force_strongest_Body
+	var result = 0
+	print(SB.name)
+	if(SB!=null):
+		result = SB.linear_velocity.distance_to(self.linear_velocity)
+	return result
 
 func _rotation( angle: float):
 	self.apply_torque_impulse(Vector3(0,angle,0))

@@ -454,3 +454,5 @@ simulation_delta_t = 6.0
 _simulation_object_path = NodePath("../PlayerShip")
 
 [connection signal="shipOrderd" from="HUD" to="." method="_on_HUD_shipOrderd"]
+[connection signal="docked" from="PlayerShip" to="Camera" method="_on_PlayerShip_docked"]
+[connection signal="undocked" from="PlayerShip" to="Camera" method="_on_PlayerShip_undocked"]
