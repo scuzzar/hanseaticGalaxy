@@ -438,6 +438,7 @@ mass = 226.279
 linear_velocity = Vector3( 0, 0, -5.197 )
 material = ExtResource( 12 )
 radius_description = 4500.0
+surface_g = 2.0
 
 [node name="TitanPort" parent="Sun/Saturn/Titan" instance=ExtResource( 14 )]
 transform = Transform( 0.826119, 0.563495, 3.61108e-08, 4.37114e-08, 1.91069e-15, -1, -0.563495, 0.826119, -2.46311e-08, 29.2983, 0.215228, 37.522 )
