@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Bodys/materials/Sun.material" type="Material" id=1]
 [ext_resource path="res://Bodys/materials/Moon.material" type="Material" id=2]
@@ -29,6 +29,11 @@
 [ext_resource path="res://addons/originShifter/origin_shifter.gd" type="Script" id=27]
 [ext_resource path="res://Bodys/RotationShifter.gd" type="Script" id=28]
 [ext_resource path="res://Bodys/materials/Uranus.tres" type="Material" id=29]
+[ext_resource path="res://Bodys/materials/Europa.material" type="Material" id=30]
+[ext_resource path="res://Bodys/materials/IO.material" type="Material" id=31]
+[ext_resource path="res://Bodys/materials/Kallisto.material" type="Material" id=32]
+[ext_resource path="res://Bodys/materials/Ganimede.material" type="Material" id=33]
+[ext_resource path="res://Bodys/materials/SimpleBelt.tres" type="Material" id=34]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.5
@@ -392,16 +397,67 @@ material = ExtResource( 4 )
 radius_description = 2000.0
 surface_g = 1.0
 
+[node name="Belt" type="CSGCylinder" parent="Sun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -79.5266, 0 )
+cast_shadow = 0
+radius = 19000.0
+height = 5.0
+sides = 64
+material = ExtResource( 34 )
+
+[node name="innerPart" type="CSGCylinder" parent="Sun/Belt"]
+operation = 2
+radius = 17000.0
+height = 5.0
+sides = 64
+material = ExtResource( 34 )
+
 [node name="Jupiter" parent="Sun" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30000, 0, 0 )
 mode = 3
-mass = 41683.9
+mass = 56329.5
 physics_material_override = SubResource( 1 )
 linear_velocity = Vector3( 1.219, 0, 0 )
 angular_velocity = Vector3( 0, 0.01, 0 )
 material = ExtResource( 26 )
 isPlanet = true
 radius_description = 71000.0
+
+[node name="Io" parent="Sun/Jupiter" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.375, 0, 2740.85 )
+mode = 3
+mass = 53.3876
+linear_velocity = Vector3( 0, 0, -3.568 )
+material = ExtResource( 31 )
+radius_description = 3643.0
+surface_g = 3.0
+
+[node name="Europa" parent="Sun/Jupiter" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3769.34, 0, 0 )
+mode = 3
+mass = 28.3177
+linear_velocity = Vector3( 0, 0, -3.568 )
+material = ExtResource( 30 )
+radius_description = 3122.0
+surface_g = 3.0
+
+[node name="Ganimede" parent="Sun/Jupiter" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5856.44, 0, 0 )
+mode = 3
+mass = 74.2561
+linear_velocity = Vector3( 0, 0, -3.568 )
+material = ExtResource( 33 )
+radius_description = 5262.0
+surface_g = 2.5
+
+[node name="Kallisto" parent="Sun/Jupiter" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.375, 0, -9000 )
+mode = 3
+mass = 62.3311
+linear_velocity = Vector3( 0, 0, -3.568 )
+material = ExtResource( 32 )
+radius_description = 4821.0
+surface_g = 3.0
 
 [node name="Saturn" parent="Sun" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60000, 0, 0 )
@@ -412,13 +468,13 @@ isPlanet = true
 radius_description = 65000.0
 
 [node name="Rings" type="MeshInstance" parent="Sun/Saturn"]
-transform = Transform( 4.45544, -1.31408e-07, 1.54736, -1.54736, -1.50003e-07, 4.45544, -7.33538e-08, -4.71647, -3.9122e-07, -3.48828, 1.91455, 0 )
+transform = Transform( 4.71597, -7.21791e-08, -0.0698076, 0.0698076, -1.85901e-07, 4.71597, -7.33538e-08, -4.71647, -3.9122e-07, -3.48828, -9.44232, 0 )
 material_override = ExtResource( 5 )
 mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Rings2" type="MeshInstance" parent="Sun/Saturn"]
-transform = Transform( -4.45544, 1.31408e-07, -1.54736, 1.54736, 1.50003e-07, -4.45544, -7.33538e-08, -4.71647, -3.9122e-07, -3.48828, 1.91455, 0 )
+transform = Transform( -4.71597, 7.21791e-08, 0.0698076, -0.0698076, 1.85901e-07, -4.71597, -7.33538e-08, -4.71647, -3.9122e-07, -3.48828, -9.44232, 0 )
 material_override = ExtResource( 5 )
 mesh = SubResource( 3 )
 material/0 = null
@@ -434,7 +490,7 @@ radius_description = 3500.0
 [node name="Titan" parent="Sun/Saturn" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3923.59, -8.1155e-07, -2.46143 )
 mode = 3
-mass = 226.279
+mass = 90.5117
 linear_velocity = Vector3( 0, 0, -5.197 )
 material = ExtResource( 12 )
 radius_description = 4500.0
@@ -486,7 +542,7 @@ surface_g = 3.7
 [node name="Neptun" parent="Sun" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 180000, 0, 0 )
 mode = 3
-mass = 5168.1
+mass = 15364.6
 physics_material_override = SubResource( 1 )
 linear_velocity = Vector3( 1.219, 0, 0 )
 angular_velocity = Vector3( 0, 0.01, 0 )
