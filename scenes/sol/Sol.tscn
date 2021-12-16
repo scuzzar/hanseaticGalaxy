@@ -509,13 +509,13 @@ defaultMissionDestination_path = NodePath("../../../Earth/Moon/ApolloPort")
 [node name="G_Electronics" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource( 15 )]
 cargo = 3
 wait_time = 20.0
-max_store = 5
-init_store = 5
+max_store = 4
+init_store = 2
 
 [node name="G_Rare" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource( 15 )]
 cargo = 5
 wait_time = 60.0
-max_store = 1
+max_store = 3
 
 [node name="T_Food" type="Node" parent="Sun/Saturn/Titan/TitanPort"]
 script = ExtResource( 8 )
@@ -565,33 +565,33 @@ material = ExtResource( 2 )
 radius_description = 2500.0
 surface_g = 1.62
 
-[node name="ArielPort" parent="Sun/Neptun/Triton" instance=ExtResource( 14 )]
+[node name="TreePeekPort" parent="Sun/Neptun/Triton" instance=ExtResource( 14 )]
 transform = Transform( -0.062723, -0.998029, -2.74179e-09, 4.37114e-08, 3.24156e-15, -1, 0.998029, -0.062723, 4.36253e-08, -26.2188, 3.81448e-06, -2.82813 )
 defaultMissionDestination_path = NodePath("../../PhilipinPort")
 
-[node name="G_Metal" parent="Sun/Neptun/Triton/ArielPort" instance=ExtResource( 15 )]
+[node name="G_Metal" parent="Sun/Neptun/Triton/TreePeekPort" instance=ExtResource( 15 )]
 wait_time = 60.0
 max_store = 2
 
-[node name="G_Electronics" parent="Sun/Neptun/Triton/ArielPort" instance=ExtResource( 15 )]
-cargo = 3
-wait_time = 20.0
-max_store = 5
+[node name="G_Rare" parent="Sun/Neptun/Triton/TreePeekPort" instance=ExtResource( 15 )]
+cargo = 5
+wait_time = 120.0
+max_store = 7
 init_store = 3
 
-[node name="T_Luxus" type="Node" parent="Sun/Neptun/Triton/ArielPort"]
+[node name="T_Luxus" type="Node" parent="Sun/Neptun/Triton/TreePeekPort"]
 script = ExtResource( 8 )
 cargo = 6
 
-[node name="T_Food" type="Node" parent="Sun/Neptun/Triton/ArielPort"]
+[node name="T_Food" type="Node" parent="Sun/Neptun/Triton/TreePeekPort"]
 script = ExtResource( 8 )
 cargo = 1
 
-[node name="T_Machine" type="Node" parent="Sun/Neptun/Triton/ArielPort"]
+[node name="T_Machine" type="Node" parent="Sun/Neptun/Triton/TreePeekPort"]
 script = ExtResource( 8 )
 cargo = 2
 
-[node name="T_Consumers" type="Node" parent="Sun/Neptun/Triton/ArielPort"]
+[node name="T_Consumers" type="Node" parent="Sun/Neptun/Triton/TreePeekPort"]
 script = ExtResource( 8 )
 cargo = 4
 
