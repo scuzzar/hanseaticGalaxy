@@ -55,6 +55,9 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("quickload"):
 		_quickload()
+		
+	if Input.is_action_just_pressed("toggel_names"):
+		Globals.show_names = !Globals.show_names
 
 	if Input.is_action_just_pressed("cheatCash"):
 		Player.reward(100000)

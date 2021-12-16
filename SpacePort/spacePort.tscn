@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://SpacePort/SpacePort.escn" type="PackedScene" id=1]
 [ext_resource path="res://Container/Inventory.gd" type="Script" id=2]
 [ext_resource path="res://SpacePort/spacePort.gd" type="Script" id=3]
+[ext_resource path="res://Bodys/Label.gd" type="Script" id=4]
 
 [sub_resource type="PhysicsMaterial" id=3]
 friction = 10.0
@@ -41,6 +42,25 @@ shape = SubResource( 2 )
 [node name="Inventory" type="Spatial" parent="."]
 script = ExtResource( 2 )
 slot_parent_path = NodePath("../SpacePort")
+
+[node name="Lable3D" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -7.0
+margin_right = 50.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 100, 12 )
+rect_pivot_offset = Vector2( 49.8973, 7.33237 )
+text = "Planet"
+align = 1
+valign = 3
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="body_entered" from="LandingArea" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="LandingArea" to="." method="_on_Area_body_exited"]

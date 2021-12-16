@@ -5,7 +5,7 @@ onready var tilt:Spatial = $TiltAxis
 onready var camera:Camera = $TiltAxis/Camera
 
 export var min_zoom := 0.5
-export var max_zoom := 10000
+export var max_zoom := 20000
 export var zoom_factor := 1
 export var zoom_factor_factor := 0.2
 export var zoom_duration := 0.2

@@ -14,7 +14,6 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 mass = 10.0
 velocety = null
 isGravetySource = null
-SOI_Body = null
 show_soi_relativ_sim = null
 show_sim = null
 price = null
