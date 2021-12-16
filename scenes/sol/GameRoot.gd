@@ -26,6 +26,7 @@ func setShip(newShip:Ship):
 	$Camera.ship =newShip
 	$Simulator._simulation_Object = newShip
 	self.ship = newShip
+	$Shifter.parent = newShip
 
 func _process(delta):
 	if Input.is_action_pressed("endGame"):
@@ -74,7 +75,9 @@ func _loadScore():
 
 func _on_Ship_strongest_body_changed(old_body, new_body):
 	if(new_body!=null and new_body.name == "Sun"):
-		$Simulator.on = true
+		#Temprary disable simulator
+		#$Simulator.on = true
+		pass
 	else:
 		$Simulator.on = false
 

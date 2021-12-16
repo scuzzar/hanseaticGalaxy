@@ -51,6 +51,17 @@ script = ExtResource( 23 )
 script = ExtResource( 28 )
 logging = true
 
+[node name="Shifter" type="Node" parent="."]
+script = ExtResource( 27 )
+logging = true
+world_node_path = NodePath("..")
+
+[node name="Simulator" parent="." instance=ExtResource( 6 )]
+visible = false
+simulation_time = 1000
+simulation_delta_t = 6.0
+_simulation_object_path = NodePath("../PlayerShip")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 20 )
 
@@ -70,11 +81,6 @@ trust = 100.0
 dispay_name = "Neubeckum II"
 playerControl = true
 physikAktiv = true
-
-[node name="Shifter" type="Node" parent="PlayerShip"]
-script = ExtResource( 27 )
-logging = true
-world_node_path = NodePath("../..")
 
 [node name="Sun" parent="." instance=ExtResource( 16 )]
 mode = 3
@@ -413,7 +419,7 @@ sides = 64
 material = ExtResource( 34 )
 
 [node name="Jupiter" parent="Sun" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30000, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36000, 0, 0 )
 mode = 3
 mass = 56329.5
 physics_material_override = SubResource( 1 )
@@ -426,7 +432,7 @@ radius_description = 71000.0
 [node name="Io" parent="Sun/Jupiter" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.375, 0, 2740.85 )
 mode = 3
-mass = 53.3876
+mass = 88.9793
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = ExtResource( 31 )
 radius_description = 3643.0
@@ -435,7 +441,7 @@ surface_g = 3.0
 [node name="Europa" parent="Sun/Jupiter" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3769.34, 0, 0 )
 mode = 3
-mass = 28.3177
+mass = 65.3486
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = ExtResource( 30 )
 radius_description = 3122.0
@@ -444,7 +450,7 @@ surface_g = 3.0
 [node name="Ganimede" parent="Sun/Jupiter" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5856.44, 0, 0 )
 mode = 3
-mass = 74.2561
+mass = 154.7
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = ExtResource( 33 )
 radius_description = 5262.0
@@ -453,14 +459,14 @@ surface_g = 2.5
 [node name="Kallisto" parent="Sun/Jupiter" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.375, 0, -9000 )
 mode = 3
-mass = 62.3311
+mass = 155.828
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = ExtResource( 32 )
 radius_description = 4821.0
 surface_g = 3.0
 
 [node name="Saturn" parent="Sun" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60000, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 70000, 0, 0 )
 mode = 3
 mass = 47211.3
 material = ExtResource( 11 )
@@ -528,7 +534,7 @@ script = ExtResource( 8 )
 cargo = 6
 
 [node name="Uranus" parent="Sun" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 120000, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 150000, 0, 0 )
 mode = 3
 mass = 5589.82
 physics_material_override = SubResource( 1 )
@@ -540,7 +546,7 @@ radius_description = 26000.0
 surface_g = 3.7
 
 [node name="Neptun" parent="Sun" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 180000, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 200000, 0, 0 )
 mode = 3
 mass = 15364.6
 physics_material_override = SubResource( 1 )
@@ -588,10 +594,5 @@ cargo = 2
 [node name="T_Consumers" type="Node" parent="Sun/Neptun/Triton/ArielPort"]
 script = ExtResource( 8 )
 cargo = 4
-
-[node name="Simulator" parent="." instance=ExtResource( 6 )]
-simulation_time = 1000
-simulation_delta_t = 6.0
-_simulation_object_path = NodePath("../PlayerShip")
 
 [connection signal="shipOrderd" from="HUD" to="." method="_on_HUD_shipOrderd"]

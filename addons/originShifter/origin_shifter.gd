@@ -9,7 +9,8 @@ var originShift = Vector3(0,0,0)
 
 export(NodePath) var world_node_path
 onready var world_node: Spatial = get_node_or_null(world_node_path)
-onready var parent := get_parent()
+
+onready var parent = $"../PlayerShip"
 
 
 func _ready():

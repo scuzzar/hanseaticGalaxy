@@ -42,6 +42,7 @@ func _process(delta):
 
 func simulate():
 	$TargetPoint.hide()
+	if(!on):return
 	if(bodys==null):return
 
 	var simulation_steps = simulation_time/simulation_delta_t
