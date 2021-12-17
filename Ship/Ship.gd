@@ -116,15 +116,15 @@ func _burn_circularize(state:PhysicsDirectBodyState):
 	#if(c_burn_direction.length()>c_burn_direction_retro.length()):
 	#	c_burn_direction = c_burn_direction_retro
 	
-	#var c_burn_dv = c_burn_direction.length()
+	var c_burn_dv = c_burn_direction.length()
 	
-	#var c_burn_trust = clamp(c_burn_dv,0,trust)
+	var c_burn_trust = clamp(lateral_trust,0,c_burn_dv/state.step)
 	#c_burn_trust = clamp(c_burn_trust,0,c_burn_dv)
-	
-	var c_burn_v = c_burn_direction.normalized() * trust
-	state.add_force(c_burn_v, Vector3(0,0,0))
-	print(c_burn_v)
-	
+	print(c_burn_trust)
+	var c_burn_f = c_burn_direction.normalized() * c_burn_trust
+	state.add_force(c_burn_f, Vector3(0,0,0))
+	if(c_burn_trust * state.step>1):
+		self.burn_fuel(c_burn_trust * state.step)
 
 
 func _get_orbital_vector():
