@@ -6,6 +6,30 @@ func _ready():
 func trust_forward_on():
 	$particel.on()
 
-func trust_forward_off():
+func _trust_forward_off():
 	$particel.off()
+
+func all_trust_off():
+	_trust_forward_off()
+	_trust_backward_off()
+	_trust_lateral_right_off()
+	_trust_lateral_left_off()	
+
+func trust_backward_on():
+	pass
+	
+func _trust_backward_off():
+	pass
+
+func trust_lateral_right_on():
+	pass
+	
+func _trust_lateral_right_off():
+	pass
+	
+func trust_lateral_left_on():
+	pass
+	
+func _trust_lateral_left_off():
+	pass
 

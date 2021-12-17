@@ -3,8 +3,14 @@ extends Rigid_N_Body
 class_name Ship
 
 export var price = 0
+
 export var turn_rate = 100
+
 export var trust = 100.0
+export var bw_trust = 20
+export var ll_trust = 20.0
+export var lr_trust = 20.0
+
 export var dispay_name = "Neubeckum II"
 export var fuel_cap = 5000.0
 var fuel = 0
@@ -29,7 +35,7 @@ func _ready():
 	#fuel = fuel_cap
 	emit_signal("fuel_changed",fuel, fuel_cap)	
 	emit_signal("mass_changed",mass,trust)
-	$Model.trust_forward_off()
+	$Model.all_trust_off()
 	self.angular_damp = 6
 	$ShipInfo.ship = self
 	$ShipInfo.update()
@@ -44,7 +50,7 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 		soiPlanet=currentSOIPlanet
 		emit_signal("soiPlanetChanged",soiPlanet)
 	
-	$Model.trust_forward_off()	
+	$Model.all_trust_off()
 	if(playerControl):
 		if Input.is_action_pressed("burn_forward"):
 			if(self.docking_location!=null):
@@ -53,7 +59,22 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 			if(fuel - fuelcost > 0):
 				$Model.trust_forward_on()
 				_burn_forward(state)
-
+		
+		if Input.is_action_pressed("burn_backward"):
+			$Model.trust_backward_on()
+			_burn_backward(state)
+			
+		if Input.is_action_pressed("burn_lateral_left"):
+			$Model.trust_lateral_left_on()
+			_burn_left(state)
+			
+		if Input.is_action_pressed("burn_lateral_right"):
+			$Model.trust_lateral_right_on()
+			_burn_right(state)
+		
+		if Input.is_action_pressed("burn_circularize"):	
+			_burn_circularize(state)
+		
 		if Input.is_action_pressed("trun_left"):
 			_rotation(turn_rate*state.step)	
 		
@@ -68,6 +89,50 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 				$ShipInfo.hide()
 		
 		emit_signal("telemetry_changed", self.translation, state.linear_velocity)
+
+func _burn_forward(state:PhysicsDirectBodyState):	
+	var force = _get_forward_vector()*trust
+	state.add_force(force, Vector3(0,0,0))
+	self.burn_fuel(trust * state.step)
+
+func _burn_right(state:PhysicsDirectBodyState):	
+	var force = _get_right_vector()*lr_trust
+	state.add_force(force, Vector3(0,0,0))
+	self.burn_fuel(lr_trust * state.step)
+
+func _burn_left(state:PhysicsDirectBodyState):	
+	var force = _get_left_vector()*ll_trust
+	state.add_force(force, Vector3(0,0,0))
+	self.burn_fuel(ll_trust * state.step)
+
+func _burn_backward(state:PhysicsDirectBodyState):	
+	var force = _get_forward_vector()*bw_trust*-1
+	state.add_force(force, Vector3(0,0,0))
+	self.burn_fuel(bw_trust * state.step)
+
+func _burn_circularize(state:PhysicsDirectBodyState):
+	print("circularize_burn")
+
+func _rotation( angle: float):
+	self.apply_torque_impulse(Vector3(0,angle,0))
+
+func _get_forward_vector():
+	var orientation = self.rotation.y
+	var v = Vector3(0,0,1)
+	v = v.rotated(Vector3(0,1,0), orientation)
+	return v
+
+func _get_right_vector():
+	var orientation = self.rotation.y
+	var v = Vector3(-1,0,0)
+	v = v.rotated(Vector3(0,1,0), orientation)
+	return v
+	
+func _get_left_vector():
+	var orientation = self.rotation.y
+	var v = Vector3(1,0,0)
+	v = v.rotated(Vector3(0,1,0), orientation)
+	return v
 
 func getSOIPlanet():
 	if(last_g_force_strongest_Body==null):
@@ -87,14 +152,9 @@ func rel_speed_to_Strongest_body():
 		result = SB.linear_velocity.distance_to(self.linear_velocity)
 	return result
 
-func _rotation( angle: float):
-	self.apply_torque_impulse(Vector3(0,angle,0))
 
-func _get_forward_vector():
-	var orientation = self.rotation.y
-	var v = Vector3(0,0,1)
-	v = v.rotated(Vector3(0,1,0), orientation)
-	return v
+
+
 
 func burn_fuel(fuel_cost:float):
 	self.set_fuel(fuel - fuel_cost)	
@@ -103,11 +163,6 @@ func burn_fuel(fuel_cost:float):
 func set_fuel(pFuel:float):
 	fuel = pFuel
 	emit_signal("fuel_changed",fuel, fuel_cap)
-
-func _burn_forward(state:PhysicsDirectBodyState):	
-	var force = _get_forward_vector()*trust
-	state.add_force(force, Vector3(0,0,0))
-	self.burn_fuel(trust * state.step)
 
 func get_refule_costs():
 	var fuelprice = MissionContainer.price[MissionContainer.CARGO.FUEL]
