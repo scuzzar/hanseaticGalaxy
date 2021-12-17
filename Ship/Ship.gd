@@ -7,9 +7,8 @@ export var price = 0
 export var turn_rate = 100
 
 export var trust = 100.0
-export var bw_trust = 20
-export var ll_trust = 20.0
-export var lr_trust = 20.0
+export var lateral_trust = 20.0
+
 
 export var dispay_name = "Neubeckum II"
 export var fuel_cap = 5000.0
@@ -96,22 +95,48 @@ func _burn_forward(state:PhysicsDirectBodyState):
 	self.burn_fuel(trust * state.step)
 
 func _burn_right(state:PhysicsDirectBodyState):	
-	var force = _get_right_vector()*lr_trust
+	var force = _get_right_vector()*lateral_trust
 	state.add_force(force, Vector3(0,0,0))
-	self.burn_fuel(lr_trust * state.step)
+	self.burn_fuel(lateral_trust * state.step)
 
 func _burn_left(state:PhysicsDirectBodyState):	
-	var force = _get_left_vector()*ll_trust
+	var force = _get_left_vector()*lateral_trust
 	state.add_force(force, Vector3(0,0,0))
-	self.burn_fuel(ll_trust * state.step)
+	self.burn_fuel(lateral_trust * state.step)
 
 func _burn_backward(state:PhysicsDirectBodyState):	
-	var force = _get_forward_vector()*bw_trust*-1
+	var force = _get_forward_vector()*lateral_trust*-1
 	state.add_force(force, Vector3(0,0,0))
-	self.burn_fuel(bw_trust * state.step)
+	self.burn_fuel(lateral_trust * state.step)
 
 func _burn_circularize(state:PhysicsDirectBodyState):
-	print("circularize_burn")
+	var ov = self._get_orbital_vector()
+	var c_burn_direction = ov - state.linear_velocity
+	var c_burn_direction_retro = ov.rotated(Vector3(0,1,0),PI)- state.linear_velocity
+	if(c_burn_direction.length()>c_burn_direction_retro.length()):
+		c_burn_direction = c_burn_direction_retro
+	
+	var c_burn_dv = c_burn_direction.length()
+	
+	var c_burn_trust = clamp(c_burn_dv,0,trust)
+	c_burn_trust = clamp(c_burn_trust,0,c_burn_dv)
+	var c_burn_v = c_burn_direction.normalized() * trust
+	state.add_force(c_burn_v, Vector3(0,0,0))
+	print(c_burn_v)
+	
+
+
+func _get_orbital_vector():
+	var b :simpelPlanet = last_g_force_strongest_Body
+	var b_direction : Vector3 =self.global_transform.origin - b.global_transform.origin
+	
+	var orbital_direction = b_direction.normalized().rotated(Vector3(0,1,0),PI/2)
+	
+	var d =	b_direction.length()
+	var M = b.mass
+	var kosmic = sqrt(G*M/d)
+	
+	return orbital_direction * kosmic
 
 func _rotation( angle: float):
 	self.apply_torque_impulse(Vector3(0,angle,0))
