@@ -71,6 +71,8 @@ func _physics_process(delta):
 		#self.rotate_y(planetaryRotation*delta)
 
 func predictGlobalPosition(delta):
+	if(isStar):
+		return self.translation
 	var sim_angle = angle +  (angular_speed *delta)	
 	if(sim_angle >= 2*PI): sim_angle -= 2*PI
 	var local_prediction = Vector3(sin(sim_angle)*orbit_radius,0,cos(sim_angle)*orbit_radius)

@@ -23,10 +23,6 @@ var G = 50
 
 onready var bodys = []
 
-var simulation_pos = []
-var simulation_vel = []
-export var show_sim = true
-
 func _enter_tree():
 	#self.add_to_group("bodys")
 	self.gravity_scale = 0

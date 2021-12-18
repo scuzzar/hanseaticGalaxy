@@ -77,13 +77,13 @@ func _loadScore():
 		print("faild to load Scene!")
 
 func _on_Ship_strongest_body_changed(old_body, new_body):
-	if(new_body!=null and new_body.name == "Sun"):
-		#Temprary disable simulator
-		#$Simulator.on = true
-		pass
-	else:
-		$Simulator.on = false
-
+	#if(new_body!=null and new_body.name == "Sun"):
+	#	#Temprary disable simulator
+	#	$Simulator.on = true
+	#	pass
+	#else:
+	#	$Simulator.on = false
+	pass
 func _quicksave():
 	save_game()	
 	print("game Saved")
