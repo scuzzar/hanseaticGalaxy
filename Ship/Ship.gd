@@ -123,12 +123,14 @@ func _burn_circularize(state:PhysicsDirectBodyState):
 	print(c_burn_trust)
 	var c_burn_f = c_burn_direction.normalized() * c_burn_trust
 	state.add_force(c_burn_f, Vector3(0,0,0))
+	
 	if(c_burn_trust * state.step>1):
 		self.burn_fuel(c_burn_trust * state.step)
 
 
 func _get_orbital_vector():
 	var b :simpelPlanet = last_g_force_strongest_Body
+	print(b.name)
 	var b_direction : Vector3 =self.global_transform.origin - b.global_transform.origin
 	
 	var orbital_direction = b_direction.normalized().rotated(Vector3(0,1,0),PI/2)
@@ -137,7 +139,11 @@ func _get_orbital_vector():
 	var M = b.mass
 	var kosmic = sqrt(G*M/d)
 	
-	return orbital_direction * kosmic
+	var orbital_vector_in_Sio =(orbital_direction * kosmic)
+	
+	#account for motion of b
+	var result =orbital_vector_in_Sio+b.linear_velocity
+	return result
 
 func _rotation( angle: float):
 	self.apply_torque_impulse(Vector3(0,angle,0))
