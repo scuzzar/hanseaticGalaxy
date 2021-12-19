@@ -56,8 +56,7 @@ script = ExtResource( 27 )
 world_node_path = NodePath("..")
 
 [node name="Simulator" parent="." instance=ExtResource( 6 )]
-simulation_time = 2000
-simulation_delta_t = 3.0
+simulation_time = 500
 _simulation_object_path = NodePath("../PlayerShip")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -506,7 +505,7 @@ defaultMissionDestination_path = NodePath("../../../Earth/Moon/ApolloPort")
 
 [node name="G_Electronics" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource( 15 )]
 cargo = 3
-wait_time = 20.0
+wait_time = 120.0
 max_store = 4
 init_store = 2
 

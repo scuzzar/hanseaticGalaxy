@@ -18,9 +18,11 @@ func toggel():
 	if(activ):
 		if(SOIPlanet!=null): _unShift()
 		self.activ =false
+		print("deactivated Rotational Shift")
 	else:
 		self.activ = true
 		self.on_soi_planet_changed(SOIPlanet)
+		print("activated Rotational Shift")
 
 func on_soi_planet_changed(newPlanet:simpelPlanet):
 	if(activ):
@@ -53,11 +55,10 @@ func _shift(angilar_shift, vel_shift):
 	#shift ship Speed
 	velocity_shift = vel_shift 
 	# dont shift ship if its first 
-	if(velocity_shift.length()<100):
-		if(logging):
-			print("Old Ship Vel"+ str($"../PlayerShip".linear_velocity))
-			$"../PlayerShip".linear_velocity += velocity_shift
-			print("new Ship Vel"+ str($"../PlayerShip".linear_velocity))
+	if(velocity_shift.length()<1000):
+		if(logging):print("Old Ship Vel"+ str($"../PlayerShip".linear_velocity))		
+		$"../PlayerShip".linear_velocity += velocity_shift		
+		if(logging):print("new Ship Vel"+ str($"../PlayerShip".linear_velocity))
 	
 	var bodys = get_tree().get_nodes_in_group("bodys")
 	for b in bodys:
@@ -68,6 +69,6 @@ func _shift(angilar_shift, vel_shift):
 	$"../Sun".planetaryRotation += angilar_shift
 	
 	if(logging):
-		print("Roational Shift"+ str(angular_speed_shift))
+		print("Roational Shift"+ str(angilar_shift))
 		print("Velocity Shift"+ str(velocity_shift))
 		

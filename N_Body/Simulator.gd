@@ -70,8 +70,7 @@ func simulate():
 	$TargetPoint/Lable3D.hide()
 	if(!on):return
 	if(bodys==null):return
-
-	#var simulation_steps = simulation_time/simulation_delta_t
+	
 	var sim_obj_pos = _simulation_Object.translation
 	var sim_obj_val = _simulation_Object.velocety
 	
@@ -88,8 +87,8 @@ func simulate():
 	while(t<simulation_time):
 		
 		if(sim_g_force.length()>0):
-			step_size_inc =clamp(0.01/sim_g_force.length(),1,50)
-		#print(step_size_inc)
+			step_size_inc =clamp(0.1/sim_g_force.length(),0.1,100)
+		
 		t += simulation_delta_t * step_size_inc
 		steps += 1
 		var strongest_body:simpelPlanet = _simulation_Object.last_g_force_strongest_Body	
