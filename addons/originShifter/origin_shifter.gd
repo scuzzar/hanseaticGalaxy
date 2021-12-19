@@ -12,6 +12,7 @@ onready var world_node: Spatial = get_node_or_null(world_node_path)
 
 onready var parent = $"../PlayerShip"
 
+signal shifted()
 
 func _ready():
 	if !world_node:
@@ -31,5 +32,6 @@ func shift_origin():
 				print(child.translation)
 			
 	originShift = offset
+	emit_signal("shifted")
 	if logging:
 		print("shifted " + str(offset))

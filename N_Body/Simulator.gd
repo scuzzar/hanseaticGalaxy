@@ -47,22 +47,24 @@ func _process(delta):
 	if Input.is_action_just_pressed("simulate"):
 		self.toggel()
 	
-	if Input.is_action_just_pressed("simulate_more"):
-		if(on):
+	if(on):
+		if Input.is_action_just_pressed("simulate_more"):
 			simulation_time +=simulation_time_inc
+		
+		if Input.is_action_just_pressed("simulate_less"):
+			if(simulation_time -simulation_time_inc>0):
+				simulation_time -=simulation_time_inc
+		
+		if(Engine.time_scale<2):
+			simulation_update_timer += delta
+		else:
+			simulation_update_timer = 0	
 	
-	if Input.is_action_just_pressed("simulate_less"):
-		if(on and (simulation_time -simulation_time_inc>0)):
-			simulation_time -=simulation_time_inc
-			
-	if(Engine.time_scale>2):return
-	
-	simulation_update_timer += delta	
-	if simulation_update_timer >= simulatoin_update_interfall:
-		simulation_update_timer -= simulatoin_update_interfall
-		if(on):
+		if simulation_update_timer >= simulatoin_update_interfall:
+			simulation_update_timer = 0
 			simulate()
-			$Path.path = simulation_pos
+			print("simulated")
+	#end is on
 
 func simulate():
 	$TargetPoint.hide()
@@ -125,4 +127,10 @@ func simulate():
 			$TargetPoint.show()
 			$TargetPoint.scale = Vector3(1,1,1) * strongest_body.radius	
 	## end Time step loop
+	
+	$Path.path = simulation_pos
 
+
+
+func _on_Shifter_shifted():
+	simulate()

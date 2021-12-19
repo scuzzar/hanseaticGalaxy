@@ -56,8 +56,8 @@ script = ExtResource( 27 )
 world_node_path = NodePath("..")
 
 [node name="Simulator" parent="." instance=ExtResource( 6 )]
-simulation_time = 500
-simulation_delta_t = 0.5
+simulation_time = 2000
+simulation_delta_t = 3.0
 _simulation_object_path = NodePath("../PlayerShip")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -593,4 +593,5 @@ cargo = 2
 script = ExtResource( 8 )
 cargo = 4
 
+[connection signal="shifted" from="Shifter" to="Simulator" method="_on_Shifter_shifted"]
 [connection signal="shipOrderd" from="HUD" to="." method="_on_HUD_shipOrderd"]
