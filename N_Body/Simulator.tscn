@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://N_Body/Simulator.gd" type="Script" id=1]
 [ext_resource path="res://N_Body/SimPath.gd" type="Script" id=2]
+[ext_resource path="res://Bodys/Label3D.gd" type="Script" id=3]
 
 [sub_resource type="SpatialMaterial" id=2]
 params_blend_mode = 1
@@ -23,6 +24,25 @@ __meta__ = {
 color = Color( 0.0352941, 0.231373, 0.894118, 1 )
 
 [node name="TargetPoint" type="StaticBody" parent="."]
+
+[node name="Lable3D" type="Label" parent="TargetPoint"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -7.0
+margin_right = 50.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 100, 12 )
+rect_pivot_offset = Vector2( 49.8973, 7.33237 )
+text = "Planet"
+align = 1
+valign = 3
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TargetBall" type="CSGSphere" parent="TargetPoint"]
 material_override = SubResource( 2 )

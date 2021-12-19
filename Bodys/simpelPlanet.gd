@@ -76,7 +76,7 @@ func predictGlobalPosition(delta):
 	var sim_angle = angle +  (angular_speed *delta)	
 	if(sim_angle >= 2*PI): sim_angle -= 2*PI
 	var local_prediction = Vector3(sin(sim_angle)*orbit_radius,0,cos(sim_angle)*orbit_radius)
-	var global_prediction = get_parent().to_global(local_prediction)
+	var global_prediction = get_parent().predictGlobalPosition(delta)+local_prediction
 	return global_prediction
 
 func save():

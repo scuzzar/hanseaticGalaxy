@@ -22,7 +22,8 @@ var bodys = []
 
 func _ready():
 	bodys = get_tree().get_nodes_in_group("bodys")	
-	$TargetPoint.hide()	
+	$TargetPoint.hide()
+	$TargetPoint/Lable3D.hide()	
 
 func start():
 	on = true
@@ -33,6 +34,7 @@ func stop():
 	$Path.path = []
 	$Path.hide()
 	$TargetPoint.hide()
+	$TargetPoint/Lable3D.hide()
 
 func toggel():
 	if(on):
@@ -64,6 +66,7 @@ func _process(delta):
 
 func simulate():
 	$TargetPoint.hide()
+	$TargetPoint/Lable3D.hide()
 	if(!on):return
 	if(bodys==null):return
 
@@ -110,13 +113,15 @@ func simulate():
 		
 		simulation_pos.append(sim_obj_pos)
 		
-		if(temp_strongest_body!=strongest_body and temp_strongest_body.isPlanet):
+		if(temp_strongest_body!=strongest_body): #and temp_strongest_body.isPlanet):
 			strongest_body = temp_strongest_body 
 			stronges_body_chang_count += 1
 			#if(stronges_body_chang_count>1): 
 			#	print(strongest_body.name)
 			#	return
-			$TargetPoint.translation = temp_strongest_body_pos	
+			$TargetPoint.translation = temp_strongest_body_pos
+			$TargetPoint/Lable3D.text = strongest_body.name	
+			$TargetPoint/Lable3D.show()
 			$TargetPoint.show()
 			$TargetPoint.scale = Vector3(1,1,1) * strongest_body.radius	
 	## end Time step loop

@@ -3,7 +3,7 @@
 [ext_resource path="res://Station/Warft.gd" type="Script" id=1]
 [ext_resource path="res://Station/Station.escn" type="PackedScene" id=2]
 [ext_resource path="res://Container/Inventory.gd" type="Script" id=3]
-[ext_resource path="res://Bodys/Label.gd" type="Script" id=4]
+[ext_resource path="res://Bodys/Label3D.gd" type="Script" id=4]
 
 [sub_resource type="SphereShape" id=1]
 radius = 0.849215
