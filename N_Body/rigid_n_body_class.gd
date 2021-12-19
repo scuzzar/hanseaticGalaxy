@@ -19,8 +19,6 @@ var last_g_force = Vector3(0,0,0)
 var last_g_force_strongest_Body : RigidBody
 var last_g_force_strongest_Body_force = Vector3(0,0,0)
 
-var G = 50
-
 onready var bodys = []
 
 func _enter_tree():
@@ -69,7 +67,7 @@ func g_force(position):
 			other_translation = body.get_parent().to_global(body.translation)				
 			var sqrDst = position.distance_squared_to(other_translation)		
 			var forcDir = position.direction_to(other_translation).normalized()		
-			var acceleration = forcDir * G *body.mass * mass / sqrDst
+			var acceleration = forcDir * Globals.G *body.mass * mass / sqrDst
 			sum += acceleration
 			if(g_force_strongest_Body_force.length()<acceleration.length()):
 				g_force_strongest_Body_force = acceleration

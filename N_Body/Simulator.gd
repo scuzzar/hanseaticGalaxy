@@ -52,6 +52,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("simulate_less"):
 		if(on and (simulation_time -simulation_time_inc>0)):
 			simulation_time -=simulation_time_inc
+			
+	if(Engine.time_scale>2):return
 	
 	simulation_update_timer += delta	
 	if simulation_update_timer >= simulatoin_update_interfall:
@@ -75,33 +77,43 @@ func simulate():
 	var stronges_body_chang_count = 0
 	for i in simulation_steps:
 		var t = i * simulation_delta_t
-		var strongest_body:simpelPlanet = _simulation_Object.last_g_force_strongest_Body
-		var strongest_body_force :float = _simulation_Object.last_g_force_strongest_Body_force.length()
-		
+		var strongest_body:simpelPlanet = _simulation_Object.last_g_force_strongest_Body	
 		
 		var sim_g_force = Vector3(0,0,0)
+		
+		var temp_strongest_body:simpelPlanet = strongest_body
+		var temp_strongest_body_force :float = 0	
+		var temp_strongest_body_pos = Vector3(0,0,0)
+		
 		for body in bodys:
-			var planet:simpelPlanet= body as simpelPlanet		
-			if planet != self && planet.isGravetySource:			
+			var planet:simpelPlanet= body as simpelPlanet
+			if planet != self && planet.isGravetySource:
 				var other_translation = planet.predictGlobalPosition(t)
 				var sqrDst = sim_obj_pos.distance_squared_to(other_translation)
 				if(sqrDst <= planet.radius*planet.radius):return	
 				
 				var forcDir = sim_obj_pos.direction_to(other_translation).normalized()		
-				var acceleration = forcDir * _simulation_Object.G *planet.mass  / sqrDst
-				if(acceleration.length()>strongest_body_force):
-					strongest_body_force = acceleration.length()
-					strongest_body = planet
-					stronges_body_chang_count += 1
-					if(stronges_body_chang_count>1): return
-					$TargetPoint.translation = other_translation	
-					$TargetPoint.show()
-					$TargetPoint.scale = Vector3(1,1,1) * planet.radius	
+				var acceleration = forcDir * Globals.G *planet.mass  / sqrDst
 				sim_g_force += acceleration
+				if(acceleration.length()>temp_strongest_body_force and !planet.isStar):
+					temp_strongest_body_force = acceleration.length()
+					temp_strongest_body = planet
+					temp_strongest_body_pos = other_translation
+					
+		## end body Loop
+		
+		if(temp_strongest_body!=strongest_body):
+			strongest_body = temp_strongest_body 
+			stronges_body_chang_count += 1
+			if(stronges_body_chang_count>1): return
+			$TargetPoint.translation = temp_strongest_body_pos	
+			$TargetPoint.show()
+			$TargetPoint.scale = Vector3(1,1,1) * strongest_body.radius	
 
 		sim_obj_val += sim_g_force   * simulation_delta_t /2
 		sim_obj_pos += sim_obj_val * simulation_delta_t
 		sim_obj_val += sim_g_force   * simulation_delta_t /2
 		
 		simulation_pos.append(sim_obj_pos)
+	## end Time step loop
 

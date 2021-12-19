@@ -136,7 +136,7 @@ func _get_orbital_vector():
 	
 	var d =	b_direction.length()
 	var M = b.mass
-	var kosmic = sqrt(G*M/d)
+	var kosmic = sqrt(Globals.G*M/d)
 	
 	var orbital_vector_in_Sio =(orbital_direction * kosmic)
 	
