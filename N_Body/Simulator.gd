@@ -95,25 +95,29 @@ func simulate():
 				var forcDir = sim_obj_pos.direction_to(other_translation).normalized()		
 				var acceleration = forcDir * Globals.G *planet.mass  / sqrDst
 				sim_g_force += acceleration
-				if(acceleration.length()>temp_strongest_body_force and !planet.isStar):
+				if(acceleration.length()>temp_strongest_body_force):
 					temp_strongest_body_force = acceleration.length()
 					temp_strongest_body = planet
 					temp_strongest_body_pos = other_translation
 					
 		## end body Loop
 		
-		if(temp_strongest_body!=strongest_body):
-			strongest_body = temp_strongest_body 
-			stronges_body_chang_count += 1
-			if(stronges_body_chang_count>1): return
-			$TargetPoint.translation = temp_strongest_body_pos	
-			$TargetPoint.show()
-			$TargetPoint.scale = Vector3(1,1,1) * strongest_body.radius	
+
 
 		sim_obj_val += sim_g_force   * simulation_delta_t /2
 		sim_obj_pos += sim_obj_val * simulation_delta_t
 		sim_obj_val += sim_g_force   * simulation_delta_t /2
 		
 		simulation_pos.append(sim_obj_pos)
+		
+		if(temp_strongest_body!=strongest_body and temp_strongest_body.isPlanet):
+			strongest_body = temp_strongest_body 
+			stronges_body_chang_count += 1
+			#if(stronges_body_chang_count>1): 
+			#	print(strongest_body.name)
+			#	return
+			$TargetPoint.translation = temp_strongest_body_pos	
+			$TargetPoint.show()
+			$TargetPoint.scale = Vector3(1,1,1) * strongest_body.radius	
 	## end Time step loop
 
