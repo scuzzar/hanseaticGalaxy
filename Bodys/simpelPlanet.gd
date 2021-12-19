@@ -21,7 +21,7 @@ var angle : float = 0
 var radius : float
 var isGravetySource = false
 var angular_speed : float = 0 
-
+var non_shifted_angular_speed : float = 0 
 var pX :float
 var pZ :float
 
@@ -48,6 +48,7 @@ func _ready():
 		print(self.name + " O_Speed:" + str(kosmic))
 		orbital_speed = kosmic
 		angular_speed = 2*PI/(2*PI*orbit_radius/orbital_speed)	
+		non_shifted_angular_speed = angular_speed
 		angle = asin(translation.x/orbit_radius)	
 		var start = translation
 		var result = [start]

@@ -63,7 +63,6 @@ func _process(delta):
 		if simulation_update_timer >= simulatoin_update_interfall:
 			simulation_update_timer = 0
 			simulate()
-			print("simulated")
 	#end is on
 
 func simulate():
@@ -72,7 +71,7 @@ func simulate():
 	if(!on):return
 	if(bodys==null):return
 
-	var simulation_steps = simulation_time/simulation_delta_t
+	#var simulation_steps = simulation_time/simulation_delta_t
 	var sim_obj_pos = _simulation_Object.translation
 	var sim_obj_val = _simulation_Object.velocety
 	
@@ -80,11 +79,22 @@ func simulate():
 	simulation_vel = [sim_obj_val]
 
 	var stronges_body_chang_count = 0
-	for i in simulation_steps:
-		var t = i * simulation_delta_t
+	var step_size_inc = 1
+	
+	var sim_g_force = Vector3(0,0,0)
+	
+	var t = 0
+	var steps = 0
+	while(t<simulation_time):
+		
+		if(sim_g_force.length()>0):
+			step_size_inc =clamp(0.01/sim_g_force.length(),1,50)
+		#print(step_size_inc)
+		t += simulation_delta_t * step_size_inc
+		steps += 1
 		var strongest_body:simpelPlanet = _simulation_Object.last_g_force_strongest_Body	
 		
-		var sim_g_force = Vector3(0,0,0)
+		sim_g_force = Vector3(0,0,0)
 		
 		var temp_strongest_body:simpelPlanet = strongest_body
 		var temp_strongest_body_force :float = 0	
@@ -118,16 +128,16 @@ func simulate():
 		if(temp_strongest_body!=strongest_body): #and temp_strongest_body.isPlanet):
 			strongest_body = temp_strongest_body 
 			stronges_body_chang_count += 1
-			#if(stronges_body_chang_count>1): 
-			#	print(strongest_body.name)
-			#	return
-			$TargetPoint.translation = temp_strongest_body_pos
-			$TargetPoint/Lable3D.text = strongest_body.name	
-			$TargetPoint/Lable3D.show()
-			$TargetPoint.show()
-			$TargetPoint.scale = Vector3(1,1,1) * strongest_body.radius	
+			if(stronges_body_chang_count==1):		
+				$TargetPoint.translation = temp_strongest_body_pos
+				$TargetPoint/Lable3D.text = strongest_body.name	
+				$TargetPoint/Lable3D.show()
+				$TargetPoint.show()
+				$TargetPoint.scale = Vector3(1,1,1) * strongest_body.radius
+			if(stronges_body_chang_count==2):
+				break
 	## end Time step loop
-	
+	print("simSteps Needed:" + str(steps))
 	$Path.path = simulation_pos
 
 

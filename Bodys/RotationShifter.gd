@@ -10,16 +10,28 @@ export var logging = false
 func _ready():
 	pass # Replace with function body.
 
+func _process(delta):	
+	if Input.is_action_just_pressed("simulate"):
+		self.toggel()
+
+func toggel():
+	if(activ):
+		if(SOIPlanet!=null): _unShift()
+		self.activ =false
+	else:
+		self.activ = true
+		self.on_soi_planet_changed(SOIPlanet)
+
 func on_soi_planet_changed(newPlanet:simpelPlanet):
-	print(newPlanet)
 	if(activ):
 		if(newPlanet==null):
 			if(SOIPlanet!=null):
 				_unShift()
 		else:
 			if(newPlanet.doRotationShift):
-				_shiftToPlanet(newPlanet)		
-
+				_shiftToPlanet(newPlanet)
+	else:
+		SOIPlanet = newPlanet
 
 func _shiftToPlanet(newPlanet):	
 		SOIPlanet = newPlanet

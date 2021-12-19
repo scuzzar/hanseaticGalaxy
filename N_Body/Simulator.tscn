@@ -5,6 +5,8 @@
 [ext_resource path="res://Bodys/Label3D.gd" type="Script" id=3]
 
 [sub_resource type="SpatialMaterial" id=2]
+flags_unshaded = true
+flags_no_depth_test = true
 params_blend_mode = 1
 albedo_color = Color( 0.894118, 0.215686, 0.541176, 0.168627 )
 
