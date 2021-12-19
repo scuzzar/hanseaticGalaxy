@@ -11,23 +11,37 @@ var loaded = false
 enum CARGO{
 	METALS,
 	FOOD,
+	ICE,
+	WATER,	
+	OXYGEN,
 	MACHINES,
+	HABITATION,
+	INFRASTRUCTURE,
+	STEEL,
 	ELECTRONICS,
 	CONSUMERS,
 	RARE_METALS,
 	LUXUS,
+	DEUTERIUM,
 	FUEL
 }
 var reward = 0
 const price ={
 	CARGO.METALS:2000,
 	CARGO.FOOD:850,
+	CARGO.ICE:1500,
+	CARGO.WATER:1800,
+	CARGO.OXYGEN:1000,
 	CARGO.MACHINES:1700,
+	CARGO.HABITATION:3500,
+	CARGO.INFRASTRUCTURE:4000,
+	CARGO.STEEL:100,
 	CARGO.ELECTRONICS:1000,
 	CARGO.CONSUMERS:900,
 	CARGO.RARE_METALS:2500,
 	CARGO.LUXUS:1400,
-	CARGO.FUEL:1000
+	CARGO.DEUTERIUM:2300,
+	CARGO.FUEL:1500
 }
 
 const names ={
@@ -38,7 +52,14 @@ const names ={
 	CARGO.CONSUMERS:"ConsumerGoods",
 	CARGO.RARE_METALS:"RareMetals",
 	CARGO.LUXUS:"Luxus",
-	CARGO.FUEL:"Fuel"
+	CARGO.FUEL:"Fuel",
+	CARGO.ICE:"Ice",
+	CARGO.WATER:"Water",
+	CARGO.OXYGEN:"Oxygen",
+	CARGO.HABITATION:"Habitation",
+	CARGO.INFRASTRUCTURE:"Infrastructure",
+	CARGO.STEEL:"Steel",
+	CARGO.DEUTERIUM:"Deuterium"
 }
 
 const mass ={
@@ -49,7 +70,14 @@ const mass ={
 	CARGO.CONSUMERS:6,
 	CARGO.RARE_METALS:18,
 	CARGO.LUXUS:5,
-	CARGO.FUEL:0
+	CARGO.FUEL:0,
+	CARGO.ICE:14,
+	CARGO.WATER:15,
+	CARGO.OXYGEN:4,
+	CARGO.HABITATION:25,
+	CARGO.INFRASTRUCTURE:30,
+	CARGO.STEEL:25,
+	CARGO.DEUTERIUM:8
 }
 
 export(CARGO) var cargo  
@@ -117,6 +145,20 @@ func _set_cargo(pcargo):
 			$Mesh/RareMetal.show()
 		CARGO.LUXUS:
 			$Mesh/LuxusGoods.show()
+		CARGO.ICE:
+			$Mesh/Machines.show()
+		CARGO.WATER:
+			$Mesh/Machines.show()
+		CARGO.OXYGEN:
+			$Mesh/Machines.show()
+		CARGO.HABITATION:
+			$Mesh/Electronics.show()
+		CARGO.INFRASTRUCTURE:
+			$Mesh/Electronics.show()
+		CARGO.STEEL:
+			$Mesh/Metals.show()
+		CARGO.DEUTERIUM:
+			$Mesh/RareMetal.show()
 			
 
 func save():	

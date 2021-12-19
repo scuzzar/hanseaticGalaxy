@@ -11,7 +11,14 @@ var stock ={
 	MissionContainer.CARGO.ELECTRONICS:0,
 	MissionContainer.CARGO.CONSUMERS:0,
 	MissionContainer.CARGO.RARE_METALS:0,
-	MissionContainer.CARGO.LUXUS:0
+	MissionContainer.CARGO.LUXUS:0,
+	MissionContainer.CARGO.ICE:0,
+	MissionContainer.CARGO.WATER:0,
+	MissionContainer.CARGO.OXYGEN:0,
+	MissionContainer.CARGO.HABITATION:0,
+	MissionContainer.CARGO.INFRASTRUCTURE:0,
+	MissionContainer.CARGO.STEEL:0,
+	MissionContainer.CARGO.DEUTERIUM:0
 }
 
 signal container_clicked(container)

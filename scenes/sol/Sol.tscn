@@ -139,10 +139,6 @@ script = ExtResource( 8 )
 script = ExtResource( 8 )
 cargo = 1
 
-[node name="T_Luxus" type="Node" parent="Sun/Venus/VenusST"]
-script = ExtResource( 8 )
-cargo = 6
-
 [node name="G_Luxus" parent="Sun/Venus/VenusST" instance=ExtResource( 15 )]
 cargo = 6
 wait_time = 20.0
@@ -192,7 +188,7 @@ transform = Transform( -0.75811, 0.652126, -5.57647e-08, -1.15933e-07, -4.92623e
 defaultMissionDestination_path = NodePath("../Moon/ApolloPort")
 
 [node name="G_Luxus" parent="Sun/Earth/BrasiliaPort" instance=ExtResource( 15 )]
-cargo = 6
+cargo = 12
 wait_time = 20.0
 max_store = 5
 init_store = 3
@@ -204,10 +200,10 @@ max_store = 5
 
 [node name="T_Rare_Metal" type="Node" parent="Sun/Earth/BrasiliaPort"]
 script = ExtResource( 8 )
-cargo = 5
+cargo = 11
 
 [node name="G_Consumers" parent="Sun/Earth/BrasiliaPort" instance=ExtResource( 15 )]
-cargo = 4
+cargo = 10
 wait_time = 20.0
 max_store = 3
 init_store = 2
@@ -276,24 +272,33 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 152.126, 0, 0 )
 [node name="T_Metal" type="Node" parent="Sun/Mars/MarsST"]
 script = ExtResource( 8 )
 
+[node name="T_Water" type="Node" parent="Sun/Mars/MarsST"]
+script = ExtResource( 8 )
+cargo = 3
+
+[node name="T_Oxygen" type="Node" parent="Sun/Mars/MarsST"]
+script = ExtResource( 8 )
+cargo = 4
+
 [node name="T_Food" type="Node" parent="Sun/Mars/MarsST"]
 script = ExtResource( 8 )
 cargo = 1
 
-[node name="T_Luxus" type="Node" parent="Sun/Mars/MarsST"]
-script = ExtResource( 8 )
-cargo = 6
-
 [node name="G_Consumers" parent="Sun/Mars/MarsST" instance=ExtResource( 15 )]
-cargo = 4
+cargo = 10
 wait_time = 30.0
 max_store = 3
 
 [node name="G_Electronics" parent="Sun/Mars/MarsST" instance=ExtResource( 15 )]
-cargo = 3
+cargo = 9
 wait_time = 35.0
 max_store = 3
 init_store = 0
+
+[node name="G_Luxus" parent="Sun/Mars/MarsST" instance=ExtResource( 15 )]
+cargo = 12
+wait_time = 600.0
+max_store = 3
 
 [node name="Ship" parent="Sun/Mars/MarsST" instance=ExtResource( 19 )]
 transform = Transform( 0.249281, 0.968431, -4.23315e-08, -2.8478e-23, -4.37114e-08, -1, -0.968431, 0.249281, -1.08964e-08, 0.632935, -0.854731, -3.28711 )
@@ -329,32 +334,39 @@ sleeping = true
 
 [node name="T_Luxus" type="Node" parent="Sun/Mars/OlympusPort"]
 script = ExtResource( 8 )
-cargo = 6
+cargo = 12
 
 [node name="T_Metal" type="Node" parent="Sun/Mars/OlympusPort"]
 script = ExtResource( 8 )
 
 [node name="T_Electronics" type="Node" parent="Sun/Mars/OlympusPort"]
 script = ExtResource( 8 )
-cargo = 3
+cargo = 9
 
-[node name="G_Machine" parent="Sun/Mars/OlympusPort" instance=ExtResource( 15 )]
+[node name="T_Ice" type="Node" parent="Sun/Mars/OlympusPort"]
+script = ExtResource( 8 )
 cargo = 2
-wait_time = 120.0
-max_store = 5
-init_store = 3
-
-[node name="G_Food" parent="Sun/Mars/OlympusPort" instance=ExtResource( 15 )]
-cargo = 1
-wait_time = 60.0
-max_store = 4
-init_store = 3
 
 [node name="G_Consumers" parent="Sun/Mars/OlympusPort" instance=ExtResource( 15 )]
-cargo = 4
+cargo = 10
 wait_time = 20.0
 max_store = 6
 init_store = 4
+
+[node name="G_Water" parent="Sun/Mars/OlympusPort" instance=ExtResource( 15 )]
+cargo = 3
+wait_time = 30.0
+max_store = 5
+
+[node name="G_Food" parent="Sun/Mars/OlympusPort" instance=ExtResource( 15 )]
+cargo = 1
+wait_time = 30.0
+max_store = 5
+
+[node name="G_Oxygen" parent="Sun/Mars/OlympusPort" instance=ExtResource( 15 )]
+cargo = 4
+wait_time = 30.0
+max_store = 5
 
 [node name="Deimos" parent="Sun/Mars" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -767.006, -4.61062e-06, 1.40234 )
@@ -375,20 +387,25 @@ cargo = 1
 
 [node name="T_Machine" type="Node" parent="Sun/Mars/Deimos/DeimosPort"]
 script = ExtResource( 8 )
-cargo = 2
+cargo = 5
 
 [node name="T_Consumers" type="Node" parent="Sun/Mars/Deimos/DeimosPort"]
 script = ExtResource( 8 )
-cargo = 4
+cargo = 10
 
 [node name="G_Rare" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 15 )]
-cargo = 5
+cargo = 11
 wait_time = 60.0
 max_store = 1
 
 [node name="G_Metal" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 15 )]
-wait_time = 30.0
+wait_time = 50.0
 max_store = 3
+
+[node name="G_Ice" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 15 )]
+cargo = 2
+wait_time = 30.0
+max_store = 6
 
 [node name="Phobos" parent="Sun/Mars" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 530.882, 1.46021e-05, -2.46191 )
@@ -504,13 +521,13 @@ transform = Transform( 0.826119, 0.563495, 3.61108e-08, 4.37114e-08, 1.91069e-15
 defaultMissionDestination_path = NodePath("../../../Earth/Moon/ApolloPort")
 
 [node name="G_Electronics" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource( 15 )]
-cargo = 3
+cargo = 9
 wait_time = 120.0
 max_store = 4
 init_store = 2
 
 [node name="G_Rare" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource( 15 )]
-cargo = 5
+cargo = 11
 wait_time = 60.0
 max_store = 3
 
@@ -520,15 +537,15 @@ cargo = 1
 
 [node name="T_Machine" type="Node" parent="Sun/Saturn/Titan/TitanPort"]
 script = ExtResource( 8 )
-cargo = 2
+cargo = 5
 
 [node name="T_Consumers" type="Node" parent="Sun/Saturn/Titan/TitanPort"]
 script = ExtResource( 8 )
-cargo = 4
+cargo = 10
 
 [node name="T_Luxus" type="Node" parent="Sun/Saturn/Titan/TitanPort"]
 script = ExtResource( 8 )
-cargo = 6
+cargo = 12
 
 [node name="Uranus" parent="Sun" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 150000, 0, 0 )
@@ -571,14 +588,14 @@ wait_time = 60.0
 max_store = 2
 
 [node name="G_Rare" parent="Sun/Neptun/Triton/TreePeekPort" instance=ExtResource( 15 )]
-cargo = 5
+cargo = 11
 wait_time = 120.0
 max_store = 7
 init_store = 3
 
 [node name="T_Luxus" type="Node" parent="Sun/Neptun/Triton/TreePeekPort"]
 script = ExtResource( 8 )
-cargo = 6
+cargo = 12
 
 [node name="T_Food" type="Node" parent="Sun/Neptun/Triton/TreePeekPort"]
 script = ExtResource( 8 )
@@ -586,11 +603,11 @@ cargo = 1
 
 [node name="T_Machine" type="Node" parent="Sun/Neptun/Triton/TreePeekPort"]
 script = ExtResource( 8 )
-cargo = 2
+cargo = 5
 
 [node name="T_Consumers" type="Node" parent="Sun/Neptun/Triton/TreePeekPort"]
 script = ExtResource( 8 )
-cargo = 4
+cargo = 10
 
 [connection signal="shifted" from="Shifter" to="Simulator" method="_on_Shifter_shifted"]
 [connection signal="shipOrderd" from="HUD" to="." method="_on_HUD_shipOrderd"]
