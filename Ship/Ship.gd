@@ -196,7 +196,7 @@ func set_fuel(pFuel:float):
 	emit_signal("fuel_changed",fuel, fuel_cap)
 
 func get_refule_costs():
-	var fuelprice = MissionContainer.price[MissionContainer.CARGO.FUEL]
+	var fuelprice = MissionContainer.ContainerTyp[MissionContainer.CARGO.FUEL]["price"]
 	var fuel_to_By = self.fuel_cap - fuel
 	var credits_to_pay = fuel_to_By*fuelprice/1000
 	return credits_to_pay

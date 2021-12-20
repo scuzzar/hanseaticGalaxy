@@ -9,83 +9,85 @@ var loaded = false
 
 
 enum CARGO{
-	METALS,
-	FOOD,
-	ICE,
-	WATER,	
-	OXYGEN,
-	MACHINES,
-	HABITATION,
-	INFRASTRUCTURE,
-	STEEL,
-	ELECTRONICS,
-	CONSUMERS,
-	RARE_METALS,
-	LUXUS,
-	DEUTERIUM,
-	FUEL
+	METALS = 0,
+	FOOD = 1,
+	ICE = 2,
+	WATER = 3,	
+	OXYGEN = 4,
+	MACHINES = 5,
+	HABITATION = 6,
+	INFRASTRUCTURE = 7,
+	STEEL = 8,
+	ELECTRONICS = 9,
+	CONSUMERS = 10,
+	RARE_METALS = 11,
+	LUXUS = 12,
+	DEUTERIUM = 13,
+	FUEL = 14
 }
 var reward = 0
-const price ={
-	CARGO.METALS:2000,
-	CARGO.FOOD:850,
-	CARGO.ICE:1500,
-	CARGO.WATER:1800,
-	CARGO.OXYGEN:1000,
-	CARGO.MACHINES:1700,
-	CARGO.HABITATION:3500,
-	CARGO.INFRASTRUCTURE:4000,
-	CARGO.STEEL:100,
-	CARGO.ELECTRONICS:1000,
-	CARGO.CONSUMERS:900,
-	CARGO.RARE_METALS:2500,
-	CARGO.LUXUS:1400,
-	CARGO.DEUTERIUM:2300,
-	CARGO.FUEL:1500
-}
+#const price ={
+#	CARGO.METALS:2000,
+#	CARGO.FOOD:850,
+#	CARGO.ICE:1500,
+#	CARGO.WATER:1800,
+#	CARGO.OXYGEN:1000,
+#	CARGO.MACHINES:1700,
+#	CARGO.HABITATION:3500,
+#	CARGO.INFRASTRUCTURE:4000,
+#	CARGO.STEEL:100,
+#	CARGO.ELECTRONICS:1000,
+#	CARGO.CONSUMERS:900,
+#	CARGO.RARE_METALS:2500,
+#	CARGO.LUXUS:1400,
+#	CARGO.DEUTERIUM:2300,
+#	CARGO.FUEL:1500
+#}
 
-const names ={
-	CARGO.METALS:"Metals",
-	CARGO.FOOD:"Food",
-	CARGO.MACHINES:"Machines",
-	CARGO.ELECTRONICS:"Electronics",
-	CARGO.CONSUMERS:"ConsumerGoods",
-	CARGO.RARE_METALS:"RareMetals",
-	CARGO.LUXUS:"Luxus",
-	CARGO.FUEL:"Fuel",
-	CARGO.ICE:"Ice",
-	CARGO.WATER:"Water",
-	CARGO.OXYGEN:"Oxygen",
-	CARGO.HABITATION:"Habitation",
-	CARGO.INFRASTRUCTURE:"Infrastructure",
-	CARGO.STEEL:"Steel",
-	CARGO.DEUTERIUM:"Deuterium"
-}
+#const names ={
+#	CARGO.METALS:"Metals",
+#	CARGO.FOOD:"Food",
+#	CARGO.MACHINES:"Machines",
+#	CARGO.ELECTRONICS:"Electronics",
+#	CARGO.CONSUMERS:"ConsumerGoods",
+#	CARGO.RARE_METALS:"RareMetals",
+#	CARGO.LUXUS:"Luxus",
+#	CARGO.FUEL:"Fuel",
+#	CARGO.ICE:"Ice",
+#	CARGO.WATER:"Water",
+#	CARGO.OXYGEN:"Oxygen",
+#	CARGO.HABITATION:"Habitation",
+#	CARGO.INFRASTRUCTURE:"Infrastructure",
+#	CARGO.STEEL:"Steel",
+#	CARGO.DEUTERIUM:"Deuterium"
+#}
 
-const mass ={
-	CARGO.METALS:20,
-	CARGO.FOOD:4,
-	CARGO.MACHINES:15,
-	CARGO.ELECTRONICS:8,
-	CARGO.CONSUMERS:6,
-	CARGO.RARE_METALS:18,
-	CARGO.LUXUS:5,
-	CARGO.FUEL:0,
-	CARGO.ICE:14,
-	CARGO.WATER:15,
-	CARGO.OXYGEN:4,
-	CARGO.HABITATION:25,
-	CARGO.INFRASTRUCTURE:30,
-	CARGO.STEEL:25,
-	CARGO.DEUTERIUM:8
-}
+#const mass ={
+#	CARGO.METALS:20,
+#	CARGO.FOOD:4,
+#	CARGO.MACHINES:15,
+#	CARGO.ELECTRONICS:8,
+#	CARGO.CONSUMERS:6,
+#	CARGO.RARE_METALS:18,
+#	CARGO.LUXUS:5,
+#	CARGO.FUEL:0,
+#	CARGO.ICE:14,
+#	CARGO.WATER:15,
+#	CARGO.OXYGEN:4,
+#	CARGO.HABITATION:25,
+#	CARGO.INFRASTRUCTURE:30,
+#	CARGO.STEEL:25,
+#	CARGO.DEUTERIUM:8
+#}
+
+const ContainerTyp = preload("res://Container/containerTyps.csv").records
 
 export(CARGO) var cargo  
 
 signal clicked(sender)
 
 func _ready():
-	_set_cargo(cargo)
+	_set_cargo(cargo)	
 
 func _on_input_event(camera, event, click_position, click_normal, shape_idx):
 	if(event is InputEventMouseButton and event.is_pressed() ):
@@ -104,17 +106,17 @@ func _to_string()->String:
 		return "nullDestination"
 
 func getPrice()-> int:
-	return price[cargo]
+	return ContainerTyp[cargo]["price"]
 
 func getCargoName()-> String:
-	return names[cargo]
+	return ContainerTyp[cargo]["name"]
 
 func getDistance()->float:
 	if(origin==null or destination==null): return 0.0	
 	return origin.global_transform.origin.distance_to(destination.global_transform.origin) 
 
 func getMass()->float:
-	return mass[cargo]
+	return ContainerTyp[cargo]["mass"]
 
 func _on_mouse_exited():
 	if(self.get_tree()!=null): 	self.get_tree().get_nodes_in_group("consol")[0].text = ""
