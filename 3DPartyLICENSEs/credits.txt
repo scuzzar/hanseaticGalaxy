@@ -1,3 +1,4 @@
 NickTimesAudio https://freesound.org/s/494827/
 Solar Some Solar System Textures https://www.solarsystemscope.com/textures/
-https://www.ivoyager.dev
+ivoyager Project https://www.ivoyager.dev
+godot-csv-data-importer Haoyu Qiu https://github.com/timothyqiu/godot-csv-data-importer/
