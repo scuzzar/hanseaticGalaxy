@@ -4,6 +4,8 @@ var mission : DeliveryMission
 
 signal buttonPressed(mission)
 
+func setButtonActon(action:String):
+	$raw/HBoxContainer/Buy.text = action
 
 func setContent(m:DeliveryMission):
 	self.mission = m
@@ -15,5 +17,3 @@ func setContent(m:DeliveryMission):
 func _on_Buy_pressed():
 	emit_signal("buttonPressed",mission)	
 
-func setAbout():
-	$raw/HBoxContainer/Buy.text = "About"	

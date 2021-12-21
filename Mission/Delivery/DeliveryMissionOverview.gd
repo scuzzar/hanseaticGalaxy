@@ -7,39 +7,31 @@ onready var vBox = $"Container/VBoxContainer"
 
 var ship:Ship
 
+
 signal deliver(container)
 signal about(container)
 
 func _ready():	
+	
 	hide()	
 
 func update():
+	var missions = _getMissions()
 	if(self.visible):
 		for n in vBox.get_children():
 			vBox.remove_child(n)
-			n.queue_free()
-		var missions = Player.get_accepted_delivery_Missions()
+			n.queue_free()		
 		missions.sort_custom(self,"_sortByDistance")		
 		for m in missions:
 			_add_mission(m)
 	#mass_value.text = str(ship.mass)
 	
 
+func _getMissions():
+	return Player.get_accepted_delivery_Missions()
+
 func _sortByDistance(a,b):	
 	return a.getDistance() < b.getDistance()
-
-func setPort(port:Port):
-	self.inventor = port.inventory
-	self.show()
-	self.update()
-	self.connect("deliver",port,"")
-	port.inventory.connect("container_added", self, "_Inventory_added_container")
-
-func clearPort(port:Port):
-	self.inventor = null
-	self.hide()
-	self.disconnect("deliver",port,"")
-	port.inventory.disconnect("container_added", self, "_Inventory_added_container")
 
 func _Inventory_added_container(container:CargoContainer):
 	update()
@@ -48,9 +40,10 @@ func _add_mission(mission:DeliveryMission):
 	var newRaw = rawScene.instance()	
 	newRaw.setContent(mission)
 	if(mission.destination  == ship.docking_location):
+		newRaw.setButtonActon("Deliver")
 		newRaw.connect("buttonPressed",self,"_on_deliver")
 	else:
-		newRaw.setAbout()
+		newRaw.setButtonActon("About")
 		newRaw.connect("buttonPressed",self,"_on_about")
 	vBox.add_child(newRaw) # Add it as a child of this node.
 
