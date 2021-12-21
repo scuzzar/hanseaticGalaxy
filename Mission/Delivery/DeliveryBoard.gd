@@ -30,6 +30,7 @@ func clearPort(target):
 func update():
 	.update()
 	max_mass_value.text  = str("%0.2f" % ship.getMaxStartMass())
+	mass_value.text = str("%0.2f" % ship.mass)
 
 func _add_mission(container:DeliveryMission):	
 	var newRaw = rawScene.instance()	

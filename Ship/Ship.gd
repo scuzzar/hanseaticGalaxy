@@ -267,6 +267,7 @@ func save():
 		"fuel": fuel,
 		"fuel_cap" :fuel_cap,
 		"trust" : trust,
+		"price" : price,
 		"mass" : mass
 	}
 	return save_dict
@@ -280,6 +281,7 @@ func load_save(dict):
 	fuel_cap = dict["fuel_cap"]
 	mass = dict["mass"]
 	trust = dict["trust"]
+	price = dict["price"]
 	last_g_force = Vector3(0,0,0)
 
 

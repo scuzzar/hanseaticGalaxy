@@ -38,15 +38,16 @@ func _Inventory_added_container(container:CargoContainer):
 	update()
 
 func _add_mission(mission:DeliveryMission):	
-	var newRaw = rawScene.instance()	
-	newRaw.setContent(mission)
-	if(mission.destination  == ship.docking_location):
-		newRaw.setButtonActon("Deliver")
-		newRaw.connect("buttonPressed",self,"_on_deliver")
-	else:
-		newRaw.setButtonActon("About")
-		newRaw.connect("buttonPressed",self,"_on_about")
-	vBox.add_child(newRaw) # Add it as a child of this node.
+	if(mission!=null):
+		var newRaw = rawScene.instance()	
+		newRaw.setContent(mission)
+		if(mission.destination  == ship.docking_location):
+			newRaw.setButtonActon("Deliver")
+			newRaw.connect("buttonPressed",self,"_on_deliver")
+		else:
+			newRaw.setButtonActon("About")
+			newRaw.connect("buttonPressed",self,"_on_about")
+		vBox.add_child(newRaw) # Add it as a child of this node.
 
 func _on_deliver(container:DeliveryMission):
 	emit_signal("deliver",container)	
