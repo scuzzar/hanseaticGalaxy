@@ -11,7 +11,12 @@ func setContent(m:DeliveryMission):
 	self.mission = m
 	$raw/HBoxContainer/Good.text = mission.getCargoName()
 	$raw/HBoxContainer/Destination.text = mission.destination.name
-	$raw/HBoxContainer/Mass.text = str(mission.getMass())
+	
+	if(mission.getContainerCount()==1):
+		$raw/HBoxContainer/Mass.text = str(mission.getMass())
+	else:
+		$raw/HBoxContainer/Mass.text = str(mission.getMass()/mission.getContainerCount()) + " x " + str(mission.getContainerCount())
+	
 	$raw/HBoxContainer/Reward.text = str(mission.reward)
 
 func _on_Buy_pressed():

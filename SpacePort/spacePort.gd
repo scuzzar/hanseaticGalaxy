@@ -78,6 +78,9 @@ func remove_all_container(ContainerArray):
 func has_Space() -> bool:
 	return $Inventory.hasSpace()
 
+func freeSpace() -> int:
+	return $Inventory.freeSpace()
+
 func stock(cargo)->int:
 	return $Inventory.stock(cargo)
 

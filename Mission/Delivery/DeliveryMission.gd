@@ -4,7 +4,8 @@ class_name DeliveryMission
 
 var destination :Spatial
 var origin :Spatial
-var cargo = []
+var cargoContainer = []
+
 
 func _init(origin,destination):
 	self.origin = origin
@@ -13,7 +14,7 @@ func _init(origin,destination):
 func _to_string()->String:
 	if(destination!=null):
 	#var text = "Destination: " + destination.name + " (" + str(self.reward) +"c) " + str(round(getDistance())) + "km"
-		return  cargo.getCargoName() + " > " + destination.name + " C:" + str(self.reward) +" MASS:" + str(cargo.getMass()) #+ " D:" + str(getDistance()) 
+		return  self.getCargoName() + " > " + destination.name + " C:" + str(self.reward) +" MASS:" + str(self.getMass()) #+ " D:" + str(getDistance()) 
 	else:
 		return "nullDestination"
 		
@@ -24,17 +25,17 @@ func getDistance()->float:
 
 
 func getPrice():
-	return cargo[0].getPrice()
+	return cargoContainer[0].getPrice()
 	
 func getCargoName()-> String:
-	return cargo[0].getCargoName()
+	return cargoContainer[0].getCargoName()
 
 
 func getMass()->float:
-	return cargo[0].getMass()
+	return cargoContainer[0].getMass()*getContainerCount()
 
 func getContainerCount()->int:
-	return cargo.size()
+	return cargoContainer.size()
 
 func save():	
 	var save_dict = {

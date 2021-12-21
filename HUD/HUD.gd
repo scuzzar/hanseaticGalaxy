@@ -120,12 +120,12 @@ func _on_CargoBay_about(container):
 
 func _on_Button_pressed():
 	if(!inShipShop):
-		$CargoBay.hide()
+		$DeliveryMissionOverview.hide()
 		$DeliveryBoard.hide()
 		$ShipShop.show()
 		self.inShipShop=true
 	else:
-		$CargoBay.show()
+		$DeliveryMissionOverview.show()
 		$DeliveryBoard.show()
 		$ShipShop.hide()
 		self.inShipShop=false

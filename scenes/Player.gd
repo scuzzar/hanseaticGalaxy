@@ -26,14 +26,14 @@ func fuel_burned(amount):
 func deliver_Container(m: DeliveryMission):	
 	if(ship.docking_location == m.destination):
 		self.reward(m.reward)
-		ship.unload_all_container(m.cargo)	
+		ship.unload_all_container(m.cargoContainer)	
 		var i = accepted_delivery_Missions.find(m)
 		accepted_delivery_Missions.remove(i)
 	else:
 		print("container hit on Ship:" + m.destination.name)
 
 func about_Container(m:DeliveryMission):
-	ship.unload_all_container(m.cargo)
+	ship.unload_all_container(m.cargoContainer)
 	var i = accepted_delivery_Missions.find(m)
 	accepted_delivery_Missions.remove(i)
 	self.pay(m.reward* 0.2)
@@ -43,8 +43,8 @@ func accept_Mission(m:DeliveryMission):
 	if(docked):		
 		if(ship.can_load_container(m.getContainerCount())):
 			ship.docking_location.remove_Mission(m)
-			ship.docking_location.remove_all_container(m.cargo)
-			ship.load_all_container(m.cargo)
+			ship.docking_location.remove_all_container(m.cargoContainer)
+			ship.load_all_container(m.cargoContainer)
 			accepted_delivery_Missions.append(m)
 		else:
 			print("no Space on Ship")
