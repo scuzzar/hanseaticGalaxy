@@ -18,7 +18,8 @@ enum CARGO{
 	RARE_METALS = 11,
 	LUXUS = 12,
 	DEUTERIUM = 13,
-	FUEL = 14
+	FUEL = 14,
+	NONE = 999
 }
 
 const ContainerTyp = preload("res://Cargo/containerTyps.csv").records

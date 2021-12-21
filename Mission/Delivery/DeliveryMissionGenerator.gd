@@ -1,27 +1,30 @@
 extends Node
 
-export(CargoContainer.CARGO) var cargo
-export(float) var wait_time = 10
-export(int) var max_store = 100
-export(int) var init_store = 1
+export(CargoContainer.CARGO) var cargo = CargoContainer.CARGO.NONE
+export(int) var max_missions = 3
+export(int) var init_missions = 1
 
 const groupTag = "TARGET"
 
 onready var port:Port = self.get_parent()
 var deliveryMissionScene = preload("res://Mission/Delivery/DeliveryMission.tscn")
 
-func _ready():		
-	$GenTimer.wait_time = self.wait_time	
-	$GenTimer.start()
+const ContainerTyp = preload("res://Cargo/containerTyps.csv").records
 
-func generateInitialStock():	 
-	for i in init_store : 
-		var mission = self._generate_mission()
-		port.add_Mission(mission)
-		port.add_all_Container(mission.cargoContainer)
+func _ready():		
+	if(cargo!=CargoContainer.CARGO.NONE):
+		$GenTimer.wait_time = self.getProductionTime()*60
+		$GenTimer.start()
+
+func generateInitialStock():
+	if(cargo!=CargoContainer.CARGO.NONE):	 
+		for i in init_missions : 
+			var mission = self._generate_mission()
+			port.add_Mission(mission)
+			port.add_all_Container(mission.cargoContainer)
 
 func _on_GenTimer_timeout():	
-	if(port.freeSpace()>init_store  and port.stock(cargo)<max_store):
+	if(port.freeSpace()>self.getMaxBatch() and port.stock(cargo)<max_missions*self.getMaxBatch()):
 		var mission = _generate_mission()
 		port.add_Mission(mission)		
 		port.add_all_Container(mission.cargoContainer)
@@ -35,8 +38,11 @@ func _generate_mission() -> DeliveryMission:
 	mission.origin = origin
 	mission.destination = destination
 	mission.cargo = cargo
-	var amount = 1
-	if(init_store>1): amount = randi()%(init_store-1)	+1
+	
+	var amount = self.getMinBatch()
+	var maxAddition = self.getMaxBatch() - amount	
+	amount += randi()%maxAddition
+	
 	mission._createContainer(amount)
 	
 	var distance = mission.getDistance()	
@@ -55,10 +61,11 @@ func _select_destination()->Port:
 	else:
 		return port.get_default_location() 
 	
-
-
+func getProductionTime():
+	return ContainerTyp[cargo]["productionTime"]
 	
+func getMinBatch():
+	return ContainerTyp[cargo]["minBatch"]
 	
-	
-	
-	
+func getMaxBatch():
+	return ContainerTyp[cargo]["maxBatch"]
