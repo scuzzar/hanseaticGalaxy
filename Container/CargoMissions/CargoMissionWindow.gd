@@ -10,7 +10,7 @@ onready var max_mass_value = $Footer/max_mass_value
 
 var ship:Ship
 
-var inventor
+var port : Port
 signal accepted(container)
 
 func _ready():	
@@ -22,7 +22,7 @@ func update():
 		for n in vBox.get_children():
 			vBox.remove_child(n)
 			n.queue_free()
-		var container = inventor.getAllContainter()
+		var container = port.get_all_DeliveryMissions()
 		container.sort_custom(self,"_sortByDistance")
 		for c in container:
 			_add_container(c)
@@ -33,7 +33,7 @@ func _sortByDistance(a,b):
 	return a.getDistance() < b.getDistance()
 
 func setPort(target):
-	self.inventor = target.inventory
+	self.port = target
 	self.show()
 	self.update()
 	var existingConnection = target.inventory.is_connected("container_added", self, "_Inventory_added_container")
@@ -41,22 +41,22 @@ func setPort(target):
 		target.inventory.connect("container_added", self, "_Inventory_added_container")
 
 func clearPort(target):
-	self.inventor = null
+	self.port = null
 	self.hide()	
 	var existingConnection = target.inventory.is_connected("container_added", self, "_Inventory_added_container")
 	if(existingConnection):
 		target.inventory.disconnect("container_added", self, "_Inventory_added_container")
 
-func _Inventory_added_container(container:MissionContainer):
+func _Inventory_added_container(container:DeliveryMission):
 	update()
 
-func _add_container(container:MissionContainer):	
+func _add_container(container:DeliveryMission):	
 	var newRaw = rawScene.instance()	
 	newRaw.setContent(container)
 	newRaw.connect("buttonPressed",self,"_on_accepted")
 	vBox.add_child(newRaw) # Add it as a child of this node.
 
-func _on_accepted(container:MissionContainer):
+func _on_accepted(container:DeliveryMission):
 	emit_signal("accepted",container)
 	update()
 

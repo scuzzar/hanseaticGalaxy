@@ -1,6 +1,6 @@
 extends Node
 class_name CargoTarget
-export(MissionContainer.CARGO) var cargo
+export(CargoContainer.CARGO) var cargo
 onready var port:Port = self.get_parent()
 #var cargoName = MissionContainer.new().names[cargo]
 const groupTag = "TARGET"

@@ -8,6 +8,7 @@ export(NodePath) var defaultMissionDestination_path
 var _defaultMissionDestination :Port
 onready var inventory = $Inventory
 var docked_ship: Ship
+var delivery_Missions = []
 
 func _ready():	
 	docked_ship = null
@@ -41,18 +42,6 @@ func _on_Area_Ship_exited(ship : Ship):
 	ship.undock()
 	self.docked_ship = null	
 
-func accept_Mission(container:MissionContainer):
-	if($Inventory.hasContainer(container) and docked_ship != null):		
-		if(docked_ship.can_load_container()):
-			$Inventory.removeContainer(container)
-			docked_ship.load_containter(container)
-		else:
-			print("no Space on Ship")
-	else:
-		print($Inventory.hasContainer(container) )
-		print(docked_ship)
-		print_debug("mission_accepted hit, but not executed!")
-
 func getShipsForSale():
 	var result = []
 	for c in self.get_children():
@@ -60,8 +49,33 @@ func getShipsForSale():
 			result.append(c)
 	return result
 
-func add_container(c: MissionContainer):
+func add_Mission(mission:Mission):
+	if(mission is DeliveryMission):
+		delivery_Missions.append(mission)	
+
+func remove_Mission(mission:Mission):
+	if(mission is DeliveryMission):
+		var i = delivery_Missions.find(mission)
+		delivery_Missions.remove(i)
+		
+func get_all_DeliveryMissions():
+	return delivery_Missions
+
+
+func has_Mission(mission:Mission):
+	if(mission is DeliveryMission):
+		return delivery_Missions.has(mission)
+	else:
+		return false
+
+func has_container(c: CargoContainer):
+	return $Inventory.hasContainer(c)
+
+func add_container(c: CargoContainer):
 	$Inventory.addContainerOnFree(c)
+
+func remove_container(c: CargoContainer):
+	$Inventory.removeContainer(c)
 
 func has_Space() -> bool:
 	return $Inventory.hasSpace()

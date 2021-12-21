@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Container/CargoMissions/raw.gd" type="Script" id=1]
+[ext_resource path="res://Ship/CargoBay/BayRaw.gd" type="Script" id=1]
 
 [sub_resource type="StyleBoxLine" id=1]
 color = Color( 0.470588, 0.470588, 0.470588, 1 )

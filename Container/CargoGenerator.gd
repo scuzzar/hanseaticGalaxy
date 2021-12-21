@@ -1,6 +1,6 @@
 extends Node
 
-export(MissionContainer.CARGO) var cargo
+export(CargoContainer.CARGO) var cargo
 #onready var cargoName = MissionContainer.new().names[cargo]
 export(float) var wait_time = 10
 export(int) var max_store = 100
@@ -15,24 +15,34 @@ func _ready():
 	$GenTimer.wait_time = self.wait_time	
 	$GenTimer.start()
 
-func generateInitialStock():
-	for i in init_store : port.add_container(self._generate_mission())
+func generateInitialStock():	 
+	for i in init_store : 
+		var mission = self._generate_mission()
+		port.add_Mission(mission)
+		port.add_container(mission.cargo)
 
 func _on_GenTimer_timeout():	
 	if(port.has_Space() and port.stock(cargo)<max_store):
-		var c = _generate_mission()
-		port.add_container(c)
+		var mission = _generate_mission()
+		port.add_Mission(mission)
+		port.add_container(mission.cargo)
 		
 
 
-func _generate_mission() -> MissionContainer:
+func _generate_mission() -> DeliveryMission:
+	
+	var origin = port
+	var destination = self._select_destination()	
+	var mission = DeliveryMission.new(origin,destination)
+	
 	var c = MissionContainerScene.instance()
-	c.origin = port
-	c.destination = self._select_destination()	
 	c._set_cargo(cargo)	
-	var distance = c.getDistance()	
-	c.reward = round(c.getPrice() * log(distance)*log(distance)/5)
-	return c
+	
+	mission.cargo = c
+	
+	var distance = mission.getDistance()	
+	mission.reward = round(mission.getPrice() * log(distance)*log(distance)/5)
+	return mission
 
 func _select_destination()->Port:
 	var target:CargoTarget 	

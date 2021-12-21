@@ -27,6 +27,7 @@ func setShip(newShip:Ship):
 	$Simulator._simulation_Object = newShip
 	self.ship = newShip
 	$Shifter.parent = newShip
+	Player.ship = newShip
 
 func _process(delta):
 	if Input.is_action_pressed("endGame"):

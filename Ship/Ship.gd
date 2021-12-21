@@ -196,18 +196,18 @@ func set_fuel(pFuel:float):
 	emit_signal("fuel_changed",fuel, fuel_cap)
 
 func get_refule_costs():
-	var fuelprice = MissionContainer.ContainerTyp[MissionContainer.CARGO.FUEL]["price"]
+	var fuelprice = 1000
 	var fuel_to_By = self.fuel_cap - fuel
 	var credits_to_pay = fuel_to_By*fuelprice/1000
 	return credits_to_pay
 
-func load_containter(c : MissionContainer) -> bool:
+func load_containter(c : CargoContainer) -> bool:
 	var added = $Inventory.addContainerOnFree(c)
 	self.mass += c.getMass()	
 	emit_signal("mass_changed",mass,trust)
 	return added
 
-func unload_containter(c : MissionContainer):
+func unload_containter(c : CargoContainer):
 	self.mass -= c.getMass()	
 	$Inventory.removeContainer(c)	
 	emit_signal("mass_changed",mass,trust)
@@ -227,17 +227,6 @@ func undock():
 	if(self.docking_location!=null):
 		emit_signal("undocked",  self.docking_location)
 		self.docking_location = null
-
-func deliver_Container(c: MissionContainer):	
-	if(self.docking_location == c.destination):
-		Player.reward(c.reward)
-		self.unload_containter(c)		
-	else:
-		print("container hit on Ship:" + c.destination.name)
-
-func about_Container(c:MissionContainer):
-	self.unload_containter(c)
-	Player.pay(c.reward* 0.2)
 
 func getCargoSlotCount():
 	return $Inventory.slots.size()

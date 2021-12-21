@@ -105,15 +105,15 @@ func _on_Ship_undocked(port:Port):
 	inShipShop = false
 
 func _on_InventoryWindow_accepted(container):
-	ship.docking_location.accept_Mission(container)
+	Player.accept_Mission(container)
 	$CargoBay.update()
 	
 func _on_CargoBay_deliver(container):
-	ship.deliver_Container(container)
+	Player.deliver_Container(container)
 	$CargoBay.update()
 
 func _on_CargoBay_about(container):
-	ship.about_Container(container)
+	Player.about_Container(container)
 	$CargoBay.update()
 	$InventoryWindow.update()
 

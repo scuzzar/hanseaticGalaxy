@@ -21,11 +21,10 @@ func update():
 		for n in vBox.get_children():
 			vBox.remove_child(n)
 			n.queue_free()
-		var container = ship.inventory.getAllContainter()
-		container.sort_custom(self,"_sortByDistance")
-		print(container)
-		for c in container:
-			_add_container(c)
+		var missions = Player.get_accepted_delivery_Missions()
+		missions.sort_custom(self,"_sortByDistance")		
+		for m in missions:
+			_add_container(m)
 	#mass_value.text = str(ship.mass)
 	
 
@@ -45,10 +44,10 @@ func clearPort(port:Port):
 	self.disconnect("deliver",port,"")
 	port.inventory.disconnect("container_added", self, "_Inventory_added_container")
 
-func _Inventory_added_container(container:MissionContainer):
+func _Inventory_added_container(container:CargoContainer):
 	update()
 
-func _add_container(container:MissionContainer):	
+func _add_container(container:DeliveryMission):	
 	var newRaw = rawScene.instance()	
 	newRaw.setContent(container)
 	if(container.destination  == ship.docking_location):
@@ -58,11 +57,11 @@ func _add_container(container:MissionContainer):
 		newRaw.connect("buttonPressed",self,"_on_about")
 	vBox.add_child(newRaw) # Add it as a child of this node.
 
-func _on_deliver(container:MissionContainer):
+func _on_deliver(container:DeliveryMission):
 	emit_signal("deliver",container)	
 	update()
 
-func _on_about(container:MissionContainer):
+func _on_about(container:DeliveryMission):
 	emit_signal("about",container)
 
 func _on_visibility_changed():
