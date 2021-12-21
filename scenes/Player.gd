@@ -29,13 +29,15 @@ func deliver_Container(m: DeliveryMission):
 		ship.unload_all_container(m.cargoContainer)	
 		var i = accepted_delivery_Missions.find(m)
 		accepted_delivery_Missions.remove(i)
+		ship.remove_child(m)
 	else:
 		print("container hit on Ship:" + m.destination.name)
 
 func about_Container(m:DeliveryMission):
 	ship.unload_all_container(m.cargoContainer)
-	var i = accepted_delivery_Missions.find(m)
+	var i = accepted_delivery_Missions.find(m)	
 	accepted_delivery_Missions.remove(i)
+	ship.remove_child(m)
 	self.pay(m.reward* 0.2)
 
 func accept_Mission(m:DeliveryMission):
@@ -46,6 +48,8 @@ func accept_Mission(m:DeliveryMission):
 			ship.docking_location.remove_all_container(m.cargoContainer)
 			ship.load_all_container(m.cargoContainer)
 			accepted_delivery_Missions.append(m)
+			ship.add_child(m)
+			m.accepted = true
 		else:
 			print("no Space on Ship")
 	else:		

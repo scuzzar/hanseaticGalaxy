@@ -8,7 +8,7 @@ export(int) var init_store = 1
 const groupTag = "TARGET"
 
 onready var port:Port = self.get_parent()
-var MissionContainerScene = preload("res://Cargo/CargoContainer.scn")
+var deliveryMissionScene = preload("res://Mission/Delivery/DeliveryMission.tscn")
 
 func _ready():		
 	$GenTimer.wait_time = self.wait_time	
@@ -28,17 +28,16 @@ func _on_GenTimer_timeout():
 		
 
 
-func _generate_mission() -> DeliveryMission:
-	
+func _generate_mission() -> DeliveryMission:	
 	var origin = port
 	var destination = self._select_destination()	
-	var mission = DeliveryMission.new(origin,destination)
-	
-	var amount = randi()%init_store	+1
-	for i in amount:
-		var c = MissionContainerScene.instance()
-		c._set_cargo(cargo)		
-		mission.cargoContainer.append(c)
+	var mission = deliveryMissionScene.instance()
+	mission.origin = origin
+	mission.destination = destination
+	mission.cargo = cargo
+	var amount = 1
+	if(init_store>1): amount = randi()%(init_store-1)	+1
+	mission._createContainer(amount)
 	
 	var distance = mission.getDistance()	
 	mission.reward = round(mission.getPrice() * log(distance)*log(distance)/5) * amount

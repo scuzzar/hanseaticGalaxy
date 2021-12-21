@@ -124,6 +124,45 @@ func save_game():
 func _sortNasedLast(a,b):
 	return a["parent"].get_name_count()<b["parent"].get_name_count()
 
+func load_game():
+	var save_game = File.new()
+	if not save_game.file_exists(Globals.QUICKSAVE_PATH):
+		return # Error! We don't have a save to load.
+
+	save_game.open(Globals.QUICKSAVE_PATH, File.READ)
+	while save_game.get_position() < save_game.get_len():
+		var line = save_game.get_line()
+		var node_data = parse_json(line)
+		if(node_data==null): 
+			print(line)
+			continue
+		if(node_data["nodePath"]=="Player"):
+			Player.load_save(node_data)
+			continue
+			
+		if(node_data["nodePath"]=="/root/Sol/PlayerShip"):
+			$PlayerShip.free()
+			var laoded_PlayerShip :Ship = load(node_data["filename"]).instance()
+			laoded_PlayerShip.physikAktiv = true
+			laoded_PlayerShip.load_save(node_data)
+			laoded_PlayerShip.playerControl = true			
+			laoded_PlayerShip.name = "PlayerShip"
+			var laoded_node_parent = get_node(node_data["parent"])
+			laoded_node_parent.add_child(laoded_PlayerShip)			
+			self.setShip(laoded_PlayerShip)
+			continue
+			
+			
+		var laoded_node = get_node_or_null(node_data["nodePath"])
+		# Handel Dynamic Instanciation
+		if(laoded_node==null):
+			laoded_node = load(node_data["filename"]).instance()
+			var laoded_node_parent = get_node(node_data["parent"])
+			laoded_node_parent.add_child(laoded_node)
+		laoded_node.load_save(node_data)
+
+	save_game.close()
+
 func buyShip(newShip:Ship):
 	if(!Player.credits>=newShip.price-ship.price):
 		print("You miss: " + str((Player.credits-newShip.price+ship.price)*-1) + " Credits")
@@ -174,45 +213,6 @@ func buyShip(newShip:Ship):
 		self.setShip(newShip)
 	
 
-
-func load_game():
-	var save_game = File.new()
-	if not save_game.file_exists(Globals.QUICKSAVE_PATH):
-		return # Error! We don't have a save to load.
-
-	save_game.open(Globals.QUICKSAVE_PATH, File.READ)
-	while save_game.get_position() < save_game.get_len():
-		var line = save_game.get_line()
-		var node_data = parse_json(line)
-		if(node_data==null): 
-			print(line)
-			continue
-		if(node_data["nodePath"]=="Player"):
-			Player.load_save(node_data)
-			continue
-			
-		if(node_data["nodePath"]=="/root/Sol/PlayerShip"):
-			$PlayerShip.free()
-			var laoded_PlayerShip :Ship = load(node_data["filename"]).instance()
-			laoded_PlayerShip.physikAktiv = true
-			laoded_PlayerShip.load_save(node_data)
-			laoded_PlayerShip.playerControl = true			
-			laoded_PlayerShip.name = "PlayerShip"
-			var laoded_node_parent = get_node(node_data["parent"])
-			laoded_node_parent.add_child(laoded_PlayerShip)			
-			self.setShip(laoded_PlayerShip)
-			continue
-			
-			
-		var laoded_node = get_node_or_null(node_data["nodePath"])
-		# Handel Dynamic Instanciation
-		if(laoded_node==null):
-			laoded_node = load(node_data["filename"]).instance()
-			var laoded_node_parent = get_node(node_data["parent"])
-			laoded_node_parent.add_child(laoded_node)
-		laoded_node.load_save(node_data)
-
-	save_game.close()
 	
 func _on_HUD_shipOrderd(ship):
 	self.buyShip(ship)

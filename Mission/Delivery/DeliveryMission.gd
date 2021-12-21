@@ -5,11 +5,17 @@ class_name DeliveryMission
 var destination :Spatial
 var origin :Spatial
 var cargoContainer = []
+export(CargoContainer.CARGO) var cargo
+const MissionContainerScene = preload("res://Cargo/CargoContainer.scn")
 
+func _init():
+	self.add_to_group("persist")
 
-func _init(origin,destination):
-	self.origin = origin
-	self.destination = destination
+func _createContainer(amount):
+	for i in amount:
+		var c = MissionContainerScene.instance()
+		c._set_cargo(cargo)		
+		self.cargoContainer.append(c)
 
 func _to_string()->String:
 	if(destination!=null):
@@ -43,12 +49,27 @@ func save():
 		"parent" : get_parent().get_path(),
 		"destination" : destination.get_path(),
 		"origin" : origin.get_path(),
-		"reward" : reward			
-	}
+		"reward" : reward,
+		"accepted" : accepted,
+		"amount" : self.getContainerCount(),
+		"cargo" : cargo
+	}	
 	return save_dict
 
 func load_save(dict):
 	reward = dict["reward"]
 	destination = get_node(dict["destination"])
 	origin = get_node(dict["origin"])
+	cargo = CargoContainer.CARGO.values()[dict["cargo"]]
+	self._createContainer(dict["amount"])
+	accepted = dict["accepted"]
+	
+	if(accepted):
+		Player.ship.load_all_container(cargoContainer)
+		Player.accepted_delivery_Missions.append(self)
+		Player.ship.add_child(self)
+		pass
+	else:
+		origin.delivery_Missions.append(self)
+		origin.add_all_Container(cargoContainer)	
 	pass
