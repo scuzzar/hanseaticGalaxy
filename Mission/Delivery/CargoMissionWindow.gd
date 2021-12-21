@@ -1,14 +1,10 @@
-extends Panel
-
-var rawScene = preload("res://Mission/Delivery/DeliveryRaw.tscn")
-onready var vBox = $"Container/VBoxContainer"
+extends "res://Mission/Delivery/DeliveryMissionOverview.gd"
 
 onready var mass_value = $Footer/mass_value
 onready var max_mass_value = $Footer/max_mass_value
 
 #var destinationMap={}
 
-var ship:Ship
 
 var port : Port
 signal accepted(container)
@@ -46,9 +42,6 @@ func clearPort(target):
 	var existingConnection = target.inventory.is_connected("container_added", self, "_Inventory_added_container")
 	if(existingConnection):
 		target.inventory.disconnect("container_added", self, "_Inventory_added_container")
-
-func _Inventory_added_container(container:DeliveryMission):
-	update()
 
 func _add_container(container:DeliveryMission):	
 	var newRaw = rawScene.instance()	

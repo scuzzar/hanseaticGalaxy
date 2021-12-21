@@ -3,9 +3,6 @@ extends Panel
 var rawScene = preload("res://Mission/Delivery/DeliveryRaw.tscn")
 onready var vBox = $"Container/VBoxContainer"
 
-onready var mass_value = $Footer/mass_value
-onready var max_mass_value = $Footer/max_mass_value
-
 #var destinationMap={}
 
 var ship:Ship
@@ -66,8 +63,7 @@ func _on_about(container:DeliveryMission):
 
 func _on_visibility_changed():
 	if(self.is_visible_in_tree()):
-		update()
-		max_mass_value.text  = str("%0.2f" % ship.getMaxStartMass())	
+		update()		
 	pass
 		
 func setShip(ship:Ship):

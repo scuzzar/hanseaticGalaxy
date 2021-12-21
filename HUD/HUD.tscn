@@ -207,18 +207,17 @@ margin_top = -25.0
 margin_right = 488.0
 margin_bottom = -4.0
 
-[node name="InventoryWindow" parent="." instance=ExtResource( 6 )]
-anchor_bottom = 1.0
-margin_left = 41.3678
-margin_top = 175.01
-margin_right = 551.368
-margin_bottom = -111.99
-
 [node name="CargoBay" parent="." instance=ExtResource( 7 )]
 margin_left = -548.0
 margin_top = 175.0
 margin_right = -43.0
 margin_bottom = -112.0
+
+[node name="InventoryWindow" parent="." instance=ExtResource( 6 )]
+margin_left = 96.0
+margin_top = 168.0
+margin_right = 601.0
+margin_bottom = -109.0
 
 [node name="CenterHUB" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -337,8 +336,8 @@ margin_right = 49.9524
 margin_bottom = 69.0
 text = "Ship Shop"
 
-[connection signal="accepted" from="InventoryWindow" to="." method="_on_InventoryWindow_accepted"]
 [connection signal="about" from="CargoBay" to="." method="_on_CargoBay_about"]
 [connection signal="deliver" from="CargoBay" to="." method="_on_CargoBay_deliver"]
+[connection signal="accepted" from="InventoryWindow" to="." method="_on_InventoryWindow_accepted"]
 [connection signal="shipOrderd" from="ShipShop" to="." method="_on_shipOrderd"]
 [connection signal="pressed" from="ShipShopButton" to="." method="_on_Button_pressed"]
