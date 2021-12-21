@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Building/Building.tscn" type="PackedScene" id=1]
+
+[node name="DomedCity" instance=ExtResource( 1 )]
+
+[node name="Input1" parent="." index="2"]
+cargo = 1
+
+[node name="Input2" parent="." index="3"]
+cargo = 10
+
+[node name="Input3" parent="." index="4"]
+cargo = 3
+
+[node name="Input4" parent="." index="5"]
+cargo = 6
+
+[node name="Input5" parent="." index="6"]
+cargo = 12
+
+[node name="Input6" parent="." index="7"]
+cargo = 7

@@ -18,6 +18,7 @@ var stock ={
 	CargoContainer.CARGO.HABITATION:0,
 	CargoContainer.CARGO.INFRASTRUCTURE:0,
 	CargoContainer.CARGO.STEEL:0,
+	CargoContainer.CARGO.ENERGY:0,
 	CargoContainer.CARGO.DEUTERIUM:0
 }
 

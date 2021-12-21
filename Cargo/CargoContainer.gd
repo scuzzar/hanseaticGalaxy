@@ -19,6 +19,7 @@ enum CARGO{
 	LUXUS = 12,
 	DEUTERIUM = 13,
 	FUEL = 14,
+	ENERGY = 15,
 	NONE = 999
 }
 
@@ -95,6 +96,8 @@ func _set_cargo(pcargo):
 			$Mesh/Metals.show()
 		CARGO.DEUTERIUM:
 			$Mesh/RareMetal.show()
+		CARGO.ENERGY:
+			$Mesh/Electronics.show()
 			
 
 func save():	

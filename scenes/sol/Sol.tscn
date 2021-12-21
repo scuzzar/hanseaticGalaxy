@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Bodys/materials/Sun.material" type="Material" id=1]
 [ext_resource path="res://Bodys/materials/Moon.material" type="Material" id=2]
@@ -7,14 +7,14 @@
 [ext_resource path="res://Bodys/materials/Saturn_Rings.material" type="Material" id=5]
 [ext_resource path="res://N_Body/Simulator.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Bodys/materials/Mimas.material" type="Material" id=7]
-[ext_resource path="res://SpacePort/CargoTarget.gd" type="Script" id=8]
+[ext_resource path="res://Building/Warft.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Ship/SimpleRocket/SimpelRocket.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Station/Station.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Bodys/materials/Saturn.material" type="Material" id=11]
 [ext_resource path="res://Bodys/materials/Titan.material" type="Material" id=12]
 [ext_resource path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" type="PackedScene" id=13]
 [ext_resource path="res://SpacePort/spacePort.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Mission/Delivery/DeliveryMissionGenerator.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Building/City.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Bodys/Planet.tscn" type="PackedScene" id=16]
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Camera/ShipCamera.tscn" type="PackedScene" id=18]
@@ -34,6 +34,15 @@
 [ext_resource path="res://Bodys/materials/Kallisto.material" type="Material" id=32]
 [ext_resource path="res://Bodys/materials/Ganimede.material" type="Material" id=33]
 [ext_resource path="res://Bodys/materials/SimpleBelt.tres" type="Material" id=34]
+[ext_resource path="res://Building/OrbitalCity.tscn" type="PackedScene" id=35]
+[ext_resource path="res://Building/Construction.tscn" type="PackedScene" id=36]
+[ext_resource path="res://Building/DomedCity.tscn" type="PackedScene" id=37]
+[ext_resource path="res://Building/DomedFarmes.tscn" type="PackedScene" id=38]
+[ext_resource path="res://Building/HighTech.tscn" type="PackedScene" id=39]
+[ext_resource path="res://Building/Industry.tscn" type="PackedScene" id=40]
+[ext_resource path="res://Building/Farmes.tscn" type="PackedScene" id=41]
+[ext_resource path="res://Building/Mine.tscn" type="PackedScene" id=42]
+[ext_resource path="res://Building/EnergyHavester.tscn" type="PackedScene" id=43]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.5
@@ -132,26 +141,16 @@ shader_params/u_attenuation_distance = 0.0
 [node name="VenusST" parent="Sun/Venus" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100.503, 0, 0 )
 
-[node name="T_Metal" type="Node" parent="Sun/Venus/VenusST"]
-script = ExtResource( 8 )
-
-[node name="T_Food" type="Node" parent="Sun/Venus/VenusST"]
-script = ExtResource( 8 )
-cargo = 1
-
-[node name="G_Luxus" parent="Sun/Venus/VenusST" instance=ExtResource( 15 )]
-cargo = 6
-
-[node name="G_Consumers" parent="Sun/Venus/VenusST" instance=ExtResource( 15 )]
-cargo = 4
-
-[node name="G_Electronics" parent="Sun/Venus/VenusST" instance=ExtResource( 15 )]
-cargo = 3
-
 [node name="Ship" parent="Sun/Venus/VenusST" instance=ExtResource( 19 )]
 transform = Transform( 0.249281, 0.968431, -4.23315e-08, -2.8478e-23, -4.37114e-08, -1, -0.968431, 0.249281, -1.08964e-08, 0.632935, -0.854731, -3.28711 )
 linear_velocity = Vector3( 0.82, 0, 0 )
 dispay_name = "Akapulko"
+
+[node name="Warft" parent="Sun/Venus/VenusST" instance=ExtResource( 8 )]
+
+[node name="EnergHavester" parent="Sun/Venus/VenusST" instance=ExtResource( 43 )]
+
+[node name="OrbitalCity" parent="Sun/Venus/VenusST" instance=ExtResource( 35 )]
 
 [node name="Earth" parent="Sun" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7500, 0, 0 )
@@ -179,28 +178,24 @@ shader_params/u_attenuation_distance = 0.0
 transform = Transform( -0.75811, 0.652126, -5.57647e-08, -1.15933e-07, -4.92623e-08, 1, 0.652126, 0.75811, 1.12949e-07, 39.5011, 0, 54.2845 )
 defaultMissionDestination_path = NodePath("../Moon/ApolloPort")
 
-[node name="G_Luxus" parent="Sun/Earth/BrasiliaPort" instance=ExtResource( 15 )]
-cargo = 12
+[node name="City" parent="Sun/Earth/BrasiliaPort" instance=ExtResource( 15 )]
 
-[node name="G_Food" parent="Sun/Earth/BrasiliaPort" instance=ExtResource( 15 )]
-cargo = 1
+[node name="Construction" parent="Sun/Earth/BrasiliaPort" instance=ExtResource( 36 )]
+transform = Transform( -0.758111, -1.15933e-07, 0.652127, 0.652127, -4.92622e-08, 0.758111, -5.57648e-08, 1, 1.12949e-07, -5.4541, -66.9131, -3.92864e-06 )
 
-[node name="T_Rare_Metal" type="Node" parent="Sun/Earth/BrasiliaPort"]
-script = ExtResource( 8 )
-cargo = 11
-
-[node name="G_Consumers" parent="Sun/Earth/BrasiliaPort" instance=ExtResource( 15 )]
-cargo = 10
+[node name="HighTech" parent="Sun/Earth/BrasiliaPort" instance=ExtResource( 39 )]
 
 [node name="PhilipinPort" parent="Sun/Earth" instance=ExtResource( 14 )]
 transform = Transform( 0.887395, -0.461006, -3.10774e-08, -5.9375e-09, -7.88407e-08, 1, -0.461006, -0.887395, -7.27003e-08, -28.0023, 0, -61.1177 )
 defaultMissionDestination_path = NodePath("../../Mars/OlympusPort")
 
-[node name="G_Machine" parent="Sun/Earth/PhilipinPort" instance=ExtResource( 15 )]
-cargo = 2
+[node name="City" parent="Sun/Earth/PhilipinPort" instance=ExtResource( 15 )]
 
-[node name="T_Metal" type="Node" parent="Sun/Earth/PhilipinPort"]
-script = ExtResource( 8 )
+[node name="Farmes" parent="Sun/Earth/PhilipinPort" instance=ExtResource( 41 )]
+
+[node name="Industry" parent="Sun/Earth/PhilipinPort" instance=ExtResource( 40 )]
+
+[node name="Construction" parent="Sun/Earth/PhilipinPort" instance=ExtResource( 36 )]
 
 [node name="Moon" parent="Sun/Earth" groups=["bodys"] instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 376.989 )
@@ -214,26 +209,9 @@ surface_g = 1.62
 transform = Transform( -0.901832, -0.432083, -3.94204e-08, 4.37114e-08, 1.91069e-15, -1, 0.432083, -0.901832, 1.88869e-08, -10.3149, 3.8147e-06, -24.2673 )
 defaultMissionDestination_path = NodePath("../../PhilipinPort")
 
-[node name="G_Metal" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource( 15 )]
+[node name="Construction" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource( 36 )]
 
-[node name="G_Electronics" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource( 15 )]
-cargo = 3
-
-[node name="T_Luxus" type="Node" parent="Sun/Earth/Moon/ApolloPort"]
-script = ExtResource( 8 )
-cargo = 6
-
-[node name="T_Food" type="Node" parent="Sun/Earth/Moon/ApolloPort"]
-script = ExtResource( 8 )
-cargo = 1
-
-[node name="T_Machine" type="Node" parent="Sun/Earth/Moon/ApolloPort"]
-script = ExtResource( 8 )
-cargo = 2
-
-[node name="T_Consumers" type="Node" parent="Sun/Earth/Moon/ApolloPort"]
-script = ExtResource( 8 )
-cargo = 4
+[node name="DomedCity" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource( 37 )]
 
 [node name="Mars" parent="Sun" instance=ExtResource( 16 )]
 transform = Transform( -4.37114e-08, 0, 1, -5.96048e-08, 1, -1.77636e-15, -1, -5.96048e-08, -4.37114e-08, 12000, 0, 0 )
@@ -246,34 +224,16 @@ surface_g = 3.69
 [node name="MarsST" parent="Sun/Mars" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 152.126, 0, 0 )
 
-[node name="T_Metal" type="Node" parent="Sun/Mars/MarsST"]
-script = ExtResource( 8 )
-
-[node name="T_Water" type="Node" parent="Sun/Mars/MarsST"]
-script = ExtResource( 8 )
-cargo = 3
-
-[node name="T_Oxygen" type="Node" parent="Sun/Mars/MarsST"]
-script = ExtResource( 8 )
-cargo = 4
-
-[node name="T_Food" type="Node" parent="Sun/Mars/MarsST"]
-script = ExtResource( 8 )
-cargo = 1
-
-[node name="G_Consumers" parent="Sun/Mars/MarsST" instance=ExtResource( 15 )]
-cargo = 10
-
-[node name="G_Electronics" parent="Sun/Mars/MarsST" instance=ExtResource( 15 )]
-cargo = 9
-
-[node name="G_Luxus" parent="Sun/Mars/MarsST" instance=ExtResource( 15 )]
-cargo = 12
-
 [node name="Ship" parent="Sun/Mars/MarsST" instance=ExtResource( 19 )]
 transform = Transform( 0.249281, 0.968431, -4.23315e-08, -2.8478e-23, -4.37114e-08, -1, -0.968431, 0.249281, -1.08964e-08, 0.632935, -0.854731, -3.28711 )
 linear_velocity = Vector3( 0.82, 0, 0 )
 dispay_name = "Akapulko"
+
+[node name="Warft" parent="Sun/Mars/MarsST" instance=ExtResource( 8 )]
+
+[node name="HighTech" parent="Sun/Mars/MarsST" instance=ExtResource( 39 )]
+
+[node name="OrbitalCity" parent="Sun/Mars/MarsST" instance=ExtResource( 35 )]
 
 [node name="Athmosphere" parent="Sun/Mars" instance=ExtResource( 13 )]
 planet_radius = 67.0
@@ -295,32 +255,19 @@ transform = Transform( 1, 0, 6.35275e-21, 0, 1, 0, 0, 0, 1, -1.79443, 0.0951424,
 sleeping = true
 price = 85000
 
-[node name="T_Luxus" type="Node" parent="Sun/Mars/OlympusPort"]
-script = ExtResource( 8 )
-cargo = 12
+[node name="EnergHavester" parent="Sun/Mars/OlympusPort" instance=ExtResource( 43 )]
 
-[node name="T_Metal" type="Node" parent="Sun/Mars/OlympusPort"]
-script = ExtResource( 8 )
+[node name="DomedFarmes" parent="Sun/Mars/OlympusPort" instance=ExtResource( 38 )]
+transform = Transform( -4.37114e-08, -3.81165e-21, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, 84.7495, -3.70452e-06 )
 
-[node name="T_Electronics" type="Node" parent="Sun/Mars/OlympusPort"]
-script = ExtResource( 8 )
-cargo = 9
+[node name="Warft" parent="Sun/Mars/OlympusPort" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, -3.81165e-21, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, 84.7495, -3.70452e-06 )
 
-[node name="T_Ice" type="Node" parent="Sun/Mars/OlympusPort"]
-script = ExtResource( 8 )
-cargo = 2
+[node name="DomedCity" parent="Sun/Mars/OlympusPort" instance=ExtResource( 37 )]
+transform = Transform( -4.37114e-08, -3.81165e-21, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, 84.7495, -3.70452e-06 )
 
-[node name="G_Consumers" parent="Sun/Mars/OlympusPort" instance=ExtResource( 15 )]
-cargo = 10
-
-[node name="G_Water" parent="Sun/Mars/OlympusPort" instance=ExtResource( 15 )]
-cargo = 3
-
-[node name="G_Food" parent="Sun/Mars/OlympusPort" instance=ExtResource( 15 )]
-cargo = 1
-
-[node name="G_Oxygen" parent="Sun/Mars/OlympusPort" instance=ExtResource( 15 )]
-cargo = 4
+[node name="Industry" parent="Sun/Mars/OlympusPort" instance=ExtResource( 40 )]
+transform = Transform( -4.37114e-08, -3.81165e-21, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, 84.7495, -3.70452e-06 )
 
 [node name="Deimos" parent="Sun/Mars" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -767.006, -4.61062e-06, 1.40234 )
@@ -335,25 +282,9 @@ surface_g = 1.7
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 21.1598, 0, 0 )
 defaultMissionDestination_path = NodePath("../../OlympusPort")
 
-[node name="T_Food" type="Node" parent="Sun/Mars/Deimos/DeimosPort"]
-script = ExtResource( 8 )
-cargo = 1
+[node name="Mine" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 42 )]
 
-[node name="T_Machine" type="Node" parent="Sun/Mars/Deimos/DeimosPort"]
-script = ExtResource( 8 )
-cargo = 5
-
-[node name="T_Consumers" type="Node" parent="Sun/Mars/Deimos/DeimosPort"]
-script = ExtResource( 8 )
-cargo = 10
-
-[node name="G_Rare" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 15 )]
-cargo = 11
-
-[node name="G_Metal" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 15 )]
-
-[node name="G_Ice" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 15 )]
-cargo = 2
+[node name="DomedCity" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 37 )]
 
 [node name="Ship2" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 19 )]
 transform = Transform( 0.993072, -0.117503, 4.19448e-08, 0.117503, 0.993072, 1.30263e-08, -4.31848e-08, -8.00733e-09, 1, -1.80078, 0.232727, -3.16904 )
@@ -476,27 +407,11 @@ surface_g = 2.0
 transform = Transform( 0.826119, 0.563495, 3.61108e-08, 4.37114e-08, 1.91069e-15, -1, -0.563495, 0.826119, -2.46311e-08, 29.2983, 0.215228, 37.522 )
 defaultMissionDestination_path = NodePath("../../../Earth/Moon/ApolloPort")
 
-[node name="G_Electronics" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource( 15 )]
-cargo = 9
+[node name="Mine" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource( 42 )]
 
-[node name="G_Rare" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource( 15 )]
-cargo = 11
+[node name="Construction" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource( 36 )]
 
-[node name="T_Food" type="Node" parent="Sun/Saturn/Titan/TitanPort"]
-script = ExtResource( 8 )
-cargo = 1
-
-[node name="T_Machine" type="Node" parent="Sun/Saturn/Titan/TitanPort"]
-script = ExtResource( 8 )
-cargo = 5
-
-[node name="T_Consumers" type="Node" parent="Sun/Saturn/Titan/TitanPort"]
-script = ExtResource( 8 )
-cargo = 10
-
-[node name="T_Luxus" type="Node" parent="Sun/Saturn/Titan/TitanPort"]
-script = ExtResource( 8 )
-cargo = 12
+[node name="DomedCity" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource( 37 )]
 
 [node name="Uranus" parent="Sun" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 150000, 0, 0 )
@@ -534,26 +449,11 @@ surface_g = 1.62
 transform = Transform( -0.062723, -0.998029, -2.74179e-09, 4.37114e-08, 3.24156e-15, -1, 0.998029, -0.062723, 4.36253e-08, -26.2188, 3.81448e-06, -2.82813 )
 defaultMissionDestination_path = NodePath("../../PhilipinPort")
 
-[node name="G_Metal" parent="Sun/Neptun/Triton/TreePeekPort" instance=ExtResource( 15 )]
+[node name="DomedCity" parent="Sun/Neptun/Triton/TreePeekPort" instance=ExtResource( 37 )]
+transform = Transform( -0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-14, -0.0627233, -2.74173e-09, -1, 4.36254e-08, 1.1875, -26.3359, 3.86592e-06 )
 
-[node name="G_Rare" parent="Sun/Neptun/Triton/TreePeekPort" instance=ExtResource( 15 )]
-cargo = 11
-
-[node name="T_Luxus" type="Node" parent="Sun/Neptun/Triton/TreePeekPort"]
-script = ExtResource( 8 )
-cargo = 12
-
-[node name="T_Food" type="Node" parent="Sun/Neptun/Triton/TreePeekPort"]
-script = ExtResource( 8 )
-cargo = 1
-
-[node name="T_Machine" type="Node" parent="Sun/Neptun/Triton/TreePeekPort"]
-script = ExtResource( 8 )
-cargo = 5
-
-[node name="T_Consumers" type="Node" parent="Sun/Neptun/Triton/TreePeekPort"]
-script = ExtResource( 8 )
-cargo = 10
+[node name="Mine" parent="Sun/Neptun/Triton/TreePeekPort" instance=ExtResource( 42 )]
+transform = Transform( -0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-14, -0.0627233, -2.74173e-09, -1, 4.36254e-08, 1.1875, -26.3359, 3.86592e-06 )
 
 [connection signal="shifted" from="Shifter" to="Simulator" method="_on_Shifter_shifted"]
 [connection signal="shipOrderd" from="HUD" to="." method="_on_HUD_shipOrderd"]

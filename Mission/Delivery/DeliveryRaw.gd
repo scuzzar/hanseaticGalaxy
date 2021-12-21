@@ -7,6 +7,9 @@ signal buttonPressed(mission)
 func setButtonActon(action:String):
 	$raw/HBoxContainer/Buy.text = action
 
+func setButtonDisabeld():
+	$raw/HBoxContainer/Buy.disabled = true
+	
 func setContent(m:DeliveryMission):
 	self.mission = m
 	$raw/HBoxContainer/Good.text = mission.getCargoName()

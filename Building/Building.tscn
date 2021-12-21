@@ -9,6 +9,10 @@
 
 [node name="Output2" parent="." instance=ExtResource( 1 )]
 
+[node name="Output3" parent="." instance=ExtResource( 1 )]
+
+[node name="Output4" parent="." instance=ExtResource( 1 )]
+
 [node name="Input1" type="Node" parent="."]
 script = ExtResource( 2 )
 
@@ -19,4 +23,10 @@ script = ExtResource( 2 )
 script = ExtResource( 2 )
 
 [node name="Input4" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Input5" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Input6" type="Node" parent="."]
 script = ExtResource( 2 )

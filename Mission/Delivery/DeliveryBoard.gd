@@ -32,15 +32,17 @@ func update():
 	max_mass_value.text  = str("%0.2f" % ship.getMaxStartMass())
 	mass_value.text = str("%0.2f" % ship.mass)
 
-func _add_mission(container:DeliveryMission):	
+func _add_mission(mission:DeliveryMission):	
 	var newRaw = rawScene.instance()	
-	newRaw.setContent(container)
+	newRaw.setContent(mission)
 	newRaw.connect("buttonPressed",self,"_on_accepted")
 	newRaw.setButtonActon("Accept")
+	if(Player.ship.getCargoSlotCount()<mission.getContainerCount()):
+		newRaw.setButtonDisabeld()
 	vBox.add_child(newRaw) # Add it as a child of this node.
 
-func _on_accepted(container:DeliveryMission):
-	emit_signal("accepted",container)
+func _on_accepted(mission:DeliveryMission):
+	emit_signal("accepted",mission)
 	update()
 
 func _on_visibility_changed():
