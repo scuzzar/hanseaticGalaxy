@@ -31,14 +31,6 @@ func _process(delta):
 	if(docked_ship!=null):
 		docked_ship.transform.origin = self.global_transform.origin
 
-#func _on_Area_body_entered(body):
-#	if(body is Ship):		
-#		self._on_Area_Ship_enterd(body)
-
-#func _on_Area_body_exited(body):
-#	if(body is Ship):		
-#		self._on_Area_Ship_exited(body)
-
 func _on_Area_Ship_enterd(ship : Ship):	
 	if(docked_ship==null):
 		self.docked_ship = ship	
