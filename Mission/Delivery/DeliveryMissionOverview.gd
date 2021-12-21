@@ -1,6 +1,6 @@
 extends Panel
 
-var rawScene = preload("res://Ship/CargoBay/BayRaw.tscn")
+var rawScene = preload("res://Mission/Delivery/DeliveryRaw.tscn")
 onready var vBox = $"Container/VBoxContainer"
 
 onready var mass_value = $Footer/mass_value
@@ -24,7 +24,7 @@ func update():
 		var missions = Player.get_accepted_delivery_Missions()
 		missions.sort_custom(self,"_sortByDistance")		
 		for m in missions:
-			_add_container(m)
+			_add_mission(m)
 	#mass_value.text = str(ship.mass)
 	
 
@@ -47,10 +47,10 @@ func clearPort(port:Port):
 func _Inventory_added_container(container:CargoContainer):
 	update()
 
-func _add_container(container:DeliveryMission):	
+func _add_mission(mission:DeliveryMission):	
 	var newRaw = rawScene.instance()	
-	newRaw.setContent(container)
-	if(container.destination  == ship.docking_location):
+	newRaw.setContent(mission)
+	if(mission.destination  == ship.docking_location):
 		newRaw.connect("buttonPressed",self,"_on_deliver")
 	else:
 		newRaw.setAbout()

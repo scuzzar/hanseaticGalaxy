@@ -1,6 +1,6 @@
 extends Panel
 
-var rawScene = preload("res://Container/CargoMissions/raw.tscn")
+var rawScene = preload("res://Mission/Delivery/DeliveryRaw.tscn")
 onready var vBox = $"Container/VBoxContainer"
 
 onready var mass_value = $Footer/mass_value

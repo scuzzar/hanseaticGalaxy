@@ -24,7 +24,7 @@ func fuel_burned(amount):
 	engine_fuel_left -= amount
 	
 func deliver_Container(m: DeliveryMission):	
-	if(self.docking_location == m.destination):
+	if(ship.docking_location == m.destination):
 		self.reward(m.reward)
 		ship.unload_containter(m.cargo)	
 		var i = accepted_delivery_Missions.find(m)

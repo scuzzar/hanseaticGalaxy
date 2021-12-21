@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Mission",
 "class": "DeliveryMission",
 "language": "GDScript",
-"path": "res://Mission/DeliveryMission.gd"
+"path": "res://Mission/Delivery/DeliveryMission.gd"
 }, {
 "base": "",
 "class": "GitAPI",
