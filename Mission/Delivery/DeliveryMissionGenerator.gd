@@ -1,7 +1,6 @@
 extends Node
 
 export(CargoContainer.CARGO) var cargo
-#onready var cargoName = MissionContainer.new().names[cargo]
 export(float) var wait_time = 10
 export(int) var max_store = 100
 export(int) var init_store = 1
@@ -9,7 +8,7 @@ export(int) var init_store = 1
 const groupTag = "TARGET"
 
 onready var port:Port = self.get_parent()
-var MissionContainerScene = preload("res://Container/Container.scn")
+var MissionContainerScene = preload("res://Cargo/CargoContainer.scn")
 
 func _ready():		
 	$GenTimer.wait_time = self.wait_time	

@@ -1,6 +1,6 @@
 extends Port
 
-class_name Warft
+class_name SpaceStation
 onready var orbit_radius = translation.length()
 var velocity = Vector3(0,0,0)
 var angle = 0

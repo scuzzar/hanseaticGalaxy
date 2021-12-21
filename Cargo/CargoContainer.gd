@@ -21,7 +21,7 @@ enum CARGO{
 	FUEL = 14
 }
 
-const ContainerTyp = preload("res://Container/containerTyps.csv").records
+const ContainerTyp = preload("res://Cargo/containerTyps.csv").records
 
 export(CARGO) var cargo  
 

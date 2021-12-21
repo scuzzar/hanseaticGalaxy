@@ -2,8 +2,6 @@ extends Spatial
 
 class_name Port
 
-var MissionContainerScene = preload("res://Container/Container.scn")
-
 export(NodePath) var defaultMissionDestination_path
 var _defaultMissionDestination :Port
 onready var inventory = $Inventory
@@ -12,12 +10,6 @@ var delivery_Missions = []
 
 func _ready():	
 	docked_ship = null
-	#_defaultMissionDestination =  get_node_or_null(defaultMissionDestination_path)
-
-#func _process(delta):
-#	if(docked_ship!=null):
-#		#docked_ship.transform.origin = self.global_transform.origin
-#		pass
 
 func get_default_location()->Port:
 	if(_defaultMissionDestination==null):

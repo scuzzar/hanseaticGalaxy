@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "CargoContainer",
 "language": "GDScript",
-"path": "res://Container/Container.gd"
+"path": "res://Cargo/CargoContainer.gd"
 }, {
 "base": "Node",
 "class": "CargoTarget",
@@ -55,9 +55,9 @@ _global_script_classes=[ {
 "path": "res://Bodys/SimplePlanetOrbit.gd"
 }, {
 "base": "Port",
-"class": "Warft",
+"class": "SpaceStation",
 "language": "GDScript",
-"path": "res://Station/Warft.gd"
+"path": "res://Station/SpaceStation.gd"
 }, {
 "base": "RigidBody",
 "class": "simpelPlanet",
@@ -74,7 +74,7 @@ _global_script_class_icons={
 "Rigid_N_Body": "",
 "Ship": "",
 "SimplePlanetOrbit": "",
-"Warft": "",
+"SpaceStation": "",
 "simpelPlanet": ""
 }
 
