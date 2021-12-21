@@ -15,7 +15,7 @@ func setContent(m:DeliveryMission):
 	if(mission.getContainerCount()==1):
 		$raw/HBoxContainer/Mass.text = str(mission.getMass())
 	else:
-		$raw/HBoxContainer/Mass.text = str(mission.getMass()/mission.getContainerCount()) + " x " + str(mission.getContainerCount())
+		$raw/HBoxContainer/Mass.text = str(mission.getContainerCount())  + " x " + str(mission.getMass()/mission.getContainerCount()) 
 	
 	$raw/HBoxContainer/Reward.text = str(mission.reward)
 

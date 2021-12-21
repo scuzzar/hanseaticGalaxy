@@ -16,7 +16,7 @@ func _ready():
 	hide()	
 
 func update():
-	var missions = _getMissions()
+	var missions = _getMissions()	
 	if(self.visible):
 		for n in vBox.get_children():
 			vBox.remove_child(n)
@@ -31,6 +31,7 @@ func _getMissions():
 	return Player.get_accepted_delivery_Missions()
 
 func _sortByDistance(a,b):	
+	if(a == null or b == null): return false
 	return a.getDistance() < b.getDistance()
 
 func _Inventory_added_container(container:CargoContainer):

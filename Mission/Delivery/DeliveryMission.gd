@@ -64,9 +64,12 @@ func load_save(dict):
 	self._createContainer(dict["amount"])
 	accepted = dict["accepted"]
 	
+	#Has to be removed, because origin.add_all_Container(cargoContainer) will also add it
+	self.get_parent().remove_child(self)
+	
 	if(accepted):
 		Player.ship.load_all_container(cargoContainer)
-		Player.accepted_delivery_Missions.append(self)
+		Player.accepted_delivery_Missions.append(self)		
 		Player.ship.add_child(self)
 		pass
 	else:
