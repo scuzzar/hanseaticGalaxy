@@ -320,17 +320,10 @@ shader_params/u_attenuation_distance = 0.0
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 67.3765, 0, 0 )
 defaultMissionDestination_path = NodePath("../Deimos/DeimosPort")
 
-[node name="Ship2" parent="Sun/Mars/OlympusPort" instance=ExtResource( 19 )]
-transform = Transform( 0.853651, 0.520845, -2.27669e-08, -0.520845, 0.853651, 6.39715e-09, 2.27669e-08, 6.39713e-09, 1, -2.85938, 0.000110626, -2.82237 )
-linear_velocity = Vector3( 0.82, 0, 0 )
-price = 150000
-trust = 200.0
-dispay_name = "Hoplite"
-fuel_cap = 6000.0
-
 [node name="SimpleRocket" parent="Sun/Mars/OlympusPort" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 6.35275e-21, 0, 1, 0, 0, 0, 1, -1.79443, 0.0951424, -3.49483 )
 sleeping = true
+price = 85000
 
 [node name="T_Luxus" type="Node" parent="Sun/Mars/OlympusPort"]
 script = ExtResource( 8 )
@@ -406,6 +399,14 @@ max_store = 3
 cargo = 2
 wait_time = 30.0
 max_store = 6
+
+[node name="Ship2" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 19 )]
+transform = Transform( 0.993072, -0.117503, 4.19448e-08, 0.117503, 0.993072, 1.30263e-08, -4.31848e-08, -8.00733e-09, 1, -1.80078, 0.232727, -3.16904 )
+linear_velocity = Vector3( 0.82, 0, 0 )
+price = 150000
+trust = 200.0
+dispay_name = "Hoplite"
+fuel_cap = 6000.0
 
 [node name="Phobos" parent="Sun/Mars" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 530.882, 1.46021e-05, -2.46191 )

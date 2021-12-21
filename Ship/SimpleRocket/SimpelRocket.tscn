@@ -11,9 +11,9 @@ height = 1.24207
 [node name="Ship" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 price = 120000
-turn_rate = 60
+turn_rate = 150
 trust = 300.0
-lateral_trust = 50.0
+lateral_trust = 150.0
 fuel_cap = 15000.0
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]

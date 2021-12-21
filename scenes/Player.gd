@@ -71,6 +71,7 @@ func save():
 	return save_dict
 
 func load_save(dict):	
+	self.accepted_delivery_Missions = []
 	credits = dict["credits"]
 	max_engine_fuel = dict["max_engine_fuel"]
 	engine_fuel_left = dict["engine_fuel_left"]
