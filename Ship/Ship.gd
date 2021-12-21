@@ -207,6 +207,14 @@ func load_containter(c : CargoContainer) -> bool:
 	emit_signal("mass_changed",mass,trust)
 	return added
 
+func load_all_container(ContainerArray):
+	for c in ContainerArray:
+		self.load_containter(c)
+
+func unload_all_container(ContainerArray):
+	for c in ContainerArray:
+		self.unload_containter(c)
+
 func unload_containter(c : CargoContainer):
 	self.mass -= c.getMass()	
 	$Inventory.removeContainer(c)	
@@ -215,8 +223,9 @@ func unload_containter(c : CargoContainer):
 func getListOfContainer():
 	return $Inventory.getAllContainter()
 
-func can_load_container() -> bool:
-	return $Inventory.hasSpace()
+func can_load_container(count:int) -> bool:
+	return $Inventory.freeSpace()>=count
+
 
 func dock(target: Node):
 	if(target!=self.docking_location):

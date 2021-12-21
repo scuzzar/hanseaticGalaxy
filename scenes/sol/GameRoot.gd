@@ -148,7 +148,7 @@ func buyShip(newShip:Ship):
 		newShip.linear_velocity = ship.linear_velocity
 		var cargo = ship.getListOfContainer()
 		for c in cargo:
-			if(newShip.can_load_container()):
+			if(newShip.can_load_container(1)):
 				ship.unload_containter(c)
 				var success = newShip.load_containter(c)
 			else:

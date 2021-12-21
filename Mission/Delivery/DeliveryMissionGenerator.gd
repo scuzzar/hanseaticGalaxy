@@ -18,13 +18,13 @@ func generateInitialStock():
 	for i in init_store : 
 		var mission = self._generate_mission()
 		port.add_Mission(mission)
-		port.add_container(mission.cargo)
+		port.add_all_Container(mission.cargo)
 
 func _on_GenTimer_timeout():	
 	if(port.has_Space() and port.stock(cargo)<max_store):
 		var mission = _generate_mission()
-		port.add_Mission(mission)
-		port.add_container(mission.cargo)
+		port.add_Mission(mission)		
+		port.add_all_Container(mission.cargo)
 		
 
 
@@ -37,7 +37,7 @@ func _generate_mission() -> DeliveryMission:
 	var c = MissionContainerScene.instance()
 	c._set_cargo(cargo)	
 	
-	mission.cargo = c
+	mission.cargo.append(c)
 	
 	var distance = mission.getDistance()	
 	mission.reward = round(mission.getPrice() * log(distance)*log(distance)/5)

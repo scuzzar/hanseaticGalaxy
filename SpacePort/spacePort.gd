@@ -66,8 +66,14 @@ func has_container(c: CargoContainer):
 func add_container(c: CargoContainer):
 	$Inventory.addContainerOnFree(c)
 
+func add_all_Container(ContainerArray):
+	$Inventory.addAllContainerOnFree(ContainerArray)
+
 func remove_container(c: CargoContainer):
 	$Inventory.removeContainer(c)
+
+func remove_all_container(ContainerArray):
+	$Inventory.remove_all_container(ContainerArray)
 
 func has_Space() -> bool:
 	return $Inventory.hasSpace()

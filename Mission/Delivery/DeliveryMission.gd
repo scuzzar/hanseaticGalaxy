@@ -4,7 +4,7 @@ class_name DeliveryMission
 
 var destination :Spatial
 var origin :Spatial
-var cargo :CargoContainer
+var cargo = []
 
 func _init(origin,destination):
 	self.origin = origin
@@ -24,15 +24,17 @@ func getDistance()->float:
 
 
 func getPrice():
-	return cargo.getPrice()
+	return cargo[0].getPrice()
 	
 func getCargoName()-> String:
-	return cargo.getCargoName()
+	return cargo[0].getCargoName()
 
 
 func getMass()->float:
-	return cargo.getMass()
+	return cargo[0].getMass()
 
+func getContainerCount()->int:
+	return cargo.size()
 
 func save():	
 	var save_dict = {

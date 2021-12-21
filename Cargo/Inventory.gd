@@ -43,6 +43,14 @@ func addContainter(container:CargoContainer, i : int):
 	
 	emit_signal("container_added",container)
 
+func addAllContainerOnFree(ContainerArray)->bool:
+	if(freeSpace()>=ContainerArray.size()):
+		for c in ContainerArray:
+			addContainerOnFree(c)
+		return true
+	else:
+		return false
+
 func getContainer(i : int) -> CargoContainer:
 	var slot = slots[i] as Position3D
 	assert(slot.get_child_count()==1)	
@@ -65,11 +73,15 @@ func addContainerOnFree(container:CargoContainer) -> bool:
 	return false
 
 func hasSpace() -> bool:
+	return freeSpace()!=0
+
+func freeSpace() -> int:
+	var result = 0
 	for i in slots.size():
 		var slot = slots[i]
 		if(slot.get_child_count() == 0):			
-			return true
-	return false
+			result +=1
+	return result
 
 func hasContainer(container:CargoContainer) -> bool:
 	for slot in slots:
@@ -84,6 +96,12 @@ func hasContainer(container:CargoContainer) -> bool:
 func stock(cargo)->int:
 	return stock[cargo]
 	
+func remove_all_container(ContainerArray) -> bool:
+	var status = true
+	for c in ContainerArray:
+		status = status and self.removeContainer(c)
+	return status
+
 func removeContainer(container:CargoContainer) -> bool :	
 	for slot in slots:
 		if(slot.get_child_count() == 1 and slot.get_child(0)==container):
