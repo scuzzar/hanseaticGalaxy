@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Mission/Delivery/CargoMissionWindow.gd" type="Script" id=1]
+[ext_resource path="res://Mission/Delivery/DeliveryBoard.gd" type="Script" id=1]
 [ext_resource path="res://Mission/Delivery/DeliveryMissionOverview.tscn" type="PackedScene" id=2]
 
 [node name="CargoBay" instance=ExtResource( 2 )]
@@ -12,6 +12,9 @@ margin_right = 601.217
 margin_bottom = -296.945
 rect_pivot_offset = Vector2( -1582.72, -223.074 )
 script = ExtResource( 1 )
+
+[node name="Destination" parent="." index="0"]
+text = "Delivery Missions"
 
 [node name="Footer" type="HBoxContainer" parent="." index="3"]
 anchor_top = 1.0

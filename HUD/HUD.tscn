@@ -5,7 +5,7 @@
 [ext_resource path="res://HUD/Credits.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD/theme/default_theme.theme" type="Theme" id=4]
 [ext_resource path="res://HUD/EngineLifeBar.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Mission/Delivery/CargoMissionWindow.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Mission/Delivery/DeliveryBoard.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Mission/Delivery/DeliveryMissionOverview.tscn" type="PackedScene" id=7]
 [ext_resource path="res://SpacePort/ShipShop/ShipShop.tscn" type="PackedScene" id=8]
 
@@ -207,13 +207,13 @@ margin_top = -25.0
 margin_right = 488.0
 margin_bottom = -4.0
 
-[node name="CargoBay" parent="." instance=ExtResource( 7 )]
+[node name="DeliveryMissionOverview" parent="." instance=ExtResource( 7 )]
 margin_left = -548.0
 margin_top = 175.0
 margin_right = -43.0
 margin_bottom = -112.0
 
-[node name="InventoryWindow" parent="." instance=ExtResource( 6 )]
+[node name="DeliveryBoard" parent="." instance=ExtResource( 6 )]
 margin_left = 96.0
 margin_top = 168.0
 margin_right = 601.0
@@ -336,8 +336,8 @@ margin_right = 49.9524
 margin_bottom = 69.0
 text = "Ship Shop"
 
-[connection signal="about" from="CargoBay" to="." method="_on_CargoBay_about"]
-[connection signal="deliver" from="CargoBay" to="." method="_on_CargoBay_deliver"]
-[connection signal="accepted" from="InventoryWindow" to="." method="_on_InventoryWindow_accepted"]
+[connection signal="about" from="DeliveryMissionOverview" to="." method="_on_CargoBay_about"]
+[connection signal="deliver" from="DeliveryMissionOverview" to="." method="_on_CargoBay_deliver"]
+[connection signal="accepted" from="DeliveryBoard" to="." method="_on_InventoryWindow_accepted"]
 [connection signal="shipOrderd" from="ShipShop" to="." method="_on_shipOrderd"]
 [connection signal="pressed" from="ShipShopButton" to="." method="_on_Button_pressed"]

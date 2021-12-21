@@ -21,8 +21,8 @@ func setShip(newShip:Ship):
 	newShip.connect("strongest_body_changed",self,"_on_Ship_strongest_body_changed")
 	newShip.connect("soiPlanetChanged",$RotationShifter,"on_soi_planet_changed")
 	$HUD.setShip(newShip)
-	$HUD/InventoryWindow.setShip(newShip)
-	$HUD/CargoBay.ship = newShip
+	$HUD/DeliveryBoard.setShip(newShip)
+	$HUD/DeliveryMissionOverview.ship = newShip
 	$Camera.ship =newShip
 	$Simulator._simulation_Object = newShip
 	self.ship = newShip

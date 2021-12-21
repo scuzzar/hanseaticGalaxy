@@ -84,10 +84,10 @@ func _on_Ship_telemetry_changed(position,velocety):
 
 
 func _on_Ship_docked(port:Port):
-	$InventoryWindow.setPort(port)
+	$DeliveryBoard.setPort(port)
 	$CenterHUB.hide()
 	$DataBox.hide()
-	$CargoBay.show()
+	$DeliveryMissionOverview.show()
 	if(!port.getShipsForSale().empty()):
 		$ShipShopButton.show()
 		$ShipShop.setWarft(port)
@@ -96,37 +96,37 @@ func _on_Ship_docked(port:Port):
 		
 
 func _on_Ship_undocked(port:Port):
-	$InventoryWindow.clearPort(port)
+	$DeliveryBoard.clearPort(port)
 	$CenterHUB.show()
 	$DataBox.show()
-	$CargoBay.hide()
+	$DeliveryMissionOverview.hide()
 	$ShipShopButton.hide()
 	$ShipShop.hide()
 	inShipShop = false
 
 func _on_InventoryWindow_accepted(container):
 	Player.accept_Mission(container)
-	$CargoBay.update()
+	$DeliveryMissionOverview.update()
 	
 func _on_CargoBay_deliver(container):
 	Player.deliver_Container(container)
-	$CargoBay.update()
+	$DeliveryMissionOverview.update()
 
 func _on_CargoBay_about(container):
 	Player.about_Container(container)
-	$CargoBay.update()
-	$InventoryWindow.update()
+	$DeliveryMissionOverview.update()
+	$DeliveryBoard.update()
 
 
 func _on_Button_pressed():
 	if(!inShipShop):
 		$CargoBay.hide()
-		$InventoryWindow.hide()
+		$DeliveryBoard.hide()
 		$ShipShop.show()
 		self.inShipShop=true
 	else:
 		$CargoBay.show()
-		$InventoryWindow.show()
+		$DeliveryBoard.show()
 		$ShipShop.hide()
 		self.inShipShop=false
 
