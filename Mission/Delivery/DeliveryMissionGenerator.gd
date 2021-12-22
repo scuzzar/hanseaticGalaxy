@@ -51,8 +51,9 @@ func _generate_mission() -> DeliveryMission:
 	
 	mission._createContainer(amount)
 	
-	var distance = mission.getDistance()	
-	mission.reward = round(mission.getPrice() * log(distance)*log(distance)/5) * amount
+	var distance = mission.getDistance()
+	var single_reward=round(mission.getPrice() * log(distance)*log(distance)/5)
+	mission.reward = single_reward * amount
 	return mission
 
 func _select_destination()->Port:

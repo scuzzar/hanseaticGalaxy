@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Bodys/materials/Sun.material" type="Material" id=1]
 [ext_resource path="res://Bodys/materials/Moon.material" type="Material" id=2]
@@ -45,7 +45,6 @@
 [ext_resource path="res://Building/EnergyHavester.tscn" type="PackedScene" id=43]
 [ext_resource path="res://Ship/SkyCrane/SkyCrane_S.tscn" type="PackedScene" id=44]
 [ext_resource path="res://Ship/Tender/Tender_S.tscn" type="PackedScene" id=45]
-[ext_resource path="res://Ship/Ship.gd" type="Script" id=46]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 3.0
@@ -147,17 +146,9 @@ shader_params/u_attenuation_distance = 0.0
 [node name="VenusST" parent="Sun/Venus" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100.503, 0, 0 )
 
-[node name="Orbital SkyCrane" parent="Sun/Venus/VenusST" groups=["persist"] instance=ExtResource( 44 )]
+[node name="Orbital SkyCrane" parent="Sun/Venus/VenusST" instance=ExtResource( 44 )]
 transform = Transform( 0.3037, -0.952768, 4.16468e-08, 0, -4.37114e-08, -1, 0.952768, 0.3037, -1.32752e-08, 1.16211, -0.614387, 3.02734 )
-input_ray_pickable = false
 physics_material_override = SubResource( 1 )
-continuous_cd = true
-axis_lock_linear_y = true
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-angular_damp = 4.0
-script = ExtResource( 46 )
-physikAktiv = false
 dryMass = 5
 
 [node name="Warft" parent="Sun/Venus/VenusST" instance=ExtResource( 8 )]
@@ -310,17 +301,9 @@ surface_g = 1.7
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 21.1598, 0, 0 )
 defaultMissionDestination_path = NodePath("../../OlympusPort")
 
-[node name="Orbital SkyCrane" parent="Sun/Mars/Deimos/DeimosPort" groups=["persist"] instance=ExtResource( 44 )]
+[node name="Orbital SkyCrane" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 44 )]
 transform = Transform( 1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.33789, -0.175293, -2.06995 )
-input_ray_pickable = false
 physics_material_override = SubResource( 5 )
-continuous_cd = true
-axis_lock_linear_y = true
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-angular_damp = 4.0
-script = ExtResource( 46 )
-physikAktiv = false
 dryMass = 5
 
 [node name="Mine" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 42 )]
