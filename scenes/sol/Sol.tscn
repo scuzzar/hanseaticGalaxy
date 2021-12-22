@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://Bodys/materials/Sun.material" type="Material" id=1]
 [ext_resource path="res://Bodys/materials/Moon.material" type="Material" id=2]
@@ -45,6 +45,7 @@
 [ext_resource path="res://Building/EnergyHavester.tscn" type="PackedScene" id=43]
 [ext_resource path="res://Ship/SkyCrane/SkyCrane_S.tscn" type="PackedScene" id=44]
 [ext_resource path="res://Ship/Tender/Tender_S.tscn" type="PackedScene" id=45]
+[ext_resource path="res://Ship/Ship.gd" type="Script" id=46]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 3.0
@@ -54,6 +55,9 @@ friction = 0.5
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_texture = ExtResource( 21 )
+
+[sub_resource type="PhysicsMaterial" id=5]
+friction = 3.0
 
 [sub_resource type="QuadMesh" id=3]
 size = Vector2( 700, 700 )
@@ -143,9 +147,17 @@ shader_params/u_attenuation_distance = 0.0
 [node name="VenusST" parent="Sun/Venus" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100.503, 0, 0 )
 
-[node name="Orbital SkyCrane" parent="Sun/Venus/VenusST" instance=ExtResource( 44 )]
+[node name="Orbital SkyCrane" parent="Sun/Venus/VenusST" groups=["persist"] instance=ExtResource( 44 )]
 transform = Transform( 0.3037, -0.952768, 4.16468e-08, 0, -4.37114e-08, -1, 0.952768, 0.3037, -1.32752e-08, 1.16211, -0.614387, 3.02734 )
+input_ray_pickable = false
 physics_material_override = SubResource( 1 )
+continuous_cd = true
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+angular_damp = 4.0
+script = ExtResource( 46 )
+physikAktiv = false
 dryMass = 5
 
 [node name="Warft" parent="Sun/Venus/VenusST" instance=ExtResource( 8 )]
@@ -298,8 +310,17 @@ surface_g = 1.7
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 21.1598, 0, 0 )
 defaultMissionDestination_path = NodePath("../../OlympusPort")
 
-[node name="Orbital SkyCrane" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 44 )]
+[node name="Orbital SkyCrane" parent="Sun/Mars/Deimos/DeimosPort" groups=["persist"] instance=ExtResource( 44 )]
 transform = Transform( 1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.33789, -0.175293, -2.06995 )
+input_ray_pickable = false
+physics_material_override = SubResource( 5 )
+continuous_cd = true
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+angular_damp = 4.0
+script = ExtResource( 46 )
+physikAktiv = false
 dryMass = 5
 
 [node name="Mine" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 42 )]
@@ -333,14 +354,14 @@ material = ExtResource( 34 )
 [node name="Jupiter" parent="Sun" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36000, 0, 0 )
 mode = 3
-mass = 11265.9
+mass = 25911.6
 physics_material_override = SubResource( 4 )
 linear_velocity = Vector3( 1.219, 0, 0 )
 angular_velocity = Vector3( 0, 0.01, 0 )
 material = ExtResource( 26 )
 isPlanet = true
 radius_description = 71000.0
-surface_g = 1.0
+surface_g = 2.3
 
 [node name="Io" parent="Sun/Jupiter" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.375, 0, 2740.85 )
@@ -351,6 +372,13 @@ material = ExtResource( 31 )
 radius_description = 3643.0
 surface_g = 3.0
 
+[node name="IoP" parent="Sun/Jupiter/Io" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0117188, -6.17876e-06, 38.6597 )
+
+[node name="Mine" parent="Sun/Jupiter/Io/IoP" instance=ExtResource( 42 )]
+
+[node name="DomedCity" parent="Sun/Jupiter/Io/IoP" instance=ExtResource( 37 )]
+
 [node name="Europa" parent="Sun/Jupiter" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3769.34, 0, 0 )
 mode = 3
@@ -359,6 +387,13 @@ linear_velocity = Vector3( 0, 0, -3.568 )
 material = ExtResource( 30 )
 radius_description = 3122.0
 surface_g = 3.0
+
+[node name="EuropaP" parent="Sun/Jupiter/Europa" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0117188, -6.17876e-06, 33.0542 )
+
+[node name="Industry" parent="Sun/Jupiter/Europa/EuropaP" instance=ExtResource( 40 )]
+
+[node name="DomedCity" parent="Sun/Jupiter/Europa/EuropaP" instance=ExtResource( 37 )]
 
 [node name="Ganimede" parent="Sun/Jupiter" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5856.44, 0, 0 )
@@ -369,6 +404,13 @@ material = ExtResource( 33 )
 radius_description = 5262.0
 surface_g = 2.5
 
+[node name="GanimedP" parent="Sun/Jupiter/Ganimede" instance=ExtResource( 14 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 55.6094, -5.22508e-06, 0.822266 )
+
+[node name="DomedFarmes" parent="Sun/Jupiter/Ganimede/GanimedP" instance=ExtResource( 38 )]
+
+[node name="DomedCity" parent="Sun/Jupiter/Ganimede/GanimedP" instance=ExtResource( 37 )]
+
 [node name="Kallisto" parent="Sun/Jupiter" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.375, 0, -9000 )
 mode = 3
@@ -378,13 +420,37 @@ material = ExtResource( 32 )
 radius_description = 4821.0
 surface_g = 3.0
 
+[node name="IoP" parent="Sun/Jupiter/Kallisto" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0117188, -6.17876e-06, 50.9033 )
+
+[node name="EnergHavester" parent="Sun/Jupiter/Kallisto/IoP" instance=ExtResource( 43 )]
+
+[node name="DomedCity" parent="Sun/Jupiter/Kallisto/IoP" instance=ExtResource( 37 )]
+
+[node name="JupiterST" parent="Sun/Jupiter" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1504.13, 0, 0 )
+
+[node name="SkyCrane" parent="Sun/Jupiter/JupiterST" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.98212, -0.563875, 0 )
+
+[node name="Tender" parent="Sun/Jupiter/JupiterST" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.83693, -0.786469, 0.382813 )
+show_soi_relativ_sim = false
+
+[node name="Warft" parent="Sun/Jupiter/JupiterST" instance=ExtResource( 8 )]
+
+[node name="HighTech" parent="Sun/Jupiter/JupiterST" instance=ExtResource( 39 )]
+
+[node name="OrbitalCity" parent="Sun/Jupiter/JupiterST" instance=ExtResource( 35 )]
+
 [node name="Saturn" parent="Sun" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 70000, 0, 0 )
 mode = 3
-mass = 47211.3
+mass = 18884.5
 material = ExtResource( 11 )
 isPlanet = true
 radius_description = 65000.0
+surface_g = 2.0
 
 [node name="Rings" type="MeshInstance" parent="Sun/Saturn"]
 transform = Transform( 4.71597, -7.21791e-08, -0.0698076, 0.0698076, -1.85901e-07, 4.71597, -7.33538e-08, -4.71647, -3.9122e-07, -3.48828, -9.44232, 0 )
@@ -405,6 +471,13 @@ mass = 136.885
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = ExtResource( 7 )
 radius_description = 3500.0
+
+[node name="MimasP" parent="Sun/Saturn/Mimas" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.1875, -6.17876e-06, 37.0447 )
+
+[node name="Mine" parent="Sun/Saturn/Mimas/MimasP" instance=ExtResource( 42 )]
+
+[node name="DomedCity" parent="Sun/Saturn/Mimas/MimasP" instance=ExtResource( 37 )]
 
 [node name="Titan" parent="Sun/Saturn" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3923.59, -8.1155e-07, -2.46143 )

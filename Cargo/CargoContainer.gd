@@ -100,14 +100,14 @@ func _set_cargo(pcargo):
 			$Mesh/Electronics.show()
 			
 
-func save():	
-	var save_dict = {
-		"filename" : get_filename(),
-		"parent" : get_parent().get_path(),
-		"cargo" : cargo
-	}
-	return save_dict
+#func save():	
+#	var save_dict = {
+#		"filename" : get_filename(),
+#		"parent" : get_parent().get_path(),
+#		"cargo" : cargo
+#	}
+#	return save_dict
 
-func load_save(dict):	
-	_set_cargo( CARGO.values()[dict["cargo"]])
-	pass
+#func load_save(dict):	
+#	_set_cargo( CARGO.values()[dict["cargo"]])
+#	pass

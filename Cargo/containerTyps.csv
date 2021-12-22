@@ -1,7 +1,7 @@
 id;enum;price;name;mass;minBatch;maxBatch;productionTime
 0;METALS;2000;Metals;20;1;5;2
 1;FOOD;850;Food;4;2;5;1
-2;ICE;1500;Ice;10;3;6;1
+2;ICE;1500;Ice;10;3;6;2
 3;WATER;1800;Water;15;2;4;3
 4;OXYGEN;1000;Oxygen;4;5;10;2
 5;MACHINES;1700;Machines;15;1;3;3

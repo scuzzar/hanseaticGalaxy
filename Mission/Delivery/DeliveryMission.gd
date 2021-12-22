@@ -74,6 +74,7 @@ func load_save(dict):
 		pass
 	else:
 		origin.delivery_Missions.append(self)
+		origin.remove_all_container(cargoContainer)
 		origin.add_all_Container(cargoContainer)
 		origin.add_child(self)
 	pass

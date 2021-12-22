@@ -113,8 +113,6 @@ func save_game():
 		var node_data = node.call("save")
 		node_data["nodePath"] = node.get_path()
 		dataList.append(node_data)
-		
-		print("saved:" + str(node))
 
 	dataList.append(Player.save())
 	#Sort, so that parents come first in file.

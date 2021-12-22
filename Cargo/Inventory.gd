@@ -35,7 +35,7 @@ func _ready():
 
 func addContainter(container:CargoContainer, i : int):
 	var slot = slots[i] as Position3D
-	assert(slot.get_child_count()==0)
+	assert(slot.get_child_count()==0)	
 	slot.add_child(container)	
 	#container.translation = Vector3(0,0,0)
 	container.connect("clicked",self,"_on_container_clicked")
