@@ -9,6 +9,7 @@ signal shipOrderd(ship)
 func setWarft(warft:Port):
 	self.warft = warft
 	self.ShipForSale = warft.getShipsForSale()
+	self.update()
 	
 func update():
 	$ShipInfo.setShip(ShipForSale[currentIndex])
