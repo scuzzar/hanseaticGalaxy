@@ -16,6 +16,7 @@ trust = 300.0
 lateral_trust = 150.0
 dispay_name = "Rocket IP"
 fuel_cap = 15000.0
+dryMass = 30
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0297804, -1.30174e-09 )

@@ -13,10 +13,6 @@ __meta__ = {
 }
 
 [node name="ShipInfo" parent="." instance=ExtResource( 2 )]
-margin_left = -95.552
-margin_top = -314.0
-margin_right = 97.448
-margin_bottom = -54.0
 rect_pivot_offset = Vector2( 193, 318.854 )
 
 [node name="last" type="Button" parent="ShipInfo"]

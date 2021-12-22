@@ -10,3 +10,4 @@ func setShip(ship:Ship):
 	$Grid/turnRate .text 	= str("%0.f" % ship.turn_rate)
 	$Grid/slots.text 	= str("%0.f" % ship.getCargoSlotCount())	
 	$Grid/price.text 	= str("%0.f" % ship.price)
+	$Grid/fuelCap.text = str("%0.f" % ship.fuel_cap) 

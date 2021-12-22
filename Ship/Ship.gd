@@ -17,6 +17,7 @@ var docking_location: Node
 export var playerControl = false
 export var physikAktiv =true
 var soiPlanet=null
+export var dryMass = 5 
 
 onready var inventory = $Inventory
 
@@ -31,6 +32,7 @@ signal undocked(port)
 
 func _ready():	
 	._ready()	
+	self.mass = dryMass
 	#fuel = fuel_cap
 	emit_signal("fuel_changed",fuel, fuel_cap)	
 	emit_signal("mass_changed",mass,trust)
@@ -82,8 +84,9 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 			
 		if Input.is_action_just_pressed("info"):
 			if(!$ShipInfo.visible):
-				$ShipInfo.update()
+				$ShipInfo.setShip(self)				
 				$ShipInfo.show()
+				$ShipInfo.update()
 			else:
 				$ShipInfo.hide()
 		
@@ -279,7 +282,7 @@ func load_save(dict):
 	rotation.y = dict["rotation"]	
 	self.set_fuel(dict["fuel"])
 	fuel_cap = dict["fuel_cap"]
-	mass = dict["mass"]
+	mass = dryMass
 	trust = dict["trust"]
 	price = dict["price"]
 	last_g_force = Vector3(0,0,0)

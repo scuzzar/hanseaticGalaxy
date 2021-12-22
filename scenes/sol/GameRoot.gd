@@ -17,6 +17,7 @@ func newGameSetup():
 	for cg in get_tree().get_nodes_in_group("cargoGenerator"):
 		cg.generateInitialStock()
 	ship.fuel =ship.fuel_cap
+	ship.physikAktiv =true
 
 func setShip(newShip:Ship):
 	newShip.connect("strongest_body_changed",self,"_on_Ship_strongest_body_changed")
@@ -97,8 +98,7 @@ func _quickload():
 func save_game():
 	var save_game = File.new()
 	save_game.open(Globals.QUICKSAVE_PATH, File.WRITE)
-	var save_nodes = get_tree().get_nodes_in_group("persist")
-	
+	var save_nodes = get_tree().get_nodes_in_group("persist")	
 	var dataList = []
 	for node in save_nodes:
 
@@ -113,6 +113,8 @@ func save_game():
 		var node_data = node.call("save")
 		node_data["nodePath"] = node.get_path()
 		dataList.append(node_data)
+		
+		print("saved:" + str(node))
 
 	dataList.append(Player.save())
 	#Sort, so that parents come first in file.

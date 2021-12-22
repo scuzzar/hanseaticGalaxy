@@ -33,6 +33,13 @@ func _ready():
 
 func _process(delta):
 	live_bar.value = int(Player.engine_fuel_left/Player.max_engine_fuel *100)
+	
+	if Input.is_action_just_pressed("info"):
+		if(!ship.docking_location!=null):
+			if(!$DeliveryMissionOverview.visible):
+				$DeliveryMissionOverview.show()
+			else:
+				$DeliveryMissionOverview.hide()	
 	pass
 
 func setShip(ship:Ship):
@@ -115,7 +122,7 @@ func _on_CargoBay_deliver(container):
 func _on_CargoBay_about(container):
 	Player.about_Container(container)
 	$DeliveryMissionOverview.update()
-	$DeliveryBoard.update()
+	#$DeliveryBoard.update()
 
 
 func _on_Button_pressed():

@@ -66,7 +66,7 @@ func load_save(dict):
 	
 	#Has to be removed, because origin.add_all_Container(cargoContainer) will also add it
 	self.get_parent().remove_child(self)
-	
+	var groups = self.get_groups()
 	if(accepted):
 		Player.ship.load_all_container(cargoContainer)
 		Player.accepted_delivery_Missions.append(self)		
@@ -74,5 +74,6 @@ func load_save(dict):
 		pass
 	else:
 		origin.delivery_Missions.append(self)
-		origin.add_all_Container(cargoContainer)	
+		origin.add_all_Container(cargoContainer)
+		origin.add_child(self)
 	pass

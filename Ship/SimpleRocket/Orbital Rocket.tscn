@@ -10,3 +10,4 @@ trust = 200.0
 lateral_trust = 100.0
 dispay_name = "Rocket S"
 fuel_cap = 10000.0
+dryMass = 25

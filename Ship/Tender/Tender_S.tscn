@@ -7,3 +7,4 @@ mass = 8.0
 price = 1000
 trust = 60.0
 fuel_cap = 2000.0
+dryMass = 8
