@@ -21,8 +21,8 @@ func pay(credits_to_pay : int):
 	emit_signal("credits_changed",credits)
 	
 func fuel_burned(amount):
-	engine_fuel_left -= amount
-	
+	#engine_fuel_left -= amount
+	pass
 func deliver_Container(m: DeliveryMission):	
 	if(ship.docking_location == m.destination):
 		self.reward(m.reward)

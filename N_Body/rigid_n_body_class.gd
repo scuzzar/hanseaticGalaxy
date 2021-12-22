@@ -31,6 +31,8 @@ func _ready():
 #		bodys = [soi_node]
 #	else:
 	bodys = get_tree().get_nodes_in_group("bodys")
+	if(velocety==null):
+		velocety =Vector3(0,0,0)
 	self.linear_velocity = velocety
 
 func _integrate_forces(state):

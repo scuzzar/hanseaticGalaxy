@@ -15,11 +15,10 @@ mass = 10.0
 velocety = null
 isGravetySource = null
 show_soi_relativ_sim = null
-show_sim = null
-price = null
+price = 30000
 turn_rate = 20
-trust = null
-dispay_name = null
+trust = 120.0
+dispay_name = "Tender"
 fuel_cap = 2700.0
 playerControl = null
 

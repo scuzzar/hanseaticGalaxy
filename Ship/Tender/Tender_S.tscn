@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Ship/Tender/Tender.tscn" type="PackedScene" id=1]
+
+[node name="Tender S" instance=ExtResource( 1 )]
+mass = 8.0
+price = 1000
+trust = 60.0
+fuel_cap = 2000.0

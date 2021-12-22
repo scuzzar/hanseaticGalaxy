@@ -16,6 +16,7 @@ func _ready():
 func newGameSetup():
 	for cg in get_tree().get_nodes_in_group("cargoGenerator"):
 		cg.generateInitialStock()
+	ship.fuel =ship.fuel_cap
 
 func setShip(newShip:Ship):
 	newShip.connect("strongest_body_changed",self,"_on_Ship_strongest_body_changed")
