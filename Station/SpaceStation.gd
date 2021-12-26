@@ -21,13 +21,12 @@ func _ready():
 		var result = [start]
 
 
-func _process(delta):
-	angle += (angular_speed *delta)		
+func _physics_process(delta):
+	angle += (angular_speed *delta)	
 	if(angle >= 2*PI): angle -= 2*PI
-
-	
-	self.translation = Vector3(sin(angle)*orbit_radius,0,cos(angle)*orbit_radius)
-	var new_Position = self.global_transform.origin
+	var pX = sin(angle)*orbit_radius
+	var pZ = cos(angle)*orbit_radius
+	self.translation = Vector3(pX,0,pZ)
 	if(docked_ship!=null):
 		docked_ship.transform.origin = self.global_transform.origin
 
