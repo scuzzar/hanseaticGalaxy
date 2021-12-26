@@ -80,9 +80,11 @@ func getMaxBatch():
 func get_Port()->Port:
 	if(self.get_parent() is Port):
 		return self.get_parent() as Port
-	else:
-		if(self.get_parent().get_parent()):
+	elif(self.get_parent().get_parent() is Port):
 			return self.get_parent().get_parent()  as Port
-		else:
-			print_debug("no Port")
-			return null
+	
+	elif(self.get_parent().get_parent().get_child_count()>0):
+		return self.get_parent().get_parent().get_child(0) as Port
+	else:
+		print_debug("no Port")
+		return null
