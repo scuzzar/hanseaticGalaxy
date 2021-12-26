@@ -69,7 +69,7 @@ func _physics_process(delta):
 		self.pZ = cos(angle)*orbit_radius
 		self.translation = Vector3(pX,0,pZ)
 		#Needs further fixing
-		#self.rotate_y(planetaryRotation*delta)
+		self.rotate_y(planetaryRotation*delta)
 
 func predictGlobalPosition(delta):
 	if(isStar):
