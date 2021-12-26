@@ -47,7 +47,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Satellite",
 "language": "GDScript",
-"path": "res://Station/Satelite.gd"
+"path": "res://Station/Satellite.gd"
 }, {
 "base": "Rigid_N_Body",
 "class": "Ship",
