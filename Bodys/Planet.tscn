@@ -28,12 +28,6 @@ use_in_baked_light = true
 mesh = ExtResource( 3 )
 material/0 = null
 
-[node name="CSGBox" type="CSGBox" parent="."]
-visible = false
-width = 135.201
-height = 135.145
-depth = 134.34
-
 [node name="Lable3D" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
