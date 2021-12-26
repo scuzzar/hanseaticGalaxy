@@ -8,7 +8,7 @@
 [sub_resource type="SphereShape" id=1]
 radius = 0.849215
 
-[node name="Station" type="Spatial"]
+[node name="Station" type="Spatial" groups=["persist"]]
 script = ExtResource( 1 )
 
 [node name="Station" parent="." instance=ExtResource( 2 )]

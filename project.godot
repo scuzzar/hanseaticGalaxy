@@ -96,10 +96,8 @@ gdscript/warnings/enable=false
 
 [display]
 
-window/size/width=1620
-window/size/height=869
-window/size/borderless=true
-window/size/fullscreen=true
+window/size/width=800
+window/vsync/use_vsync=false
 window/tablet_driver=""
 
 [editor_plugins]
@@ -276,7 +274,7 @@ simulate_less={
 
 [physics]
 
-common/physics_jitter_fix=5.0
+common/physics_jitter_fix=0.0
 3d/physics_engine="Bullet"
 3d/active_soft_world=false
 3d/default_gravity=0.0

@@ -5,6 +5,8 @@ var endScreen = preload("res://scenes/GameEnded/EndGameScreen.tscn")
 onready var ship:Ship = $PlayerShip
 onready var all = self.get_children()
 export var MaxtimeWarpFactor = 400
+export var MaxtimeWarpFactor_Planet = 50
+export var MaxtimeWarpFactor_Moon = 5
 
 func _ready():
 	setShip(ship)	
@@ -43,7 +45,17 @@ func _process(delta):
 		Engine.time_scale =  factor
 	
 	if Input.is_action_pressed("time_warp"):
-		var factor = clamp(1 / ship.last_g_force.length()*200,5,MaxtimeWarpFactor)
+		
+		var p = ship.last_g_force_strongest_Body as simpelPlanet
+		var factor = 1
+		
+		if(p.isStar):
+			 factor = clamp(1 / ship.last_g_force.length()*200,5,MaxtimeWarpFactor)
+		elif(p.isPlanet):
+			factor = clamp(1 / ship.last_g_force.length()*20,5,MaxtimeWarpFactor_Planet)	
+		else:
+			factor = MaxtimeWarpFactor_Moon
+			
 		Engine.time_scale =  factor
 	
 	if Input.is_action_just_pressed("cheat_fuel"):

@@ -70,6 +70,7 @@ logging = true
 
 [node name="Shifter" type="Node" parent="."]
 script = ExtResource( 27 )
+MAX_DISTANCE = 10000.0
 world_node_path = NodePath("..")
 
 [node name="Simulator" parent="." instance=ExtResource( 6 )]
@@ -239,9 +240,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 152.126, 0, 0 )
 
 [node name="SkyCrane" parent="Sun/Mars/MarsST" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.98212, -0.563875, 0 )
+visible = false
 
 [node name="Tender" parent="Sun/Mars/MarsST" instance=ExtResource( 22 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.83693, -0.786469, 0.382813 )
+visible = false
 show_soi_relativ_sim = false
 
 [node name="Warft" parent="Sun/Mars/MarsST" instance=ExtResource( 8 )]
