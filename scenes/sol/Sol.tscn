@@ -416,7 +416,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0117
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1504.13, 0, 0 )
 
 [node name="SkyCrane" parent="Sun/Jupiter/JupiterST" instance=ExtResource( 19 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.98212, -0.563875, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.98047, -0.898486, 0 )
 
 [node name="Tender" parent="Sun/Jupiter/JupiterST" instance=ExtResource( 22 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.83693, -0.786469, 0.382813 )

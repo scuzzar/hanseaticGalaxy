@@ -9,6 +9,7 @@ var global_translation = Vector3(0,0,0)
 
 
 func _ready():
+	$Lable3D.text = self.name
 	var r = orbit_radius
 	var G = Globals.G
 	var M = get_parent().mass

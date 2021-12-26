@@ -49,12 +49,12 @@ func _process(delta):
 		var p = ship.last_g_force_strongest_Body as simpelPlanet
 		var factor = 1
 		
-		if(ship.docking_location != null):
+		if(ship.docking_location != null and ship.docking_location is SpaceStation):
 			factor = 50
 		elif(p.isStar):
 			 factor = clamp(1 / ship.last_g_force.length()*200,5,MaxtimeWarpFactor)
 		elif(p.isPlanet):
-			factor = clamp(1 / ship.last_g_force.length()*20,5,MaxtimeWarpFactor_Planet)	
+			factor = clamp(1 / ship.last_g_force.length()*p.radius/2,5,MaxtimeWarpFactor_Planet)	
 		else:
 			factor = MaxtimeWarpFactor_Moon
 			
