@@ -32,6 +32,7 @@ func setShip(newShip:Ship):
 	self.ship = newShip
 	$Shifter.parent = newShip
 	Player.ship = newShip
+	newShip.team = ENUMS.TEAM.PLAYER
 
 func _process(delta):
 	if Input.is_action_pressed("endGame"):
@@ -67,6 +68,9 @@ func _process(delta):
 	if(Player.engine_fuel_left<= 0):
 		call_deferred("_loadScore")		
 	
+	if(ship.hitpoints<=0):
+		call_deferred("_loadScore")	
+		
 	if Input.is_action_just_pressed("quicksave"):
 		_quicksave()
 	

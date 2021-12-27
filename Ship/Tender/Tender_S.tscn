@@ -1,10 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Ship/Tender/Tender.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Weapon/30mm_Gun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Ship/Tender/Tender_S.gd" type="Script" id=3]
 
 [node name="Tender S" instance=ExtResource( 1 )]
 mass = 8.0
-price = 1000
-trust = 60.0
-fuel_cap = 2000.0
-dryMass = 8
+script = ExtResource( 3 )
+price = 0
+turn_rate = 100
+trust = 100.0
+dispay_name = "Neubeckum II"
+fuel_cap = 5000.0
+physikAktiv = true
+dryMass = 5
+
+[node name="30mm" parent="." index="0" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 0.00407587, 0.257623, 0.155502 )
+nozzel_speed = 25
+damage = 8

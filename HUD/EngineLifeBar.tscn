@@ -26,16 +26,16 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_right = 147.0
+margin_right = 40.0
 margin_bottom = 21.0
 theme = ExtResource( 2 )
-text = "Engine Live:"
+text = "HP:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FuelBar" type="ProgressBar" parent="."]
-margin_left = 159.0
+[node name="Bar" type="ProgressBar" parent="."]
+margin_left = 52.0
 margin_right = 621.0
 margin_bottom = 21.0
 size_flags_horizontal = 3

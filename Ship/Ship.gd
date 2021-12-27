@@ -10,17 +10,22 @@ export var trust = 100.0
 export var lateral_trust = 20.0
 
 
+
 export var dispay_name = "Neubeckum II"
 export var fuel_cap = 5000.0
 var fuel = 0
 var docking_location: Node
+var hitpoints = 100
+var max_hitpoints = 100
 export var playerControl = false
 export var physikAktiv =true
 var soiPlanet=null
+
 export var dryMass = 5 
 
 onready var inventory = $Inventory
 
+export(ENUMS.TEAM) var team = ENUMS.TEAM.NEUTRAL
 
 
 signal fuel_changed(fuel, fuel_cap)
@@ -29,6 +34,7 @@ signal telemetry_changed(position,velocety)
 signal soiPlanetChanged(newSOIPlanet)
 signal docked(port)
 signal undocked(port)
+signal tookDamage(damage)
 
 func _ready():	
 	._ready()	
@@ -88,8 +94,7 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 				$ShipInfo.show()
 				$ShipInfo.update()
 			else:
-				$ShipInfo.hide()
-		
+				$ShipInfo.hide()	
 		emit_signal("telemetry_changed", self.translation, state.linear_velocity)
 
 func _burn_forward(state:PhysicsDirectBodyState):	
@@ -185,7 +190,6 @@ func rel_speed_to_Strongest_body():
 	if(SB!=null):
 		result = SB.linear_velocity.distance_to(self.linear_velocity)
 	return result
-
 
 
 
@@ -287,5 +291,11 @@ func load_save(dict):
 	price = dict["price"]
 	last_g_force = Vector3(0,0,0)
 
-
-
+func takeDamege(damage):
+	self.hitpoints -= damage	
+	emit_signal("tookDamage",damage)
+	if(hitpoints<=0):
+		self.distroy()
+		
+func distroy():
+	self.queue_free()

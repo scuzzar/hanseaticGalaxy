@@ -90,6 +90,7 @@ min_zoom = 1.0
 transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.3, 0, -68.3688 )
 physics_material_override = SubResource( 1 )
 show_soi_relativ_sim = false
+turn_rate = 20
 dispay_name = "Tender S"
 playerControl = true
 

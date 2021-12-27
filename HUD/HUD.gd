@@ -2,7 +2,7 @@ extends Control
 
 onready var fuel_bar = $Fuel/FuelBar
 onready var dV_labe = $Fuel/VD
-onready var live_bar = $Life/FuelBar
+onready var live_bar = $Life/Bar
 onready var credit_labe = $Credits/Value
 onready var tmr_labe = $DataBox/TMR/Value
 onready var g_labe = $DataBox/G_Meter/Value
@@ -32,7 +32,7 @@ func _ready():
 	pass
 
 func _process(delta):
-	live_bar.value = int(Player.engine_fuel_left/Player.max_engine_fuel *100)
+	live_bar.value = int(ship.hitpoints as float/ship.max_hitpoints as float *100)
 	
 	if Input.is_action_just_pressed("info"):
 		if(!ship.docking_location!=null):
@@ -50,7 +50,7 @@ func setShip(ship:Ship):
 	ship.connect("g_force_update",self,"_on_Ship_g_force_update")
 	ship.connect("mass_changed",self,"_on_Ship_mass_changed")
 	ship.connect("telemetry_changed",self,"_on_Ship_telemetry_changed")
-	ship.connect("undocked",self,"_on_Ship_undocked")	
+	ship.connect("undocked",self,"_on_Ship_undocked")
 	_on_Ship_fuel_changed(ship.fuel,ship.fuel_cap)
 
 func _on_Ship_fuel_changed(fuel,fuel_cap):

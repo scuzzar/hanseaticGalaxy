@@ -26,7 +26,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_right = 70.0
+margin_right = 395.0
 margin_bottom = 21.0
 theme = ExtResource( 2 )
 text = "Fuel:"
@@ -35,7 +35,8 @@ __meta__ = {
 }
 
 [node name="FuelBar" type="ProgressBar" parent="."]
-margin_left = 70.0
+margin_right = 395.0
+margin_bottom = 21.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -47,7 +48,8 @@ __meta__ = {
 }
 
 [node name="VD" type="Label" parent="."]
-margin_left = 300.0
+margin_right = 395.0
+margin_bottom = 21.0
 theme = ExtResource( 2 )
 text = "0 dV"
 align = 2
