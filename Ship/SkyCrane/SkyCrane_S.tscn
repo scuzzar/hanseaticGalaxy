@@ -3,7 +3,4 @@
 [ext_resource path="res://Ship/SkyCrane/SkyCrane.tscn" type="PackedScene" id=1]
 
 [node name="SkyCrane S" instance=ExtResource( 1 )]
-price = 120000
-trust = 180.0
-dispay_name = "SkyCrane S"
-fuel_cap = 12000.0
+type = 5

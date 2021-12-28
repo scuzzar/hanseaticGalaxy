@@ -12,18 +12,7 @@ height = 0.834569
 [node name="Tender" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 mass = 10.0
-velocety = Vector3( 0, 0, 0 )
-isGravetySource = false
-show_soi_relativ_sim = true
-price = 30000
-turn_rate = 20
-trust = 280.0
-lateral_trust = 20.0
-dispay_name = "Tender"
-fuel_cap = 3250.0
-playerControl = false
-dryMass = 10
-team = 2
+type = 1
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117889, -5.1531e-09 )

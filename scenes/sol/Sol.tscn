@@ -90,8 +90,6 @@ min_zoom = 1.0
 transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.3, 0, -68.3688 )
 physics_material_override = SubResource( 1 )
 show_soi_relativ_sim = false
-turn_rate = 20
-dispay_name = "Tender S"
 playerControl = true
 
 [node name="Sun" parent="." instance=ExtResource( 16 )]
@@ -151,7 +149,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100.503, 0, 0 )
 [node name="Orbital SkyCrane" parent="Sun/Venus/VenusST" instance=ExtResource( 44 )]
 transform = Transform( 0.3037, -0.952768, 4.16468e-08, 0, -4.37114e-08, -1, 0.952768, 0.3037, -1.32752e-08, 1.16211, -0.614387, 3.02734 )
 physics_material_override = SubResource( 1 )
-dryMass = 5
 
 [node name="Warft" parent="Sun/Venus/VenusST" instance=ExtResource( 8 )]
 
@@ -271,7 +268,6 @@ defaultMissionDestination_path = NodePath("../Deimos/DeimosPort")
 [node name="SimpleRocket" parent="Sun/Mars/OlympusPort" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 6.35275e-21, 0, 1, 0, 0, 0, 1, -1.79443, 0.0951424, -3.49483 )
 sleeping = true
-price = 85000
 
 [node name="Tender" parent="Sun/Mars/OlympusPort" instance=ExtResource( 22 )]
 transform = Transform( 1, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -1.42109e-14, 8.74228e-08, 7.10543e-15, 1, -3.02148, -0.373169, -3.29493 )
@@ -306,7 +302,6 @@ defaultMissionDestination_path = NodePath("../../OlympusPort")
 [node name="Orbital SkyCrane" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 44 )]
 transform = Transform( 1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.33789, -0.175293, -2.06995 )
 physics_material_override = SubResource( 5 )
-dryMass = 5
 
 [node name="Mine" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 42 )]
 

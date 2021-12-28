@@ -2,17 +2,25 @@ extends Rigid_N_Body
 
 class_name Ship
 
-export var price = 0
+var price = 0
 
-export var turn_rate = 100
+var turn_rate = 100
 
-export var trust = 100.0
-export var lateral_trust = 20.0
+var trust = 100.0
+var lateral_trust = 20.0
 
+enum SHIPTYPES{
+	TENDER = 0,
+	TENDER_S = 1,
+	ROCKET_S = 2,
+	ROCKET = 3,
+	SKYCRANE = 4,
+	SKYCRANE_S = 5,
+	NONE = 999
+}
 
-
-export var dispay_name = "Neubeckum II"
-export var fuel_cap = 5000.0
+var dispay_name = "Neubeckum II"
+var fuel_cap = 5000.0
 var fuel = 0
 var docking_location: Node
 var hitpoints = 100
@@ -21,12 +29,14 @@ export var playerControl = false
 export var physikAktiv =true
 var soiPlanet=null
 
-export var dryMass = 5 
+var dryMass = 5 
 
 onready var inventory = $Inventory
 
 export(ENUMS.TEAM) var team = ENUMS.TEAM.NEUTRAL
 
+export(SHIPTYPES) var type = SHIPTYPES.NONE
+const ShipTyp = preload("res://Ship/shipTypes.csv").records
 
 signal fuel_changed(fuel, fuel_cap)
 signal mass_changed(mass,trust)
@@ -36,8 +46,9 @@ signal docked(port)
 signal undocked(port)
 signal tookDamage(damage)
 
-func _ready():	
-	._ready()	
+func _ready():
+	._ready()
+	self._loadType()
 	self.mass = dryMass
 	#fuel = fuel_cap
 	emit_signal("fuel_changed",fuel, fuel_cap)	
@@ -47,6 +58,15 @@ func _ready():
 	$ShipInfo.ship = self
 	$ShipInfo.update()
 	$ShipInfo.hide()
+
+func _loadType():
+	dryMass = ShipTyp[type]["dry_mass"]
+	turn_rate = ShipTyp[type]["turn_rate"]
+	trust = ShipTyp[type]["trust"]
+	lateral_trust = ShipTyp[type]["lateral_trust"]
+	dispay_name = ShipTyp[type]["display_name"]
+	fuel_cap = ShipTyp[type]["fuel_cap"]
+	price = ShipTyp[type]["price"]
 
 func _integrate_forces(state:PhysicsDirectBodyState):
 	if(physikAktiv):

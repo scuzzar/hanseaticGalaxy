@@ -4,10 +4,4 @@
 
 [node name="Orbital Rocket" instance=ExtResource( 1 )]
 mass = 25.0
-price = 50000
-turn_rate = 90
-trust = 200.0
-lateral_trust = 100.0
-dispay_name = "Rocket S"
-fuel_cap = 10000.0
-dryMass = 25
+type = 2

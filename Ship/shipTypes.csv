@@ -1,0 +1,7 @@
+id;name;dry_mass;turn_rate;trust;lateral_trust;display_name;fuel_cap;price
+0;Tender;10;20;280;20;Tender;3250;30000
+1;Tender_S;8;20;100;20;Tender S;5000;0
+2;Orbital_Rocket;25;90;200;100;Rocket S;10000;50000
+3;Rocket;18;150;300;150;Rocket IP;15000;120000
+4;SkyCrane;50;100;300;20;SkyCrane;15000;250000
+5;SkyCrane_S;50;100;180;20;SkyCrane S;12000;120000
