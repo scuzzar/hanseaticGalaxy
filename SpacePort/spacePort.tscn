@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://SpacePort/SpacePort.escn" type="PackedScene" id=1]
 [ext_resource path="res://Cargo/Inventory.gd" type="Script" id=2]
 [ext_resource path="res://SpacePort/spacePort.gd" type="Script" id=3]
 [ext_resource path="res://Bodys/Name3D.gd" type="Script" id=4]
+[ext_resource path="res://Util/DistanceLOD.tscn" type="PackedScene" id=5]
 
 [sub_resource type="PhysicsMaterial" id=3]
 friction = 10.0
@@ -61,6 +62,8 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DistanceLOD" parent="." instance=ExtResource( 5 )]
 
 [connection signal="body_entered" from="LandingArea" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="LandingArea" to="." method="_on_Area_body_exited"]
