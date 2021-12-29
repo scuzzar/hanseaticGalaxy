@@ -69,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Station/SpaceStation.gd"
 }, {
+"base": "Spatial",
+"class": "mount_point",
+"language": "GDScript",
+"path": "res://Weapon/MountPoint.gd"
+}, {
 "base": "RigidBody",
 "class": "simpelPlanet",
 "language": "GDScript",
@@ -87,6 +92,7 @@ _global_script_class_icons={
 "Ship": "",
 "SimplePlanetOrbit": "",
 "SpaceStation": "",
+"mount_point": "",
 "simpelPlanet": ""
 }
 

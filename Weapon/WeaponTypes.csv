@@ -1,0 +1,3 @@
+id;name;display_name;dry_mass;turn_rate;scatter;cooldown;nozzel_speed;damage;gun_scene;missile_scene;price
+0;G30MM;30mm Cannon;2;40;0.1;0.05;50;3;res://Weapon/Cannon/Cannon.tscn;res://Weapon/Cannon/Bullet.tscn;10000
+1;G120mm;120mm Cannon;10;20;0;1;30;30;res://Weapon/Cannon/Cannon.tscn;res://Weapon/Cannon/RedBullet.tscn;12000

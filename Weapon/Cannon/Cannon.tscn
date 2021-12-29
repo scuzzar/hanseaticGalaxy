@@ -1,17 +1,17 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Weapon/30mm_Gun.material" type="Material" id=1]
-[ext_resource path="res://Weapon/30mm_Gun.gd" type="Script" id=2]
+[ext_resource path="res://Weapon/Cannon/Cannon.gd" type="Script" id=1]
+[ext_resource path="res://Weapon/Cannon/Cannon.material" type="Material" id=2]
 
-[node name="30mm" type="Spatial"]
-script = ExtResource( 2 )
+[node name="Gun" type="Spatial"]
+script = ExtResource( 1 )
 
 [node name="CSGBox" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.232328, 0, 0 )
 width = 0.448931
 height = 0.0520281
 depth = 0.0414523
-material = ExtResource( 1 )
+material = ExtResource( 2 )
 
 [node name="CSGBox" type="CSGBox" parent="CSGBox"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0945733, 0, 0 )
@@ -19,7 +19,7 @@ operation = 2
 width = 0.292358
 height = 0.0281812
 depth = 0.0245789
-material = ExtResource( 1 )
+material = ExtResource( 2 )
 
 [node name="BulletPoint" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.421652, 0, 0 )

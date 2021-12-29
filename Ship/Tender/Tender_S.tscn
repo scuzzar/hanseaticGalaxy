@@ -1,21 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Ship/Tender/Tender.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Weapon/30mm_Gun.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Ship/Tender/Tender_S.gd" type="Script" id=3]
+[ext_resource path="res://Weapon/MountPoint.tscn" type="PackedScene" id=2]
 
 [node name="Tender S" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00303984, 0, -0.0197533 )
 mass = 8.0
-script = ExtResource( 3 )
-price = 0
-turn_rate = 100
-trust = 100.0
-dispay_name = "Neubeckum II"
-fuel_cap = 5000.0
 physikAktiv = true
-dryMass = 5
+type = 999
 
-[node name="30mm" parent="." index="0" instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 0.00407587, 0.257623, 0.155502 )
-nozzel_speed = 25
-damage = 8
+[node name="MountPoint" parent="." index="0" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 4.37114e-08, 1, -0.190464, 0.0168157, -0.0153076 )
+mount = 1
+
+[node name="MountPoint2" parent="." index="1" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 0.191564, 0.0168157, -0.0153076 )
+mount = 1

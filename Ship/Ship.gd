@@ -28,6 +28,7 @@ var max_hitpoints = 100
 export var playerControl = false
 export var physikAktiv =true
 var soiPlanet=null
+var mounts = []
 
 var dryMass = 5 
 
@@ -58,6 +59,10 @@ func _ready():
 	$ShipInfo.ship = self
 	$ShipInfo.update()
 	$ShipInfo.hide()
+	var children = self.get_children()
+	for c in children:
+		if(c is mount_point):
+			mounts.append(c)
 
 func _loadType():
 	dryMass = ShipTyp[type]["dry_mass"]
@@ -86,6 +91,10 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 			if(fuel - fuelcost > 0):
 				$Model.trust_forward_on()
 				_burn_forward(state)
+		if Input.is_action_pressed("fire"):	
+			for mount in mounts :
+				mount.fire()
+		
 		
 		if Input.is_action_pressed("burn_backward"):
 			$Model.trust_backward_on()
