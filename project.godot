@@ -122,7 +122,6 @@ gdscript/warnings/enable=false
 
 window/size/width=1200
 window/size/height=800
-window/size/fullscreen=true
 window/vsync/use_vsync=false
 
 [editor_plugins]

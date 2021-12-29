@@ -33,7 +33,12 @@ func _attackTarget(delta):
 	ship.linear_velocity = get_parent().linear_velocity	
 	
 	var fired = ship.fire()
-	#if(fired) : print(ship_g_displacement)
+	if(fired) : 
+		print("sat p:" + str(position))
+		print("sat v" + str(get_parent().linear_velocity))
+		print("target p" + str(target_position))
+		print("target v" + str(ship.target.linear_velocity))
+		print("")
 
 func _on_Attention_body_entered(body):
 	if(_isEnemyShip(body)):

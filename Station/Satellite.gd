@@ -15,7 +15,7 @@ func _ready():
 	
 	if(orbit_radius>0.5):
 		angular_speed = 2*PI/(2*PI*orbit_radius/kosmic)	
-		angle = asin(translation.x/orbit_radius)	
+		angle = acos(translation.z/orbit_radius)	
 		var start = translation
 		var result = [start]
 
@@ -28,9 +28,7 @@ func _physics_process(delta):
 	
 	linear_velocity = (Vector3(pX,0,pZ) -translation )/delta	
 	linear_velocity = Vector3(linear_velocity.z,0,linear_velocity.x*-1)
-	
-	#calculation is wrong
-	
+
 	self.translation = Vector3(pX,0,pZ)
 	
 

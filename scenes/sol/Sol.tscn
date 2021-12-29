@@ -342,6 +342,9 @@ material = ExtResource( 4 )
 radius_description = 2000.0
 surface_g = 1.0
 
+[node name="StaticEnemy" parent="Sun/Mars" instance=ExtResource( 46 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 63.6806, -3.83373e-06, 89.6016 )
+
 [node name="Belt" type="CSGCylinder" parent="Sun"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -79.5266, 0 )
 visible = false
