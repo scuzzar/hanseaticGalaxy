@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Enemys/StaticEnemy.gd" type="Script" id=1]
 [ext_resource path="res://Ship/KillSAT/KillSat.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemys/AI.gd" type="Script" id=3]
+[ext_resource path="res://Util/DistanceLOD.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 110.3
@@ -24,6 +25,8 @@ shape = SubResource( 1 )
 
 [node name="AI" type="Node" parent="."]
 script = ExtResource( 3 )
+
+[node name="DistanceLOD" parent="." instance=ExtResource( 4 )]
 
 [node name="Area" type="Area" parent="."]
 

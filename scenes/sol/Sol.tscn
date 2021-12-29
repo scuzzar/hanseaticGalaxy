@@ -354,7 +354,7 @@ material = ExtResource( 34 )
 [node name="innerPart" type="CSGCylinder" parent="Sun/Belt"]
 operation = 2
 radius = 17000.0
-height = 10.0
+height = 18.957
 sides = 64
 material = ExtResource( 34 )
 

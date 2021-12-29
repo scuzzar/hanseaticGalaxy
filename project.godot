@@ -122,8 +122,8 @@ gdscript/warnings/enable=false
 
 window/size/width=1200
 window/size/height=800
+window/size/fullscreen=true
 window/vsync/use_vsync=false
-window/tablet_driver=""
 
 [editor_plugins]
 
@@ -315,6 +315,4 @@ common/physics_jitter_fix=0.0
 [rendering]
 
 quality/shadows/filter_mode=2
-quality/filters/anisotropic_filter_level=16
-quality/filters/use_nearest_mipmap_filter=true
 environment/default_clear_color=Color( 0, 0, 0, 1 )
