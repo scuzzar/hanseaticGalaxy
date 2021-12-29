@@ -16,6 +16,7 @@ enum SHIPTYPES{
 	ROCKET = 3,
 	SKYCRANE = 4,
 	SKYCRANE_S = 5,
+	KILLSAT = 6,
 	NONE = 999
 }
 
@@ -54,7 +55,7 @@ func _ready():
 	#fuel = fuel_cap
 	emit_signal("fuel_changed",fuel, fuel_cap)	
 	emit_signal("mass_changed",mass,trust)
-	$Model.all_trust_off()
+	#$Model.all_trust_off()
 	self.angular_damp = 6
 	$ShipInfo.ship = self
 	$ShipInfo.update()
@@ -82,7 +83,7 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 		soiPlanet=currentSOIPlanet
 		emit_signal("soiPlanetChanged",soiPlanet)
 	
-	$Model.all_trust_off()
+	#$Model.all_trust_off()
 	if(playerControl):
 		if Input.is_action_pressed("burn_forward"):
 			if(self.docking_location!=null):

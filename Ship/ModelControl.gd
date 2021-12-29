@@ -1,7 +1,8 @@
 extends Spatial
 
 func _ready():
-	trust_forward_on()
+	#trust_forward_on()
+	pass
 
 func trust_forward_on():
 	$particel.on()

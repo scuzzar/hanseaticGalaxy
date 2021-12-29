@@ -11,8 +11,8 @@ type = 999
 
 [node name="MountPoint" parent="." index="0" instance=ExtResource( 2 )]
 transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 4.37114e-08, 1, -0.190464, 0.0168157, -0.0153076 )
-mount = 1
+mount = 0
 
 [node name="MountPoint2" parent="." index="1" instance=ExtResource( 2 )]
 transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 0.191564, 0.0168157, -0.0153076 )
-mount = 1
+mount = 0
