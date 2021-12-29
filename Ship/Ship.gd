@@ -347,5 +347,7 @@ func hasTarget():
 	return target!=null
 
 func fire():
+	var fired = false
 	for mount in mounts :
-		mount.fire()
+		fired = fired or mount.fire()
+	return fired

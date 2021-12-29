@@ -26,4 +26,5 @@ func do_mount():
 
 func fire():
 	if(mount!=ENUMS.WEAPON.NONE):
-		self.get_child(0).fire()
+		return self.get_child(0).fire()
+

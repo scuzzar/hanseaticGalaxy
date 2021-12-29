@@ -16,6 +16,10 @@ func _attackTarget(delta):
 	var timeToImpact = distance/bulletSpeed
 	var motionOffset = timeToImpact*(ship.target.linear_velocity-get_parent().linear_velocity)
 	
+	var ship_g_displacement = (ship.target.last_g_force/ship.target.mass)*timeToImpact 
+
+	motionOffset += ship_g_displacement
+	
 	var predicted_target_pos = target_position + (motionOffset)
 	
 	var look_transform = get_parent().global_transform.looking_at(predicted_target_pos,Vector3(0,1,0))
@@ -27,7 +31,9 @@ func _attackTarget(delta):
 	get_parent().rotate_y(turnAngle)	
 	
 	ship.linear_velocity = get_parent().linear_velocity	
-	ship.fire()
+	
+	var fired = ship.fire()
+	#if(fired) : print(ship_g_displacement)
 
 func _on_Attention_body_entered(body):
 	if(_isEnemyShip(body)):

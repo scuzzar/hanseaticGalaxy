@@ -8,7 +8,7 @@
 radius = 110.3
 
 [sub_resource type="RayShape" id=2]
-length = 47.1555
+length = 203.831
 
 [node name="StaticEnemy" type="Spatial"]
 script = ExtResource( 1 )

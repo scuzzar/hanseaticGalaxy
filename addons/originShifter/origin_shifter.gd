@@ -19,6 +19,7 @@ func _ready():
 		world_node = get_node("../..")
 
 func _process(delta):
+	if(!is_instance_valid(parent)):return
 	if activ and parent.global_transform.origin.length() > MAX_DISTANCE:
 		call_deferred("shift_origin")
 

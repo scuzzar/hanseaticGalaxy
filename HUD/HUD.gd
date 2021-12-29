@@ -32,6 +32,7 @@ func _ready():
 	pass
 
 func _process(delta):
+	if(!is_instance_valid(ship)):return
 	live_bar.value = int(ship.hitpoints as float/ship.max_hitpoints as float *100)
 	
 	if Input.is_action_just_pressed("info"):

@@ -35,6 +35,7 @@ func setShip(newShip:Ship):
 	newShip.team = ENUMS.TEAM.PLAYER
 
 func _process(delta):
+	if(! is_instance_valid(ship)):return
 	if Input.is_action_pressed("endGame"):
 		print("you ended the game!")
 		call_deferred("_loadScore")
