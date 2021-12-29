@@ -9,5 +9,6 @@ enum TEAM {
 enum WEAPON {
 	G30MM = 0,
 	G120MM = 1,
+	DUMMY = 2,
 	NONE = 999
 }

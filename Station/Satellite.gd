@@ -27,7 +27,7 @@ func _physics_process(delta):
 	var pZ = cos(angle)*orbit_radius
 	
 	linear_velocity = (Vector3(pX,0,pZ) -translation )/delta	
-	linear_velocity = Vector3(linear_velocity.z,0,linear_velocity.x)
+	linear_velocity = Vector3(linear_velocity.z,0,linear_velocity.x*-1)
 	
 	#calculation is wrong
 	

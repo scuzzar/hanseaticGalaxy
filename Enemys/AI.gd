@@ -2,9 +2,7 @@ extends Node
 class_name AI
 
 onready var ship:Ship = get_parent().get_child(0)
-
-var turnAngle
-
+var bulletSpeed = 50
 
 func _physics_process(delta):
 	if(ship.hasTarget()):
@@ -12,17 +10,21 @@ func _physics_process(delta):
 
 func _attackTarget(delta):
 	var position = get_parent().global_transform.origin
-	var target_position =  ship.target.global_transform.origin
-	var targetVector: Vector3 = target_position - position
-	var currentHeading:Vector3 = get_parent().global_transform.basis.x
-	var angle = currentHeading.angle_to(targetVector)	
+	var target_position =  ship.target.global_transform.origin	
 	
-	if(angle>PI):
-		angle = 2*PI - angle
+	var distance = position.distance_to(target_position)
+	var timeToImpact = distance/bulletSpeed
+	var motionOffset = timeToImpact*(ship.target.linear_velocity-get_parent().linear_velocity)
 	
-	turnAngle = clamp(angle,ship.turn_rate*-1,ship.turn_rate)
+	var predicted_target_pos = target_position + (motionOffset)
 	
-	get_parent().rotate_y(turnAngle*delta)
+	var look_transform = get_parent().global_transform.looking_at(predicted_target_pos,Vector3(0,1,0))
+	var angle = look_transform.basis.get_euler().y	
+	var angleD = angle - get_parent().rotation.y
+	
+	var turnAngle = clamp(angleD,ship.turn_rate*-1*delta/ship.mass,ship.turn_rate*delta/ship.mass)
+	
+	get_parent().rotate_y(turnAngle)	
 	
 	ship.linear_velocity = get_parent().linear_velocity	
 	ship.fire()

@@ -5,4 +5,4 @@ id;name;dry_mass;turn_rate;trust;lateral_trust;display_name;fuel_cap;price
 3;Rocket;18;150;300;150;Rocket IP;15000;120000
 4;SkyCrane;50;100;300;20;SkyCrane;15000;250000
 5;SkyCrane_S;50;100;180;20;SkyCrane S;12000;120000
-6;KillSat;10;10;0;0;KillSat;0;5000
+6;KillSat;10;45;0;0;KillSat;0;5000

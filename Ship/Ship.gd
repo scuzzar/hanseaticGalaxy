@@ -32,7 +32,7 @@ var soiPlanet=null
 var mounts = []
 var dryMass = 5 
 var turn_to_target = false
-var target = null
+var target:Ship = null
 
 onready var inventory = $Inventory
 

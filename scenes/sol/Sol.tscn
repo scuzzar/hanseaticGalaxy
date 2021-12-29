@@ -343,13 +343,7 @@ radius_description = 2000.0
 surface_g = 1.0
 
 [node name="StaticEnemy" parent="Sun/Mars" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 144.838, 5.77206e-06, -5.48438 )
-
-[node name="StaticEnemy2" parent="Sun/Mars" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 123.39, 4.49366e-06, 22.1045 )
-
-[node name="StaticEnemy3" parent="Sun/Mars" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 149.352, 6.04109e-06, -33.3125 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 154.626, 6.35544e-06, -17.5088 )
 
 [node name="Belt" type="CSGCylinder" parent="Sun"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -79.5266, 0 )
