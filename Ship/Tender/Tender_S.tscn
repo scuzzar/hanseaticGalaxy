@@ -7,7 +7,6 @@
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00303984, 0, -0.0197533 )
 mass = 8.0
 physikAktiv = true
-type = 999
 
 [node name="MountPoint" parent="." index="0" instance=ExtResource( 2 )]
 transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 4.37114e-08, 1, -0.190464, 0.0168157, -0.0153076 )

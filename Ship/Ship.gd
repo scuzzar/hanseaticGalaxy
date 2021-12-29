@@ -30,14 +30,15 @@ export var playerControl = false
 export var physikAktiv =true
 var soiPlanet=null
 var mounts = []
-
 var dryMass = 5 
+var turn_to_target = false
+var target = null
 
 onready var inventory = $Inventory
 
 export(ENUMS.TEAM) var team = ENUMS.TEAM.NEUTRAL
-
 export(SHIPTYPES) var type = SHIPTYPES.NONE
+
 const ShipTyp = preload("res://Ship/shipTypes.csv").records
 
 signal fuel_changed(fuel, fuel_cap)
@@ -47,6 +48,7 @@ signal soiPlanetChanged(newSOIPlanet)
 signal docked(port)
 signal undocked(port)
 signal tookDamage(damage)
+signal destryed()
 
 func _ready():
 	._ready()
@@ -83,7 +85,15 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 		soiPlanet=currentSOIPlanet
 		emit_signal("soiPlanetChanged",soiPlanet)
 	
-	#$Model.all_trust_off()
+	if(turn_to_target and target!=null):
+		var delta = state.step
+		var targetVector: Vector3 = target.global_transform.origin - self.global_transform.origin
+		var currentHeading:Vector3 = _get_forward_vector()
+		var angle = currentHeading.angle_to(targetVector)	
+		var turnAngle = clamp(angle,turn_rate*-1*delta,turn_rate*delta)
+		self._rotation(turnAngle)
+	
+	$Model.all_trust_off()
 	if(playerControl):
 		if Input.is_action_pressed("burn_forward"):
 			if(self.docking_location!=null):
@@ -93,8 +103,7 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 				$Model.trust_forward_on()
 				_burn_forward(state)
 		if Input.is_action_pressed("fire"):	
-			for mount in mounts :
-				mount.fire()
+			self.fire()
 		
 		
 		if Input.is_action_pressed("burn_backward"):
@@ -305,6 +314,7 @@ func save():
 		"fuel_cap" :fuel_cap,
 		"trust" : trust,
 		"price" : price,
+		"type" : type,
 		"mass" : mass
 	}
 	return save_dict
@@ -319,6 +329,7 @@ func load_save(dict):
 	mass = dryMass
 	trust = dict["trust"]
 	price = dict["price"]
+	type = dict["type"]
 	last_g_force = Vector3(0,0,0)
 
 func takeDamege(damage):
@@ -329,3 +340,12 @@ func takeDamege(damage):
 		
 func distroy():
 	self.queue_free()
+	emit_signal("destryed")
+
+
+func hasTarget():
+	return target!=null
+
+func fire():
+	for mount in mounts :
+		mount.fire()

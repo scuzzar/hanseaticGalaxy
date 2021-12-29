@@ -34,6 +34,10 @@ func fire():
 		bullet.transform = $BulletPoint.global_transform
 		get_node("/root/Sol").add_child(bullet)
 		var offset_velocity:Vector3  = ship.linear_velocity	
+		
+		print(bullet.velocity)
+		print(offset_velocity)
+		
 		bullet.velocity += offset_velocity
 		var noise = Vector3(ran.randfn(0,scatter),ran.randfn(0,scatter),ran.randfn(0,scatter))
 		bullet.velocity += noise

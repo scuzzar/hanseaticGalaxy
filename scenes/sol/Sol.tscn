@@ -87,11 +87,12 @@ environment = ExtResource( 20 )
 min_zoom = 1.0
 
 [node name="PlayerShip" parent="." instance=ExtResource( 45 )]
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.3, 0, -68.3688 )
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 11982.7, 0, -153.024 )
 physics_material_override = SubResource( 1 )
+velocety = Vector3( -10, 0, 0 )
 show_soi_relativ_sim = false
 playerControl = true
-type = 1
+team = 0
 
 [node name="Sun" parent="." instance=ExtResource( 16 )]
 mode = 3
@@ -308,6 +309,30 @@ physics_material_override = SubResource( 5 )
 
 [node name="DomedCity" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 37 )]
 
+[node name="StaticEnemy2" parent="Sun/Mars/Deimos" instance=ExtResource( 46 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47.5696, -2.56186e-08, 15.3633 )
+
+[node name="StaticEnemy3" parent="Sun/Mars/Deimos" instance=ExtResource( 46 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2846, -1.41351e-06, 42.8984 )
+
+[node name="StaticEnemy4" parent="Sun/Mars/Deimos" instance=ExtResource( 46 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3716, -3.83682e-06, 44.1914 )
+
+[node name="StaticEnemy5" parent="Sun/Mars/Deimos" instance=ExtResource( 46 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.1678, -5.434e-06, 12.96 )
+
+[node name="StaticEnemy6" parent="Sun/Mars/Deimos" instance=ExtResource( 46 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41.3198, -5.32385e-06, -25.8486 )
+
+[node name="StaticEnemy7" parent="Sun/Mars/Deimos" instance=ExtResource( 46 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8276, -3.50637e-06, -46.3613 )
+
+[node name="StaticEnemy8" parent="Sun/Mars/Deimos" instance=ExtResource( 46 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9478, -1.31438e-06, -38.0449 )
+
+[node name="StaticEnemy9" parent="Sun/Mars/Deimos" instance=ExtResource( 46 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9478, -1.43359e-06, -9.04492 )
+
 [node name="Phobos" parent="Sun/Mars" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 530.882, 1.46021e-05, -2.46191 )
 mode = 3
@@ -317,23 +342,18 @@ material = ExtResource( 4 )
 radius_description = 2000.0
 surface_g = 1.0
 
+[node name="StaticEnemy" parent="Sun/Mars" instance=ExtResource( 46 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 144.838, 5.77206e-06, -5.48438 )
+
 [node name="StaticEnemy2" parent="Sun/Mars" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 160.829, 7.67886e-06, -9.95801 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 123.39, 4.49366e-06, 22.1045 )
 
 [node name="StaticEnemy3" parent="Sun/Mars" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 158.625, 5.64013e-06, -2.2959 )
-
-[node name="StaticEnemy4" parent="Sun/Mars" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 155.053, 5.42722e-06, 7.96387 )
-
-[node name="StaticEnemy5" parent="Sun/Mars" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 144.937, 4.82424e-06, 6.00586 )
-
-[node name="StaticEnemy" parent="Sun/Mars" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 144.725, 5.76531e-06, -5.48438 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 149.352, 6.04109e-06, -33.3125 )
 
 [node name="Belt" type="CSGCylinder" parent="Sun"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -79.5266, 0 )
+visible = false
 cast_shadow = 0
 radius = 19000.0
 height = 5.0

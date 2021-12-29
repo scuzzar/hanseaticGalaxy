@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "AI",
+"language": "GDScript",
+"path": "res://Enemys/AI.gd"
+}, {
 "base": "Spatial",
 "class": "CargoContainer",
 "language": "GDScript",
@@ -80,6 +85,7 @@ _global_script_classes=[ {
 "path": "res://Bodys/simpelPlanet.gd"
 } ]
 _global_script_class_icons={
+"AI": "",
 "CargoContainer": "",
 "CargoTarget": "",
 "DeliveryMission": "",

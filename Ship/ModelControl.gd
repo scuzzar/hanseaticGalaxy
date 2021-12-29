@@ -5,10 +5,12 @@ func _ready():
 	pass
 
 func trust_forward_on():
-	$particel.on()
+	if(get_node_or_null("particel")!=null):
+		$particel.on()
 
 func _trust_forward_off():
-	$particel.off()
+	if(get_node_or_null("particel")!=null):
+		$particel.off()
 
 func all_trust_off():
 	_trust_forward_off()
