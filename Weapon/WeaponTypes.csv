@@ -1,4 +1,4 @@
 id;name;display_name;dry_mass;turn_rate;scatter;cooldown;nozzel_speed;damage;gun_scene;missile_scene;price
 0;G30MM;30mm Cannon;2;40;0.3;0.05;50;8;res://Weapon/Cannon/Cannon.tscn;res://Weapon/Cannon/Bullet.tscn;10000
-1;G120mm;120mm Cannon;10;20;0;1;30;30;res://Weapon/Cannon/Cannon.tscn;res://Weapon/Cannon/RedBullet.tscn;12000
+1;G120mm;120mm Cannon;10;20;0;1;40;18;res://Weapon/Cannon/Cannon.tscn;res://Weapon/Cannon/RedBullet.tscn;12000
 2;DUMMY;30mm Cannon;2;40;0.3;0.05;50;0;res://Weapon/Cannon/Cannon.tscn;res://Weapon/Cannon/Bullet.tscn;10000

@@ -5,10 +5,10 @@
 [ext_resource path="res://Enemys/AI.gd" type="Script" id=3]
 
 [sub_resource type="CylinderShape" id=1]
-radius = 38.809
+radius = 110.3
 
 [sub_resource type="RayShape" id=2]
-length = 34.5166
+length = 47.1555
 
 [node name="StaticEnemy" type="Spatial"]
 script = ExtResource( 1 )
