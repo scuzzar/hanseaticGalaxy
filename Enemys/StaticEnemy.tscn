@@ -6,7 +6,7 @@
 [ext_resource path="res://Util/DistanceLOD.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CylinderShape" id=1]
-radius = 110.3
+radius = 118.056
 
 [sub_resource type="RayShape" id=2]
 length = 203.831
@@ -41,6 +41,7 @@ shape = SubResource( 2 )
 
 [node name="PredictionMarker" type="CollisionShape" parent="Marker"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20468, 0, 0 )
+visible = false
 shape = SubResource( 3 )
 
 [connection signal="destryed" from="KillSat" to="." method="_on_KillSat_destryed"]

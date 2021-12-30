@@ -54,6 +54,7 @@ func _ready():
 	._ready()
 	self._loadType()
 	self.mass = dryMass
+	self.hitpoints = max_hitpoints
 	#fuel = fuel_cap
 	emit_signal("fuel_changed",fuel, fuel_cap)	
 	emit_signal("mass_changed",mass,trust)
@@ -75,6 +76,7 @@ func _loadType():
 	dispay_name = ShipTyp[type]["display_name"]
 	fuel_cap = ShipTyp[type]["fuel_cap"]
 	price = ShipTyp[type]["price"]
+	max_hitpoints = ShipTyp[type]["max_hp"]
 
 func _integrate_forces(state:PhysicsDirectBodyState):
 	if(physikAktiv):
@@ -313,7 +315,8 @@ func save():
 		"trust" : trust,
 		"price" : price,
 		"type" : type,
-		"mass" : mass
+		"mass" : mass,
+		"hitpoints" :hitpoints
 	}
 	return save_dict
 
@@ -328,6 +331,7 @@ func load_save(dict):
 	trust = dict["trust"]
 	price = dict["price"]
 	type = dict["type"]
+	hitpoints = dict["hitpoints"]
 	last_g_force = Vector3(0,0,0)
 
 func takeDamege(damage):

@@ -12,9 +12,7 @@ func _process(delta):
 func _attackTarget(delta):
 	var position = get_parent().global_transform.origin
 	var target_position =  ship.target.global_transform.origin	
-	
-	#var distance = position.distance_to(target_position)
-	
+
 	var rel_target_vel = ship.target.linear_velocity -  get_parent().linear_velocity
 		
 	var timeToImpact = predict_t(target_position,rel_target_vel,bulletSpeed) #distance/bulletSpeed

@@ -164,11 +164,12 @@ func load_game():
 			$PlayerShip.free()
 			var laoded_PlayerShip :Ship = load(node_data["filename"]).instance()
 			laoded_PlayerShip.physikAktiv = true
-			laoded_PlayerShip.load_save(node_data)
+			
 			laoded_PlayerShip.playerControl = true			
 			laoded_PlayerShip.name = "PlayerShip"
 			var laoded_node_parent = get_node(node_data["parent"])
-			laoded_node_parent.add_child(laoded_PlayerShip)			
+			laoded_node_parent.add_child(laoded_PlayerShip)	
+			laoded_PlayerShip.load_save(node_data)	
 			self.setShip(laoded_PlayerShip)
 			continue
 			

@@ -87,9 +87,8 @@ environment = ExtResource( 20 )
 min_zoom = 1.0
 
 [node name="PlayerShip" parent="." instance=ExtResource( 45 )]
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 11953.7, 0, -155.428 )
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.4, -2.38419e-07, -68.0911 )
 physics_material_override = SubResource( 1 )
-velocety = Vector3( -10, 0, 0 )
 show_soi_relativ_sim = false
 playerControl = true
 team = 0
@@ -236,9 +235,6 @@ linear_velocity = Vector3( 0.862, 0, 0 )
 isPlanet = true
 surface_g = 3.69
 
-[node name="StaticEnemy" parent="Sun/Mars" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 124.589, 9.20832e-06, 60.165 )
-
 [node name="MarsST" parent="Sun/Mars" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 152.126, 0, 0 )
 
@@ -335,18 +331,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6498, 5.42942e-05, 42.834 
 
 [node name="StaticEnemy5" parent="Sun/Mars/Phobos" instance=ExtResource( 46 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.446, 5.2697e-05, 11.6025 )
-
-[node name="StaticEnemy6" parent="Sun/Mars/Phobos" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41.598, 5.28072e-05, -27.2061 )
-
-[node name="StaticEnemy7" parent="Sun/Mars/Phobos" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1058, 5.46247e-05, -47.7188 )
-
-[node name="StaticEnemy8" parent="Sun/Mars/Phobos" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6696, 5.68167e-05, -39.4023 )
-
-[node name="StaticEnemy9" parent="Sun/Mars/Phobos" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6696, 5.66974e-05, -10.4023 )
 
 [node name="Belt" type="CSGCylinder" parent="Sun"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -79.5266, 0 )
@@ -555,6 +539,3 @@ transform = Transform( -0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-14
 
 [connection signal="shifted" from="Shifter" to="Simulator" method="_on_Shifter_shifted"]
 [connection signal="shipOrderd" from="HUD" to="." method="_on_HUD_shipOrderd"]
-
-[editable path="Sun/Mars/StaticEnemy"]
-[editable path="Sun/Mars/StaticEnemy/KillSat"]
