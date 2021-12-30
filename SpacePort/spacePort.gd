@@ -27,9 +27,18 @@ func _on_Area_body_exited(body):
 func _on_Area_Ship_enterd(ship : Ship):
 	ship.dock(self)
 	self.docked_ship = ship
-	Player.pay(ship.get_refule_costs())
+	_refuel(ship)
+	_repair(ship)
+
+func _refuel(ship : Ship):
+	Player.pay(ship.get_refule_costs())		
 	ship.set_fuel(ship.fuel_cap)
 	
+func _repair(ship:Ship):
+	var damage = ship.max_hitpoints-ship.hitpoints
+	ship.hitpoints = ship.max_hitpoints
+	Player.pay(damage*35)
+
 func _on_Area_Ship_exited(ship : Ship):
 	ship.undock()
 	self.docked_ship = null	

@@ -6,7 +6,7 @@
 [ext_resource path="res://Util/DistanceLOD.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CylinderShape" id=1]
-radius = 118.056
+radius = 120.0
 
 [sub_resource type="RayShape" id=2]
 length = 203.831
