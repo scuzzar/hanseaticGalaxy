@@ -28,3 +28,8 @@ func fire():
 	if(mount!=ENUMS.WEAPON.NONE):
 		return self.get_child(0).fire()
 
+func get_weapon_speed():
+	if(mount!=ENUMS.WEAPON.NONE):
+		return WeaponTyp[mount]["nozzel_speed"]
+	else:
+		return 0

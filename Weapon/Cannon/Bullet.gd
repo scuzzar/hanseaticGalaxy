@@ -5,15 +5,19 @@ extends Area
 # var a = 2
 # var b = "text"
 
-export(float) var speed = 10
-export(int) var damage = 1
+var speed :float = 10
+var damage : int= 1
 var velocity :  Vector3
 var team = ENUMS.TEAM.NEUTRAL
-
+var max_distance :float = 10
 
 func _ready():	
 	var parent = get_parent()
-	velocity = global_transform.basis.x *speed 	
+	velocity = global_transform.basis.x *speed 		
+	$LifeTime.wait_time = max_distance/speed
+	if(max_distance/speed<=0):
+		print("Aaa")
+	$LifeTime.start()
 
 func _physics_process(delta):	
 	self.global_translate(velocity*delta)
