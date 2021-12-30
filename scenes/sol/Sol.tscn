@@ -236,6 +236,12 @@ linear_velocity = Vector3( 0.862, 0, 0 )
 isPlanet = true
 surface_g = 3.69
 
+[node name="StaticEnemy" parent="Sun/Mars" instance=ExtResource( 46 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 124.589, 9.20832e-06, 60.165 )
+
+[node name="MountPoint" parent="Sun/Mars/StaticEnemy/KillSat" index="0"]
+mount = 2
+
 [node name="MarsST" parent="Sun/Mars" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 152.126, 0, 0 )
 
@@ -552,3 +558,6 @@ transform = Transform( -0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-14
 
 [connection signal="shifted" from="Shifter" to="Simulator" method="_on_Shifter_shifted"]
 [connection signal="shipOrderd" from="HUD" to="." method="_on_HUD_shipOrderd"]
+
+[editable path="Sun/Mars/StaticEnemy"]
+[editable path="Sun/Mars/StaticEnemy/KillSat"]

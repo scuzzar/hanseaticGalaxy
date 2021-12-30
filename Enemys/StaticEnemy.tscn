@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Enemys/StaticEnemy.gd" type="Script" id=1]
 [ext_resource path="res://Ship/KillSAT/KillSat.tscn" type="PackedScene" id=2]
@@ -10,6 +10,9 @@ radius = 110.3
 
 [sub_resource type="RayShape" id=2]
 length = 203.831
+
+[sub_resource type="SphereShape" id=3]
+radius = 0.470415
 
 [node name="StaticEnemy" type="Spatial"]
 script = ExtResource( 1 )
@@ -28,11 +31,17 @@ script = ExtResource( 3 )
 
 [node name="DistanceLOD" parent="." instance=ExtResource( 4 )]
 
-[node name="Area" type="Area" parent="."]
+[node name="Marker" type="Area" parent="."]
+monitoring = false
+monitorable = false
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
+[node name="AimLine" type="CollisionShape" parent="Marker"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.16111, 0 )
 shape = SubResource( 2 )
+
+[node name="PredictionMarker" type="CollisionShape" parent="Marker"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20468, 0, 0 )
+shape = SubResource( 3 )
 
 [connection signal="destryed" from="KillSat" to="." method="_on_KillSat_destryed"]
 [connection signal="body_entered" from="Attention" to="AI" method="_on_Attention_body_entered"]

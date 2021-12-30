@@ -4,7 +4,7 @@ class_name AI
 onready var ship:Ship = get_parent().get_child(0)
 var bulletSpeed = 50
 
-func _physics_process(delta):
+func _process(delta):
 	if(ship.hasTarget()):
 		self._attackTarget(delta)
 
@@ -14,13 +14,18 @@ func _attackTarget(delta):
 	
 	var distance = position.distance_to(target_position)
 	var timeToImpact = distance/bulletSpeed
-	var motionOffset = timeToImpact*(ship.target.linear_velocity-get_parent().linear_velocity)
+	var predicted_target_pos = target_position
+	
+	var targetMotion = timeToImpact*ship.target.linear_velocity
+	var ownMotion = timeToImpact*get_parent().linear_velocity
+	
+	predicted_target_pos += targetMotion
+	predicted_target_pos -= ownMotion
 	
 	var ship_g_displacement = (ship.target.last_g_force/ship.target.mass)*timeToImpact 
-
-	motionOffset += ship_g_displacement
+	predicted_target_pos += ship_g_displacement
 	
-	var predicted_target_pos = target_position + (motionOffset)
+	
 	
 	var look_transform = get_parent().global_transform.looking_at(predicted_target_pos,Vector3(0,1,0))
 	var angle = look_transform.basis.get_euler().y	
@@ -34,11 +39,13 @@ func _attackTarget(delta):
 	
 	var fired = ship.fire()
 	if(fired) : 
+		$"../Marker/PredictionMarker".global_transform.origin = predicted_target_pos + ownMotion
 		print("sat p:" + str(position))
 		print("sat v" + str(get_parent().linear_velocity))
 		print("target p" + str(target_position))
 		print("target v" + str(ship.target.linear_velocity))
 		print("")
+
 
 func _on_Attention_body_entered(body):
 	if(_isEnemyShip(body)):

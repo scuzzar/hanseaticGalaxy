@@ -231,8 +231,6 @@ func rel_speed_to_Strongest_body():
 	return result
 
 
-
-
 func burn_fuel(fuel_cost:float):
 	self.set_fuel(fuel - fuel_cost)	
 	Player.fuel_burned(fuel_cost)
@@ -339,7 +337,10 @@ func takeDamege(damage):
 		self.distroy()
 		
 func distroy():
-	self.queue_free()
+	if(playerControl):
+		self.hide()
+	else:
+		self.queue_free()
 	emit_signal("destryed")
 
 
