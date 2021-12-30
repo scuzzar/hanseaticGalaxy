@@ -13,15 +13,20 @@ func _attackTarget(delta):
 	var position = get_parent().global_transform.origin
 	var target_position =  ship.target.global_transform.origin	
 	
-	var distance = position.distance_to(target_position)
-	var timeToImpact = distance/bulletSpeed
+	#var distance = position.distance_to(target_position)
+	#var rel_target_vel = ship.target.linear_velocity -  get_parent().linear_velocity
+	
+	var timeToImpact = predict_t(target_position,,bulletSpeed) #distance/bulletSpeed
+	
+	
+	
 	var predicted_target_pos = target_position
 	
-	var targetMotion = timeToImpact*ship.target.linear_velocity
-	var ownMotion = timeToImpact*get_parent().linear_velocity
+	var targetMotion = timeToImpact*(ship.target.linear_velocity - get_parent().linear_velocity)
+	#var ownMotion = timeToImpact*get_parent().linear_velocity
 	
 	predicted_target_pos += targetMotion
-	predicted_target_pos -= ownMotion
+	#predicted_target_pos -= ownMotion
 	
 	var ship_g_displacement = (ship.target.last_g_force/ship.target.mass)*timeToImpact 
 	predicted_target_pos += ship_g_displacement
@@ -40,13 +45,28 @@ func _attackTarget(delta):
 	
 	var fired = ship.fire()
 	if(fired) : 
-		markerPosition = predicted_target_pos + ownMotion
+		#markerPosition = predicted_target_pos + ownMotion
 		print("sat p:" + str(position))
 		print("sat v" + str(get_parent().linear_velocity))
 		print("target p" + str(target_position))
 		print("target v" + str(ship.target.linear_velocity))
+		
+		print(predict_t(target_position,ship.target.linear_velocity,bulletSpeed))
+		print(timeToImpact)
 		print("")
 
+func predict_t(target_p:Vector3,target_v:Vector3,missile_v:float):
+	var position = get_parent().global_transform.origin
+	var rel_target_p = target_p - position
+	
+	var p1 = rel_target_p.x
+	var p2 = rel_target_p.z
+	var v1 = target_v.x
+	var v2 = target_v.z
+	var v3 = missile_v
+	var t = 0
+	t = (-2*p1*v1 - 2*p2*v2 - sqrt(pow(-2*p1*v1 - 2*p2*v2,2) - 4*(-pow(p1,2) - p2*p2)*(-pow(v1,2) - v2*v2 + v3*v3)))/(2*(v1*v1 + v2*v2 - v3*v3))
+	return t
 
 func _on_Attention_body_entered(body):
 	if(_isEnemyShip(body)):
