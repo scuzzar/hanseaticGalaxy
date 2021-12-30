@@ -87,7 +87,7 @@ environment = ExtResource( 20 )
 min_zoom = 1.0
 
 [node name="PlayerShip" parent="." instance=ExtResource( 45 )]
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 11982.7, 0, -153.024 )
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 11953.7, 0, -155.428 )
 physics_material_override = SubResource( 1 )
 velocety = Vector3( -10, 0, 0 )
 show_soi_relativ_sim = false
@@ -238,9 +238,6 @@ surface_g = 3.69
 
 [node name="StaticEnemy" parent="Sun/Mars" instance=ExtResource( 46 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 124.589, 9.20832e-06, 60.165 )
-
-[node name="MountPoint" parent="Sun/Mars/StaticEnemy/KillSat" index="0"]
-mount = 2
 
 [node name="MarsST" parent="Sun/Mars" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 152.126, 0, 0 )

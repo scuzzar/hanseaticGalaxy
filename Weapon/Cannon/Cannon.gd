@@ -35,7 +35,7 @@ func fire():
 		get_node("/root/Sol").add_child(bullet)
 		var offset_velocity:Vector3  = ship.linear_velocity			
 		bullet.velocity += offset_velocity
-		var noise = Vector3(ran.randfn(0,scatter),ran.randfn(0,scatter),ran.randfn(0,scatter))
+		var noise = Vector3(ran.randfn(0,scatter),0,ran.randfn(0,scatter))
 		bullet.velocity += noise
 		bullet.team = ship.team
 		return true

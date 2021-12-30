@@ -3,6 +3,7 @@ class_name AI
 
 onready var ship:Ship = get_parent().get_child(0)
 var bulletSpeed = 50
+var markerPosition = Vector3(0,0,0)
 
 func _process(delta):
 	if(ship.hasTarget()):
@@ -24,9 +25,7 @@ func _attackTarget(delta):
 	
 	var ship_g_displacement = (ship.target.last_g_force/ship.target.mass)*timeToImpact 
 	predicted_target_pos += ship_g_displacement
-	
-	
-	
+		
 	var look_transform = get_parent().global_transform.looking_at(predicted_target_pos,Vector3(0,1,0))
 	var angle = look_transform.basis.get_euler().y	
 	var angleD = angle - get_parent().rotation.y
@@ -37,9 +36,11 @@ func _attackTarget(delta):
 	
 	ship.linear_velocity = get_parent().linear_velocity	
 	
+	$"../Marker/PredictionMarker".global_transform.origin = markerPosition
+	
 	var fired = ship.fire()
 	if(fired) : 
-		$"../Marker/PredictionMarker".global_transform.origin = predicted_target_pos + ownMotion
+		markerPosition = predicted_target_pos + ownMotion
 		print("sat p:" + str(position))
 		print("sat v" + str(get_parent().linear_velocity))
 		print("target p" + str(target_position))

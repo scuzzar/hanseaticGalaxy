@@ -14,7 +14,7 @@ type = 6
 
 [node name="MountPoint" parent="." index="0" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00238152, -0.399979 )
-mount = 1
+mount = 2
 
 [node name="KillSat" parent="." index="1" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
