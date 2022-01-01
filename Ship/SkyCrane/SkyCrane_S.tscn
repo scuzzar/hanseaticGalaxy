@@ -4,3 +4,9 @@
 
 [node name="SkyCrane S" instance=ExtResource( 1 )]
 type = 5
+
+[node name="MountPointL" parent="." index="0"]
+mount = 3
+
+[node name="MountPointR" parent="." index="1"]
+mount = 3

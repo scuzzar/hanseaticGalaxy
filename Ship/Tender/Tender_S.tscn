@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Ship/Tender/Tender.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Weapon/MountPoint.tscn" type="PackedScene" id=2]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.242001, 0.415233, 0.241879 )
@@ -10,14 +9,6 @@ extents = Vector3( 0.242001, 0.415233, 0.241879 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00303984, 0, -0.0197533 )
 mass = 8.0
 physikAktiv = true
-
-[node name="MountPoint" parent="." index="0" instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 4.37114e-08, 1, -0.190464, 0.0168157, -0.0153076 )
-mount = 0
-
-[node name="MountPoint2" parent="." index="1" instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 0.191564, 0.0168157, -0.0153076 )
-mount = 0
 
 [node name="CollisionShape" parent="." index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118668, -5.18717e-09 )

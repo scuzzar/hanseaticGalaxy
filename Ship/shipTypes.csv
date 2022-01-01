@@ -1,8 +1,8 @@
 id;name;dry_mass;turn_rate;trust;lateral_trust;display_name;fuel_cap;max_hp;price
 0;Tender;10;20;280;20;Tender;3250;150;30000
 1;Tender_S;8;20;100;20;Tender S;5000;100;0
-2;Orbital_Rocket;25;90;200;100;Rocket S;10000;300;50000
-3;Rocket;18;150;300;150;Rocket IP;15000;350;120000
+2;Orbital_Rocket;25;80;200;100;Rocket S;10000;300;50000
+3;Rocket;30;100;300;150;Rocket IP;15000;350;120000
 4;SkyCrane;50;100;300;20;SkyCrane;15000;600;250000
 5;SkyCrane_S;50;100;180;20;SkyCrane S;12000;680;120000
 6;KillSat;10;45;0;0;KillSat;0;200;5000

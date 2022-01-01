@@ -5,3 +5,6 @@
 [node name="Orbital Rocket" instance=ExtResource( 1 )]
 mass = 25.0
 type = 2
+
+[node name="MountPoint" parent="." index="0"]
+mount = 999
