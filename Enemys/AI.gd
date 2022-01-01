@@ -41,11 +41,11 @@ func _attackTarget(delta):
 	
 	ship.linear_velocity = get_parent().linear_velocity	
 	
-	#$"../Marker/PredictionMarker".global_transform.origin = markerPosition
+	$"../Marker/PredictionMarker".global_transform.origin = markerPosition
 	
 	var fired = ship.fire()
 	if(fired) : 
-		#markerPosition = predicted_target_pos + ownMotion
+		markerPosition = predicted_target_pos + get_parent().linear_velocity
 		print("sat p:" + str(position))
 		print("sat v" + str(get_parent().linear_velocity))
 		print("target p" + str(target_position))

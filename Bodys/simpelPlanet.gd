@@ -35,6 +35,9 @@ func _ready():
 	orbit_radius = translation.length()
 	$Shape/Mesh.material_override = material
 	isGravetySource = (surface_g>0)
+	$Lable3D.text = name
+	if(self.securety_level==ENUMS.SECURETY.BELT):
+		$Lable3D.text += "*"
 	
 	self.derive_mass()
 	

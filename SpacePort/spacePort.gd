@@ -10,6 +10,7 @@ var delivery_Missions = []
 
 func _ready():	
 	docked_ship = null
+	$Lable3D.text = name
 
 func get_default_location()->Port:
 	if(_defaultMissionDestination==null):

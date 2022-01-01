@@ -3,7 +3,8 @@ extends Port
 class_name SpaceStation
 
 func _ready():
-	$Lable3D.text = self.name
+	self.name = self.get_parent().name
+	$Lable3D.text = self.get_parent().name
 
 func _physics_process(delta):
 	if(docked_ship!=null):

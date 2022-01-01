@@ -41,7 +41,6 @@ shape = SubResource( 2 )
 
 [node name="PredictionMarker" type="CollisionShape" parent="Marker"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20468, 0, 0 )
-visible = false
 shape = SubResource( 3 )
 
 [connection signal="destryed" from="KillSat" to="." method="_on_KillSat_destryed"]
