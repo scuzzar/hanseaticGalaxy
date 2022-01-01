@@ -229,11 +229,12 @@ transform = Transform( -0.999477, 0.0323218, 4.03254e-08, 0.0323218, 0.999477, 7
 [node name="DomedCity" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource( 37 )]
 
 [node name="Mars" parent="Sun" instance=ExtResource( 16 )]
-transform = Transform( -4.37114e-08, 0, 1, -5.96048e-08, 1, -1.77636e-15, -1, -5.96048e-08, -4.37114e-08, 12000, 0, 0 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12000, 0, 0 )
 mode = 3
 mass = 334.727
 linear_velocity = Vector3( 0.862, 0, 0 )
 isPlanet = true
+securety_level = 2
 surface_g = 3.69
 
 [node name="MarsST" parent="Sun/Mars" instance=ExtResource( 10 )]
@@ -294,7 +295,7 @@ mode = 3
 mass = 15.197
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = SubResource( 2 )
-securety_level = 1
+securety_level = 2
 radius_description = 2000.0
 surface_g = 1.7
 

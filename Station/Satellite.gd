@@ -1,13 +1,23 @@
 extends Spatial
 
 class_name Satellite
-onready var orbit_radius = translation.length()
+var orbit_radius = 0
 var linear_velocity = Vector3(0,0,0)
 var angle = 0
 var angular_speed = 0 
 var global_translation = Vector3(0,0,0)
 
 func _ready():	
+	if(orbit_radius!=0):
+		_update_orbit()
+	else:
+		if(translation.length()!=0):
+			orbit_radius = translation.length()
+			_update_orbit()
+		else:
+			return
+
+func _update_orbit():
 	var r = orbit_radius
 	var G = Globals.G
 	var M = get_parent().mass
@@ -16,8 +26,6 @@ func _ready():
 	if(orbit_radius>0.5):
 		angular_speed = 2*PI/(2*PI*orbit_radius/kosmic)	
 		angle = acos(translation.z/orbit_radius)	
-		var start = translation
-		var result = [start]
 
 
 func _physics_process(delta):

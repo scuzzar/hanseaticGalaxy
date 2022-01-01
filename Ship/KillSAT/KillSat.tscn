@@ -5,20 +5,20 @@
 [ext_resource path="res://Weapon/MountPoint.tscn" type="PackedScene" id=3]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.342937, 1.0424, 0.349978 )
+extents = Vector3( 0.342937, 0.345898, 1.09089 )
 
 [node name="KillSat" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 team = 1
 type = 6
 
 [node name="MountPoint" parent="." index="0" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00238152, -0.399979 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.1884, 0.0127859 )
 mount = 3
 
 [node name="KillSat" parent="." index="1" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.19611, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000803113, 3.51354e-11 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.000803113, 3.51354e-11 )
 shape = SubResource( 1 )
