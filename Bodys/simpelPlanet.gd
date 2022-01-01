@@ -8,6 +8,7 @@ export (Material) var material = preload("res://Bodys/materials/Mars.material")
 export var isStar = false
 export var isPlanet = false
 export var doRotationShift = true
+export(ENUMS.SECURETY) var securety_level = ENUMS.SECURETY.CORE
 
 var orbital_speed :float = 0
 export var planetaryRotation :float= 0

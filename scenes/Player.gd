@@ -8,9 +8,11 @@ var ship: Ship
 var accepted_delivery_Missions = []
 
 signal credits_changed(credits)
+signal mission_accepted(mission)
 
 func _ready():
 	self.add_to_group("persist")
+	self.connect("mission_accepted",Pirates,"on_mission_accepted")
 
 func reward(reward_credits : int):
 	credits +=reward_credits
@@ -50,6 +52,7 @@ func accept_Mission(m:DeliveryMission):
 			accepted_delivery_Missions.append(m)
 			ship.add_child(m)
 			m.accepted = true
+			emit_signal("mission_accepted",m)
 		else:
 			print("no Space on Ship")
 	else:		

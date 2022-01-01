@@ -6,6 +6,8 @@ export(int) var init_missions = 2
 
 const groupTag = "TARGET"
 
+signal mission_generated(mission)
+
 onready var port:Port = self.get_Port()
 var deliveryMissionScene = preload("res://Mission/Delivery/DeliveryMission.tscn")
 
@@ -16,6 +18,7 @@ func _ready():
 	if(cargo!=CargoContainer.CARGO.NONE):
 		$GenTimer.wait_time = self.getProductionTime()*60
 		$GenTimer.start()
+	self.connect("mission_generated",Pirates,"on_mission_generated")
 
 func generateInitialStock():
 	if(cargo!=CargoContainer.CARGO.NONE):	 
@@ -40,7 +43,7 @@ func _generate_mission() -> DeliveryMission:
 	if(destination ==null):
 		print_debug("No destination for " + str(cargo) + " from " + str(origin))
 		return null
-	var mission = deliveryMissionScene.instance()
+	var mission : DeliveryMission = deliveryMissionScene.instance()
 	mission.origin = origin
 	mission.destination = destination
 	mission.cargo = cargo
@@ -54,6 +57,7 @@ func _generate_mission() -> DeliveryMission:
 	var distance = mission.getDistance()
 	var single_reward=round(mission.getPrice() * log(distance)*log(distance)/5)
 	mission.reward = single_reward * amount
+	emit_signal("mission_generated",mission)
 	return mission
 
 func _select_destination()->Port:

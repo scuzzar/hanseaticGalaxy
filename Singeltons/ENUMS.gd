@@ -6,6 +6,12 @@ enum TEAM {
 	NEUTRAL
 }
 
+enum SECURETY {
+	CORE,
+	COLONY,
+	BELT
+}
+
 enum WEAPON {
 	G30MM = 0,
 	G120MM = 1,

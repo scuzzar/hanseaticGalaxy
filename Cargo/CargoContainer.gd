@@ -20,6 +20,7 @@ enum CARGO{
 	DEUTERIUM = 13,
 	FUEL = 14,
 	ENERGY = 15,
+	SMALL_ARMS = 16,
 	NONE = 999
 }
 
