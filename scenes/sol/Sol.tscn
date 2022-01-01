@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Bodys/materials/Sun.material" type="Material" id=1]
 [ext_resource path="res://Bodys/materials/Moon.material" type="Material" id=2]
@@ -45,7 +45,6 @@
 [ext_resource path="res://Building/EnergyHavester.tscn" type="PackedScene" id=43]
 [ext_resource path="res://Ship/SkyCrane/SkyCrane_S.tscn" type="PackedScene" id=44]
 [ext_resource path="res://Ship/Tender/Tender_S.tscn" type="PackedScene" id=45]
-[ext_resource path="res://Enemys/StaticEnemy.tscn" type="PackedScene" id=46]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 3.0
@@ -180,6 +179,23 @@ shader_params/u_night_color1 = Color( 0, 0, 0, 1 )
 shader_params/u_density = 0.01
 shader_params/u_attenuation_distance = 0.0
 
+[node name="ISS" parent="Sun/Earth" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 241.56, 0, 0 )
+
+[node name="SkyCrane" parent="Sun/Earth/ISS" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.98047, -0.898486, 0 )
+
+[node name="Tender" parent="Sun/Earth/ISS" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.83693, -0.786469, 0.382813 )
+show_soi_relativ_sim = false
+type = 0
+
+[node name="Warft" parent="Sun/Earth/ISS" instance=ExtResource( 8 )]
+
+[node name="HighTech" parent="Sun/Earth/ISS" instance=ExtResource( 39 )]
+
+[node name="OrbitalCity" parent="Sun/Earth/ISS" instance=ExtResource( 35 )]
+
 [node name="BrasiliaPort" parent="Sun/Earth" instance=ExtResource( 14 )]
 transform = Transform( -0.75811, 0.652126, -5.57647e-08, -1.15933e-07, -4.92623e-08, 1, 0.652126, 0.75811, 1.12949e-07, 39.5011, 0, 54.2845 )
 defaultMissionDestination_path = NodePath("../Moon/ApolloPort")
@@ -204,7 +220,7 @@ defaultMissionDestination_path = NodePath("../../Mars/OlympusPort")
 [node name="Construction" parent="Sun/Earth/PhilipinPort" instance=ExtResource( 36 )]
 
 [node name="Moon" parent="Sun/Earth" groups=["bodys"] instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 376.989 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 664.943 )
 mode = 3
 mass = 22.6279
 material = ExtResource( 2 )
@@ -222,7 +238,7 @@ transform = Transform( 1, 1.77636e-15, -1.78814e-07, -1.78814e-07, -4.37114e-08,
 transform = Transform( 1, 1.77636e-15, -1.78814e-07, -1.78814e-07, -4.37114e-08, -1, -4.44089e-15, 1, -4.37114e-08, 3.75684, 0.0651855, -1.61495 )
 
 [node name="Warft" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource( 8 )]
-transform = Transform( -0.999477, 0.0323218, 4.03254e-08, 0.0323218, 0.999477, 7.89918e-08, -3.77511e-08, 8.02535e-08, -1, -162.863, 380.857, -3.30425e-06 )
+transform = Transform( -0.999477, 0.0323218, 4.03254e-08, 0.0323218, 0.999477, 7.89918e-08, -3.77511e-08, 8.02535e-08, -1, 0, 0, 0 )
 
 [node name="Construction" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource( 36 )]
 
@@ -295,7 +311,7 @@ mode = 3
 mass = 15.197
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = SubResource( 2 )
-securety_level = 2
+securety_level = 1
 radius_description = 2000.0
 surface_g = 1.7
 
@@ -319,21 +335,6 @@ linear_velocity = Vector3( 0, 0, -5.197 )
 material = ExtResource( 4 )
 radius_description = 2000.0
 surface_g = 1.0
-
-[node name="StaticEnemy" parent="Sun/Mars/Phobos" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.694, 7.58209e-06, 8.39551 )
-
-[node name="StaticEnemy2" parent="Sun/Mars/Phobos" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47.2914, 5.81054e-05, 14.0059 )
-
-[node name="StaticEnemy3" parent="Sun/Mars/Phobos" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0063, 5.67175e-05, 41.541 )
-
-[node name="StaticEnemy4" parent="Sun/Mars/Phobos" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6498, 5.42942e-05, 42.834 )
-
-[node name="StaticEnemy5" parent="Sun/Mars/Phobos" instance=ExtResource( 46 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.446, 5.2697e-05, 11.6025 )
 
 [node name="Belt" type="CSGCylinder" parent="Sun"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -79.5266, 0 )
@@ -359,7 +360,7 @@ linear_velocity = Vector3( 1.219, 0, 0 )
 angular_velocity = Vector3( 0, 0.01, 0 )
 material = ExtResource( 26 )
 isPlanet = true
-securety_level = 1
+securety_level = 2
 radius_description = 71000.0
 surface_g = 2.3
 
@@ -386,6 +387,7 @@ mode = 3
 mass = 65.3486
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = ExtResource( 30 )
+securety_level = 1
 radius_description = 3122.0
 surface_g = 3.0
 

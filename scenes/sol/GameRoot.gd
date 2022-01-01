@@ -40,6 +40,9 @@ func _process(delta):
 		print("you ended the game!")
 		call_deferred("_loadScore")
 	
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
+	
 	Engine.time_scale =  1
 	
 	if Input.is_action_pressed("time_delay"):

@@ -5,8 +5,11 @@ class_name DeliveryMission
 var destination :Spatial
 var origin :Spatial
 var cargoContainer = []
+var pirates = []
 export(CargoContainer.CARGO) var cargo
 const MissionContainerScene = preload("res://Cargo/CargoContainer.scn")
+
+signal aborted()
 
 func _init():
 	self.add_to_group("persist")

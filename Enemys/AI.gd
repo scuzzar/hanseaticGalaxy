@@ -29,14 +29,13 @@ func _attackTarget(delta):
 	var ship_g_displacement = (ship.target.last_g_force/ship.target.mass)*timeToImpact 
 	predicted_target_pos += ship_g_displacement
 	
-	turn_ship_to(predicted_target_pos,delta)
-	
+	var angleDelta = turn_ship_to(predicted_target_pos,delta)
 	
 	ship.linear_velocity = get_parent().linear_velocity	
 	
 	$"../Marker/PredictionMarker".global_transform.origin = markerPosition
-	
 	var fired = ship.fire()
+	
 	if(fired) : 
 		markerPosition = predicted_target_pos + get_parent().linear_velocity
 		print("sat p:" + str(position))
@@ -50,14 +49,17 @@ func turn_ship_to(pos,  delta):
 	var ownTransform= get_parent().global_transform
 	var look_transform = ownTransform.looking_at(pos,Vector3(0,1,0))
 	var angle = look_transform.basis.get_euler().y	
-	print(angle)
-	var angleD = angle - get_parent().rotation.y
+	var angleD = angle - ownTransform.basis.get_euler().y
 	
 	var turnAngle = clamp(angleD,ship.turn_rate*-1*delta/ship.mass,ship.turn_rate*delta/ship.mass)
 	
-	get_parent().rotate_y(turnAngle)	
+	#get_parent().rotation.y +=  turnAngle
 	#get_parent().global_transform = look_transform
-
+	#get_parent().global_transform = get_parent().global_transform.rotated(Vector3(0,1,0),turnAngle)
+	(get_parent() as Spatial).global_rotate(Vector3(0,1,0),turnAngle)
+	return angleD
+	
+	
 func predict_t(target_p:Vector3,target_v:Vector3,missile_v:float):
 	var position = get_parent().global_transform.origin
 	var rel_target_p = target_p - position

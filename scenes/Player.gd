@@ -9,10 +9,12 @@ var accepted_delivery_Missions = []
 
 signal credits_changed(credits)
 signal mission_accepted(mission)
+signal mission_about(mission)
 
 func _ready():
 	self.add_to_group("persist")
 	self.connect("mission_accepted",Pirates,"on_mission_accepted")
+	self.connect("mission_about",Pirates,"on_mission_about")
 
 func reward(reward_credits : int):
 	credits +=reward_credits
@@ -38,9 +40,11 @@ func deliver_Container(m: DeliveryMission):
 func about_Container(m:DeliveryMission):
 	ship.unload_all_container(m.cargoContainer)
 	var i = accepted_delivery_Missions.find(m)	
-	accepted_delivery_Missions.remove(i)
+	accepted_delivery_Missions.remove(i)	
 	ship.remove_child(m)
 	self.pay(m.reward* 0.2)
+	emit_signal("mission_about",m)
+	m.emit_signal("aborted")
 
 func accept_Mission(m:DeliveryMission):
 	var docked = ship.docking_location != null

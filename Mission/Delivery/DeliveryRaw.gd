@@ -13,8 +13,10 @@ func setButtonDisabeld():
 func setContent(m:DeliveryMission):
 	self.mission = m
 	$raw/HBoxContainer/Good.text = mission.getCargoName()
-	$raw/HBoxContainer/Destination.text = mission.destination.name
-	
+	$raw/HBoxContainer/Destination.text = mission.destination.name	
+	if((mission.destination as Port).getBody().securety_level==ENUMS.SECURETY.BELT):
+		$raw/HBoxContainer/Destination.text += "*"
+		
 	if(mission.getContainerCount()==1):
 		$raw/HBoxContainer/Mass.text = str(mission.getMass())
 	else:

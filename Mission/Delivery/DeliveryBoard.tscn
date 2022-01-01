@@ -75,3 +75,15 @@ uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Warning" type="Label" parent="Footer" index="4"]
+margin_left = 353.0
+margin_top = 6.0
+margin_right = 474.0
+margin_bottom = 20.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "*Danger: Pirates"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

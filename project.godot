@@ -74,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Station/SpaceStation.gd"
 }, {
+"base": "Satellite",
+"class": "StaticEnemy",
+"language": "GDScript",
+"path": "res://Enemys/StaticEnemy.gd"
+}, {
 "base": "Spatial",
 "class": "mount_point",
 "language": "GDScript",
@@ -98,6 +103,7 @@ _global_script_class_icons={
 "Ship": "",
 "SimplePlanetOrbit": "",
 "SpaceStation": "",
+"StaticEnemy": "",
 "mount_point": "",
 "simpelPlanet": ""
 }
@@ -123,7 +129,7 @@ gdscript/warnings/enable=false
 
 window/size/width=1200
 window/size/height=800
-window/vsync/use_vsync=false
+window/dpi/allow_hidpi=true
 
 [editor_plugins]
 
@@ -208,7 +214,6 @@ zoom_in={
 time_warp={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777349,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
 time_delay={
@@ -293,7 +298,12 @@ simulate_less={
 }
 fire={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+toggle_fullscreen={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":true,"meta":false,"command":true,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

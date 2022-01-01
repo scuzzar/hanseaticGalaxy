@@ -19,6 +19,8 @@ func _on_Area_Ship_enterd(ship : Ship):
 		ship.connect("undocked",self,"on_ship_undocked")
 		print_debug("ship landed")
 
+func getBody() ->simpelPlanet:
+	return self.get_parent().get_parent() as simpelPlanet
 
 func on_ship_undocked(target:Port):
 	docked_ship.disconnect("undocked",self,"on_ship_undocked")
