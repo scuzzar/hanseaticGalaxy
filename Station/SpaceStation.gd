@@ -9,6 +9,7 @@ func _ready():
 func _physics_process(delta):
 	if(docked_ship!=null):
 		docked_ship.transform.origin = self.global_transform.origin
+
 func _on_Area_Ship_enterd(ship : Ship):	
 	if(docked_ship==null):
 		self.docked_ship = ship	
@@ -26,3 +27,10 @@ func on_ship_undocked(target:Port):
 	docked_ship.disconnect("undocked",self,"on_ship_undocked")
 	self.docked_ship = null
 	print_debug("ship started")
+
+func getShipsForSale():
+	var result = []
+	for c in get_parent().get_children():
+		if c is Ship :
+			result.append(c)
+	return result

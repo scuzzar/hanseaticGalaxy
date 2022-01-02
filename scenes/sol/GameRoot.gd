@@ -21,7 +21,7 @@ func newGameSetup():
 	ship.fuel =ship.fuel_cap
 	ship.physikAktiv =true
 
-func setShip(newShip:Ship):
+func setShip(newShip):
 	newShip.connect("strongest_body_changed",self,"_on_Ship_strongest_body_changed")
 	newShip.connect("soiPlanetChanged",$RotationShifter,"on_soi_planet_changed")
 	$HUD.setShip(newShip)
