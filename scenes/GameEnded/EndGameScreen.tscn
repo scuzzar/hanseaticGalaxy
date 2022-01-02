@@ -15,14 +15,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VSplitContainer" type="VSplitContainer" parent="."]
-margin_left = 471.0
-margin_top = 276.0
-margin_right = 552.0
-margin_bottom = 323.0
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 509.0
+margin_top = 368.0
+margin_right = 691.0
+margin_bottom = 431.0
+columns = 2
 
-[node name="Score" type="Label" parent="VSplitContainer"]
-margin_right = 81.0
+[node name="Score" type="Label" parent="GridContainer"]
+margin_right = 83.0
 margin_bottom = 21.0
 theme = ExtResource( 2 )
 text = "Score:"
@@ -30,19 +31,41 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GridContainer" type="GridContainer" parent="VSplitContainer"]
-margin_top = 33.0
-margin_right = 81.0
-margin_bottom = 47.0
-columns = 2
+[node name="Score2" type="Label" parent="GridContainer"]
+margin_left = 87.0
+margin_right = 182.0
+margin_bottom = 21.0
+theme = ExtResource( 2 )
+text = "                   "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="MoneyLable" type="Label" parent="VSplitContainer/GridContainer"]
-margin_right = 45.0
-margin_bottom = 14.0
+[node name="MoneyLable" type="Label" parent="GridContainer"]
+margin_top = 25.0
+margin_right = 83.0
+margin_bottom = 39.0
 text = "Credits"
 
-[node name="MoneyValue" type="Label" parent="VSplitContainer/GridContainer"]
-margin_left = 49.0
-margin_right = 73.0
-margin_bottom = 14.0
+[node name="MoneyValue" type="Label" parent="GridContainer"]
+margin_left = 87.0
+margin_top = 25.0
+margin_right = 182.0
+margin_bottom = 39.0
 text = "000"
+
+[node name="MainMenu" type="Button" parent="GridContainer"]
+margin_top = 43.0
+margin_right = 83.0
+margin_bottom = 63.0
+text = "Main Menu"
+
+[node name="Load" type="Button" parent="GridContainer"]
+margin_left = 87.0
+margin_top = 43.0
+margin_right = 182.0
+margin_bottom = 63.0
+text = "Load"
+
+[connection signal="pressed" from="GridContainer/MainMenu" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="GridContainer/Load" to="." method="_on_Load_pressed"]

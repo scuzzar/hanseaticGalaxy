@@ -1,6 +1,6 @@
 extends Spatial
 
-var endScreen = preload("res://scenes/GameEnded/EndGameScreen.tscn")
+
 #var loader : ResourceInteractiveLoader
 onready var ship:Ship = $PlayerShip
 onready var all = self.get_children()
@@ -95,7 +95,7 @@ func _process(delta):
 		print("left")
 
 func _loadScore():
-	var result = get_tree().change_scene_to(endScreen)
+	var result = get_tree().change_scene_to(SceneManager.endScreen)
 	if(result==OK):	
 		print("Game over")
 	else:
@@ -114,8 +114,7 @@ func _quicksave():
 	print("game Saved")
 	
 func _quickload():
-	Globals.loadPath = Globals.QUICKSAVE_PATH
-	self.get_tree().reload_current_scene()
+	SceneManager.load_quicksave()
 
 func save_game():
 	var save_game = File.new()
@@ -153,6 +152,10 @@ func load_game():
 		return # Error! We don't have a save to load.
 
 	save_game.open(Globals.QUICKSAVE_PATH, File.READ)
+	print(save_game.get_position())
+	
+	if(save_game.get_len()==0):
+		print(Globals.QUICKSAVE_PATH + " is empty")
 	while save_game.get_position() < save_game.get_len():
 		var line = save_game.get_line()
 		var node_data = parse_json(line)

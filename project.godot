@@ -120,6 +120,7 @@ config/windows_native_icon="res://Artemis.ico"
 Globals="*res://Singeltons/Globals.gd"
 Player="*res://scenes/Player.gd"
 Pirates="*res://Singeltons/Pirates.gd"
+SceneManager="*res://scenes/SceneManager.gd"
 
 [debug]
 

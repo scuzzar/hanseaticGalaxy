@@ -17,23 +17,34 @@ position = Vector2( 800.574, 624.276 )
 scale = Vector2( 1.40546, 1.40546 )
 texture = ExtResource( 3 )
 
-[node name="Loading_Lable" type="Label" parent="."]
-margin_left = 762.0
-margin_top = 424.0
-margin_right = 858.0
-margin_bottom = 445.0
+[node name="Grid" type="GridContainer" parent="."]
+margin_left = 552.0
+margin_top = 389.0
+margin_right = 648.0
+margin_bottom = 410.0
+
+[node name="Loading_Lable" type="Label" parent="Grid"]
+margin_right = 96.0
+margin_bottom = 21.0
 theme = ExtResource( 2 )
 text = "Loading"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Start" type="Button" parent="."]
+[node name="Start" type="Button" parent="Grid"]
 visible = false
-margin_left = 769.0
-margin_top = 424.0
-margin_right = 851.0
-margin_bottom = 444.0
+margin_top = 25.0
+margin_right = 96.0
+margin_bottom = 45.0
 text = "New Game"
 
-[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[node name="Resume" type="Button" parent="Grid"]
+visible = false
+margin_top = 49.0
+margin_right = 96.0
+margin_bottom = 69.0
+text = "Resume"
+
+[connection signal="pressed" from="Grid/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Grid/Resume" to="." method="_on_Resume_pressed"]
