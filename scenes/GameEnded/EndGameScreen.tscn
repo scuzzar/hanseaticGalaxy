@@ -17,9 +17,9 @@ __meta__ = {
 
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_left = 509.0
-margin_top = 368.0
+margin_top = 350.0
 margin_right = 691.0
-margin_bottom = 431.0
+margin_bottom = 449.0
 columns = 2
 
 [node name="Score" type="Label" parent="GridContainer"]
@@ -41,30 +41,68 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MoneyLable" type="Label" parent="GridContainer"]
+[node name="Leer3" type="Label" parent="GridContainer"]
 margin_top = 25.0
 margin_right = 83.0
 margin_bottom = 39.0
+text = "  "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Leer4" type="Label" parent="GridContainer"]
+margin_left = 87.0
+margin_top = 25.0
+margin_right = 182.0
+margin_bottom = 39.0
+text = "  "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoneyLable" type="Label" parent="GridContainer"]
+margin_top = 43.0
+margin_right = 83.0
+margin_bottom = 57.0
 text = "Credits"
 
 [node name="MoneyValue" type="Label" parent="GridContainer"]
 margin_left = 87.0
-margin_top = 25.0
+margin_top = 43.0
 margin_right = 182.0
-margin_bottom = 39.0
+margin_bottom = 57.0
 text = "000"
 
-[node name="MainMenu" type="Button" parent="GridContainer"]
-margin_top = 43.0
+[node name="Leer" type="Label" parent="GridContainer"]
+margin_top = 61.0
 margin_right = 83.0
-margin_bottom = 63.0
+margin_bottom = 75.0
+text = "  "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Leer2" type="Label" parent="GridContainer"]
+margin_left = 87.0
+margin_top = 61.0
+margin_right = 182.0
+margin_bottom = 75.0
+text = "  "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="Button" parent="GridContainer"]
+margin_top = 79.0
+margin_right = 83.0
+margin_bottom = 99.0
 text = "Main Menu"
 
 [node name="Load" type="Button" parent="GridContainer"]
 margin_left = 87.0
-margin_top = 43.0
+margin_top = 79.0
 margin_right = 182.0
-margin_bottom = 63.0
+margin_bottom = 99.0
 text = "Load"
 
 [connection signal="pressed" from="GridContainer/MainMenu" to="." method="_on_Button_pressed"]

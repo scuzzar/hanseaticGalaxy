@@ -41,10 +41,18 @@ text = "New Game"
 
 [node name="Resume" type="Button" parent="Grid"]
 visible = false
-margin_top = 49.0
+margin_top = 25.0
 margin_right = 96.0
-margin_bottom = 69.0
+margin_bottom = 45.0
 text = "Resume"
+
+[node name="Exit" type="Button" parent="Grid"]
+visible = false
+margin_top = 25.0
+margin_right = 96.0
+margin_bottom = 45.0
+text = "Exit"
 
 [connection signal="pressed" from="Grid/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Grid/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="Grid/Exit" to="." method="_on_Exit_pressed"]

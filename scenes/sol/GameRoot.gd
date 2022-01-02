@@ -8,22 +8,27 @@ export var MaxtimeWarpFactor = 400
 export var MaxtimeWarpFactor_Planet = 50
 export var MaxtimeWarpFactor_Moon = 5
 
+var loaded = false
+
 func _ready():
 	setShip(ship)	
 	if(Globals.loadPath !=null):
 		self.load_game()
 	else:
-		newGameSetup()
+		newGameSetup()		
 
 func newGameSetup():
 	for cg in get_tree().get_nodes_in_group("cargoGenerator"):
 		cg.generateInitialStock()
 	ship.fuel =ship.fuel_cap
 	ship.physikAktiv =true
+	loaded = true
 
 func setShip(newShip):
 	newShip.connect("strongest_body_changed",self,"_on_Ship_strongest_body_changed")
 	newShip.connect("soiPlanetChanged",$RotationShifter,"on_soi_planet_changed")
+	newShip.connect("docked",self,"_on_Ship_docked")
+	newShip.connect("undocked",self,"_on_Ship_undocked")
 	$HUD.setShip(newShip)
 	$HUD/DeliveryBoard.setShip(newShip)
 	$HUD/DeliveryMissionOverview.ship = newShip
@@ -109,9 +114,19 @@ func _on_Ship_strongest_body_changed(old_body, new_body):
 	#else:
 	#	$Simulator.on = false
 	pass
+
+func _on_Ship_docked(port):
+	self._quicksave()
+	pass
+	
+func _on_Ship_undocked(port):
+	self._quicksave()
+	pass
+
 func _quicksave():
-	save_game()	
-	print("game Saved")
+	if(loaded):
+		save_game()	
+		print("game Saved")
 	
 func _quickload():
 	SceneManager.load_quicksave()
@@ -147,6 +162,7 @@ func _sortNasedLast(a,b):
 	return a["parent"].get_name_count()<b["parent"].get_name_count()
 
 func load_game():
+	loaded = false
 	var save_game = File.new()
 	if not save_game.file_exists(Globals.QUICKSAVE_PATH):
 		return # Error! We don't have a save to load.
@@ -188,6 +204,7 @@ func load_game():
 			laoded_node_parent.add_child(laoded_node)
 		laoded_node.load_save(node_data)
 
+	loaded = true
 	save_game.close()
 
 func buyShip(newShip:Ship):

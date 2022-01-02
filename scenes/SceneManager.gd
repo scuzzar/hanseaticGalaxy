@@ -13,3 +13,6 @@ func load_quicksave():
 
 func load_mainMenu():
 	get_tree().change_scene_to(mainMenue_scene)
+
+func exit_game():
+	get_tree().quit()

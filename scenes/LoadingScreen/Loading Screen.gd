@@ -19,6 +19,7 @@ func _process(delta):
 		print("loaded")
 		$Grid/Loading_Lable.hide()
 		$Grid/Start.show()
+		$Grid/Exit.show()
 		var quicksave = File.new()
 		if(quicksave.file_exists(Globals.QUICKSAVE_PATH)):
 			$Grid/Resume.show()
@@ -38,3 +39,7 @@ func _loadSol():
 
 func _on_Resume_pressed():
 	SceneManager.load_quicksave()
+
+
+func _on_Exit_pressed():
+	SceneManager.exit_game()

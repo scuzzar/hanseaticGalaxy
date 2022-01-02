@@ -255,7 +255,6 @@ mode = 3
 mass = 334.727
 linear_velocity = Vector3( 0.862, 0, 0 )
 isPlanet = true
-securety_level = 2
 surface_g = 3.69
 
 [node name="MarsST" parent="Sun/Mars" instance=ExtResource( 10 )]

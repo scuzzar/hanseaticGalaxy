@@ -33,6 +33,7 @@ var mounts = []
 var dryMass = 5 
 var turn_to_target = false
 var target:Ship = null
+var weaponActive = true
 
 onready var inventory = $Inventory
 
@@ -90,7 +91,10 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 	$Model.all_trust_off()
 	if(playerControl):
 		
-		_turn_turrents(state.step)
+		if(weaponActive):
+			_turn_turrents(state.step)
+			if Input.is_action_pressed("fire"):	
+				self.fire()		
 		
 		if Input.is_action_pressed("burn_forward"):
 			if(self.docking_location!=null):
@@ -99,8 +103,7 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 			if(fuel - fuelcost > 0):
 				$Model.trust_forward_on()
 				_burn_forward(state)
-		if Input.is_action_pressed("fire"):	
-			self.fire()		
+		
 		
 		if Input.is_action_pressed("burn_backward"):
 			$Model.trust_backward_on()
@@ -306,12 +309,14 @@ func can_load_container(count:int) -> bool:
 func dock(target: Node):
 	if(target!=self.docking_location):
 		self.docking_location = target
+		self.weaponActive =false
 		emit_signal("docked", self.docking_location)
 
 func undock():
 	if(self.docking_location!=null):
 		emit_signal("undocked",  self.docking_location)
 		self.docking_location = null
+		self.weaponActive=true
 
 func getCargoSlotCount():
 	return $Inventory.slots.size()
