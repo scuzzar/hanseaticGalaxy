@@ -24,7 +24,6 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
-trust = 200.0
 physikAktiv = false
 
 [node name="Inventory" type="Spatial" parent="."]

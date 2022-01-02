@@ -15,12 +15,14 @@ mass = 50.0
 type = 4
 
 [node name="MountPointL" parent="." index="0" instance=ExtResource( 4 )]
-transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 0.221765, -0.14029, -0.163283 )
+transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1.06581e-14, -4.37114e-08, -1, 1, -4.37114e-08, 1.06581e-14, 0.221765, -0.14029, -0.163283 )
 mount = 1
+turn_limit = 0.1
 
 [node name="MountPointR" parent="." index="1" instance=ExtResource( 4 )]
-transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 4.37114e-08, 1, -0.222171, -0.14029, -0.163283 )
+transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1.06581e-14, -4.37114e-08, -1, 1, -4.37114e-08, 1.06581e-14, -0.222171, -0.14029, -0.163283 )
 mount = 1
+turn_limit = 0.1
 
 [node name="Inventory" parent="." index="2"]
 slot_parent_path = NodePath("../Model/SkyCrane")

@@ -86,17 +86,12 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 	if( currentSOIPlanet != soiPlanet):
 		soiPlanet=currentSOIPlanet
 		emit_signal("soiPlanetChanged",soiPlanet)
-	
-	if(turn_to_target and target!=null):
-		var delta = state.step
-		var targetVector: Vector3 = target.global_transform.origin - self.global_transform.origin
-		var currentHeading:Vector3 = _get_forward_vector()
-		var angle = currentHeading.angle_to(targetVector)	
-		var turnAngle = clamp(angle,turn_rate*-1*delta,turn_rate*delta)
-		self._rotation(turnAngle)
-	
+
 	$Model.all_trust_off()
 	if(playerControl):
+		
+		_turn_turrents(state.step)
+		
 		if Input.is_action_pressed("burn_forward"):
 			if(self.docking_location!=null):
 				self.undock()
@@ -105,8 +100,7 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 				$Model.trust_forward_on()
 				_burn_forward(state)
 		if Input.is_action_pressed("fire"):	
-			self.fire()
-		
+			self.fire()		
 		
 		if Input.is_action_pressed("burn_backward"):
 			$Model.trust_backward_on()
@@ -137,6 +131,43 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 			else:
 				$ShipInfo.hide()	
 		emit_signal("telemetry_changed", self.translation, state.linear_velocity)
+
+func _turn_turrents(delta):
+	var position2D = get_viewport().get_mouse_position()
+	var dropPlane  = Plane(Vector3(0, 1, 0), 0)
+	var camera = get_viewport().get_camera()
+	var position3D = dropPlane.intersects_ray(
+							 camera.project_ray_origin(position2D),
+							 camera.project_ray_normal(position2D))
+	if(position3D!=null):
+		for mount in mounts :
+			var ownTransform:Transform = mount.global_transform
+			var look_transform = ownTransform.looking_at(position3D,Vector3(0,1,0))
+			var angle = look_transform.basis.get_euler().y
+			
+			var nt:Transform = mount.no_turn_transform 	
+			var st:Transform = self.global_transform
+			
+			nt = nt.rotated(Vector3(0,1,0),st.basis.get_euler().y-PI/2)
+			
+			var n = nt.basis.get_euler().y
+			var l = mount.turn_limit
+			var n_max = nt.rotated(Vector3(0,1,0),l).basis.get_euler().y		
+			var n_min = nt.rotated(Vector3(0,1,0),l*-1).basis.get_euler().y		
+			
+			var d = (look_transform.rotated(Vector3(0,1,0),st.basis.get_euler().y*-1+PI)).basis.get_euler().y
+
+			if(d>=l): angle = n_max
+			if(d<=l*-1): angle = n_min			
+			
+			var angleD = angle - ownTransform.basis.get_euler().y
+			var turnrate =mount.turn_rate
+			var turnAngle = clamp(angleD,mount.turn_rate*-1*delta,mount.turn_rate*delta)
+			#get_parent().rotation.y +=  turnAngle
+			#mount.global_transform = look_transform
+			#get_parent().global_transform = get_parent().global_transform.rotated(Vector3(0,1,0),turnAngle)
+			(mount as Spatial).global_rotate(Vector3(0,1,0),turnAngle)
+	
 
 func _burn_forward(state:PhysicsDirectBodyState):	
 	var force = _get_forward_vector()*trust

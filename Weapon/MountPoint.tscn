@@ -4,3 +4,4 @@
 
 [node name="MountPoint" type="Position3D"]
 script = ExtResource( 1 )
+turn_limit = 1.0472

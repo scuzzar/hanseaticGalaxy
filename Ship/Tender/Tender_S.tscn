@@ -10,6 +10,9 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00303
 mass = 8.0
 physikAktiv = true
 
+[node name="MountPointB" parent="." index="1"]
+mount = 999
+
 [node name="CollisionShape" parent="." index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118668, -5.18717e-09 )
 shape = SubResource( 1 )
