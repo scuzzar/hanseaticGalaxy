@@ -91,9 +91,16 @@ environment = ExtResource( 20 )
 [node name="Camera" parent="." groups=["persist"] instance=ExtResource( 18 )]
 min_zoom = 1.0
 
-[node name="PlayerShip" parent="." instance=ExtResource( 45 )]
+[node name="PlayerShip" parent="." groups=["persist"] instance=ExtResource( 45 )]
 transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.4, -2.38419e-07, -68.0911 )
+input_ray_pickable = false
 physics_material_override = SubResource( 1 )
+continuous_cd = true
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+angular_damp = 4.0
+script = ExtResource( 46 )
 show_soi_relativ_sim = false
 playerControl = true
 team = 0
@@ -153,17 +160,9 @@ shader_params/u_attenuation_distance = 0.0
 [node name="VenusST" parent="Sun/Venus" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100.503, 0, 0 )
 
-[node name="Orbital SkyCrane" parent="Sun/Venus/VenusST" groups=["persist"] instance=ExtResource( 44 )]
+[node name="Orbital SkyCrane" parent="Sun/Venus/VenusST" instance=ExtResource( 44 )]
 transform = Transform( 0.3037, -0.952768, 4.16468e-08, 0, -4.37114e-08, -1, 0.952768, 0.3037, -1.32752e-08, 1.16211, -0.614387, 3.02734 )
-input_ray_pickable = false
 physics_material_override = SubResource( 1 )
-continuous_cd = true
-axis_lock_linear_y = true
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-angular_damp = 4.0
-script = ExtResource( 46 )
-physikAktiv = false
 
 [node name="Warft" parent="Sun/Venus/VenusST" instance=ExtResource( 8 )]
 
@@ -304,17 +303,9 @@ transform = Transform( 1, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -1.77636e-
 [node name="SkyCrane" parent="Sun/Mars/OlympusPort" instance=ExtResource( 19 )]
 transform = Transform( 1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -3.90597 )
 
-[node name="SkyCrane S" parent="Sun/Mars/OlympusPort" groups=["persist"] instance=ExtResource( 44 )]
+[node name="SkyCrane S" parent="Sun/Mars/OlympusPort" instance=ExtResource( 44 )]
 transform = Transform( 1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.37012, 0, -3.53617 )
-input_ray_pickable = false
 physics_material_override = SubResource( 5 )
-continuous_cd = true
-axis_lock_linear_y = true
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-angular_damp = 4.0
-script = ExtResource( 46 )
-physikAktiv = false
 
 [node name="Orbital Rocket" parent="Sun/Mars/OlympusPort" groups=["persist"] instance=ExtResource( 47 )]
 transform = Transform( 1, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -1.77636e-14, 8.74228e-08, 1.06581e-14, 1, -2.63086, 0, -3.48166 )
@@ -360,17 +351,9 @@ surface_g = 1.7
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 21.1598, 0, 0 )
 defaultMissionDestination_path = NodePath("../../OlympusPort")
 
-[node name="Orbital SkyCrane" parent="Sun/Mars/Deimos/DeimosPort" groups=["persist"] instance=ExtResource( 44 )]
+[node name="Orbital SkyCrane" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 44 )]
 transform = Transform( 1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.33789, -0.175293, -2.06995 )
-input_ray_pickable = false
 physics_material_override = SubResource( 6 )
-continuous_cd = true
-axis_lock_linear_y = true
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-angular_damp = 4.0
-script = ExtResource( 46 )
-physikAktiv = false
 
 [node name="Mine" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource( 42 )]
 
@@ -602,17 +585,11 @@ transform = Transform( -0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-14
 
 [connection signal="shifted" from="Shifter" to="Simulator" method="_on_Shifter_shifted"]
 [connection signal="shipOrderd" from="HUD" to="." method="_on_HUD_shipOrderd"]
-[connection signal="docked" from="Sun/Venus/VenusST/Orbital SkyCrane" to="Sun/Venus/VenusST/Orbital SkyCrane/Tail" method="_stop"]
-[connection signal="strongest_body_changed" from="Sun/Venus/VenusST/Orbital SkyCrane" to="Sun/Venus/VenusST/Orbital SkyCrane/Tail" method="_on_reference_changed"]
-[connection signal="undocked" from="Sun/Venus/VenusST/Orbital SkyCrane" to="Sun/Venus/VenusST/Orbital SkyCrane/Tail" method="_start"]
-[connection signal="docked" from="Sun/Mars/OlympusPort/SkyCrane S" to="Sun/Mars/OlympusPort/SkyCrane S/Tail" method="_stop"]
-[connection signal="strongest_body_changed" from="Sun/Mars/OlympusPort/SkyCrane S" to="Sun/Mars/OlympusPort/SkyCrane S/Tail" method="_on_reference_changed"]
-[connection signal="undocked" from="Sun/Mars/OlympusPort/SkyCrane S" to="Sun/Mars/OlympusPort/SkyCrane S/Tail" method="_start"]
+[connection signal="docked" from="PlayerShip" to="PlayerShip/Tail" method="_stop"]
+[connection signal="strongest_body_changed" from="PlayerShip" to="PlayerShip/Tail" method="_on_reference_changed"]
+[connection signal="undocked" from="PlayerShip" to="PlayerShip/Tail" method="_start"]
 [connection signal="docked" from="Sun/Mars/OlympusPort/Orbital Rocket" to="Sun/Mars/OlympusPort/Orbital Rocket/Tail" method="_stop"]
 [connection signal="strongest_body_changed" from="Sun/Mars/OlympusPort/Orbital Rocket" to="Sun/Mars/OlympusPort/Orbital Rocket/Tail" method="_on_reference_changed"]
 [connection signal="undocked" from="Sun/Mars/OlympusPort/Orbital Rocket" to="Sun/Mars/OlympusPort/Orbital Rocket/Tail" method="_start"]
-[connection signal="docked" from="Sun/Mars/Deimos/DeimosPort/Orbital SkyCrane" to="Sun/Mars/Deimos/DeimosPort/Orbital SkyCrane/Tail" method="_stop"]
-[connection signal="strongest_body_changed" from="Sun/Mars/Deimos/DeimosPort/Orbital SkyCrane" to="Sun/Mars/Deimos/DeimosPort/Orbital SkyCrane/Tail" method="_on_reference_changed"]
-[connection signal="undocked" from="Sun/Mars/Deimos/DeimosPort/Orbital SkyCrane" to="Sun/Mars/Deimos/DeimosPort/Orbital SkyCrane/Tail" method="_start"]
 
 [editable path="Sun/Mars/MarsST"]

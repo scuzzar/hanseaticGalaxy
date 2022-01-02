@@ -10,6 +10,9 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00303
 mass = 8.0
 physikAktiv = true
 
+[node name="MountPointT" parent="." index="0"]
+transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1.06581e-14, -4.37114e-08, -1, 1, -4.37114e-08, 1.06581e-14, -0.0135535, -0.000570977, -0.195755 )
+
 [node name="MountPointB" parent="." index="1"]
 mount = 999
 

@@ -16,11 +16,11 @@ mass = 10.0
 type = 1
 
 [node name="MountPointT" parent="." index="0" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1.06581e-14, -4.37114e-08, -1, 1, -4.37114e-08, 1.06581e-14, -0.0135535, -0.000570976, -0.195755 )
+transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1.06581e-14, -4.37114e-08, -1, 1, -4.37114e-08, 1.06581e-14, -0.0135535, 0.0598418, -0.18374 )
 mount = 0
 
 [node name="MountPointB" parent="." index="1" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1.06581e-14, -4.37114e-08, -1, 1, -4.37114e-08, 1.06581e-14, -0.0135535, -0.000570959, 0.201958 )
+transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1.06581e-14, -4.37114e-08, -1, 1, -4.37114e-08, 1.06581e-14, -0.0135535, 0.0653098, 0.191765 )
 mount = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="2"]
