@@ -145,27 +145,26 @@ func _turn_turrents(delta):
 			var look_transform = ownTransform.looking_at(position3D,Vector3(0,1,0))
 			var angle = look_transform.basis.get_euler().y
 			
-			var nt:Transform = mount.no_turn_transform 	
+			var nt:Transform = mount.no_turn_transform
 			var st:Transform = self.global_transform
 			
 			nt = nt.rotated(Vector3(0,1,0),st.basis.get_euler().y-PI/2)
 			
 			var n = nt.basis.get_euler().y
 			var l = mount.turn_limit
-			var n_max = nt.rotated(Vector3(0,1,0),l).basis.get_euler().y		
-			var n_min = nt.rotated(Vector3(0,1,0),l*-1).basis.get_euler().y		
+			var n_max = nt.rotated(Vector3(0,1,0),l).basis.get_euler().y
+			var n_min = nt.rotated(Vector3(0,1,0),l*-1).basis.get_euler().y
 			
-			var d = (look_transform.rotated(Vector3(0,1,0),st.basis.get_euler().y*-1+PI)).basis.get_euler().y
-
+			var d = (look_transform.rotated(Vector3(0,1,0),nt.basis.get_euler().y*-1)).basis.get_euler().y
+			#var d = (look_transform.rotated(Vector3(0,1,0),st.basis.get_euler().y*-1+PI)).basis.get_euler().y
 			if(d>=l): angle = n_max
-			if(d<=l*-1): angle = n_min			
+			if(d<=l*-1): angle = n_min
 			
 			var angleD = angle - ownTransform.basis.get_euler().y
+			
 			var turnrate =mount.turn_rate
-			var turnAngle = clamp(angleD,mount.turn_rate*-1*delta,mount.turn_rate*delta)
-			#get_parent().rotation.y +=  turnAngle
-			#mount.global_transform = look_transform
-			#get_parent().global_transform = get_parent().global_transform.rotated(Vector3(0,1,0),turnAngle)
+			var turnAngle =angleD#  clamp(angleD,mount.turn_rate*-1*delta,mount.turn_rate*delta)
+	
 			(mount as Spatial).global_rotate(Vector3(0,1,0),turnAngle)
 	
 
