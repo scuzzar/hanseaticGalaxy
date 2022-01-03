@@ -33,7 +33,11 @@ func _on_Bullet_body_entered(body):
 
 func _ship_hit(ship:Ship):
 	ship.takeDamege(damage)
-
+	$Hit.play()
+	$LifeTime.stop()
 
 func _on_Timer_timeout():
+	self.queue_free()
+
+func _on_Hit_finished():
 	self.queue_free()

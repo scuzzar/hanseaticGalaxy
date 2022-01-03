@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Bodys/materials/Sun.material" type="Material" id=1]
 [ext_resource path="res://Bodys/materials/Moon.material" type="Material" id=2]
@@ -45,6 +45,7 @@
 [ext_resource path="res://Building/EnergyHavester.tscn" type="PackedScene" id=43]
 [ext_resource path="res://Ship/SkyCrane/SkyCrane_S.tscn" type="PackedScene" id=44]
 [ext_resource path="res://Ship/Tender/Tender_S.tscn" type="PackedScene" id=45]
+[ext_resource path="res://Enemys/KillSatEnemy.tscn" type="PackedScene" id=46]
 [ext_resource path="res://Ship/SimpleRocket/Orbital Rocket.tscn" type="PackedScene" id=47]
 
 [sub_resource type="PhysicsMaterial" id=1]
@@ -350,6 +351,15 @@ linear_velocity = Vector3( 0, 0, -5.197 )
 material = ExtResource( 4 )
 radius_description = 2000.0
 surface_g = 1.0
+
+[node name="StaticEnemy2" parent="Sun/Mars/Phobos" instance=ExtResource( 46 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.8984, -16.5231, -47.6992 )
+
+[node name="StaticEnemy3" parent="Sun/Mars/Phobos" instance=ExtResource( 46 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4554, -16.5231, 35.9209 )
+
+[node name="StaticEnemy" parent="Sun/Mars/Phobos" instance=ExtResource( 46 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -65.9939, -16.5231, -49.3115 )
 
 [node name="Belt" type="CSGCylinder" parent="Sun"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -79.5266, 0 )

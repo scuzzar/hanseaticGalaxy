@@ -29,6 +29,7 @@ func _ready():
 
 func fire():
 	if($Timer.time_left==0):	
+
 		$Timer.start(cooldown)
 		var bullet = bulletScene.instance()		
 		bullet.speed = nozzel_speed

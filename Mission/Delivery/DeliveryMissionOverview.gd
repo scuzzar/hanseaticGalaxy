@@ -50,7 +50,8 @@ func _add_mission(mission:DeliveryMission):
 		vBox.add_child(newRaw) # Add it as a child of this node.
 
 func _on_deliver(container:DeliveryMission):
-	emit_signal("deliver",container)	
+	emit_signal("deliver",container)
+	$Cash.play()	
 	update()
 
 func _on_about(container:DeliveryMission):

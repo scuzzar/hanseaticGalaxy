@@ -1,6 +1,0 @@
-This Project makes use of:
-
-NickTimesAudio https://freesound.org/s/494827/
-Solar Some Solar System Textures https://www.solarsystemscope.com/textures/
-ivoyager Project https://www.ivoyager.dev
-godot-csv-data-importer Haoyu Qiu https://github.com/timothyqiu/godot-csv-data-importer/

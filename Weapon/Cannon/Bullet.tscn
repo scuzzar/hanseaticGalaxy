@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Weapon/Cannon/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://Weapon/Cannon/Bullet.material" type="Material" id=2]
+[ext_resource path="res://Weapon/Cannon/sound/163455__lemudcrab__shotgun-shot.wav" type="AudioStream" id=3]
+[ext_resource path="res://Weapon/Cannon/sound/587195__derplayer__explosion-07-Short.ogg" type="AudioStream" id=4]
 
 [sub_resource type="RayShape" id=1]
 length = 0.336813
@@ -23,5 +25,16 @@ material = ExtResource( 2 )
 wait_time = 5.0
 one_shot = true
 
+[node name="Shot" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_db = 5.735
+autoplay = true
+
+[node name="Hit" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 4 )
+unit_db = 5.735
+autoplay = true
+
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
 [connection signal="timeout" from="LifeTime" to="." method="_on_Timer_timeout"]
+[connection signal="finished" from="Hit" to="." method="_on_Hit_finished"]

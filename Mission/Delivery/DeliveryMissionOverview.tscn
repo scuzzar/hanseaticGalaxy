@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Mission/Delivery/DeliveryMissionOverview.gd" type="Script" id=1]
 [ext_resource path="res://Mission/Delivery/DeliveryRaw.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SpacePort/sound/201159__kiddpark__cash-register.mp3" type="AudioStream" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.207843, 0.207843, 0.207843, 1 )
@@ -113,5 +114,8 @@ margin_right = 0.0
 margin_top = 44.0
 margin_right = 0.0
 margin_bottom = 84.0
+
+[node name="Cash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

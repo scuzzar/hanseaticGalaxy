@@ -1,0 +1,9 @@
+This Project makes use of:
+
+NickTimesAudio, Seamless Rocket Booster Roar & Crackle,  https://freesound.org/s/494827/
+kiddpark, Cash Register, https://freesound.org/people/kiddpark/sounds/201159/
+IngressBlue, spaceport.mp3, https://freesound.org/people/IngressBlue/sounds/346063/
+
+Solar Some Solar System Textures https://www.solarsystemscope.com/textures/
+ivoyager Project https://www.ivoyager.dev
+godot-csv-data-importer Haoyu Qiu https://github.com/timothyqiu/godot-csv-data-importer/
