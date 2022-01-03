@@ -87,8 +87,9 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 	if( currentSOIPlanet != soiPlanet):
 		soiPlanet=currentSOIPlanet
 		emit_signal("soiPlanetChanged",soiPlanet)
+	
+	var trusted = false
 
-	$Model.all_trust_off()
 	if(playerControl):
 		
 		if(weaponActive):
@@ -102,19 +103,23 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 			var fuelcost =  trust * state.step
 			if(fuel - fuelcost > 0):
 				$Model.trust_forward_on()
+				trusted = true
 				_burn_forward(state)
 		
 		
 		if Input.is_action_pressed("burn_backward"):
 			$Model.trust_backward_on()
+			trusted = true
 			_burn_backward(state)
 			
 		if Input.is_action_pressed("burn_lateral_left"):
 			$Model.trust_lateral_left_on()
+			trusted = true
 			_burn_left(state)
 			
 		if Input.is_action_pressed("burn_lateral_right"):
 			$Model.trust_lateral_right_on()
+			trusted = true
 			_burn_right(state)
 		
 		if Input.is_action_pressed("burn_circularize"):	
@@ -134,6 +139,9 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 			else:
 				$ShipInfo.hide()	
 		emit_signal("telemetry_changed", self.translation, state.linear_velocity)
+		
+		if(!trusted):
+			$Model.all_trust_off()
 
 func _turn_turrents(delta):
 	var position2D = get_viewport().get_mouse_position()

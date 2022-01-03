@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Ship/drive.gd" type="Script" id=1]
 [ext_resource path="res://Ship/particel/fire_01.png" type="Texture" id=2]
 [ext_resource path="res://Ship/particel/smoke_07.png" type="Texture" id=3]
 [ext_resource path="res://Ship/particel/fire_02.png" type="Texture" id=4]
+[ext_resource path="res://Util/FadingAudio3DStream.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
@@ -62,21 +63,15 @@ colors = PoolColorArray( 0, 0, 0, 1, 0.622047, 0.622047, 0.622047, 1, 1, 1, 1, 0
 script/source = "extends OmniLight
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
+onready var tween = $Tween
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():	
-	var tween = get_node(\"Tween\")
+func start():
 	tween.interpolate_property(self, \"light_energy\",0.2, 1, 1,	Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	#tween.start()
+	tween.start()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func stop():
+	tween.stop_all()
+	light_energy = 0
 "
 
 [node name="particel" type="Spatial"]
@@ -148,7 +143,7 @@ color_ramp = SubResource( 8 )
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.387533, 0 )
 light_color = Color( 0.945098, 0.866667, 0.027451, 1 )
-light_energy = 7.37
+light_energy = 0.0
 shadow_enabled = true
 omni_range = 0.790428
 script = SubResource( 9 )
@@ -158,3 +153,5 @@ repeat = true
 playback_speed = 7.0
 playback/repeat = true
 playback/speed = 7.0
+
+[node name="EngineSound" parent="." instance=ExtResource( 5 )]
