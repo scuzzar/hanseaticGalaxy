@@ -155,3 +155,5 @@ playback/repeat = true
 playback/speed = 7.0
 
 [node name="EngineSound" parent="." instance=ExtResource( 5 )]
+fadeIn_duration = 0.2
+fadeOut_duration = 0.4
