@@ -25,10 +25,7 @@ initial_velocity_random = 0.39
 linear_accel = 0.0
 angle = 0.0
 
-[node name="OmniLight" parent="." index="3"]
-visible = false
-
-[node name="EngineSound" parent="." index="4"]
+[node name="EngineSound" parent="." index="3"]
 unit_db = -6.241
 pitch_scale = 2.88
 fadeIn_duration = 0.1

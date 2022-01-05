@@ -13,36 +13,35 @@ func _ready():
 	forwardTruster = $forwardTruster.get_children()
 	backTruster= $backTruster.get_children()
 
-func trust_Vector(v:Vector3):
-	print(v)
-	if(v.length()<=0.1):
+func trust_Vector(v:Vector3, throttle:float):
+	if(throttle<=0.1):
 		all_trust_off()
 		return
 		
 	if(v.x>0):
-		trust_lateral_forward_on() 
+		trust_lateral_forward_on(abs(v.x)) 
 	else:
 		_trust_lateral_forward_off()
 	
 	if(v.x<0):
-		trust_backward_on()
+		trust_backward_on(abs(v.x))
 	else:
 		_trust_backward_off()
 		
 	if(v.z<0):
-		trust_lateral_left_on() 
+		trust_lateral_left_on(abs(v.z)) 
 	else:
 		_trust_lateral_left_off()
 		
 	if(v.z>0):
-		trust_lateral_right_on()
+		trust_lateral_right_on(abs(v.z))
 	else:
 		_trust_lateral_right_off()
 	
 	pass
 
-func trust_forward_on():
-	for d in mainDrive:	d.on()
+func trust_forward_on(throttle=1):
+	for d in mainDrive:	d.on(throttle)
 
 func _trust_forward_off():
 	for d in mainDrive:	d.off()
@@ -54,29 +53,26 @@ func all_trust_off():
 	_trust_lateral_right_off()
 	_trust_lateral_left_off()	
 
-func trust_backward_on():
-	for d in backTruster:	d.on()
+func trust_backward_on(throttle=1):
+	for d in backTruster:	d.on(throttle)
 	
 func _trust_backward_off():
 	for d in backTruster:	d.off()
 
-func trust_lateral_forward_on():
-	for d in forwardTruster:	d.on()
+func trust_lateral_forward_on(throttle=1):
+	for d in forwardTruster:	d.on(throttle)
 	
 func _trust_lateral_forward_off():
 	for d in forwardTruster: d.off()
 
-func trust_lateral_right_on():
-	for d in leftTruster:d.on()
+func trust_lateral_right_on(throttle=1):
+	for d in leftTruster:d.on(throttle)
 	
 func _trust_lateral_right_off():
 	for d in leftTruster:d.off()
-
-
 	
-	
-func trust_lateral_left_on():
-	for d in rightTruster:	d.on()
+func trust_lateral_left_on(throttle=1):
+	for d in rightTruster:	d.on(throttle)
 	
 func _trust_lateral_left_off():
 	for d in rightTruster: d.off()

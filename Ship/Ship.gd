@@ -28,6 +28,7 @@ var hitpoints = 100
 var max_hitpoints = 100
 export var playerControl = false
 export var physikAktiv =true
+export var autoCircle=false
 var soiPlanet=null
 var mounts = []
 var dryMass = 5 
@@ -90,12 +91,24 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 	
 	var trusted = false
 
+
+	if (self.autoCircle):	
+		var burn_vector:Vector3 = _burn_circularize(state)
+		var lenth = burn_vector.length()
+		burn_vector = burn_vector.rotated(Vector3(0,1,0), self.rotation.y*-1+PI/2).normalized()
+		$Propulsion.trust_Vector(burn_vector,lenth)
+		trusted = true
+
+
 	if(playerControl):
 		
 		if(weaponActive):
 			_turn_turrents(state.step)
 			if Input.is_action_pressed("fire"):	
 				self.fire()		
+		
+		if Input.is_action_just_pressed("auto_orbit"):
+			autoCircle = !autoCircle
 		
 		if Input.is_action_pressed("burn_forward"):
 			if(self.docking_location!=null):
@@ -105,6 +118,8 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 				$Propulsion.trust_forward_on()
 				trusted = true
 				_burn_forward(state)
+		else:
+			$Propulsion._trust_forward_off()
 		
 		
 		if Input.is_action_pressed("burn_backward"):
@@ -122,10 +137,12 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 			trusted = true
 			_burn_right(state)
 		
-		if Input.is_action_pressed("burn_circularize"):	
-			var burn_vector = _burn_circularize(state)			
-			burn_vector = burn_vector.rotated(Vector3(0,1,0), self.rotation.y*-1+PI/2)
-			$Propulsion.trust_Vector(burn_vector)
+		if Input.is_action_pressed("burn_circularize") or self.autoCircle:	
+			var burn_vector:Vector3 = _burn_circularize(state)
+			var lenth = burn_vector.length()
+			burn_vector = burn_vector.rotated(Vector3(0,1,0), self.rotation.y*-1+PI/2).normalized()
+			
+			$Propulsion.trust_Vector(burn_vector,lenth)
 			trusted = true
 		
 		if Input.is_action_pressed("trun_left"):
@@ -143,8 +160,8 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 				$ShipInfo.hide()	
 		emit_signal("telemetry_changed", self.translation, state.linear_velocity)
 		
-		if(!trusted):
-			$Propulsion.all_trust_off()
+	if(!trusted):
+		$Propulsion.all_trust_off()
 
 func _turn_turrents(delta):
 	var position2D = get_viewport().get_mouse_position()

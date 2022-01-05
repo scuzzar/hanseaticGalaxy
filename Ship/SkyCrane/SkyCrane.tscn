@@ -25,7 +25,7 @@ mount = 1
 turn_limit = 0.1
 
 [node name="Inventory" parent="." index="2"]
-slot_parent_path = NodePath("../Model/SkyCrane")
+slot_parent_path = NodePath("../SkyCrane")
 
 [node name="SkyCrane" parent="." index="3" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.704581, 3.07982e-08 )

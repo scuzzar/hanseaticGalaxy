@@ -87,7 +87,11 @@ func _on_Ship_telemetry_changed(position,velocety):
 		var escape = kosmic * sqrt(2)
 		
 		v_labe.text = str("%0.1f" % (velocety.length())) 
+		if(ship.autoCircle):
+			v_labe.text = "A"+ v_labe.text  
+		
 		v_cosmic.text = str("%0.1f" % kosmic) 
+	
 		v_escape.text = str("%0.1f" % escape)
 
 

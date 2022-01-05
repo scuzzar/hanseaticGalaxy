@@ -23,7 +23,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0297804, -1.30174e-09 )
 shape = SubResource( 1 )
 
 [node name="Inventory" parent="." index="2"]
-slot_parent_path = NodePath("../Model/SimpleRocket")
+slot_parent_path = NodePath("../SimpleRocket")
 
 [node name="SimpleRocket" parent="." index="3" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.578583, 2.52907e-08 )
