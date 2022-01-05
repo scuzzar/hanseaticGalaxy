@@ -65,13 +65,22 @@ func derive_mass():
 	radius = $Shape/Mesh.get_aabb().get_longest_axis_size()*s/2	
 	mass = (surface_g*radius*radius)/Globals.G
 
-func _physics_process(delta):
+func _integrate_forces(state):
+	var delta = state.step
 	if ! isStar and !Engine.editor_hint:	
 		angle += (angular_speed *delta)	
 		if(angle >= 2*PI): angle -= 2*PI
-		self.pX = sin(angle)*orbit_radius
-		self.pZ = cos(angle)*orbit_radius
-		self.translation = Vector3(pX,0,pZ)
+		
+		var x =  sin(angle)*orbit_radius
+		var z = cos(angle)*orbit_radius
+		var dx = x - self.pX 
+		var dz = z - self.pZ
+		self.pX = x
+		self.pZ = z
+		#self.translation = 
+		state.linear_velocity = Vector3(dx,0,dz)
+		
+		# = Vector3(pX,0,pZ)
 		#Needs further fixing
 	#	self.rotate_y(planetaryRotation*delta)
 	pass
