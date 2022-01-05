@@ -19,3 +19,6 @@ mount = 999
 [node name="CollisionShape" parent="." index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118668, -5.18717e-09 )
 shape = SubResource( 1 )
+
+[node name="Inventory" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.165703, 7.24308e-09 )

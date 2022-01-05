@@ -5,7 +5,6 @@
 [ext_resource path="res://Ship/VFX/drive.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Weapon/MountPoint.tscn" type="PackedScene" id=4]
 
-
 [sub_resource type="CylinderShape" id=1]
 radius = 0.360211
 height = 1.65784
@@ -28,12 +27,14 @@ turn_limit = 0.1
 [node name="Inventory" parent="." index="2"]
 slot_parent_path = NodePath("../Model/SkyCrane")
 
-[node name="SkyCrane" parent="Model" index="0" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.688233, 3.00836e-08 )
+[node name="SkyCrane" parent="." index="3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.704581, 3.07982e-08 )
 
-[node name="particel" parent="Model" index="1" instance=ExtResource( 3 )]
-transform = Transform( 0.481952, 0, 0, 0, -0.481952, 4.21336e-08, 0, -4.21336e-08, -0.481952, 0, -0.744245, 0.0192077 )
+[node name="mainDrive" parent="Propulsion" index="0"]
+transform = Transform( 0.391112, 0, 0, 0, -0.391112, 3.41921e-08, 0, -3.41921e-08, -0.391112, 0, -0.750957, 3.28254e-08 )
 
-[node name="CollisionShape" type="CollisionShape" parent="." index="6"]
+[node name="particel" parent="Propulsion/mainDrive" index="0" instance=ExtResource( 3 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138876, -6.07048e-09 )
 shape = SubResource( 1 )

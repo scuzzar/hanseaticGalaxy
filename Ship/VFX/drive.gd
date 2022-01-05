@@ -7,12 +7,13 @@ func _ready():
 	$Fire2.emitting = false
 	$smoke.emitting = false
 	$EngineSound.stop()
+	$OmniLight.stop()
 
 func on():
 	if(!on):
 		$Fire1.emitting = true
 		$Fire2.emitting = true
-		$smoke.emitting = false
+		$smoke.emitting = true
 		$OmniLight.start()
 		$EngineSound.play()
 		on = true

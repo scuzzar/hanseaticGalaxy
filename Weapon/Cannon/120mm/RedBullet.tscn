@@ -15,5 +15,5 @@ height = 0.120937
 depth = 0.115084
 material = ExtResource( 3 )
 
-[node name="AudioStreamPlayer3D" parent="." index="3"]
+[node name="Hit" parent="." index="4"]
 stream = ExtResource( 1 )

@@ -5,7 +5,6 @@
 [ext_resource path="res://Ship/VFX/drive.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Weapon/MountPoint.tscn" type="PackedScene" id=4]
 
-
 [sub_resource type="CylinderShape" id=1]
 radius = 0.364907
 height = 1.24207
@@ -26,8 +25,8 @@ shape = SubResource( 1 )
 [node name="Inventory" parent="." index="2"]
 slot_parent_path = NodePath("../Model/SimpleRocket")
 
-[node name="SimpleRocket" parent="Model" index="0" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.59521, 2.60175e-08 )
+[node name="SimpleRocket" parent="." index="3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.578583, 2.52907e-08 )
 
-[node name="particel" parent="Model" index="1" instance=ExtResource( 3 )]
-transform = Transform( 0.481952, 0, 0, 0, -0.481952, 4.21336e-08, 0, -4.21336e-08, -0.481952, 0, -0.594554, 0.0192077 )
+[node name="particel" parent="Propulsion/mainDrive" index="0" instance=ExtResource( 3 )]
+transform = Transform( 0.400669, 0, 0, 0, -0.400669, 3.50276e-08, 0, -3.50276e-08, -0.400669, 0, -0.592798, 2.5912e-08 )

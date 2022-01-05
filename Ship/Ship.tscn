@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Ship/Tail.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Ship/ModelControl.gd" type="Script" id=2]
+[ext_resource path="res://Ship/PropulsionControll.gd" type="Script" id=2]
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=3]
 [ext_resource path="res://Ship/ShipInfoWindow/ShipInfo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Cargo/Inventory.gd" type="Script" id=9]
@@ -29,11 +29,21 @@ physikAktiv = false
 [node name="Inventory" type="Spatial" parent="."]
 script = ExtResource( 9 )
 
-[node name="Model" type="Spatial" parent="."]
+[node name="Propulsion" type="Spatial" parent="."]
 script = ExtResource( 2 )
 
+[node name="mainDrive" type="Spatial" parent="Propulsion"]
+
+[node name="forwardTruster" type="Spatial" parent="Propulsion"]
+
+[node name="leftTruster" type="Spatial" parent="Propulsion"]
+
+[node name="rightTruster" type="Spatial" parent="Propulsion"]
+
+[node name="backTruster" type="Spatial" parent="Propulsion"]
+
 [node name="Tail" parent="." instance=ExtResource( 1 )]
-frameOfReference_Node = NodePath("../Model")
+frameOfReference_Node = NodePath("../Propulsion")
 
 [node name="ShipInfo" parent="." instance=ExtResource( 4 )]
 

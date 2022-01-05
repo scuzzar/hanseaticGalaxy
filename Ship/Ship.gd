@@ -102,28 +102,31 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 				self.undock()
 			var fuelcost =  trust * state.step
 			if(fuel - fuelcost > 0):
-				$Model.trust_forward_on()
+				$Propulsion.trust_forward_on()
 				trusted = true
 				_burn_forward(state)
 		
 		
 		if Input.is_action_pressed("burn_backward"):
-			$Model.trust_backward_on()
+			$Propulsion.trust_backward_on()
 			trusted = true
 			_burn_backward(state)
 			
 		if Input.is_action_pressed("burn_lateral_left"):
-			$Model.trust_lateral_left_on()
+			$Propulsion.trust_lateral_left_on()
 			trusted = true
 			_burn_left(state)
 			
 		if Input.is_action_pressed("burn_lateral_right"):
-			$Model.trust_lateral_right_on()
+			$Propulsion.trust_lateral_right_on()
 			trusted = true
 			_burn_right(state)
 		
 		if Input.is_action_pressed("burn_circularize"):	
-			_burn_circularize(state)
+			var burn_vector = _burn_circularize(state)			
+			burn_vector = burn_vector.rotated(Vector3(0,1,0), self.rotation.y*-1+PI/2)
+			$Propulsion.trust_Vector(burn_vector)
+			trusted = true
 		
 		if Input.is_action_pressed("trun_left"):
 			_rotation(turn_rate*state.step)	
@@ -141,7 +144,7 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 		emit_signal("telemetry_changed", self.translation, state.linear_velocity)
 		
 		if(!trusted):
-			$Model.all_trust_off()
+			$Propulsion.all_trust_off()
 
 func _turn_turrents(delta):
 	var position2D = get_viewport().get_mouse_position()
@@ -215,6 +218,7 @@ func _burn_circularize(state:PhysicsDirectBodyState):
 	state.add_force(c_burn_f, Vector3(0,0,0))
 	
 	self.burn_fuel(c_burn_trust * state.step)
+	return c_burn_direction
 
 
 func _get_orbital_vector():
