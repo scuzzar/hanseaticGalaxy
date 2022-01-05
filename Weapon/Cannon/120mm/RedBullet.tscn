@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Weapon/Cannon/120mm/522267__filmmakersmanual__gun-firing-from-a-distance-12.wav" type="AudioStream" id=1]
+[ext_resource path="res://Weapon/Cannon/30mm/Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Weapon/Cannon/120mm/RedBullet.material" type="Material" id=3]
+
+[node name="Bullet" instance=ExtResource( 2 )]
+
+[node name="CollisionShape" parent="." index="0"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.159094, 0, 0 )
+
+[node name="CSGBox" parent="." index="1"]
+width = 0.15702
+height = 0.120937
+depth = 0.115084
+material = ExtResource( 3 )
+
+[node name="AudioStreamPlayer3D" parent="." index="3"]
+stream = ExtResource( 1 )

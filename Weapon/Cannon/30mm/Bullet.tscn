@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Weapon/Cannon/Bullet.gd" type="Script" id=1]
-[ext_resource path="res://Weapon/Cannon/Bullet.material" type="Material" id=2]
-[ext_resource path="res://Weapon/Cannon/sound/163455__lemudcrab__shotgun-shot.wav" type="AudioStream" id=3]
-[ext_resource path="res://Weapon/Cannon/sound/587195__derplayer__explosion-07-Short.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Weapon/Cannon/30mm/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Weapon/Cannon/30mm/Bullet.material" type="Material" id=2]
+[ext_resource path="res://Weapon/Cannon/30mm/258198__wadaltmon__thompson-smg-shot.wav" type="AudioStream" id=3]
+[ext_resource path="res://Weapon/Cannon/120mm/587195__derplayer__explosion-07-Short.ogg" type="AudioStream" id=4]
 
 [sub_resource type="RayShape" id=1]
 length = 0.336813

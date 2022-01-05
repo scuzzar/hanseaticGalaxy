@@ -1,5 +1,5 @@
 id;name;display_name;dry_mass;turn_rate;scatter;cooldown;nozzel_speed;max_distance;damage;gun_scene;missile_scene;price
-0;G30MM;30mm Cannon;2;40;0.1;1;50;100;20;res://Weapon/Cannon/Cannon.tscn;res://Weapon/Cannon/Bullet.tscn;10000
-1;G120mm;120mm Cannon;10;20;0.3;0.3;50;100;10;res://Weapon/Cannon/Cannon.tscn;res://Weapon/Cannon/RedBullet.tscn;12000
-2;DUMMY;30mm Cannon;2;40;0;4;50;100;0;res://Weapon/Cannon/Cannon.tscn;res://Weapon/Cannon/RedBullet.tscn;10000
-3;KillGun;120mm Cannon;2;40;0.1;1;50;100;10;res://Weapon/Cannon/Cannon.tscn;res://Weapon/Cannon/RedBullet.tscn;10000
+0;G30MM;30mm Cannon;2;40;0.1;1;50;100;20;res://Weapon/Cannon/Cannon.tscn;res://Weapon/Cannon/30mm/Bullet.tscn;10000
+1;G120mm;120mm Cannon;10;20;0.3;0.3;50;100;10;res://Weapon/Cannon/Cannon.tscn;res://Weapon/Cannon/120mm/RedBullet.tscn;12000
+2;DUMMY;30mm Cannon;2;40;0;4;50;100;0;res://Weapon/Cannon/Cannon.tscn;res://Weapon/Cannon/30mm/Bullet.tscn;10000
+3;KillGun;120mm Cannon;2;40;0.1;1;50;100;10;res://Weapon/Cannon/Cannon.tscn;res://Weapon/Cannon/120mm/RedBullet.tscn;10000

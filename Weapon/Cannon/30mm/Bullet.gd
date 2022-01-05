@@ -26,10 +26,10 @@ func _on_Bullet_body_entered(body):
 	if(body is Ship):
 		var ship = body as Ship
 		if (ship.team != team):
-			self._ship_hit(body as Ship)
-			self.queue_free()	
+			self._ship_hit(body as Ship)			
 	else:
-		self.queue_free()
+		$Hit.play()
+		$LifeTime.stop()
 
 func _ship_hit(ship:Ship):
 	ship.takeDamege(damage)

@@ -69,10 +69,7 @@ __meta__ = {
 [node name="Ambient" type="AudioStreamPlayer3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.274307, -1.013 )
 stream = ExtResource( 6 )
-unit_db = -13.764
 autoplay = true
-max_distance = 40.0
-out_of_range_mode = 1
 
 [connection signal="body_entered" from="LandingArea" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="LandingArea" to="." method="_on_Area_body_exited"]
