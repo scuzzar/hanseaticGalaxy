@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Bodys/materials/Sun.material" type="Material" id=1]
 [ext_resource path="res://Bodys/materials/Moon.material" type="Material" id=2]
@@ -47,7 +47,6 @@
 [ext_resource path="res://Ship/Tender/Tender_S.tscn" type="PackedScene" id=45]
 [ext_resource path="res://Enemys/KillSatEnemy.tscn" type="PackedScene" id=46]
 [ext_resource path="res://Ship/SimpleRocket/Orbital Rocket.tscn" type="PackedScene" id=47]
-[ext_resource path="res://Ship/Ship.gd" type="Script" id=48]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 3.0
@@ -93,36 +92,13 @@ environment = ExtResource( 20 )
 min_zoom = 1.0
 
 [node name="PlayerShip" parent="." instance=ExtResource( 45 )]
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.4, -2.38419e-07, -96.2257 )
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.4, -2.38419e-07, -109.899 )
 physics_material_override = SubResource( 1 )
-velocety = Vector3( 0, 0, -15 )
+velocety = Vector3( -14, 0, 0 )
 show_soi_relativ_sim = false
 playerControl = true
+autoCircle = true
 team = 0
-
-[node name="PlayerShip2" parent="." instance=ExtResource( 45 )]
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.4, -2.38419e-07, -100.58 )
-physics_material_override = SubResource( 1 )
-velocety = Vector3( -15, 0, 0 )
-show_soi_relativ_sim = false
-autoCircle = true
-team = 1
-
-[node name="PlayerShip3" parent="." instance=ExtResource( 45 )]
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.4, -2.38419e-07, -101.931 )
-physics_material_override = SubResource( 1 )
-velocety = Vector3( -15, 0, 0 )
-show_soi_relativ_sim = false
-autoCircle = true
-team = 1
-
-[node name="PlayerShip4" parent="." instance=ExtResource( 45 )]
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.4, -2.38419e-07, -103.616 )
-physics_material_override = SubResource( 1 )
-velocety = Vector3( -15, 0, 0 )
-show_soi_relativ_sim = false
-autoCircle = true
-team = 1
 
 [node name="Sun" parent="." instance=ExtResource( 16 )]
 mode = 3
@@ -325,17 +301,9 @@ transform = Transform( 1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-
 transform = Transform( 1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.37012, 0, -3.53617 )
 physics_material_override = SubResource( 5 )
 
-[node name="Orbital Rocket" parent="Sun/Mars/OlympusPort" groups=["persist"] instance=ExtResource( 47 )]
+[node name="Orbital Rocket" parent="Sun/Mars/OlympusPort" instance=ExtResource( 47 )]
 transform = Transform( 1, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -1.77636e-14, 8.74228e-08, 1.06581e-14, 1, -2.63086, 0, -3.48166 )
-input_ray_pickable = false
 physics_material_override = SubResource( 5 )
-continuous_cd = true
-axis_lock_linear_y = true
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-angular_damp = 4.0
-script = ExtResource( 48 )
-physikAktiv = false
 
 [node name="SimpleRocket" parent="Sun/Mars/OlympusPort" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 6.35275e-21, 0, 1, 0, 0, 0, 1, -1.79443, 0.0951424, -3.49483 )
@@ -612,6 +580,3 @@ transform = Transform( -0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-14
 
 [connection signal="shifted" from="Shifter" to="Simulator" method="_on_Shifter_shifted"]
 [connection signal="shipOrderd" from="HUD" to="." method="_on_HUD_shipOrderd"]
-[connection signal="docked" from="Sun/Mars/OlympusPort/Orbital Rocket" to="Sun/Mars/OlympusPort/Orbital Rocket/Tail" method="_stop"]
-[connection signal="strongest_body_changed" from="Sun/Mars/OlympusPort/Orbital Rocket" to="Sun/Mars/OlympusPort/Orbital Rocket/Tail" method="_on_reference_changed"]
-[connection signal="undocked" from="Sun/Mars/OlympusPort/Orbital Rocket" to="Sun/Mars/OlympusPort/Orbital Rocket/Tail" method="_start"]
