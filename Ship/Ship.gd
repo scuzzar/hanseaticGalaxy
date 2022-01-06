@@ -83,6 +83,7 @@ func _loadType():
 func _integrate_forces(state:PhysicsDirectBodyState):
 	if(physikAktiv):
 		._integrate_forces(state)
+		$Damage.handle_collsions(state)
 	
 	var currentSOIPlanet = self.getSOIPlanet()
 	if( currentSOIPlanet != soiPlanet):
@@ -92,13 +93,13 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 	var trusted = false
 
 
+
 	if (self.autoCircle):	
 		var burn_vector:Vector3 = _burn_circularize(state)
 		var lenth = burn_vector.length()
 		burn_vector = burn_vector.rotated(Vector3(0,1,0), self.rotation.y*-1+PI/2).normalized()
 		$Propulsion.trust_Vector(burn_vector,lenth)
 		trusted = true
-
 
 	if(playerControl):
 		
@@ -397,6 +398,8 @@ func load_save(dict):
 	type = dict["type"]
 	hitpoints = dict["hitpoints"]
 	last_g_force = Vector3(0,0,0)
+	self.contact_monitor = true
+	self.contacts_reported = 5
 
 func takeDamege(damage):
 	self.hitpoints -= damage	

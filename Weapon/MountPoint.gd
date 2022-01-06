@@ -23,8 +23,7 @@ func set_mount(new_mount):
 func do_mount():
 	if(mount!=ENUMS.WEAPON.NONE):
 		var gunScene = load(WeaponTyp[mount]["gun_scene"])		
-		var gun = gunScene.instance()
-		print(gun.type)
+		var gun = gunScene.instance()		
 		gun.type = mount		
 		self.add_child(gun)
 

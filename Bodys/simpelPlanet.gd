@@ -77,8 +77,10 @@ func _integrate_forces(state):
 		var dz = z - self.pZ
 		self.pX = x
 		self.pZ = z
-		#self.translation = 
-		state.linear_velocity = Vector3(dx,0,dz)
+		self.translation = Vector3(x,0,z)
+		
+		#state.transform.origin = Vector3(x,0,z)
+		#state.linear_velocity = Vector3(dx,0,dz)
 		
 		# = Vector3(pX,0,pZ)
 		#Needs further fixing
