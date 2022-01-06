@@ -580,3 +580,5 @@ transform = Transform( -0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-14
 
 [connection signal="shifted" from="Shifter" to="Simulator" method="_on_Shifter_shifted"]
 [connection signal="shipOrderd" from="HUD" to="." method="_on_HUD_shipOrderd"]
+
+[editable path="Sun/Mars/MarsST"]

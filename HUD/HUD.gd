@@ -42,6 +42,8 @@ func _process(delta):
 			else:
 				$DeliveryMissionOverview.hide()	
 	pass
+	
+	tmr_labe.text = str("%0.1f" % Engine.get_frames_per_second())
 
 func setShip(ship:Ship):
 	self.ship = ship

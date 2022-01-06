@@ -1,10 +1,12 @@
-extends CenterContainer
+extends Control
 
 
 var loader : ResourceInteractiveLoader
 
 
 func _ready():
+	$Menu.hide()
+	$Menu/Resume.hide()
 	loader = ResourceLoader.load_interactive("res://scenes/sol/Sol.tscn")
 	if loader == null: # Check for errors.
 		print("ERROR")
@@ -13,16 +15,15 @@ func _ready():
 
 func _process(delta):	
 	var err =loader.poll()
-	$Grid/Loading_Lable.text = $Grid/Loading_Lable.text + "."
+	$Loading_Lable.text = $Loading_Lable.text + "."
 	if(err == ERR_FILE_EOF):	
 		SceneManager.sol_scene_res = loader.get_resource() 
 		print("loaded")
-		$Grid/Loading_Lable.hide()
-		$Grid/Start.show()
-		$Grid/Exit.show()
+		$Loading_Lable.hide()
+		$Menu.show()
 		var quicksave = File.new()
 		if(quicksave.file_exists(Globals.QUICKSAVE_PATH)):
-			$Grid/Resume.show()
+			$Menu/Resume.show()
 		set_process(false)
 
 func _on_Start_pressed():
@@ -43,3 +44,7 @@ func _on_Resume_pressed():
 
 func _on_Exit_pressed():
 	SceneManager.exit_game()
+
+
+func _on_FullScreen_pressed():
+	OS.window_fullscreen = !OS.window_fullscreen

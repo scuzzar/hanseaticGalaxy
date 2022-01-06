@@ -65,7 +65,7 @@ margin_right = 100.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 100, 0 )
 theme = ExtResource( 4 )
-text = "T/M:"
+text = "FPS:"
 align = 2
 
 [node name="Value" type="Label" parent="DataBox/TMR"]
