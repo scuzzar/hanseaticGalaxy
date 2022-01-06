@@ -22,11 +22,11 @@ turn_limit = 0.3
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0297804, -1.30174e-09 )
 shape = SubResource( 1 )
 
-[node name="Inventory" parent="." index="2"]
-slot_parent_path = NodePath("../SimpleRocket")
-
 [node name="SimpleRocket" parent="." index="3" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.578583, 2.52907e-08 )
+
+[node name="Inventory" parent="." index="6"]
+slot_parent_path = NodePath("../SimpleRocket")
 
 [node name="particel" parent="Propulsion/mainDrive" index="0" instance=ExtResource( 3 )]
 transform = Transform( 0.400669, 0, 0, 0, -0.400669, 3.50276e-08, 0, -3.50276e-08, -0.400669, 0, -0.592798, 2.5912e-08 )
