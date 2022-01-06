@@ -13,7 +13,7 @@ func _ready():
 	forwardTruster = $forwardTruster.get_children()
 	backTruster= $backTruster.get_children()
 
-func trust_Vector(v:Vector3, throttle:float):
+func trust_Vector(v:Vector2, throttle:float = 1):
 	if(throttle<=0.1):
 		all_trust_off()
 		return
@@ -28,26 +28,24 @@ func trust_Vector(v:Vector3, throttle:float):
 	else:
 		_trust_backward_off()
 		
-	if(v.z<0):
-		trust_lateral_left_on(abs(v.z)) 
+	if(v.y<0):
+		trust_lateral_left_on(abs(v.y)) 
 	else:
 		_trust_lateral_left_off()
 		
-	if(v.z>0):
-		trust_lateral_right_on(abs(v.z))
+	if(v.y>0):
+		trust_lateral_right_on(abs(v.y))
 	else:
-		_trust_lateral_right_off()
-	
+		_trust_lateral_right_off()	
 	pass
 
-func trust_forward_on(throttle=1):
+func drive_on(throttle=1):
 	for d in mainDrive:	d.on(throttle)
 
-func _trust_forward_off():
+func drive_off():
 	for d in mainDrive:	d.off()
 
 func all_trust_off():
-	_trust_forward_off()
 	_trust_backward_off()
 	_trust_lateral_forward_off()
 	_trust_lateral_right_off()

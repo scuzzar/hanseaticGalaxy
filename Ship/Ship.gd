@@ -36,6 +36,11 @@ var turn_to_target = false
 var target:Ship = null
 var weaponActive = true
 
+var truster_vector = Vector2(0,0)
+var truster_trust :float = 0 
+var rotational_trust :float = 0  
+
+
 onready var inventory = $Inventory
 
 export(ENUMS.TEAM) var team = ENUMS.TEAM.NEUTRAL
@@ -91,16 +96,10 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 		emit_signal("soiPlanetChanged",soiPlanet)
 	
 	var trusted = false
-
-
-
-	if (self.autoCircle):	
-		var burn_vector:Vector3 = _burn_circularize(state)
-		var lenth = burn_vector.length()
-		burn_vector = burn_vector.rotated(Vector3(0,1,0), self.rotation.y*-1+PI/2).normalized()
-		$Propulsion.trust_Vector(burn_vector,lenth)
-		trusted = true
-
+	
+	if autoCircle:
+		_lateral_circularize_burn(state)
+	
 	if(playerControl):
 		
 		if(weaponActive):
@@ -115,43 +114,35 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 			if(self.docking_location!=null):
 				self.undock()
 			var fuelcost =  trust * state.step
-			if(fuel - fuelcost > 0):
-				$Propulsion.trust_forward_on()
+			if(fuel - fuelcost > 0):				
 				trusted = true
-				_burn_forward(state)
+				_fire_main_drive(state)
 		else:
-			$Propulsion._trust_forward_off()
-		
-		
+			$Propulsion.drive_off()
+	
+		###Truster fire		
 		if Input.is_action_pressed("burn_backward"):
-			$Propulsion.trust_backward_on()
-			trusted = true
-			_burn_backward(state)
+			lateral_burn(Vector2(-1,0))
 			
 		if Input.is_action_pressed("burn_lateral_left"):
-			$Propulsion.trust_lateral_left_on()
-			trusted = true
-			_burn_left(state)
-			
-		if Input.is_action_pressed("burn_lateral_right"):
-			$Propulsion.trust_lateral_right_on()
-			trusted = true
-			_burn_right(state)
+			lateral_burn(Vector2(0,-1))
 		
-		if Input.is_action_pressed("burn_circularize") or self.autoCircle:	
-			var burn_vector:Vector3 = _burn_circularize(state)
-			var lenth = burn_vector.length()
-			burn_vector = burn_vector.rotated(Vector3(0,1,0), self.rotation.y*-1+PI/2).normalized()
-			
-			$Propulsion.trust_Vector(burn_vector,lenth)
-			trusted = true
+		if Input.is_action_pressed("burn_lateral_right"):
+			lateral_burn(Vector2(0,1))	
+				
+		_fire_truster(state,truster_vector,truster_trust)	
+		truster_vector = Vector2(0,0)	
+		truster_trust = 0
 		
 		if Input.is_action_pressed("trun_left"):
-			_rotation(turn_rate*state.step)	
+			rotational_trust = turn_rate
 		
 		if Input.is_action_pressed("turn_right"):
-			_rotation(turn_rate*-1*state.step)
-			
+			rotational_trust = turn_rate*-1
+		
+		_rotation(rotational_trust,state)	
+		rotational_trust = 0
+
 		if Input.is_action_just_pressed("info"):
 			if(!$ShipInfo.visible):
 				$ShipInfo.setShip(self)				
@@ -160,9 +151,67 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 			else:
 				$ShipInfo.hide()	
 		emit_signal("telemetry_changed", self.translation, state.linear_velocity)
-		
-	if(!trusted):
-		$Propulsion.all_trust_off()
+
+func lateral_burn(burn_vector):
+	truster_vector += burn_vector
+	truster_trust += lateral_trust
+
+func _lateral_circularize_burn(state):
+	var ov = self._get_orbital_vector()
+	var c_burn_direction = ov - state.linear_velocity
+	var c_burn_dv = c_burn_direction.length()
+	
+	var c_burn_trust = clamp(lateral_trust,0,c_burn_dv/state.step)			
+	var orientation = self.rotation.y
+	var c_burn_direction_local = c_burn_direction.rotated(Vector3(0,1,0), -1*orientation+PI/2).normalized()
+	var tv = Vector2(c_burn_direction_local.x,c_burn_direction_local.z)
+	
+	truster_vector = tv
+	truster_trust = c_burn_trust
+
+func _fire_truster(state:PhysicsDirectBodyState,direction:Vector2, trust):
+	var direction3d = Vector3(direction.x,0,direction.y)	
+	var orientation = self.rotation.y
+	direction3d = direction3d.rotated(Vector3(0,1,0), orientation-PI/2)
+	
+	var force = direction3d*trust
+	state.add_force(force, Vector3(0,0,0))
+	self.burn_fuel(trust * state.step)
+	$Propulsion.trust_Vector(direction,trust/lateral_trust)
+	
+
+func _fire_main_drive(state:PhysicsDirectBodyState):	
+	var force = _get_forward_vector()*trust
+	state.add_force(force, Vector3(0,0,0))
+	self.burn_fuel(trust * state.step)
+	$Propulsion.drive_on()
+
+func _get_forward_vector():
+	var orientation = self.rotation.y
+	var v = Vector3(0,0,1)
+	v = v.rotated(Vector3(0,1,0), orientation)
+	return v
+
+
+func _get_orbital_vector():
+	var b :simpelPlanet = last_g_force_strongest_Body
+	#print(b.name)
+	var b_direction : Vector3 =self.global_transform.origin - b.global_transform.origin
+	
+	var orbital_direction = b_direction.normalized().rotated(Vector3(0,1,0),PI/2)
+	
+	var d =	b_direction.length()
+	var M = b.mass
+	var kosmic = sqrt(Globals.G*M/d)
+	
+	var orbital_vector_in_Sio =(orbital_direction * kosmic)
+	
+	#account for motion of b
+	var result =orbital_vector_in_Sio+b.linear_velocity
+	return result
+
+func _rotation(angle: float, state):
+	state.apply_torque_impulse(Vector3(0,angle*state.step,0))
 
 func _turn_turrents(delta):
 	var position2D = get_viewport().get_mouse_position()
@@ -198,84 +247,7 @@ func _turn_turrents(delta):
 			var turnAngle =angleD#  clamp(angleD,mount.turn_rate*-1*delta,mount.turn_rate*delta)
 	
 			(mount as Spatial).global_rotate(Vector3(0,1,0),turnAngle)
-	
 
-func _burn_forward(state:PhysicsDirectBodyState):	
-	var force = _get_forward_vector()*trust
-	state.add_force(force, Vector3(0,0,0))
-	self.burn_fuel(trust * state.step)
-
-func _burn_right(state:PhysicsDirectBodyState):	
-	var force = _get_right_vector()*lateral_trust
-	state.add_force(force, Vector3(0,0,0))
-	self.burn_fuel(lateral_trust * state.step)
-
-func _burn_left(state:PhysicsDirectBodyState):	
-	var force = _get_left_vector()*lateral_trust
-	state.add_force(force, Vector3(0,0,0))
-	self.burn_fuel(lateral_trust * state.step)
-
-func _burn_backward(state:PhysicsDirectBodyState):	
-	var force = _get_forward_vector()*lateral_trust*-1
-	state.add_force(force, Vector3(0,0,0))
-	self.burn_fuel(lateral_trust * state.step)
-
-func _burn_circularize(state:PhysicsDirectBodyState):
-	var ov = self._get_orbital_vector()
-	var c_burn_direction = ov - state.linear_velocity
-	#var c_burn_direction_retro = ov.rotated(Vector3(0,1,0),PI)- state.linear_velocity
-	#if(c_burn_direction.length()>c_burn_direction_retro.length()):
-	#	c_burn_direction = c_burn_direction_retro
-	
-	var c_burn_dv = c_burn_direction.length()
-	
-	var c_burn_trust = clamp(lateral_trust,0,c_burn_dv/state.step)
-	#c_burn_trust = clamp(c_burn_trust,0,c_burn_dv)
-	#print(c_burn_trust)
-	var c_burn_f = c_burn_direction.normalized() * c_burn_trust
-	state.add_force(c_burn_f, Vector3(0,0,0))
-	
-	self.burn_fuel(c_burn_trust * state.step)
-	return c_burn_direction
-
-
-func _get_orbital_vector():
-	var b :simpelPlanet = last_g_force_strongest_Body
-	#print(b.name)
-	var b_direction : Vector3 =self.global_transform.origin - b.global_transform.origin
-	
-	var orbital_direction = b_direction.normalized().rotated(Vector3(0,1,0),PI/2)
-	
-	var d =	b_direction.length()
-	var M = b.mass
-	var kosmic = sqrt(Globals.G*M/d)
-	
-	var orbital_vector_in_Sio =(orbital_direction * kosmic)
-	
-	#account for motion of b
-	var result =orbital_vector_in_Sio+b.linear_velocity
-	return result
-
-func _rotation( angle: float):
-	self.apply_torque_impulse(Vector3(0,angle,0))
-
-func _get_forward_vector():
-	var orientation = self.rotation.y
-	var v = Vector3(0,0,1)
-	v = v.rotated(Vector3(0,1,0), orientation)
-	return v
-
-func _get_right_vector():
-	var orientation = self.rotation.y
-	var v = Vector3(-1,0,0)
-	v = v.rotated(Vector3(0,1,0), orientation)
-	return v
-	
-func _get_left_vector():
-	var orientation = self.rotation.y
-	var v = Vector3(1,0,0)
-	v = v.rotated(Vector3(0,1,0), orientation)
-	return v
 
 func getSOIPlanet():
 	if(last_g_force_strongest_Body==null):

@@ -53,7 +53,6 @@ frameOfReference_Node = NodePath("../Propulsion")
 
 [node name="ShipInfo" parent="." instance=ExtResource( 4 )]
 
-[connection signal="body_entered" from="." to="Damage" method="_on_Ship_body_entered"]
 [connection signal="docked" from="." to="Tail" method="_stop"]
 [connection signal="strongest_body_changed" from="." to="Tail" method="_on_reference_changed"]
 [connection signal="undocked" from="." to="Tail" method="_start"]
