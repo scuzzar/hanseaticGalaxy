@@ -98,12 +98,11 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 	var trusted = false
 	
 	if autoCircle:
-		_lateral_circularize_burn(state)
+		$AutoPilot._lateral_circularize_burn(state)
 	
-	if(playerControl):
-		
+	if(playerControl):		
 		if(weaponActive):
-			_turn_turrents(state.step)
+			$TragetComputer._turn_turrents(state.step)
 			if Input.is_action_pressed("fire"):	
 				self.fire()		
 		
@@ -156,18 +155,7 @@ func lateral_burn(burn_vector):
 	truster_vector += burn_vector
 	truster_trust += lateral_trust
 
-func _lateral_circularize_burn(state):
-	var ov = self._get_orbital_vector()
-	var c_burn_direction = ov - state.linear_velocity
-	var c_burn_dv = c_burn_direction.length()
-	
-	var c_burn_trust = clamp(lateral_trust,0,c_burn_dv/state.step)			
-	var orientation = self.rotation.y
-	var c_burn_direction_local = c_burn_direction.rotated(Vector3(0,1,0), -1*orientation+PI/2).normalized()
-	var tv = Vector2(c_burn_direction_local.x,c_burn_direction_local.z)
-	
-	truster_vector = tv
-	truster_trust = c_burn_trust
+
 
 func _fire_truster(state:PhysicsDirectBodyState,direction:Vector2, trust):
 	var direction3d = Vector3(direction.x,0,direction.y)	
@@ -192,62 +180,8 @@ func _get_forward_vector():
 	v = v.rotated(Vector3(0,1,0), orientation)
 	return v
 
-
-func _get_orbital_vector():
-	var b :simpelPlanet = last_g_force_strongest_Body
-	#print(b.name)
-	var b_direction : Vector3 =self.global_transform.origin - b.global_transform.origin
-	
-	var orbital_direction = b_direction.normalized().rotated(Vector3(0,1,0),PI/2)
-	
-	var d =	b_direction.length()
-	var M = b.mass
-	var kosmic = sqrt(Globals.G*M/d)
-	
-	var orbital_vector_in_Sio =(orbital_direction * kosmic)
-	
-	#account for motion of b
-	var result =orbital_vector_in_Sio+b.linear_velocity
-	return result
-
 func _rotation(angle: float, state):
 	state.apply_torque_impulse(Vector3(0,angle*state.step,0))
-
-func _turn_turrents(delta):
-	var position2D = get_viewport().get_mouse_position()
-	var dropPlane  = Plane(Vector3(0, 1, 0), 0)
-	var camera = get_viewport().get_camera()
-	var position3D = dropPlane.intersects_ray(
-							 camera.project_ray_origin(position2D),
-							 camera.project_ray_normal(position2D))
-	if(position3D!=null):
-		for mount in mounts :
-			var ownTransform:Transform = mount.global_transform
-			var look_transform = ownTransform.looking_at(position3D,Vector3(0,1,0))
-			var angle = look_transform.basis.get_euler().y
-			
-			var nt:Transform = mount.no_turn_transform
-			var st:Transform = self.global_transform
-			
-			nt = nt.rotated(Vector3(0,1,0),st.basis.get_euler().y-PI/2)
-			
-			var n = nt.basis.get_euler().y
-			var l = mount.turn_limit
-			var n_max = nt.rotated(Vector3(0,1,0),l).basis.get_euler().y
-			var n_min = nt.rotated(Vector3(0,1,0),l*-1).basis.get_euler().y
-			
-			var d = (look_transform.rotated(Vector3(0,1,0),nt.basis.get_euler().y*-1)).basis.get_euler().y
-			#var d = (look_transform.rotated(Vector3(0,1,0),st.basis.get_euler().y*-1+PI)).basis.get_euler().y
-			if(d>=l): angle = n_max
-			if(d<=l*-1): angle = n_min
-			
-			var angleD = angle - ownTransform.basis.get_euler().y
-			
-			var turnrate =mount.turn_rate
-			var turnAngle =angleD#  clamp(angleD,mount.turn_rate*-1*delta,mount.turn_rate*delta)
-	
-			(mount as Spatial).global_rotate(Vector3(0,1,0),turnAngle)
-
 
 func getSOIPlanet():
 	if(last_g_force_strongest_Body==null):
@@ -374,18 +308,7 @@ func load_save(dict):
 	self.contacts_reported = 5
 
 func takeDamege(damage):
-	self.hitpoints -= damage	
-	emit_signal("tookDamage",damage)
-	if(hitpoints<=0):
-		self.distroy()
-		
-func distroy():
-	if(playerControl):
-		self.hide()
-	else:
-		self.queue_free()
-	emit_signal("destryed")
-
+	$Damage.takeDamege(damage)
 
 func hasTarget():
 	return target!=null

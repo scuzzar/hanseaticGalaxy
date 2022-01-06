@@ -30,7 +30,7 @@ shape = SubResource( 1 )
 [node name="Tender" parent="." index="3" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.322148, 1.40815e-08 )
 
-[node name="Inventory" parent="." index="4"]
+[node name="Inventory" parent="." index="7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.578891, 2.53041e-08 )
 slot_parent_path = NodePath("../Tender")
 

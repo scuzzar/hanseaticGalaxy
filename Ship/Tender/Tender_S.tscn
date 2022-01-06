@@ -21,7 +21,5 @@ mount = 999
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118668, -5.18717e-09 )
 shape = SubResource( 1 )
 
-[node name="Inventory" parent="." index="5"]
+[node name="Inventory" parent="." index="7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.165703, 7.24308e-09 )
-
-[connection signal="body_entered" from="." to="Damage" method="_on_Ship_body_entered"]

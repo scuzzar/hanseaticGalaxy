@@ -14,5 +14,22 @@ func handle_collsions(state:PhysicsDirectBodyState):
 
 func _on_impact(colliding_body:RigidBody,impulse:float):
 	if(impulse>40):
-		ship.takeDamege(impulse/5*ship.max_hitpoints/100)
+		takeDamege(impulse/5*ship.max_hitpoints/100)
 		print(impulse)
+
+func takeDamege(damage):
+	ship.hitpoints -= damage	
+	ship.emit_signal("tookDamage",damage)
+	if(ship.hitpoints<=0):
+		distroy()
+		
+func distroy():
+	if(ship.playerControl):
+		ship.hide()
+	else:
+		ship.queue_free()
+	emit_signal("destryed")
+
+func _on_Ship_body_entered(a): 
+	print("f")
+
