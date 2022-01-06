@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Bodys/materials/Sun.material" type="Material" id=1]
 [ext_resource path="res://Bodys/materials/Moon.material" type="Material" id=2]
@@ -47,6 +47,7 @@
 [ext_resource path="res://Ship/Tender/Tender_S.tscn" type="PackedScene" id=45]
 [ext_resource path="res://Enemys/KillSatEnemy.tscn" type="PackedScene" id=46]
 [ext_resource path="res://Ship/SimpleRocket/Orbital Rocket.tscn" type="PackedScene" id=47]
+[ext_resource path="res://Ship/Ship.gd" type="Script" id=48]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 3.0
@@ -91,10 +92,18 @@ environment = ExtResource( 20 )
 [node name="Camera" parent="." groups=["persist"] instance=ExtResource( 18 )]
 min_zoom = 1.0
 
-[node name="PlayerShip" parent="." instance=ExtResource( 45 )]
+[node name="PlayerShip" parent="." groups=["persist"] instance=ExtResource( 45 )]
 transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 11923.5, -2.38419e-07, -4.32654 )
+input_ray_pickable = false
 physics_material_override = SubResource( 1 )
+continuous_cd = true
 contacts_reported = 5
+contact_monitor = true
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+angular_damp = 4.0
+script = ExtResource( 48 )
 show_soi_relativ_sim = false
 playerControl = true
 autoCircle = true
@@ -611,6 +620,9 @@ transform = Transform( -0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-14
 
 [connection signal="shifted" from="Shifter" to="Simulator" method="_on_Shifter_shifted"]
 [connection signal="shipOrderd" from="HUD" to="." method="_on_HUD_shipOrderd"]
+[connection signal="docked" from="PlayerShip" to="PlayerShip/Tail" method="_stop"]
+[connection signal="strongest_body_changed" from="PlayerShip" to="PlayerShip/Tail" method="_on_reference_changed"]
+[connection signal="undocked" from="PlayerShip" to="PlayerShip/Tail" method="_start"]
 [connection signal="body_entered" from="Sun/Venus/VenusST/Orbital SkyCrane" to="Sun/Venus/VenusST/Orbital SkyCrane/Damage" method="_on_Ship_body_entered"]
 [connection signal="body_entered" from="Sun/Earth/ISS/SkyCrane" to="Sun/Earth/ISS/SkyCrane/Damage" method="_on_Ship_body_entered"]
 [connection signal="body_entered" from="Sun/Earth/ISS/Tender" to="Sun/Earth/ISS/Tender/Damage" method="_on_Ship_body_entered"]
