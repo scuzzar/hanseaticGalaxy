@@ -4,6 +4,11 @@
 
 [node name="OrbitalCity" instance=ExtResource( 1 )]
 
+[node name="Output1" parent="." index="0"]
+cargo = 12
+max_missions = 1
+init_missions = 1
+
 [node name="Input1" parent="." index="4"]
 cargo = 3
 

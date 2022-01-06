@@ -1,5 +1,9 @@
 extends StaticEnemy
 
+func _ready():
+	$KillSat.remove_from_group("persist")
+
 func _process(delta):
-	$Alarm.visible = $KillSat.hasTarget()
+	if($KillSat!=null):
+		$Alarm.visible = $KillSat.hasTarget()
 		

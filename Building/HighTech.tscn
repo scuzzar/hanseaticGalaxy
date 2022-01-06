@@ -7,6 +7,9 @@
 [node name="Output1" parent="." index="0"]
 cargo = 9
 
+[node name="Output2" parent="." index="1"]
+cargo = 13
+
 [node name="Input1" parent="." index="4"]
 cargo = 3
 

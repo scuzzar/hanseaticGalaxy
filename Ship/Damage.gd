@@ -28,7 +28,7 @@ func distroy():
 		ship.hide()
 	else:
 		ship.queue_free()
-	emit_signal("destryed")
+	ship.emit_signal("destryed")
 
 func _on_Ship_body_entered(a): 
 	print("f")

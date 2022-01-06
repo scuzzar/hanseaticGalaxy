@@ -14,3 +14,6 @@ cargo = 9
 
 [node name="Input2" parent="." index="5"]
 cargo = 11
+
+[node name="Input3" parent="." index="6"]
+cargo = 13
