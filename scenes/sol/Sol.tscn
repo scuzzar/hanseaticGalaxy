@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://Bodys/materials/Sun.material" type="Material" id=1]
 [ext_resource path="res://Bodys/materials/Moon.material" type="Material" id=2]
@@ -33,7 +33,6 @@
 [ext_resource path="res://Bodys/materials/IO.material" type="Material" id=31]
 [ext_resource path="res://Bodys/materials/Kallisto.material" type="Material" id=32]
 [ext_resource path="res://Bodys/materials/Ganimede.material" type="Material" id=33]
-[ext_resource path="res://Bodys/materials/SimpleBelt.tres" type="Material" id=34]
 [ext_resource path="res://Building/OrbitalCity.tscn" type="PackedScene" id=35]
 [ext_resource path="res://Building/Construction.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Building/DomedCity.tscn" type="PackedScene" id=37]
@@ -92,7 +91,7 @@ environment = ExtResource( 20 )
 min_zoom = 1.0
 
 [node name="PlayerShip" parent="." instance=ExtResource( 45 )]
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 11923.5, -2.38419e-07, -4.32654 )
+transform = Transform( 1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, 12000.1, -4.17233e-06, -152.135 )
 physics_material_override = SubResource( 1 )
 contacts_reported = 5
 show_soi_relativ_sim = false
@@ -112,6 +111,7 @@ surface_g = 30.0
 
 [node name="OmniLight" type="OmniLight" parent="Sun"]
 transform = Transform( 1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 10.6688, 3.74349 )
+light_indirect_energy = 0.1
 omni_range = 500000.0
 
 [node name="Merkur" parent="Sun" instance=ExtResource( 16 )]
@@ -291,15 +291,14 @@ show_soi_relativ_sim = false
 [node name="OrbitalCity" parent="Sun/Mars/MarsST" instance=ExtResource( 35 )]
 
 [node name="Athmosphere" parent="Sun/Mars" instance=ExtResource( 13 )]
-visible = false
 planet_radius = 67.0
-atmosphere_height = 15.0
+atmosphere_height = 7.0
 sun_path = NodePath("../..")
-shader_params/u_day_color0 = Color( 0.964706, 0.6, 0.0313726, 1 )
-shader_params/u_day_color1 = Color( 0.223529, 0.164706, 0.054902, 1 )
+shader_params/u_day_color0 = Color( 0.964706, 0.533333, 0.0313726, 1 )
+shader_params/u_day_color1 = Color( 0.498039, 0.388235, 0.184314, 1 )
 shader_params/u_night_color0 = Color( 0.262745, 0.0156863, 0.0745098, 1 )
 shader_params/u_night_color1 = Color( 0, 0, 0, 1 )
-shader_params/u_density = 0.01
+shader_params/u_density = 0.1
 shader_params/u_attenuation_distance = 0.0
 
 [node name="OlympusPort" parent="Sun/Mars" instance=ExtResource( 14 )]
@@ -389,21 +388,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4554, -16.5231, 35.9209 )
 
 [node name="StaticEnemy" parent="Sun/Mars/Phobos" instance=ExtResource( 46 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -65.9939, -16.5231, -49.3115 )
-
-[node name="Belt" type="CSGCylinder" parent="Sun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -79.5266, 0 )
-cast_shadow = 0
-radius = 19000.0
-height = 5.0
-sides = 64
-material = ExtResource( 34 )
-
-[node name="innerPart" type="CSGCylinder" parent="Sun/Belt"]
-operation = 2
-radius = 17000.0
-height = 18.957
-sides = 64
-material = ExtResource( 34 )
 
 [node name="Jupiter" parent="Sun" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36000, 0, 0 )
@@ -611,18 +595,5 @@ transform = Transform( -0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-14
 
 [connection signal="shifted" from="Shifter" to="Simulator" method="_on_Shifter_shifted"]
 [connection signal="shipOrderd" from="HUD" to="." method="_on_HUD_shipOrderd"]
-[connection signal="body_entered" from="Sun/Venus/VenusST/Orbital SkyCrane" to="Sun/Venus/VenusST/Orbital SkyCrane/Damage" method="_on_Ship_body_entered"]
-[connection signal="body_entered" from="Sun/Earth/ISS/SkyCrane" to="Sun/Earth/ISS/SkyCrane/Damage" method="_on_Ship_body_entered"]
-[connection signal="body_entered" from="Sun/Earth/ISS/Tender" to="Sun/Earth/ISS/Tender/Damage" method="_on_Ship_body_entered"]
-[connection signal="body_entered" from="Sun/Earth/Moon/ApolloPort/SkyCrane" to="Sun/Earth/Moon/ApolloPort/SkyCrane/Damage" method="_on_Ship_body_entered"]
-[connection signal="body_entered" from="Sun/Earth/Moon/ApolloPort/Rocket" to="Sun/Earth/Moon/ApolloPort/Rocket/Damage" method="_on_Ship_body_entered"]
 [connection signal="body_entered" from="Sun/Mars/MarsST/SkyCrane" to="Sun/Mars/MarsST/SkyCrane/Damage" method="_on_Ship_body_entered"]
 [connection signal="body_entered" from="Sun/Mars/MarsST/Tender" to="Sun/Mars/MarsST/Tender/Damage" method="_on_Ship_body_entered"]
-[connection signal="body_entered" from="Sun/Mars/OlympusPort/Tender" to="Sun/Mars/OlympusPort/Tender/Damage" method="_on_Ship_body_entered"]
-[connection signal="body_entered" from="Sun/Mars/OlympusPort/SkyCrane" to="Sun/Mars/OlympusPort/SkyCrane/Damage" method="_on_Ship_body_entered"]
-[connection signal="body_entered" from="Sun/Mars/OlympusPort/SkyCrane S" to="Sun/Mars/OlympusPort/SkyCrane S/Damage" method="_on_Ship_body_entered"]
-[connection signal="body_entered" from="Sun/Mars/OlympusPort/Orbital Rocket" to="Sun/Mars/OlympusPort/Orbital Rocket/Damage" method="_on_Ship_body_entered"]
-[connection signal="body_entered" from="Sun/Mars/OlympusPort/SimpleRocket" to="Sun/Mars/OlympusPort/SimpleRocket/Damage" method="_on_Ship_body_entered"]
-[connection signal="body_entered" from="Sun/Mars/Deimos/DeimosPort/Orbital SkyCrane" to="Sun/Mars/Deimos/DeimosPort/Orbital SkyCrane/Damage" method="_on_Ship_body_entered"]
-[connection signal="body_entered" from="Sun/Jupiter/JupiterST/SkyCrane" to="Sun/Jupiter/JupiterST/SkyCrane/Damage" method="_on_Ship_body_entered"]
-[connection signal="body_entered" from="Sun/Jupiter/JupiterST/Tender" to="Sun/Jupiter/JupiterST/Tender/Damage" method="_on_Ship_body_entered"]
