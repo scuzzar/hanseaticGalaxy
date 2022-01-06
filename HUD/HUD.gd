@@ -123,11 +123,11 @@ func _on_InventoryWindow_accepted(container):
 	$DeliveryMissionOverview.update()
 	
 func _on_CargoBay_deliver(container):
-	Player.deliver_Container(container)
+	Player.deliver_Mission(container)
 	$DeliveryMissionOverview.update()
 
 func _on_CargoBay_about(container):
-	Player.about_Container(container)
+	Player.about_Mission(container)
 	$DeliveryMissionOverview.update()
 	#$DeliveryBoard.update()
 

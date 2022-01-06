@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Ship/Tender/Tender.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Cargo/Inventory.gd" type="Script" id=2]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.242001, 0.415233, 0.241879 )
@@ -22,9 +21,5 @@ mount = 999
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118668, -5.18717e-09 )
 shape = SubResource( 1 )
 
-[node name="Inventory" parent="." index="5"]
+[node name="Inventory" parent="." index="7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.165703, 7.24308e-09 )
-script = ExtResource( 2 )
-
-[connection signal="body_entered" from="." to="Damage" method="_on_Ship_body_entered"]
-[connection signal="container_clicked" from="Inventory" to="." method="deliver_Container"]

@@ -27,7 +27,7 @@ func pay(credits_to_pay : int):
 func fuel_burned(amount):
 	#engine_fuel_left -= amount
 	pass
-func deliver_Container(m: DeliveryMission):	
+func deliver_Mission(m: DeliveryMission):	
 	if(ship.docking_location == m.destination):
 		self.reward(m.reward)
 		ship.unload_all_container(m.cargoContainer)	
@@ -37,7 +37,7 @@ func deliver_Container(m: DeliveryMission):
 	else:
 		print("container hit on Ship:" + m.destination.name)
 
-func about_Container(m:DeliveryMission):
+func about_Mission(m:DeliveryMission):
 	ship.unload_all_container(m.cargoContainer)
 	var i = accepted_delivery_Missions.find(m)	
 	accepted_delivery_Missions.remove(i)	
