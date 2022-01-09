@@ -116,11 +116,11 @@ func _on_Ship_strongest_body_changed(old_body, new_body):
 	pass
 
 func _on_Ship_docked(port):
-	self._quicksave()
+	call_deferred("_quicksave")
 	pass
 	
 func _on_Ship_undocked(port):
-	self._quicksave()
+	call_deferred("_quicksave")
 	pass
 
 func _quicksave():

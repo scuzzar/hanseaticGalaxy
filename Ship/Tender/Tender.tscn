@@ -13,7 +13,7 @@ height = 0.834569
 [node name="Tender" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 mass = 10.0
-type = 1
+type = 0
 
 [node name="MountPointT" parent="." index="0" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1.06581e-14, -4.37114e-08, -1, 1, -4.37114e-08, 1.06581e-14, -0.0135535, 0.0598418, -0.18374 )
@@ -30,7 +30,7 @@ shape = SubResource( 1 )
 [node name="Tender" parent="." index="3" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.322148, 1.40815e-08 )
 
-[node name="Inventory" parent="." index="5"]
+[node name="Inventory" parent="." index="7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.578891, 2.53041e-08 )
 slot_parent_path = NodePath("../Tender")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://Bodys/materials/Sun.material" type="Material" id=1]
 [ext_resource path="res://Bodys/materials/Moon.material" type="Material" id=2]
@@ -44,15 +44,14 @@
 [ext_resource path="res://Building/Mine.tscn" type="PackedScene" id=42]
 [ext_resource path="res://Building/EnergyHavester.tscn" type="PackedScene" id=43]
 [ext_resource path="res://Ship/SkyCrane/SkyCrane_S.tscn" type="PackedScene" id=44]
-[ext_resource path="res://Ship/Tender/Tender_S.tscn" type="PackedScene" id=45]
 [ext_resource path="res://Enemys/KillSatEnemy.tscn" type="PackedScene" id=46]
 [ext_resource path="res://Ship/SimpleRocket/Orbital Rocket.tscn" type="PackedScene" id=47]
 
-[sub_resource type="PhysicsMaterial" id=1]
-friction = 3.0
-
 [sub_resource type="PhysicsMaterial" id=4]
 friction = 0.5
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 3.0
 
 [sub_resource type="PhysicsMaterial" id=5]
 friction = 3.0
@@ -88,17 +87,13 @@ environment = ExtResource( 20 )
 
 [node name="HUD" parent="." instance=ExtResource( 17 )]
 
+[node name="PlayerShip" parent="." instance=ExtResource( 47 )]
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.1, 0, -69.3306 )
+playerControl = true
+physikAktiv = true
+
 [node name="Camera" parent="." groups=["persist"] instance=ExtResource( 18 )]
 min_zoom = 1.0
-
-[node name="PlayerShip" parent="." instance=ExtResource( 45 )]
-transform = Transform( 1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, 12000.2, -1.54972e-05, -152.147 )
-physics_material_override = SubResource( 1 )
-contacts_reported = 5
-show_soi_relativ_sim = false
-playerControl = true
-autoCircle = true
-team = 0
 
 [node name="Sun" parent="." instance=ExtResource( 16 )]
 mode = 3
@@ -202,7 +197,6 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.83693
 contacts_reported = 0
 contact_monitor = false
 show_soi_relativ_sim = false
-type = 0
 
 [node name="Warft" parent="Sun/Earth/ISS" instance=ExtResource( 8 )]
 
@@ -477,12 +471,12 @@ securety_level = 1
 radius_description = 4821.0
 surface_g = 3.0
 
-[node name="IoP" parent="Sun/Jupiter/Kallisto" instance=ExtResource( 14 )]
+[node name="KallistoP" parent="Sun/Jupiter/Kallisto" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0117188, -6.17876e-06, 51.6338 )
 
-[node name="EnergHavester" parent="Sun/Jupiter/Kallisto/IoP" instance=ExtResource( 43 )]
+[node name="EnergHavester" parent="Sun/Jupiter/Kallisto/KallistoP" instance=ExtResource( 43 )]
 
-[node name="DomedCity" parent="Sun/Jupiter/Kallisto/IoP" instance=ExtResource( 37 )]
+[node name="DomedCity" parent="Sun/Jupiter/Kallisto/KallistoP" instance=ExtResource( 37 )]
 
 [node name="JupiterST" parent="Sun/Jupiter" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1504.13, 0, 0 )
