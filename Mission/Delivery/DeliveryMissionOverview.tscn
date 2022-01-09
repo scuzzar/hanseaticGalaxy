@@ -32,19 +32,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Header" type="HBoxContainer" parent="."]
+[node name="Header" type="GridContainer" parent="."]
 margin_left = 17.0
 margin_top = 20.0
 margin_right = 489.0
 margin_bottom = 47.0
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Destination2" type="Label" parent="Header"]
+margin_right = 20.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 20, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Destination" type="Label" parent="Header"]
-margin_top = 6.0
-margin_right = 100.0
-margin_bottom = 20.0
+margin_left = 24.0
+margin_right = 124.0
+margin_bottom = 14.0
 rect_min_size = Vector2( 100, 0 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Destination"
@@ -54,10 +65,9 @@ __meta__ = {
 }
 
 [node name="Good" type="Label" parent="Header"]
-margin_left = 104.0
-margin_top = 6.0
-margin_right = 204.0
-margin_bottom = 20.0
+margin_left = 128.0
+margin_right = 228.0
+margin_bottom = 14.0
 rect_min_size = Vector2( 100, 0 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Good"
@@ -67,10 +77,9 @@ __meta__ = {
 }
 
 [node name="Mass" type="Label" parent="Header"]
-margin_left = 208.0
-margin_top = 6.0
-margin_right = 278.0
-margin_bottom = 20.0
+margin_left = 232.0
+margin_right = 302.0
+margin_bottom = 14.0
 rect_min_size = Vector2( 70, 0 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Mass"
@@ -81,10 +90,9 @@ __meta__ = {
 }
 
 [node name="Reward" type="Label" parent="Header"]
-margin_left = 282.0
-margin_top = 6.0
-margin_right = 362.0
-margin_bottom = 20.0
+margin_left = 306.0
+margin_right = 386.0
+margin_bottom = 14.0
 rect_min_size = Vector2( 80, 0 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Reward"
@@ -119,3 +127,5 @@ margin_bottom = 84.0
 stream = ExtResource( 3 )
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+
+[editable path="Container/VBoxContainer/Control2"]

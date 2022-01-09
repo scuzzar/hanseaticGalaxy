@@ -3,8 +3,10 @@ extends "res://Mission/Delivery/DeliveryMissionOverview.gd"
 onready var mass_value = $Footer/mass_value
 onready var max_mass_value = $Footer/max_mass_value
 
-#var destinationMap={}
-
+var missionCart = []
+var missionCartSlots = 0
+var missionCartMass = 0
+var missionCartReward = 0
 
 var port : Port
 signal accepted(container)
@@ -30,19 +32,44 @@ func clearPort(target):
 func update():
 	.update()
 	max_mass_value.text  = str("%0.2f" % ship.getMaxStartMass())
-	mass_value.text = str("%0.2f" % ship.mass)
+	mass_value.text = str("%0.2f" % (ship.mass+missionCartMass))
 
 func _add_mission(mission:DeliveryMission):	
 	var newRaw = rawScene.instance()	
 	newRaw.setContent(mission)
-	newRaw.connect("buttonPressed",self,"_on_accepted")
-	newRaw.setButtonActon("Accept")
-	if(Player.ship.getCargoSlotCount()<mission.getContainerCount()):
-		newRaw.setButtonDisabeld()
+	newRaw.connect("buttonPressed",self,"_on_selection_update")
+	#newRaw.setButtonActon("Accept")
+	if(missionCart.has(mission)):
+		newRaw.checkBox()
+	else:
+		if(Player.ship.getFreeCargoSlots()<mission.getContainerCount()+missionCartSlots):
+			newRaw.setButtonDisabeld()
 	vBox.add_child(newRaw) # Add it as a child of this node.
 
-func _on_accepted(mission:DeliveryMission):
-	emit_signal("accepted",mission)
+func _on_selection_update(mission:DeliveryMission,state):
+	if(state==true):
+		missionCart.append(mission)
+		missionCartSlots+=mission.getContainerCount()
+		missionCartMass+=mission.getMass()
+		missionCartReward+=mission.reward
+	else:
+		missionCart.erase(mission)
+		missionCartSlots-=mission.getContainerCount()
+		missionCartMass-=mission.getMass()
+		missionCartReward-=mission.reward
+	update()
+	#print(missionCart)
+	#print(missionCartSlots)
+	#print(missionCartMass)
+	#print(missionCartReward)
+
+func _on_accepted():
+	for mission in missionCart:
+		emit_signal("accepted",mission)
+	missionCart = []
+	missionCartSlots = 0
+	missionCartMass = 0
+	missionCartReward = 0
 	update()
 
 func _on_visibility_changed():

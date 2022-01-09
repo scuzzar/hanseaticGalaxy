@@ -2,14 +2,17 @@ extends Control
 
 var mission : DeliveryMission
 
-signal buttonPressed(mission)
+signal buttonPressed(mission,state)
 
 func setButtonActon(action:String):
 	$raw/HBoxContainer/Buy.text = action
 
 func setButtonDisabeld():
 	$raw/HBoxContainer/Buy.disabled = true
-	
+
+func checkBox():
+	$raw/HBoxContainer/Buy.pressed = true
+
 func setContent(m:DeliveryMission):
 	self.mission = m
 	$raw/HBoxContainer/Good.text = mission.getCargoName()
@@ -25,5 +28,5 @@ func setContent(m:DeliveryMission):
 	$raw/HBoxContainer/Reward.text = str(mission.reward)
 
 func _on_Buy_pressed():
-	emit_signal("buttonPressed",mission)	
+	emit_signal("buttonPressed",mission,$raw/HBoxContainer/Buy.pressed)	
 

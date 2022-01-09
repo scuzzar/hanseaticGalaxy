@@ -257,6 +257,9 @@ func undock():
 func getCargoSlotCount():
 	return $Inventory.slots.size()
 
+func getFreeCargoSlots():
+	return $Inventory.freeSpace()
+
 func getMaxStartMass():
 	if(last_g_force.length()>0):
 		var result = trust/last_g_force.length()*mass

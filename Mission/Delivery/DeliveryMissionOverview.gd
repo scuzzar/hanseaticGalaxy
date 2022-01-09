@@ -49,12 +49,12 @@ func _add_mission(mission:DeliveryMission):
 			newRaw.connect("buttonPressed",self,"_on_about")
 		vBox.add_child(newRaw) # Add it as a child of this node.
 
-func _on_deliver(container:DeliveryMission):
+func _on_deliver(container:DeliveryMission,state):
 	emit_signal("deliver",container)
 	$Cash.play()	
 	update()
 
-func _on_about(container:DeliveryMission):
+func _on_about(container:DeliveryMission,state):
 	emit_signal("about",container)
 
 func _on_visibility_changed():

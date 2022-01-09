@@ -20,10 +20,10 @@ text = "Delivery Missions"
 [node name="Footer" type="HBoxContainer" parent="." index="3"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 15.977
-margin_top = -32.0454
-margin_right = 487.977
-margin_bottom = -5.04541
+margin_left = 16.0
+margin_top = -32.0
+margin_right = 491.0
+margin_bottom = -5.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -77,14 +77,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Warning" type="Label" parent="Footer" index="4"]
+[node name="Button" type="Button" parent="Footer" index="4"]
 margin_left = 353.0
-margin_top = 6.0
-margin_right = 474.0
-margin_bottom = 20.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "*Danger: Pirates"
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_right = 409.0
+margin_bottom = 27.0
+text = "Accept"
+
+[connection signal="pressed" from="Footer/Button" to="." method="_on_accepted"]
+
+[editable path="Container/VBoxContainer/Control2"]

@@ -9,6 +9,9 @@ func on_mission_generated(mission):
 	#print("Pirates heared of mission" + str(mission))
 	pass
 
+func on_mission_about(mission):
+	pass
+
 func on_mission_accepted(mission):
 	if(mission is DeliveryMission):
 		var dm = mission as DeliveryMission
