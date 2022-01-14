@@ -26,7 +26,12 @@ func setContent(m:DeliveryMission):
 		$raw/HBoxContainer/Mass.text = str(mission.getContainerCount())  + " x " + str(mission.getMass()/mission.getContainerCount()) 
 	
 	$raw/HBoxContainer/Reward.text = str(mission.reward)
-
+	
+	$raw/HBoxContainer/H_dv.text = str("%0.1f" %D_V_Estimator.mission_d_v(mission))
+	
+	
+	
+	
 func _on_Buy_pressed():
 	emit_signal("buttonPressed",mission,$raw/HBoxContainer/Buy.pressed)	
 

@@ -104,7 +104,7 @@ func simulate():
 			if planet != self && planet.isGravetySource:
 				var other_translation = planet.predictGlobalPosition(t)
 				var sqrDst = sim_obj_pos.distance_squared_to(other_translation)
-				if(sqrDst <= planet.radius*planet.radius):return	
+				#if(sqrDst <= planet.radius*planet.radius):return	
 				
 				var forcDir = sim_obj_pos.direction_to(other_translation).normalized()		
 				var acceleration = forcDir * Globals.G *planet.mass  / sqrDst

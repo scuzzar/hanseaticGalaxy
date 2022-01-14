@@ -7,6 +7,7 @@ var _defaultMissionDestination :Port
 onready var inventory = $Inventory
 var docked_ship: Ship
 var delivery_Missions = []
+var fuel_price = 7
 
 func _ready():	
 	docked_ship = null
@@ -28,7 +29,7 @@ func _on_Area_body_exited(body):
 func _on_Area_Ship_enterd(ship : Ship):
 	ship.dock(self)
 	self.docked_ship = ship
-	_refuel(ship)
+	#_refuel(ship)
 	_repair(ship)
 
 func _refuel(ship : Ship):

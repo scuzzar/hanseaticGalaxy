@@ -49,7 +49,7 @@ func _ready():
 			parent.derive_mass()
 		var M = get_parent().mass
 		var kosmic = sqrt(G*M/r)
-		print(self.name + " O_Speed:" + str(kosmic))
+		print(self.name + " O_Speed:" + str(kosmic) + " O_perimeter:" + str(2*PI*orbit_radius))
 		orbital_speed = kosmic
 		angular_speed = 2*PI/(2*PI*orbit_radius/orbital_speed)	
 		non_shifted_angular_speed = angular_speed

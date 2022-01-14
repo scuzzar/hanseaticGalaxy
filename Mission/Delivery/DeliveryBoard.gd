@@ -10,6 +10,7 @@ var missionCartReward = 0
 
 var port : Port
 signal accepted(container)
+signal cartUpdate(slots,mass,reward)
 
 func _getMissions():
 	return port.get_all_DeliveryMissions()
@@ -24,7 +25,11 @@ func setPort(target):
 
 func clearPort(target):
 	self.port = null
-	self.hide()	
+	missionCart = []
+	missionCartSlots = 0
+	missionCartMass = 0
+	missionCartReward = 0
+	self.hide()
 	var existingConnection = target.inventory.is_connected("container_added", self, "_Inventory_added_container")
 	if(existingConnection):
 		target.inventory.disconnect("container_added", self, "_Inventory_added_container")
@@ -58,6 +63,7 @@ func _on_selection_update(mission:DeliveryMission,state):
 		missionCartMass-=mission.getMass()
 		missionCartReward-=mission.reward
 	update()
+	#self.emit_signal("cartUpdate",missionCartSlots,missionCartMass,missionCartReward)
 	#print(missionCart)
 	#print(missionCartSlots)
 	#print(missionCartMass)

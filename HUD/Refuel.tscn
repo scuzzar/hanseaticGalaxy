@@ -1,0 +1,180 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://HUD/theme/default_theme.theme" type="Theme" id=1]
+[ext_resource path="res://HUD/Refuel.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.207843, 0.207843, 0.207843, 1 )
+
+[node name="Refuel" type="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -257.0
+margin_top = -246.0
+margin_right = 263.0
+margin_bottom = -89.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Destination" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 100, 0 )
+custom_styles/normal = SubResource( 1 )
+text = "Refueling"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="GridContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 23.0
+margin_right = -17.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Refuel_Lable2" type="Label" parent="Grid"]
+margin_right = 100.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+text = "Price:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Price" type="Label" parent="Grid"]
+margin_left = 104.0
+margin_right = 493.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+text = "12C"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Refuel_Lable" type="Label" parent="Grid"]
+margin_top = 25.0
+margin_right = 100.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+text = "Amount:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Refuel" type="HSlider" parent="Grid"]
+margin_left = 104.0
+margin_top = 25.0
+margin_right = 493.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+min_value = 20.0
+value = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Refuel_Lable5" type="Label" parent="Grid"]
+margin_top = 50.0
+margin_right = 100.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="amount" type="Label" parent="Grid"]
+margin_left = 104.0
+margin_top = 50.0
+margin_right = 493.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+text = "100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Refuel_Lable3" type="Label" parent="Grid"]
+margin_top = 75.0
+margin_right = 100.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+text = "SUM:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sum" type="Label" parent="Grid"]
+margin_left = 104.0
+margin_top = 75.0
+margin_right = 493.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+text = "120C"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Refuel_Lable4" type="Label" parent="Grid"]
+margin_top = 100.0
+margin_right = 100.0
+margin_bottom = 121.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Refuel_Button" type="Button" parent="Grid"]
+margin_left = 423.0
+margin_top = 100.0
+margin_right = 493.0
+margin_bottom = 121.0
+rect_min_size = Vector2( 70, 0 )
+size_flags_horizontal = 8
+text = "Refuel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="value_changed" from="Grid/Refuel" to="." method="_on_Refuel_value_changed"]
+[connection signal="pressed" from="Grid/Refuel_Button" to="." method="_on_Refuel_Button_pressed"]

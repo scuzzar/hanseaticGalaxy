@@ -1,12 +1,13 @@
 extends Control
 
-onready var fuel_bar = $Fuel/FuelBar
-onready var dV_labe = $Fuel/VD
-onready var live_bar = $Life/Bar
+onready var fuel_bar = $Footer/Fuel/FuelBar
+onready var dV_labe = $Footer/Fuel/VD
+onready var live_bar = $Footer/Life/Bar
 onready var credit_labe = $Credits/Value
 onready var tmr_labe = $DataBox/TMR/Value
 onready var g_labe = $DataBox/G_Meter/Value
 onready var mass_labe = $DataBox/MASS/Value
+onready var refuel = $Refuel
 
 #onready var v_labe = $DataBox/V_Meter/Value
 #onready var v_cosmic = $DataBox/V_cosmic/Value
@@ -57,11 +58,12 @@ func setShip(ship:Ship):
 	_on_Ship_fuel_changed(ship.fuel,ship.fuel_cap)
 
 func _on_Ship_fuel_changed(fuel,fuel_cap):
-	var dV = fuel / ship.mass
+	var missionCartMass = $DeliveryBoard.missionCartMass
+	
+	var dV = fuel / (ship.mass+missionCartMass)
 	dV_labe.text = str("%0.1f" %  dV) + " dV"
 	fuel_bar.value = int(fuel / fuel_cap *100)
 	#fuel_bar.value = fuel / ship.mass
-
 
 func _on_credits_changed(credits):
 	credit_labe.text = str(credits)
@@ -102,6 +104,8 @@ func _on_Ship_docked(port:Port):
 	$CenterHUB.hide()
 	$DataBox.hide()
 	$DeliveryMissionOverview.show()
+	refuel.show()
+	refuel.setShip(ship)
 	if(!port.getShipsForSale().empty()):
 		$ShipShopButton.show()
 		$ShipShop.setWarft(port)
@@ -116,6 +120,7 @@ func _on_Ship_undocked(port:Port):
 	$DeliveryMissionOverview.hide()
 	$ShipShopButton.hide()
 	$ShipShop.hide()
+	refuel.hide()
 	inShipShop = false
 
 func _on_InventoryWindow_accepted(container):

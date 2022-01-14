@@ -55,7 +55,8 @@ func _generate_mission() -> DeliveryMission:
 	mission._createContainer(amount)
 	
 	var distance = mission.getDistance()
-	var single_reward=round(mission.getPrice() * log(distance)*log(distance)/5)
+	var dv = D_V_Estimator.mission_d_v(mission)
+	var single_reward=round(mission.getPrice() * dv)
 	mission.reward = round(single_reward * amount * RAN.randf_range(1,1.3))
 	emit_signal("mission_generated",mission)
 	return mission

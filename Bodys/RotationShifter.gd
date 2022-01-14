@@ -54,6 +54,7 @@ func _shift(angilar_shift, vel_shift):
 	
 	#shift ship Speed
 	velocity_shift = vel_shift 
+	Globals.velocity_shift = vel_shift
 	# dont shift ship if its first 
 	if(velocity_shift.length()<1000):
 		if(logging):print("Old Ship Vel"+ str($"../PlayerShip".linear_velocity))		

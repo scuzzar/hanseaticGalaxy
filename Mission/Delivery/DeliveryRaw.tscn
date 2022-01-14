@@ -34,7 +34,7 @@ anchor_bottom = 0.5
 margin_top = -13.0
 margin_right = -1198.0
 margin_bottom = 14.0
-columns = 5
+columns = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -82,6 +82,16 @@ __meta__ = {
 margin_left = 310.0
 margin_top = 5.0
 margin_right = 390.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 80, 0 )
+text = "7899"
+align = 2
+clip_text = true
+
+[node name="H_dv" type="Label" parent="raw/HBoxContainer"]
+margin_left = 394.0
+margin_top = 5.0
+margin_right = 474.0
 margin_bottom = 19.0
 rect_min_size = Vector2( 80, 0 )
 text = "7899"

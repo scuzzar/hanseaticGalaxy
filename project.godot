@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://SpacePort/CargoTarget.gd"
 }, {
+"base": "Node",
+"class": "D_V_Estimator",
+"language": "GDScript",
+"path": "res://Util/D_V_Estimator.gd"
+}, {
 "base": "Mission",
 "class": "DeliveryMission",
 "language": "GDScript",
@@ -88,6 +93,7 @@ _global_script_class_icons={
 "AI": "",
 "CargoContainer": "",
 "CargoTarget": "",
+"D_V_Estimator": "",
 "DeliveryMission": "",
 "ENUMS": "",
 "Mission": "",
@@ -122,8 +128,10 @@ gdscript/warnings/enable=false
 
 [display]
 
-window/size/width=1200
-window/size/height=800
+window/size/width=1920
+window/size/height=1080
+window/size/test_width=1200
+window/size/test_height=800
 window/dpi/allow_hidpi=true
 
 [editor_plugins]

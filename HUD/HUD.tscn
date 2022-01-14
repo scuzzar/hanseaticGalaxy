@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://HUD/FuelBar.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Mission/Delivery/DeliveryBoard.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Mission/Delivery/DeliveryMissionOverview.tscn" type="PackedScene" id=7]
 [ext_resource path="res://SpacePort/ShipShop/ShipShop.tscn" type="PackedScene" id=8]
+[ext_resource path="res://HUD/Refuel.tscn" type="PackedScene" id=9]
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
@@ -65,7 +66,7 @@ margin_right = 100.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 100, 0 )
 theme = ExtResource( 4 )
-text = "FPS:"
+text = "Time:"
 align = 2
 
 [node name="Value" type="Label" parent="DataBox/TMR"]
@@ -74,7 +75,7 @@ margin_right = 204.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 100, 0 )
 theme = ExtResource( 4 )
-text = "100000"
+text = "2021"
 
 [node name="G_Meter" type="HBoxContainer" parent="DataBox"]
 margin_top = 28.0
@@ -181,12 +182,6 @@ text = "100000"
 
 [node name="Credits" parent="." instance=ExtResource( 3 )]
 
-[node name="Fuel" parent="." instance=ExtResource( 2 )]
-margin_left = -322.0
-margin_top = -49.0
-margin_right = 488.0
-margin_bottom = -28.0
-
 [node name="Consol" type="Label" parent="." groups=["consol"]]
 visible = false
 anchor_top = 1.0
@@ -200,12 +195,6 @@ text = "Destination:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Life" parent="." instance=ExtResource( 5 )]
-margin_left = -380.0
-margin_top = -25.0
-margin_right = 488.0
-margin_bottom = -4.0
 
 [node name="DeliveryMissionOverview" parent="." instance=ExtResource( 7 )]
 margin_left = -548.0
@@ -335,6 +324,76 @@ margin_top = 27.0
 margin_right = 49.9524
 margin_bottom = 69.0
 text = "Ship Shop"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Refuel" parent="." instance=ExtResource( 9 )]
+
+[node name="Footer" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -415.0
+margin_top = -76.0
+margin_right = 327.0
+margin_bottom = -5.0
+grow_vertical = 0
+columns = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Fuel_Lable" type="Label" parent="Footer"]
+margin_right = 100.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 4 )
+text = "Fuel:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fuel" parent="Footer" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 104.0
+margin_top = 0.0
+margin_right = 742.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+
+[node name="Life_Lable" type="Label" parent="Footer"]
+margin_top = 25.0
+margin_right = 100.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 4 )
+text = "HP:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Life" parent="Footer" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 104.0
+margin_top = 25.0
+margin_right = 742.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
 
 [connection signal="about" from="DeliveryMissionOverview" to="." method="_on_CargoBay_about"]
 [connection signal="deliver" from="DeliveryMissionOverview" to="." method="_on_CargoBay_deliver"]

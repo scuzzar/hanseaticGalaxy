@@ -37,7 +37,7 @@ margin_left = 17.0
 margin_top = 20.0
 margin_right = 489.0
 margin_bottom = 47.0
-columns = 5
+columns = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -96,6 +96,16 @@ margin_bottom = 14.0
 rect_min_size = Vector2( 80, 0 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Reward"
+align = 2
+uppercase = true
+
+[node name="DV" type="Label" parent="Header"]
+margin_left = 390.0
+margin_right = 470.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 80, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "min DV"
 align = 2
 uppercase = true
 
