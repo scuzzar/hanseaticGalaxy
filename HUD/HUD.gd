@@ -59,8 +59,8 @@ func setShip(ship:Ship):
 
 func _on_Ship_fuel_changed(fuel,fuel_cap):
 	var missionCartMass = $DeliveryBoard.missionCartMass
-	
-	var dV = fuel / (ship.mass+missionCartMass)
+		
+	var dV = ship.get_delta_v(missionCartMass)	
 	dV_labe.text = str("%0.1f" %  dV) + " dV"
 	fuel_bar.value = int(fuel / fuel_cap *100)
 	#fuel_bar.value = fuel / ship.mass
@@ -69,10 +69,11 @@ func _on_credits_changed(credits):
 	credit_labe.text = str(credits)
 
 
-func _on_Ship_mass_changed(mass, trust):
+func _on_Ship_mass_changed(mass):
 	ship_mass = mass
 	mass_labe.text = str(mass)
-	tmr_labe.text = str("%0.2f" % (trust/mass))
+	tmr_labe.text = str("%0.2f" % (ship.trust/mass))
+	$DeliveryBoard._on_ship_mass_change()
 
 
 func _on_Ship_g_force_update(force,p_stronges_body,strongest_force):

@@ -36,8 +36,7 @@ func clearPort(target):
 
 func update():
 	.update()
-	max_mass_value.text  = str("%0.2f" % ship.getMaxStartMass())
-	mass_value.text = str("%0.2f" % (ship.mass+missionCartMass))
+	_on_ship_mass_change()
 
 func _add_mission(mission:DeliveryMission):	
 	var newRaw = rawScene.instance()	
@@ -68,6 +67,10 @@ func _on_selection_update(mission:DeliveryMission,state):
 	#print(missionCartSlots)
 	#print(missionCartMass)
 	#print(missionCartReward)
+
+func _on_ship_mass_change():
+	max_mass_value.text  = str("%0.2f" % ship.getMaxStartMass())
+	mass_value.text = str("%0.2f" % (ship.mass+missionCartMass))
 
 func _on_accepted():
 	for mission in missionCart:

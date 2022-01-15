@@ -12,9 +12,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -257.0
-margin_top = -246.0
+margin_top = -272.0
 margin_right = 263.0
-margin_bottom = -89.0
+margin_bottom = -90.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true,
@@ -123,10 +123,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Refuel_Lable3" type="Label" parent="Grid"]
+[node name="Refuel_Lable6" type="Label" parent="Grid"]
 margin_top = 75.0
 margin_right = 100.0
 margin_bottom = 96.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+text = "Mass:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mass" type="Label" parent="Grid"]
+margin_left = 104.0
+margin_top = 75.0
+margin_right = 493.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+text = "100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Refuel_Lable3" type="Label" parent="Grid"]
+margin_top = 100.0
+margin_right = 100.0
+margin_bottom = 121.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -139,9 +167,9 @@ __meta__ = {
 
 [node name="Sum" type="Label" parent="Grid"]
 margin_left = 104.0
-margin_top = 75.0
+margin_top = 100.0
 margin_right = 493.0
-margin_bottom = 96.0
+margin_bottom = 121.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -152,9 +180,9 @@ __meta__ = {
 }
 
 [node name="Refuel_Lable4" type="Label" parent="Grid"]
-margin_top = 100.0
+margin_top = 125.0
 margin_right = 100.0
-margin_bottom = 121.0
+margin_bottom = 146.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -166,9 +194,9 @@ __meta__ = {
 
 [node name="Refuel_Button" type="Button" parent="Grid"]
 margin_left = 423.0
-margin_top = 100.0
+margin_top = 125.0
 margin_right = 493.0
-margin_bottom = 121.0
+margin_bottom = 146.0
 rect_min_size = Vector2( 70, 0 )
 size_flags_horizontal = 8
 text = "Refuel"

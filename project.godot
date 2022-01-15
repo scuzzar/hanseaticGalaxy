@@ -79,6 +79,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Enemys/StaticEnemy.gd"
 }, {
+"base": "Node",
+"class": "TYP",
+"language": "GDScript",
+"path": "res://Singeltons/TYP.gd"
+}, {
 "base": "Spatial",
 "class": "mount_point",
 "language": "GDScript",
@@ -104,6 +109,7 @@ _global_script_class_icons={
 "SimplePlanetOrbit": "",
 "SpaceStation": "",
 "StaticEnemy": "",
+"TYP": "",
 "mount_point": "",
 "simpelPlanet": ""
 }
@@ -121,6 +127,7 @@ Globals="*res://Singeltons/Globals.gd"
 Player="*res://scenes/Player.gd"
 Pirates="*res://Singeltons/Pirates.gd"
 SceneManager="*res://scenes/SceneManager.gd"
+Typ="*res://Singeltons/TYP.gd"
 
 [debug]
 

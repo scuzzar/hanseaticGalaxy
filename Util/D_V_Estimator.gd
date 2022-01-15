@@ -106,7 +106,7 @@ static func transfer_delta_v(A:simpelPlanet,B:simpelPlanet):
 	var d_v_a = v_a * (1-sqrt(2*r_e/(r_e+r_a)))
 	var d_v= d_v_a+d_v_e
 	
-	print(innerPlanet.name + "->" + outerPlanet.name + " dv:" + str(d_v_e) + " +" + str(d_v_a) + " ="+ str(d_v))
+	#print(innerPlanet.name + "->" + outerPlanet.name + " dv:" + str(d_v_e) + " +" + str(d_v_a) + " ="+ str(d_v))
 	
 	
 	return d_v

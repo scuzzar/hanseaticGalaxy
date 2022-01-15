@@ -1,7 +1,7 @@
 
 extends Node
 class_name CargoTarget
-export(CargoContainer.CARGO) var cargo = CargoContainer.CARGO.NONE
+export(TYP.CARGO) var cargo = TYP.CARGO.NONE
 
 var initial_name
 
@@ -10,7 +10,7 @@ var initial_name
 const groupTag = "TARGET"
 
 func _enter_tree():
-	if(cargo!=CargoContainer.CARGO.NONE):
+	if(cargo!=TYP.CARGO.NONE):
 		self.add_to_group(groupTag+str(cargo))
 	initial_name=self.name
 

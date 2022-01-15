@@ -1,6 +1,6 @@
 extends Node
 
-export(CargoContainer.CARGO) var cargo = CargoContainer.CARGO.NONE
+export(TYP.CARGO) var cargo = TYP.CARGO.NONE
 export(int) var max_missions = 3
 export(int) var init_missions = 2
 
@@ -15,13 +15,13 @@ const ContainerTyp = preload("res://Cargo/containerTyps.csv").records
 
 func _ready():
 	port = 	self.get_Port()
-	if(cargo!=CargoContainer.CARGO.NONE):
+	if(cargo!=TYP.CARGO.NONE):
 		$GenTimer.wait_time = self.getProductionTime()*60
 		$GenTimer.start()
 	self.connect("mission_generated",Pirates,"on_mission_generated")
 
 func generateInitialStock():
-	if(cargo!=CargoContainer.CARGO.NONE):	 
+	if(cargo!=TYP.CARGO.NONE):	 
 		for i in init_missions : 
 			var mission = self._generate_mission()
 			if(mission!=null):

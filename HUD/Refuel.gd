@@ -4,6 +4,7 @@ onready var slider:HSlider = $Grid/Refuel
 onready var price_lable:Label =$Grid/Price
 onready var sum:Label =$Grid/Sum
 onready var amount_lable:Label =$Grid/amount
+onready var mass_lable:Label =$Grid/mass
 
 signal refuel_cart_change(amount)
 
@@ -36,4 +37,5 @@ func _on_Refuel_value_changed(value):
 	var intValue = int(value)
 	sum.text = str(intValue*price)
 	amount_lable.text = str(intValue)
+	mass_lable.text = str(intValue*Globals.get_fuel_mass())
 	emit_signal("refuel_cart_change",intValue)

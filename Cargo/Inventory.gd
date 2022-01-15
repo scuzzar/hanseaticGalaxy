@@ -5,21 +5,21 @@ onready var slot_parent:Node
 var slots = []
 
 var stock ={
-	CargoContainer.CARGO.METALS:0,
-	CargoContainer.CARGO.FOOD:0,
-	CargoContainer.CARGO.MACHINES:0,
-	CargoContainer.CARGO.ELECTRONICS:0,
-	CargoContainer.CARGO.CONSUMERS:0,
-	CargoContainer.CARGO.RARE_METALS:0,
-	CargoContainer.CARGO.LUXUS:0,
-	CargoContainer.CARGO.ICE:0,
-	CargoContainer.CARGO.WATER:0,
-	CargoContainer.CARGO.OXYGEN:0,
-	CargoContainer.CARGO.HABITATION:0,
-	CargoContainer.CARGO.INFRASTRUCTURE:0,
-	CargoContainer.CARGO.STEEL:0,
-	CargoContainer.CARGO.ENERGY:0,
-	CargoContainer.CARGO.DEUTERIUM:0
+	TYP.CARGO.METALS:0,
+	TYP.CARGO.FOOD:0,
+	TYP.CARGO.MACHINES:0,
+	TYP.CARGO.ELECTRONICS:0,
+	TYP.CARGO.CONSUMERS:0,
+	TYP.CARGO.RARE_METALS:0,
+	TYP.CARGO.LUXUS:0,
+	TYP.CARGO.ICE:0,
+	TYP.CARGO.WATER:0,
+	TYP.CARGO.OXYGEN:0,
+	TYP.CARGO.HABITATION:0,
+	TYP.CARGO.INFRASTRUCTURE:0,
+	TYP.CARGO.STEEL:0,
+	TYP.CARGO.ENERGY:0,
+	TYP.CARGO.DEUTERIUM:0
 }
 
 signal container_clicked(container)

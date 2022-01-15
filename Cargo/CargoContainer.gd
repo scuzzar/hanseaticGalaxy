@@ -3,30 +3,7 @@ extends Spatial
 class_name CargoContainer
 var loaded = false
 
-enum CARGO{
-	METALS = 0,
-	FOOD = 1,
-	ICE = 2,
-	WATER = 3,	
-	OXYGEN = 4,
-	MACHINES = 5,
-	HABITATION = 6,
-	INFRASTRUCTURE = 7,
-	STEEL = 8,
-	ELECTRONICS = 9,
-	CONSUMERS = 10,
-	RARE_METALS = 11,
-	LUXUS = 12,
-	DEUTERIUM = 13,
-	FUEL = 14,
-	ENERGY = 15,
-	SMALL_ARMS = 16,
-	NONE = 999
-}
-
-const ContainerTyp = preload("res://Cargo/containerTyps.csv").records
-
-export(CARGO) var cargo  
+export(TYP.CARGO) var cargo  
 
 signal clicked(sender)
 
@@ -45,14 +22,14 @@ func _on_mouse_entered():
 
 
 func getPrice()-> int:
-	return ContainerTyp[cargo]["price"]
+	return Typ.Cargo[cargo]["price"]
 
 func getCargoName()-> String:
-	return ContainerTyp[cargo]["name"]
+	return Typ.Cargo[cargo]["name"]
 
 
 func getMass()->float:
-	return ContainerTyp[cargo]["mass"]
+	return Typ.Cargo[cargo]["mass"]
 
 func _on_mouse_exited():
 	if(self.get_tree()!=null): 	self.get_tree().get_nodes_in_group("consol")[0].text = ""
@@ -69,35 +46,35 @@ func _set_cargo(pcargo):
 	
 	
 	match cargo:
-		CARGO.METALS:
+		Typ.CARGO.METALS:
 			$Mesh/Metals.show()
-		CARGO.FOOD:
+		Typ.CARGO.FOOD:
 			$Mesh/Food.show()
-		CARGO.MACHINES:
+		Typ.CARGO.MACHINES:
 			$Mesh/Machines.show()
-		CARGO.ELECTRONICS:
+		Typ.CARGO.ELECTRONICS:
 			$Mesh/Electronics.show()
-		CARGO.CONSUMERS:
+		Typ.CARGO.CONSUMERS:
 			$Mesh/ConsomerGoods.show()
-		CARGO.RARE_METALS:
+		Typ.CARGO.RARE_METALS:
 			$Mesh/RareMetal.show()
-		CARGO.LUXUS:
+		Typ.CARGO.LUXUS:
 			$Mesh/LuxusGoods.show()
-		CARGO.ICE:
+		Typ.CARGO.ICE:
 			$Mesh/Machines.show()
-		CARGO.WATER:
+		Typ.CARGO.WATER:
 			$Mesh/Machines.show()
-		CARGO.OXYGEN:
+		Typ.CARGO.OXYGEN:
 			$Mesh/Machines.show()
-		CARGO.HABITATION:
+		Typ.CARGO.HABITATION:
 			$Mesh/Electronics.show()
-		CARGO.INFRASTRUCTURE:
+		Typ.CARGO.INFRASTRUCTURE:
 			$Mesh/Electronics.show()
-		CARGO.STEEL:
+		Typ.CARGO.STEEL:
 			$Mesh/Metals.show()
-		CARGO.DEUTERIUM:
+		Typ.CARGO.DEUTERIUM:
 			$Mesh/RareMetal.show()
-		CARGO.ENERGY:
+		Typ.CARGO.ENERGY:
 			$Mesh/Electronics.show()
 			
 

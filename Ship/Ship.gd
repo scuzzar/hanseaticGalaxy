@@ -7,6 +7,12 @@ var price = 0
 var turn_rate = 100
 
 var trust = 100.0
+var engine_exaust_velocity :float = 200
+var engine_mass_rate :float = 1
+
+var truster_exaust_velocity :float = 10
+var truster_engine_mass_rate :float = 0.1
+
 var lateral_trust = 20.0
 
 enum SHIPTYPES{
@@ -32,6 +38,8 @@ export var autoCircle=false
 var soiPlanet=null
 var mounts = []
 var dryMass = 5 
+var cargoMass = 0
+var fuelMass = 0
 var turn_to_target = false
 var target:Ship = null
 var weaponActive = true
@@ -49,7 +57,7 @@ export(SHIPTYPES) var type = SHIPTYPES.NONE
 const ShipTyp = preload("res://Ship/shipTypes.csv").records
 
 signal fuel_changed(fuel, fuel_cap)
-signal mass_changed(mass,trust)
+signal mass_changed(mass)
 signal telemetry_changed(position,velocety)
 signal soiPlanetChanged(newSOIPlanet)
 signal docked(port)
@@ -64,7 +72,7 @@ func _ready():
 	self.hitpoints = max_hitpoints
 	#fuel = fuel_cap
 	emit_signal("fuel_changed",fuel, fuel_cap)	
-	emit_signal("mass_changed",mass,trust)
+	emit_signal("mass_changed",mass)
 	#$Model.all_trust_off()
 	self.angular_damp = 6
 	$ShipInfo.ship = self
@@ -74,6 +82,7 @@ func _ready():
 	for c in children:
 		if(c is mount_point):
 			mounts.append(c)
+	calcWetMass()
 
 func _loadType():
 	dryMass = ShipTyp[type]["dry_mass"]
@@ -85,6 +94,8 @@ func _loadType():
 	price = ShipTyp[type]["price"]
 	max_hitpoints = ShipTyp[type]["max_hp"]
 
+
+
 func _integrate_forces(state:PhysicsDirectBodyState):
 	if(physikAktiv):
 		._integrate_forces(state)
@@ -94,6 +105,8 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 	if( currentSOIPlanet != soiPlanet):
 		soiPlanet=currentSOIPlanet
 		emit_signal("soiPlanetChanged",soiPlanet)
+	
+	self.calcWetMass()
 	
 	var trusted = false
 	
@@ -112,7 +125,7 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 		if Input.is_action_pressed("burn_forward"):
 			if(self.docking_location!=null):
 				self.undock()
-			var fuelcost =  trust * state.step
+			var fuelcost =  engine_mass_rate / Globals.get_fuel_mass()  * state.step
 			if(fuel - fuelcost > 0):				
 				trusted = true
 				_fire_main_drive(state)
@@ -140,8 +153,8 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 			rotational_trust = turn_rate*-1
 		
 		_rotation(rotational_trust,state)	
-		rotational_trust = 0
-
+		rotational_trust = 0		
+		
 		if Input.is_action_just_pressed("info"):
 			if(!$ShipInfo.visible):
 				$ShipInfo.setShip(self)				
@@ -151,27 +164,33 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 				$ShipInfo.hide()	
 		emit_signal("telemetry_changed", self.translation, state.linear_velocity)
 
+func calcWetMass():
+	self.mass = dryMass + cargoMass + fuel*Globals.get_fuel_mass()
+
 func lateral_burn(burn_vector):
 	truster_vector += burn_vector
 	truster_trust += lateral_trust
 
-
-
 func _fire_truster(state:PhysicsDirectBodyState,direction:Vector2, trust):
+	if(direction.length()==0): return
+	
 	var direction3d = Vector3(direction.x,0,direction.y)	
 	var orientation = self.rotation.y
 	direction3d = direction3d.rotated(Vector3(0,1,0), orientation-PI/2)
 	
-	var force = direction3d*trust
+	var fuel_cost = truster_engine_mass_rate / Globals.get_fuel_mass()  * state.step
+	if(fuel_cost>fuel):return
+	
+	var force = direction3d*truster_engine_mass_rate*truster_exaust_velocity
 	state.add_force(force, Vector3(0,0,0))
-	self.burn_fuel(trust * state.step)
+	self.burn_fuel(fuel_cost)
 	$Propulsion.trust_Vector(direction,trust/lateral_trust)
 	
 
 func _fire_main_drive(state:PhysicsDirectBodyState):	
-	var force = _get_forward_vector()*trust
+	var force = _get_forward_vector()*engine_mass_rate*engine_exaust_velocity
 	state.add_force(force, Vector3(0,0,0))
-	self.burn_fuel(trust * state.step)
+	self.burn_fuel(engine_mass_rate / Globals.get_fuel_mass() * state.step)
 	$Propulsion.drive_on()
 
 func _get_forward_vector():
@@ -203,12 +222,13 @@ func rel_speed_to_Strongest_body():
 
 
 func burn_fuel(fuel_cost:float):
-	self.set_fuel(fuel - fuel_cost)	
-	Player.fuel_burned(fuel_cost)
+	self.set_fuel(fuel - fuel_cost)		
 	
 func set_fuel(pFuel:float):
 	fuel = pFuel
+	fuelMass = fuel * Globals.get_fuel_mass()
 	emit_signal("fuel_changed",fuel, fuel_cap)
+	emit_signal("mass_changed",mass)
 
 func get_refule_costs():
 	var fuelprice = 1000
@@ -218,8 +238,8 @@ func get_refule_costs():
 
 func load_containter(c : CargoContainer) -> bool:
 	var added = $Inventory.addContainerOnFree(c)
-	self.mass += c.getMass()	
-	emit_signal("mass_changed",mass,trust)
+	self.cargoMass += c.getMass()	
+	emit_signal("mass_changed",mass)
 	return added
 
 func load_all_container(ContainerArray):
@@ -231,9 +251,9 @@ func unload_all_container(ContainerArray):
 		self.unload_containter(c)
 
 func unload_containter(c : CargoContainer):
-	self.mass -= c.getMass()	
+	self.cargoMass -= c.getMass()	
 	$Inventory.removeContainer(c)	
-	emit_signal("mass_changed",mass,trust)
+	emit_signal("mass_changed",mass)
 
 func getListOfContainer():
 	return $Inventory.getAllContainter()
@@ -241,6 +261,11 @@ func getListOfContainer():
 func can_load_container(count:int) -> bool:
 	return $Inventory.freeSpace()>=count
 
+func get_delta_v(additional_mass:float=0):
+	var m0 : float = dryMass + fuelMass
+	var mf : float = dryMass
+	var dV : float = engine_exaust_velocity * log(m0/mf)
+	return dV	
 
 func dock(target: Node):
 	if(target!=self.docking_location):
@@ -309,6 +334,7 @@ func load_save(dict):
 	last_g_force = Vector3(0,0,0)
 	self.contact_monitor = true
 	self.contacts_reported = 5
+	self.calcWetMass()
 
 func takeDamege(damage):
 	$Damage.takeDamege(damage)

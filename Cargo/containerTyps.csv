@@ -13,6 +13,6 @@ id;enum;price;name;mass;minBatch;maxBatch;productionTime
 11;RARE_METALS,;2500;RareMetals;18;1;1;4
 12;LUXUS;1400;Luxus;5;1;1;5
 13;DEUTERIUM;2300;Deuterium;8;3;5;10
-14;FUEL;1500;Fuel;0;1;1;1
+14;FUEL;1500;Fuel;1;1;1;1
 15;ENERGY;600;Energy Cells;2;1;1;1
 16;SMALL_ARMS;2500;small Arms;3;1;1;5
