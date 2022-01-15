@@ -6,14 +6,11 @@ var price = 0
 
 var turn_rate = 100
 
-var trust = 100.0
 var engine_exaust_velocity :float = 200
 var engine_mass_rate :float = 1
 
 var truster_exaust_velocity :float = 10
 var truster_engine_mass_rate :float = 0.1
-
-var lateral_trust = 20.0
 
 enum SHIPTYPES{
 	TENDER = 0,
@@ -86,15 +83,17 @@ func _ready():
 
 func _loadType():
 	dryMass = ShipTyp[type]["dry_mass"]
-	turn_rate = ShipTyp[type]["turn_rate"]
-	trust = ShipTyp[type]["trust"]
-	lateral_trust = ShipTyp[type]["lateral_trust"]
+	turn_rate = ShipTyp[type]["turn_rate"]	
 	dispay_name = ShipTyp[type]["display_name"]
 	fuel_cap = ShipTyp[type]["fuel_cap"]
 	price = ShipTyp[type]["price"]
 	max_hitpoints = ShipTyp[type]["max_hp"]
-
-
+	
+	engine_exaust_velocity = ShipTyp[type]["engine_exaust_velocity"]
+	engine_mass_rate = ShipTyp[type]["engine_mass_rate"]
+	
+	truster_exaust_velocity = ShipTyp[type]["truster_exaust_velocity"]
+	truster_engine_mass_rate = ShipTyp[type]["truster_engine_mass_rate"]
 
 func _integrate_forces(state:PhysicsDirectBodyState):
 	if(physikAktiv):
@@ -142,7 +141,7 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 		if Input.is_action_pressed("burn_lateral_right"):
 			lateral_burn(Vector2(0,1))	
 				
-		_fire_truster(state,truster_vector,truster_trust)	
+		_fire_truster(state,truster_vector)	
 		truster_vector = Vector2(0,0)	
 		truster_trust = 0
 		
@@ -169,9 +168,9 @@ func calcWetMass():
 
 func lateral_burn(burn_vector):
 	truster_vector += burn_vector
-	truster_trust += lateral_trust
+	#truster_trust += lateral_trust
 
-func _fire_truster(state:PhysicsDirectBodyState,direction:Vector2, trust):
+func _fire_truster(state:PhysicsDirectBodyState,direction:Vector2):
 	if(direction.length()==0): return
 	
 	var direction3d = Vector3(direction.x,0,direction.y)	
@@ -184,7 +183,7 @@ func _fire_truster(state:PhysicsDirectBodyState,direction:Vector2, trust):
 	var force = direction3d*truster_engine_mass_rate*truster_exaust_velocity
 	state.add_force(force, Vector3(0,0,0))
 	self.burn_fuel(fuel_cost)
-	$Propulsion.trust_Vector(direction,trust/lateral_trust)
+	$Propulsion.trust_Vector(direction,1)
 	
 
 func _fire_main_drive(state:PhysicsDirectBodyState):	
@@ -261,11 +260,17 @@ func getListOfContainer():
 func can_load_container(count:int) -> bool:
 	return $Inventory.freeSpace()>=count
 
-func get_delta_v(additional_mass:float=0):
-	var m0 : float = dryMass + fuelMass
+func get_delta_v(additional_mass:float=0, additional_fuel_mass:float=0):
+	var m0 : float = dryMass + fuelMass + additional_fuel_mass
 	var mf : float = dryMass
 	var dV : float = engine_exaust_velocity * log(m0/mf)
 	return dV	
+
+func get_thrust():
+	return engine_exaust_velocity * engine_mass_rate
+
+func get_lateral_trust():
+	return truster_engine_mass_rate*truster_exaust_velocity
 
 func dock(target: Node):
 	if(target!=self.docking_location):
@@ -287,7 +292,7 @@ func getFreeCargoSlots():
 
 func getMaxStartMass():
 	if(last_g_force.length()>0):
-		var result = trust/last_g_force.length()*mass
+		var result = engine_exaust_velocity*engine_mass_rate /last_g_force.length()*mass
 		return result
 	else:
 		return 0
@@ -311,11 +316,10 @@ func save():
 		"rotation" : rotation.y,
 		"fuel": fuel,
 		"fuel_cap" :fuel_cap,
-		"trust" : trust,
 		"price" : price,
 		"type" : type,
-		"mass" : mass,
-		"hitpoints" :hitpoints
+		"mass" : mass#,
+		#"hitpoints" :hitpoints
 	}
 	return save_dict
 
@@ -327,10 +331,10 @@ func load_save(dict):
 	self.set_fuel(dict["fuel"])
 	fuel_cap = dict["fuel_cap"]
 	mass = dryMass
-	trust = dict["trust"]
 	price = dict["price"]
 	type = dict["type"]
-	hitpoints = dict["hitpoints"]
+	_loadType()
+	#hitpoints = dict["hitpoints"]
 	last_g_force = Vector3(0,0,0)
 	self.contact_monitor = true
 	self.contacts_reported = 5

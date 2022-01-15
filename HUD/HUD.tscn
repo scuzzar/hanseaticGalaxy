@@ -333,10 +333,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -415.0
-margin_top = -76.0
-margin_right = 327.0
-margin_bottom = -5.0
+margin_left = -419.0
+margin_top = -72.0
+margin_right = 323.0
+margin_bottom = -1.0
 grow_vertical = 0
 columns = 2
 __meta__ = {
@@ -398,3 +398,5 @@ size_flags_horizontal = 3
 [connection signal="accepted" from="DeliveryBoard" to="." method="_on_InventoryWindow_accepted"]
 [connection signal="shipOrderd" from="ShipShop" to="." method="_on_shipOrderd"]
 [connection signal="pressed" from="ShipShopButton" to="." method="_on_Button_pressed"]
+[connection signal="refuel_cart_change" from="Refuel" to="." method="_on_refuel_cart_change"]
+[connection signal="refuel_cart_change" from="Refuel" to="DeliveryBoard" method="_on_refuel_cart_change"]

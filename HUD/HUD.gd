@@ -1,6 +1,7 @@
 extends Control
 
 onready var fuel_bar = $Footer/Fuel/FuelBar
+onready var fuel_cart_bar = $Footer/Fuel/FuelCartBar
 onready var dV_labe = $Footer/Fuel/VD
 onready var live_bar = $Footer/Life/Bar
 onready var credit_labe = $Credits/Value
@@ -72,7 +73,7 @@ func _on_credits_changed(credits):
 func _on_Ship_mass_changed(mass):
 	ship_mass = mass
 	mass_labe.text = str(mass)
-	tmr_labe.text = str("%0.2f" % (ship.trust/mass))
+	tmr_labe.text = str("%0.2f" % (ship.get_thrust()/mass))
 	$DeliveryBoard._on_ship_mass_change()
 
 
@@ -123,6 +124,7 @@ func _on_Ship_undocked(port:Port):
 	$ShipShop.hide()
 	refuel.hide()
 	inShipShop = false
+	fuel_cart_bar.value = 0
 
 func _on_InventoryWindow_accepted(container):
 	Player.accept_Mission(container)
@@ -156,3 +158,11 @@ func _on_shipOrderd(ship):
 	if($ShipShop.warft.getShipsForSale().empty()):
 		_on_Button_pressed()
 		$ShipShopButton.hide()
+
+
+func _on_refuel_cart_change(amount):
+	if(amount ==0):
+		fuel_cart_bar.value =0	
+	else:
+		fuel_cart_bar.value = (amount + ship.fuel)/ float(ship.fuel_cap) *100.0
+	dV_labe.text = str("%0.2f" % ship.get_delta_v(0,amount * Globals.get_fuel_mass()))

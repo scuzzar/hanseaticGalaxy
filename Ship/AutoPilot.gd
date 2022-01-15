@@ -9,7 +9,7 @@ func _lateral_circularize_burn(state):
 	var c_burn_direction = ov - state.linear_velocity
 	var c_burn_dv = c_burn_direction.length()
 	
-	var c_burn_trust = clamp(ship.lateral_trust,0,c_burn_dv/state.step)			
+	var c_burn_trust = clamp(ship.get_lateral_trust() ,0,c_burn_dv/state.step)			
 	var orientation = ship.rotation.y
 	var c_burn_direction_local = c_burn_direction.rotated(Vector3(0,1,0), -1*orientation+PI/2).normalized()
 	var tv = Vector2(c_burn_direction_local.x,c_burn_direction_local.z)

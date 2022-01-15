@@ -7,11 +7,13 @@ var _defaultMissionDestination :Port
 onready var inventory = $Inventory
 var docked_ship: Ship
 var delivery_Missions = []
-var fuel_price = 7
+
+var fuel_price = 0
 
 func _ready():	
 	docked_ship = null
 	$Lable3D.text = name
+	fuel_price = Globals.get_fuel_base_price()
 
 func get_default_location()->Port:
 	if(_defaultMissionDestination==null):

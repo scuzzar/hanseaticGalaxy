@@ -11,3 +11,6 @@ var GameYear = 2327 #Seconds
 
 func get_fuel_mass():
 	return Typ.Cargo[TYP.CARGO.FUEL]["mass"]
+
+func get_fuel_base_price():
+	return Typ.Cargo[TYP.CARGO.FUEL]["price"]

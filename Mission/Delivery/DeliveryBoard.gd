@@ -8,6 +8,8 @@ var missionCartSlots = 0
 var missionCartMass = 0
 var missionCartReward = 0
 
+var refuel_cart_mass = 0
+
 var port : Port
 signal accepted(container)
 signal cartUpdate(slots,mass,reward)
@@ -70,7 +72,7 @@ func _on_selection_update(mission:DeliveryMission,state):
 
 func _on_ship_mass_change():
 	max_mass_value.text  = str("%0.2f" % ship.getMaxStartMass())
-	mass_value.text = str("%0.2f" % (ship.mass+missionCartMass))
+	mass_value.text = str("%0.2f" % (ship.mass+missionCartMass + refuel_cart_mass))
 
 func _on_accepted():
 	for mission in missionCart:
@@ -88,3 +90,8 @@ func _on_visibility_changed():
 		
 func setShip(ship:Ship):
 	self.ship = ship
+
+
+func _on_refuel_cart_change(amount):
+	self.refuel_cart_mass = amount*Globals.get_fuel_mass()
+	self._on_ship_mass_change()

@@ -19,7 +19,7 @@ func setShip(ship:Ship):
 	var max_refuel = ship.fuel_cap -ship.fuel
 	slider.min_value = 0
 	slider.max_value = max_refuel
-	slider.value = max_refuel
+	slider.value = 0
 	
 
 

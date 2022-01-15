@@ -13,10 +13,7 @@ func _physics_process(delta):
 func _on_Area_Ship_enterd(ship : Ship):	
 	if(docked_ship==null):
 		self.docked_ship = ship	
-		ship.dock(self)
-		Player.pay(ship.get_refule_costs())
-		ship.set_fuel(ship.fuel_cap)
-		
+		ship.dock(self)		
 		ship.connect("undocked",self,"on_ship_undocked")
 		print_debug("ship landed")
 
