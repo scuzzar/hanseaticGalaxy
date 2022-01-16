@@ -77,12 +77,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="Footer" index="4"]
-margin_left = 353.0
-margin_right = 409.0
-margin_bottom = 27.0
-text = "Accept"
-
-[connection signal="pressed" from="Footer/Button" to="." method="_on_accepted"]
-
 [editable path="Container/VBoxContainer/Control2"]

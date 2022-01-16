@@ -23,7 +23,7 @@ func setShip(ship:Ship):
 	
 
 
-func _on_Refuel_Button_pressed():	
+func _on_Refuel_pressed():	
 	var refuel_cost = int(sum.text)
 	var amount = slider.value
 	if(!Player.credits>refuel_cost):

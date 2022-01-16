@@ -9,6 +9,7 @@ onready var tmr_labe = $DataBox/TMR/Value
 onready var g_labe = $DataBox/G_Meter/Value
 onready var mass_labe = $DataBox/MASS/Value
 onready var refuel = $Refuel
+onready var accept_button = $Button
 
 #onready var v_labe = $DataBox/V_Meter/Value
 #onready var v_cosmic = $DataBox/V_cosmic/Value
@@ -108,6 +109,7 @@ func _on_Ship_docked(port:Port):
 	$DeliveryMissionOverview.show()
 	refuel.show()
 	refuel.setShip(ship)
+	accept_button.show()
 	if(!port.getShipsForSale().empty()):
 		$ShipShopButton.show()
 		$ShipShop.setWarft(port)
@@ -122,6 +124,7 @@ func _on_Ship_undocked(port:Port):
 	$DeliveryMissionOverview.hide()
 	$ShipShopButton.hide()
 	$ShipShop.hide()
+	accept_button.hide()
 	refuel.hide()
 	inShipShop = false
 	fuel_cart_bar.value = 0

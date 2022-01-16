@@ -16,10 +16,10 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="."]
-margin_left = 509.0
-margin_top = 350.0
-margin_right = 691.0
-margin_bottom = 449.0
+margin_left = 869.0
+margin_top = 490.0
+margin_right = 1051.0
+margin_bottom = 589.0
 columns = 2
 
 [node name="Score" type="Label" parent="GridContainer"]

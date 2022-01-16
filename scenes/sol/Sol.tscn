@@ -75,7 +75,6 @@ script = ExtResource( 23 )
 
 [node name="RotationShifter" type="Node" parent="."]
 script = ExtResource( 28 )
-logging = true
 
 [node name="Shifter" type="Node" parent="."]
 script = ExtResource( 27 )
@@ -234,7 +233,7 @@ defaultMissionDestination_path = NodePath("../../Mars/OlympusPort")
 [node name="Moon" parent="Sun/Earth" groups=["bodys"] instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 664.943 )
 mode = 3
-mass = 23.0689
+mass = 14.2401
 material = ExtResource( 2 )
 radius_description = 2500.0
 surface_g = 1.0
@@ -417,7 +416,7 @@ surface_g = 2.3
 [node name="Io" parent="Sun/Jupiter" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.375, 0, 2740.85 )
 mode = 3
-mass = 90.7135
+mass = 36.2854
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = ExtResource( 31 )
 securety_level = 2
@@ -468,7 +467,7 @@ transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -
 [node name="Kallisto" parent="Sun/Jupiter" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.375, 0, -9000 )
 mode = 3
-mass = 158.865
+mass = 52.955
 linear_velocity = Vector3( 0, 0, -3.568 )
 material = ExtResource( 32 )
 securety_level = 1

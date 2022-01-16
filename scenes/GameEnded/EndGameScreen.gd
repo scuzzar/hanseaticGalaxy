@@ -13,6 +13,7 @@ func _ready():
 		$GridContainer/Load.hide()
 
 func _on_Button_pressed():
+	Globals.loadPath = null
 	SceneManager.load_mainMenu()
 
 func _on_Load_pressed():

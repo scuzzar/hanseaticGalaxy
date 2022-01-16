@@ -14,7 +14,7 @@ anchor_bottom = 1.0
 margin_left = -258.0
 margin_top = -274.0
 margin_right = 262.0
-margin_bottom = -92.0
+margin_bottom = -110.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true,
@@ -179,30 +179,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Refuel_Lable4" type="Label" parent="Grid"]
-margin_top = 125.0
-margin_right = 100.0
-margin_bottom = 146.0
-rect_min_size = Vector2( 100, 0 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource( 1 )
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Refuel_Button" type="Button" parent="Grid"]
-margin_left = 423.0
-margin_top = 125.0
-margin_right = 493.0
-margin_bottom = 146.0
-rect_min_size = Vector2( 70, 0 )
-size_flags_horizontal = 8
-text = "Refuel"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [connection signal="value_changed" from="Grid/Refuel" to="." method="_on_Refuel_value_changed"]
-[connection signal="pressed" from="Grid/Refuel_Button" to="." method="_on_Refuel_Button_pressed"]

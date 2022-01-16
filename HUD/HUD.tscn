@@ -13,6 +13,8 @@
 [node name="HUD" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 2.0
+margin_right = 2.0
 mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
@@ -195,16 +197,16 @@ __meta__ = {
 }
 
 [node name="DeliveryMissionOverview" parent="." instance=ExtResource( 7 )]
-margin_left = -548.0
-margin_top = 175.0
-margin_right = -43.0
-margin_bottom = -112.0
+margin_left = -592.0
+margin_top = 94.0
+margin_right = -87.0
+margin_bottom = -424.0
 
 [node name="DeliveryBoard" parent="." instance=ExtResource( 6 )]
 margin_left = 96.0
-margin_top = 168.0
+margin_top = 94.0
 margin_right = 601.0
-margin_bottom = -109.0
+margin_bottom = -289.0
 
 [node name="CenterHUB" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -327,6 +329,27 @@ __meta__ = {
 }
 
 [node name="Refuel" parent="." instance=ExtResource( 9 )]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 94.0
+margin_top = -289.0
+margin_right = 601.0
+margin_bottom = -120.0
+
+[node name="Price" parent="Refuel/Grid" index="1"]
+margin_right = 480.0
+
+[node name="Refuel" parent="Refuel/Grid" index="3"]
+margin_right = 480.0
+
+[node name="amount" parent="Refuel/Grid" index="5"]
+margin_right = 480.0
+
+[node name="mass" parent="Refuel/Grid" index="7"]
+margin_right = 480.0
+
+[node name="Sum" parent="Refuel/Grid" index="9"]
+margin_right = 480.0
 
 [node name="Footer" type="GridContainer" parent="."]
 anchor_left = 0.5
@@ -393,6 +416,19 @@ margin_right = 742.0
 margin_bottom = 46.0
 size_flags_horizontal = 3
 
+[node name="Button" type="Button" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 507.0
+margin_top = -120.0
+margin_right = 601.0
+margin_bottom = -86.0
+text = "Accept"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="about" from="DeliveryMissionOverview" to="." method="_on_CargoBay_about"]
 [connection signal="deliver" from="DeliveryMissionOverview" to="." method="_on_CargoBay_deliver"]
 [connection signal="accepted" from="DeliveryBoard" to="." method="_on_InventoryWindow_accepted"]
@@ -400,3 +436,7 @@ size_flags_horizontal = 3
 [connection signal="pressed" from="ShipShopButton" to="." method="_on_Button_pressed"]
 [connection signal="refuel_cart_change" from="Refuel" to="." method="_on_refuel_cart_change"]
 [connection signal="refuel_cart_change" from="Refuel" to="DeliveryBoard" method="_on_refuel_cart_change"]
+[connection signal="pressed" from="Button" to="DeliveryBoard" method="_on_accepted"]
+[connection signal="pressed" from="Button" to="Refuel" method="_on_Refuel_pressed"]
+
+[editable path="Refuel"]
