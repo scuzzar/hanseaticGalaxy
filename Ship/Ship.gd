@@ -31,7 +31,7 @@ var hitpoints = 100
 var max_hitpoints = 100
 export var playerControl = false
 
-export var physicActiv =true setget setPhysics
+export var physicActiv =false setget setPhysics
 
 
 
@@ -321,9 +321,9 @@ func save():
 		"pos_x" : savePos.x,
 		"pos_y" : savePos.y,
 		"pos_z" : savePos.z,
-		"velocety_x" : velocety.x,
-		"velocety_y" : velocety.y,
-		"velocety_z" : velocety.z,
+		"velocety_x" : linear_velocity.x,
+		"velocety_y" : linear_velocity.y,
+		"velocety_z" : linear_velocity.z,
 		"rotation" : rotation.y,
 		"fuel": fuel,
 		"fuel_cap" :fuel_cap,
@@ -337,7 +337,6 @@ func save():
 func load_save(dict):	
 	transform.origin = Vector3(dict["pos_x"], dict["pos_y"],dict["pos_z"])	
 	self.linear_velocity = Vector3(dict["velocety_x"], dict["velocety_y"],dict["velocety_z"])
-	self.velocety = Vector3(dict["velocety_x"], dict["velocety_y"],dict["velocety_z"])	
 	rotation.y = dict["rotation"]	
 	self.set_fuel(dict["fuel"])
 	fuel_cap = dict["fuel_cap"]

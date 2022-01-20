@@ -2,16 +2,6 @@ extends RigidBody
 
 class_name Rigid_N_Body
 
-#export var mass = 200
-export var velocety = Vector3(0,0,0)
-
-export var isGravetySource = false
-
-#export(NodePath) var SOI_Body
-
-#onready var soi_node = self.get_node_or_null(SOI_Body)
-export var show_soi_relativ_sim = true
-
 signal g_force_update(force,strogest_body,strongest_body_force)
 signal strongest_body_changed(old_body,new_body)
 
@@ -22,35 +12,17 @@ var last_g_force_strongest_Body_force = Vector3(0,0,0)
 onready var bodys = []
 
 func _enter_tree():
-	#self.add_to_group("bodys")
 	self.gravity_scale = 0
 
 
 func _ready():
-#	if soi_node != null:
-#		bodys = [soi_node]
-#	else:
 	bodys = get_tree().get_nodes_in_group("bodys")
-	if(velocety==null):
-		velocety =Vector3(0,0,0)
-	self.linear_velocity = velocety
 
 func _integrate_forces(state):
 	state.add_central_force(last_g_force / 2)
 	last_g_force = g_force(self.translation)
 	emit_signal("g_force_update",last_g_force,last_g_force_strongest_Body,last_g_force_strongest_Body_force)	
 	state.add_central_force(last_g_force / 2)
-	self.velocety = self.linear_velocity
-
-func magnet_force():
-	var magnets = get_tree().get_nodes_in_group("magnet")
-	for m in magnets:
-		var m_area :Area = m
-		if(m_area.overlaps_body(self)):
-			var area_translation = m_area.get_parent().to_global(m_area.translation)
-			var forcDir = self.translation.direction_to(area_translation).normalized()			
-			return forcDir
-	return Vector3(0,0,0)
 
 func g_force(position):
 	#Slow

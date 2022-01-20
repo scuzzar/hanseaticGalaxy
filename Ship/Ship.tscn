@@ -26,10 +26,6 @@ axis_lock_angular_x = true
 axis_lock_angular_z = true
 angular_damp = 4.0
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
-physicActiv = false
 
 [node name="Damage" type="Node" parent="."]
 script = ExtResource( 5 )

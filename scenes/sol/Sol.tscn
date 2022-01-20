@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Bodys/materials/Sun.material" type="Material" id=1]
 [ext_resource path="res://Bodys/materials/Moon.material" type="Material" id=2]
@@ -44,6 +44,7 @@
 [ext_resource path="res://Building/Mine.tscn" type="PackedScene" id=42]
 [ext_resource path="res://Building/EnergyHavester.tscn" type="PackedScene" id=43]
 [ext_resource path="res://Ship/SkyCrane/SkyCrane_S.tscn" type="PackedScene" id=44]
+[ext_resource path="res://Ship/Ship.gd" type="Script" id=45]
 [ext_resource path="res://Enemys/KillSatEnemy.tscn" type="PackedScene" id=46]
 [ext_resource path="res://Ship/SimpleRocket/Orbital Rocket.tscn" type="PackedScene" id=47]
 
@@ -90,9 +91,18 @@ environment = ExtResource( 20 )
 
 [node name="HUD" parent="." instance=ExtResource( 17 )]
 
-[node name="PlayerShip" parent="." instance=ExtResource( 47 )]
+[node name="PlayerShip" parent="." groups=["persist"] instance=ExtResource( 47 )]
 transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.1, 0, -69.3306 )
+input_ray_pickable = false
 physics_material_override = SubResource( 5 )
+continuous_cd = true
+contacts_reported = 5
+contact_monitor = true
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+angular_damp = 4.0
+script = ExtResource( 45 )
 playerControl = true
 
 [node name="Camera" parent="." groups=["persist"] instance=ExtResource( 18 )]
@@ -199,7 +209,6 @@ contact_monitor = false
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.83693, -0.786469, 0.382813 )
 contacts_reported = 0
 contact_monitor = false
-show_soi_relativ_sim = false
 
 [node name="Warft" parent="Sun/Earth/ISS" instance=ExtResource( 8 )]
 
@@ -265,9 +274,18 @@ physics_material_override = SubResource( 7 )
 contacts_reported = 0
 contact_monitor = false
 
-[node name="Orbital Rocket" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource( 47 )]
+[node name="Orbital Rocket" parent="Sun/Earth/Moon/ApolloPort" groups=["persist"] instance=ExtResource( 47 )]
 transform = Transform( 1, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -1.77636e-14, 8.74228e-08, 1.06581e-14, 1, -2.63086, 0, -3.48166 )
+input_ray_pickable = false
 physics_material_override = SubResource( 7 )
+continuous_cd = true
+contacts_reported = 5
+contact_monitor = true
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+angular_damp = 4.0
+script = ExtResource( 45 )
 
 [node name="SimpleRocket" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 6.35275e-21, 0, 1, 0, 0, 0, 1, -1.79443, 0.0951424, -3.49483 )
@@ -295,7 +313,6 @@ contact_monitor = false
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.83693, -0.786469, 0.382813 )
 contacts_reported = 0
 contact_monitor = false
-show_soi_relativ_sim = false
 
 [node name="Warft" parent="Sun/Mars/MarsST" instance=ExtResource( 8 )]
 
@@ -334,9 +351,18 @@ physics_material_override = SubResource( 7 )
 contacts_reported = 0
 contact_monitor = false
 
-[node name="Orbital Rocket" parent="Sun/Mars/OlympusPort" instance=ExtResource( 47 )]
+[node name="Orbital Rocket" parent="Sun/Mars/OlympusPort" groups=["persist"] instance=ExtResource( 47 )]
 transform = Transform( 1, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -1.77636e-14, 8.74228e-08, 1.06581e-14, 1, -2.63086, 0, -3.48166 )
+input_ray_pickable = false
 physics_material_override = SubResource( 7 )
+continuous_cd = true
+contacts_reported = 5
+contact_monitor = true
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+angular_damp = 4.0
+script = ExtResource( 45 )
 
 [node name="SimpleRocket" parent="Sun/Mars/OlympusPort" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 6.35275e-21, 0, 1, 0, 0, 0, 1, -1.79443, 0.0951424, -3.49483 )
@@ -493,7 +519,6 @@ contact_monitor = false
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.83693, -0.786469, 0.382813 )
 contacts_reported = 0
 contact_monitor = false
-show_soi_relativ_sim = false
 
 [node name="GasExtractor" parent="Sun/Jupiter/JupiterST" instance=ExtResource( 34 )]
 
@@ -588,9 +613,18 @@ physics_material_override = SubResource( 7 )
 contacts_reported = 0
 contact_monitor = false
 
-[node name="Orbital Rocket" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource( 47 )]
+[node name="Orbital Rocket" parent="Sun/Saturn/Titan/TitanPort" groups=["persist"] instance=ExtResource( 47 )]
 transform = Transform( 1, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -1.77636e-14, 8.74228e-08, 1.06581e-14, 1, -2.63086, 0, -3.48166 )
+input_ray_pickable = false
 physics_material_override = SubResource( 7 )
+continuous_cd = true
+contacts_reported = 5
+contact_monitor = true
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+angular_damp = 4.0
+script = ExtResource( 45 )
 
 [node name="SimpleRocket" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 6.35275e-21, 0, 1, 0, 0, 0, 1, -1.79443, 0.0951424, -3.49483 )
@@ -656,8 +690,20 @@ transform = Transform( -0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-14
 
 [connection signal="shifted" from="Shifter" to="Simulator" method="_on_Shifter_shifted"]
 [connection signal="shipOrderd" from="HUD" to="." method="_on_HUD_shipOrderd"]
+[connection signal="docked" from="PlayerShip" to="PlayerShip/Tail" method="_stop"]
+[connection signal="strongest_body_changed" from="PlayerShip" to="PlayerShip/Tail" method="_on_reference_changed"]
+[connection signal="undocked" from="PlayerShip" to="PlayerShip/Tail" method="_start"]
 [connection signal="body_entered" from="Sun/Earth/Moon/ApolloPort/Tender" to="Sun/Earth/Moon/ApolloPort/Tender/Damage" method="_on_Ship_body_entered"]
+[connection signal="docked" from="Sun/Earth/Moon/ApolloPort/Orbital Rocket" to="Sun/Earth/Moon/ApolloPort/Orbital Rocket/Tail" method="_stop"]
+[connection signal="strongest_body_changed" from="Sun/Earth/Moon/ApolloPort/Orbital Rocket" to="Sun/Earth/Moon/ApolloPort/Orbital Rocket/Tail" method="_on_reference_changed"]
+[connection signal="undocked" from="Sun/Earth/Moon/ApolloPort/Orbital Rocket" to="Sun/Earth/Moon/ApolloPort/Orbital Rocket/Tail" method="_start"]
 [connection signal="body_entered" from="Sun/Mars/MarsST/SkyCrane" to="Sun/Mars/MarsST/SkyCrane/Damage" method="_on_Ship_body_entered"]
 [connection signal="body_entered" from="Sun/Mars/MarsST/Tender" to="Sun/Mars/MarsST/Tender/Damage" method="_on_Ship_body_entered"]
 [connection signal="body_entered" from="Sun/Mars/OlympusPort/Tender" to="Sun/Mars/OlympusPort/Tender/Damage" method="_on_Ship_body_entered"]
+[connection signal="docked" from="Sun/Mars/OlympusPort/Orbital Rocket" to="Sun/Mars/OlympusPort/Orbital Rocket/Tail" method="_stop"]
+[connection signal="strongest_body_changed" from="Sun/Mars/OlympusPort/Orbital Rocket" to="Sun/Mars/OlympusPort/Orbital Rocket/Tail" method="_on_reference_changed"]
+[connection signal="undocked" from="Sun/Mars/OlympusPort/Orbital Rocket" to="Sun/Mars/OlympusPort/Orbital Rocket/Tail" method="_start"]
 [connection signal="body_entered" from="Sun/Saturn/Titan/TitanPort/Tender" to="Sun/Saturn/Titan/TitanPort/Tender/Damage" method="_on_Ship_body_entered"]
+[connection signal="docked" from="Sun/Saturn/Titan/TitanPort/Orbital Rocket" to="Sun/Saturn/Titan/TitanPort/Orbital Rocket/Tail" method="_stop"]
+[connection signal="strongest_body_changed" from="Sun/Saturn/Titan/TitanPort/Orbital Rocket" to="Sun/Saturn/Titan/TitanPort/Orbital Rocket/Tail" method="_on_reference_changed"]
+[connection signal="undocked" from="Sun/Saturn/Titan/TitanPort/Orbital Rocket" to="Sun/Saturn/Titan/TitanPort/Orbital Rocket/Tail" method="_start"]
