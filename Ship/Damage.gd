@@ -31,5 +31,5 @@ func distroy():
 	ship.emit_signal("destryed")
 
 func _on_Ship_body_entered(a): 
-	print("f")
+	pass
 

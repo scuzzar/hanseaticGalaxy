@@ -16,6 +16,7 @@ emission_on_uv2 = false
 script = ExtResource( 3 )
 
 [node name="KillSat" parent="." index="0" instance=ExtResource( 2 )]
+mode = 1
 
 [node name="Alarm" type="CSGBox" parent="." index="6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.219535, -0.493196 )
@@ -28,5 +29,3 @@ material = SubResource( 1 )
 [node name="OmniLight" type="OmniLight" parent="Alarm" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.468147 )
 light_color = Color( 1, 0, 0, 1 )
-
-[connection signal="destryed" from="KillSat" to="." method="_on_Ship_destroyed"]

@@ -30,7 +30,11 @@ var docking_location: Node
 var hitpoints = 100
 var max_hitpoints = 100
 export var playerControl = false
-export var physikAktiv =true
+
+export var physicActiv =true setget setPhysics
+
+
+
 export var autoCircle=false
 var soiPlanet=null
 var mounts = []
@@ -95,17 +99,24 @@ func _loadType():
 	truster_exaust_velocity = ShipTyp[type]["truster_exaust_velocity"]
 	truster_engine_mass_rate = ShipTyp[type]["truster_engine_mass_rate"]
 
+func setPhysics(activ):
+	physicActiv = activ
+	if(activ):
+		mode = RigidBody.MODE_RIGID
+	else:
+		mode = RigidBody.MODE_STATIC
+
 func _integrate_forces(state:PhysicsDirectBodyState):
-	if(physikAktiv):
+	if(physicActiv):
 		._integrate_forces(state)
-		$Damage.handle_collsions(state)
+		self.calcWetMass()
+		
+	$Damage.handle_collsions(state)
 	
 	var currentSOIPlanet = self.getSOIPlanet()
 	if( currentSOIPlanet != soiPlanet):
 		soiPlanet=currentSOIPlanet
 		emit_signal("soiPlanetChanged",soiPlanet)
-	
-	self.calcWetMass()
 	
 	var trusted = false
 	

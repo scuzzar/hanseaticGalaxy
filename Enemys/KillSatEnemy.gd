@@ -6,4 +6,4 @@ func _ready():
 func _process(delta):
 	if($KillSat!=null):
 		$Alarm.visible = $KillSat.hasTarget()
-		
+	#$KillSat.transform.origin = Vector3(0,0,0)

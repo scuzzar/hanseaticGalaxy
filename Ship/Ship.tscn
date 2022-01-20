@@ -29,7 +29,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
-physikAktiv = false
+physicActiv = false
 
 [node name="Damage" type="Node" parent="."]
 script = ExtResource( 5 )

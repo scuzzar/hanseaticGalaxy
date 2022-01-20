@@ -186,7 +186,7 @@ func load_game():
 		if(node_data["nodePath"]=="/root/Sol/PlayerShip"):
 			$PlayerShip.free()
 			var laoded_PlayerShip :Ship = load(node_data["filename"]).instance()
-			laoded_PlayerShip.physikAktiv = true
+			laoded_PlayerShip.physicActiv = true
 			
 			laoded_PlayerShip.playerControl = true			
 			laoded_PlayerShip.name = "PlayerShip"
