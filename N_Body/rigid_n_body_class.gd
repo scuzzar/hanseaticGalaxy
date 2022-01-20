@@ -9,6 +9,8 @@ var last_g_force = Vector3(0,0,0)
 var last_g_force_strongest_Body : RigidBody
 var last_g_force_strongest_Body_force = Vector3(0,0,0)
 
+export var physicActiv =false setget setPhysics
+
 onready var bodys = []
 
 func _enter_tree():
@@ -17,6 +19,14 @@ func _enter_tree():
 
 func _ready():
 	bodys = get_tree().get_nodes_in_group("bodys")
+
+
+func setPhysics(activ):
+	physicActiv = activ
+	if(activ):
+		mode = RigidBody.MODE_RIGID
+	else:
+		mode = RigidBody.MODE_STATIC
 
 func _integrate_forces(state):
 	state.add_central_force(last_g_force / 2)

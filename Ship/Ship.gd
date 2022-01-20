@@ -31,7 +31,6 @@ var hitpoints = 100
 var max_hitpoints = 100
 export var playerControl = false
 
-export var physicActiv =false setget setPhysics
 
 
 
@@ -43,8 +42,9 @@ var cargoMass = 0
 var fuelMass = 0
 var turn_to_target = false
 var target:Ship = null
-var weaponActive = true
+var weaponActive = false
 
+var main_trust :float = 0
 var truster_vector = Vector2(0,0)
 var truster_trust :float = 0 
 var rotational_trust :float = 0  
@@ -99,12 +99,6 @@ func _loadType():
 	truster_exaust_velocity = ShipTyp[type]["truster_exaust_velocity"]
 	truster_engine_mass_rate = ShipTyp[type]["truster_engine_mass_rate"]
 
-func setPhysics(activ):
-	physicActiv = activ
-	if(activ):
-		mode = RigidBody.MODE_RIGID
-	else:
-		mode = RigidBody.MODE_STATIC
 
 func _integrate_forces(state:PhysicsDirectBodyState):
 	if(physicActiv):
@@ -117,69 +111,34 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 	if( currentSOIPlanet != soiPlanet):
 		soiPlanet=currentSOIPlanet
 		emit_signal("soiPlanetChanged",soiPlanet)
-	
-	var trusted = false
-	
+
 	if autoCircle:
 		$AutoPilot._lateral_circularize_burn(state)
+
+	if(weaponActive):
+		$TragetComputer._turn_turrents(state.step)
+
+	_fire_main_drive(state,main_trust)
+	main_trust = 0
 	
-	if(playerControl):		
-		if(weaponActive):
-			$TragetComputer._turn_turrents(state.step)
-			if Input.is_action_pressed("fire"):	
-				self.fire()		
-		
-		if Input.is_action_just_pressed("auto_orbit"):
-			autoCircle = !autoCircle
-		
-		if Input.is_action_pressed("burn_forward"):
-			if(self.docking_location!=null):
-				self.undock()
-			var fuelcost =  engine_mass_rate / Globals.get_fuel_mass()  * state.step
-			if(fuel - fuelcost > 0):				
-				trusted = true
-				_fire_main_drive(state)
-		else:
-			$Propulsion.drive_off()
+	_fire_truster(state,truster_vector)	
+	truster_vector = Vector2(0,0)	
+	truster_trust = 0		
 	
-		###Truster fire		
-		if Input.is_action_pressed("burn_backward"):
-			lateral_burn(Vector2(-1,0))
-			
-		if Input.is_action_pressed("burn_lateral_left"):
-			lateral_burn(Vector2(0,-1))
+	_rotation(rotational_trust,state)	
+	rotational_trust = 0		
 		
-		if Input.is_action_pressed("burn_lateral_right"):
-			lateral_burn(Vector2(0,1))	
-				
-		_fire_truster(state,truster_vector)	
-		truster_vector = Vector2(0,0)	
-		truster_trust = 0
-		
-		if Input.is_action_pressed("trun_left"):
-			rotational_trust = turn_rate
-		
-		if Input.is_action_pressed("turn_right"):
-			rotational_trust = turn_rate*-1
-		
-		_rotation(rotational_trust,state)	
-		rotational_trust = 0		
-		
-		if Input.is_action_just_pressed("info"):
-			if(!$ShipInfo.visible):
-				$ShipInfo.setShip(self)				
-				$ShipInfo.show()
-				$ShipInfo.update()
-			else:
-				$ShipInfo.hide()	
-		emit_signal("telemetry_changed", self.translation, state.linear_velocity)
+	emit_signal("telemetry_changed", self.translation, state.linear_velocity)
+
 
 func calcWetMass():
 	self.mass = dryMass + cargoMass + fuel*Globals.get_fuel_mass()
 
+func main_burn():
+	main_trust = 1
+
 func lateral_burn(burn_vector):
 	truster_vector += burn_vector
-	#truster_trust += lateral_trust
 
 func _fire_truster(state:PhysicsDirectBodyState,direction:Vector2):
 	if(direction.length()==0): return
@@ -197,11 +156,16 @@ func _fire_truster(state:PhysicsDirectBodyState,direction:Vector2):
 	$Propulsion.trust_Vector(direction,1)
 	
 
-func _fire_main_drive(state:PhysicsDirectBodyState):	
-	var force = _get_forward_vector()*engine_mass_rate*engine_exaust_velocity
-	state.add_force(force, Vector3(0,0,0))
-	self.burn_fuel(engine_mass_rate / Globals.get_fuel_mass() * state.step)
-	$Propulsion.drive_on()
+func _fire_main_drive(state:PhysicsDirectBodyState,trust:float):
+	var fuelcost =  engine_mass_rate / Globals.get_fuel_mass()  * state.step
+	
+	if(trust != 0 and (fuel - fuelcost > 0)):
+		var force = _get_forward_vector()*engine_mass_rate*engine_exaust_velocity
+		state.add_force(force, Vector3(0,0,0))
+		self.burn_fuel(engine_mass_rate / Globals.get_fuel_mass() * state.step)
+		$Propulsion.drive_on()
+	else:
+		$Propulsion.drive_off()
 
 func _get_forward_vector():
 	var orientation = self.rotation.y
@@ -361,3 +325,11 @@ func fire():
 	for mount in mounts :
 		fired = fired or mount.fire()
 	return fired
+
+func toggelInfo():
+	if(!$ShipInfo.visible):
+		$ShipInfo.setShip(self)				
+		$ShipInfo.show()
+		$ShipInfo.update()
+	else:
+		$ShipInfo.hide()

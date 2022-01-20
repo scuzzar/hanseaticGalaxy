@@ -22,7 +22,7 @@ func newGameSetup():
 		cg.generateInitialStock()
 	ship.fuel = 0
 	Player.credits = 10000
-	ship.physikAktiv =true
+	ship.physicActiv =true
 	loaded = true
 
 func setShip(newShip):
@@ -99,6 +99,38 @@ func _process(delta):
 	if Input.is_action_pressed("camera_turn_left"):
 		$Camera._next_rotation.x -= 3
 		print("left")
+	
+	if Input.is_action_pressed("fire"):	
+		ship.fire()		
+		
+	if Input.is_action_just_pressed("auto_orbit"):
+		ship.autoCircle = !ship.autoCircle
+		
+	if Input.is_action_pressed("burn_forward"):
+		ship.main_burn()
+		if(ship.docking_location!=null):
+			ship.undock()
+	
+	###Truster fire		
+	if Input.is_action_pressed("burn_backward"):
+		ship.lateral_burn(Vector2(-1,0))
+		
+	if Input.is_action_pressed("burn_lateral_left"):
+		ship.lateral_burn(Vector2(0,-1))
+	
+	if Input.is_action_pressed("burn_lateral_right"):
+		ship.lateral_burn(Vector2(0,1))	
+		
+	if Input.is_action_pressed("trun_left"):
+		ship.rotational_trust = ship.turn_rate
+		
+	if Input.is_action_pressed("turn_right"):
+		ship.rotational_trust = ship.turn_rate*-1
+
+	if Input.is_action_just_pressed("info"):
+		ship.toggelInfo()	
+	
+	
 
 func _loadScore():
 	var result = get_tree().change_scene_to(SceneManager.endScreen)
@@ -221,11 +253,7 @@ func buyShip(newShip:Ship):
 		self.add_child(newShip)
 		newShip.owner = self
 		if(ship.docking_location!=null):
-			#var docking_location = ship.docking_location
-			#var docking_location = ship.docking_location
-			ship.undock()
-			#newShip.dock(docking_location)
-		
+			ship.undock()	
 		
 		#Copy Sate of Current Ship
 		newShip.transform = CurrentTransform
@@ -237,27 +265,22 @@ func buyShip(newShip:Ship):
 				var success = newShip.load_containter(c)
 			else:
 				ship.about_Container(c)			
-		
 
-		
 		#Finances
 		Player.reward(ship.price)
 		Player.pay(newShip.price)
 			
 		#Deal With old Ship
 		ship.playerControl = false	
-		ship.physikAktiv = false
+		ship.physicActiv = false
 		ship.free()
 			
-			
 		#Activate New Ship	
-		newShip.physikAktiv = true
+		newShip.physicActiv = true
 		newShip.playerControl =true
 		newShip.name = "PlayerShip"
 		
 		self.setShip(newShip)
-	
 
-	
 func _on_HUD_shipOrderd(ship):
 	self.buyShip(ship)

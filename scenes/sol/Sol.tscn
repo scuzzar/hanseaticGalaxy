@@ -92,7 +92,7 @@ environment = ExtResource( 20 )
 [node name="HUD" parent="." instance=ExtResource( 17 )]
 
 [node name="PlayerShip" parent="." groups=["persist"] instance=ExtResource( 47 )]
-transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.1, 0, -69.3306 )
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.1, 0, -68.754 )
 input_ray_pickable = false
 physics_material_override = SubResource( 5 )
 continuous_cd = true

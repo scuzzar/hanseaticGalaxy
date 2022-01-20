@@ -52,6 +52,8 @@ func _generate_mission() -> DeliveryMission:
 	var maxAddition = self.getMaxBatch() - amount	
 	if maxAddition>0 : amount += randi()%maxAddition
 	
+	amount = clamp(amount,0,Player.ship.getCargoSlotCount())
+	
 	mission._createContainer(amount)
 	
 	var distance = mission.getDistance()
