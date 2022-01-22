@@ -26,15 +26,14 @@ func newGameSetup():
 	ship.fuel = 0
 	Player.credits = 10000
 	if(player_spawn_point!=null):
-		#$Shifter.shift_origin()		
-		ship.transform = player_spawn_point.get_docking_globaltransform()
-		
+	
+		ship.transform = player_spawn_point.get_docking_globaltransform()		
 		var spawn_body :simpelPlanet = player_spawn_point.getBody()
 		print("BodyVal" + str(spawn_body.linear_velocity) + " abs " +str(spawn_body.linear_velocity.length()))
 		var offset_vel = spawn_body.linear_velocity
 		if(!spawn_body.isPlanet):
 			offset_vel += spawn_body.get_parent().linear_velocity
-		ship.write_linear_velocity(offset_vel)# spawn_body.linear_velocity
+		ship.write_linear_velocity(offset_vel)
 	
 			
 	ship.physicActiv =true
@@ -60,6 +59,8 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("debug_state"):
 		print(str(ship.transform.origin) + " + " +  str(ship.linear_velocity))
+		print("gforce:"+ str(ship.last_g_force))
+		print("Sun Position:" + str($Sun.global_transform.origin))
 	
 	if Input.is_action_pressed("endGame"):
 		print("you ended the game!")

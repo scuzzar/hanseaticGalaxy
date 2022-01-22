@@ -31,7 +31,7 @@ func setPhysics(activ):
 		mode = RigidBody.MODE_STATIC
 
 func _integrate_forces(state):
-	state.add_central_force(last_g_force / 2)
+	state.add_central_force(last_g_force / 2)	
 	last_g_force = g_force(self.translation)
 	emit_signal("g_force_update",last_g_force,last_g_force_strongest_Body,last_g_force_strongest_Body_force)	
 	state.add_central_force(last_g_force / 2)

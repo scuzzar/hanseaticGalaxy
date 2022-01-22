@@ -77,11 +77,11 @@ player_spawn_point_path = NodePath("Sun/Neptun/Triton/TreePeekPort")
 
 [node name="RotationShifter" type="Node" parent="."]
 script = ExtResource( 28 )
+logging = true
 
 [node name="Shifter" type="Node" parent="."]
 script = ExtResource( 27 )
 MAX_DISTANCE = 10000.0
-activ = false
 logging = true
 world_node_path = NodePath("..")
 
@@ -97,6 +97,7 @@ environment = ExtResource( 20 )
 [node name="PlayerShip" parent="." instance=ExtResource( 47 )]
 transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.1, 0, -68.754 )
 physics_material_override = SubResource( 5 )
+physicActiv = true
 playerControl = true
 
 [node name="Camera" parent="." groups=["persist"] instance=ExtResource( 18 )]

@@ -69,7 +69,7 @@ func derive_mass():
 	mass = (surface_g*radius*radius)/Globals.G
 
 func _physics_process(delta):
-	if(!Engine.editor_hint):
+	if(!Engine.editor_hint and !isStar):
 		angle += (angular_speed *delta)	
 		if(angle >= 2*PI): angle -= 2*PI
 		var pX = sin(angle)*orbit_radius

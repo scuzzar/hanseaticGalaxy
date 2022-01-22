@@ -24,14 +24,13 @@ func _process(delta):
 		call_deferred("shift_origin")
 
 func shift_origin():
-	var offset: Vector3 = parent.global_transform.origin
+	var offset: Vector3 = parent.global_transform.origin 
 	for child in world_node.get_children():
 		if child is Spatial:
 			child.global_translate(-offset)
 			if(logging):
-				print(child.name)
-				print(child.translation)
-			
+				print(child.name + " shifterd")
+				print(child.global_transform.origin)	
 	originShift = offset
 	emit_signal("shifted")
 	if logging:
