@@ -8,6 +8,9 @@ export var MaxtimeWarpFactor = 400
 export var MaxtimeWarpFactor_Planet = 50
 export var MaxtimeWarpFactor_Moon = 5
 
+export(NodePath) var player_spawn_point_path = "Sun/Earth/BrasiliaPort"
+onready var player_spawn_point:Port = get_node_or_null(player_spawn_point_path)
+
 var loaded = false
 
 func _ready():
@@ -22,8 +25,13 @@ func newGameSetup():
 		cg.generateInitialStock()
 	ship.fuel = 0
 	Player.credits = 10000
+	if(player_spawn_point!=null):		
+		ship.transform = player_spawn_point.get_docking_globaltransform()
+		ship.linear_velocity = player_spawn_point.getBody().linear_velocity
+		print("initVal" + str(ship.linear_velocity))
+		
 	ship.physicActiv =true
-	loaded = true
+	loaded = true	
 
 func setShip(newShip):
 	newShip.connect("strongest_body_changed",self,"_on_Ship_strongest_body_changed")

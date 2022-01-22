@@ -54,3 +54,4 @@ func load_save(dict):
 	angle=dict["angle"]
 	orbit_radius=dict["orbit_radius"]
 	angular_speed = dict["angular_speed"]
+

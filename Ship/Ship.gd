@@ -2,16 +2,6 @@ extends Rigid_N_Body
 
 class_name Ship
 
-var price = 0
-
-var turn_rate = 100
-
-var engine_exaust_velocity :float = 200
-var engine_mass_rate :float = 1
-
-var truster_exaust_velocity :float = 10
-var truster_engine_mass_rate :float = 0.1
-
 enum SHIPTYPES{
 	TENDER = 0,
 	TENDER_S = 1,
@@ -24,26 +14,30 @@ enum SHIPTYPES{
 }
 
 var dispay_name = "Neubeckum II"
-var fuel_cap = 5000.0
-var fuel = 0
-var docking_location: Node
-var hitpoints = 100
+var fuel_cap = 0
 var max_hitpoints = 100
-export var playerControl = false
-
-
-
-
-export var autoCircle=false
-var soiPlanet=null
-var mounts = []
 var dryMass = 5 
+var price = 0
+var turn_rate = 100
+var engine_exaust_velocity :float = 200
+var engine_mass_rate :float = 1
+var truster_exaust_velocity :float = 10
+var truster_engine_mass_rate :float = 0.1
+
+var fuel = 0
+var hitpoints = 100
+var docking_location: Node
+
 var cargoMass = 0
 var fuelMass = 0
+
 var turn_to_target = false
 var target:Ship = null
+export var playerControl = false
+export var autoCircle=false
+var soiPlanet=null
 var weaponActive = false
-
+var mounts = []
 var main_trust :float = 0
 var truster_vector = Vector2(0,0)
 var truster_trust :float = 0 
@@ -71,10 +65,10 @@ func _ready():
 	self._loadType()
 	self.mass = dryMass
 	self.hitpoints = max_hitpoints
-	#fuel = fuel_cap
+
 	emit_signal("fuel_changed",fuel, fuel_cap)	
 	emit_signal("mass_changed",mass)
-	#$Model.all_trust_off()
+
 	self.angular_damp = 6
 	$ShipInfo.ship = self
 	$ShipInfo.update()

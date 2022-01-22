@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Enemys/AI.gd"
 }, {
+"base": "Control",
+"class": "CSVEditor",
+"language": "GDScript",
+"path": "res://addons/file-editor/scripts/CSVEditor.gd"
+}, {
 "base": "Spatial",
 "class": "CargoContainer",
 "language": "GDScript",
@@ -38,6 +43,11 @@ _global_script_classes=[ {
 "class": "ENUMS",
 "language": "GDScript",
 "path": "res://Singeltons/ENUMS.gd"
+}, {
+"base": "HTTPRequest",
+"class": "GoogleTranslateAPI",
+"language": "GDScript",
+"path": "res://addons/file-editor/scripts/GoogleTranslatorAPI.gd"
 }, {
 "base": "Node",
 "class": "Mission",
@@ -96,11 +106,13 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AI": "",
+"CSVEditor": "",
 "CargoContainer": "",
 "CargoTarget": "",
 "D_V_Estimator": "",
 "DeliveryMission": "",
 "ENUMS": "",
+"GoogleTranslateAPI": "",
 "Mission": "",
 "Port": "",
 "Rigid_N_Body": "",

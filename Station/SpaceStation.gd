@@ -31,3 +31,6 @@ func getShipsForSale():
 		if c is Ship :
 			result.append(c)
 	return result
+
+func get_docking_globaltransform():
+	return $Area.global_transform

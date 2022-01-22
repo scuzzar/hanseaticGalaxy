@@ -101,3 +101,6 @@ func stock(cargo)->int:
 
 func getBody()->simpelPlanet:
 	return self.get_parent() as simpelPlanet
+
+func get_docking_globaltransform():
+	return $DockingLocation.global_transform
