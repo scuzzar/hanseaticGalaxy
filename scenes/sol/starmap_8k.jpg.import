@@ -18,12 +18,12 @@ dest_files=[ "res://.import/starmap_8k.jpg-3577324b88d8fa4ebdae7dc2d22ca67e.s3tc
 
 compress/mode=2
 compress/lossy_quality=0.7
-compress/hdr_mode=1
+compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=0
+compress/normal_map=2
 flags/repeat=0
-flags/filter=false
-flags/mipmaps=false
+flags/filter=true
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

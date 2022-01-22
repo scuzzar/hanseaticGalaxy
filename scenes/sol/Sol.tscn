@@ -115,7 +115,6 @@ surface_g = 30.0
 
 [node name="OmniLight" type="OmniLight" parent="Sun"]
 transform = Transform( 1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 10.6688, 3.74349 )
-light_energy = 0.0
 light_indirect_energy = 0.0
 omni_range = 500000.0
 
