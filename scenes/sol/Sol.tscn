@@ -72,6 +72,7 @@ size = Vector2( 700, 700 )
 
 [node name="Sol" type="Spatial"]
 script = ExtResource( 23 )
+MaxtimeWarpFactor_Moon = 6
 player_spawn_point_path = NodePath("Sun/Neptun/Triton/TreePeekPort")
 
 [node name="RotationShifter" type="Node" parent="."]
@@ -81,6 +82,7 @@ script = ExtResource( 28 )
 script = ExtResource( 27 )
 MAX_DISTANCE = 10000.0
 activ = false
+logging = true
 world_node_path = NodePath("..")
 
 [node name="Simulator" parent="." instance=ExtResource( 6 )]

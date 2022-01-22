@@ -17,6 +17,8 @@ func _ready():
 
 func _process(delta):	
 	var err =loader.poll()
+	if(err!=OK):
+		print(err)
 	$Loading_Lable.text = $Loading_Lable.text + "."
 	if(err == ERR_FILE_EOF):	
 		SceneManager.sol_scene_res = loader.get_resource() 

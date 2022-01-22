@@ -53,7 +53,10 @@ func _ready():
 		orbital_speed = kosmic
 		angular_speed = 2*PI/(2*PI*orbit_radius/orbital_speed)	
 		non_shifted_angular_speed = angular_speed
-		angle = Globals.RAN.randf_range(0,PI*2)
+		if(!Engine.editor_hint):
+			angle = Globals.RAN.randf_range(0,PI*2)
+		else:
+			angle = 0
 		print("angel:" + str(angle))
 		self._physics_process(0)
 	else:
