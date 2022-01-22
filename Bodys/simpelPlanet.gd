@@ -23,8 +23,8 @@ var radius : float
 var isGravetySource = false
 var angular_speed : float = 0 
 var non_shifted_angular_speed : float = 0 
-var pX :float
-var pZ :float
+
+var unshifted_linear_velocity  = Vector3(0,0,0)
 
 func _enter_tree():
 	self.add_to_group("bodys")
@@ -75,7 +75,10 @@ func _physics_process(delta):
 		
 		self.translation = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)
 		var s = Vector3(orbital_speed,0,0).rotated(Vector3(0,1,0), angle)
-		linear_velocity = s + get_parent().linear_velocity + Globals.velocity_shift
+		var pvshift = get_parent().unshifted_linear_velocity
+		var vshift = Globals.velocity_shift
+		unshifted_linear_velocity = s + pvshift
+		linear_velocity = unshifted_linear_velocity + Globals.velocity_shift
 
 
 func predictGlobalPosition(delta):
