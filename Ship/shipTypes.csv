@@ -1,7 +1,7 @@
 id;name;display_name;dry_mass;turn_rate;engine_exaust_velocity;engine_mass_rate;truster_exaust_velocity;truster_engine_mass_rate;fuel_cap;max_hp;price
 0;Tender;Tender;10;20;150;2;200;0.1;45;200;150000
 1;out;Tender S;8;20;150;0.5;200;0.1;50;100;0
-2;Orbital_Rocket;Rocket S;25;80;400;2;200;0.1;50;150;300000
+2;Orbital_Rocket;Rocket S;25;80;150;3.5;200;0.1;50;150;300000
 3;Rocket;Rocket IP;30;100;150;3.5;200;0.1;150;250;650000
 4;SkyCrane;SkyCrane;50;100;150;3.5;200;0.1;150;600;1800000
 5;SkyCrane_S;SkyCrane S;50;100;150;2;200;0.1;120;680;1200000

@@ -6,7 +6,7 @@ var loader : ResourceInteractiveLoader
 
 func _ready():
 	Globals.RAN = RandomNumberGenerator.new()
-	Globals.RAN.randomize()
+	Globals.RAN.seed = 42
 	$Menu.hide()
 	$Menu/Resume.hide()
 	loader = ResourceLoader.load_interactive("res://scenes/sol/Sol.tscn")
