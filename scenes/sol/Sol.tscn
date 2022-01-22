@@ -76,7 +76,7 @@ player_spawn_point_path = NodePath("Sun/Earth/Moon/ApolloPort")
 
 [node name="RotationShifter" type="Node" parent="."]
 script = ExtResource( 28 )
-activ = false
+logging = true
 
 [node name="Shifter" type="Node" parent="."]
 script = ExtResource( 27 )

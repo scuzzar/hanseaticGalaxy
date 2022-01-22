@@ -36,8 +36,10 @@ func _integrate_forces(state):
 	emit_signal("g_force_update",last_g_force,last_g_force_strongest_Body,last_g_force_strongest_Body_force)	
 	state.add_central_force(last_g_force / 2)
 	if(write_linear_velocity!=null):
+		print("overwriting ship Velocyty:" + str(write_linear_velocity))
 		state.linear_velocity = write_linear_velocity
 		write_linear_velocity = null
+	self.linear_velocity =state.linear_velocity
 
 func write_linear_velocity(v:Vector3):
 	write_linear_velocity = v
