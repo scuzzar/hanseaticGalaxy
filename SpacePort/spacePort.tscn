@@ -72,7 +72,7 @@ stream = ExtResource( 6 )
 autoplay = true
 
 [node name="DockingLocation" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6653, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.677583, 0 )
 
 [connection signal="body_entered" from="LandingArea" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="LandingArea" to="." method="_on_Area_body_exited"]
