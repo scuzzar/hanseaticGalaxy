@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.godot-csv-importer"
+type="Resource"
+path="res://.import/shipTypes.csv-cfc70770da00cc616ca91bd31698fdad.res"
+
+[deps]
+
+source_file="res://Ship/shipTypes.csv"
+dest_files=[ "res://.import/shipTypes.csv-cfc70770da00cc616ca91bd31698fdad.res" ]
+
+[params]
+
+delimiter=2
+headers=true
+detect_numbers=true
+force_float=false

@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.godot-csv-importer"
+type="Resource"
+path="res://.import/containerTyps.csv-22547ca202670a6dcb5985d0d58a6fed.res"
+
+[deps]
+
+source_file="res://Cargo/containerTyps.csv"
+dest_files=[ "res://.import/containerTyps.csv-22547ca202670a6dcb5985d0d58a6fed.res" ]
+
+[params]
+
+delimiter=2
+headers=true
+detect_numbers=true
+force_float=false

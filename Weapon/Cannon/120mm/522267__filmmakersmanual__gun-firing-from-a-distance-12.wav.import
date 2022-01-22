@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/522267__filmmakersmanual__gun-firing-from-a-distance-12.wav-ae8f16146d875adb40391d67de78f734.sample"
+
+[deps]
+
+source_file="res://Weapon/Cannon/120mm/522267__filmmakersmanual__gun-firing-from-a-distance-12.wav"
+dest_files=[ "res://.import/522267__filmmakersmanual__gun-firing-from-a-distance-12.wav-ae8f16146d875adb40391d67de78f734.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
