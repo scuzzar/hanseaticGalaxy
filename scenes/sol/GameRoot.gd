@@ -58,7 +58,8 @@ func _process(delta):
 	if(! is_instance_valid(ship)):return
 	
 	if Input.is_action_just_pressed("debug_state"):
-		print(str(ship.transform.origin) + " + " +  str(ship.linear_velocity))
+		print("_____Player Ship_________")
+		print("pos:" + str(ship.transform.origin) + " + " +  str(ship.linear_velocity))
 		print("gforce:"+ str(ship.last_g_force))
 		print("Sun Position:" + str($Sun.global_transform.origin))
 	

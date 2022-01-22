@@ -5,6 +5,7 @@ var orbit_radius = 0
 var linear_velocity = Vector3(0,0,0)
 var angle = 0
 var angular_speed = 0 
+var orbital_speed
 var global_translation = Vector3(0,0,0)
 
 func _ready():	
@@ -25,20 +26,18 @@ func _update_orbit():
 	var kosmic = sqrt(G*M/r)
 	
 	if(orbit_radius>0.5):
-		angular_speed = 2*PI/(2*PI*orbit_radius/kosmic)	
+		angular_speed = 2*PI/(2*PI*orbit_radius/kosmic)
+		orbital_speed = kosmic
 		angle = acos(translation.z/orbit_radius)	
 
 
 func _physics_process(delta):
 	angle += (angular_speed *delta)	
 	if(angle >= 2*PI): angle -= 2*PI
-	var pX = sin(angle)*orbit_radius
-	var pZ = cos(angle)*orbit_radius
-	
-	linear_velocity = (Vector3(pX,0,pZ) -translation )/delta	
-	linear_velocity = Vector3(linear_velocity.z,0,linear_velocity.x*-1)
-
-	self.translation = Vector3(pX,0,pZ)
+		
+	self.translation = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)
+	var s = Vector3(orbital_speed,0,0).rotated(Vector3(0,1,0), angle)
+	linear_velocity = s
 	
 
 func save():

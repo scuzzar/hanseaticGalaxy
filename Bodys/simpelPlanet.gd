@@ -58,7 +58,7 @@ func _ready():
 		else:
 			angle = 0
 		print("angel:" + str(angle))
-		self._physics_process(0)
+		self._physics_process(0)		
 	else:
 		print(translation)
 
@@ -69,21 +69,14 @@ func derive_mass():
 	mass = (surface_g*radius*radius)/Globals.G
 
 func _physics_process(delta):	
-	if(!Engine.editor_hint and !isStar):
-		
+	if(!Engine.editor_hint and !isStar):		
 		angle += (angular_speed *delta)	
 		if(angle >= 2*PI): angle -= 2*PI
 		
 		self.translation = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)
-		
-		#var pX = sin(angle)*orbit_radius
-		#var pZ = cos(angle)*orbit_radius
-		
 		var s = Vector3(orbital_speed,0,0).rotated(Vector3(0,1,0), angle)
-		
-		linear_velocity = s#Vector3(linear_velocity.z,0,linear_velocity.x*-1)
+		linear_velocity = s + get_parent().linear_velocity + Globals.velocity_shift
 
-		#self.translation = Vector3(pX,0,pZ)
 
 func predictGlobalPosition(delta):
 	if(isStar):

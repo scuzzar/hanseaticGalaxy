@@ -69,8 +69,10 @@ static func mission_d_v(mission:DeliveryMission):
 		var B_Station_Speed = B_Sat.linear_velocity.length()
 		if(P_A==P_B):
 			landing_dv = 0
-		else:		
+		else:
+			
 			landing_dv = escape_d_v(P_B, B_Station_Orbit_r) - B_Station_Speed
+			print(landing_dv)
 	else:
 		landing_dv = escape_surface_d_v(P_B)
 	

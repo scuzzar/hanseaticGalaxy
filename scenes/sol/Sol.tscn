@@ -73,16 +73,14 @@ size = Vector2( 700, 700 )
 [node name="Sol" type="Spatial"]
 script = ExtResource( 23 )
 MaxtimeWarpFactor_Moon = 6
-player_spawn_point_path = NodePath("Sun/Neptun/Triton/TreePeekPort")
+player_spawn_point_path = NodePath("Sun/Jupiter/Europa/EuropaP")
 
 [node name="RotationShifter" type="Node" parent="."]
 script = ExtResource( 28 )
-logging = true
 
 [node name="Shifter" type="Node" parent="."]
 script = ExtResource( 27 )
 MAX_DISTANCE = 10000.0
-logging = true
 world_node_path = NodePath("..")
 
 [node name="Simulator" parent="." instance=ExtResource( 6 )]
@@ -115,7 +113,7 @@ surface_g = 30.0
 
 [node name="OmniLight" type="OmniLight" parent="Sun"]
 transform = Transform( 1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 10.6688, 3.74349 )
-light_indirect_energy = 0.0
+light_indirect_energy = 0.1
 omni_range = 500000.0
 
 [node name="Merkur" parent="Sun" instance=ExtResource( 16 )]
