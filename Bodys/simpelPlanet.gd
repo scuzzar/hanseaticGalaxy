@@ -53,9 +53,9 @@ func _ready():
 		orbital_speed = kosmic
 		angular_speed = 2*PI/(2*PI*orbit_radius/orbital_speed)	
 		non_shifted_angular_speed = angular_speed
-		angle = asin(translation.x/orbit_radius)	
-		var start = translation
-		var result = [start]
+		angle = Globals.RAN.randf_range(0,PI*2) # asin(translation.x/orbit_radius)	
+		print("angel:" + str(angle))
+		self._physics_process(0)
 	else:
 		print(translation)
 
@@ -65,27 +65,18 @@ func derive_mass():
 	radius = $Shape/Mesh.get_aabb().get_longest_axis_size()*s/2	
 	mass = (surface_g*radius*radius)/Globals.G
 
-func _integrate_forces(state):
-	var delta = state.step
-	if ! isStar and !Engine.editor_hint:	
+func _physics_process(delta):
+	if(!Engine.editor_hint):
 		angle += (angular_speed *delta)	
 		if(angle >= 2*PI): angle -= 2*PI
+		var pX = sin(angle)*orbit_radius
+		var pZ = cos(angle)*orbit_radius
 		
-		var x =  sin(angle)*orbit_radius
-		var z = cos(angle)*orbit_radius
-		var dx = x - self.pX 
-		var dz = z - self.pZ
-		self.pX = x
-		self.pZ = z
-		self.translation = Vector3(x,0,z)
+		var s = Vector3(orbital_speed,0,0).rotated(Vector3(0,1,0), angle)
 		
-		#state.transform.origin = Vector3(x,0,z)
-		#state.linear_velocity = Vector3(dx,0,dz)
-		
-		# = Vector3(pX,0,pZ)
-		#Needs further fixing
-	#	self.rotate_y(planetaryRotation*delta)
-	pass
+		linear_velocity = s#Vector3(linear_velocity.z,0,linear_velocity.x*-1)
+
+		self.translation = Vector3(pX,0,pZ)
 
 func predictGlobalPosition(delta):
 	if(isStar):

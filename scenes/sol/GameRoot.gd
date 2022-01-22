@@ -25,10 +25,15 @@ func newGameSetup():
 		cg.generateInitialStock()
 	ship.fuel = 0
 	Player.credits = 10000
-	if(player_spawn_point!=null):		
+	if(player_spawn_point!=null):			
 		ship.transform = player_spawn_point.get_docking_globaltransform()
-		ship.linear_velocity = player_spawn_point.getBody().linear_velocity
-		print("initVal" + str(ship.linear_velocity))
+		var spawn_body :simpelPlanet = player_spawn_point.getBody()
+		print("BodyVal" + str(spawn_body.linear_velocity) + " abs " +str(spawn_body.linear_velocity.length()))
+		var offset_vel = spawn_body.linear_velocity
+		if(!spawn_body.isPlanet):
+			offset_vel += spawn_body.get_parent().linear_velocity
+		ship.write_linear_velocity(offset_vel)# spawn_body.linear_velocity
+		
 		
 	ship.physicActiv =true
 	loaded = true	
@@ -50,6 +55,10 @@ func setShip(newShip):
 
 func _process(delta):
 	if(! is_instance_valid(ship)):return
+	
+	if Input.is_action_just_pressed("debug_state"):
+		print(str(ship.transform.origin) + " + " +  str(ship.linear_velocity))
+	
 	if Input.is_action_pressed("endGame"):
 		print("you ended the game!")
 		call_deferred("_loadScore")

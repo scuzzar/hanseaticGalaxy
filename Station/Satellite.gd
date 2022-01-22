@@ -14,6 +14,7 @@ func _ready():
 		if(translation.length()!=0):
 			orbit_radius = translation.length()
 			_update_orbit()
+			_physics_process(0)
 		else:
 			return
 

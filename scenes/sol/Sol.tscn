@@ -72,9 +72,11 @@ size = Vector2( 700, 700 )
 
 [node name="Sol" type="Spatial"]
 script = ExtResource( 23 )
+player_spawn_point_path = NodePath("Sun/Earth/Moon/ApolloPort")
 
 [node name="RotationShifter" type="Node" parent="."]
 script = ExtResource( 28 )
+activ = false
 
 [node name="Shifter" type="Node" parent="."]
 script = ExtResource( 27 )
@@ -93,6 +95,7 @@ environment = ExtResource( 20 )
 [node name="PlayerShip" parent="." instance=ExtResource( 47 )]
 transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.1, 0, -68.754 )
 physics_material_override = SubResource( 5 )
+playerControl = true
 
 [node name="Camera" parent="." groups=["persist"] instance=ExtResource( 18 )]
 min_zoom = 1.0
@@ -169,8 +172,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7500, 0, 0 )
 mode = 3
 mass = 907.228
 physics_material_override = SubResource( 4 )
-linear_velocity = Vector3( 1.219, 0, 0 )
-angular_velocity = Vector3( 0, 0.01, 0 )
 material = ExtResource( 3 )
 isPlanet = true
 surface_g = 9.81
