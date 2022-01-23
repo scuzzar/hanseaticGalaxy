@@ -74,11 +74,10 @@ size = Vector2( 700, 700 )
 [node name="Sol" type="Spatial"]
 script = ExtResource( 23 )
 MaxtimeWarpFactor_Moon = 6
-player_spawn_point_path = NodePath("Sun/Jupiter/Ganimede/GanimedP")
+player_spawn_point_path = NodePath("Sun/Earth/Moon/ApolloPort")
 
 [node name="RotationShifter" type="Node" parent="."]
 script = ExtResource( 28 )
-logging = true
 
 [node name="Shifter" type="Node" parent="."]
 script = ExtResource( 27 )

@@ -122,7 +122,7 @@ func _integrate_forces(state:PhysicsDirectBodyState):
 	_rotation(rotational_trust,state)	
 	rotational_trust = 0		
 		
-	emit_signal("telemetry_changed", self.translation, self.linear_velocity)
+	emit_signal("telemetry_changed", self.translation, state.linear_velocity)
 
 
 func calcWetMass():

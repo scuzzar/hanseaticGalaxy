@@ -26,6 +26,8 @@ var non_shifted_angular_speed : float = 0
 
 var unshifted_linear_velocity  = Vector3(0,0,0)
 
+var _last_global_pos:Vector3
+
 func _enter_tree():
 	self.add_to_group("bodys")
 	self.gravity_scale = 0
@@ -57,10 +59,18 @@ func _ready():
 			angle = Globals.RAN.randf_range(0,PI*2)
 		else:
 			angle = 0
-		print("angel:" + str(angle))
-		self._physics_process(0)		
+		derive_pos_and_vel()
 	else:
 		print(translation)
+
+func derive_pos_and_vel():
+	self.translation = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)
+	_last_global_pos = self.global_transform.origin
+	var s = Vector3(orbital_speed,0,0).rotated(Vector3(0,1,0), angle)
+	var pvshift = get_parent().unshifted_linear_velocity
+#	var vshift = Globals.velocity_shift
+	#unshifted_linear_velocity = s + pvshift
+	linear_velocity = s + pvshift #unshifted_linear_velocity + Globals.velocity_shift	
 
 func derive_mass():
 	var s = radius_description/6371.0*68	
@@ -74,11 +84,10 @@ func _physics_process(delta):
 		if(angle >= 2*PI): angle -= 2*PI
 		
 		self.translation = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)
-		var s = Vector3(orbital_speed,0,0).rotated(Vector3(0,1,0), angle)
-		var pvshift = get_parent().unshifted_linear_velocity
-		var vshift = Globals.velocity_shift
-		unshifted_linear_velocity = s + pvshift
-		linear_velocity = unshifted_linear_velocity + Globals.velocity_shift
+		
+		#update velocety
+		self.linear_velocity = (global_transform.origin - _last_global_pos)/delta
+		_last_global_pos = self.global_transform.origin
 
 
 func predictGlobalPosition(delta):
