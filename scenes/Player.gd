@@ -13,8 +13,8 @@ signal mission_about(mission)
 
 func _ready():
 	self.add_to_group("persist")
-	self.connect("mission_accepted",Pirates,"on_mission_accepted")
-	self.connect("mission_about",Pirates,"on_mission_about")
+	self.mission_accepted.connect(Pirates.on_mission_accepted)
+	self.mission_about.connect(Pirates.on_mission_about)	
 
 func reward(reward_credits : int):
 	credits +=reward_credits
@@ -68,7 +68,7 @@ func get_accepted_delivery_Missions():
 func save():
 	var save_dict = {
 		"nodePath" : "Player",
-		"filename" : get_filename(),
+		"filename" : scene_file_path,
 		"parent" : get_parent().get_path(),	
 		"credits": credits,
 		"max_engine_fuel" :max_engine_fuel,

@@ -2,12 +2,13 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/494827__nicktimesaudio__seamless-rocket-booster-roar-crackle.mp3-f407188f67d69697f45ebe12df440e18.mp3str"
+uid="uid://cx74hfklptvx"
+path="res://.godot/imported/494827__nicktimesaudio__seamless-rocket-booster-roar-crackle.mp3-f407188f67d69697f45ebe12df440e18.mp3str"
 
 [deps]
 
 source_file="res://Ship/sound/494827__nicktimesaudio__seamless-rocket-booster-roar-crackle.mp3"
-dest_files=[ "res://.import/494827__nicktimesaudio__seamless-rocket-booster-roar-crackle.mp3-f407188f67d69697f45ebe12df440e18.mp3str" ]
+dest_files=["res://.godot/imported/494827__nicktimesaudio__seamless-rocket-booster-roar-crackle.mp3-f407188f67d69697f45ebe12df440e18.mp3str"]
 
 [params]
 

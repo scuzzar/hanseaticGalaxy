@@ -1,10 +1,13 @@
-extends Spatial
+extends Node3D
 
 class_name Port
 
-export(NodePath) var defaultMissionDestination_path
+@export
+var defaultMissionDestination_path: NodePath
+
 var _defaultMissionDestination :Port
-onready var inventory = $Inventory
+@onready 
+var inventory = $Inventory
 var docked_ship: Ship
 var delivery_Missions = []
 

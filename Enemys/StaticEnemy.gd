@@ -2,7 +2,8 @@ extends Satellite
 
 class_name StaticEnemy
 
-export(int)var bounty = 0
+@export
+var bounty = 0
 
 func _on_Ship_destroyed():
 	self.queue_free()

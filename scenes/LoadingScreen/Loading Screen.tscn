@@ -1,15 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://cdjumaplb83h2"]
 
-[ext_resource path="res://scenes/LoadingScreen/Loading Screen.gd" type="Script" id=1]
-[ext_resource path="res://HUD/theme/default_theme.theme" type="Theme" id=2]
+[ext_resource type="Script" path="res://scenes/LoadingScreen/Loading Screen.gd" id="1"]
+[ext_resource type="Theme" path="res://HUD/theme/default_theme.theme" id="2"]
 
-[sub_resource type="AtlasTexture" id=1]
-region = Rect2( 171.85, 93.3335, 1242.95, 684.483 )
+[sub_resource type="AtlasTexture" id="1"]
+region = Rect2(171.85, 93.3335, 1242.95, 684.483)
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+script = ExtResource( "1" )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -19,26 +19,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -600.0
-margin_top = -400.0
-margin_right = 600.0
-margin_bottom = 400.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="S1" type="Sprite" parent="CenterContainer"]
-position = Vector2( 602.124, 400.899 )
-scale = Vector2( 1.06947, 1.06947 )
-texture = SubResource( 1 )
+[node name="S1" type="Sprite2D" parent="CenterContainer"]
+position = Vector2(602.124, 400.899)
+scale = Vector2(1.06947, 1.06947)
+texture = SubResource( "1" )
 
 [node name="FullScreen" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -130.018
-margin_top = 32.7579
-margin_right = -34.0181
-margin_bottom = 52.7579
 text = "FullScreen"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -49,11 +41,7 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -10.5
-margin_right = 48.0
-margin_bottom = 10.5
-theme = ExtResource( 2 )
+theme = ExtResource( "2" )
 text = "Loading"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -64,29 +52,25 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -46.5
-margin_right = 48.0
-margin_bottom = 46.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Resume" type="Button" parent="Menu"]
-margin_right = 82.0
-margin_bottom = 20.0
+offset_right = 93.0
+offset_bottom = 31.0
 text = "Resume"
 
 [node name="Start" type="Button" parent="Menu"]
-margin_top = 24.0
-margin_right = 82.0
-margin_bottom = 44.0
+offset_top = 35.0
+offset_right = 93.0
+offset_bottom = 66.0
 text = "New Game"
 
 [node name="Exit" type="Button" parent="Menu"]
-margin_top = 48.0
-margin_right = 82.0
-margin_bottom = 68.0
+offset_top = 70.0
+offset_right = 93.0
+offset_bottom = 101.0
 text = "Exit"
 
 [connection signal="pressed" from="FullScreen" to="." method="_on_FullScreen_pressed"]

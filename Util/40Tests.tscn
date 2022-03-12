@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdt7qqul4kuls"]
+
+[ext_resource type="Script" path="res://Util/40Tests.gd" id="1_ftuqx"]
+[ext_resource type="PackedScene" path="res://Ship/SimpleRocket/Orbital Rocket.tscn" id="2_3op7w"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource( "1_ftuqx" )
+testerv = 1
+
+[node name="Orbital Rocket" parent="." instance=ExtResource( "2_3op7w" )]

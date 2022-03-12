@@ -14,14 +14,14 @@ func _on_Area_Ship_enterd(ship : Ship):
 	if(docked_ship==null):
 		self.docked_ship = ship	
 		ship.dock(self)		
-		ship.connect("undocked",self,"on_ship_undocked")
+		ship.undocked.connect(on_ship_undocked)
 		print_debug("ship landed")
 
 func getBody() ->simpelPlanet:
 	return self.get_parent().get_parent() as simpelPlanet
 
 func on_ship_undocked(target:Port):
-	docked_ship.disconnect("undocked",self,"on_ship_undocked")
+	docked_ship.undocked.disconnect(on_ship_undocked)
 	self.docked_ship = null
 	print_debug("ship started")
 

@@ -1,52 +1,44 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://blxo61llgoeyr"]
 
-[ext_resource path="res://N_Body/Simulator.gd" type="Script" id=1]
-[ext_resource path="res://N_Body/SimPath.gd" type="Script" id=2]
-[ext_resource path="res://Bodys/Label3D.gd" type="Script" id=3]
+[ext_resource type="Script" path="res://N_Body/Simulator.gd" id="1"]
+[ext_resource type="Script" path="res://N_Body/SimPath.gd" id="2"]
+[ext_resource type="Script" path="res://Bodys/Label3D.gd" id="3"]
 
-[sub_resource type="SpatialMaterial" id=2]
-flags_unshaded = true
-flags_no_depth_test = true
-params_blend_mode = 1
-albedo_color = Color( 0.894118, 0.215686, 0.541176, 0.168627 )
+[sub_resource type="StandardMaterial3D" id="2"]
+blend_mode = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.894118, 0.215686, 0.541176, 0.168627)
 
 [node name="Simulator" type="Control"]
-script = ExtResource( 1 )
+script = ExtResource( "1" )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Path" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 2 )
+script = ExtResource( "2" )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-color = Color( 0.0352941, 0.231373, 0.894118, 1 )
+color = Color(0.0352941, 0.231373, 0.894118, 1)
 
-[node name="TargetPoint" type="StaticBody" parent="."]
+[node name="TargetPoint" type="StaticBody3D" parent="."]
 
 [node name="Lable3D" type="Label" parent="TargetPoint"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -50.0
-margin_top = -7.0
-margin_right = 50.0
-margin_bottom = 7.0
-rect_min_size = Vector2( 100, 12 )
-rect_pivot_offset = Vector2( 49.8973, 7.33237 )
+rect_min_size = Vector2(100, 12)
+rect_pivot_offset = Vector2(49.8973, 7.33237)
 text = "Planet"
-align = 1
-valign = 3
-script = ExtResource( 3 )
+script = ExtResource( "3" )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TargetBall" type="CSGSphere" parent="TargetPoint"]
-material_override = SubResource( 2 )
+[node name="TargetBall" type="CSGSphere3D" parent="TargetPoint"]
+material_override = SubResource( "2" )
 radial_segments = 23
 rings = 14

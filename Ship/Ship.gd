@@ -33,8 +33,13 @@ var fuelMass = 0
 
 var turn_to_target = false
 var target:Ship = null
-export var playerControl = false
-export var autoCircle=false
+
+@export 
+var playerControl = false
+
+@export
+var autoCircle=false
+
 var soiPlanet=null
 var weaponActive = false
 var mounts = []
@@ -44,10 +49,14 @@ var truster_trust :float = 0
 var rotational_trust :float = 0  
 
 
-onready var inventory = $Inventory
+@onready
+var inventory = $Inventory
 
-export(ENUMS.TEAM) var team = ENUMS.TEAM.NEUTRAL
-export(SHIPTYPES) var type = SHIPTYPES.NONE
+@export
+var team = ENUMS.TEAM.NEUTRAL
+
+@export 
+var type = SHIPTYPES.NONE
 
 const ShipTyp = preload("res://Ship/shipTypes.csv").records
 
@@ -61,7 +70,7 @@ signal tookDamage(damage)
 signal destryed()
 
 func _ready():
-	._ready()
+	super._ready()
 	self._loadType()
 	self.mass = dryMass
 	self.hitpoints = max_hitpoints
@@ -94,9 +103,9 @@ func _loadType():
 	truster_engine_mass_rate = ShipTyp[type]["truster_engine_mass_rate"]
 
 
-func _integrate_forces(state:PhysicsDirectBodyState):
+func _integrate_forces(state:PhysicsDirectBodyState3D):
 	if(physicActiv):
-		._integrate_forces(state)
+		super._integrate_forces(state)
 		self.calcWetMass()
 		
 	$Damage.handle_collsions(state)
@@ -134,7 +143,7 @@ func main_burn():
 func lateral_burn(burn_vector):
 	truster_vector += burn_vector
 
-func _fire_truster(state:PhysicsDirectBodyState,direction:Vector2):
+func _fire_truster(state:PhysicsDirectBodyState3D,direction:Vector2):
 	if(direction.length()==0): return
 	
 	var direction3d = Vector3(direction.x,0,direction.y)	
@@ -150,7 +159,7 @@ func _fire_truster(state:PhysicsDirectBodyState,direction:Vector2):
 	$Propulsion.trust_Vector(direction,1)
 	
 
-func _fire_main_drive(state:PhysicsDirectBodyState,trust:float):
+func _fire_main_drive(state:PhysicsDirectBodyState3D,trust:float):
 	var fuelcost =  engine_mass_rate / Globals.get_fuel_mass()  * state.step
 	
 	if(trust != 0 and (fuel - fuelcost > 0)):
@@ -229,7 +238,7 @@ func getListOfContainer():
 func can_load_container(count:int) -> bool:
 	return $Inventory.freeSpace()>=count
 
-func get_delta_v(additional_mass:float=0, additional_fuel_mass:float=0):
+func get_delta_v(additional_mass:float=0.0, additional_fuel_mass:float=0.0):
 	var m0 : float = dryMass + fuelMass + additional_fuel_mass
 	var mf : float = dryMass
 	var dV : float = engine_exaust_velocity * log(m0/mf)
@@ -274,7 +283,7 @@ func save():
 	savePos = savePos + offset
 	
 	var save_dict = {
-		"filename" : get_filename(),
+		"filename" : self.scene_file_path,
 		"parent" : get_parent().get_path(),
 		"pos_x" : savePos.x,
 		"pos_y" : savePos.y,

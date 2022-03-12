@@ -2,12 +2,13 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/522267__filmmakersmanual__gun-firing-from-a-distance-12.wav-ae8f16146d875adb40391d67de78f734.sample"
+uid="uid://dgywuhtt4ycv3"
+path="res://.godot/imported/522267__filmmakersmanual__gun-firing-from-a-distance-12.wav-ae8f16146d875adb40391d67de78f734.sample"
 
 [deps]
 
 source_file="res://Weapon/Cannon/120mm/522267__filmmakersmanual__gun-firing-from-a-distance-12.wav"
-dest_files=[ "res://.import/522267__filmmakersmanual__gun-firing-from-a-distance-12.wav-ae8f16146d875adb40391d67de78f734.sample" ]
+dest_files=["res://.godot/imported/522267__filmmakersmanual__gun-firing-from-a-distance-12.wav-ae8f16146d875adb40391d67de78f734.sample"]
 
 [params]
 

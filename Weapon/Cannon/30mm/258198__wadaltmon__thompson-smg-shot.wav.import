@@ -2,12 +2,13 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/258198__wadaltmon__thompson-smg-shot.wav-c0818ba7ff8551c7c2749d2d82a4cfff.sample"
+uid="uid://bgn05j8ntxemf"
+path="res://.godot/imported/258198__wadaltmon__thompson-smg-shot.wav-c0818ba7ff8551c7c2749d2d82a4cfff.sample"
 
 [deps]
 
 source_file="res://Weapon/Cannon/30mm/258198__wadaltmon__thompson-smg-shot.wav"
-dest_files=[ "res://.import/258198__wadaltmon__thompson-smg-shot.wav-c0818ba7ff8551c7c2749d2d82a4cfff.sample" ]
+dest_files=["res://.godot/imported/258198__wadaltmon__thompson-smg-shot.wav-c0818ba7ff8551c7c2749d2d82a4cfff.sample"]
 
 [params]
 

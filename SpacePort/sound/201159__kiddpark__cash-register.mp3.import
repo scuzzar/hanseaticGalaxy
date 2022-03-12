@@ -2,12 +2,13 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/201159__kiddpark__cash-register.mp3-2bbf5febf13f1fa77d45a4e4ecd8e1a1.mp3str"
+uid="uid://lwabw4g1vkr3"
+path="res://.godot/imported/201159__kiddpark__cash-register.mp3-2bbf5febf13f1fa77d45a4e4ecd8e1a1.mp3str"
 
 [deps]
 
 source_file="res://SpacePort/sound/201159__kiddpark__cash-register.mp3"
-dest_files=[ "res://.import/201159__kiddpark__cash-register.mp3-2bbf5febf13f1fa77d45a4e4ecd8e1a1.mp3str" ]
+dest_files=["res://.godot/imported/201159__kiddpark__cash-register.mp3-2bbf5febf13f1fa77d45a4e4ecd8e1a1.mp3str"]
 
 [params]
 

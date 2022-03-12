@@ -2,12 +2,13 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/346063__ingressblue__spaceport.mp3-d24042b1751d443fc5605c2445acbfd4.mp3str"
+uid="uid://dlcvys74gytob"
+path="res://.godot/imported/346063__ingressblue__spaceport.mp3-d24042b1751d443fc5605c2445acbfd4.mp3str"
 
 [deps]
 
 source_file="res://SpacePort/sound/346063__ingressblue__spaceport.mp3"
-dest_files=[ "res://.import/346063__ingressblue__spaceport.mp3-d24042b1751d443fc5605c2445acbfd4.mp3str" ]
+dest_files=["res://.godot/imported/346063__ingressblue__spaceport.mp3-d24042b1751d443fc5605c2445acbfd4.mp3str"]
 
 [params]
 

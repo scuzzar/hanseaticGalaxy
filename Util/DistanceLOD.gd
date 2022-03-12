@@ -1,9 +1,9 @@
 extends Node
 
-onready var cam = $"/root/Sol/Camera"
+@onready var cam = $"/root/Sol/Camera"
 
-export var active = true
-export var draw_distance = 10000
+@export var active = true
+@export var draw_distance = 10000
 var draw_distance_sqr = draw_distance*draw_distance
 
 func _process(delta):

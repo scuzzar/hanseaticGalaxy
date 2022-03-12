@@ -1,37 +1,36 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path.s3tc="res://.import/Io.albedo.noaa.4096.jpg-6accf9083735a41485f885453089539d.s3tc.stex"
-path.etc2="res://.import/Io.albedo.noaa.4096.jpg-6accf9083735a41485f885453089539d.etc2.stex"
+type="StreamTexture2D"
+uid="uid://v0h6bbijenjd"
+path.s3tc="res://.godot/imported/Io.albedo.noaa.4096.jpg-6accf9083735a41485f885453089539d.s3tc.stex"
+path.etc2="res://.godot/imported/Io.albedo.noaa.4096.jpg-6accf9083735a41485f885453089539d.etc2.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Bodys/tex/ivoyager/Io.albedo.noaa.4096.jpg"
-dest_files=[ "res://.import/Io.albedo.noaa.4096.jpg-6accf9083735a41485f885453089539d.s3tc.stex", "res://.import/Io.albedo.noaa.4096.jpg-6accf9083735a41485f885453089539d.etc2.stex" ]
+dest_files=["res://.godot/imported/Io.albedo.noaa.4096.jpg-6accf9083735a41485f885453089539d.s3tc.stex", "res://.godot/imported/Io.albedo.noaa.4096.jpg-6accf9083735a41485f885453089539d.etc2.stex"]
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.7
-compress/hdr_mode=1
+compress/hdr_compression=1
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=false
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+compress/streamed=false
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
 process/normal_map_invert_y=false
-stream=false
-size_limit=0
-detect_3d=false
-svg/scale=1.0
+process/HDR_as_SRGB=false
+process/size_limit=0
+detect_3d/compress_to=1

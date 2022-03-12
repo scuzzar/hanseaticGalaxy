@@ -1,37 +1,36 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path.s3tc="res://.import/palet_4x4.png.002.png-3fb3bfbb1fcb01a2722aadabc4c124df.s3tc.stex"
-path.etc2="res://.import/palet_4x4.png.002.png-3fb3bfbb1fcb01a2722aadabc4c124df.etc2.stex"
+type="StreamTexture2D"
+uid="uid://bsj7buxj1mqhu"
+path.s3tc="res://.godot/imported/palet_4x4.png.002.png-3fb3bfbb1fcb01a2722aadabc4c124df.s3tc.stex"
+path.etc2="res://.godot/imported/palet_4x4.png.002.png-3fb3bfbb1fcb01a2722aadabc4c124df.etc2.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Ship/KillSAT/palet_4x4.png.002.png"
-dest_files=[ "res://.import/palet_4x4.png.002.png-3fb3bfbb1fcb01a2722aadabc4c124df.s3tc.stex", "res://.import/palet_4x4.png.002.png-3fb3bfbb1fcb01a2722aadabc4c124df.etc2.stex" ]
+dest_files=["res://.godot/imported/palet_4x4.png.002.png-3fb3bfbb1fcb01a2722aadabc4c124df.s3tc.stex", "res://.godot/imported/palet_4x4.png.002.png-3fb3bfbb1fcb01a2722aadabc4c124df.etc2.stex"]
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.7
-compress/hdr_mode=1
+compress/hdr_compression=1
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=false
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+compress/streamed=false
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
 process/normal_map_invert_y=false
-stream=false
-size_limit=0
-detect_3d=false
-svg/scale=1.0
+process/HDR_as_SRGB=false
+process/size_limit=0
+detect_3d/compress_to=0

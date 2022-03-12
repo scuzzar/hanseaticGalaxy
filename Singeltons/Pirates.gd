@@ -1,6 +1,8 @@
 extends Node
 
-onready var KillSatScene = preload("res://Enemys/KillSatEnemy.tscn")
+@onready 
+var KillSatScene = preload("res://Enemys/KillSatEnemy.tscn")
+
 var RAN = RandomNumberGenerator.new()
 func _ready():
 	print("Pirates ready")
@@ -51,4 +53,4 @@ func _place_pirate_in_orbit(planet:simpelPlanet, angle, radius, mission:Delivery
 	
 	var b = mission.reward
 	killSat.bounty = RAN.randf_range(b*0.10,b*0.75)
-	mission.connect("aborted",killSat,"_on_mission_abouted")	
+	mission.aborted.connect(killSat._on_mission_abouted)	

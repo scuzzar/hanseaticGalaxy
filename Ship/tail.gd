@@ -1,18 +1,28 @@
 extends Control
 
 
-onready var tracked_Node = self.get_parent()
+@onready
+var tracked_Node = self.get_parent()
 
-export(NodePath) var frameOfReference_Node
-onready var _frameOfReference = get_node_or_null(frameOfReference_Node)
+@export 
+var frameOfReference_Node
+
+@onready
+var _frameOfReference = get_node_or_null(frameOfReference_Node)
 
 var past = []
-export var history_color = Color(0,1,0)
-export var sim_color = Color(1,0,0)
+@export
+var history_color = Color(0,1,0)
+
+@export
+var sim_color = Color(1,0,0)
 
 var history = []
-export var history_lenth = 100
-export var history_update_interfall = 0.2
+@export
+var history_lenth = 100
+
+@export
+var history_update_interfall = 0.2
 var history_update_timer = 0
 var width = 1
 

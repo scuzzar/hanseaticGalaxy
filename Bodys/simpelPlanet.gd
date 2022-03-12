@@ -1,21 +1,22 @@
-tool
-extends RigidBody
+@tool
+extends RigidDynamicBody3D
 
 class_name simpelPlanet
 
-export (Material) var material = preload("res://Bodys/materials/Mars.material") 
+@export 
+var material = preload("res://Bodys/materials/Mars.material") 
 
-export var isStar = false
-export var isPlanet = false
-export var doRotationShift = true
-export(ENUMS.SECURETY) var securety_level = ENUMS.SECURETY.CORE
+@export var isStar = false
+@export var isPlanet = false
+@export var doRotationShift = true
+@export var securety_level = ENUMS.SECURETY.CORE
 
 var orbital_speed :float = 0
-export var planetaryRotation :float= 0
-export var radius_description:float = 6371
-export(float) var surface_g = 5
+@export var planetaryRotation :float= 0
+@export var radius_description:float = 6371
+@export var surface_g = 5.0
 
-onready var orbit_radius : float 
+@onready var orbit_radius : float 
 
 #var orbit
 var angle : float = 0
@@ -34,7 +35,7 @@ func _enter_tree():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	orbit_radius = translation.length()
+	orbit_radius = position.length()
 	$Shape/Mesh.material_override = material
 	isGravetySource = (surface_g>0)
 	$Lable3D.text = name
@@ -47,11 +48,11 @@ func _ready():
 		var r = orbit_radius
 		var G = Globals.G
 		var parent = get_parent()
-		if(parent is RigidBody):
+		if(parent is RigidDynamicBody3D):
 			parent.derive_mass()
 		var M = get_parent().mass
 		var kosmic = sqrt(G*M/r)
-		print(self.name + " O_Speed:" + str(kosmic) + " O_perimeter:" + str(2*PI*orbit_radius))
+		print(str(self.name) + " O_Speed:" + str(kosmic) + " O_perimeter:" + str(2*PI*orbit_radius))
 		orbital_speed = kosmic
 		angular_speed = 2*PI/(2*PI*orbit_radius/orbital_speed)	
 		non_shifted_angular_speed = angular_speed
@@ -61,7 +62,7 @@ func _ready():
 			angle = 0
 		derive_pos_and_vel()
 	else:
-		print(translation)
+		print(position)
 
 func derive_pos_and_vel():
 	self.translation = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)
@@ -101,7 +102,7 @@ func predictGlobalPosition(delta):
 
 func save():
 	var save_dict = {
-		"filename" : get_filename(),
+		"filename" : scene_file_path,
 		"parent" : get_parent().get_path(),		
 		"angle" : angle,
 		"orbit_radius" : orbit_radius

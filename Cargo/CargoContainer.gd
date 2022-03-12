@@ -1,9 +1,9 @@
-extends Spatial
+extends Node3D
 
 class_name CargoContainer
 var loaded = false
 
-export(TYP.CARGO) var cargo  
+var cargo  
 
 signal clicked(sender)
 

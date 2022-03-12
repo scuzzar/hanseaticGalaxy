@@ -2,11 +2,14 @@ extends Mission
 
 class_name DeliveryMission
 
-var destination :Spatial
-var origin :Spatial
+var destination 
+var origin
 var cargoContainer = []
 var pirates = []
-export(TYP.CARGO) var cargo
+
+var cargo
+
+
 const MissionContainerScene = preload("res://Cargo/CargoContainer.scn")
 
 signal aborted()
@@ -47,8 +50,9 @@ func getContainerCount()->int:
 	return cargoContainer.size()
 
 func save():	
+	
 	var save_dict = {
-		"filename" : get_filename(),
+		"filename" : scene_file_path,
 		"parent" : get_parent().get_path(),
 		"destination" : destination.get_path(),
 		"origin" : origin.get_path(),

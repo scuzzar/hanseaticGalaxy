@@ -1,14 +1,18 @@
-tool
-extends Spatial
+@tool
+extends Node3D
 
 class_name mount_point
 
-export(ENUMS.WEAPON) var mount = ENUMS.WEAPON.NONE setget set_mount
+@export
+var mount = ENUMS.WEAPON.NONE 
 const WeaponTyp = preload("res://Weapon/WeaponTypes.csv").records
 var turn_rate = 20
 
-export var turn_limit = 15/360*2*PI
-onready var no_turn_transform = self.transform
+@export 
+var turn_limit = 15/360*2*PI
+
+@onready 
+var no_turn_transform = self.transform
 
 func _ready():
 	do_mount()

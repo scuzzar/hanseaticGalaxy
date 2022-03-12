@@ -2,12 +2,13 @@
 
 importer="com.timothyqiu.godot-csv-importer"
 type="Resource"
-path="res://.import/WeaponTypes.csv-6e086aacbe22e26a87b1c726af305a81.res"
+uid="uid://cmpk88tgkj1dv"
+path="res://.godot/imported/WeaponTypes.csv-6e086aacbe22e26a87b1c726af305a81.res"
 
 [deps]
 
 source_file="res://Weapon/WeaponTypes.csv"
-dest_files=[ "res://.import/WeaponTypes.csv-6e086aacbe22e26a87b1c726af305a81.res" ]
+dest_files=["res://.godot/imported/WeaponTypes.csv-6e086aacbe22e26a87b1c726af305a81.res"]
 
 [params]
 

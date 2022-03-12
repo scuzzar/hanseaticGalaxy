@@ -1,9 +1,9 @@
 extends Node
 class_name ENUMS
 enum TEAM {
-	PLAYER,
-	PIRATES,
-	NEUTRAL
+	PLAYER = 0,
+	PIRATES = 1,
+	NEUTRAL = 2
 }
 
 enum SECURETY {

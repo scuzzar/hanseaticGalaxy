@@ -1,15 +1,16 @@
 extends Node
 
-export var simulation_time = 100
-export var simulation_time_inc = 300
-export var simulation_delta_t = 1.0
-export var simulatoin_update_interfall = 1.0
+@export var simulation_time = 100
+@export var simulation_time_inc = 300
+@export var simulation_delta_t = 1.0
+@export var simulatoin_update_interfall = 1.0
 
-export(NodePath) var _simulation_object_path
-onready var _simulation_Object:Rigid_N_Body = get_node_or_null(_simulation_object_path)
+@export_node_path var _simulation_object_path
 
-export var on = false
-export var relativ_to_soi = false
+@onready var _simulation_Object:Rigid_N_Body = get_node_or_null(_simulation_object_path)
+
+@export var on = false
+@export var relativ_to_soi = false
 
 
 var simulation_pos = []

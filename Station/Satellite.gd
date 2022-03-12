@@ -1,4 +1,4 @@
-extends Spatial
+extends Node3D
 
 class_name Satellite
 var orbit_radius = 0
@@ -12,8 +12,8 @@ func _ready():
 	if(orbit_radius!=0):
 		_update_orbit()
 	else:
-		if(translation.length()!=0):
-			orbit_radius = translation.length()
+		if(position.length()!=0):
+			orbit_radius = position.length()
 			_update_orbit()
 			_physics_process(0)
 		else:
@@ -28,7 +28,7 @@ func _update_orbit():
 	if(orbit_radius>0.5):
 		angular_speed = 2*PI/(2*PI*orbit_radius/kosmic)
 		orbital_speed = kosmic
-		angle = acos(translation.z/orbit_radius)	
+		angle = acos(position.z/orbit_radius)	
 
 
 func _physics_process(delta):
@@ -42,7 +42,7 @@ func _physics_process(delta):
 
 func save():
 	var save_dict = {
-		"filename" : get_filename(),
+		"filename" : scene_file_path,
 		"parent" : get_parent().get_path(),		
 		"angle" : angle,
 		"angular_speed" : angular_speed,

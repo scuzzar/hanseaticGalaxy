@@ -1,37 +1,36 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path.s3tc="res://.import/ifb56sns.bmp-93259ebcbe1df2542f7999a5f809ea87.s3tc.stex"
-path.etc2="res://.import/ifb56sns.bmp-93259ebcbe1df2542f7999a5f809ea87.etc2.stex"
+type="StreamTexture2D"
+uid="uid://to4ardg5b4ho"
+path.s3tc="res://.godot/imported/ifb56sns.bmp-93259ebcbe1df2542f7999a5f809ea87.s3tc.stex"
+path.etc2="res://.godot/imported/ifb56sns.bmp-93259ebcbe1df2542f7999a5f809ea87.etc2.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Bodys/tex/ifb56sns.bmp"
-dest_files=[ "res://.import/ifb56sns.bmp-93259ebcbe1df2542f7999a5f809ea87.s3tc.stex", "res://.import/ifb56sns.bmp-93259ebcbe1df2542f7999a5f809ea87.etc2.stex" ]
+dest_files=["res://.godot/imported/ifb56sns.bmp-93259ebcbe1df2542f7999a5f809ea87.s3tc.stex", "res://.godot/imported/ifb56sns.bmp-93259ebcbe1df2542f7999a5f809ea87.etc2.stex"]
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.7
-compress/hdr_mode=1
+compress/hdr_compression=1
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=false
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+compress/streamed=false
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
 process/normal_map_invert_y=false
-stream=false
-size_limit=0
-detect_3d=false
-svg/scale=1.0
+process/HDR_as_SRGB=false
+process/size_limit=0
+detect_3d/compress_to=1

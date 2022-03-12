@@ -1,13 +1,14 @@
 [remap]
 
-importer="ogg_vorbis"
+importer="oggvorbisstr"
 type="AudioStreamOGGVorbis"
-path="res://.import/587195__derplayer__explosion-07-Short.ogg-916bf9c45b82df1a68557627b884be88.oggstr"
+uid="uid://bvp32mmc008s2"
+path="res://.godot/imported/587195__derplayer__explosion-07-Short.ogg-916bf9c45b82df1a68557627b884be88.oggvorbisstr"
 
 [deps]
 
 source_file="res://Weapon/Cannon/120mm/587195__derplayer__explosion-07-Short.ogg"
-dest_files=[ "res://.import/587195__derplayer__explosion-07-Short.ogg-916bf9c45b82df1a68557627b884be88.oggstr" ]
+dest_files=["res://.godot/imported/587195__derplayer__explosion-07-Short.ogg-916bf9c45b82df1a68557627b884be88.oggvorbisstr"]
 
 [params]
 

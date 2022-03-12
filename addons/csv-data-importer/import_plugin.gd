@@ -1,62 +1,61 @@
-tool
 extends EditorImportPlugin
 
-enum Presets { CSV, CSV_HEADER, TSV, TSV_HEADER }
+class_name csvImport
+
+enum myPresets { CSV=1, CSV_HEADER=2, TSV=3, TSV_HEADER=4 }
 enum Delimiters { COMMA, TAB, SEMICOLON }
 
-
-func get_importer_name():
+func _get_importer_name():
 	return "com.timothyqiu.godot-csv-importer"
 
-
-func get_visible_name():
+func _get_visible_name():
 	return "CSV Data"
 
 
-func get_priority():
+func _get_priority():
 	# The built-in Translation importer needs a restart to switch to other importer
 	return 0.75
 
 
-func get_recognized_extensions():
+func _get_recognized_extensions():
 	return ["csv", "tsv"]
 
 
-func get_save_extension():
+func _get_save_extension():
 	return "res"
 
 
-func get_resource_type():
+func _get_resource_type():
 	return "Resource"
 
 
-func get_preset_count():
-	return Presets.size()
+func _get_preset_count():
+	return csvImport.myPresets.size()
 
 
-func get_preset_name(preset):
+func _get_preset_name(preset):
 	match preset:
-		Presets.CSV:
+		csvImport.myPresets.CSV:
 			return "CSV"
-		Presets.CSV_HEADER:
+		csvImport.myPresets.CSV_HEADER:
 			return "CSV with headers"
-		Presets.TSV:
+		csvImport.myPresets.TSV:
 			return "TSV"
-		Presets.TSV_HEADER:
+		csvImport.myPresets.TSV_HEADER:
 			return "TSV with headers"
 		_:
 			return "Unknown"
 
 
-func get_import_options(preset):
-	var delimiter = Delimiters.COMMA
+func _get_import_options(path: String, preset_index: int):
+	var delimiter = csvImport.Delimiters.COMMA
 	var headers = false
-	match preset:
-		Presets.CSV_HEADER:
+	match preset_index:
+		csvImport.myPresets.CSV_HEADER:
 			headers = true
-		Presets.TSV:
+		csvImport.myPresets.TSV:
 			delimiter = Delimiters.TAB
-		Presets.TSV_HEADER:
+		csvImport.myPresets.TSV_HEADER:
 			delimiter = Delimiters.TAB
 			headers = true
 	
@@ -68,14 +67,14 @@ func get_import_options(preset):
 	]
 
 
-func get_option_visibility(option, options):
+func _get_option_visibility(path: String, option_name: StringName, options: Dictionary):
 	return true  # Godot does not update the visibility immediately
-	if option == "force_float":
+	if option_name == "force_float":
 		return options.detect_numbers
 	return true
 
 
-func import(source_file, save_path, options, platform_variants, gen_files):
+func _import(source_file, save_path, options, platform_variants, gen_files):
 	var delim: String
 	match options.delimiter:
 		Delimiters.COMMA:
@@ -97,10 +96,10 @@ func import(source_file, save_path, options, platform_variants, gen_files):
 		if options.detect_numbers and (not options.headers or lines.size() > 0):
 			var detected := []
 			for field in line:
-				if not options.force_float and field.is_valid_integer():
-					detected.append(int(field))
+				if not options.force_float and field.is_valid_int():
+					detected.append(field.to_int())
 				elif field.is_valid_float():
-					detected.append(float(field))
+					detected.append(field.to_float())
 				else:
 					detected.append(field)
 			lines.append(detected)
@@ -109,13 +108,13 @@ func import(source_file, save_path, options, platform_variants, gen_files):
 	file.close()
 	
 	# Remove trailing empty line
-	if not lines.empty() and lines.back().size() == 1 and lines.back()[0] == "":
+	if not lines.is_empty()and lines.back().size() == 1 and lines.back()[0] == "":
 		lines.pop_back()
 
 	var data = preload("csv_data.gd").new()
 	
 	if options.headers:
-		if lines.empty():
+		if lines.is_empty():
 			printerr("Can't find header in empty file")
 			return ERR_PARSE_ERROR
 		
@@ -134,7 +133,7 @@ func import(source_file, save_path, options, platform_variants, gen_files):
 	else:
 		data.records = lines
 	
-	var filename = save_path + "." + get_save_extension()
+	var filename = save_path + "." + _get_save_extension()
 	err = ResourceSaver.save(filename, data)
 	if err != OK:
 		printerr("Failed to save resource: ", err)
