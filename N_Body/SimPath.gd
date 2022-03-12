@@ -1,6 +1,6 @@
 extends Control
 
-export var color = Color(0,1,0)
+@export var color = Color(0,1,0)
 
 var path = []
 var width = 1
@@ -20,7 +20,7 @@ func _draw_list(list, relativ_to, color):
 				var p1 = get_viewport().get_camera().unproject_position(v1)
 				var p2 = get_viewport().get_camera().unproject_position(v2)
 				if(get_viewport_rect().has_point(p2) or get_viewport_rect().has_point(p1)):
-					draw_line(p1,p2,color,width,true)
+					draw_line(p1,p2,color,width)
 	
 
 func _on_reference_changed(old_body, new_body):

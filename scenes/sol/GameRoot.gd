@@ -1,15 +1,15 @@
-extends Spatial
+extends Node3D
 
 
 #var loader : ResourceInteractiveLoader
-onready var ship:Ship = $PlayerShip
-onready var all = self.get_children()
-export var MaxtimeWarpFactor = 400
-export var MaxtimeWarpFactor_Planet = 50
-export var MaxtimeWarpFactor_Moon = 5
+@onready var ship:Ship = $PlayerShip
+@onready var all = self.get_children()
+@export var MaxtimeWarpFactor = 400
+@export var MaxtimeWarpFactor_Planet = 50
+@export var MaxtimeWarpFactor_Moon = 5
 
-export(NodePath) var player_spawn_point_path = "Sun/Earth/BrasiliaPort"
-onready var player_spawn_point:Port = get_node_or_null(player_spawn_point_path)
+@export var player_spawn_point_path : NodePath = "Sun/Earth/BrasiliaPort" 
+@onready var player_spawn_point:Port = get_node_or_null(player_spawn_point_path)
 
 var loaded = false
 
@@ -33,7 +33,7 @@ func newGameSetup():
 		var offset_vel = spawn_body.linear_velocity
 		if(!spawn_body.isPlanet):
 			offset_vel += spawn_body.get_parent().linear_velocity
-		ship.write_linear_velocity(offset_vel)
+		ship.set_write_linear_velocity(offset_vel)
 	
 			
 	ship.physicActiv =true
@@ -85,7 +85,7 @@ func _process(delta):
 		if(ship.docking_location != null and ship.docking_location is SpaceStation):
 			factor = 50
 		elif(p.isStar):
-			 factor = clamp(1 / ship.last_g_force.length()*200,5,MaxtimeWarpFactor)
+			factor = clamp(1 / ship.last_g_force.length()*200,5,MaxtimeWarpFactor)
 		elif(p.isPlanet):
 			factor = clamp(1 / ship.last_g_force.length()*p.radius/2,5,MaxtimeWarpFactor_Planet)	
 		else:
@@ -207,16 +207,18 @@ func save_game():
 
 	dataList.append(Player.save())
 	#Sort, so that parents come first in file.
-	dataList.sort_custom(self,"_sortNasedLast")
+	dataList.sort_custom(_sortNasedLast)
 	
 	for data in dataList:	
-		save_game.store_line(to_json(data))
+		var json = JSON.new()
+		save_game.store_line(json.stringify(data))
 	save_game.close()
 
 func _sortNasedLast(a,b):
 	return a["parent"].get_name_count()<b["parent"].get_name_count()
 
 func load_game():
+	var json = JSON.new()
 	loaded = false
 	var save_game = File.new()
 	if not save_game.file_exists(Globals.QUICKSAVE_PATH):
@@ -229,7 +231,8 @@ func load_game():
 		print(Globals.QUICKSAVE_PATH + " is empty")
 	while save_game.get_position() < save_game.get_len():
 		var line = save_game.get_line()
-		var node_data = parse_json(line)
+		var error = json.parse(line)
+		var node_data = json.get_data()
 		if(node_data==null): 
 			print(line)
 			continue

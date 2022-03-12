@@ -1,49 +1,43 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://55r1r1eb23gr"]
 
-[ext_resource path="res://Bodys/simpelPlanet.gd" type="Script" id=1]
-[ext_resource path="res://Bodys/materials/Mars.material" type="Material" id=2]
-[ext_resource path="res://Bodys/Label3D.gd" type="Script" id=4]
+[ext_resource type="Script" path="res://Bodys/simpelPlanet.gd" id="1"]
+[ext_resource type="Material" path="res://Bodys/materials/Mars.material" id="2"]
+[ext_resource type="Script" path="res://Bodys/Label3D.gd" id="4"]
 
-[sub_resource type="SphereShape" id=3]
+[sub_resource type="SphereShape3D" id="3"]
 
-[sub_resource type="SphereMesh" id=2]
+[sub_resource type="SphereMesh" id="2"]
 
-[node name="Planet" type="RigidBody" groups=["persist"]]
+[node name="Planet" type="RigidDynamicBody3D" groups=["persist"]]
 collision_layer = 9
-mode = 1
 mass = 462.4
 gravity_scale = 0.0
 custom_integrator = true
-script = ExtResource( 1 )
+script = ExtResource( "1" )
 __meta__ = {
 "_edit_group_": true
 }
+planetaryRotation = 0.0
+radius_description = 6371.0
 
-[node name="Shape" type="CollisionShape" parent="."]
-transform = Transform( 68, 0, 0, 0, 68, 0, 0, 0, 68, 0, 0, 0 )
-shape = SubResource( 3 )
+[node name="Shape" type="CollisionShape3D" parent="."]
+transform = Transform3D(68, 0, 0, 0, 68, 0, 0, 0, 68, 0, 0, 0)
+shape = SubResource( "3" )
 
-[node name="Mesh" type="MeshInstance" parent="Shape"]
-material_override = ExtResource( 2 )
-use_in_baked_light = true
-mesh = SubResource( 2 )
-material/0 = null
+[node name="Mesh" type="MeshInstance3D" parent="Shape"]
+material_override = ExtResource( "2" )
+gi_mode = 1
+mesh = SubResource( "2" )
 
 [node name="Lable3D" type="Label" parent="."]
+rect_min_size = Vector2(100, 12)
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -50.0
-margin_top = -7.0
-margin_right = 50.0
-margin_bottom = 7.0
-rect_min_size = Vector2( 100, 12 )
-rect_pivot_offset = Vector2( 49.8973, 7.33237 )
+rect_pivot_offset = Vector2(49.8973, 7.33237)
 text = "Planet"
-align = 1
-valign = 3
-script = ExtResource( 4 )
+script = ExtResource( "4" )
 __meta__ = {
 "_edit_use_anchors_": false
 }

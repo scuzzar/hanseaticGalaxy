@@ -1,7 +1,7 @@
 extends "res://Mission/Delivery/DeliveryMissionOverview.gd"
 
-onready var mass_value = $Footer/mass_value
-onready var max_mass_value = $Footer/max_mass_value
+@onready var mass_value = $Footer/mass_value
+@onready var max_mass_value = $Footer/max_mass_value
 
 var missionCart = []
 var missionCartSlots = 0
@@ -37,7 +37,7 @@ func clearPort(target):
 		target.inventory.disconnect("container_added", self, "_Inventory_added_container")
 
 func update():
-	.update()
+	super.update()
 	_on_ship_mass_change()
 
 func _add_mission(mission:DeliveryMission):	

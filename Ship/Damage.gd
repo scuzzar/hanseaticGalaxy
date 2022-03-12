@@ -1,8 +1,8 @@
 extends Node
 
-onready var ship :RigidBody = $"../"
+@onready var ship :RigidDynamicBody3D = $"../"
 
-func handle_collsions(state:PhysicsDirectBodyState):
+func handle_collsions(state):
 	if(state.get_contact_count()!=0):
 		var colliding_body = state.get_contact_collider_object(0)
 		var impulseSum = 0
@@ -12,7 +12,7 @@ func handle_collsions(state:PhysicsDirectBodyState):
 		self._on_impact(colliding_body,impulseSum)
 
 
-func _on_impact(colliding_body:RigidBody,impulse:float):
+func _on_impact(colliding_body:RigidDynamicBody3D,impulse:float):
 	if(impulse>40):
 		takeDamege(impulse/5*ship.max_hitpoints/100)
 		print(impulse)

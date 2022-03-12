@@ -1,9 +1,9 @@
-tool
+@tool
 extends EditorScenePostImport
 
 func post_import(ship):
 	var slotNr = 1
-	ship = ship as Spatial
+	ship = ship as Node3D
 	for c in ship.get_children():
 		if c.name.begins_with("slot"):
 			var new_slot = Position3D.new()			

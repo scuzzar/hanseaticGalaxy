@@ -1,16 +1,16 @@
 extends Spatial
 
-onready var ship:Ship = get_node("../PlayerShip")
-onready var tilt:Spatial = $TiltAxis
-onready var camera:Camera = $TiltAxis/Camera
+@onready var ship:Ship = get_node("../PlayerShip")
+@onready var tilt:Spatial = $TiltAxis
+@onready var camera:Camera = $TiltAxis/Camera
 
-export var min_zoom := 0.5
-export var max_zoom := 20000
-export var zoom_factor := 1
-export var zoom_factor_factor := 0.2
-export var zoom_duration := 0.2
+@export var min_zoom := 0.5
+@export var max_zoom := 20000
+@export var zoom_factor := 1
+@export var zoom_factor_factor := 0.2
+@export var zoom_duration := 0.2
 
-export var rotation_speed := 0.5
+@export var rotation_speed := 0.5
 
 var storedFreeRotation = Vector3(0,0,0)
 
@@ -21,11 +21,11 @@ enum STATE{
 	FREE
 }
 
-export var state = STATE.PLANET
+@export var state = STATE.PLANET
 
-var _zoom_level := 1.0 setget _set_zoom_level
+var _zoom_level = 1.0 
 
-onready var tween: Tween = $ZoomTween
+@onready var tween: Tween = $ZoomTween
 
 var _next_rotation = Vector2(0,0)
 

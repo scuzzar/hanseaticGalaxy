@@ -1,7 +1,7 @@
 extends Node
 
 
-onready var ship = get_parent()
+@onready var ship = get_parent()
 
 
 func _lateral_circularize_burn(state):

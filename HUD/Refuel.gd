@@ -1,10 +1,10 @@
 extends Panel
 
-onready var slider:HSlider = $Grid/Refuel
-onready var price_lable:Label =$Grid/Price
-onready var sum:Label =$Grid/Sum
-onready var amount_lable:Label =$Grid/amount
-onready var mass_lable:Label =$Grid/mass
+@onready var slider:HSlider = $Grid/Refuel
+@onready var price_lable:Label =$Grid/Price
+@onready var sum:Label =$Grid/Sum
+@onready var amount_lable:Label =$Grid/amount
+@onready var mass_lable:Label =$Grid/mass
 
 signal refuel_cart_change(amount)
 
@@ -24,7 +24,7 @@ func setShip(ship:Ship):
 
 
 func _on_Refuel_pressed():	
-	var refuel_cost = int(sum.text)
+	var refuel_cost = sum.text.to_int()
 	var amount = slider.value
 	if(!Player.credits>refuel_cost):
 		amount = int(Player.credits/refuel_cost*amount)

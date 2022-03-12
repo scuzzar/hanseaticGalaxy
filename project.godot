@@ -9,10 +9,20 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Node",
+"class": &"AI",
+"language": &"GDScript",
+"path": "res://Enemys/AI.gd"
+}, {
 "base": "Node3D",
 "class": &"CargoContainer",
 "language": &"GDScript",
 "path": "res://Cargo/CargoContainer.gd"
+}, {
+"base": "Node",
+"class": &"CargoTarget",
+"language": &"GDScript",
+"path": "res://SpacePort/CargoTarget.gd"
 }, {
 "base": "Node",
 "class": &"D_V_Estimator",
@@ -54,6 +64,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://Ship/Ship.gd"
 }, {
+"base": "ImmediateMesh",
+"class": &"SimplePlanetOrbit",
+"language": &"GDScript",
+"path": "res://Bodys/SimplePlanetOrbit.gd"
+}, {
 "base": "Port",
 "class": &"SpaceStation",
 "language": &"GDScript",
@@ -85,7 +100,9 @@ _global_script_classes=[{
 "path": "res://Bodys/simpelPlanet.gd"
 }]
 _global_script_class_icons={
+"AI": "",
 "CargoContainer": "",
+"CargoTarget": "",
 "D_V_Estimator": "",
 "DeliveryMission": "",
 "ENUMS": "",
@@ -94,6 +111,7 @@ _global_script_class_icons={
 "Rigid_N_Body": "",
 "Satellite": "",
 "Ship": "",
+"SimplePlanetOrbit": "",
 "SpaceStation": "",
 "StaticEnemy": "",
 "TYP": "",
@@ -113,8 +131,8 @@ config/features=PackedStringArray("4.0")
 [autoload]
 
 Globals="*res://Singeltons/Globals.gd"
-Player="res://scenes/Player.gd"
-Pirates="res://Singeltons/Pirates.gd"
+Player="*res://scenes/Player.gd"
+Pirates="*res://Singeltons/Pirates.gd"
 SceneManager="*res://scenes/SceneManager.gd"
 Typ="*res://Singeltons/TYP.gd"
 

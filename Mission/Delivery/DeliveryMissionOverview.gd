@@ -1,7 +1,7 @@
 extends Panel
 
 var rawScene = preload("res://Mission/Delivery/DeliveryRaw.tscn")
-onready var vBox = $"Container/VBoxContainer"
+@onready var vBox = $"Container/VBoxContainer"
 
 #var destinationMap={}
 

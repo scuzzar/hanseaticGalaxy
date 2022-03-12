@@ -1,7 +1,7 @@
 extends Node
 
-export(NodePath) var slot_parent_path
-onready var slot_parent:Node
+@export var slot_parent_path : NodePath
+@onready var slot_parent:Node
 var slots = []
 
 var stock ={
@@ -38,7 +38,7 @@ func addContainter(container:CargoContainer, i : int):
 	assert(slot.get_child_count()==0)	
 	slot.add_child(container)	
 	#container.translation = Vector3(0,0,0)
-	container.connect("clicked",self,"_on_container_clicked")
+	#container.clicked.connect(self._ _on_container_clicked)
 	container.loaded = true	
 	stock[container.cargo] = stock[container.cargo]+1
 	
@@ -94,7 +94,7 @@ func hasContainer(container:CargoContainer) -> bool:
 				return true
 	return false
 
-func stock(cargo)->int:
+func getStock(cargo)->int:
 	return stock[cargo]
 	
 func remove_all_container(ContainerArray) -> bool:
@@ -107,7 +107,7 @@ func removeContainer(container:CargoContainer) -> bool :
 	for slot in slots:
 		if(slot.get_child_count() == 1 and slot.get_child(0)==container):
 			slot.remove_child(container)			
-			container.disconnect("clicked",self,"_on_container_clicked")
+			#container.disconnect("clicked",self,"_on_container_clicked")
 			container.loaded = false
 			stock[container.cargo] = stock[container.cargo]-1			
 			emit_signal("container_removed",container)

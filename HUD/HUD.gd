@@ -1,23 +1,23 @@
 extends Control
 
-onready var fuel_bar = $Footer/Fuel/FuelBar
-onready var fuel_cart_bar = $Footer/Fuel/FuelCartBar
-onready var dV_labe = $Footer/Fuel/VD
-onready var live_bar = $Footer/Life/Bar
-onready var credit_labe = $Credits/Value
-onready var tmr_labe = $DataBox/TMR/Value
-onready var g_labe = $DataBox/G_Meter/Value
-onready var mass_labe = $DataBox/MASS/Value
-onready var refuel = $Refuel
-onready var accept_button = $Button
+@onready var fuel_bar = $Footer/Fuel/FuelBar
+@onready var fuel_cart_bar = $Footer/Fuel/FuelCartBar
+@onready var dV_labe = $Footer/Fuel/VD
+@onready var live_bar = $Footer/Life/Bar
+@onready var credit_labe = $Credits/Value
+@onready var tmr_labe = $DataBox/TMR/Value
+@onready var g_labe = $DataBox/G_Meter/Value
+@onready var mass_labe = $DataBox/MASS/Value
+@onready var refuel = $Refuel
+@onready var accept_button = $Button
 
 #onready var v_labe = $DataBox/V_Meter/Value
 #onready var v_cosmic = $DataBox/V_cosmic/Value
 #onready var v_escape = $DataBox/V_escape/Value
 
-onready var v_labe = $CenterHUB/V_Meter/Value
-onready var v_cosmic = $CenterHUB/V_cosmic/Value
-onready var v_escape = $CenterHUB/V_escape/Value
+@onready var v_labe = $CenterHUB/V_Meter/Value
+@onready var v_cosmic = $CenterHUB/V_cosmic/Value
+@onready var v_escape = $CenterHUB/V_escape/Value
 
 signal shipOrderd(ship)
 
@@ -29,7 +29,7 @@ var ship_position:Vector3
 var ship:Ship
 # Called when the node enters the scene tree for the first time.
 func _ready():	
-	Player.connect("credits_changed",self,"_on_credits_changed")
+	Player.credits_changed.connect(_on_credits_changed)
 	$ShipShopButton.hide()
 	credit_labe.text = str(Player.credits)	
 	pass
@@ -51,12 +51,12 @@ func _process(delta):
 func setShip(ship:Ship):
 	self.ship = ship
 	ship_mass = ship.mass
-	ship.connect("docked",self,"_on_Ship_docked")	
-	ship.connect("fuel_changed",self,"_on_Ship_fuel_changed")
-	ship.connect("g_force_update",self,"_on_Ship_g_force_update")
-	ship.connect("mass_changed",self,"_on_Ship_mass_changed")
-	ship.connect("telemetry_changed",self,"_on_Ship_telemetry_changed")
-	ship.connect("undocked",self,"_on_Ship_undocked")
+	ship.docked.connect(_on_Ship_docked)	
+	ship.fuel_changed.connect(_on_Ship_fuel_changed)
+	ship.g_force_update.connect(_on_Ship_g_force_update)
+	ship.mass_changed.connect(_on_Ship_mass_changed)
+	ship.telemetry_changed.connect(_on_Ship_telemetry_changed)
+	ship.undocked.connect(_on_Ship_undocked)
 	_on_Ship_fuel_changed(ship.fuel,ship.fuel_cap)
 
 func _on_Ship_fuel_changed(fuel,fuel_cap):
@@ -80,7 +80,7 @@ func _on_Ship_mass_changed(mass):
 
 func _on_Ship_g_force_update(force,p_stronges_body,strongest_force):
 	self.strongest_body = p_stronges_body as simpelPlanet
-	g_labe.text = str("%0.2f" % (force.length()/ship_mass)) + " (" + strongest_body.name + ")"	
+	g_labe.text = str("%0.2f" % (force.length()/ship_mass)) + " (" + str(strongest_body.name) + ")"	
 
 func _on_Ship_telemetry_changed(position,velocety):
 	self.ship_position = position

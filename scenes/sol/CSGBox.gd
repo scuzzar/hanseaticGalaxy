@@ -1,6 +1,6 @@
 extends CSGBox
 
-onready var t
+@onready var t
 
 func _process(delta):
 	t = get_parent().angular_speed

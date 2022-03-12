@@ -1,7 +1,7 @@
 
 extends Node
 class_name CargoTarget
-export(TYP.CARGO) var cargo = TYP.CARGO.NONE
+@export var cargo = TYP.CARGO.NONE
 
 var initial_name
 

@@ -1,6 +1,6 @@
 extends Node
 
-onready var ship = get_parent()
+@onready var ship = get_parent()
 
 
 
@@ -9,16 +9,16 @@ func _turn_turrents(delta):
 	var dropPlane  = Plane(Vector3(0, 1, 0), 0)
 	var camera = get_viewport().get_camera()
 	var position3D = dropPlane.intersects_ray(
-							 camera.project_ray_origin(position2D),
-							 camera.project_ray_normal(position2D))
+		camera.project_ray_origin(position2D),
+		camera.project_ray_normal(position2D))
 	if(position3D!=null):
 		for mount in ship.mounts :
-			var ownTransform:Transform = mount.global_transform
+			var ownTransform:Transform3D = mount.global_transform
 			var look_transform = ownTransform.looking_at(position3D,Vector3(0,1,0))
 			var angle = look_transform.basis.get_euler().y
 			
-			var nt:Transform = mount.no_turn_transform
-			var st:Transform = ship.global_transform
+			var nt:Transform3D = mount.no_turn_transform
+			var st:Transform3D = ship.global_transform
 			
 			nt = nt.rotated(Vector3(0,1,0),st.basis.get_euler().y-PI/2)
 			
@@ -37,4 +37,4 @@ func _turn_turrents(delta):
 			var turnrate =mount.turn_rate
 			var turnAngle =angleD#  clamp(angleD,mount.turn_rate*-1*delta,mount.turn_rate*delta)
 	
-			(mount as Spatial).global_rotate(Vector3(0,1,0),turnAngle)
+			(mount as Node3D).global_rotate(Vector3(0,1,0),turnAngle)

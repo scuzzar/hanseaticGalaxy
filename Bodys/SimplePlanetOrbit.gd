@@ -1,5 +1,5 @@
-tool
-extends ImmediateGeometry
+@tool
+extends ImmediateMesh 
 
 class_name SimplePlanetOrbit
 
@@ -14,7 +14,7 @@ func _ready():
 		self.set_process(false)
 	pass
 
-export var sim_color = Color(1,0,0)
+@export var sim_color = Color(1,0,0)
 
 var width = 1
 

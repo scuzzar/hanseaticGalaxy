@@ -78,8 +78,9 @@ static func mission_d_v(mission:DeliveryMission):
 	
 	return transfer_d_v + escape + landing_dv
 
-static func transfer_delta_v(A:simpelPlanet,B:simpelPlanet):
-	
+static func transfer_delta_v(pA:simpelPlanet,pB:simpelPlanet):
+	var A = pA
+	var B = pB
 	if(!A.isPlanet):
 		A = A.get_parent()
 	

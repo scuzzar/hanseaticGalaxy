@@ -1,4 +1,4 @@
-extends Spatial
+extends Node3D
 
 var mainDrive = []
 var leftTruster = []
@@ -13,7 +13,7 @@ func _ready():
 	forwardTruster = $forwardTruster.get_children()
 	backTruster= $backTruster.get_children()
 
-func trust_Vector(v:Vector2, throttle:float = 1):
+func trust_Vector(v:Vector2, throttle:float = 1.0):
 	if(throttle<=0.1):
 		all_trust_off()
 		return

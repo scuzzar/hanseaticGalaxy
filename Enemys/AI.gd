@@ -1,8 +1,8 @@
 extends Node
 class_name AI
 
-onready var ship:Ship = get_parent().get_child(0)
-onready var bulletSpeed = ship.mounts[0].get_weapon_speed()
+@onready var ship:Ship = get_parent().get_child(0)
+@onready var bulletSpeed = ship.mounts[0].get_weapon_speed()
 var markerPosition = Vector3(0,0,0)
 
 func _process(delta):
@@ -56,7 +56,7 @@ func turn_ship_to(pos,  delta):
 	#get_parent().rotation.y +=  turnAngle
 	#get_parent().global_transform = look_transform
 	#get_parent().global_transform = get_parent().global_transform.rotated(Vector3(0,1,0),turnAngle)
-	(get_parent() as Spatial).global_rotate(Vector3(0,1,0),turnAngle)
+	(get_parent() as Node3D).global_rotate(Vector3(0,1,0),turnAngle)
 	return angleD
 	
 	

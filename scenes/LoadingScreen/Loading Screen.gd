@@ -1,7 +1,7 @@
 extends Control
 
 
-var loader : ResourceInteractiveLoader
+var loader : ResourceLoader
 
 
 func _ready():

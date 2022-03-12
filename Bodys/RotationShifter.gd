@@ -4,8 +4,8 @@ var SOIPlanet: simpelPlanet=null
 var angular_speed_shift= 0;
 var velocity_shift =Vector3(0,0,0)
 
-export var activ = true
-export var logging = false
+@export var activ = true
+@export var logging = false
 
 func _ready():
 	pass # Replace with function body.

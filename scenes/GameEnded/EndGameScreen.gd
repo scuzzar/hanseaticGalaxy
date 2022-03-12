@@ -1,6 +1,6 @@
 extends CenterContainer
 
-onready var money = $GridContainer/MoneyValue
+@onready var money = $GridContainer/MoneyValue
 
 #var Sol_scene = preload("res://scenes/sol/Sol.tscn")
 #

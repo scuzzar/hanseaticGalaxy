@@ -1,5 +1,5 @@
-tool
-extends Spatial
+@tool
+extends Node3D
 
 
 
@@ -15,8 +15,8 @@ var damage = 10
 var display_name = "Gun"
 var max_distance = 100
 var ran = RandomNumberGenerator.new()
-onready var mountPoint = get_parent()
-onready var ship:Ship = mountPoint.get_parent()
+@onready var mountPoint = get_parent()
+@onready var ship:Ship = mountPoint.get_parent()
 
 func _ready():
 	bulletScene = load(WeaponTyp[type]["missile_scene"])
