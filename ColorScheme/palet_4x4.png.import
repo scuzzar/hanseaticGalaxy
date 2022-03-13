@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0ytbofo7gow2"
-path.s3tc="res://.godot/imported/palet_4x4.png-57632f4a27c02b704645b3b30bf79c11.s3tc.ctex"
-path.etc2="res://.godot/imported/palet_4x4.png-57632f4a27c02b704645b3b30bf79c11.etc2.ctex"
+path="res://.godot/imported/palet_4x4.png-57632f4a27c02b704645b3b30bf79c11.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://ColorScheme/palet_4x4.png"
-dest_files=["res://.godot/imported/palet_4x4.png-57632f4a27c02b704645b3b30bf79c11.s3tc.ctex", "res://.godot/imported/palet_4x4.png-57632f4a27c02b704645b3b30bf79c11.etc2.ctex"]
+dest_files=["res://.godot/imported/palet_4x4.png-57632f4a27c02b704645b3b30bf79c11.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=1.0
 compress/hdr_compression=0
 compress/bptc_ldr=0

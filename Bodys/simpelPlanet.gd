@@ -1,10 +1,9 @@
-@tool
 extends RigidDynamicBody3D
 
 class_name simpelPlanet
 
 @export 
-var material = preload("res://Bodys/materials/Mars.material") 
+var material = load("res://Bodys/materials/Mars.material") 
 
 @export var isStar = false
 @export var isPlanet = false
@@ -56,7 +55,7 @@ func _ready():
 		orbital_speed = kosmic
 		angular_speed = 2*PI/(2*PI*orbit_radius/orbital_speed)	
 		non_shifted_angular_speed = angular_speed
-		if(!Engine.editor_hint):
+		if(!Engine.is_editor_hint()):
 			angle = Globals.RAN.randf_range(0,PI*2)
 		else:
 			angle = 0
@@ -65,7 +64,7 @@ func _ready():
 		print(position)
 
 func derive_pos_and_vel():
-	self.translation = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)
+	self.position = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)
 	_last_global_pos = self.global_transform.origin
 	var s = Vector3(orbital_speed,0,0).rotated(Vector3(0,1,0), angle)
 	var pvshift = get_parent().unshifted_linear_velocity
@@ -80,11 +79,11 @@ func derive_mass():
 	mass = (surface_g*radius*radius)/Globals.G
 
 func _physics_process(delta):	
-	if(!Engine.editor_hint and !isStar):		
+	if(!Engine.is_editor_hint() and !isStar):		
 		angle += (angular_speed *delta)	
 		if(angle >= 2*PI): angle -= 2*PI
 		
-		self.translation = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)
+		self.position = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)
 		
 		#update velocety
 		self.linear_velocity = (global_transform.origin - _last_global_pos)/delta

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://55r1r1eb23gr"]
 
 [ext_resource type="Script" path="res://Bodys/simpelPlanet.gd" id="1"]
-[ext_resource type="Material" path="res://Bodys/materials/Mars.material" id="2"]
+[ext_resource type="Material" uid="uid://dox46j44tythu" path="res://Bodys/materials/Mars.material" id="2"]
 [ext_resource type="Script" path="res://Bodys/Label3D.gd" id="4"]
 
 [sub_resource type="SphereShape3D" id="3"]

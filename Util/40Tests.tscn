@@ -1,10 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdt7qqul4kuls"]
 
-[ext_resource type="Script" path="res://Util/40Tests.gd" id="1_ftuqx"]
-[ext_resource type="PackedScene" path="res://Ship/SimpleRocket/Orbital Rocket.tscn" id="2_3op7w"]
+[ext_resource type="PackedScene" uid="uid://55r1r1eb23gr" path="res://Bodys/Planet.tscn" id="1_lc1cn"]
+[ext_resource type="Script" path="res://Util/40Tests.gd" id="1_wm7of"]
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource( "1_ftuqx" )
-testerv = 1
+script = ExtResource( "1_wm7of" )
 
-[node name="Orbital Rocket" parent="." instance=ExtResource( "2_3op7w" )]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 332.471)
+
+[node name="Planet" parent="." instance=ExtResource( "1_lc1cn" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.768, 0, 1.26479)
