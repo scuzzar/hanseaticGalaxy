@@ -36,7 +36,7 @@ func _process(delta):
 	update()
 
 func getPositionInFrame() -> Vector3:
-	return tracked_Node.translation-_frameOfReference.global_transform.origin
+	return tracked_Node.position-_frameOfReference.global_transform.origin
 
 func appendHistory():
 	#if(g_force_strongest_Body_changed): history = []

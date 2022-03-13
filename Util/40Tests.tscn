@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdt7qqul4kuls"]
+[gd_scene load_steps=4 format=3 uid="uid://cdt7qqul4kuls"]
 
 [ext_resource type="PackedScene" uid="uid://55r1r1eb23gr" path="res://Bodys/Planet.tscn" id="1_lc1cn"]
 [ext_resource type="Script" path="res://Util/40Tests.gd" id="1_wm7of"]
+[ext_resource type="PackedScene" uid="uid://bpd5qk6vlt5iw" path="res://Enemys/KillSatEnemy.tscn" id="3_frkmc"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Sol" type="Node3D"]
 script = ExtResource( "1_wm7of" )
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 332.471)
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 204.766, 0)
 
 [node name="Planet" parent="." instance=ExtResource( "1_lc1cn" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.768, 0, 1.26479)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.7201)
+
+[node name="StaticEnemy" parent="Planet" instance=ExtResource( "3_frkmc" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 126.667)

@@ -3,9 +3,9 @@ extends Node3D
 class_name Satellite
 var orbit_radius = 0
 var linear_velocity = Vector3(0,0,0)
-var angle = 0
-var angular_speed = 0 
-var orbital_speed
+var angle = 0.0
+var angular_speed = 0.0
+var orbital_speed = 0.0
 var global_translation = Vector3(0,0,0)
 
 func _ready():	
@@ -35,8 +35,8 @@ func _physics_process(delta):
 	angle += (angular_speed *delta)	
 	if(angle >= 2*PI): angle -= 2*PI
 		
-	self.translation = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)
-	var s = Vector3(orbital_speed,0,0).rotated(Vector3(0,1,0), angle)
+	self.position = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)
+	var s = Vector3(orbital_speed,0.0,0.0).rotated(Vector3(0,1,0), angle)
 	linear_velocity = s
 	
 
