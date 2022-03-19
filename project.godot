@@ -135,7 +135,7 @@ Typ="*res://Singeltons/TYP.gd"
 
 [debug]
 
-gdscript/warnings/enable=false
+gdscript/warnings/unused_parameter=false
 
 [display]
 
