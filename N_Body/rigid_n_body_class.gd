@@ -38,7 +38,7 @@ func _integrate_forces(state):
 func set_write_linear_velocity(v:Vector3):
 	write_linear_velocity = v
 
-func g_force(position):
+func g_force(pPosition):
 	#Slow
 	bodys = get_tree().get_nodes_in_group("bodys")
 	
@@ -53,8 +53,8 @@ func g_force(position):
 		if body != self && body.isGravetySource:			
 			var other_translation
 			other_translation = body.get_parent().to_global(body.translation)				
-			var sqrDst = position.distance_squared_to(other_translation)		
-			var forcDir = position.direction_to(other_translation).normalized()		
+			var sqrDst = pPosition.distance_squared_to(other_translation)		
+			var forcDir = pPosition.direction_to(other_translation).normalized()		
 			var acceleration = forcDir * Globals.G *body.mass * mass / sqrDst
 			sum += acceleration
 			if(g_force_strongest_Body_force.length()<acceleration.length()):
