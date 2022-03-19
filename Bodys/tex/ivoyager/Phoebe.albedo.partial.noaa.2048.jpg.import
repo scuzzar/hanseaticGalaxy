@@ -1,10 +1,10 @@
 [remap]
 
 importer="texture"
-type="StreamTexture2D"
+type="CompressedTexture2D"
 uid="uid://v6l18rn334x4"
-path.s3tc="res://.godot/imported/Phoebe.albedo.partial.noaa.2048.jpg-bcf51474030c5ae216d8177385cd2cab.s3tc.stex"
-path.etc2="res://.godot/imported/Phoebe.albedo.partial.noaa.2048.jpg-bcf51474030c5ae216d8177385cd2cab.etc2.stex"
+path.s3tc="res://.godot/imported/Phoebe.albedo.partial.noaa.2048.jpg-bcf51474030c5ae216d8177385cd2cab.s3tc.ctex"
+path.etc2="res://.godot/imported/Phoebe.albedo.partial.noaa.2048.jpg-bcf51474030c5ae216d8177385cd2cab.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
@@ -13,7 +13,7 @@ metadata={
 [deps]
 
 source_file="res://Bodys/tex/ivoyager/Phoebe.albedo.partial.noaa.2048.jpg"
-dest_files=["res://.godot/imported/Phoebe.albedo.partial.noaa.2048.jpg-bcf51474030c5ae216d8177385cd2cab.s3tc.stex", "res://.godot/imported/Phoebe.albedo.partial.noaa.2048.jpg-bcf51474030c5ae216d8177385cd2cab.etc2.stex"]
+dest_files=["res://.godot/imported/Phoebe.albedo.partial.noaa.2048.jpg-bcf51474030c5ae216d8177385cd2cab.s3tc.ctex", "res://.godot/imported/Phoebe.albedo.partial.noaa.2048.jpg-bcf51474030c5ae216d8177385cd2cab.etc2.ctex"]
 
 [params]
 
@@ -31,6 +31,6 @@ roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
-process/HDR_as_SRGB=false
+process/hdr_as_srgb=false
 process/size_limit=0
 detect_3d/compress_to=1
