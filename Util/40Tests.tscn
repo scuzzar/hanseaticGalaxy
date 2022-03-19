@@ -15,3 +15,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.7201)
 
 [node name="StaticEnemy" parent="Planet" instance=ExtResource( "3_frkmc" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 126.667)
+
+[node name="Node" type="Node" parent="."]

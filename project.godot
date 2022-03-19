@@ -132,6 +132,8 @@ config/features=PackedStringArray("4.0")
 
 Globals="*res://Singeltons/Globals.gd"
 Typ="*res://Singeltons/TYP.gd"
+Player="*res://scenes/Player.gd"
+Pirates="*res://Singeltons/Pirates.gd"
 
 [debug]
 
