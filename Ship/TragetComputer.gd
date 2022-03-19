@@ -22,7 +22,7 @@ func _turn_turrents(delta):
 			
 			nt = nt.rotated(Vector3(0,1,0),st.basis.get_euler().y-PI/2)
 			
-			var n = nt.basis.get_euler().y
+			#var n = nt.basis.get_euler().y
 			var l = mount.turn_limit
 			var n_max = nt.rotated(Vector3(0,1,0),l).basis.get_euler().y
 			var n_min = nt.rotated(Vector3(0,1,0),l*-1).basis.get_euler().y
@@ -34,7 +34,7 @@ func _turn_turrents(delta):
 			
 			var angleD = angle - ownTransform.basis.get_euler().y
 			
-			var turnrate =mount.turn_rate
+			#var turnrate =mount.turn_rate
 			var turnAngle =angleD#  clamp(angleD,mount.turn_rate*-1*delta,mount.turn_rate*delta)
 	
 			(mount as Node3D).global_rotate(Vector3(0,1,0),turnAngle)

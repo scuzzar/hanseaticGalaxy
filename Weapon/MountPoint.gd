@@ -9,7 +9,7 @@ const WeaponTyp = preload("res://Weapon/WeaponTypes.csv").records
 var turn_rate = 20
 
 @export 
-var turn_limit = 15/360*2*PI
+var turn_limit = 15.0/360.0*2.0*PI
 
 @onready 
 var no_turn_transform = self.transform

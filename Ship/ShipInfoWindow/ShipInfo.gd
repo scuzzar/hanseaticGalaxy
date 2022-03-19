@@ -2,8 +2,8 @@ extends Panel
 
 var ship:Ship
 
-func setShip(ship:Ship):
-	self.ship = ship
+func setShip(pShip:Ship):
+	self.ship = pShip
 	$Grid/name.text 		= ship.dispay_name
 	$Grid/mass.text 		= str("%0.f" % ship.mass)
 	$Grid/trust.text 		= str("%0.f" % (ship.engine_exaust_velocity*ship.engine_mass_rate))

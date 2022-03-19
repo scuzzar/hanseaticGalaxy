@@ -12,7 +12,7 @@ var team = ENUMS.TEAM.NEUTRAL
 var max_distance :float = 10
 
 func _ready():	
-	var parent = get_parent()
+	#var parent = get_parent()
 	velocity = global_transform.basis.x *speed 		
 	$LifeTime.wait_time = max_distance/speed
 	if(max_distance/speed<=0):

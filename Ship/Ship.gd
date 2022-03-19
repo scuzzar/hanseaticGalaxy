@@ -250,8 +250,8 @@ func get_thrust():
 func get_lateral_trust():
 	return truster_engine_mass_rate*truster_exaust_velocity
 
-func dock(target: Node):
-	if(target!=self.docking_location):
+func dock(pTarget: Node):
+	if(pTarget!=self.docking_location):
 		self.docking_location = target
 		self.weaponActive =false
 		emit_signal("docked", self.docking_location)

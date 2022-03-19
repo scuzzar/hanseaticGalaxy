@@ -29,7 +29,7 @@ func _attackTarget(delta):
 	var ship_g_displacement = (ship.target.last_g_force/ship.target.mass)*timeToImpact 
 	predicted_target_pos += ship_g_displacement
 	
-	var angleDelta = turn_ship_to(predicted_target_pos,delta)
+	#var angleDelta = turn_ship_to(predicted_target_pos,delta)
 	
 	ship.linear_velocity = get_parent().linear_velocity	
 	
