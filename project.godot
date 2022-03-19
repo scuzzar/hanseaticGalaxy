@@ -134,6 +134,7 @@ Globals="*res://Singeltons/Globals.gd"
 Typ="*res://Singeltons/TYP.gd"
 Player="*res://scenes/Player.gd"
 Pirates="*res://Singeltons/Pirates.gd"
+SceneManager="*res://scenes/SceneManager.gd"
 
 [debug]
 

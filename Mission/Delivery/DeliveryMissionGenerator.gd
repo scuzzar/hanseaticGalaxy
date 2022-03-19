@@ -42,7 +42,7 @@ func _generate_mission() -> DeliveryMission:
 	if(destination ==null):
 		print_debug("No destination for " + str(cargo) + " from " + str(origin))
 		return null
-	var mission : DeliveryMission = deliveryMissionScene.instance()
+	var mission : DeliveryMission = deliveryMissionScene.instantiate()
 	mission.origin = origin
 	mission.destination = destination
 	mission.cargo = cargo

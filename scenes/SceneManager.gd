@@ -1,8 +1,8 @@
 extends Node
 
-var mainMenue_scene = preload("res://scenes/LoadingScreen/Loading Screen.tscn")
+var mainMenue_scene = load("res://scenes/LoadingScreen/Loading Screen.tscn")
 var sol_scene_res :PackedScene
-var endScreen = preload("res://scenes/GameEnded/EndGameScreen.tscn")
+var endScreen = load("res://scenes/GameEnded/EndGameScreen.tscn")
 
 func load_save(path):
 	Globals.loadPath = path

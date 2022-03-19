@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdt7qqul4kuls"]
+[gd_scene load_steps=5 format=3 uid="uid://cdt7qqul4kuls"]
 
 [ext_resource type="PackedScene" uid="uid://55r1r1eb23gr" path="res://Bodys/Planet.tscn" id="1_lc1cn"]
 [ext_resource type="Script" path="res://Util/40Tests.gd" id="1_wm7of"]
 [ext_resource type="PackedScene" uid="uid://bpd5qk6vlt5iw" path="res://Enemys/KillSatEnemy.tscn" id="3_frkmc"]
+[ext_resource type="PackedScene" path="res://Station/Station.tscn" id="4_wh8qv"]
 
 [node name="Sol" type="Node3D"]
 script = ExtResource( "1_wm7of" )
@@ -16,4 +17,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.7201)
 [node name="StaticEnemy" parent="Planet" instance=ExtResource( "3_frkmc" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 126.667)
 
-[node name="Node" type="Node" parent="."]
+[node name="Sat" parent="Planet" instance=ExtResource( "4_wh8qv" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.755, 197.004, 316.65)
