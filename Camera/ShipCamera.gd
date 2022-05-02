@@ -1,8 +1,8 @@
-extends Spatial
+extends Node3D
 
 @onready var ship:Ship = get_node("../PlayerShip")
-@onready var tilt:Spatial = $TiltAxis
-@onready var camera:Camera = $TiltAxis/Camera
+@onready var tilt:Node3D = $TiltAxis
+@onready var camera:Camera3D = $TiltAxis/Camera
 
 @export var min_zoom := 0.5
 @export var max_zoom := 20000
@@ -25,12 +25,12 @@ enum STATE{
 
 var _zoom_level = 1.0 
 
-@onready var tween: Tween = $ZoomTween
+@onready var tween: Tween = get_tree().create_tween()
 
 var _next_rotation = Vector2(0,0)
 
 func _ready():
-	_zoom_level = camera.translation[2]
+	_zoom_level = camera.position[2]
 	print(ship.name)
 
 func _process(delta):	
@@ -76,7 +76,7 @@ func _input(event):
 		_rotate_camera(event as InputEventMouseMotion)
 
 func _rotate_camera(event:InputEventMouseMotion):
-	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		_next_rotation = event.relative		
 
 #func changeState(newState:STATE):
@@ -88,7 +88,7 @@ func _rotate_camera(event:InputEventMouseMotion):
 func save():
 	var save_dict = {
 		"nodePath" : "Player",
-		"filename" : get_filename(),
+		"filename" : self.scene_file_path,
 		"parent" : get_parent().get_path(),	
 		"tilt.rotation.x": tilt.rotation.x,
 		"rotation.y" :rotation.y,

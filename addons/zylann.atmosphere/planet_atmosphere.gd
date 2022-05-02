@@ -3,18 +3,38 @@
 # When the camera is close, it uses a fullscreen quad (does not work in editor).
 # Common parameters are exposed as properties.
 
-tool
-extends Spatial
+@tool
+extends Node3D
 
 const MODE_NEAR = 0
 const MODE_FAR = 1
 const SWITCH_MARGIN_RATIO = 1.1
 
-const AtmosphereShader = preload("./planet_atmosphere.shader")
+var AtmosphereShader = load("./planet_atmosphere.shader")
 
-export var planet_radius := 1.0 setget set_planet_radius
-export var atmosphere_height := 0.1 setget set_atmosphere_height
-export(NodePath) var sun_path : NodePath setget set_sun_path
+@export 
+var planet_radius := 1.0:
+	set(new_radius):
+		if planet_radius == new_radius:
+			return
+		planet_radius = max(new_radius, 0.0)
+		_mesh_instance.material_override.set_shader_param("u_planet_radius", planet_radius)
+		_update_cull_margin()
+		
+
+@export var atmosphere_height := 0.1:
+	set(new_height):
+		if atmosphere_height == new_height:
+			return
+		atmosphere_height = max(new_height, 0.0)
+		_mesh_instance.material_override.set_shader_param("u_atmosphere_height", atmosphere_height)
+		_update_cull_margin()
+
+@export var sun_path : NodePath:
+	set(new_sun_path):
+		sun_path = new_sun_path
+		update_configuration_warning()
+
 
 var _far_mesh : CubeMesh
 var _near_mesh : QuadMesh
@@ -114,29 +134,14 @@ func _get_configuration_warning() -> String:
 	return ""
 
 
-func set_planet_radius(new_radius: float):
-	if planet_radius == new_radius:
-		return
-	planet_radius = max(new_radius, 0.0)
-	_mesh_instance.material_override.set_shader_param("u_planet_radius", planet_radius)
-	_update_cull_margin()
+
 
 
 func _update_cull_margin():
 	_mesh_instance.extra_cull_margin = planet_radius + atmosphere_height
 
 
-func set_atmosphere_height(new_height: float):
-	if atmosphere_height == new_height:
-		return
-	atmosphere_height = max(new_height, 0.0)
-	_mesh_instance.material_override.set_shader_param("u_atmosphere_height", atmosphere_height)
-	_update_cull_margin()
 
-
-func set_sun_path(new_sun_path: NodePath):
-	sun_path = new_sun_path
-	update_configuration_warning()
 
 
 func _set_mode(mode: int):

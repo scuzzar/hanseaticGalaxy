@@ -1,16 +1,16 @@
 # Shift all nodes so the parent node always stays close to the center.
 extends Node
 
-export var MAX_DISTANCE = 2000.0
-export var activ = true
-export var logging = false
+@export var MAX_DISTANCE = 2000.0
+@export var activ = true
+@export var logging = false
 
 var originShift = Vector3(0,0,0)
 
-export(NodePath) var world_node_path
-onready var world_node: Spatial = get_node_or_null(world_node_path)
+@export var world_node_path : NodePath
+@onready var world_node: Node3D = get_node_or_null(world_node_path)
 
-onready var parent = $"../PlayerShip"
+@onready var parent = $"../PlayerShip"
 
 signal shifted()
 
@@ -26,10 +26,10 @@ func _process(delta):
 func shift_origin():
 	var offset: Vector3 = parent.global_transform.origin 
 	for child in world_node.get_children():
-		if child is Spatial:
+		if child is Node3D:
 			child.global_translate(-offset)
 			if(logging):
-				print(child.name + " shifterd")
+				print(str(child.name) + " shifterd")
 				print(child.global_transform.origin)	
 	originShift = offset
 	emit_signal("shifted")

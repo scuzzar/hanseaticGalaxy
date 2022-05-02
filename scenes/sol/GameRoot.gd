@@ -40,10 +40,10 @@ func newGameSetup():
 	loaded = true	
 
 func setShip(newShip):
-	newShip.connect("strongest_body_changed",self,"_on_Ship_strongest_body_changed")
-	newShip.connect("soiPlanetChanged",$RotationShifter,"on_soi_planet_changed")
-	newShip.connect("docked",self,"_on_Ship_docked")
-	newShip.connect("undocked",self,"_on_Ship_undocked")
+	newShip.strongest_body_changed.connect(_on_Ship_strongest_body_changed)
+	newShip.soiPlanetChanged.connect($RotationShifter.on_soi_planet_changed)	
+	newShip.undocked.connect(_on_Ship_undocked)
+	newShip.docked.connect(self._on_Ship_docked)
 	$HUD.setShip(newShip)
 	$HUD/DeliveryBoard.setShip(newShip)
 	$HUD/DeliveryMissionOverview.ship = newShip

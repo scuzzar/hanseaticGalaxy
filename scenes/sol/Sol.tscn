@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://drh7f26n5q0nk"]
+[gd_scene load_steps=54 format=3 uid="uid://om8cv4t25v1r"]
 
 [ext_resource type="Material" path="res://Bodys/materials/Sun.material" id="1"]
 [ext_resource type="Material" path="res://Bodys/materials/Moon.material" id="2"]
@@ -8,18 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://blxo61llgoeyr" path="res://N_Body/Simulator.tscn" id="6"]
 [ext_resource type="Material" path="res://Bodys/materials/Mimas.material" id="7"]
 [ext_resource type="PackedScene" path="res://Building/Warft.tscn" id="8"]
-[ext_resource type="PackedScene" uid="uid://djh418e7j4f7q" path="res://Ship/SimpleRocket/SimpelRocket.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://Ship/SimpleRocket/SimpelRocket.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://Station/Station.tscn" id="10"]
 [ext_resource type="Material" path="res://Bodys/materials/Saturn.material" id="11"]
 [ext_resource type="Material" path="res://Bodys/materials/Titan.material" id="12"]
-[ext_resource type="PackedScene" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="13"]
 [ext_resource type="PackedScene" path="res://SpacePort/spacePort.tscn" id="14"]
 [ext_resource type="PackedScene" path="res://Building/City.tscn" id="15"]
 [ext_resource type="PackedScene" uid="uid://55r1r1eb23gr" path="res://Bodys/Planet.tscn" id="16"]
 [ext_resource type="PackedScene" path="res://HUD/HUD.tscn" id="17"]
-[ext_resource type="PackedScene" path="res://Camera/ShipCamera.tscn" id="18"]
+[ext_resource type="PackedScene" uid="uid://dycob36gm60wa" path="res://Camera/ShipCamera.tscn" id="18"]
 [ext_resource type="PackedScene" path="res://Ship/SkyCrane/SkyCrane.tscn" id="19"]
-[ext_resource type="Environment" uid="uid://dtl83hsdlk000" path="res://scenes/sol/Weltall.tres" id="20"]
+[ext_resource type="Environment" uid="uid://cglk2lduymfbr" path="res://scenes/sol/Weltall.tres" id="20"]
 [ext_resource type="Texture2D" uid="uid://diu7id8cmvnts" path="res://Bodys/tex/NASA/mar2kuu2.jpg" id="21"]
 [ext_resource type="PackedScene" path="res://Ship/Tender/Tender.tscn" id="22"]
 [ext_resource type="Script" path="res://scenes/sol/GameRoot.gd" id="23"]
@@ -46,7 +45,7 @@
 [ext_resource type="PackedScene" path="res://Ship/SkyCrane/SkyCrane_S.tscn" id="44"]
 [ext_resource type="Material" path="res://Bodys/materials/Triton.material" id="45"]
 [ext_resource type="PackedScene" uid="uid://bpd5qk6vlt5iw" path="res://Enemys/KillSatEnemy.tscn" id="46"]
-[ext_resource type="PackedScene" uid="uid://cvmf3macse5rx" path="res://Ship/SimpleRocket/Orbital Rocket.tscn" id="47"]
+[ext_resource type="PackedScene" path="res://Ship/SimpleRocket/Orbital Rocket.tscn" id="47"]
 
 [sub_resource type="PhysicsMaterial" id="5"]
 friction = 3.0
@@ -87,6 +86,7 @@ world_node_path = NodePath("..")
 [node name="Simulator" parent="." instance=ExtResource( "6" )]
 simulation_time = 500
 simulation_time_inc = 500
+_simulation_object_path = NodePath("../PlayerShip")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( "20" )
@@ -141,17 +141,6 @@ securety_level = 1
 radius_description = 6051.0
 surface_g = 8.87
 
-[node name="PlanetAthmosphere" parent="Sun/Venus" instance=ExtResource( "13" )]
-planet_radius = 64.0
-atmosphere_height = 12.0
-sun_path = NodePath("../..")
-shader_params/u_day_color0 = Color(0.968627, 0.690196, 0.333333, 1)
-shader_params/u_day_color1 = Color(0.898039, 0.607843, 0.054902, 1)
-shader_params/u_night_color0 = Color(0.223529, 0.113725, 0.0235294, 1)
-shader_params/u_night_color1 = Color(0.0980392, 0.0980392, 0.0980392, 1)
-shader_params/u_density = 0.1
-shader_params/u_attenuation_distance = 0.0
-
 [node name="VenusST" parent="Sun/Venus" instance=ExtResource( "10" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.503, 0, 0)
 
@@ -174,17 +163,6 @@ physics_material_override = SubResource( "4" )
 material = ExtResource( "3" )
 isPlanet = true
 surface_g = 9.81
-
-[node name="PlanetAthmosphere" parent="Sun/Earth" instance=ExtResource( "13" )]
-planet_radius = 67.0
-atmosphere_height = 10.0
-sun_path = NodePath("../..")
-shader_params/u_day_color0 = Color(0.29, 0.39, 0.92, 1)
-shader_params/u_day_color1 = Color(0.76, 0.9, 1, 1)
-shader_params/u_night_color0 = Color(0.15, 0.1, 0.33, 1)
-shader_params/u_night_color1 = Color(0, 0, 0, 1)
-shader_params/u_density = 0.01
-shader_params/u_attenuation_distance = 0.0
 
 [node name="ISS" parent="Sun/Earth" instance=ExtResource( "10" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 241.56, 0, 0)
@@ -297,17 +275,6 @@ contact_monitor = false
 [node name="HighTech" parent="Sun/Mars/MarsST" instance=ExtResource( "39" )]
 
 [node name="OrbitalCity" parent="Sun/Mars/MarsST" instance=ExtResource( "35" )]
-
-[node name="Athmosphere" parent="Sun/Mars" instance=ExtResource( "13" )]
-planet_radius = 67.0
-atmosphere_height = 15.0
-sun_path = NodePath("../..")
-shader_params/u_day_color0 = Color(0.964706, 0.6, 0.0313726, 1)
-shader_params/u_day_color1 = Color(0.223529, 0.164706, 0.054902, 1)
-shader_params/u_night_color0 = Color(0.262745, 0.0156863, 0.0745098, 1)
-shader_params/u_night_color1 = Color(0, 0, 0, 1)
-shader_params/u_density = 0.01
-shader_params/u_attenuation_distance = 0.0
 
 [node name="OlympusPort" parent="Sun/Mars" instance=ExtResource( "14" )]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 68.0632, 0, 0)
