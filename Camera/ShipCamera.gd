@@ -23,14 +23,15 @@ enum STATE{
 
 @export var state = STATE.PLANET
 
-var _zoom_level = 1.0 
+var _zoom_level = 5.0 
 
 @onready var tween: Tween = get_tree().create_tween()
 
 var _next_rotation = Vector2(0,0)
 
 func _ready():
-	_zoom_level = camera.position[2]
+	_zoom_level = clamp(camera.position[2], min_zoom, max_zoom) 
+	camera.position = Vector3(0,0,_zoom_level)
 	print(ship.name)
 
 func _process(delta):	

@@ -9,7 +9,7 @@ func handle_collsions(state):
 		for i in state.get_contact_count():
 			impulseSum += state.get_contact_impulse(i)
 						
-		self._on_impact(colliding_body,impulseSum)
+		#self._on_impact(colliding_body,impulseSum)
 
 
 func _on_impact(colliding_body:RigidDynamicBody3D,impulse:float):

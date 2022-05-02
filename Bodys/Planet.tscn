@@ -8,11 +8,8 @@
 
 [sub_resource type="SphereMesh" id="2"]
 
-[node name="Planet" type="RigidDynamicBody3D" groups=["persist"]]
+[node name="Planet" type="StaticBody3D" groups=["persist"]]
 collision_layer = 9
-mass = 462.4
-gravity_scale = 0.0
-custom_integrator = true
 script = ExtResource( "1" )
 planetaryRotation = 0.0
 radius_description = 6371.0

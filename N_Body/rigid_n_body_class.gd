@@ -6,7 +6,7 @@ signal g_force_update(force,strogest_body,strongest_body_force)
 signal strongest_body_changed(old_body,new_body)
 
 var last_g_force = Vector3(0,0,0)
-var last_g_force_strongest_Body : RigidDynamicBody3D
+var last_g_force_strongest_Body : StaticBody3D
 var last_g_force_strongest_Body_force = Vector3(0,0,0)
 
 var write_linear_velocity = null
@@ -25,10 +25,10 @@ func _ready():
 
 
 func _integrate_forces(state):
-	state.add_constant_central_force(last_g_force / 2)	
+	state.apply_central_force(last_g_force / 2)	
 	last_g_force = g_force(self.position)
 	emit_signal("g_force_update",last_g_force,last_g_force_strongest_Body,last_g_force_strongest_Body_force)	
-	state.add_constant_central_force(last_g_force / 2)
+	state.apply_central_force(last_g_force / 2)
 	if(write_linear_velocity!=null):
 		print("overwriting ship Velocyty:" + str(write_linear_velocity))
 		state.linear_velocity = write_linear_velocity

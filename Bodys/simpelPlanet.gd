@@ -1,4 +1,4 @@
-extends RigidDynamicBody3D
+extends StaticBody3D
 
 class_name simpelPlanet
 
@@ -19,6 +19,7 @@ var orbital_speed :float = 0
 
 #var orbit
 var angle : float = 0
+var mass = 1
 var radius : float
 var isGravetySource = false
 var angular_speed : float = 0 
@@ -30,7 +31,7 @@ var _last_global_pos:Vector3
 
 func _enter_tree():
 	self.add_to_group("bodys")
-	self.gravity_scale = 0
+	#self.gravity_scale = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,10 +51,14 @@ func _ready():
 		if(parent is RigidDynamicBody3D):
 			parent.derive_mass()
 		var M = get_parent().mass
-		var kosmic = sqrt(G*M/r)
+		var kosmic = 0
+		if(r!=0):			
+			kosmic = sqrt(G*M/r)
 		print(str(self.name) + " O_Speed:" + str(kosmic) + " O_perimeter:" + str(2*PI*orbit_radius))
 		orbital_speed = kosmic
-		angular_speed = 2*PI/(2*PI*orbit_radius/orbital_speed)	
+		angular_speed = 0
+		if(orbital_speed!=0):
+			angular_speed = 2*PI/(2*PI*orbit_radius/orbital_speed)	
 		non_shifted_angular_speed = angular_speed
 		if(!Engine.is_editor_hint()):
 			angle = Globals.RAN.randf_range(0,PI*2)
@@ -70,7 +75,7 @@ func derive_pos_and_vel():
 	var pvshift = get_parent().unshifted_linear_velocity
 #	var vshift = Globals.velocity_shift
 	#unshifted_linear_velocity = s + pvshift
-	linear_velocity = s + pvshift #unshifted_linear_velocity + Globals.velocity_shift	
+	#linear_velocity = s + pvshift #unshifted_linear_velocity + Globals.velocity_shift	
 
 func derive_mass():
 	var s = radius_description/6371.0*68	
@@ -86,7 +91,7 @@ func _physics_process(delta):
 		self.position = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)
 		
 		#update velocety
-		self.linear_velocity = (global_transform.origin - _last_global_pos)/delta
+		#self.linear_velocity = (global_transform.origin - _last_global_pos)/delta
 		_last_global_pos = self.global_transform.origin
 
 

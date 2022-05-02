@@ -1,28 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://8ef1unv0yb2c"]
+[gd_scene load_steps=7 format=3 uid="uid://8ef1unv0yb2c"]
 
 [ext_resource type="Script" path="res://scenes/TestBeds/40Tests.gd" id="1_y7nsc"]
 [ext_resource type="PackedScene" uid="uid://dycob36gm60wa" path="res://Camera/ShipCamera.tscn" id="2_0wqpd"]
 [ext_resource type="PackedScene" uid="uid://55r1r1eb23gr" path="res://Bodys/Planet.tscn" id="2_qcs4b"]
 [ext_resource type="PackedScene" uid="uid://cvmf3macse5rx" path="res://Ship/SimpleRocket/Orbital Rocket.tscn" id="3_nn6an"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wdqfg"]
-friction = 3.0
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_31c1q"]
 rough = true
+absorbent = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wdqfg"]
 
 [node name="Sol" type="Node3D"]
 script = ExtResource( "1_y7nsc" )
 
 [node name="RotateAxis" parent="." instance=ExtResource( "2_0wqpd" )]
+transform = Transform3D(-1, -1.75458e-10, -8.74226e-08, 0, 0.999998, -0.00200701, 8.74228e-08, -0.00200701, -0.999998, 150.643, 0, -594.376)
 min_zoom = 1.0
 
 [node name="Planet" parent="." instance=ExtResource( "2_qcs4b" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.7201)
-mass = 46200.4
-
-[node name="Node" type="Node" parent="."]
+physics_material_override = SubResource( "PhysicsMaterial_31c1q" )
+isPlanet = true
+doRotationShift = false
 
 [node name="PlayerShip" parent="." instance=ExtResource( "3_nn6an" )]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 64.2352, 1.52588e-05, -42.0245)
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, -113.605)
 physics_material_override = SubResource( "PhysicsMaterial_wdqfg" )
+linear_velocity = Vector3(14, 0, 0)
 physicActiv = true
 playerControl = true
