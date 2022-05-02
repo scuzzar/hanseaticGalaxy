@@ -14,9 +14,6 @@ mass = 462.4
 gravity_scale = 0.0
 custom_integrator = true
 script = ExtResource( "1" )
-__meta__ = {
-"_edit_group_": true
-}
 planetaryRotation = 0.0
 radius_description = 6371.0
 
@@ -30,14 +27,9 @@ gi_mode = 1
 mesh = SubResource( "2" )
 
 [node name="Lable3D" type="Label" parent="."]
-rect_min_size = Vector2(100, 12)
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-rect_pivot_offset = Vector2(49.8973, 7.33237)
 text = "Planet"
 script = ExtResource( "4" )
-__meta__ = {
-"_edit_use_anchors_": false
-}

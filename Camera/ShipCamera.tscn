@@ -10,3 +10,4 @@ script = ExtResource( "1" )
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
 
 [node name="Camera" type="Camera3D" parent="TiltAxis"]
+transform = Transform3D(1, -1.77636e-15, 2.84217e-14, 0, 1, 0, 0, 0, 1, 0, 0, 0)

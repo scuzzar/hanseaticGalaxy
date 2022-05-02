@@ -35,7 +35,7 @@ func _ready():
 
 func _process(delta):	
 	if(ship!=null):
-		self.translation = ship.translation
+		self.position = ship.position
 	var rX = _next_rotation.y * rotation_speed * delta /Engine.time_scale *-1
 	var rY = _next_rotation.x * rotation_speed * delta /Engine.time_scale *-1
 	self.setCameraRotation(rX,rY)
@@ -43,16 +43,17 @@ func _process(delta):
 
 func _set_zoom_level(value: float) -> void:	
 	_zoom_level = clamp(value, min_zoom, max_zoom)
-	tween.interpolate_property(
-		camera,
-		"translation",
-		camera.translation,
-		Vector3(0,0,_zoom_level),
-		zoom_duration,
-		tween.TRANS_SINE,	
-		tween.EASE_OUT	
-	)
-	tween.start()	
+	camera.position = Vector3(0,0,_zoom_level)
+	#tween.interpolate_property(
+	#	camera,
+	#	"position",
+	#	camera.position,
+	#	Vector3(0,0,_zoom_level),
+	#	zoom_duration,
+	#	tween.TRANS_SINE,	
+	#	tween.EASE_OUT	
+	#)
+	#tween.start()	
 
 func getCameraRotation():
 	var result = Vector2(tilt.rotation.x, self.rotation.y)
