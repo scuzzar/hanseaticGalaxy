@@ -16,11 +16,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 204.766, 0)
 
 [node name="Planet" parent="." instance=ExtResource( "2_qcs4b" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.7201)
+mass = 46200.4
 
 [node name="Node" type="Node" parent="."]
 
 [node name="PlayerShip" parent="." instance=ExtResource( "3_nn6an" )]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 266.729, 0, -134.869)
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 64.2352, 1.52588e-05, -42.0245)
 physics_material_override = SubResource( "PhysicsMaterial_wdqfg" )
 physicActiv = true
 playerControl = true

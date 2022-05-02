@@ -25,10 +25,10 @@ func _ready():
 
 
 func _integrate_forces(state):
-	state.add_central_force(last_g_force / 2)	
-	last_g_force = g_force(self.translation)
+	state.add_constant_central_force(last_g_force / 2)	
+	last_g_force = g_force(self.position)
 	emit_signal("g_force_update",last_g_force,last_g_force_strongest_Body,last_g_force_strongest_Body_force)	
-	state.add_central_force(last_g_force / 2)
+	state.add_constant_central_force(last_g_force / 2)
 	if(write_linear_velocity!=null):
 		print("overwriting ship Velocyty:" + str(write_linear_velocity))
 		state.linear_velocity = write_linear_velocity
@@ -52,7 +52,7 @@ func g_force(pPosition):
 	for body in bodys :
 		if body != self && body.isGravetySource:			
 			var other_translation
-			other_translation = body.get_parent().to_global(body.translation)				
+			other_translation = body.get_parent().to_global(body.position)				
 			var sqrDst = pPosition.distance_squared_to(other_translation)		
 			var forcDir = pPosition.direction_to(other_translation).normalized()		
 			var acceleration = forcDir * Globals.G *body.mass * mass / sqrDst

@@ -59,9 +59,9 @@ func _draw_list(list, relativ_to, color):
 		for i in range(list.size()-1):
 			var v1 = list[i]+relativ_to
 			var v2 = list[i+1]+relativ_to
-			if(!get_viewport().get_camera().is_position_behind(v1) and !get_viewport().get_camera().is_position_behind(v2)):
-				var p1 = get_viewport().get_camera().unproject_position(v1)
-				var p2 = get_viewport().get_camera().unproject_position(v2)
+			if(!get_viewport().get_camera_3d().is_position_behind(v1) and !get_viewport().get_camera_3d().is_position_behind(v2)):
+				var p1 = get_viewport().get_camera_3d().unproject_position(v1)
+				var p2 = get_viewport().get_camera_3d().unproject_position(v2)
 				if(get_viewport_rect().has_point(p2) or get_viewport_rect().has_point(p1)):
 					draw_line(p1,p2,color,width)
 	
