@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://8ef1unv0yb2c"]
+
+[ext_resource type="Script" path="res://scenes/TestBeds/40Tests.gd" id="1_y7nsc"]
+[ext_resource type="PackedScene" uid="uid://55r1r1eb23gr" path="res://Bodys/Planet.tscn" id="2_qcs4b"]
+[ext_resource type="PackedScene" uid="uid://cvmf3macse5rx" path="res://Ship/SimpleRocket/Orbital Rocket.tscn" id="3_nn6an"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wdqfg"]
+friction = 3.0
+rough = true
+
+[node name="Sol" type="Node3D"]
+script = ExtResource( "1_y7nsc" )
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 204.766, 0)
+
+[node name="Planet" parent="." instance=ExtResource( "2_qcs4b" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.7201)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="PlayerShip" parent="." instance=ExtResource( "3_nn6an" )]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 266.729, 0, -134.869)
+physics_material_override = SubResource( "PhysicsMaterial_wdqfg" )
+physicActiv = true
+playerControl = true

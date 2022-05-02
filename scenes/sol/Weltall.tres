@@ -1,21 +1,13 @@
-[gd_resource type="Environment" load_steps=3 format=2]
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://dtl83hsdlk000"]
 
-[ext_resource path="res://scenes/sol/starmap_8k.jpg" type="Texture" id=1]
-
-[sub_resource type="PanoramaSky" id=1]
-panorama = ExtResource( 1 )
+[sub_resource type="Sky" id="1"]
 
 [resource]
 background_mode = 2
-background_sky = SubResource( 1 )
-ambient_light_color = Color( 1, 1, 1, 1 )
-fog_sun_amount = 1.0
+sky = SubResource( "1" )
+ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 3
 auto_exposure_max_luma = 3.55
-ss_reflections_fade_in = 29.1018
-ss_reflections_fade_out = 30.91
-ss_reflections_depth_tolerance = 75.9
-dof_blur_far_distance = 197.08
 glow_enabled = true
 glow_blend_mode = 0
 adjustment_enabled = true

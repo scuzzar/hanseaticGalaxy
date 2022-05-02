@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1v51fwxj1fr5"]
+
+[ext_resource type="Script" path="res://scenes/TestBeds/40Tests.gd" id="1_1voe2"]
+[ext_resource type="PackedScene" uid="uid://55r1r1eb23gr" path="res://Bodys/Planet.tscn" id="1_lc1cn"]
+[ext_resource type="PackedScene" uid="uid://bpd5qk6vlt5iw" path="res://Enemys/KillSatEnemy.tscn" id="3_frkmc"]
+[ext_resource type="Script" path="res://scenes/TestBeds/NodeX.gd" id="4_jg4ec"]
+
+[node name="Sol" type="Node3D"]
+script = ExtResource( "1_1voe2" )
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 204.766, 0)
+
+[node name="Planet" parent="." instance=ExtResource( "1_lc1cn" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.7201)
+
+[node name="StaticEnemy" parent="Planet" instance=ExtResource( "3_frkmc" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 126.667)
+
+[node name="NodeX" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.837, 0, -15.6721)
+inner_radius = 5.0
+outer_radius = 20.0
+script = ExtResource( "4_jg4ec" )

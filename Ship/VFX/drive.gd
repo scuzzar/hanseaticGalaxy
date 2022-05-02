@@ -1,6 +1,6 @@
-extends Spatial
+extends Node3D
 
-var on = false
+var isOn = false
 
 var lifeTime1
 var lifeTime2
@@ -17,7 +17,7 @@ func _ready():
 	$EngineSound.stop()	
 
 func on(throttle=1):
-	if(!on):	
+	if(!isOn):	
 		if(throttle<0.1):return
 		$Fire1.emitting = true
 		$Fire2.emitting = true
@@ -28,10 +28,10 @@ func on(throttle=1):
 		$smoke.lifetime = lifeTime3*throttle	
 
 		$EngineSound.play()
-		on = true
+		isOn = true
 
 func off():
-	if(on):
+	if(isOn):
 		$Fire1.emitting = false
 		$Fire2.emitting = false
 		$smoke.emitting = false
@@ -41,5 +41,5 @@ func off():
 		$smoke.lifetime = lifeTime3	
 
 		$EngineSound.stop()
-		on = false
+		isOn = false
 

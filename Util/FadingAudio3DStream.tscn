@@ -1,16 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://dykwhltqnc53d"]
 
-[ext_resource path="res://Ship/sound/494827__nicktimesaudio__seamless-rocket-booster-roar-crackle.mp3" type="AudioStream" id=1]
-[ext_resource path="res://Ship/EngineSound.gd" type="Script" id=2]
+[ext_resource type="AudioStream" uid="uid://cx74hfklptvx" path="res://Ship/sound/494827__nicktimesaudio__seamless-rocket-booster-roar-crackle.mp3" id="1"]
+[ext_resource type="Script" path="res://Ship/EngineSound.gd" id="2"]
 
 [node name="FadingAudio3DStream" type="AudioStreamPlayer3D"]
-stream = ExtResource( 1 )
-script = ExtResource( 2 )
+stream = ExtResource( "1" )
+script = ExtResource( "2" )
 fadeIn_duration = 0.1
 fadeOut_duration = 0.2
 
-[node name="TweenOut" type="Tween" parent="."]
+[node name="TweenOut" type="Node" parent="."]
 
-[node name="TweenIn" type="Tween" parent="."]
-
-[connection signal="tween_completed" from="TweenOut" to="." method="_on_TweenOut_tween_completed"]
+[node name="TweenIn" type="Node" parent="."]
