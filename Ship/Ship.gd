@@ -154,7 +154,7 @@ func _fire_truster(state:PhysicsDirectBodyState3D,direction:Vector2):
 	if(fuel_cost>fuel):return
 	
 	var force = direction3d*truster_engine_mass_rate*truster_exaust_velocity
-	state.add_force(force, Vector3(0,0,0))
+	state.apply_central_force(force)
 	self.burn_fuel(fuel_cost)
 	$Propulsion.trust_Vector(direction,1)
 	
@@ -164,7 +164,7 @@ func _fire_main_drive(state:PhysicsDirectBodyState3D,trust:float):
 	
 	if(trust != 0 and (fuel - fuelcost > 0)):
 		var force = _get_forward_vector()*engine_mass_rate*engine_exaust_velocity
-		state.add_force(force, Vector3(0,0,0))
+		state.apply_central_force(force)
 		self.burn_fuel(engine_mass_rate / Globals.get_fuel_mass() * state.step)
 		$Propulsion.drive_on()
 	else:
