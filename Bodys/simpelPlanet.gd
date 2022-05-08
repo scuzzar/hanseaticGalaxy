@@ -37,7 +37,7 @@ func _enter_tree():
 func _ready():
 	orbit_radius = position.length()
 	$Shape/Mesh.material_override = material
-	isGravetySource = (surface_g>0)
+	isGravetySource = (surface_g>0)	
 	$Lable3D.text = name
 	if(self.securety_level==ENUMS.SECURETY.BELT):
 		$Lable3D.text += "*"

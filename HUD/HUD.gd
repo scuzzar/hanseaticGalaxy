@@ -85,7 +85,7 @@ func _on_Ship_g_force_update(force,p_stronges_body,strongest_force):
 func _on_Ship_telemetry_changed(position,velocety):
 	self.ship_position = position
 	if(strongest_body != null):
-		velocety -= strongest_body.linear_velocity
+		velocety -= strongest_body.constant_linear_velocity
 		
 		var r = strongest_body.global_transform.origin.distance_to(ship_position)
 		var G = Globals.G
