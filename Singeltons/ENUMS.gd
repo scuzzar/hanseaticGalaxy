@@ -19,3 +19,14 @@ enum WEAPON {
 	KILLGUN = 3,
 	NONE = 999
 }
+
+enum SHIPTYPES{
+	TENDER = 0,
+	TENDER_S = 1,
+	ROCKET_S = 2,
+	ROCKET = 3,
+	SKYCRANE = 4,
+	SKYCRANE_S = 5,
+	KILLSAT = 6,
+	NONE = 999
+}

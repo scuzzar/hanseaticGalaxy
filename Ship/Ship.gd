@@ -2,17 +2,6 @@ extends Rigid_N_Body
 
 class_name Ship
 
-enum SHIPTYPES{
-	TENDER = 0,
-	TENDER_S = 1,
-	ROCKET_S = 2,
-	ROCKET = 3,
-	SKYCRANE = 4,
-	SKYCRANE_S = 5,
-	KILLSAT = 6,
-	NONE = 999
-}
-
 var dispay_name = "Neubeckum II"
 var fuel_cap = 0
 var max_hitpoints = 100
@@ -53,10 +42,10 @@ var rotational_trust :float = 0
 var inventory = $Inventory
 
 @export
-var team = ENUMS.TEAM.NEUTRAL
+var team : ENUMS.TEAM = ENUMS.TEAM.NEUTRAL
 
 @export 
-var type = SHIPTYPES.NONE
+var type : ENUMS.SHIPTYPES = ENUMS.SHIPTYPES.NONE
 
 const ShipTyp = preload("res://Ship/shipTypes.csv").records
 
