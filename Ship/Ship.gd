@@ -241,7 +241,7 @@ func get_lateral_trust():
 
 func dock(pTarget: Node):
 	if(pTarget!=self.docking_location):
-		self.docking_location = target
+		self.docking_location = pTarget
 		self.weaponActive =false
 		emit_signal("docked", self.docking_location)
 

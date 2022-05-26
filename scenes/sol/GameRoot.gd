@@ -29,10 +29,10 @@ func newGameSetup():
 	
 		ship.transform = player_spawn_point.get_docking_globaltransform()		
 		var spawn_body :simpelPlanet = player_spawn_point.getBody()
-		print("BodyVal" + str(spawn_body.linear_velocity) + " abs " +str(spawn_body.linear_velocity.length()))
-		var offset_vel = spawn_body.linear_velocity
+		print("BodyVal" + str(spawn_body.constant_linear_velocity) + " abs " +str(spawn_body.constant_linear_velocity.length()))
+		var offset_vel = spawn_body.constant_linear_velocity
 		if(!spawn_body.isPlanet):
-			offset_vel += spawn_body.get_parent().linear_velocity
+			offset_vel += spawn_body.get_parent().constant_linear_velocity
 		ship.set_write_linear_velocity(offset_vel)
 	
 			

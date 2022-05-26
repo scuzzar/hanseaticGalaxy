@@ -37,7 +37,7 @@ func getDistance()->float:
 
 
 func getPrice():
-	return cargoContainer[0].getPrice()
+	return Typ.Cargo[cargo]["price"]
 	
 func getCargoName()-> String:
 	return cargoContainer[0].getCargoName()

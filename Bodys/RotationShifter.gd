@@ -37,7 +37,7 @@ func on_soi_planet_changed(newPlanet:simpelPlanet):
 
 func _shiftToPlanet(newPlanet):	
 		SOIPlanet = newPlanet
-		_shift(-newPlanet.angular_speed, SOIPlanet.linear_velocity*-1)		
+		_shift(-newPlanet.angular_speed, SOIPlanet.constant_linear_velocity*-1)		
 		
 
 func _unShift():
