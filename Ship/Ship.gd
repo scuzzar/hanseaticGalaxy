@@ -266,7 +266,7 @@ func getMaxStartMass():
 
 func save():
 	#Offset to avoid collisions on loading.
-	var savePos = self.translation	
+	var savePos = self.position	
 	var offset :Vector3 = self.last_g_force 
 	offset = offset.normalized()*-0.4
 	savePos = savePos + offset

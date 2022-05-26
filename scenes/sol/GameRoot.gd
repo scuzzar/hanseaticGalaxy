@@ -193,7 +193,7 @@ func save_game():
 	var dataList = []
 	for node in save_nodes:
 
-		if node.filename.empty():
+		if node.scene_file_path.is_empty():
 			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
 			continue
 

@@ -21,9 +21,9 @@ func setPort(target):
 	self.port = target
 	self.show()
 	self.update()
-	var existingConnection = target.inventory.is_connected("container_added", self, "_Inventory_added_container")
+	var existingConnection = target.inventory.is_connected("container_added", self._Inventory_added_container)
 	if(!existingConnection):	
-		target.inventory.connect("container_added", self, "_Inventory_added_container")
+		target.inventory.connect("container_added", self._Inventory_added_container)
 
 func clearPort(target):
 	self.port = null
@@ -32,18 +32,18 @@ func clearPort(target):
 	missionCartMass = 0
 	missionCartReward = 0
 	self.hide()
-	var existingConnection = target.inventory.is_connected("container_added", self, "_Inventory_added_container")
+	var existingConnection = target.inventory.is_connected("container_added", self._Inventory_added_container)
 	if(existingConnection):
-		target.inventory.disconnect("container_added", self, "_Inventory_added_container")
+		target.inventory.disconnect("container_added", self._Inventory_added_container)
 
 func update():
 	super.update()
 	_on_ship_mass_change()
 
 func _add_mission(mission:DeliveryMission):	
-	var newRaw = rawScene.instance()	
+	var newRaw = rawScene.instantiate()	
 	newRaw.setContent(mission)
-	newRaw.connect("buttonPressed",self,"_on_selection_update")
+	newRaw.connect("buttonPressed",self._on_selection_update)
 	#newRaw.setButtonActon("Accept")
 	if(missionCart.has(mission)):
 		newRaw.checkBox()

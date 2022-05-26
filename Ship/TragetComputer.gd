@@ -7,7 +7,7 @@ extends Node
 func _turn_turrents(delta):
 	var position2D = get_viewport().get_mouse_position()
 	var dropPlane  = Plane(Vector3(0, 1, 0), 0)
-	var camera = get_viewport().get_camera()
+	var camera = get_viewport().get_camera_3d()
 	var position3D = dropPlane.intersects_ray(
 		camera.project_ray_origin(position2D),
 		camera.project_ray_normal(position2D))

@@ -3,8 +3,8 @@
 importer="3d_texture"
 type="CompressedTexture3D"
 uid="uid://cn37qtpp4eja6"
-path.etc2="res://.godot/imported/Mars.albedo.noaa.CWreprocessed.4096.jpg-edd7b71c90f6fb99984ec15b0c384a4f.etc2.stex3d"
-path.s3tc="res://.godot/imported/Mars.albedo.noaa.CWreprocessed.4096.jpg-edd7b71c90f6fb99984ec15b0c384a4f.s3tc.stex3d"
+path.etc2="res://.godot/imported/Mars.albedo.noaa.CWreprocessed.4096.jpg-edd7b71c90f6fb99984ec15b0c384a4f.etc2.ctex3d"
+path.s3tc="res://.godot/imported/Mars.albedo.noaa.CWreprocessed.4096.jpg-edd7b71c90f6fb99984ec15b0c384a4f.s3tc.ctex3d"
 metadata={
 "imported_formats": ["etc2", "s3tc"],
 "vram_texture": true
@@ -13,7 +13,7 @@ metadata={
 [deps]
 
 source_file="res://Bodys/tex/ivoyager/Mars.albedo.noaa.CWreprocessed.4096.jpg"
-dest_files=["res://.godot/imported/Mars.albedo.noaa.CWreprocessed.4096.jpg-edd7b71c90f6fb99984ec15b0c384a4f.etc2.stex3d", "res://.godot/imported/Mars.albedo.noaa.CWreprocessed.4096.jpg-edd7b71c90f6fb99984ec15b0c384a4f.s3tc.stex3d"]
+dest_files=["res://.godot/imported/Mars.albedo.noaa.CWreprocessed.4096.jpg-edd7b71c90f6fb99984ec15b0c384a4f.etc2.ctex3d", "res://.godot/imported/Mars.albedo.noaa.CWreprocessed.4096.jpg-edd7b71c90f6fb99984ec15b0c384a4f.s3tc.ctex3d"]
 
 [params]
 

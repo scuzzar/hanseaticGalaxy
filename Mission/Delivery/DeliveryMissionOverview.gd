@@ -12,16 +12,17 @@ signal deliver(container)
 signal about(container)
 
 func _ready():	
-	
+	vBox = $"Container/VBoxContainer"
 	hide()	
 
 func update():
+	vBox = $"Container/VBoxContainer"
 	var missions = _getMissions()	
 	if(self.visible):
 		for n in vBox.get_children():
 			vBox.remove_child(n)
 			n.queue_free()		
-		missions.sort_custom(self,"_sortByDistance")		
+		missions.sort_custom(self._sortByDistance)		
 		for m in missions:
 			_add_mission(m)
 	#mass_value.text = str(ship.mass)

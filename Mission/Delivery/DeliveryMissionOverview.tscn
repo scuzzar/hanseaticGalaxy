@@ -1,140 +1,103 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://dnlfe718r7iq"]
 
-[ext_resource path="res://Mission/Delivery/DeliveryMissionOverview.gd" type="Script" id=1]
-[ext_resource path="res://Mission/Delivery/DeliveryRaw.tscn" type="PackedScene" id=2]
-[ext_resource path="res://SpacePort/sound/201159__kiddpark__cash-register.mp3" type="AudioStream" id=3]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.207843, 0.207843, 0.207843, 1 )
+[ext_resource type="Script" path="res://Mission/Delivery/DeliveryMissionOverview.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://rjjpjunecsd7" path="res://Mission/Delivery/DeliveryRaw.tscn" id="2"]
+[ext_resource type="AudioStream" uid="uid://lwabw4g1vkr3" path="res://SpacePort/sound/201159__kiddpark__cash-register.mp3" id="3"]
 
 [node name="CargoBay" type="Panel"]
-anchor_left = 1.0
+anchor_left = 0.673
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -547.993
-margin_top = 185.79
-margin_right = -42.9932
-margin_bottom = -358.21
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = -66.152
+offset_top = 3.0
+offset_right = -1.0
+offset_bottom = 3.0
+script = ExtResource( "1" )
 
 [node name="Destination" type="Label" parent="."]
 anchor_right = 1.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 100, 0 )
-custom_styles/normal = SubResource( 1 )
 text = "Cargo BAy"
-align = 1
 uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Header" type="GridContainer" parent="."]
-margin_left = 17.0
-margin_top = 20.0
-margin_right = 489.0
-margin_bottom = 47.0
+anchor_right = 1.0
+anchor_bottom = 0.109
+offset_top = 23.0
+offset_right = 10.0
+offset_bottom = -39.4
 columns = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
 
 [node name="Destination2" type="Label" parent="Header"]
-margin_right = 20.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 20, 0 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 24.0
 uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Destination" type="Label" parent="Header"]
-margin_left = 24.0
-margin_right = 124.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 100, 0 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+offset_left = 5.0
+offset_right = 111.0
+offset_bottom = 26.0
 text = "Destination"
 uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Good" type="Label" parent="Header"]
-margin_left = 128.0
-margin_right = 228.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 100, 0 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+offset_left = 115.0
+offset_right = 164.0
+offset_bottom = 26.0
 text = "Good"
 uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Mass" type="Label" parent="Header"]
-margin_left = 232.0
-margin_right = 302.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 70, 0 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+offset_left = 168.0
+offset_right = 211.0
+offset_bottom = 26.0
 text = "Mass"
-align = 2
 uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Reward" type="Label" parent="Header"]
-margin_left = 306.0
-margin_right = 386.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 80, 0 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+offset_left = 215.0
+offset_right = 282.0
+offset_bottom = 26.0
 text = "Reward"
-align = 2
 uppercase = true
 
 [node name="DV" type="Label" parent="Header"]
-margin_left = 390.0
-margin_right = 470.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 80, 0 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+offset_left = 286.0
+offset_right = 345.0
+offset_bottom = 26.0
 text = "min DV"
-align = 2
 uppercase = true
 
 [node name="Container" type="ScrollContainer" parent="."]
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 17.0
-margin_top = 44.0
-margin_right = 499.0
-margin_bottom = -35.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_top = 46.0
+offset_right = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Container"]
-margin_bottom = 84.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+minimum_size = Vector2(100, 100)
+offset_right = 100.0
+offset_bottom = 100.0
 
-[node name="Control2" parent="Container/VBoxContainer" instance=ExtResource( 2 )]
-margin_right = 0.0
+[node name="Control2" parent="Container/VBoxContainer" instance=ExtResource( "2" )]
+anchor_bottom = 0.0
+offset_right = 100.0
+offset_bottom = 48.0
 
-[node name="Control" parent="Container/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 44.0
-margin_right = 0.0
-margin_bottom = 84.0
+[node name="Control" parent="Container/VBoxContainer" instance=ExtResource( "2" )]
+anchor_bottom = 0.0
+offset_top = 52.0
+offset_right = 100.0
+offset_bottom = 100.0
 
 [node name="Cash" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource( "3" )
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 

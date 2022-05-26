@@ -40,11 +40,11 @@ func getPrice():
 	return Typ.Cargo[cargo]["price"]
 	
 func getCargoName()-> String:
-	return cargoContainer[0].getCargoName()
+	return Typ.Cargo[cargo]["name"]
 
 
 func getMass()->float:
-	return cargoContainer[0].getMass()*getContainerCount()
+	return Typ.Cargo[cargo]["mass"]*getContainerCount()
 
 func getContainerCount()->int:
 	return cargoContainer.size()

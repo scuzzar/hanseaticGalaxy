@@ -111,7 +111,7 @@ func save():
 		"angle" : angle,
 		"orbit_radius" : orbit_radius
 	}
-	var savePos = self.translation		
+	var savePos = self.position		
 	save_dict["pos_x"] = savePos.x
 	save_dict["pos_y"] = savePos.y
 	save_dict["pos_z"] = savePos.z

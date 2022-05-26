@@ -110,7 +110,7 @@ func _on_Ship_docked(port:Port):
 	refuel.show()
 	refuel.setShip(ship)
 	accept_button.show()
-	if(!port.getShipsForSale().empty()):
+	if(!port.getShipsForSale().is_empty()):
 		$ShipShopButton.show()
 		$ShipShop.setWarft(port)
 	else:
