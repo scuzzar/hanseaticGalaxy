@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d1jd0u6nt4hr6" path="res://HUD/EngineLifeBar.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://ddcqvoi0kvs5g" path="res://Mission/Delivery/DeliveryBoard.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://dnlfe718r7iq" path="res://Mission/Delivery/DeliveryMissionOverview.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://SpacePort/ShipShop/ShipShop.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://ctmtuq88r06jt" path="res://SpacePort/ShipShop/ShipShop.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://dm5vy6ts8sgkw" path="res://HUD/Refuel.tscn" id="9"]
 
 [node name="HUD" type="Control"]
@@ -114,6 +114,9 @@ theme = ExtResource( "4" )
 text = "100000"
 
 [node name="Credits" parent="." instance=ExtResource( "3" )]
+grow_horizontal = 0
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
 
 [node name="Consol" type="Label" parent="." groups=["consol"]]
 visible = false
@@ -127,7 +130,7 @@ anchor_left = 1.0
 offset_left = -401.0
 offset_top = 35.0
 offset_right = -11.0
-offset_bottom = -105.0
+offset_bottom = -148.0
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
 
@@ -206,7 +209,6 @@ text = "100000"
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.0
 
 [node name="ShipShopButton" type="Button" parent="."]
 anchor_left = 0.5
@@ -221,34 +223,42 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [node name="Refuel" parent="." instance=ExtResource( "9" )]
-offset_left = -76.0
-offset_top = -195.0
-offset_right = -76.0
-offset_bottom = -195.0
-grow_horizontal = 2
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -312.0
+offset_top = -142.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
 grow_vertical = 0
 metadata/_edit_layout_mode = 1
 
 [node name="Price" parent="Refuel/Grid" index="1"]
-offset_right = 275.0
+offset_right = 287.0
 
 [node name="Refuel" parent="Refuel/Grid" index="3"]
-offset_right = 275.0
+offset_right = 287.0
 
 [node name="amount" parent="Refuel/Grid" index="5"]
-offset_right = 275.0
+offset_right = 287.0
 
 [node name="mass" parent="Refuel/Grid" index="7"]
-offset_right = 275.0
+offset_right = 287.0
 
 [node name="Sum" parent="Refuel/Grid" index="9"]
-offset_right = 275.0
+offset_right = 287.0
 
 [node name="Footer" type="GridContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -181.5
+offset_top = -63.0
+offset_right = 181.5
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
 columns = 2
@@ -285,14 +295,19 @@ offset_bottom = 48.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="."]
-visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -45.0
+offset_right = 79.0
+offset_bottom = -14.0
+grow_vertical = 0
 text = "Accept"
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
 
 [connection signal="about" from="DeliveryMissionOverview" to="." method="_on_CargoBay_about"]
 [connection signal="deliver" from="DeliveryMissionOverview" to="." method="_on_CargoBay_deliver"]
-[connection signal="accepted" from="DeliveryBoard" to="." method="_on_InventoryWindow_accepted"]
 [connection signal="shipOrderd" from="ShipShop" to="." method="_on_shipOrderd"]
 [connection signal="pressed" from="ShipShopButton" to="." method="_on_Button_pressed"]
 [connection signal="refuel_cart_change" from="Refuel" to="." method="_on_refuel_cart_change"]

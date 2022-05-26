@@ -26,7 +26,7 @@ func _createContainer(amount):
 func _to_string()->String:
 	if(destination!=null):
 	#var text = "Destination: " + destination.name + " (" + str(self.reward) +"c) " + str(round(getDistance())) + "km"
-		return  self.getCargoName() + " > " + destination.name + " C:" + str(self.reward) +" MASS:" + str(self.getMass()) #+ " D:" + str(getDistance()) 
+		return  self.getCargoName() + " > " + str(destination.name) + " C:" + str(self.reward) +" MASS:" + str(self.getMass()) #+ " D:" + str(getDistance()) 
 	else:
 		return "nullDestination"
 		

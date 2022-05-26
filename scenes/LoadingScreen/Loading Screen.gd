@@ -40,4 +40,7 @@ func _on_Exit_pressed():
 
 
 func _on_FullScreen_pressed():
-	OS.window_fullscreen = !OS.window_fullscreen
+	if(DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN):
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

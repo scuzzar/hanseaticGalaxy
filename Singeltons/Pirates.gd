@@ -45,7 +45,7 @@ func _generate_pirates_Ground(groundPort:Port, mission:DeliveryMission):
 	pass
 
 func _place_pirate_in_orbit(planet:simpelPlanet, angle, radius, mission:DeliveryMission):
-	var killSat : Satellite = KillSatScene.instance()	
+	var killSat : Satellite = KillSatScene.instantiate()	
 	killSat.transform.origin = Vector3(radius,0,0)	
 	planet.add_child(killSat)	
 	killSat.orbit_radius = radius

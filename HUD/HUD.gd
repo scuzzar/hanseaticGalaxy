@@ -158,7 +158,7 @@ func _on_Button_pressed():
 
 func _on_shipOrderd(ship):
 	self.emit_signal("shipOrderd",ship)
-	if($ShipShop.warft.getShipsForSale().empty()):
+	if($ShipShop.warft.getShipsForSale().is_empty()):
 		_on_Button_pressed()
 		$ShipShopButton.hide()
 

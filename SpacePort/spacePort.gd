@@ -65,7 +65,7 @@ func add_Mission(mission:Mission):
 func remove_Mission(mission:Mission):
 	if(mission is DeliveryMission):
 		var i = delivery_Missions.find(mission)
-		delivery_Missions.remove(i)
+		delivery_Missions.remove_at(i)
 		self.remove_child(mission)
 		
 func get_all_DeliveryMissions():

@@ -15,21 +15,21 @@ func update():
 	$ShipInfo.setShip(ShipForSale[currentIndex])
 
 func _on_next_pressed():
-	if(!ShipForSale.empty()):
+	if(!ShipForSale.is_empty()):
 		currentIndex = (currentIndex + 1) % ShipForSale.size()
 		update()
 
 func _on_last_pressed():
-	if(!ShipForSale.empty()):
+	if(!ShipForSale.is_empty()):
 		currentIndex = (currentIndex - 1)% ShipForSale.size()
 		update()
 
 func _on_Buy_pressed():
-	if(!ShipForSale.empty()):
+	if(!ShipForSale.is_empty()):
 		self.emit_signal("shipOrderd",ShipForSale[currentIndex])
 		currentIndex = 0
 		setWarft(warft)
-		if(!ShipForSale.empty()):
+		if(!ShipForSale.is_empty()):
 			self.update()
 		else:
 			self.hide()
