@@ -1,433 +1,294 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=10 format=3 uid="uid://dcfvc4db5kyj8"]
 
-[ext_resource path="res://HUD/HUD.gd" type="Script" id=1]
-[ext_resource path="res://HUD/FuelBar.tscn" type="PackedScene" id=2]
-[ext_resource path="res://HUD/Credits.tscn" type="PackedScene" id=3]
-[ext_resource path="res://HUD/theme/default_theme.theme" type="Theme" id=4]
-[ext_resource path="res://HUD/EngineLifeBar.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Mission/Delivery/DeliveryBoard.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Mission/Delivery/DeliveryMissionOverview.tscn" type="PackedScene" id=7]
-[ext_resource path="res://SpacePort/ShipShop/ShipShop.tscn" type="PackedScene" id=8]
-[ext_resource path="res://HUD/Refuel.tscn" type="PackedScene" id=9]
+[ext_resource type="Script" path="res://HUD/HUD.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://mjhuhtrdabjg" path="res://HUD/FuelBar.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://HUD/Credits.tscn" id="3"]
+[ext_resource type="Theme" uid="uid://7tcar65meo7i" path="res://HUD/theme/default_theme.theme" id="4"]
+[ext_resource type="PackedScene" uid="uid://d1jd0u6nt4hr6" path="res://HUD/EngineLifeBar.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://ddcqvoi0kvs5g" path="res://Mission/Delivery/DeliveryBoard.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://dnlfe718r7iq" path="res://Mission/Delivery/DeliveryMissionOverview.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://SpacePort/ShipShop/ShipShop.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://dm5vy6ts8sgkw" path="res://HUD/Refuel.tscn" id="9"]
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 2.0
-margin_right = 2.0
 mouse_filter = 2
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource( "1" )
 
 [node name="DataBox" type="VBoxContainer" parent="."]
-margin_left = 10.0
-margin_top = 9.0
-margin_right = 214.0
-margin_bottom = 62.0
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MASS" type="HBoxContainer" parent="DataBox"]
-margin_right = 204.0
-margin_bottom = 21.0
+offset_right = 141.0
+offset_bottom = 21.0
 alignment = 1
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Label" type="Label" parent="DataBox/MASS"]
-margin_right = 100.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
+offset_right = 63.0
+offset_bottom = 21.0
+theme = ExtResource( "4" )
 text = "MASS:"
-align = 2
 
 [node name="Value" type="Label" parent="DataBox/MASS"]
-margin_left = 104.0
-margin_right = 204.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
+offset_left = 67.0
+offset_right = 141.0
+offset_bottom = 21.0
+theme = ExtResource( "4" )
 text = "100000"
 
 [node name="TMR" type="HBoxContainer" parent="DataBox"]
-margin_top = 25.0
-margin_right = 204.0
-margin_bottom = 46.0
+offset_top = 25.0
+offset_right = 141.0
+offset_bottom = 46.0
 alignment = 1
 
 [node name="Label" type="Label" parent="DataBox/TMR"]
-margin_right = 100.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
+offset_left = 17.0
+offset_right = 72.0
+offset_bottom = 21.0
+theme = ExtResource( "4" )
 text = "Time:"
-align = 2
 
 [node name="Value" type="Label" parent="DataBox/TMR"]
-margin_left = 104.0
-margin_right = 204.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
+offset_left = 76.0
+offset_right = 124.0
+offset_bottom = 21.0
+theme = ExtResource( "4" )
 text = "2021"
 
 [node name="G_Meter" type="HBoxContainer" parent="DataBox"]
-margin_top = 50.0
-margin_right = 204.0
-margin_bottom = 71.0
+offset_top = 50.0
+offset_right = 141.0
+offset_bottom = 71.0
 alignment = 1
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Label" type="Label" parent="DataBox/G_Meter"]
-margin_right = 100.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
+offset_left = 22.0
+offset_right = 41.0
+offset_bottom = 21.0
+theme = ExtResource( "4" )
 text = "g:"
-align = 2
 
 [node name="Value" type="Label" parent="DataBox/G_Meter"]
-margin_left = 104.0
-margin_right = 204.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
+offset_left = 45.0
+offset_right = 119.0
+offset_bottom = 21.0
+theme = ExtResource( "4" )
 text = "100000"
 
 [node name="V_cosmic" type="HBoxContainer" parent="DataBox"]
 visible = false
-margin_top = 75.0
-margin_right = 204.0
-margin_bottom = 96.0
 alignment = 1
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Label" type="Label" parent="DataBox/V_cosmic"]
-margin_right = 100.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
+theme = ExtResource( "4" )
 text = "C:"
-align = 2
 
 [node name="Value" type="Label" parent="DataBox/V_cosmic"]
-margin_left = 104.0
-margin_right = 204.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
+theme = ExtResource( "4" )
 text = "100000"
 
 [node name="V_Meter" type="HBoxContainer" parent="DataBox"]
 visible = false
-margin_top = 100.0
-margin_right = 204.0
-margin_bottom = 121.0
 alignment = 1
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Label" type="Label" parent="DataBox/V_Meter"]
-margin_right = 100.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
+theme = ExtResource( "4" )
 text = "V:"
-align = 2
 
 [node name="Value" type="Label" parent="DataBox/V_Meter"]
-margin_left = 104.0
-margin_right = 204.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
+theme = ExtResource( "4" )
 text = "100000"
 
 [node name="V_escape" type="HBoxContainer" parent="DataBox"]
 visible = false
-margin_top = 100.0
-margin_right = 204.0
-margin_bottom = 121.0
 alignment = 1
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Label" type="Label" parent="DataBox/V_escape"]
-margin_right = 100.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
+theme = ExtResource( "4" )
 text = "e:"
-align = 2
 
 [node name="Value" type="Label" parent="DataBox/V_escape"]
-margin_left = 104.0
-margin_right = 204.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
+theme = ExtResource( "4" )
 text = "100000"
 
-[node name="Credits" parent="." instance=ExtResource( 3 )]
+[node name="Credits" parent="." instance=ExtResource( "3" )]
 
 [node name="Consol" type="Label" parent="." groups=["consol"]]
 visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 20.1587
-margin_top = -48.7183
-margin_right = 173.159
-margin_bottom = -27.7183
-theme = ExtResource( 4 )
+theme = ExtResource( "4" )
 text = "Destination:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="DeliveryMissionOverview" parent="." instance=ExtResource( 7 )]
-margin_left = -592.0
-margin_top = 94.0
-margin_right = -87.0
-margin_bottom = -424.0
+[node name="DeliveryMissionOverview" parent="." instance=ExtResource( "7" )]
+anchor_left = 1.0
+offset_left = -401.0
+offset_top = 35.0
+offset_right = -11.0
+offset_bottom = -105.0
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
 
-[node name="DeliveryBoard" parent="." instance=ExtResource( 6 )]
-margin_left = 96.0
-margin_top = 94.0
-margin_right = 601.0
-margin_bottom = -289.0
+[node name="DeliveryBoard" parent="." instance=ExtResource( "6" )]
+offset_top = 36.0
+metadata/_edit_layout_mode = 1
 
 [node name="CenterHUB" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 14.9999
-margin_top = -73.0001
-margin_right = 219.0
-margin_bottom = 73.0001
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
 
 [node name="V_cosmic" type="HBoxContainer" parent="CenterHUB"]
-margin_top = 37.0
-margin_right = 204.0
-margin_bottom = 58.0
+offset_right = 97.0
+offset_bottom = 21.0
 alignment = 1
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Label" type="Label" parent="CenterHUB/V_cosmic"]
-margin_right = 100.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
-custom_colors/font_color = Color( 0.0196078, 0.364706, 0.0117647, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+offset_right = 19.0
+offset_bottom = 21.0
+theme = ExtResource( "4" )
 text = "C:"
-align = 2
 
 [node name="Value" type="Label" parent="CenterHUB/V_cosmic"]
-margin_left = 104.0
-margin_right = 204.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
-custom_colors/font_color = Color( 0.0196078, 0.364706, 0.0117647, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+offset_left = 23.0
+offset_right = 97.0
+offset_bottom = 21.0
+theme = ExtResource( "4" )
 text = "100000"
 
 [node name="V_Meter" type="HBoxContainer" parent="CenterHUB"]
-margin_top = 62.0
-margin_right = 204.0
-margin_bottom = 83.0
+offset_top = 25.0
+offset_right = 97.0
+offset_bottom = 46.0
 alignment = 1
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Label" type="Label" parent="CenterHUB/V_Meter"]
-margin_right = 100.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+offset_right = 19.0
+offset_bottom = 21.0
+theme = ExtResource( "4" )
 text = "V:"
-align = 2
 
 [node name="Value" type="Label" parent="CenterHUB/V_Meter"]
-margin_left = 104.0
-margin_right = 204.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+offset_left = 23.0
+offset_right = 97.0
+offset_bottom = 21.0
+theme = ExtResource( "4" )
 text = "100000"
 
 [node name="V_escape" type="HBoxContainer" parent="CenterHUB"]
-margin_top = 87.0
-margin_right = 204.0
-margin_bottom = 108.0
+offset_top = 50.0
+offset_right = 97.0
+offset_bottom = 71.0
 alignment = 1
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Label" type="Label" parent="CenterHUB/V_escape"]
-margin_right = 100.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
-custom_colors/font_color = Color( 0.00392157, 0, 0.364706, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+offset_right = 19.0
+offset_bottom = 21.0
+theme = ExtResource( "4" )
 text = "e:"
-align = 2
 
 [node name="Value" type="Label" parent="CenterHUB/V_escape"]
-margin_left = 104.0
-margin_right = 204.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
-theme = ExtResource( 4 )
-custom_colors/font_color = Color( 0.00392157, 0, 0.364706, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+offset_left = 23.0
+offset_right = 97.0
+offset_bottom = 21.0
+theme = ExtResource( "4" )
 text = "100000"
 
-[node name="ShipShop" parent="." instance=ExtResource( 8 )]
+[node name="ShipShop" parent="." instance=ExtResource( "8" )]
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-margin_left = -810.0
-margin_right = 810.0
-margin_bottom = 869.0
 
 [node name="ShipShopButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -46.0476
-margin_top = 27.0
-margin_right = 49.9524
-margin_bottom = 69.0
+offset_left = -39.0
+offset_top = 22.0
+offset_right = 46.0
+offset_bottom = 53.0
+grow_horizontal = 2
 text = "Ship Shop"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
 
-[node name="Refuel" parent="." instance=ExtResource( 9 )]
-anchor_left = 0.0
-anchor_right = 0.0
-margin_left = 94.0
-margin_top = -289.0
-margin_right = 601.0
-margin_bottom = -120.0
+[node name="Refuel" parent="." instance=ExtResource( "9" )]
+offset_left = -76.0
+offset_top = -195.0
+offset_right = -76.0
+offset_bottom = -195.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_layout_mode = 1
 
 [node name="Price" parent="Refuel/Grid" index="1"]
-margin_right = 480.0
+offset_right = 275.0
 
 [node name="Refuel" parent="Refuel/Grid" index="3"]
-margin_right = 480.0
+offset_right = 275.0
 
 [node name="amount" parent="Refuel/Grid" index="5"]
-margin_right = 480.0
+offset_right = 275.0
 
 [node name="mass" parent="Refuel/Grid" index="7"]
-margin_right = 480.0
+offset_right = 275.0
 
 [node name="Sum" parent="Refuel/Grid" index="9"]
-margin_right = 480.0
+offset_right = 275.0
 
 [node name="Footer" type="GridContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -419.0
-margin_top = -72.0
-margin_right = 323.0
-margin_bottom = -1.0
+grow_horizontal = 2
 grow_vertical = 0
 columns = 2
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
 
 [node name="Fuel_Lable" type="Label" parent="Footer"]
-margin_right = 100.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
+offset_right = 59.0
+offset_bottom = 21.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource( 4 )
+theme = ExtResource( "4" )
 text = "Fuel:"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Fuel" parent="Footer" instance=ExtResource( 2 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 104.0
-margin_top = 0.0
-margin_right = 742.0
-margin_bottom = 21.0
+[node name="Fuel" parent="Footer" instance=ExtResource( "2" )]
+offset_left = 63.0
+offset_right = 363.0
 size_flags_horizontal = 3
 
 [node name="Life_Lable" type="Label" parent="Footer"]
-margin_top = 25.0
-margin_right = 100.0
-margin_bottom = 46.0
-rect_min_size = Vector2( 100, 0 )
+offset_top = 26.0
+offset_right = 32.0
+offset_bottom = 47.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource( 4 )
+theme = ExtResource( "4" )
 text = "HP:"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Life" parent="Footer" instance=ExtResource( 5 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 104.0
-margin_top = 25.0
-margin_right = 742.0
-margin_bottom = 46.0
+[node name="Life" parent="Footer" instance=ExtResource( "5" )]
+offset_left = 63.0
+offset_top = 26.0
+offset_right = 363.0
+offset_bottom = 48.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="."]
 visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 507.0
-margin_top = -120.0
-margin_right = 601.0
-margin_bottom = -86.0
 text = "Accept"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="about" from="DeliveryMissionOverview" to="." method="_on_CargoBay_about"]
 [connection signal="deliver" from="DeliveryMissionOverview" to="." method="_on_CargoBay_deliver"]

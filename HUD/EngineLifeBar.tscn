@@ -1,38 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://d1jd0u6nt4hr6"]
 
-[ext_resource path="res://HUD/theme/EngineLivelBar.atlastex" type="Texture" id=1]
-[ext_resource path="res://HUD/theme/default_theme.theme" type="Theme" id=2]
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 19, 26 )
-margin_left = 6.99298
-margin_right = 6.62493
-margin_top = 4.9687
-margin_bottom = 4.60065
-axis_stretch_horizontal = 1
+[ext_resource type="Theme" uid="uid://7tcar65meo7i" path="res://HUD/theme/default_theme.theme" id="2"]
 
 [node name="Fuel" type="HSplitContainer"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -310.5
-margin_top = -21.0
-margin_right = 310.5
+minimum_size = Vector2(300, 0)
+offset_right = 300.0
+offset_bottom = 22.0
 split_offset = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
+metadata/_edit_use_custom_anchors = false
 
 [node name="Bar" type="ProgressBar" parent="."]
-margin_right = 621.0
-margin_bottom = 21.0
+offset_right = 300.0
+offset_bottom = 22.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
-theme = ExtResource( 2 )
-custom_styles/fg = SubResource( 1 )
+theme = ExtResource( "2" )
 value = 70.0
-__meta__ = {
-"_edit_use_anchors_": false
-}

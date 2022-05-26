@@ -1,182 +1,122 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://dm5vy6ts8sgkw"]
 
-[ext_resource path="res://HUD/theme/default_theme.theme" type="Theme" id=1]
-[ext_resource path="res://HUD/Refuel.gd" type="Script" id=2]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.207843, 0.207843, 0.207843, 1 )
+[ext_resource type="Theme" uid="uid://7tcar65meo7i" path="res://HUD/theme/default_theme.theme" id="1"]
+[ext_resource type="Script" path="res://HUD/Refuel.gd" id="2"]
 
 [node name="Refuel" type="Panel"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -258.0
-margin_top = -274.0
-margin_right = 262.0
-margin_bottom = -110.0
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+minimum_size = Vector2(300, 100)
+offset_right = 334.0
+offset_bottom = 183.0
+script = ExtResource( "2" )
+metadata/_edit_use_custom_anchors = false
 
 [node name="Destination" type="Label" parent="."]
 anchor_right = 1.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 100, 0 )
-custom_styles/normal = SubResource( 1 )
 text = "Refueling"
-align = 1
 uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Grid" type="GridContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 23.0
-margin_right = -17.0
+offset_left = 10.0
+offset_top = 28.0
+offset_right = -15.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
 columns = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
 
 [node name="Refuel_Lable2" type="Label" parent="Grid"]
-margin_right = 100.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
+offset_right = 64.0
+offset_bottom = 21.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource( 1 )
+theme = ExtResource( "1" )
 text = "Price:"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Price" type="Label" parent="Grid"]
-margin_left = 104.0
-margin_right = 493.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 100, 0 )
+offset_left = 94.0
+offset_right = 309.0
+offset_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
-theme = ExtResource( 1 )
+theme = ExtResource( "1" )
 text = "12C"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Refuel_Lable" type="Label" parent="Grid"]
-margin_top = 25.0
-margin_right = 100.0
-margin_bottom = 46.0
-rect_min_size = Vector2( 100, 0 )
+offset_top = 25.0
+offset_right = 90.0
+offset_bottom = 46.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource( 1 )
+theme = ExtResource( "1" )
 text = "Amount:"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Refuel" type="HSlider" parent="Grid"]
-margin_left = 104.0
-margin_top = 25.0
-margin_right = 493.0
-margin_bottom = 41.0
+offset_left = 94.0
+offset_top = 25.0
+offset_right = 309.0
+offset_bottom = 41.0
 size_flags_horizontal = 3
 min_value = 20.0
 value = 20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Refuel_Lable5" type="Label" parent="Grid"]
-margin_top = 50.0
-margin_right = 100.0
-margin_bottom = 71.0
-rect_min_size = Vector2( 100, 0 )
+offset_top = 50.0
+offset_right = 1.0
+offset_bottom = 68.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource( 1 )
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme = ExtResource( "1" )
 
 [node name="amount" type="Label" parent="Grid"]
-margin_left = 104.0
-margin_top = 50.0
-margin_right = 493.0
-margin_bottom = 71.0
-rect_min_size = Vector2( 100, 0 )
+offset_left = 94.0
+offset_top = 50.0
+offset_right = 309.0
+offset_bottom = 71.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
-theme = ExtResource( 1 )
+theme = ExtResource( "1" )
 text = "100"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Refuel_Lable6" type="Label" parent="Grid"]
-margin_top = 75.0
-margin_right = 100.0
-margin_bottom = 96.0
-rect_min_size = Vector2( 100, 0 )
+offset_top = 75.0
+offset_right = 63.0
+offset_bottom = 96.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource( 1 )
+theme = ExtResource( "1" )
 text = "Mass:"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="mass" type="Label" parent="Grid"]
-margin_left = 104.0
-margin_top = 75.0
-margin_right = 493.0
-margin_bottom = 96.0
-rect_min_size = Vector2( 100, 0 )
+offset_left = 94.0
+offset_top = 75.0
+offset_right = 309.0
+offset_bottom = 96.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
-theme = ExtResource( 1 )
+theme = ExtResource( "1" )
 text = "100"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Refuel_Lable3" type="Label" parent="Grid"]
-margin_top = 100.0
-margin_right = 100.0
-margin_bottom = 121.0
-rect_min_size = Vector2( 100, 0 )
+offset_top = 100.0
+offset_right = 50.0
+offset_bottom = 121.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource( 1 )
+theme = ExtResource( "1" )
 text = "SUM:"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Sum" type="Label" parent="Grid"]
-margin_left = 104.0
-margin_top = 100.0
-margin_right = 493.0
-margin_bottom = 121.0
-rect_min_size = Vector2( 100, 0 )
+offset_left = 94.0
+offset_top = 100.0
+offset_right = 309.0
+offset_bottom = 121.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
-theme = ExtResource( 1 )
+theme = ExtResource( "1" )
 text = "120C"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="value_changed" from="Grid/Refuel" to="." method="_on_Refuel_value_changed"]

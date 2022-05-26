@@ -33,5 +33,5 @@ func setContent(m:DeliveryMission):
 	
 	
 func _on_Buy_pressed():
-	emit_signal("buttonPressed",mission,$raw/HBoxContainer/Buy.pressed)	
+	emit_signal("buttonPressed",mission,$raw/HBoxContainer/Buy.button_pressed)	
 
