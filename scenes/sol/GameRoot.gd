@@ -227,9 +227,9 @@ func load_game():
 	save_game.open(Globals.QUICKSAVE_PATH, File.READ)
 	print(save_game.get_position())
 	
-	if(save_game.get_len()==0):
+	if(save_game.get_length()==0):
 		print(Globals.QUICKSAVE_PATH + " is empty")
-	while save_game.get_position() < save_game.get_len():
+	while save_game.get_position() < save_game.get_length():
 		var line = save_game.get_line()
 		var error = json.parse(line)
 		var node_data = json.get_data()
@@ -242,7 +242,7 @@ func load_game():
 			
 		if(node_data["nodePath"]=="/root/Sol/PlayerShip"):
 			$PlayerShip.free()
-			var laoded_PlayerShip :Ship = load(node_data["filename"]).instance()
+			var laoded_PlayerShip :Ship = load(node_data["filename"]).instantiate()
 			laoded_PlayerShip.physicActiv = true
 			
 			laoded_PlayerShip.playerControl = true			
@@ -257,7 +257,7 @@ func load_game():
 		var laoded_node = get_node_or_null(node_data["nodePath"])
 		# Handel Dynamic Instanciation
 		if(laoded_node==null):
-			laoded_node = load(node_data["filename"]).instance()
+			laoded_node = load(node_data["filename"]).instantiate()
 			var laoded_node_parent = get_node(node_data["parent"])
 			laoded_node_parent.add_child(laoded_node)
 		laoded_node.load_save(node_data)

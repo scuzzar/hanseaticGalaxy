@@ -102,4 +102,4 @@ func save():
 func load_save(dict):	
 	tilt.rotation.x = dict["tilt.rotation.x"]
 	rotation.y = dict["rotation.y"]
-	camera.translation.z = dict["_zoom_level"]
+	camera.position.z = dict["_zoom_level"]
