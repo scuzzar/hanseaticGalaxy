@@ -11,6 +11,7 @@
 [node name="Planet" type="StaticBody3D" groups=["persist"]]
 collision_layer = 9
 script = ExtResource( "1" )
+material = ExtResource( "2" )
 planetaryRotation = 0.0
 radius_description = 6371.0
 

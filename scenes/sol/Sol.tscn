@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://om8cv4t25v1r"]
+[gd_scene load_steps=55 format=3 uid="uid://om8cv4t25v1r"]
 
 [ext_resource type="Material" path="res://Bodys/materials/Sun.material" id="1"]
 [ext_resource type="Material" path="res://Bodys/materials/Moon.material" id="2"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" path="res://SpacePort/spacePort.tscn" id="14"]
 [ext_resource type="PackedScene" path="res://Building/City.tscn" id="15"]
 [ext_resource type="PackedScene" uid="uid://55r1r1eb23gr" path="res://Bodys/Planet.tscn" id="16"]
-[ext_resource type="PackedScene" path="res://HUD/HUD.tscn" id="17"]
+[ext_resource type="PackedScene" uid="uid://dcfvc4db5kyj8" path="res://HUD/HUD.tscn" id="17"]
 [ext_resource type="PackedScene" uid="uid://dycob36gm60wa" path="res://Camera/ShipCamera.tscn" id="18"]
 [ext_resource type="PackedScene" path="res://Ship/SkyCrane/SkyCrane.tscn" id="19"]
 [ext_resource type="Environment" uid="uid://cglk2lduymfbr" path="res://scenes/sol/Weltall.tres" id="20"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" path="res://Bodys/RotationShifter.gd" id="28"]
 [ext_resource type="Material" path="res://Bodys/materials/Uranus.tres" id="29"]
 [ext_resource type="Material" path="res://Bodys/materials/Europa.material" id="30"]
+[ext_resource type="Material" uid="uid://dox46j44tythu" path="res://Bodys/materials/Mars.material" id="30_3mxxg"]
 [ext_resource type="Material" path="res://Bodys/materials/IO.material" id="31"]
 [ext_resource type="Material" path="res://Bodys/materials/Kallisto.material" id="32"]
 [ext_resource type="Material" path="res://Bodys/materials/Ganimede.material" id="33"]
@@ -244,6 +245,7 @@ sleeping = true
 
 [node name="Mars" parent="Sun" instance=ExtResource( "16" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12000, 0, 0)
+material = ExtResource( "30_3mxxg" )
 isPlanet = true
 surface_g = 3.69
 
