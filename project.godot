@@ -1430,7 +1430,7 @@ debug_state={
 [physics]
 
 common/physics_jitter_fix=0.0
-3d/physics_engine="Bullet"
+3d/physics_engine="GodotPhysics3D"
 3d/default_gravity=0.0
 3d/default_linear_damp=0.0
 3d/default_angular_damp=0.0
@@ -1439,6 +1439,8 @@ common/physics_jitter_fix=0.0
 
 [rendering]
 
+limits/opengl/max_renderable_lights=256
+limits/opengl/max_lights_per_object=16
 textures/canvas_textures/default_texture_filter=0
 quality/shadows/filter_mode=2
 environment/default_clear_color=Color(0, 0, 0, 1)
