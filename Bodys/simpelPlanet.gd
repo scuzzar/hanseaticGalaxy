@@ -79,7 +79,7 @@ func derive_pos_and_vel():
 	#linear_velocity = s + pvshift #unshifted_linear_velocity + Globals.velocity_shift	
 
 func derive_mass():
-	var s = radius_description/6371.0*68	
+	var s = radius_description/6371.0*68*2	
 	$Shape.scale = Vector3(s,s,s)		
 	radius = $Shape/Mesh.get_aabb().get_longest_axis_size()*s/2	
 	mass = (surface_g*radius*radius)/Globals.G
