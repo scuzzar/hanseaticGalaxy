@@ -124,14 +124,14 @@ _global_script_class_icons={
 
 config/name="hanseaticGalaxy"
 run/main_scene="res://scenes/LoadingScreen/Loading Screen.tscn"
+config/features=PackedStringArray("4.0")
 config/icon="res://Artemis.png"
 config/windows_native_icon="res://Artemis.ico"
-config/features=PackedStringArray("4.0")
 
 [autoload]
 
-Globals="*res://Singeltons/Globals.gd"
 Typ="*res://Singeltons/TYP.gd"
+Globals="*res://Singeltons/Globals.gd"
 Player="*res://scenes/Player.gd"
 Pirates="*res://Singeltons/Pirates.gd"
 SceneManager="*res://scenes/SceneManager.gd"

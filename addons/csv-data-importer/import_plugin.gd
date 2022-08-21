@@ -134,7 +134,7 @@ func _import(source_file, save_path, options, platform_variants, gen_files):
 		data.records = lines
 	
 	var filename = save_path + "." + _get_save_extension()
-	err = ResourceSaver.save(filename, data)
+	err = ResourceSaver.save(data,filename)
 	if err != OK:
 		printerr("Failed to save resource: ", err)
 	return err

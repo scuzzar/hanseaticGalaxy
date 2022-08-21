@@ -3,15 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://btfwpom1a4sb8" path="res://scenes/sol/starmap_8k.jpg" id="1_u6vun"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_cm0ku"]
-panorama = ExtResource( "1_u6vun" )
+panorama = ExtResource("1_u6vun")
 
 [sub_resource type="Sky" id="1"]
-sky_material = SubResource( "PanoramaSkyMaterial_cm0ku" )
+sky_material = SubResource("PanoramaSkyMaterial_cm0ku")
 
 [resource]
 background_mode = 2
 background_energy = 2.0
-sky = SubResource( "1" )
+sky = SubResource("1")
 ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 3
 auto_exposure_max_luma = 3.55

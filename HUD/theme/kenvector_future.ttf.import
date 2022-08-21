@@ -1,8 +1,8 @@
 [remap]
 
 importer="font_data_dynamic"
-type="FontData"
-uid="uid://dwjlrsm20bi54"
+type="FontFile"
+uid="uid://sa6hgwrb2u68"
 path="res://.godot/imported/kenvector_future.ttf-4fbeafbf44d37b0e13f9545b62b2ab68.fontdata"
 
 [deps]
@@ -12,7 +12,9 @@ dest_files=["res://.godot/imported/kenvector_future.ttf-4fbeafbf44d37b0e13f9545b
 
 [params]
 
+Rendering=null
 antialiased=true
+generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
@@ -20,12 +22,11 @@ force_autohinter=false
 hinting=1
 subpixel_positioning=1
 oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
 compress=true
-opentype_feature_overrides={}
-preload/char_ranges=PackedStringArray()
-preload/glyph_ranges=PackedStringArray()
-preload/configurations=PackedStringArray()
-support_overrides/language_enabled=PackedStringArray()
-support_overrides/language_disabled=PackedStringArray()
-support_overrides/script_enabled=PackedStringArray()
-support_overrides/script_disabled=PackedStringArray()
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

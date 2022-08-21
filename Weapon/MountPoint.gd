@@ -4,7 +4,7 @@ extends Node3D
 class_name mount_point
 
 @export
-var mount = ENUMS.WEAPON.NONE 
+var mount : ENUMS.WEAPON = ENUMS.WEAPON.NONE 
 const WeaponTyp = preload("res://Weapon/WeaponTypes.csv").records
 var turn_rate = 20
 

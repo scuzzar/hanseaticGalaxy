@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://8ef1unv0yb2c"]
+[gd_scene load_steps=12 format=3 uid="uid://8ef1unv0yb2c"]
 
 [ext_resource type="Script" path="res://scenes/sol/GameRoot.gd" id="1_31smv"]
 [ext_resource type="PackedScene" uid="uid://dycob36gm60wa" path="res://Camera/ShipCamera.tscn" id="2_0wqpd"]
 [ext_resource type="Environment" uid="uid://cglk2lduymfbr" path="res://scenes/sol/Weltall.tres" id="2_jii7i"]
 [ext_resource type="PackedScene" uid="uid://55r1r1eb23gr" path="res://Bodys/Planet.tscn" id="2_qcs4b"]
 [ext_resource type="PackedScene" uid="uid://cvmf3macse5rx" path="res://Ship/SimpleRocket/Orbital Rocket.tscn" id="3_nn6an"]
-[ext_resource type="Material" uid="uid://dox46j44tythu" path="res://Bodys/materials/Mars.material" id="5_gv4k2"]
 [ext_resource type="Script" path="res://Bodys/RotationShifter.gd" id="6_8kivj"]
 [ext_resource type="Script" path="res://addons/originShifter/origin_shifter.gd" id="7_8cn5h"]
 [ext_resource type="PackedScene" uid="uid://dcfvc4db5kyj8" path="res://HUD/HUD.tscn" id="8_jgy2e"]
@@ -29,7 +28,6 @@ min_zoom = 1.0
 
 [node name="Planet" parent="." instance=ExtResource( "2_qcs4b" )]
 physics_material_override = SubResource( "PhysicsMaterial_31c1q" )
-material = ExtResource( "5_gv4k2" )
 isStar = true
 doRotationShift = false
 
