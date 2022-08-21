@@ -9,24 +9,24 @@
 height = 1.24207
 radius = 0.364907
 
-[node name="Rocket" instance=ExtResource( "1" )]
+[node name="Rocket" instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 type = 3
 
-[node name="MountPoint" parent="." index="0" instance=ExtResource( "4" )]
+[node name="MountPoint" parent="." index="0" instance=ExtResource("4")]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1.06581e-14, -4.37114e-08, -1, 1, -4.37114e-08, 1.06581e-14, 0, 0.382257, -1.6709e-08)
 mount = 1
 turn_limit = 0.3
 
 [node name="CollisionShape" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0297804, -1.30174e-09)
-shape = SubResource( "1" )
+shape = SubResource("1")
 
-[node name="SimpleRocket" parent="." index="3" instance=ExtResource( "2" )]
+[node name="SimpleRocket" parent="." index="3" instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.578583, 2.52907e-08)
 
 [node name="Inventory" parent="." index="6"]
 slot_parent_path = NodePath("../SimpleRocket")
 
-[node name="particel" parent="Propulsion/mainDrive" index="0" instance=ExtResource( "3" )]
+[node name="particel" parent="Propulsion/mainDrive" index="0" instance=ExtResource("3")]
 transform = Transform3D(0.400669, 0, 0, 0, -0.400669, 3.50276e-08, 0, -3.50276e-08, -0.400669, 0, -0.592798, 2.5912e-08)
