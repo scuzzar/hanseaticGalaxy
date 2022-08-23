@@ -1,48 +1,47 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=10 format=3 uid="uid://fm6kygisw8ju"]
 
-[ext_resource path="res://SpacePort/SpacePort.escn" type="PackedScene" id=1]
-[ext_resource path="res://Cargo/Inventory.gd" type="Script" id=2]
-[ext_resource path="res://SpacePort/spacePort.gd" type="Script" id=3]
-[ext_resource path="res://Bodys/Label3D.gd" type="Script" id=4]
-[ext_resource path="res://Util/DistanceLOD.tscn" type="PackedScene" id=5]
-[ext_resource path="res://SpacePort/sound/346063__ingressblue__spaceport.mp3" type="AudioStream" id=6]
+[ext_resource type="PackedScene" uid="uid://con55lm0mgq7k" path="res://SpacePort/SpacePort.escn" id="1"]
+[ext_resource type="Script" path="res://Cargo/Inventory.gd" id="2"]
+[ext_resource type="Script" path="res://SpacePort/spacePort.gd" id="3"]
+[ext_resource type="Script" path="res://Bodys/Label3D.gd" id="4"]
+[ext_resource type="PackedScene" path="res://Util/DistanceLOD.tscn" id="5"]
+[ext_resource type="AudioStream" uid="uid://dlcvys74gytob" path="res://SpacePort/sound/346063__ingressblue__spaceport.mp3" id="6"]
 
-[sub_resource type="PhysicsMaterial" id=3]
+[sub_resource type="PhysicsMaterial" id="3"]
 friction = 10.0
 rough = true
 bounce = 0.35
 absorbent = true
 
-[sub_resource type="BoxShape" id=1]
-extents = Vector3( 1.87527, 1, 1 )
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(3.75054, 2, 2)
 
-[sub_resource type="BoxShape" id=2]
-extents = Vector3( 1.77978, 0.280095, 1.21608 )
+[sub_resource type="BoxShape3D" id="2"]
+size = Vector3(3.55956, 0.56019, 2.43216)
 
-[node name="SpacePort" type="Spatial"]
-script = ExtResource( 3 )
+[node name="SpacePort" type="Node3D"]
+script = ExtResource("3")
 
-[node name="LandingPad" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-mode = 3
-physics_material_override = SubResource( 3 )
+[node name="LandingPad" type="RigidDynamicBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+physics_material_override = SubResource("3")
 
-[node name="CollisionShape" type="CollisionShape" parent="LandingPad"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703545, -1.94373, -0.004 )
-shape = SubResource( 1 )
+[node name="CollisionShape" type="CollisionShape3D" parent="LandingPad"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703545, -1.94373, -0.004)
+shape = SubResource("1")
 
-[node name="LandingArea" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82234, 0 )
+[node name="LandingArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82234, 0)
 gravity = 0.0
 
-[node name="CollisionShape" type="CollisionShape" parent="LandingArea"]
-transform = Transform( 1.00141, 0, 0, 0, 1.00141, 0, 0, 0, 1.00141, 0, -1.73712, 0 )
-shape = SubResource( 2 )
+[node name="CollisionShape" type="CollisionShape3D" parent="LandingArea"]
+transform = Transform3D(1.00141, 0, 0, 0, 1.00141, 0, 0, 0, 1.00141, 0, -1.73712, 0)
+shape = SubResource("2")
 
-[node name="SpacePort" parent="." instance=ExtResource( 1 )]
+[node name="SpacePort" parent="." instance=ExtResource("1")]
 
-[node name="Inventory" type="Spatial" parent="."]
-script = ExtResource( 2 )
+[node name="Inventory" type="Node3D" parent="."]
+script = ExtResource("2")
 slot_parent_path = NodePath("../SpacePort")
 
 [node name="Lable3D" type="Label" parent="."]
@@ -50,29 +49,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -50.0
-margin_top = -7.0
-margin_right = 50.0
-margin_bottom = 7.0
-rect_min_size = Vector2( 100, 12 )
-rect_pivot_offset = Vector2( 49.8973, 7.33237 )
 text = "Planet"
-align = 1
-valign = 3
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("4")
 
-[node name="DistanceLOD" parent="." instance=ExtResource( 5 )]
+[node name="DistanceLOD" parent="." instance=ExtResource("5")]
 
 [node name="Ambient" type="AudioStreamPlayer3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.274307, -1.013 )
-stream = ExtResource( 6 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.274307, -1.013)
+stream = ExtResource("6")
 autoplay = true
 
 [node name="DockingLocation" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.677583, 0 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52499, 0)
 
 [connection signal="body_entered" from="LandingArea" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="LandingArea" to="." method="_on_Area_body_exited"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://djh418e7j4f7q" path="res://Ship/SimpleRocket/SimpelRocket.tscn" id="1"]
 
-[node name="Orbital Rocket" instance=ExtResource( "1" )]
+[node name="Orbital Rocket" instance=ExtResource("1")]
 mass = 25.0
 type = 2
 

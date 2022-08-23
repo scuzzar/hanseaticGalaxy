@@ -8,7 +8,7 @@
 
 [sub_resource type="SphereMesh" id="2"]
 
-[node name="Planet" type="StaticBody3D" groups=["persist"]]
+[node name="Planet" type="AnimatableBody3D" groups=["persist"]]
 collision_layer = 9
 script = ExtResource("1")
 material = ExtResource("2")
@@ -16,7 +16,7 @@ planetaryRotation = 0.0
 radius_description = 6371.0
 
 [node name="Shape" type="CollisionShape3D" parent="."]
-transform = Transform3D(68, 0, 0, 0, 68, 0, 0, 0, 68, 0, 0, 0)
+transform = Transform3D(136, 0, 0, 0, 136, 0, 0, 0, 136, 0, 0, 0)
 shape = SubResource("3")
 
 [node name="Mesh" type="MeshInstance3D" parent="Shape"]

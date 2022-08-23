@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://om8cv4t25v1r"]
+[gd_scene load_steps=56 format=3 uid="uid://om8cv4t25v1r"]
 
 [ext_resource type="Material" path="res://Bodys/materials/Sun.material" id="1"]
 [ext_resource type="Material" path="res://Bodys/materials/Moon.material" id="2"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" path="res://Station/Station.tscn" id="10"]
 [ext_resource type="Material" path="res://Bodys/materials/Saturn.material" id="11"]
 [ext_resource type="Material" path="res://Bodys/materials/Titan.material" id="12"]
-[ext_resource type="PackedScene" path="res://SpacePort/spacePort.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://fm6kygisw8ju" path="res://SpacePort/spacePort.tscn" id="14"]
 [ext_resource type="PackedScene" path="res://Building/City.tscn" id="15"]
 [ext_resource type="PackedScene" uid="uid://55r1r1eb23gr" path="res://Bodys/Planet.tscn" id="16"]
 [ext_resource type="PackedScene" uid="uid://dcfvc4db5kyj8" path="res://HUD/HUD.tscn" id="17"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" path="res://Bodys/RotationShifter.gd" id="28"]
 [ext_resource type="Material" path="res://Bodys/materials/Uranus.tres" id="29"]
 [ext_resource type="Material" path="res://Bodys/materials/Europa.material" id="30"]
+[ext_resource type="Script" path="res://Util/DebugPosition.gd" id="30_xljca"]
 [ext_resource type="Material" path="res://Bodys/materials/IO.material" id="31"]
 [ext_resource type="Material" path="res://Bodys/materials/Kallisto.material" id="32"]
 [ext_resource type="Material" path="res://Bodys/materials/Ganimede.material" id="33"]
@@ -56,6 +57,8 @@ friction = 0.5
 
 [sub_resource type="PhysicsMaterial" id="1"]
 friction = 3.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_686gh"]
 
 [sub_resource type="PhysicsMaterial" id="7"]
 friction = 3.0
@@ -99,7 +102,7 @@ environment = ExtResource("20")
 min_zoom = 1.0
 
 [node name="PlayerShip" parent="." instance=ExtResource("47")]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.1, 0, -68.754)
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.1, 0, -70.0421)
 physics_material_override = SubResource("5")
 playerControl = true
 physicActiv = true
@@ -151,7 +154,6 @@ contact_monitor = false
 
 [node name="Earth" parent="Sun" instance=ExtResource("16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7500, 0, 0)
-physics_material_override = SubResource("4")
 material = ExtResource("3")
 isPlanet = true
 surface_g = 9.81
@@ -161,11 +163,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 241.56, 0, 0)
 
 [node name="SkyCrane" parent="Sun/Earth/ISS" instance=ExtResource("19")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.98047, -0.898486, 0)
+physics_material_override = SubResource("PhysicsMaterial_686gh")
 contacts_reported = 0
 contact_monitor = false
 
 [node name="Tender" parent="Sun/Earth/ISS" instance=ExtResource("22")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.83693, -0.786469, 0.382813)
+physics_material_override = SubResource("PhysicsMaterial_686gh")
 contacts_reported = 0
 contact_monitor = false
 
@@ -217,11 +221,13 @@ transform = Transform3D(-0.999477, 0.0323218, 4.03254e-08, 0.0323218, 0.999477, 
 
 [node name="Tender" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource("22")]
 transform = Transform3D(1, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -1.77636e-14, 8.74228e-08, 1.06581e-14, 1, -3.50879, 0, -3.17744)
+physics_material_override = SubResource("PhysicsMaterial_686gh")
 contacts_reported = 0
 contact_monitor = false
 
 [node name="SkyCrane" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource("19")]
 transform = Transform3D(1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -3.90597)
+physics_material_override = SubResource("PhysicsMaterial_686gh")
 contacts_reported = 0
 contact_monitor = false
 
@@ -237,9 +243,13 @@ physics_material_override = SubResource("7")
 
 [node name="SimpleRocket" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource("9")]
 transform = Transform3D(1, 0, 6.35275e-21, 0, 1, 0, 0, 0, 1, -1.79443, 0.0951424, -3.49483)
+physics_material_override = SubResource("PhysicsMaterial_686gh")
 contacts_reported = 0
 contact_monitor = false
 sleeping = true
+
+[node name="DebugPosition" type="Node3D" parent="Sun/Earth/Moon"]
+script = ExtResource("30_xljca")
 
 [node name="Mars" parent="Sun" instance=ExtResource("16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12000, 0, 0)
@@ -251,11 +261,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.126, 0, 0)
 
 [node name="SkyCrane" parent="Sun/Mars/MarsST" instance=ExtResource("19")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.98212, -0.949785, 0)
+physics_material_override = SubResource("PhysicsMaterial_686gh")
 contacts_reported = 0
 contact_monitor = false
 
 [node name="Tender" parent="Sun/Mars/MarsST" instance=ExtResource("22")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.83693, -0.786469, 0.382813)
+physics_material_override = SubResource("PhysicsMaterial_686gh")
 contacts_reported = 0
 contact_monitor = false
 
@@ -271,11 +283,13 @@ defaultMissionDestination_path = NodePath("../Deimos/DeimosPort")
 
 [node name="Tender" parent="Sun/Mars/OlympusPort" instance=ExtResource("22")]
 transform = Transform3D(1, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -1.77636e-14, 8.74228e-08, 1.06581e-14, 1, -3.50879, 0, -3.17744)
+physics_material_override = SubResource("PhysicsMaterial_686gh")
 contacts_reported = 0
 contact_monitor = false
 
 [node name="SkyCrane" parent="Sun/Mars/OlympusPort" instance=ExtResource("19")]
 transform = Transform3D(1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -3.90597)
+physics_material_override = SubResource("PhysicsMaterial_686gh")
 contacts_reported = 0
 contact_monitor = false
 
@@ -291,6 +305,7 @@ physics_material_override = SubResource("7")
 
 [node name="SimpleRocket" parent="Sun/Mars/OlympusPort" instance=ExtResource("9")]
 transform = Transform3D(1, 0, 6.35275e-21, 0, 1, 0, 0, 0, 1, -1.79443, 0.0951424, -3.49483)
+physics_material_override = SubResource("PhysicsMaterial_686gh")
 contacts_reported = 0
 contact_monitor = false
 sleeping = true
@@ -415,11 +430,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1504.13, 0, 0)
 
 [node name="SkyCrane" parent="Sun/Jupiter/JupiterST" instance=ExtResource("19")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.98047, -0.898486, 0)
+physics_material_override = SubResource("PhysicsMaterial_686gh")
 contacts_reported = 0
 contact_monitor = false
 
 [node name="Tender" parent="Sun/Jupiter/JupiterST" instance=ExtResource("22")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.83693, -0.786469, 0.382813)
+physics_material_override = SubResource("PhysicsMaterial_686gh")
 contacts_reported = 0
 contact_monitor = false
 
@@ -492,11 +509,13 @@ defaultMissionDestination_path = NodePath("../../../Earth/Moon/ApolloPort")
 
 [node name="Tender" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource("22")]
 transform = Transform3D(1, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -1.77636e-14, 8.74228e-08, 1.06581e-14, 1, -3.50879, 0, -3.17744)
+physics_material_override = SubResource("PhysicsMaterial_686gh")
 contacts_reported = 0
 contact_monitor = false
 
 [node name="SkyCrane" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource("19")]
 transform = Transform3D(1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -3.90597)
+physics_material_override = SubResource("PhysicsMaterial_686gh")
 contacts_reported = 0
 contact_monitor = false
 
@@ -512,6 +531,7 @@ physics_material_override = SubResource("7")
 
 [node name="SimpleRocket" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource("9")]
 transform = Transform3D(1, 0, 6.35275e-21, 0, 1, 0, 0, 0, 1, -1.79443, 0.0951424, -3.49483)
+physics_material_override = SubResource("PhysicsMaterial_686gh")
 contacts_reported = 0
 contact_monitor = false
 sleeping = true

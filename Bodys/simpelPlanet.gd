@@ -1,5 +1,5 @@
 @tool
-extends StaticBody3D
+extends AnimatableBody3D
 
 class_name simpelPlanet
 
@@ -49,7 +49,7 @@ func _ready():
 		var r = orbit_radius
 		var G = Globals.G
 		var parent = get_parent()
-		if(parent is RigidDynamicBody3D):
+		if(parent is AnimatableBody3D):
 			parent.derive_mass()
 		var M = get_parent().mass
 		var kosmic = 0
@@ -63,6 +63,7 @@ func _ready():
 		non_shifted_angular_speed = angular_speed
 		if(!Engine.is_editor_hint()):
 			angle = Globals.RAN.randf_range(0,PI*2)
+			pass
 		else:
 			angle = 0
 		derive_pos_and_vel()

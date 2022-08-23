@@ -6,7 +6,7 @@ signal g_force_update(force,strogest_body,strongest_body_force)
 signal strongest_body_changed(old_body,new_body)
 
 var last_g_force = Vector3(0,0,0)
-var last_g_force_strongest_Body : StaticBody3D
+var last_g_force_strongest_Body : simpelPlanet
 var last_g_force_strongest_Body_force = Vector3(0,0,0)
 
 var write_linear_velocity = null

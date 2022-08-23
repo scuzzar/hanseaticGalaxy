@@ -94,7 +94,7 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://Weapon/MountPoint.gd"
 }, {
-"base": "StaticBody3D",
+"base": "AnimatableBody3D",
 "class": &"simpelPlanet",
 "language": &"GDScript",
 "path": "res://Bodys/simpelPlanet.gd"
