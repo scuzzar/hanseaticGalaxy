@@ -22,9 +22,10 @@ size = Vector3(3.55956, 0.56019, 2.43216)
 [node name="SpacePort" type="Node3D"]
 script = ExtResource("3")
 
-[node name="LandingPad" type="RigidDynamicBody3D" parent="."]
+[node name="LandingPad" type="AnimatableBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 physics_material_override = SubResource("3")
+sync_to_physics = false
 
 [node name="CollisionShape" type="CollisionShape3D" parent="LandingPad"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703545, -1.94373, -0.004)

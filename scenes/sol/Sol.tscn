@@ -203,7 +203,7 @@ defaultMissionDestination_path = NodePath("../../Mars/OlympusPort")
 [node name="Construction" parent="Sun/Earth/PhilipinPort" instance=ExtResource("36")]
 
 [node name="Moon" parent="Sun/Earth" groups=["bodys"] instance=ExtResource("16")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 664.943)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 664.943, 0, -11.0233)
 material = ExtResource("2")
 radius_description = 2500.0
 surface_g = 1.0
