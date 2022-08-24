@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://55r1r1eb23gr"]
+[gd_scene load_steps=7 format=3 uid="uid://55r1r1eb23gr"]
 
 [ext_resource type="Script" path="res://Bodys/simpelPlanet.gd" id="1"]
 [ext_resource type="Material" uid="uid://dox46j44tythu" path="res://Bodys/materials/Mars.material" id="2"]
 [ext_resource type="Script" path="res://Bodys/Label3D.gd" id="4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ttkkl"]
+friction = 5.0
+rough = true
+bounce = 1.0
+absorbent = true
 
 [sub_resource type="SphereShape3D" id="3"]
 
@@ -10,6 +16,8 @@
 
 [node name="Planet" type="AnimatableBody3D" groups=["persist"]]
 collision_layer = 9
+physics_material_override = SubResource("PhysicsMaterial_ttkkl")
+sync_to_physics = false
 script = ExtResource("1")
 material = ExtResource("2")
 planetaryRotation = 0.0

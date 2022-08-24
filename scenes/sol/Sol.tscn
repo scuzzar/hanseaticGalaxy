@@ -104,6 +104,7 @@ min_zoom = 1.0
 [node name="PlayerShip" parent="." instance=ExtResource("47")]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.1, 0, -70.0421)
 physics_material_override = SubResource("5")
+linear_velocity = Vector3(0, 0, -28.5)
 playerControl = true
 physicActiv = true
 
@@ -204,6 +205,7 @@ defaultMissionDestination_path = NodePath("../../Mars/OlympusPort")
 
 [node name="Moon" parent="Sun/Earth" groups=["bodys"] instance=ExtResource("16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 664.943, 0, -11.0233)
+sync_to_physics = true
 material = ExtResource("2")
 radius_description = 2500.0
 surface_g = 1.0

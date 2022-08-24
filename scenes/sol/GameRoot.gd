@@ -33,7 +33,7 @@ func newGameSetup():
 		var offset_vel = spawn_body.constant_linear_velocity
 		if(!spawn_body.isPlanet):
 			offset_vel += spawn_body.get_parent().constant_linear_velocity
-		ship.set_write_linear_velocity(offset_vel)
+		#ship.set_write_linear_velocity(offset_vel)
 		print("ship spawned at " + str(ship.position))
 			
 	ship.physicActiv =true

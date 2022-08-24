@@ -91,7 +91,7 @@ func _physics_process(delta):
 		if(angle >= 2*PI): angle -= 2*PI
 		
 		self.position = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)
-		
+		#self.rotate(Vector3(0,1,0), planetaryRotation*delta)
 		#update velocety
 		#self.linear_velocity = (global_transform.origin - _last_global_pos)/delta
 		_last_global_pos = self.global_transform.origin
