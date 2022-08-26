@@ -19,7 +19,7 @@ func _init():
 
 func _createContainer(amount):
 	for i in amount:
-		var c = MissionContainerScene.instance()
+		var c = MissionContainerScene.instantiate()
 		c._set_cargo(cargo)		
 		self.cargoContainer.append(c)
 

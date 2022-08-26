@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://55r1r1eb23gr" path="res://Bodys/Planet.tscn" id="16"]
 [ext_resource type="PackedScene" uid="uid://dcfvc4db5kyj8" path="res://HUD/HUD.tscn" id="17"]
 [ext_resource type="PackedScene" uid="uid://dycob36gm60wa" path="res://Camera/ShipCamera.tscn" id="18"]
-[ext_resource type="PackedScene" path="res://Ship/SkyCrane/SkyCrane.tscn" id="19"]
+[ext_resource type="PackedScene" uid="uid://be1j32k7ldt7y" path="res://Ship/SkyCrane/SkyCrane.tscn" id="19"]
 [ext_resource type="Environment" uid="uid://cglk2lduymfbr" path="res://scenes/sol/Weltall.tres" id="20"]
 [ext_resource type="Texture2D" uid="uid://diu7id8cmvnts" path="res://Bodys/tex/NASA/mar2kuu2.jpg" id="21"]
 [ext_resource type="PackedScene" path="res://Ship/Tender/Tender.tscn" id="22"]
