@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/LoadingScreen/Loading Screen.gd" id="1"]
 [ext_resource type="Theme" uid="uid://7tcar65meo7i" path="res://HUD/theme/default_theme.theme" id="2"]
-
-[sub_resource type="AtlasTexture" id="1"]
-region = Rect2(171.85, 93.3335, 1242.95, 684.483)
+[ext_resource type="Texture2D" uid="uid://dasm0fww1nrnh" path="res://Banner.png" id="3_yfhav"]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -19,9 +17,9 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 
 [node name="S1" type="Sprite2D" parent="CenterContainer"]
-position = Vector2(602.124, 400.899)
+position = Vector2(3, -5)
 scale = Vector2(1.06947, 1.06947)
-texture = SubResource("1")
+texture = ExtResource("3_yfhav")
 
 [node name="FullScreen" type="Button" parent="."]
 anchor_left = 1.0
@@ -40,6 +38,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -10.5
+offset_right = 43.0
+offset_bottom = 10.5
 theme = ExtResource("2")
 text = "Loading"
 
@@ -48,6 +50,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -43.0
+offset_right = 57.0
+offset_bottom = 43.0
 
 [node name="Resume" type="Button" parent="Menu"]
 offset_right = 114.0
