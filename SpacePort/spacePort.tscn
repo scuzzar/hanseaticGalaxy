@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://fm6kygisw8ju"]
 
-[ext_resource type="PackedScene" uid="uid://con55lm0mgq7k" path="res://SpacePort/SpacePort.escn" id="1"]
+[ext_resource type="PackedScene" uid="uid://btepyp454xc57" path="res://SpacePort/SpacePort.escn" id="1"]
 [ext_resource type="Script" path="res://Cargo/Inventory.gd" id="2"]
 [ext_resource type="Script" path="res://SpacePort/spacePort.gd" id="3"]
 [ext_resource type="Script" path="res://Bodys/Label3D.gd" id="4"]

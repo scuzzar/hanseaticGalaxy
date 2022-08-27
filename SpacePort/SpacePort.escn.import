@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://con55lm0mgq7k"
+uid="uid://btepyp454xc57"
 path="res://.godot/imported/SpacePort.escn-2ba07e5ebb8c790b320a5d0d00b1fb79.scn"
 
 [deps]
@@ -24,5 +24,5 @@ meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
 animation/import=true
 animation/fps=15
-import_script/path=""
+import_script/path="res://Ship/ShipImportScript.gd"
 _subresources={}
