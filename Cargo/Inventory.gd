@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 
 @export var slot_parent_path : NodePath
 @onready var slot_parent:Node

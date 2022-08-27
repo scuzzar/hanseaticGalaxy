@@ -18,4 +18,5 @@ auto_exposure_max_luma = 3.55
 ssao_enabled = true
 glow_enabled = true
 glow_blend_mode = 0
+volumetric_fog_density = 0.0
 adjustment_enabled = true

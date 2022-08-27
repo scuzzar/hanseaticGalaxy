@@ -100,7 +100,7 @@ func freeSpace() -> int:
 	return $Inventory.freeSpace()
 
 func stock(cargo)->int:
-	return $Inventory.stock(cargo)
+	return $Inventory.stock[cargo]
 
 func getBody()->simpelPlanet:
 	return self.get_parent() as simpelPlanet
