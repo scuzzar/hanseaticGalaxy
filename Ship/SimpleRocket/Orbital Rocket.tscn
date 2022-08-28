@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvmf3macse5rx"]
+[gd_scene load_steps=3 format=3 uid="uid://cvmf3macse5rx"]
 
 [ext_resource type="PackedScene" uid="uid://djh418e7j4f7q" path="res://Ship/SimpleRocket/SimpelRocket.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bippvugufi4e6" path="res://Ship/VFX/truster.tscn" id="2_hcrus"]
 
 [node name="Orbital Rocket" instance=ExtResource("1")]
 mass = 25.0
@@ -8,3 +9,33 @@ type = 2
 
 [node name="MountPoint" parent="." index="0"]
 mount = 999
+
+[node name="particel1" parent="Propulsion/forwardTruster" index="0" instance=ExtResource("2_hcrus")]
+transform = Transform3D(0.4, -3.49691e-08, 3.49691e-08, -3.49691e-08, -0.4, 0, 3.49691e-08, -3.0571e-15, -0.4, 0.255818, -0.578729, -0.158032)
+
+[node name="particel2" parent="Propulsion/forwardTruster" index="1" instance=ExtResource("2_hcrus")]
+transform = Transform3D(0.4, -3.49691e-08, 3.49691e-08, -3.49691e-08, -0.4, 0, 3.49691e-08, -3.55271e-15, -0.4, -0.245696, -0.578729, -0.158032)
+
+[node name="particel3" parent="Propulsion/forwardTruster" index="2" instance=ExtResource("2_hcrus")]
+transform = Transform3D(0.4, -3.49691e-08, 3.49691e-08, -3.49691e-08, -0.4, 0, 3.49691e-08, -3.55271e-15, -0.4, -0.00493178, -0.578729, 0.270681)
+
+[node name="particel" parent="Propulsion/leftTruster" index="0" instance=ExtResource("2_hcrus")]
+transform = Transform3D(3.01992e-08, 0.4, 0, -0.4, 3.01992e-08, 0, 0, 0, 0.4, 0.282714, 0.0190626, -2.22045e-16)
+
+[node name="particel2" parent="Propulsion/leftTruster" index="1" instance=ExtResource("2_hcrus")]
+transform = Transform3D(3.01992e-08, 0.4, 0, -0.4, 3.01992e-08, 0, 0, 0, 0.4, 0.268875, 0.212501, 0.00324079)
+
+[node name="particel" parent="Propulsion/rightTruster" index="0" instance=ExtResource("2_hcrus")]
+transform = Transform3D(-1.74846e-08, -0.4, 0, 0.4, -1.74846e-08, 0, 0, 0, 0.4, -0.27321, 0.0190626, -2.22045e-16)
+
+[node name="particel2" parent="Propulsion/rightTruster" index="1" instance=ExtResource("2_hcrus")]
+transform = Transform3D(-1.74846e-08, -0.4, 0, 0.4, -1.74846e-08, 0, 0, 0, 0.4, -0.253413, 0.212501, 0.00324079)
+
+[node name="particel3" parent="Propulsion/backTruster" index="0" instance=ExtResource("2_hcrus")]
+transform = Transform3D(0.4, -4.76836e-08, 0, 4.76836e-08, 0.4, 0, 0, 0, 0.4, 0, 0.592892, -0.0789939)
+
+[node name="particel4" parent="Propulsion/backTruster" index="1" instance=ExtResource("2_hcrus")]
+transform = Transform3D(0.4, -4.76836e-08, 0, 4.76836e-08, 0.4, 0, 0, 0, 0.4, -0.08, 0.593, 0.08)
+
+[node name="particel5" parent="Propulsion/backTruster" index="2" instance=ExtResource("2_hcrus")]
+transform = Transform3D(0.4, -4.76836e-08, 0, 4.76836e-08, 0.4, 0, 0, 0, 0.4, 0.08, 0.593, 0.08)

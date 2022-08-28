@@ -12,7 +12,8 @@ func _ready():
 	rightTruster = $rightTruster.get_children()
 	forwardTruster = $forwardTruster.get_children()
 	backTruster= $backTruster.get_children()
-
+	all_trust_off()
+	
 func trust_Vector(v:Vector2, throttle:float = 1.0):
 	if(throttle<=0.1):
 		all_trust_off()

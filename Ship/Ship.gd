@@ -133,7 +133,9 @@ func lateral_burn(burn_vector):
 	truster_vector += burn_vector
 
 func _fire_truster(state:PhysicsDirectBodyState3D,direction:Vector2):
-	if(direction.length()==0): return
+	if(direction.length()==0): 
+		$Propulsion.trust_Vector(direction,0)
+		return
 	
 	var direction3d = Vector3(direction.x,0,direction.y)	
 	var orientation = self.rotation.y

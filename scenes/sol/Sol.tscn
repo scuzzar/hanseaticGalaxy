@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://be1j32k7ldt7y" path="res://Ship/SkyCrane/SkyCrane.tscn" id="19"]
 [ext_resource type="Environment" uid="uid://cglk2lduymfbr" path="res://scenes/sol/Weltall.tres" id="20"]
 [ext_resource type="Texture2D" uid="uid://diu7id8cmvnts" path="res://Bodys/tex/NASA/mar2kuu2.jpg" id="21"]
-[ext_resource type="PackedScene" path="res://Ship/Tender/Tender.tscn" id="22"]
+[ext_resource type="PackedScene" uid="uid://y727ioc4r2il" path="res://Ship/Tender/Tender.tscn" id="22"]
 [ext_resource type="Script" path="res://scenes/sol/GameRoot.gd" id="23"]
 [ext_resource type="Material" path="res://Bodys/materials/Venus.material" id="24"]
 [ext_resource type="Material" path="res://Bodys/materials/Merkur.material" id="25"]
