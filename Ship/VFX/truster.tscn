@@ -3,9 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://bhjv2dj2o3a02" path="res://Ship/VFX/drive.tscn" id="1"]
 [ext_resource type="Material" path="res://Ship/VFX/truster.material" id="2"]
 
-[sub_resource type="QuadMesh" id="1"]
+[sub_resource type="PlaneMesh" id="1"]
 material = ExtResource("2")
 size = Vector2(0.02, 0.02)
+orientation = 2
 
 [node name="particel" instance=ExtResource("1")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
