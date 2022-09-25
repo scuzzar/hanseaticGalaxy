@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bippvugufi4e6"]
 
 [ext_resource type="PackedScene" uid="uid://bhjv2dj2o3a02" path="res://Ship/VFX/drive.tscn" id="1"]
-[ext_resource type="Material" path="res://Ship/VFX/truster.material" id="2"]
+[ext_resource type="Material" uid="uid://yh3nlk1fv6pa" path="res://Ship/VFX/truster.material" id="2"]
 
 [sub_resource type="PlaneMesh" id="1"]
 material = ExtResource("2")
@@ -20,12 +20,9 @@ visible = false
 emitting = false
 
 [node name="smoke" parent="." index="2"]
+emitting = false
 amount = 64
 lifetime = 0.12
-speed_scale = 0.89
-explosiveness = 0.0
-randomness = 0.09
-lifetime_randomness = 0.31
 mesh = SubResource("1")
 spread = 2.01
 

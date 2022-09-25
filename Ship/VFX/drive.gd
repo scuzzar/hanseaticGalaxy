@@ -19,9 +19,11 @@ func _ready():
 func on(throttle=1):
 	if(!isOn):	
 		if(throttle<0.1):return
-		$Fire1.emitting = true
+		$Fire1.emitting = true		
 		$Fire2.emitting = true
 		$smoke.emitting = true
+		
+		
 		
 		$Fire1.lifetime = lifeTime1*throttle
 		$Fire2.lifetime = lifeTime2*throttle
@@ -36,9 +38,9 @@ func off():
 		$Fire2.emitting = false
 		$smoke.emitting = false
 		
-		$Fire1.lifetime = lifeTime1
-		$Fire2.lifetime = lifeTime2
-		$smoke.lifetime = lifeTime3	
+		$Fire1.lifetime = 0# lifeTime1
+		$Fire2.lifetime = 0#lifeTime2
+		$smoke.lifetime = 0#lifeTime3	
 
 		$EngineSound.stop()
 		isOn = false
