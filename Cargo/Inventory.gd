@@ -30,11 +30,11 @@ func _ready():
 	slot_parent = self.get_node_or_null(slot_parent_path)
 	if slot_parent == null: slot_parent=self
 	for c in slot_parent.get_children():
-		if c is Position3D:
+		if c is Marker3D:
 			slots.append(c)
 
 func addContainter(container:CargoContainer, i : int):
-	var slot = slots[i] as Position3D
+	var slot = slots[i] as Marker3D
 	assert(slot.get_child_count()==0)	
 	slot.add_child(container)	
 	#container.translation = Vector3(0,0,0)
@@ -53,7 +53,7 @@ func addAllContainerOnFree(ContainerArray)->bool:
 		return false
 
 func getContainer(i : int) -> CargoContainer:
-	var slot = slots[i] as Position3D
+	var slot = slots[i] as Marker3D
 	assert(slot.get_child_count()==1)	
 	return slot.get_child(0)
 

@@ -69,7 +69,7 @@ func _ready():
 
 	self.angular_damp = 6
 	$ShipInfo.ship = self
-	$ShipInfo.update()
+	#$ShipInfo.update()
 	$ShipInfo.hide()
 	var children = self.get_children()
 	for c in children:

@@ -33,7 +33,7 @@ func _process(delta):
 	if history_update_timer >= history_update_interfall:		
 		history_update_timer -= history_update_interfall
 		appendHistory()
-	update()
+	self.queue_redraw()
 
 func getPositionInFrame() -> Vector3:
 	return tracked_Node.position-_frameOfReference.global_transform.origin

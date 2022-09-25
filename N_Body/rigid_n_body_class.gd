@@ -1,4 +1,4 @@
-extends RigidDynamicBody3D
+extends RigidBody3D
 
 class_name Rigid_N_Body
 

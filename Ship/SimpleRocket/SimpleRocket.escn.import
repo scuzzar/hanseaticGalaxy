@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dp5cul7rh3h48"
+uid="uid://b7x8cutjqnuwy"
 path="res://.godot/imported/SimpleRocket.escn-72e967bfb4cef8aa004463df895d72fa.scn"
 
 [deps]
@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/SimpleRocket.escn-72e967bfb4cef8aa004463df895
 
 nodes/root_type="Spatial"
 nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -24,5 +25,5 @@ meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
 animation/import=true
 animation/fps=15
-import_script/path="res://Ship/ShipImportScript.gd"
+import_script/path=""
 _subresources={}

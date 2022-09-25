@@ -15,7 +15,10 @@ signal accepted(container)
 signal cartUpdate(slots,mass,reward)
 
 func _getMissions():
-	return port.get_all_DeliveryMissions()
+	if(port!=null):
+		return port.get_all_DeliveryMissions()
+	else:
+		return []
 
 func setPort(target):
 	self.port = target
@@ -37,8 +40,10 @@ func clearPort(target):
 		target.inventory.disconnect("container_added", self._Inventory_added_container)
 
 func update():
-	super.update()
-	_on_ship_mass_change()
+	if(port!=null and ship !=null):
+		super.update()
+		_on_ship_mass_change()
+	
 
 func _add_mission(mission:DeliveryMission):	
 	var newRaw = rawScene.instantiate()	

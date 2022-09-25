@@ -36,6 +36,7 @@ func _enter_tree():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	orbit_radius = position.length()
 	$Shape/Mesh.material_override = material
 	isGravetySource = (surface_g>0)	

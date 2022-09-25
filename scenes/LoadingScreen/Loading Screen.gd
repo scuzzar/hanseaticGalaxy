@@ -24,7 +24,7 @@ func _on_Start_pressed():
 	call_deferred("_loadSol")
 
 func _loadSol():
-	var result = get_tree().change_scene_to(SceneManager.sol_scene_res)
+	var result = get_tree().change_scene_to_packed(SceneManager.sol_scene_res)
 	if(result==OK):	
 		print("Game started")
 	else:

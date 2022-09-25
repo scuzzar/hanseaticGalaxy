@@ -5,8 +5,8 @@ extends Control
 var path = []
 var width = 1
 
-func _process(delta):
-	update()
+#func _process(delta):
+#	update()
 
 func _draw():
 	if(path.size()>0): _draw_list(path ,Vector3(0,0,0), color)	
