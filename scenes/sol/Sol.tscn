@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://om8cv4t25v1r"]
+[gd_scene load_steps=55 format=3 uid="uid://om8cv4t25v1r"]
 
 [ext_resource type="Material" path="res://Bodys/materials/Sun.material" id="1"]
 [ext_resource type="Material" path="res://Bodys/materials/Moon.material" id="2"]
@@ -29,7 +29,6 @@
 [ext_resource type="Script" path="res://Bodys/RotationShifter.gd" id="28"]
 [ext_resource type="Material" path="res://Bodys/materials/Uranus.tres" id="29"]
 [ext_resource type="Material" path="res://Bodys/materials/Europa.material" id="30"]
-[ext_resource type="Script" path="res://Util/DebugPosition.gd" id="30_xljca"]
 [ext_resource type="Material" path="res://Bodys/materials/IO.material" id="31"]
 [ext_resource type="Material" path="res://Bodys/materials/Kallisto.material" id="32"]
 [ext_resource type="Material" path="res://Bodys/materials/Ganimede.material" id="33"]
@@ -99,8 +98,6 @@ _simulation_object_path = NodePath("../PlayerShip")
 environment = ExtResource("20")
 
 [node name="HUD" parent="." instance=ExtResource("17")]
-layout_mode = 3
-anchors_preset = 15
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -248,9 +245,6 @@ transform = Transform3D(1, 0, 6.35275e-21, 0, 1, 0, 0, 0, 1, -1.79443, 0.0951424
 physics_material_override = SubResource("PhysicsMaterial_686gh")
 contact_monitor = false
 sleeping = true
-
-[node name="DebugPosition" type="Node3D" parent="Sun/Earth/Moon"]
-script = ExtResource("30_xljca")
 
 [node name="Mars" parent="Sun" instance=ExtResource("16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12000, 0, 0)
