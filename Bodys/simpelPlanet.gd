@@ -26,6 +26,8 @@ var isGravetySource = false
 var angular_speed : float = 0 
 var non_shifted_angular_speed : float = 0 
 
+
+var recorded_global_linear_velocity = Vector3(0,0,0)
 var unshifted_linear_velocity  = Vector3(0,0,0)
 
 var _last_global_pos:Vector3
@@ -91,10 +93,12 @@ func _physics_process(delta):
 		angle += (angular_speed *delta)	
 		if(angle >= 2*PI): angle -= 2*PI
 		
-		self.position = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)
-		#self.rotate(Vector3(0,1,0), planetaryRotation*delta)
+		var new_position = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)
+		var step = new_position - self.position
+		self.position = new_position
+		
 		#update velocety
-		#self.linear_velocity = (global_transform.origin - _last_global_pos)/delta
+		self.recorded_global_linear_velocity = (self.global_transform.origin-_last_global_pos)/delta
 		_last_global_pos = self.global_transform.origin
 
 
