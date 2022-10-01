@@ -33,5 +33,5 @@ func _get_orbital_vector():
 	var orbital_vector_in_Sio =(orbital_direction * kosmic)
 	
 	#account for motion of b
-	var result =orbital_vector_in_Sio+b.linear_velocity
+	var result =orbital_vector_in_Sio+b.recorded_global_linear_velocity
 	return result
