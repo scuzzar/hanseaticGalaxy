@@ -84,8 +84,8 @@ func _import(source_file, save_path, options, platform_variants, gen_files):
 		Delimiters.SEMICOLON:
 			delim = ";"
 	
-	var file := File.new()
-	var err := file.open(source_file, File.READ)
+	var file := FileAccess.open(source_file, FileAccess.READ)
+	var err := FileAccess.get_open_error()
 	if err != OK:
 		printerr("Failed to open file: ", err)
 		return FAILED

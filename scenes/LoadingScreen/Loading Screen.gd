@@ -13,8 +13,8 @@ func _ready():
 	print("loaded")
 	$Loading_Lable.hide()
 	$Menu.show()
-	var quicksave = File.new()
-	if(quicksave.file_exists(Globals.QUICKSAVE_PATH)):
+	
+	if(FileAccess.file_exists(Globals.QUICKSAVE_PATH)):
 		$Menu/Resume.show()
 
 

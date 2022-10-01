@@ -15,4 +15,4 @@ dest_files=["res://.godot/imported/shipTypes.csv-cfc70770da00cc616ca91bd31698fda
 delimiter=2
 headers=true
 detect_numbers=true
-force_float=false
+force_float=true

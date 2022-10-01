@@ -187,8 +187,7 @@ func _quickload():
 	SceneManager.load_quicksave()
 
 func save_game():
-	var save_game = File.new()
-	save_game.open(Globals.QUICKSAVE_PATH, File.WRITE)
+	var save_game = FileAccess.open(Globals.QUICKSAVE_PATH, FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("persist")	
 	var dataList = []
 	for node in save_nodes:
@@ -212,7 +211,7 @@ func save_game():
 	for data in dataList:	
 		var json = JSON.new()
 		save_game.store_line(json.stringify(data))
-	save_game.close()
+	#save_game.close()
 
 func _sortNasedLast(a,b):
 	return a["parent"].get_name_count()<b["parent"].get_name_count()
@@ -220,11 +219,10 @@ func _sortNasedLast(a,b):
 func load_game():
 	var json = JSON.new()
 	loaded = false
-	var save_game = File.new()
-	if not save_game.file_exists(Globals.QUICKSAVE_PATH):
+	
+	if not FileAccess.file_exists(Globals.QUICKSAVE_PATH):
 		return # Error! We don't have a save to load.
-
-	save_game.open(Globals.QUICKSAVE_PATH, File.READ)
+	var save_game = FileAccess.open(Globals.QUICKSAVE_PATH, FileAccess.READ)
 	print(save_game.get_position())
 	
 	if(save_game.get_length()==0):

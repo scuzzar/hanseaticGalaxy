@@ -8,8 +8,7 @@ extends CenterContainer
 
 func _ready():	
 	money.text = str(Player.credits)
-	var save_game = File.new()
-	if(!save_game.file_exists(Globals.QUICKSAVE_PATH)):
+	if(!FileAccess.file_exists(Globals.QUICKSAVE_PATH)):
 		$GridContainer/Load.hide()
 
 func _on_Button_pressed():
