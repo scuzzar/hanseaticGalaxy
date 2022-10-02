@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt721dugnd2gy"]
+
+[ext_resource type="Script" path="res://Util/TreeTests/Tree.gd" id="1_7et6w"]
+[ext_resource type="Texture2D" uid="uid://c7b231gqy3bxb" path="res://HUD/theme/BlueBar.atlastex" id="2_2tpld"]
+
+[node name="Node2d" type="Node2D"]
+
+[node name="Tree" type="Tree" parent="."]
+offset_left = 331.0
+offset_top = 58.0
+offset_right = 841.0
+offset_bottom = 270.0
+columns = 6
+column_titles_visible = true
+hide_root = true
+script = ExtResource("1_7et6w")
+button = ExtResource("2_2tpld")

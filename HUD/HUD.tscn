@@ -15,6 +15,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1")
 
@@ -126,6 +128,7 @@ visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
+grow_vertical = 0
 theme = ExtResource("4")
 text = "Destination:"
 
@@ -136,12 +139,17 @@ offset_left = -401.0
 offset_top = 35.0
 offset_right = -11.0
 offset_bottom = -148.0
+grow_horizontal = 0
+grow_vertical = 2
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
 
 [node name="DeliveryBoard" parent="." instance=ExtResource("6")]
 anchors_preset = 9
+offset_left = 0.0
 offset_top = 36.0
+offset_right = 0.0
+offset_bottom = 0.0
 metadata/_edit_layout_mode = 1
 
 [node name="CenterHUB" type="VBoxContainer" parent="."]
@@ -218,6 +226,7 @@ layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
+grow_horizontal = 2
 
 [node name="ShipShopButton" type="Button" parent="."]
 anchors_preset = 5
@@ -248,24 +257,30 @@ metadata/_edit_layout_mode = 1
 
 [node name="Destination" parent="Refuel" index="0"]
 anchors_preset = 10
+offset_bottom = 26.0
+grow_horizontal = 2
 
 [node name="Grid" parent="Refuel" index="1"]
 anchors_preset = 15
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="Price" parent="Refuel/Grid" index="1"]
-offset_right = 287.0
+offset_right = 312.0
 
 [node name="Refuel" parent="Refuel/Grid" index="3"]
-offset_right = 287.0
+offset_right = 312.0
 
 [node name="amount" parent="Refuel/Grid" index="5"]
-offset_right = 287.0
+offset_right = 312.0
 
 [node name="mass" parent="Refuel/Grid" index="7"]
-offset_right = 287.0
+offset_right = 312.0
 
 [node name="Sum" parent="Refuel/Grid" index="9"]
-offset_right = 287.0
+offset_right = 312.0
 
 [node name="Footer" type="GridContainer" parent="."]
 anchors_preset = 7
