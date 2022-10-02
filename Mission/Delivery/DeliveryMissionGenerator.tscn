@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://dpj3f2po4l3pn"]
 
-[ext_resource path="res://Mission/Delivery/DeliveryMissionGenerator.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://Mission/Delivery/DeliveryMissionGenerator.gd" id="1"]
 
 [node name="CargoGenerator" type="Node" groups=["cargoGenerator"]]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="GenTimer" type="Timer" parent="."]
 

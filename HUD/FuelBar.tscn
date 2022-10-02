@@ -3,28 +3,31 @@
 [ext_resource type="Theme" uid="uid://7tcar65meo7i" path="res://HUD/theme/default_theme.theme" id="2"]
 
 [node name="Fuel" type="MarginContainer"]
-minimum_size = Vector2(300, 0)
 offset_right = 300.0
 offset_bottom = 22.0
 metadata/_edit_use_custom_anchors = false
 
 [node name="FuelCartBar" type="ProgressBar" parent="."]
+layout_mode = 2
 offset_right = 300.0
 offset_bottom = 22.0
 size_flags_vertical = 1
-theme = ExtResource( "2" )
-percent_visible = false
+theme = ExtResource("2")
+show_percentage = false
 
 [node name="FuelBar" type="ProgressBar" parent="."]
+layout_mode = 2
 offset_right = 300.0
 offset_bottom = 22.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
-theme = ExtResource( "2" )
+theme = ExtResource("2")
 value = 20.0
 
 [node name="VD" type="Label" parent="."]
+layout_mode = 2
 offset_right = 300.0
 offset_bottom = 21.0
-theme = ExtResource( "2" )
+theme = ExtResource("2")
 text = "0 dV"
+horizontal_alignment = 2

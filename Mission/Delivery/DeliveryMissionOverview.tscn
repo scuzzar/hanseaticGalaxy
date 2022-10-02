@@ -1,10 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnlfe718r7iq"]
 
 [ext_resource type="Script" path="res://Mission/Delivery/DeliveryMissionOverview.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://rjjpjunecsd7" path="res://Mission/Delivery/DeliveryRaw.tscn" id="2"]
 [ext_resource type="AudioStream" uid="uid://lwabw4g1vkr3" path="res://SpacePort/sound/201159__kiddpark__cash-register.mp3" id="3"]
+[ext_resource type="Script" path="res://Mission/Delivery/InventorySelectionTree.gd" id="3_aqdsh"]
 
 [node name="CargoBay" type="Panel"]
+anchors_preset = -1
 anchor_left = 0.673
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -12,93 +13,34 @@ offset_left = -66.152
 offset_top = 3.0
 offset_right = -1.0
 offset_bottom = 3.0
-script = ExtResource( "1" )
+script = ExtResource("1")
 
 [node name="Destination" type="Label" parent="."]
+anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
 text = "Cargo BAy"
 uppercase = true
 
-[node name="Header" type="GridContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 0.109
-offset_top = 23.0
-offset_right = 10.0
-offset_bottom = -39.4
-columns = 6
-metadata/_edit_layout_mode = 1
-metadata/_edit_use_custom_anchors = true
+[node name="Cash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3")
 
-[node name="Destination2" type="Label" parent="Header"]
-offset_top = 1.0
-offset_right = 1.0
-offset_bottom = 24.0
-uppercase = true
-
-[node name="Destination" type="Label" parent="Header"]
-offset_left = 5.0
-offset_right = 111.0
-offset_bottom = 26.0
-text = "Destination"
-uppercase = true
-
-[node name="Good" type="Label" parent="Header"]
-offset_left = 115.0
-offset_right = 164.0
-offset_bottom = 26.0
-text = "Good"
-uppercase = true
-
-[node name="Mass" type="Label" parent="Header"]
-offset_left = 168.0
-offset_right = 211.0
-offset_bottom = 26.0
-text = "Mass"
-uppercase = true
-
-[node name="Reward" type="Label" parent="Header"]
-offset_left = 215.0
-offset_right = 282.0
-offset_bottom = 26.0
-text = "Reward"
-uppercase = true
-
-[node name="DV" type="Label" parent="Header"]
-offset_left = 286.0
-offset_right = 345.0
-offset_bottom = 26.0
-text = "min DV"
-uppercase = true
-
-[node name="Container" type="ScrollContainer" parent="."]
+[node name="InventoryTree" type="Tree" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 46.0
-offset_right = 60.0
+offset_left = 15.0
+offset_top = 36.0
+offset_right = -13.856
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_layout_mode = 1
-metadata/_edit_use_custom_anchors = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Container"]
-minimum_size = Vector2(100, 100)
-offset_right = 100.0
-offset_bottom = 100.0
-
-[node name="Control2" parent="Container/VBoxContainer" instance=ExtResource( "2" )]
-anchor_bottom = 0.0
-offset_right = 100.0
-offset_bottom = 48.0
-
-[node name="Control" parent="Container/VBoxContainer" instance=ExtResource( "2" )]
-anchor_bottom = 0.0
-offset_top = 52.0
-offset_right = 100.0
-offset_bottom = 100.0
-
-[node name="Cash" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( "3" )
+columns = 6
+column_titles_visible = true
+hide_root = true
+select_mode = 2
+script = ExtResource("3_aqdsh")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-
-[editable path="Container/VBoxContainer/Control2"]
+[connection signal="item_edited" from="InventoryTree" to="InventoryTree" method="_on_tree_item_edited"]

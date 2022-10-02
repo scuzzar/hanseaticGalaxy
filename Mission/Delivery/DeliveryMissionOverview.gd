@@ -1,7 +1,6 @@
 extends Panel
 
 var rawScene = preload("res://Mission/Delivery/DeliveryRaw.tscn")
-@onready var vBox = $"Container/VBoxContainer"
 
 #var destinationMap={}
 
@@ -12,16 +11,13 @@ signal deliver(container)
 signal about(container)
 
 func _ready():	
-	vBox = $"Container/VBoxContainer"
+
 	hide()	
 
 func update():
-	vBox = $"Container/VBoxContainer"
 	var missions = _getMissions()	
 	if(self.visible):
-		for n in vBox.get_children():
-			vBox.remove_child(n)
-			n.queue_free()		
+		$InventoryTree.clear()	
 		missions.sort_custom(self._sortByDistance)		
 		for m in missions:
 			_add_mission(m)
@@ -40,15 +36,16 @@ func _Inventory_added_container(container:CargoContainer):
 
 func _add_mission(mission:DeliveryMission):	
 	if(mission!=null):
-		var newRaw = rawScene.instantiate()	
-		newRaw.setContent(mission)
-		if(mission.destination  == ship.docking_location):
-			newRaw.setButtonActon("Deliver")
-			newRaw.connect("buttonPressed",self._on_deliver)
-		else:
-			newRaw.setButtonActon("About")
-			newRaw.connect("buttonPressed",self._on_about)
-		vBox.add_child(newRaw) # Add it as a child of this node.
+		$InventoryTree.addContent(mission)
+		#var newRaw = rawScene.instantiate()	
+		#newRaw.setContent(mission)
+		#if(mission.destination  == ship.docking_location):
+		#	newRaw.setButtonActon("Deliver")
+		#	newRaw.connect("buttonPressed",self._on_deliver)
+		#else:
+		#	newRaw.setButtonActon("About")
+		#	newRaw.connect("buttonPressed",self._on_about)
+		#vBox.add_child(newRaw) # Add it as a child of this node.
 
 func _on_deliver(container:DeliveryMission,state):
 	emit_signal("deliver",container)

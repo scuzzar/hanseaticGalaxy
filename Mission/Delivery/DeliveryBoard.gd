@@ -45,17 +45,17 @@ func update():
 		_on_ship_mass_change()
 	
 
-func _add_mission(mission:DeliveryMission):	
-	var newRaw = rawScene.instantiate()	
-	newRaw.setContent(mission)
-	newRaw.connect("buttonPressed",self._on_selection_update)
+#func _add_mission(mission:DeliveryMission):	
+	#var newRaw = rawScene.instantiate()	
+	#newRaw.setContent(mission)
+	#newRaw.connect("buttonPressed",self._on_selection_update)
 	#newRaw.setButtonActon("Accept")
-	if(missionCart.has(mission)):
-		newRaw.checkBox()
-	else:
-		if(Player.ship.getFreeCargoSlots()<mission.getContainerCount()+missionCartSlots):
-			newRaw.setButtonDisabeld()
-	vBox.add_child(newRaw) # Add it as a child of this node.
+	#if(missionCart.has(mission)):
+	#	newRaw.checkBox()
+	#else:
+	#	if(Player.ship.getFreeCargoSlots()<mission.getContainerCount()+missionCartSlots):
+	#		newRaw.setButtonDisabeld()
+	#vBox.add_child(newRaw) # Add it as a child of this node.
 
 func _on_selection_update(mission:DeliveryMission,state):
 	if(state==true):
