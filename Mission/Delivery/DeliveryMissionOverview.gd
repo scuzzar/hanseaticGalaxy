@@ -1,9 +1,5 @@
 extends Panel
 
-var rawScene = preload("res://Mission/Delivery/DeliveryRaw.tscn")
-
-#var destinationMap={}
-
 var ship:Ship
 
 
