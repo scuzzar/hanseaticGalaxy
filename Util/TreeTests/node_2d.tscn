@@ -9,9 +9,11 @@
 offset_left = 331.0
 offset_top = 58.0
 offset_right = 841.0
-offset_bottom = 270.0
+offset_bottom = 601.0
 columns = 6
 column_titles_visible = true
 hide_root = true
 script = ExtResource("1_7et6w")
 button = ExtResource("2_2tpld")
+
+[connection signal="item_edited" from="Tree" to="Tree" method="_on_tree_item_edited"]
