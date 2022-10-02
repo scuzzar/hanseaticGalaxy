@@ -68,12 +68,8 @@ func _on_selection_update(mission:DeliveryMission,state):
 		missionCartSlots-=mission.getContainerCount()
 		missionCartMass-=mission.getMass()
 		missionCartReward-=mission.reward
-	update()
-	#self.emit_signal("cartUpdate",missionCartSlots,missionCartMass,missionCartReward)
-	#print(missionCart)
-	#print(missionCartSlots)
-	#print(missionCartMass)
-	#print(missionCartReward)
+	self._on_ship_mass_change()
+
 
 func _on_ship_mass_change():
 	max_mass_value.text  = str("%0.2f" % ship.getMaxStartMass())

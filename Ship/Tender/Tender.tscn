@@ -81,3 +81,10 @@ transform = Transform3D(0.4, -4.76836e-08, 0, 4.76836e-08, 0.4, 0, 0, 0, 0.4, 0.
 
 [node name="particel6" parent="Propulsion/backTruster" index="3" instance=ExtResource("4")]
 transform = Transform3D(0.4, -4.76836e-08, 0, 4.76836e-08, 0.4, 0, 0, 0, 0.4, -0.12933, 0.181831, 0.128968)
+
+[node name="Tail" parent="." index="9"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ShipInfo" parent="." index="10"]
+anchors_preset = 8

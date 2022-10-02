@@ -23,7 +23,7 @@ func _ready():
 func newGameSetup():
 	for cg in get_tree().get_nodes_in_group("cargoGenerator"):
 		cg.generateInitialStock()
-	ship.fuel = 0
+	ship.fuel = ship.fuel_cap
 	Player.credits = 10000
 	if(player_spawn_point!=null):
 	

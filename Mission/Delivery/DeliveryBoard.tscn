@@ -14,12 +14,7 @@ grow_vertical = 2
 script = ExtResource("1")
 metadata/_edit_use_custom_anchors = false
 
-[node name="Destination" parent="." index="0"]
-layout_mode = 1
-text = "Delivery Missions"
-
 [node name="InventoryTree" parent="." index="2"]
-layout_mode = 1
 select_mode = 1
 
 [node name="Footer" type="HBoxContainer" parent="." index="3"]
@@ -59,3 +54,5 @@ offset_right = 277.0
 offset_bottom = 26.0
 text = "50"
 uppercase = true
+
+[connection signal="selectionChanged" from="InventoryTree" to="." method="_on_selection_update"]
