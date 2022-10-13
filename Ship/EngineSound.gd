@@ -16,6 +16,7 @@ var transition_type = 1 # TRANS_SINE
 
 func play(from_position:float = 0.0):	
 	super.play(from_position)
+	tween.finished.disconnect(_on_TweenOut_tween_completed)
 	tween = get_tree().create_tween()	
 	tween.tween_property(self, "unit_db", _db_target, fadeIn_duration)
 

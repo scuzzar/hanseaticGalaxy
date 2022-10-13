@@ -30,11 +30,3 @@ slot_parent_path = NodePath("../SimpleRocket")
 
 [node name="particel" parent="Propulsion/mainDrive" index="0" instance=ExtResource("3")]
 transform = Transform3D(0.400669, 0, 0, 0, -0.400669, 3.50276e-08, 0, -3.50276e-08, -0.400669, 0, -0.592798, 2.5912e-08)
-
-[node name="ShipInfo" parent="." index="9"]
-offset_left = -140.0
-offset_top = -167.5
-offset_right = 140.0
-offset_bottom = 167.5
-grow_horizontal = 2
-grow_vertical = 2
