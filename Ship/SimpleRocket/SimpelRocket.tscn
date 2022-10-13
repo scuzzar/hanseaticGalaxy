@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://djh418e7j4f7q"]
 
 [ext_resource type="PackedScene" uid="uid://c5q8j55h24r8m" path="res://Ship/Ship.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://dp5cul7rh3h48" path="res://Ship/SimpleRocket/SimpleRocket.escn" id="2"]
+[ext_resource type="PackedScene" uid="uid://b7x8cutjqnuwy" path="res://Ship/SimpleRocket/SimpleRocket.escn" id="2"]
 [ext_resource type="PackedScene" uid="uid://bhjv2dj2o3a02" path="res://Ship/VFX/drive.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://Weapon/MountPoint.tscn" id="4"]
 
@@ -30,3 +30,11 @@ slot_parent_path = NodePath("../SimpleRocket")
 
 [node name="particel" parent="Propulsion/mainDrive" index="0" instance=ExtResource("3")]
 transform = Transform3D(0.400669, 0, 0, 0, -0.400669, 3.50276e-08, 0, -3.50276e-08, -0.400669, 0, -0.592798, 2.5912e-08)
+
+[node name="ShipInfo" parent="." index="9"]
+offset_left = -140.0
+offset_top = -167.5
+offset_right = 140.0
+offset_bottom = 167.5
+grow_horizontal = 2
+grow_vertical = 2

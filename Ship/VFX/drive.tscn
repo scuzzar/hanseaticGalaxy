@@ -123,5 +123,5 @@ scale_amount_max = 18.04
 color_ramp = SubResource("8")
 
 [node name="EngineSound" parent="." instance=ExtResource("5")]
-fadeIn_duration = 0.2
-fadeOut_duration = 0.4
+fadeIn_duration = 0.5
+fadeOut_duration = 0.9

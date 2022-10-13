@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Ship/TragetComputer.gd" id="7"]
 [ext_resource type="Script" path="res://Cargo/Inventory.gd" id="9"]
 
-[node name="Ship" type="RigidDynamicBody3D" groups=["persist"]]
+[node name="Ship" type="RigidBody3D" groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.587339)
 input_ray_pickable = false
 axis_lock_linear_y = true
@@ -17,7 +17,6 @@ axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 30.0
 continuous_cd = true
-contacts_reported = 5
 contact_monitor = true
 angular_damp = 4.0
 script = ExtResource("3")
@@ -48,6 +47,15 @@ script = ExtResource("2")
 [node name="backTruster" type="Node3D" parent="Propulsion"]
 
 [node name="Tail" parent="." instance=ExtResource("1")]
+layout_mode = 3
+anchors_preset = 0
 frameOfReference_Node = NodePath("../Propulsion")
 
 [node name="ShipInfo" parent="." instance=ExtResource("4")]
+anchors_preset = 8
+offset_left = -140.0
+offset_top = -167.5
+offset_right = 140.0
+offset_bottom = 167.5
+grow_horizontal = 2
+grow_vertical = 2
