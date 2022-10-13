@@ -5,5 +5,4 @@
 
 [node name="FadingAudio3DStream" type="AudioStreamPlayer3D"]
 stream = ExtResource("1")
-unit_db = -80.0
 script = ExtResource("2")

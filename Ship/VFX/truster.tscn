@@ -27,8 +27,6 @@ mesh = SubResource("1")
 spread = 2.01
 
 [node name="EngineSound" parent="." index="3"]
-visible = false
-unit_db = -80.0
-pitch_scale = 2.88
+unit_db = -27.789
 fadeIn_duration = 0.1
 fadeOut_duration = 0.1
