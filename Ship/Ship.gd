@@ -92,8 +92,7 @@ func _loadType():
 	truster_engine_mass_rate = ShipTyp[type]["truster_engine_mass_rate"]
 
 
-func _integrate_forces(state:PhysicsDirectBodyState3D):
-	#if(physicActiv):
+func _integrate_forces(state:PhysicsDirectBodyState3D):	
 	super._integrate_forces(state)
 	self.calcWetMass()
 		

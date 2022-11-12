@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://be1j32k7ldt7y"]
 
 [ext_resource type="PackedScene" uid="uid://c5q8j55h24r8m" path="res://Ship/Ship.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://buacwqr6jbwys" path="res://Ship/SkyCrane/SkyCrane.escn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bv3nfn1m2icjx" path="res://Ship/SkyCrane/SkyCrane.escn" id="2"]
 [ext_resource type="PackedScene" uid="uid://bhjv2dj2o3a02" path="res://Ship/VFX/drive.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://Weapon/MountPoint.tscn" id="4"]
 

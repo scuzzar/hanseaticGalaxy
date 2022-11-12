@@ -36,7 +36,7 @@ func newGameSetup():
 		#ship.set_write_linear_velocity(offset_vel)
 		print("ship spawned at " + str(ship.position))
 			
-	ship.physicActiv =true
+	ship.freeze = false
 	loaded = true	
 
 func setShip(newShip):
@@ -53,6 +53,7 @@ func setShip(newShip):
 	$Shifter.parent = newShip
 	Player.ship = newShip
 	newShip.team = ENUMS.TEAM.PLAYER
+	newShip.freeze = false
 
 func _process(delta):
 	if(! is_instance_valid(ship)):return
