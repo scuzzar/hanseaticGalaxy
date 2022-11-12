@@ -25,7 +25,7 @@ enum STATE{
 
 var _zoom_level = 5.0 
 
-@onready var tween: Tween = get_tree().create_tween()
+#@onready var tween: Tween = get_tree().create_tween()
 
 var _next_rotation = Vector2(0,0)
 

@@ -75,7 +75,7 @@ size = Vector2(700, 700)
 [node name="Sol" type="Node3D"]
 script = ExtResource("23")
 MaxtimeWarpFactor_Moon = 6
-player_spawn_point_path = NodePath("Sun/Earth/Moon/ApolloPort")
+player_spawn_point_path = NodePath("Sun/Mars/OlympusPort")
 
 [node name="RotationShifter" type="Node" parent="."]
 script = ExtResource("28")
@@ -98,8 +98,6 @@ _simulation_object_path = NodePath("../PlayerShip")
 environment = ExtResource("20")
 
 [node name="HUD" parent="." instance=ExtResource("17")]
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Camera" parent="." groups=["persist"] instance=ExtResource("18")]
 min_zoom = 1.0
@@ -107,7 +105,6 @@ min_zoom = 1.0
 [node name="PlayerShip" parent="." instance=ExtResource("47")]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 12000.1, 0, -70.0421)
 physics_material_override = SubResource("5")
-linear_velocity = Vector3(0, 0, -28.5)
 playerControl = true
 physicActiv = true
 

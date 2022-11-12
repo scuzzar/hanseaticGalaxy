@@ -93,9 +93,9 @@ func _loadType():
 
 
 func _integrate_forces(state:PhysicsDirectBodyState3D):
-	if(physicActiv):
-		super._integrate_forces(state)
-		self.calcWetMass()
+	#if(physicActiv):
+	super._integrate_forces(state)
+	self.calcWetMass()
 		
 	$Damage.handle_collsions(state)
 	

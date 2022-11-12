@@ -12,7 +12,13 @@ var last_g_force_strongest_Body_force = Vector3(0,0,0)
 var write_linear_velocity = null
 
 @export 
-var physicActiv =false
+var physicActiv =false:
+	get:
+		return physicActiv
+	set(value):
+		physicActiv = value
+		self.freeze = !physicActiv
+			
 
 @onready var bodys = []
 
@@ -22,6 +28,7 @@ func _enter_tree():
 
 func _ready():
 	bodys = get_tree().get_nodes_in_group("bodys")
+	self.freeze = !physicActiv
 
 
 func _integrate_forces(state):
