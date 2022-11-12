@@ -23,11 +23,12 @@ func _update_orbit():
 	var r = orbit_radius
 	var G = Globals.G
 	var M = get_parent().mass
+	print(str(get_parent().name) + " mass:" + str(M))
 	var kosmic = sqrt(G*M/r)
 	
 	if(orbit_radius>0.5):
-		angular_speed = 2*PI/(2*PI*orbit_radius/kosmic)
 		orbital_speed = kosmic
+		angular_speed = 2*PI/(2*PI*orbit_radius/orbital_speed)			
 		angle = acos(position.z/orbit_radius)	
 
 

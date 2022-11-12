@@ -34,7 +34,7 @@ var _last_global_pos:Vector3
 
 func _enter_tree():
 	self.add_to_group("bodys")
-	#self.gravity_scale = 0
+	self.derive_mass()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -46,14 +46,14 @@ func _ready():
 	if(self.securety_level==ENUMS.SECURETY.BELT):
 		$Lable3D.text += "*"
 	
-	self.derive_mass()
+	#self.derive_mass()
 	
 	if(!isStar):
 		var r = orbit_radius
 		var G = Globals.G
 		var parent = get_parent()
-		if(parent is AnimatableBody3D):
-			parent.derive_mass()
+		#if(parent is AnimatableBody3D):
+		#	parent.derive_mass()
 		var M = get_parent().mass
 		var kosmic = 0
 		if(r!=0):			

@@ -9,7 +9,7 @@
 [ext_resource type="Material" path="res://Bodys/materials/Mimas.material" id="7"]
 [ext_resource type="PackedScene" path="res://Building/Warft.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://djh418e7j4f7q" path="res://Ship/SimpleRocket/SimpelRocket.tscn" id="9"]
-[ext_resource type="PackedScene" path="res://Station/Station.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://cgsypg1g212uo" path="res://Station/Station.tscn" id="10"]
 [ext_resource type="Material" path="res://Bodys/materials/Saturn.material" id="11"]
 [ext_resource type="Material" path="res://Bodys/materials/Titan.material" id="12"]
 [ext_resource type="PackedScene" uid="uid://fm6kygisw8ju" path="res://SpacePort/spacePort.tscn" id="14"]
