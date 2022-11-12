@@ -79,7 +79,7 @@ func derive_pos_and_vel():
 	var s = Vector3(orbital_speed,0,0).rotated(Vector3(0,1,0), angle)
 	var pvshift = get_parent().unshifted_linear_velocity
 #	var vshift = Globals.velocity_shift
-	#unshifted_linear_velocity = s + pvshift
+	unshifted_linear_velocity = s + pvshift
 	#linear_velocity = s + pvshift #unshifted_linear_velocity + Globals.velocity_shift	
 
 func derive_mass():
