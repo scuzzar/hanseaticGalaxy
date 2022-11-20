@@ -276,7 +276,6 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [node name="Refuel" parent="." instance=ExtResource("9")]
-visible = false
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -386,7 +385,6 @@ offset_bottom = 48.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -402,6 +400,7 @@ metadata/_edit_use_custom_anchors = false
 
 [connection signal="about" from="DeliveryMissionOverview" to="." method="_on_CargoBay_about"]
 [connection signal="deliver" from="DeliveryMissionOverview" to="." method="_on_CargoBay_deliver"]
+[connection signal="accepted" from="DeliveryBoard" to="." method="_on_InventoryWindow_accepted"]
 [connection signal="shipOrderd" from="ShipShop" to="." method="_on_shipOrderd"]
 [connection signal="pressed" from="ShipShopButton" to="." method="_on_Button_pressed"]
 [connection signal="refuel_cart_change" from="Refuel" to="." method="_on_refuel_cart_change"]

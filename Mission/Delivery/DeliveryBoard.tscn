@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddcqvoi0kvs5g"]
+[gd_scene load_steps=4 format=3 uid="uid://ddcqvoi0kvs5g"]
 
 [ext_resource type="Script" path="res://Mission/Delivery/DeliveryBoard.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dnlfe718r7iq" path="res://Mission/Delivery/DeliveryMissionOverview.tscn" id="2"]
+
+[sub_resource type="Theme" id="Theme_jwmve"]
+CheckBox/colors/font_disabled_color = Color(0.843137, 0.843137, 0.843137, 0.921569)
 
 [node name="CargoBay" instance=ExtResource("2")]
 anchor_left = 0.0
@@ -11,28 +14,28 @@ offset_top = 16.0
 offset_right = 420.0
 offset_bottom = -111.0
 grow_vertical = 2
+theme = SubResource("Theme_jwmve")
 script = ExtResource("1")
 metadata/_edit_use_custom_anchors = false
 
 [node name="InventoryTree" parent="." index="2"]
+offset_right = -14.0
+offset_bottom = -31.0
 select_mode = 1
 
 [node name="Footer" type="HBoxContainer" parent="." index="3"]
-layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 
 [node name="Label" type="Label" parent="Footer" index="0"]
-layout_mode = 2
 offset_right = 88.0
 offset_bottom = 26.0
 text = "Ship Mass:"
 uppercase = true
 
 [node name="mass_value" type="Label" parent="Footer" index="1"]
-layout_mode = 2
 offset_left = 92.0
 offset_right = 111.0
 offset_bottom = 26.0
@@ -40,7 +43,6 @@ text = "30"
 uppercase = true
 
 [node name="Label2" type="Label" parent="Footer" index="2"]
-layout_mode = 2
 offset_left = 115.0
 offset_right = 254.0
 offset_bottom = 26.0
@@ -48,7 +50,6 @@ text = "Max Start Mass:"
 uppercase = true
 
 [node name="max_mass_value" type="Label" parent="Footer" index="3"]
-layout_mode = 2
 offset_left = 258.0
 offset_right = 277.0
 offset_bottom = 26.0

@@ -38,9 +38,9 @@ func off():
 		$Fire2.emitting = false
 		$smoke.emitting = false
 		
-		$Fire1.lifetime = 0# lifeTime1
-		$Fire2.lifetime = 0#lifeTime2
-		$smoke.lifetime = 0#lifeTime3	
+		#$Fire1.lifetime = 0# lifeTime1
+		#$Fire2.lifetime = 0#lifeTime2
+		#$smoke.lifetime = 0#lifeTime3	
 		
 		$EngineSound.stop()
 		isOn = false
