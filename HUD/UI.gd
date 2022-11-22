@@ -27,6 +27,7 @@ extends Control
 @onready var shipShop = $ShipShop
 
 @onready var shipInvertoryView = $ShipInventoryView
+@onready var deliver_button = $ShipInventoryView/deliver_button
 
 
 

@@ -20,6 +20,27 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_vxf7i")
 
+[node name="Consol" type="Label" parent="." groups=["consol"]]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -21.0
+offset_right = 136.0
+grow_vertical = 0
+theme = ExtResource("2_64suq")
+text = "Destination:"
+
+[node name="Credits" parent="." instance=ExtResource("3_7agiq")]
+layout_mode = 1
+anchors_preset = 1
+offset_left = -177.0
+offset_bottom = 21.0
+grow_horizontal = 0
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
 [node name="DataBox" type="VBoxContainer" parent="."]
 layout_mode = 0
 alignment = 1
@@ -135,23 +156,6 @@ text = "e:"
 layout_mode = 2
 theme = ExtResource("2_64suq")
 text = "100000"
-
-[node name="Credits" parent="." instance=ExtResource("3_7agiq")]
-layout_mode = 1
-anchors_preset = 1
-grow_horizontal = 0
-metadata/_edit_layout_mode = 1
-metadata/_edit_use_custom_anchors = false
-
-[node name="Consol" type="Label" parent="." groups=["consol"]]
-visible = false
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-grow_vertical = 0
-theme = ExtResource("2_64suq")
-text = "Destination:"
 
 [node name="V_Meter" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -406,6 +410,21 @@ grow_horizontal = 0
 grow_vertical = 2
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
+
+[node name="deliver_button" type="Button" parent="ShipInventoryView"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -62.0
+offset_top = 5.0
+offset_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Deliver"
 
 [connection signal="accepted" from="StationView/MissionBoard" to="." method="_on_InventoryWindow_accepted"]
 [connection signal="refuel_cart_change" from="StationView/Refuel" to="." method="_on_refuel_cart_change"]
