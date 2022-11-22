@@ -13,14 +13,14 @@ extends Control
 @onready var mass_labe = $DataBox/MASS/Value
 
 
-@onready var hud = $CenterHUB
-@onready var v_labe = $CenterHUB/V_Meter/Value
-@onready var v_cosmic = $CenterHUB/V_cosmic/Value
-@onready var v_escape = $CenterHUB/V_escape/Value
+@onready var hud = $V_Meter
+@onready var v_labe = $V_Meter/V_Meter/Value
+@onready var v_cosmic = $V_Meter/V_cosmic/Value
+@onready var v_escape = $V_Meter/V_escape/Value
 
 @onready var missionBoard = $MissionBoard
 @onready var refuel = $Refuel
-@onready var accept_button = $Button
+@onready var accept_button = $accept_button
 
 @onready var shipShop_button = $ShipShopButton
 @onready var shipShop = $ShipShop
