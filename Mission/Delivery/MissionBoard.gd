@@ -1,4 +1,4 @@
-extends "res://Mission/Delivery/DeliveryMissionOverview.gd"
+extends "res://Mission/Delivery/InventoryView.gd"
 
 @onready var mass_value = $Footer/mass_value
 @onready var max_mass_value = $Footer/max_mass_value

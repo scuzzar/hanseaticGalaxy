@@ -1,0 +1,103 @@
+[gd_scene load_steps=4 format=3 uid="uid://6gi6rmxh0vs4"]
+
+[ext_resource type="AudioStream" uid="uid://lwabw4g1vkr3" path="res://SpacePort/sound/201159__kiddpark__cash-register.mp3" id="3"]
+[ext_resource type="Script" path="res://Mission/Delivery/InventorySelectionTree.gd" id="3_aqdsh"]
+
+[sub_resource type="GDScript" id="GDScript_jak55"]
+script/source = "extends Panel
+
+var ship:Ship
+
+
+signal deliver(container)
+signal about(container)
+
+func _ready():	
+
+	hide()	
+
+func update():
+	var missions = _getMissions()	
+	if(self.visible):
+		$InventoryTree.clear()
+		
+		var root = $InventoryTree.create_item()
+		missions.sort_custom(self._sortByDistance)		
+		for m in missions:
+			_add_mission(m)
+	#mass_value.text = str(ship.mass)
+	
+
+func _getMissions():
+	return Player.get_accepted_delivery_Missions()
+
+func _sortByDistance(a,b):	
+	if(a == null or b == null): return false
+	return a.getDistance() < b.getDistance()
+
+func _Inventory_added_container(container:CargoContainer):
+	update()
+
+func _add_mission(mission:DeliveryMission):	
+	if(mission!=null):
+		$InventoryTree.addContent(mission)
+
+func _on_deliver(container:DeliveryMission,state):
+	emit_signal(\"deliver\",container)
+	$Cash.play()	
+	update()
+
+func _on_about(container:DeliveryMission,state):
+	emit_signal(\"about\",container)
+
+func _on_visibility_changed():
+	if(self.is_visible_in_tree()):
+		update()		
+	pass
+		
+func setShip(ship:Ship):
+	self.ship = ship
+"
+
+[node name="InventoryView" type="Panel"]
+anchors_preset = -1
+anchor_left = 0.673
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -66.152
+offset_top = 3.0
+offset_right = -1.0
+offset_bottom = 3.0
+script = SubResource("GDScript_jak55")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Cargo BAy"
+uppercase = true
+
+[node name="Cash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3")
+
+[node name="InventoryTree" type="Tree" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 36.0
+offset_right = -13.9921
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 6
+column_titles_visible = true
+hide_root = true
+select_mode = 1
+script = ExtResource("3_aqdsh")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="item_edited" from="InventoryTree" to="InventoryTree" method="_on_tree_item_edited"]

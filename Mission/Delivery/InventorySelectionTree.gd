@@ -1,16 +1,14 @@
 @tool
 extends Tree
 
-@export var button : Texture2D
-
-var root
+#var root
 
 signal selectionChanged(mission,state)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	root = self.create_item()
+	#root = self.create_item()
 	
 	self.set_column_title(1, "Destination")
 	self.set_column_title(2, "Good")

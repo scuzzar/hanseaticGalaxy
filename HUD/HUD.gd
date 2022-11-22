@@ -40,10 +40,10 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("info"):
 		if(!ship.docking_location!=null):
-			if(!$DeliveryMissionOverview.visible):
-				$DeliveryMissionOverview.show()
+			if(!$ShipInventoryView.visible):
+				$ShipInventoryView.show()
 			else:
-				$DeliveryMissionOverview.hide()	
+				$ShipInventoryView.hide()	
 	pass
 	
 	tmr_labe.text = str("%0.1f" % Engine.get_frames_per_second())
@@ -60,7 +60,7 @@ func setShip(ship:Ship):
 	_on_Ship_fuel_changed(ship.fuel,ship.fuel_cap)
 
 func _on_Ship_fuel_changed(fuel,fuel_cap):
-	var missionCartMass = $DeliveryBoard.missionCartMass
+	var missionCartMass = $MissionBoard.missionCartMass
 		
 	var dV = ship.get_delta_v(missionCartMass)	
 	dV_labe.text = str("%0.1f" %  dV) + " dV"
@@ -75,7 +75,7 @@ func _on_Ship_mass_changed(mass):
 	ship_mass = mass
 	mass_labe.text = str(mass)
 	tmr_labe.text = str("%0.2f" % (ship.get_thrust()/mass))
-	$DeliveryBoard._on_ship_mass_change()
+	$MissionBoard._on_ship_mass_change()
 
 
 func _on_Ship_g_force_update(force,p_stronges_body,strongest_force):
@@ -104,10 +104,10 @@ func _on_Ship_telemetry_changed(position,velocety):
 
 
 func _on_Ship_docked(port:Port):
-	$DeliveryBoard.setPort(port)
+	$MissionBoard.setPort(port)
 	$CenterHUB.hide()
 	$DataBox.hide()
-	$DeliveryMissionOverview.show()
+	$ShipInventoryView.show()
 	refuel.show()
 	refuel.setShip(ship)
 	accept_button.show()
@@ -119,10 +119,10 @@ func _on_Ship_docked(port:Port):
 		
 
 func _on_Ship_undocked(port:Port):
-	$DeliveryBoard.clearPort(port)
+	$MissionBoard.clearPort(port)
 	$CenterHUB.show()
 	$DataBox.show()
-	$DeliveryMissionOverview.hide()
+	$ShipInventoryView.hide()
 	$ShipShopButton.hide()
 	$ShipShop.hide()
 	accept_button.hide()
@@ -132,26 +132,26 @@ func _on_Ship_undocked(port:Port):
 
 func _on_InventoryWindow_accepted(container):
 	Player.accept_Mission(container)
-	$DeliveryMissionOverview.update()
+	$ShipInventoryView.update()
 	
 func _on_CargoBay_deliver(container):
 	Player.deliver_Mission(container)
-	$DeliveryMissionOverview.update()
+	$ShipInventoryView.update()
 
 func _on_CargoBay_about(container):
 	Player.about_Mission(container)
-	$DeliveryMissionOverview.update()
+	$ShipInventoryView.update()
 	#$DeliveryBoard.update()
 
 
 func _on_Button_pressed():
 	if(!inShipShop):
-		$DeliveryMissionOverview.hide()
+		$ShipInventoryView.hide()
 		$DeliveryBoard.hide()
 		$ShipShop.show()
 		self.inShipShop=true
 	else:
-		$DeliveryMissionOverview.show()
+		$ShipInventoryView.show()
 		$DeliveryBoard.show()
 		$ShipShop.hide()
 		self.inShipShop=false
