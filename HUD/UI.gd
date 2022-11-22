@@ -18,9 +18,10 @@ extends Control
 @onready var v_cosmic = $V_Meter/V_cosmic/Value
 @onready var v_escape = $V_Meter/V_escape/Value
 
-@onready var missionBoard = $MissionBoard
-@onready var refuel = $Refuel
-@onready var accept_button = $accept_button
+@onready var stationView = $StationView
+@onready var missionBoard = $StationView/MissionBoard
+@onready var refuel = $StationView/Refuel
+@onready var accept_button = $StationView/accept_button
 
 @onready var shipShop_button = $ShipShopButton
 @onready var shipShop = $ShipShop
@@ -68,6 +69,8 @@ func setShip(ship:Ship):
 	ship.telemetry_changed.connect(_on_Ship_telemetry_changed)
 	ship.undocked.connect(_on_Ship_undocked)
 	_on_Ship_fuel_changed(ship.fuel,ship.fuel_cap)
+	missionBoard.setShip(ship)
+	shipInvertoryView.ship = ship
 
 func _on_Ship_fuel_changed(fuel,fuel_cap):
 	var missionCartMass = missionBoard.missionCartMass
@@ -114,13 +117,18 @@ func _on_Ship_telemetry_changed(position,velocety):
 
 
 func _on_Ship_docked(port:Port):
-	missionBoard.setPort(port)
 	hud.hide()
 	dataBox.hide()
-	shipInvertoryView.show()
-	refuel.show()
+	
+	missionBoard.setPort(port)
 	refuel.setShip(ship)
+	
+	missionBoard.show()
+	refuel.show()
 	accept_button.show()
+	
+	shipInvertoryView.show()
+	
 	if(!port.getShipsForSale().is_empty()):
 		shipShop_button.show()
 		shipShop.setWarft(port)
@@ -128,15 +136,19 @@ func _on_Ship_docked(port:Port):
 		shipShop_button.hide()
 		
 
-func _on_Ship_undocked(port:Port):
-	missionBoard.clearPort(port)
-	hud.show()
-	dataBox.show()
+func _on_Ship_undocked(port:Port):	
+	missionBoard.hide()
 	shipInvertoryView.hide()
 	shipShop_button.hide()
 	shipShop.hide()
 	accept_button.hide()
 	refuel.hide()
+	
+	missionBoard.clearPort(port)
+	
+	hud.show()
+	dataBox.show()
+	
 	inShipShop = false
 	fuel_cart_bar.value = 0
 

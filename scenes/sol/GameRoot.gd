@@ -46,8 +46,7 @@ func setShip(newShip):
 	newShip.undocked.connect(_on_Ship_undocked)
 	newShip.docked.connect(self._on_Ship_docked)
 	$UI.setShip(newShip)
-	$UI/MissionBoard.setShip(newShip)
-	$UI/ShipInventoryView.ship = newShip
+	
 	$Camera.ship =newShip
 	$Simulator._simulation_Object = newShip
 	self.ship = newShip

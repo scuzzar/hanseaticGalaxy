@@ -21,8 +21,7 @@ func _getMissions():
 		return []
 
 func setPort(target):
-	self.port = target
-	self.show()
+	self.port = target	
 	self.update()
 	var existingConnection = target.inventory.is_connected("container_added", self._Inventory_added_container)
 	if(!existingConnection):	
@@ -34,7 +33,6 @@ func clearPort(target):
 	missionCartSlots = 0
 	missionCartMass = 0
 	missionCartReward = 0
-	self.hide()
 	var existingConnection = target.inventory.is_connected("container_added", self._Inventory_added_container)
 	if(existingConnection):
 		target.inventory.disconnect("container_added", self._Inventory_added_container)
