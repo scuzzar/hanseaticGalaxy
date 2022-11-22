@@ -45,9 +45,9 @@ func setShip(newShip):
 	newShip.soiPlanetChanged.connect($RotationShifter.on_soi_planet_changed)	
 	newShip.undocked.connect(_on_Ship_undocked)
 	newShip.docked.connect(self._on_Ship_docked)
-	$HUD.setShip(newShip)
-	$HUD/MissionBoard.setShip(newShip)
-	$HUD/ShipInventoryView.ship = newShip
+	$UI.setShip(newShip)
+	$UI/MissionBoard.setShip(newShip)
+	$UI/ShipInventoryView.ship = newShip
 	$Camera.ship =newShip
 	$Simulator._simulation_Object = newShip
 	self.ship = newShip

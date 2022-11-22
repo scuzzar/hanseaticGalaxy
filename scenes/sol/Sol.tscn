@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://om8cv4t25v1r"]
+[gd_scene load_steps=55 format=3 uid="uid://dw7m20eh8ayhl"]
 
 [ext_resource type="Material" path="res://Bodys/materials/Sun.material" id="1"]
 [ext_resource type="Material" path="res://Bodys/materials/Moon.material" id="2"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://fm6kygisw8ju" path="res://SpacePort/spacePort.tscn" id="14"]
 [ext_resource type="PackedScene" path="res://Building/City.tscn" id="15"]
 [ext_resource type="PackedScene" uid="uid://55r1r1eb23gr" path="res://Bodys/Planet.tscn" id="16"]
-[ext_resource type="PackedScene" uid="uid://dfai5m2g3t2vp" path="res://HUD/HUD.tscn" id="17"]
+[ext_resource type="PackedScene" uid="uid://beonp770urw7f" path="res://HUD/UI.tscn" id="17"]
 [ext_resource type="PackedScene" uid="uid://dycob36gm60wa" path="res://Camera/ShipCamera.tscn" id="18"]
 [ext_resource type="PackedScene" uid="uid://be1j32k7ldt7y" path="res://Ship/SkyCrane/SkyCrane.tscn" id="19"]
 [ext_resource type="Environment" uid="uid://cglk2lduymfbr" path="res://scenes/sol/Weltall.tres" id="20"]
@@ -97,7 +97,7 @@ _simulation_object_path = NodePath("../PlayerShip")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("20")
 
-[node name="HUD" parent="." instance=ExtResource("17")]
+[node name="UI" parent="." instance=ExtResource("17")]
 
 [node name="Camera" parent="." groups=["persist"] instance=ExtResource("18")]
 min_zoom = 1.0
