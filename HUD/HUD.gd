@@ -4,20 +4,30 @@ extends Control
 @onready var fuel_cart_bar = $Footer/Fuel/FuelCartBar
 @onready var dV_labe = $Footer/Fuel/VD
 @onready var live_bar = $Footer/Life/Bar
+
 @onready var credit_labe = $Credits/Value
+
+@onready var dataBox = $DataBox
 @onready var tmr_labe = $DataBox/TMR/Value
 @onready var g_labe = $DataBox/G_Meter/Value
 @onready var mass_labe = $DataBox/MASS/Value
-@onready var refuel = $Refuel
-@onready var accept_button = $Button
 
-#onready var v_labe = $DataBox/V_Meter/Value
-#onready var v_cosmic = $DataBox/V_cosmic/Value
-#onready var v_escape = $DataBox/V_escape/Value
 
+@onready var hud = $CenterHUB
 @onready var v_labe = $CenterHUB/V_Meter/Value
 @onready var v_cosmic = $CenterHUB/V_cosmic/Value
 @onready var v_escape = $CenterHUB/V_escape/Value
+
+@onready var missionBoard = $MissionBoard
+@onready var refuel = $Refuel
+@onready var accept_button = $Button
+
+@onready var shipShop_button = $ShipShopButton
+@onready var shipShop = $ShipShop
+
+@onready var shipInvertoryView = $ShipInventoryView
+
+
 
 signal shipOrderd(ship)
 
@@ -30,7 +40,7 @@ var ship:Ship
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	Player.credits_changed.connect(_on_credits_changed)
-	$ShipShopButton.hide()
+	shipShop_button.hide()
 	credit_labe.text = str(Player.credits)	
 	pass
 
@@ -40,10 +50,10 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("info"):
 		if(!ship.docking_location!=null):
-			if(!$ShipInventoryView.visible):
-				$ShipInventoryView.show()
+			if(!shipInvertoryView.visible):
+				shipInvertoryView.show()
 			else:
-				$ShipInventoryView.hide()	
+				shipInvertoryView.hide()	
 	pass
 	
 	tmr_labe.text = str("%0.1f" % Engine.get_frames_per_second())
@@ -60,7 +70,7 @@ func setShip(ship:Ship):
 	_on_Ship_fuel_changed(ship.fuel,ship.fuel_cap)
 
 func _on_Ship_fuel_changed(fuel,fuel_cap):
-	var missionCartMass = $MissionBoard.missionCartMass
+	var missionCartMass = missionBoard.missionCartMass
 		
 	var dV = ship.get_delta_v(missionCartMass)	
 	dV_labe.text = str("%0.1f" %  dV) + " dV"
@@ -75,7 +85,7 @@ func _on_Ship_mass_changed(mass):
 	ship_mass = mass
 	mass_labe.text = str(mass)
 	tmr_labe.text = str("%0.2f" % (ship.get_thrust()/mass))
-	$MissionBoard._on_ship_mass_change()
+	missionBoard._on_ship_mass_change()
 
 
 func _on_Ship_g_force_update(force,p_stronges_body,strongest_force):
@@ -104,27 +114,27 @@ func _on_Ship_telemetry_changed(position,velocety):
 
 
 func _on_Ship_docked(port:Port):
-	$MissionBoard.setPort(port)
-	$CenterHUB.hide()
-	$DataBox.hide()
-	$ShipInventoryView.show()
+	missionBoard.setPort(port)
+	hud.hide()
+	dataBox.hide()
+	shipInvertoryView.show()
 	refuel.show()
 	refuel.setShip(ship)
 	accept_button.show()
 	if(!port.getShipsForSale().is_empty()):
-		$ShipShopButton.show()
-		$ShipShop.setWarft(port)
+		shipShop_button.show()
+		shipShop.setWarft(port)
 	else:
-		$ShipShopButton.hide()
+		shipShop_button.hide()
 		
 
 func _on_Ship_undocked(port:Port):
-	$MissionBoard.clearPort(port)
-	$CenterHUB.show()
-	$DataBox.show()
-	$ShipInventoryView.hide()
-	$ShipShopButton.hide()
-	$ShipShop.hide()
+	missionBoard.clearPort(port)
+	hud.show()
+	dataBox.show()
+	shipInvertoryView.hide()
+	shipShop_button.hide()
+	shipShop.hide()
 	accept_button.hide()
 	refuel.hide()
 	inShipShop = false
@@ -132,36 +142,36 @@ func _on_Ship_undocked(port:Port):
 
 func _on_InventoryWindow_accepted(container):
 	Player.accept_Mission(container)
-	$ShipInventoryView.update()
+	shipInvertoryView.update()
 	
 func _on_CargoBay_deliver(container):
 	Player.deliver_Mission(container)
-	$ShipInventoryView.update()
+	shipInvertoryView.update()
 
 func _on_CargoBay_about(container):
 	Player.about_Mission(container)
-	$ShipInventoryView.update()
+	shipInvertoryView.update()
 	#$DeliveryBoard.update()
 
 
 func _on_Button_pressed():
 	if(!inShipShop):
-		$ShipInventoryView.hide()
-		$DeliveryBoard.hide()
-		$ShipShop.show()
+		shipInvertoryView.hide()
+		missionBoard.hide()
+		shipShop.show()
 		self.inShipShop=true
 	else:
-		$ShipInventoryView.show()
-		$DeliveryBoard.show()
-		$ShipShop.hide()
+		shipInvertoryView.show()
+		missionBoard.show()
+		shipShop.hide()
 		self.inShipShop=false
 
 
 func _on_shipOrderd(ship):
 	self.emit_signal("shipOrderd",ship)
-	if($ShipShop.warft.getShipsForSale().is_empty()):
+	if(shipShop.warft.getShipsForSale().is_empty()):
 		_on_Button_pressed()
-		$ShipShopButton.hide()
+		shipShop_button.hide()
 
 
 func _on_refuel_cart_change(amount):

@@ -26,7 +26,6 @@ text = "MISSION BORD"
 layout_mode = 3
 offset_right = -14.0
 offset_bottom = -31.0
-hide_root = true
 
 [node name="Footer" type="HBoxContainer" parent="." index="3"]
 anchors_preset = 2

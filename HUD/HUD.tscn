@@ -21,20 +21,24 @@ mouse_filter = 2
 script = ExtResource("1")
 
 [node name="DataBox" type="VBoxContainer" parent="."]
+layout_mode = 0
 alignment = 1
 
 [node name="MASS" type="HBoxContainer" parent="DataBox"]
+layout_mode = 2
 offset_right = 141.0
 offset_bottom = 21.0
 alignment = 1
 
 [node name="Label" type="Label" parent="DataBox/MASS"]
+layout_mode = 2
 offset_right = 63.0
 offset_bottom = 21.0
 theme = ExtResource("4")
 text = "MASS:"
 
 [node name="Value" type="Label" parent="DataBox/MASS"]
+layout_mode = 2
 offset_left = 67.0
 offset_right = 141.0
 offset_bottom = 21.0
@@ -42,12 +46,14 @@ theme = ExtResource("4")
 text = "100000"
 
 [node name="TMR" type="HBoxContainer" parent="DataBox"]
+layout_mode = 2
 offset_top = 25.0
 offset_right = 141.0
 offset_bottom = 46.0
 alignment = 1
 
 [node name="Label" type="Label" parent="DataBox/TMR"]
+layout_mode = 2
 offset_left = 17.0
 offset_right = 72.0
 offset_bottom = 21.0
@@ -55,6 +61,7 @@ theme = ExtResource("4")
 text = "Time:"
 
 [node name="Value" type="Label" parent="DataBox/TMR"]
+layout_mode = 2
 offset_left = 76.0
 offset_right = 124.0
 offset_bottom = 21.0
@@ -62,12 +69,14 @@ theme = ExtResource("4")
 text = "2021"
 
 [node name="G_Meter" type="HBoxContainer" parent="DataBox"]
+layout_mode = 2
 offset_top = 50.0
 offset_right = 141.0
 offset_bottom = 71.0
 alignment = 1
 
 [node name="Label" type="Label" parent="DataBox/G_Meter"]
+layout_mode = 2
 offset_left = 22.0
 offset_right = 41.0
 offset_bottom = 21.0
@@ -75,6 +84,7 @@ theme = ExtResource("4")
 text = "g:"
 
 [node name="Value" type="Label" parent="DataBox/G_Meter"]
+layout_mode = 2
 offset_left = 45.0
 offset_right = 119.0
 offset_bottom = 21.0
@@ -83,41 +93,51 @@ text = "100000"
 
 [node name="V_cosmic" type="HBoxContainer" parent="DataBox"]
 visible = false
+layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="DataBox/V_cosmic"]
+layout_mode = 2
 theme = ExtResource("4")
 text = "C:"
 
 [node name="Value" type="Label" parent="DataBox/V_cosmic"]
+layout_mode = 2
 theme = ExtResource("4")
 text = "100000"
 
 [node name="V_Meter" type="HBoxContainer" parent="DataBox"]
 visible = false
+layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="DataBox/V_Meter"]
+layout_mode = 2
 theme = ExtResource("4")
 text = "V:"
 
 [node name="Value" type="Label" parent="DataBox/V_Meter"]
+layout_mode = 2
 theme = ExtResource("4")
 text = "100000"
 
 [node name="V_escape" type="HBoxContainer" parent="DataBox"]
 visible = false
+layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="DataBox/V_escape"]
+layout_mode = 2
 theme = ExtResource("4")
 text = "e:"
 
 [node name="Value" type="Label" parent="DataBox/V_escape"]
+layout_mode = 2
 theme = ExtResource("4")
 text = "100000"
 
 [node name="Credits" parent="." instance=ExtResource("3")]
+layout_mode = 1
 anchors_preset = 1
 grow_horizontal = 0
 metadata/_edit_layout_mode = 1
@@ -125,6 +145,7 @@ metadata/_edit_use_custom_anchors = false
 
 [node name="Consol" type="Label" parent="." groups=["consol"]]
 visible = false
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -133,6 +154,7 @@ theme = ExtResource("4")
 text = "Destination:"
 
 [node name="ShipInventoryView" parent="." instance=ExtResource("7")]
+layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 offset_left = -510.0
@@ -145,6 +167,7 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
 
 [node name="MissionBoard" parent="." instance=ExtResource("6")]
+layout_mode = 1
 anchors_preset = 9
 offset_left = 0.0
 offset_top = 79.0
@@ -153,6 +176,7 @@ offset_bottom = -287.0
 metadata/_edit_layout_mode = 1
 
 [node name="CenterHUB" type="VBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -165,17 +189,20 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [node name="V_cosmic" type="HBoxContainer" parent="CenterHUB"]
+layout_mode = 2
 offset_right = 97.0
 offset_bottom = 21.0
 alignment = 1
 
 [node name="Label" type="Label" parent="CenterHUB/V_cosmic"]
+layout_mode = 2
 offset_right = 19.0
 offset_bottom = 21.0
 theme = ExtResource("4")
 text = "C:"
 
 [node name="Value" type="Label" parent="CenterHUB/V_cosmic"]
+layout_mode = 2
 offset_left = 23.0
 offset_right = 97.0
 offset_bottom = 21.0
@@ -183,18 +210,21 @@ theme = ExtResource("4")
 text = "100000"
 
 [node name="V_Meter" type="HBoxContainer" parent="CenterHUB"]
+layout_mode = 2
 offset_top = 25.0
 offset_right = 97.0
 offset_bottom = 46.0
 alignment = 1
 
 [node name="Label" type="Label" parent="CenterHUB/V_Meter"]
+layout_mode = 2
 offset_right = 19.0
 offset_bottom = 21.0
 theme = ExtResource("4")
 text = "V:"
 
 [node name="Value" type="Label" parent="CenterHUB/V_Meter"]
+layout_mode = 2
 offset_left = 23.0
 offset_right = 97.0
 offset_bottom = 21.0
@@ -202,18 +232,21 @@ theme = ExtResource("4")
 text = "100000"
 
 [node name="V_escape" type="HBoxContainer" parent="CenterHUB"]
+layout_mode = 2
 offset_top = 50.0
 offset_right = 97.0
 offset_bottom = 71.0
 alignment = 1
 
 [node name="Label" type="Label" parent="CenterHUB/V_escape"]
+layout_mode = 2
 offset_right = 19.0
 offset_bottom = 21.0
 theme = ExtResource("4")
 text = "e:"
 
 [node name="Value" type="Label" parent="CenterHUB/V_escape"]
+layout_mode = 2
 offset_left = 23.0
 offset_right = 97.0
 offset_bottom = 21.0
@@ -222,13 +255,14 @@ text = "100000"
 
 [node name="ShipShop" parent="." instance=ExtResource("8")]
 visible = false
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
 
 [node name="ShipShopButton" type="Button" parent="."]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -242,6 +276,7 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [node name="Refuel" parent="." instance=ExtResource("9")]
+layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_top = 821.0
@@ -251,33 +286,56 @@ grow_vertical = 2
 metadata/_edit_layout_mode = 1
 
 [node name="Destination" parent="Refuel" index="0"]
+layout_mode = 1
 anchors_preset = 10
 offset_bottom = 26.0
 grow_horizontal = 2
 
 [node name="Grid" parent="Refuel" index="1"]
+layout_mode = 1
 anchors_preset = 15
 offset_left = 11.0
 offset_top = 21.0
 offset_right = 0.0
 offset_bottom = 0.0
 
+[node name="Refuel_Lable2" parent="Refuel/Grid" index="0"]
+layout_mode = 2
+
 [node name="Price" parent="Refuel/Grid" index="1"]
+layout_mode = 2
 offset_right = 507.0
+
+[node name="Refuel_Lable" parent="Refuel/Grid" index="2"]
+layout_mode = 2
 
 [node name="Refuel" parent="Refuel/Grid" index="3"]
+layout_mode = 2
 offset_right = 507.0
+
+[node name="Refuel_Lable5" parent="Refuel/Grid" index="4"]
+layout_mode = 2
 
 [node name="amount" parent="Refuel/Grid" index="5"]
+layout_mode = 2
 offset_right = 507.0
+
+[node name="Refuel_Lable6" parent="Refuel/Grid" index="6"]
+layout_mode = 2
 
 [node name="mass" parent="Refuel/Grid" index="7"]
+layout_mode = 2
 offset_right = 507.0
 
+[node name="Refuel_Lable3" parent="Refuel/Grid" index="8"]
+layout_mode = 2
+
 [node name="Sum" parent="Refuel/Grid" index="9"]
+layout_mode = 2
 offset_right = 507.0
 
 [node name="Footer" type="GridContainer" parent="."]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -294,6 +352,7 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [node name="Fuel_Lable" type="Label" parent="Footer"]
+layout_mode = 2
 offset_right = 59.0
 offset_bottom = 21.0
 size_flags_horizontal = 0
@@ -302,11 +361,13 @@ theme = ExtResource("4")
 text = "Fuel:"
 
 [node name="Fuel" parent="Footer" instance=ExtResource("2")]
+layout_mode = 2
 offset_left = 63.0
 offset_right = 599.0
 size_flags_horizontal = 3
 
 [node name="Life_Lable" type="Label" parent="Footer"]
+layout_mode = 2
 offset_top = 26.0
 offset_right = 32.0
 offset_bottom = 47.0
@@ -316,6 +377,7 @@ theme = ExtResource("4")
 text = "HP:"
 
 [node name="Life" parent="Footer" instance=ExtResource("5")]
+layout_mode = 2
 offset_left = 63.0
 offset_top = 26.0
 offset_right = 599.0
@@ -323,6 +385,7 @@ offset_bottom = 48.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="."]
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
