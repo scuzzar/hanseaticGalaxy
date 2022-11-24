@@ -1,9 +1,17 @@
 @tool
 extends Tree
 
+class_name MissionTable
+
+var SelectedMissions = []
+var SelectedItems = []
+var SelectedMissionsSlots = 0
+var SelectedMissionsMass = 0
+var SelectedMissionsReward = 0
+
 #var root
 
-signal selectionChanged(mission,state)
+signal selectionChanged(mission,isChecked)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -69,10 +77,34 @@ func addContent(mission:DeliveryMission):
 
 func _on_tree_item_edited():
 	var item = self.get_edited()
+
 	var item_col = self.get_edited_column()
 	if(item_col == 0):		
 		var mission = item.get_metadata(0)
-		var state = item.is_checked(0)
-		print(mission._to_string())
-		emit_signal("selectionChanged",mission,state)	
+		var isChecked = item.is_checked(0)
+		print(mission._to_string())		
+		
+		if(isChecked==true):
+			SelectedMissions.append(mission)
+			SelectedMissionsSlots+=mission.getContainerCount()
+			SelectedMissionsMass+=mission.getMass()
+			SelectedMissionsReward+=mission.reward
+		else:
+			SelectedMissions.erase(mission)
+			SelectedMissionsSlots-=mission.getContainerCount()
+			SelectedMissionsMass-=mission.getMass()
+			SelectedMissionsReward-=mission.reward
+			
+		emit_signal("selectionChanged",mission,isChecked)
+		
 	pass # Replace with function body.
+
+func unselectAll():
+	for item in SelectedItems:
+		item.deselect()
+		
+	SelectedItems = []
+	SelectedMissions = []
+	SelectedMissionsSlots = 0
+	SelectedMissionsMass = 0
+	SelectedMissionsReward = 0

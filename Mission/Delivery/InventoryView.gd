@@ -2,9 +2,7 @@ extends Panel
 
 var ship:Ship
 
-
-signal deliver(container)
-signal about(container)
+@onready var table : MissionTable = $MissionTable
 
 func _ready():	
 
@@ -13,7 +11,7 @@ func _ready():
 func update():
 	var missions = _getMissions()	
 	if(self.visible):
-		$InventoryTree.clear()
+		$MissionTable.clear()
 		#var root = $InventoryTree.create_item()
 		missions.sort_custom(self._sortByDistance)		
 		for m in missions:
@@ -33,24 +31,7 @@ func _Inventory_added_container(container:CargoContainer):
 
 func _add_mission(mission:DeliveryMission):	
 	if(mission!=null):
-		$InventoryTree.addContent(mission)
-		#var newRaw = rawScene.instantiate()	
-		#newRaw.setContent(mission)
-		#if(mission.destination  == ship.docking_location):
-		#	newRaw.setButtonActon("Deliver")
-		#	newRaw.connect("buttonPressed",self._on_deliver)
-		#else:
-		#	newRaw.setButtonActon("About")
-		#	newRaw.connect("buttonPressed",self._on_about)
-		#vBox.add_child(newRaw) # Add it as a child of this node.
-
-func _on_deliver(container:DeliveryMission,state):
-	emit_signal("deliver",container)
-	$Cash.play()	
-	update()
-
-func _on_about(container:DeliveryMission,state):
-	emit_signal("about",container)
+		table.addContent(mission)
 
 func _on_visibility_changed():
 	if(self.is_visible_in_tree()):

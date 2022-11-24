@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bf167l0jnqqc7"]
 
-[ext_resource type="PackedScene" uid="uid://6gi6rmxh0vs4" path="res://Mission/Delivery/InventoryView.tscn" id="1_6kqqj"]
+[ext_resource type="PackedScene" uid="uid://dpud04jo5o2v0" path="res://Mission/Delivery/InventoryView.tscn" id="1_6kqqj"]
 [ext_resource type="Script" path="res://Mission/Delivery/MissionBoard.gd" id="2_jusu8"]
 
 [sub_resource type="Theme" id="Theme_jwmve"]
@@ -22,10 +22,8 @@ metadata/_edit_use_custom_anchors = false
 layout_mode = 3
 text = "MISSION BORD"
 
-[node name="InventoryTree" parent="." index="2"]
+[node name="MissionTable" parent="." index="2"]
 layout_mode = 3
-offset_right = -14.0
-offset_bottom = -31.0
 
 [node name="Footer" type="HBoxContainer" parent="." index="3"]
 anchors_preset = 2
@@ -59,5 +57,3 @@ offset_right = 277.0
 offset_bottom = 26.0
 text = "50"
 uppercase = true
-
-[connection signal="selectionChanged" from="InventoryTree" to="." method="_on_selection_update"]

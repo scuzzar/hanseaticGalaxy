@@ -71,10 +71,9 @@ func setShip(ship:Ship):
 	ship.undocked.connect(_on_Ship_undocked)
 	_on_Ship_fuel_changed(ship.fuel,ship.fuel_cap)
 	missionBoard.setShip(ship)
-	shipInvertoryView.ship = ship
 
 func _on_Ship_fuel_changed(fuel,fuel_cap):
-	var missionCartMass = missionBoard.missionCartMass
+	var missionCartMass = missionBoard.table.SelectedMissionsMass
 		
 	var dV = ship.get_delta_v(missionCartMass)	
 	dV_labe.text = str("%0.1f" %  dV) + " dV"
@@ -153,8 +152,11 @@ func _on_Ship_undocked(port:Port):
 	inShipShop = false
 	fuel_cart_bar.value = 0
 
-func _on_InventoryWindow_accepted(container):
-	Player.accept_Mission(container)
+func _on_InventoryWindow_accepted():
+	var missions = missionBoard.table.SelectedMissions
+	for m in missions:
+		Player.accept_Mission(m)
+	missionBoard.update()
 	shipInvertoryView.update()
 	
 func _on_CargoBay_deliver(container):
