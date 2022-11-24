@@ -8,7 +8,7 @@ extends Node3D
 @export var MaxtimeWarpFactor_Planet = 50
 @export var MaxtimeWarpFactor_Moon = 5
 
-@export var player_spawn_point_path : NodePath = "Sun/Earth/BrasiliaPort" 
+@export var player_spawn_point_path : NodePath 
 @onready var player_spawn_point:Port = get_node_or_null(player_spawn_point_path)
 
 var loaded = false
