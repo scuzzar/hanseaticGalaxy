@@ -22,6 +22,7 @@ script = ExtResource("1_vxf7i")
 
 [node name="Consol" type="Label" parent="." groups=["consol"]]
 visible = false
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -32,6 +33,7 @@ theme = ExtResource("2_64suq")
 text = "Destination:"
 
 [node name="Credits" parent="." instance=ExtResource("3_7agiq")]
+layout_mode = 1
 anchors_preset = 1
 offset_left = -177.0
 offset_bottom = 21.0
@@ -40,20 +42,24 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [node name="DataBox" type="VBoxContainer" parent="."]
+layout_mode = 0
 alignment = 1
 
 [node name="MASS" type="HBoxContainer" parent="DataBox"]
+layout_mode = 2
 offset_right = 141.0
 offset_bottom = 21.0
 alignment = 1
 
 [node name="Label" type="Label" parent="DataBox/MASS"]
+layout_mode = 2
 offset_right = 63.0
 offset_bottom = 21.0
 theme = ExtResource("2_64suq")
 text = "MASS:"
 
 [node name="Value" type="Label" parent="DataBox/MASS"]
+layout_mode = 2
 offset_left = 67.0
 offset_right = 141.0
 offset_bottom = 21.0
@@ -61,12 +67,14 @@ theme = ExtResource("2_64suq")
 text = "100000"
 
 [node name="TMR" type="HBoxContainer" parent="DataBox"]
+layout_mode = 2
 offset_top = 25.0
 offset_right = 141.0
 offset_bottom = 46.0
 alignment = 1
 
 [node name="Label" type="Label" parent="DataBox/TMR"]
+layout_mode = 2
 offset_left = 17.0
 offset_right = 72.0
 offset_bottom = 21.0
@@ -74,6 +82,7 @@ theme = ExtResource("2_64suq")
 text = "Time:"
 
 [node name="Value" type="Label" parent="DataBox/TMR"]
+layout_mode = 2
 offset_left = 76.0
 offset_right = 124.0
 offset_bottom = 21.0
@@ -81,12 +90,14 @@ theme = ExtResource("2_64suq")
 text = "2021"
 
 [node name="G_Meter" type="HBoxContainer" parent="DataBox"]
+layout_mode = 2
 offset_top = 50.0
 offset_right = 141.0
 offset_bottom = 71.0
 alignment = 1
 
 [node name="Label" type="Label" parent="DataBox/G_Meter"]
+layout_mode = 2
 offset_left = 22.0
 offset_right = 41.0
 offset_bottom = 21.0
@@ -94,6 +105,7 @@ theme = ExtResource("2_64suq")
 text = "g:"
 
 [node name="Value" type="Label" parent="DataBox/G_Meter"]
+layout_mode = 2
 offset_left = 45.0
 offset_right = 119.0
 offset_bottom = 21.0
@@ -102,41 +114,51 @@ text = "100000"
 
 [node name="V_cosmic" type="HBoxContainer" parent="DataBox"]
 visible = false
+layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="DataBox/V_cosmic"]
+layout_mode = 2
 theme = ExtResource("2_64suq")
 text = "C:"
 
 [node name="Value" type="Label" parent="DataBox/V_cosmic"]
+layout_mode = 2
 theme = ExtResource("2_64suq")
 text = "100000"
 
 [node name="V_Meter" type="HBoxContainer" parent="DataBox"]
 visible = false
+layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="DataBox/V_Meter"]
+layout_mode = 2
 theme = ExtResource("2_64suq")
 text = "V:"
 
 [node name="Value" type="Label" parent="DataBox/V_Meter"]
+layout_mode = 2
 theme = ExtResource("2_64suq")
 text = "100000"
 
 [node name="V_escape" type="HBoxContainer" parent="DataBox"]
 visible = false
+layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="DataBox/V_escape"]
+layout_mode = 2
 theme = ExtResource("2_64suq")
 text = "e:"
 
 [node name="Value" type="Label" parent="DataBox/V_escape"]
+layout_mode = 2
 theme = ExtResource("2_64suq")
 text = "100000"
 
 [node name="V_Meter" type="VBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -153,17 +175,20 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [node name="V_cosmic" type="HBoxContainer" parent="V_Meter"]
+layout_mode = 2
 offset_right = 97.0
 offset_bottom = 21.0
 alignment = 1
 
 [node name="Label" type="Label" parent="V_Meter/V_cosmic"]
+layout_mode = 2
 offset_right = 19.0
 offset_bottom = 21.0
 theme = ExtResource("2_64suq")
 text = "C:"
 
 [node name="Value" type="Label" parent="V_Meter/V_cosmic"]
+layout_mode = 2
 offset_left = 23.0
 offset_right = 97.0
 offset_bottom = 21.0
@@ -171,18 +196,21 @@ theme = ExtResource("2_64suq")
 text = "100000"
 
 [node name="V_Meter" type="HBoxContainer" parent="V_Meter"]
+layout_mode = 2
 offset_top = 25.0
 offset_right = 97.0
 offset_bottom = 46.0
 alignment = 1
 
 [node name="Label" type="Label" parent="V_Meter/V_Meter"]
+layout_mode = 2
 offset_right = 19.0
 offset_bottom = 21.0
 theme = ExtResource("2_64suq")
 text = "V:"
 
 [node name="Value" type="Label" parent="V_Meter/V_Meter"]
+layout_mode = 2
 offset_left = 23.0
 offset_right = 97.0
 offset_bottom = 21.0
@@ -190,18 +218,21 @@ theme = ExtResource("2_64suq")
 text = "100000"
 
 [node name="V_escape" type="HBoxContainer" parent="V_Meter"]
+layout_mode = 2
 offset_top = 50.0
 offset_right = 97.0
 offset_bottom = 71.0
 alignment = 1
 
 [node name="Label" type="Label" parent="V_Meter/V_escape"]
+layout_mode = 2
 offset_right = 19.0
 offset_bottom = 21.0
 theme = ExtResource("2_64suq")
 text = "e:"
 
 [node name="Value" type="Label" parent="V_Meter/V_escape"]
+layout_mode = 2
 offset_left = 23.0
 offset_right = 97.0
 offset_bottom = 21.0
@@ -209,6 +240,7 @@ theme = ExtResource("2_64suq")
 text = "100000"
 
 [node name="Footer" type="GridContainer" parent="."]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -225,6 +257,7 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [node name="Fuel_Lable" type="Label" parent="Footer"]
+layout_mode = 2
 offset_right = 59.0
 offset_bottom = 21.0
 size_flags_horizontal = 0
@@ -233,11 +266,13 @@ theme = ExtResource("2_64suq")
 text = "Fuel:"
 
 [node name="Fuel" parent="Footer" instance=ExtResource("8_8vlbx")]
+layout_mode = 2
 offset_left = 63.0
 offset_right = 599.0
 size_flags_horizontal = 3
 
 [node name="Life_Lable" type="Label" parent="Footer"]
+layout_mode = 2
 offset_top = 26.0
 offset_right = 32.0
 offset_bottom = 47.0
@@ -247,6 +282,7 @@ theme = ExtResource("2_64suq")
 text = "HP:"
 
 [node name="Life" parent="Footer" instance=ExtResource("9_6jtvo")]
+layout_mode = 2
 offset_left = 63.0
 offset_top = 26.0
 offset_right = 599.0
@@ -254,12 +290,13 @@ offset_bottom = 48.0
 size_flags_horizontal = 3
 
 [node name="StationView" type="Control" parent="."]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="MissionBoard" parent="StationView" instance=ExtResource("5_3cpgo")]
+layout_mode = 1
 anchors_preset = 9
 offset_left = 0.0
 offset_top = 79.0
@@ -268,6 +305,7 @@ offset_bottom = 717.0
 metadata/_edit_layout_mode = 1
 
 [node name="Refuel" parent="StationView" instance=ExtResource("7_c6a0i")]
+layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_top = 782.0
@@ -277,33 +315,56 @@ grow_vertical = 2
 metadata/_edit_layout_mode = 1
 
 [node name="Destination" parent="StationView/Refuel" index="0"]
+layout_mode = 1
 anchors_preset = 10
 offset_bottom = 26.0
 grow_horizontal = 2
 
 [node name="Grid" parent="StationView/Refuel" index="1"]
+layout_mode = 1
 anchors_preset = 15
 offset_left = 11.0
 offset_top = 21.0
 offset_right = 0.0
 offset_bottom = 0.0
 
+[node name="Refuel_Lable2" parent="StationView/Refuel/Grid" index="0"]
+layout_mode = 2
+
 [node name="Price" parent="StationView/Refuel/Grid" index="1"]
+layout_mode = 2
 offset_right = 507.0
+
+[node name="Refuel_Lable" parent="StationView/Refuel/Grid" index="2"]
+layout_mode = 2
 
 [node name="Refuel" parent="StationView/Refuel/Grid" index="3"]
+layout_mode = 2
 offset_right = 507.0
+
+[node name="Refuel_Lable5" parent="StationView/Refuel/Grid" index="4"]
+layout_mode = 2
 
 [node name="amount" parent="StationView/Refuel/Grid" index="5"]
+layout_mode = 2
 offset_right = 507.0
+
+[node name="Refuel_Lable6" parent="StationView/Refuel/Grid" index="6"]
+layout_mode = 2
 
 [node name="mass" parent="StationView/Refuel/Grid" index="7"]
+layout_mode = 2
 offset_right = 507.0
 
+[node name="Refuel_Lable3" parent="StationView/Refuel/Grid" index="8"]
+layout_mode = 2
+
 [node name="Sum" parent="StationView/Refuel/Grid" index="9"]
+layout_mode = 2
 offset_right = 507.0
 
 [node name="accept_button" type="Button" parent="StationView"]
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -318,13 +379,14 @@ metadata/_edit_use_custom_anchors = false
 
 [node name="ShipShop" parent="." instance=ExtResource("6_swrf6")]
 visible = false
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
 
 [node name="ShipShopButton" type="Button" parent="."]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -338,6 +400,7 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [node name="ShipInventoryView" parent="." instance=ExtResource("4_lkjg0")]
+layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 offset_left = -510.0
@@ -350,6 +413,7 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
 
 [node name="deliver_button" type="Button" parent="ShipInventoryView"]
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -371,5 +435,6 @@ text = "Deliver"
 [connection signal="pressed" from="StationView/accept_button" to="StationView/Refuel" method="_on_Refuel_pressed"]
 [connection signal="shipOrderd" from="ShipShop" to="." method="_on_shipOrderd"]
 [connection signal="pressed" from="ShipShopButton" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="ShipInventoryView/deliver_button" to="." method="_on_deliver_button_pressed"]
 
 [editable path="StationView/Refuel"]

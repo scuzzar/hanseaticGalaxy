@@ -158,10 +158,8 @@ func _on_InventoryWindow_accepted():
 		Player.accept_Mission(m)
 	missionBoard.update()
 	shipInvertoryView.update()
-	
-func _on_CargoBay_deliver(container):
-	Player.deliver_Mission(container)
-	shipInvertoryView.update()
+
+
 
 func _on_CargoBay_about(container):
 	Player.about_Mission(container)
@@ -195,3 +193,10 @@ func _on_refuel_cart_change(amount):
 	else:
 		fuel_cart_bar.value = (amount + ship.fuel)/ float(ship.fuel_cap) *100.0
 	dV_labe.text = str("%0.2f" % ship.get_delta_v(0,amount * Globals.get_fuel_mass()))
+
+
+func _on_deliver_button_pressed():
+	var missions = shipInvertoryView.table.SelectedMissions
+	for m in missions:
+		Player.deliver_Mission(m)
+	shipInvertoryView.update()
