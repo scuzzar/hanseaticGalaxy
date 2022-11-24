@@ -12,7 +12,7 @@ func update():
 	var missions = _getMissions()	
 	if(self.visible):
 		$MissionTable.clear()
-		#var root = $InventoryTree.create_item()
+		var root = $MissionTable.create_item()
 		missions.sort_custom(self._sortByDistance)		
 		for m in missions:
 			_add_mission(m)

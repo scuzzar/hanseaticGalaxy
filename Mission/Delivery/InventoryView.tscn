@@ -16,7 +16,6 @@ offset_bottom = 3.0
 script = ExtResource("1_wb3e0")
 
 [node name="Title" type="Label" parent="."]
-layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
@@ -28,14 +27,13 @@ uppercase = true
 stream = ExtResource("3")
 
 [node name="MissionTable" type="Tree" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 15.0
 offset_top = 36.0
 offset_right = -13.9921
-offset_bottom = -27.0
+offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 6
