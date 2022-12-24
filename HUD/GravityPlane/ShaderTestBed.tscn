@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dibs62ehokixp"]
+
+[ext_resource type="PackedScene" uid="uid://pwa4hndcey0k" path="res://HUD/GravityPlane/GravetyPlane.tscn" id="1_apkbi"]
+[ext_resource type="Script" path="res://HUD/GravityPlane/ShaderTestBed.gd" id="1_scl4p"]
+[ext_resource type="PackedScene" uid="uid://55r1r1eb23gr" path="res://Bodys/Planet.tscn" id="2_0lwrk"]
+
+[node name="ShaderTestBed" type="Node3D"]
+script = ExtResource("1_scl4p")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.525798, 0.850609, 0, -0.850609, 0.525798, 1.52588e-05, 491.795, 468.413)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.172892, 0.984941, 0, -0.984941, 0.172892, -0.232227, 0, 11.2952)
+shadow_enabled = true
+
+[node name="PlaneMesh" parent="." instance=ExtResource("1_apkbi")]
+transform = Transform3D(19.3409, 0, 0, 0, 1, 0, 0, 0, 17.766, 0, 0, 0)
+bodyPos = PackedVector3Array(-23.3802, 0, 1.61566, -210.523, 0, 416.253, -357.897, 0, 416.063)
+bodyMass = PackedFloat32Array(1, 1, 1)
+
+[node name="Planet2" parent="." instance=ExtResource("2_0lwrk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3802, 0, 1.61566)
+surface_g = 50.0
+
+[node name="Planet" parent="." instance=ExtResource("2_0lwrk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -210.523, 0, 416.253)
+
+[node name="Planet2" parent="Planet" instance=ExtResource("2_0lwrk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -147.374, 0, -0.190216)
+radius_description = 1000.0
+surface_g = 0.3

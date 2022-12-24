@@ -1,0 +1,9 @@
+[gd_resource type="BoxMesh" load_steps=2 format=3 uid="uid://d2rj3ltef48iy"]
+
+[ext_resource type="Material" uid="uid://klje2wxgudn2" path="res://HUD/GravityPlane/GravityVertex.material" id="1_11gh6"]
+
+[resource]
+material = ExtResource("1_11gh6")
+size = Vector3(20000, 0, 20000)
+subdivide_width = 300
+subdivide_depth = 300

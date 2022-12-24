@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://pwa4hndcey0k"]
+
+[ext_resource type="BoxMesh" uid="uid://d2rj3ltef48iy" path="res://HUD/GravityPlane/Plane.tres" id="1_7tpwq"]
+[ext_resource type="Script" path="res://HUD/GravityPlane/GravetyPlane.gd" id="2_3227c"]
+
+[node name="GravetyPlane" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.367708, 0, 0.264941)
+mesh = ExtResource("1_7tpwq")
+script = ExtResource("2_3227c")
+bodyPos = PackedVector3Array()
+bodyMass = PackedFloat32Array()

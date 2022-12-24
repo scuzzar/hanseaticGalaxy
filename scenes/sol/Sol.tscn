@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dw7m20eh8ayhl"]
+[gd_scene load_steps=56 format=3 uid="uid://dw7m20eh8ayhl"]
 
 [ext_resource type="Material" path="res://Bodys/materials/Sun.material" id="1"]
 [ext_resource type="Material" path="res://Bodys/materials/Moon.material" id="2"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://fm6kygisw8ju" path="res://SpacePort/spacePort.tscn" id="14"]
 [ext_resource type="PackedScene" path="res://Building/City.tscn" id="15"]
 [ext_resource type="PackedScene" uid="uid://55r1r1eb23gr" path="res://Bodys/Planet.tscn" id="16"]
-[ext_resource type="PackedScene" uid="uid://beonp770urw7f" path="res://HUD/UI.tscn" id="17"]
+[ext_resource type="PackedScene" uid="uid://byfxsrn46ev6d" path="res://HUD/UI.tscn" id="17"]
 [ext_resource type="PackedScene" uid="uid://dycob36gm60wa" path="res://Camera/ShipCamera.tscn" id="18"]
 [ext_resource type="PackedScene" uid="uid://be1j32k7ldt7y" path="res://Ship/SkyCrane/SkyCrane.tscn" id="19"]
 [ext_resource type="Environment" uid="uid://cglk2lduymfbr" path="res://scenes/sol/Weltall.tres" id="20"]
@@ -46,6 +46,7 @@
 [ext_resource type="Material" path="res://Bodys/materials/Triton.material" id="45"]
 [ext_resource type="PackedScene" uid="uid://bpd5qk6vlt5iw" path="res://Enemys/KillSatEnemy.tscn" id="46"]
 [ext_resource type="PackedScene" uid="uid://cvmf3macse5rx" path="res://Ship/SimpleRocket/Orbital Rocket.tscn" id="47"]
+[ext_resource type="PackedScene" uid="uid://pwa4hndcey0k" path="res://HUD/GravityPlane/GravetyPlane.tscn" id="47_i45wn"]
 
 [sub_resource type="PhysicsMaterial" id="5"]
 friction = 3.0
@@ -75,7 +76,7 @@ size = Vector2(700, 700)
 [node name="Sol" type="Node3D"]
 script = ExtResource("23")
 MaxtimeWarpFactor_Moon = 6
-player_spawn_point_path = NodePath("Sun/Mars/OlympusPort")
+player_spawn_point_path = NodePath("Sun/Earth/Moon/ApolloPort")
 
 [node name="RotationShifter" type="Node" parent="."]
 script = ExtResource("28")
@@ -584,6 +585,11 @@ transform = Transform3D(-0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-1
 
 [node name="Mine" parent="Sun/Neptun/Triton/TreePeekPort" instance=ExtResource("42")]
 transform = Transform3D(-0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-14, -0.0627233, -2.74173e-09, -1, 4.36254e-08, 1.1875, -26.3359, 3.86592e-06)
+
+[node name="GravetyPlane" parent="." instance=ExtResource("47_i45wn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bodyPos = PackedVector3Array(0, 0, 0, 2500, 0, 0, 5000, 0, 0, 7500, 0, 0, 8164.94, 0, -11.0233, 12000, 0, 0, 11233, -4.61062e-06, 1.40234, 12530.9, 1.46021e-05, -2.46191, 36000, 0, 0, 35970.6, 0, 2740.85, 32230.7, 0, 0, 30143.6, 0, 0, 35970.6, 0, -9000, 70000, 0, 0, 69970.6, 7.25164e-06, 1921.98, 73923.6, -8.1155e-07, -2.46143, 150000, 0, 0, 200000, 0, 0, 200000, 2.21462e-10, 1425.12)
+bodyMass = PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 
 [connection signal="body_entered" from="Sun/Earth/Moon/ApolloPort/Tender" to="Sun/Earth/Moon/ApolloPort/Tender/Damage" method="_on_Ship_body_entered"]
 [connection signal="body_entered" from="Sun/Mars/MarsST/SkyCrane" to="Sun/Mars/MarsST/SkyCrane/Damage" method="_on_Ship_body_entered"]

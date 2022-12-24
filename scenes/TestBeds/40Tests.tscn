@@ -3,19 +3,19 @@
 [ext_resource type="Script" path="res://scenes/TestBeds/40Tests.gd" id="1_enn62"]
 [ext_resource type="PackedScene" uid="uid://55r1r1eb23gr" path="res://Bodys/Planet.tscn" id="1_lc1cn"]
 [ext_resource type="PackedScene" uid="uid://bpd5qk6vlt5iw" path="res://Enemys/KillSatEnemy.tscn" id="3_frkmc"]
-[ext_resource type="PackedScene" path="res://Station/Station.tscn" id="4_wh8qv"]
+[ext_resource type="PackedScene" uid="uid://cgsypg1g212uo" path="res://Station/Station.tscn" id="4_wh8qv"]
 
 [node name="Sol" type="Node3D"]
-script = ExtResource( "1_enn62" )
+script = ExtResource("1_enn62")
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 204.766, 0)
 
-[node name="Planet" parent="." instance=ExtResource( "1_lc1cn" )]
+[node name="Planet" parent="." instance=ExtResource("1_lc1cn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.7201)
 
-[node name="StaticEnemy" parent="Planet" instance=ExtResource( "3_frkmc" )]
+[node name="StaticEnemy" parent="Planet" instance=ExtResource("3_frkmc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 126.667)
 
-[node name="Sat" parent="Planet" instance=ExtResource( "4_wh8qv" )]
+[node name="Sat" parent="Planet" instance=ExtResource("4_wh8qv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.755, 197.004, 316.65)

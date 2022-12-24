@@ -32,6 +32,7 @@ material_override = ExtResource("2")
 mesh = SubResource("2")
 
 [node name="Lable3D" type="Label" parent="."]
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
