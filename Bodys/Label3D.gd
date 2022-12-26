@@ -6,4 +6,4 @@ func _process(delta):
 		self.hide()
 	else:
 		self.show()
-		self.set_position(get_viewport().get_camera().unproject_position(pos))	
+		self.set_position(get_viewport().get_camera_3d().unproject_position(pos))	

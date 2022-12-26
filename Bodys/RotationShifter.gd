@@ -58,7 +58,7 @@ func _shift(angilar_shift, vel_shift):
 	# dont shift ship if its first 
 	if(velocity_shift.length()<1000):
 		if(logging):print("Old Ship Vel"+ str($"../PlayerShip".linear_velocity))		
-		$"../PlayerShip".write_linear_velocity($"../PlayerShip".linear_velocity + velocity_shift)
+		$"../PlayerShip".linear_velocity = ($"../PlayerShip".linear_velocity + velocity_shift)
 		if(logging):print("new Ship Vel"+ str($"../PlayerShip".linear_velocity))
 	
 	var bodys = get_tree().get_nodes_in_group("bodys")
