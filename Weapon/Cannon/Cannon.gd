@@ -31,11 +31,10 @@ func fire():
 	if($Timer.time_left==0):	
 
 		$Timer.start(cooldown)
-		var bullet = bulletScene.instance()		
+		var bullet = bulletScene.instantiate()	
 		bullet.speed = nozzel_speed
 		bullet.damage = damage
-		bullet.max_distance = max_distance * ran.randf_range(1,1+scatter)
-		print(bullet.max_distance)
+		bullet.max_distance = max_distance * ran.randf_range(1,1+scatter)		
 		bullet.transform = $BulletPoint.global_transform
 		get_node("/root/Sol").add_child(bullet)
 		var offset_velocity:Vector3  = ship.linear_velocity			

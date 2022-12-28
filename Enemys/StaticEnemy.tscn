@@ -1,42 +1,42 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://delfmam06l58y"]
 
-[ext_resource path="res://Enemys/StaticEnemy.gd" type="Script" id=1]
-[ext_resource path="res://Enemys/AI.gd" type="Script" id=3]
-[ext_resource path="res://Util/DistanceLOD.tscn" type="PackedScene" id=4]
+[ext_resource type="Script" path="res://Enemys/StaticEnemy.gd" id="1"]
+[ext_resource type="Script" path="res://Enemys/AI.gd" id="3"]
+[ext_resource type="PackedScene" path="res://Util/DistanceLOD.tscn" id="4"]
 
-[sub_resource type="CylinderShape" id=1]
+[sub_resource type="CylinderShape3D" id="1"]
 radius = 120.0
 
-[sub_resource type="RayShape" id=2]
+[sub_resource type="SeparationRayShape3D" id="2"]
 length = 203.831
 
-[sub_resource type="SphereShape" id=3]
+[sub_resource type="SphereShape3D" id="3"]
 radius = 0.470415
 
-[node name="StaticEnemy" type="Spatial" groups=["persist"]]
-script = ExtResource( 1 )
+[node name="StaticEnemy" type="Node3D" groups=["persist"]]
+script = ExtResource("1")
 
-[node name="Attention" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0783547, 0 )
+[node name="Attention" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0783547, 0)
 
-[node name="CollisionShape" type="CollisionShape" parent="Attention"]
-shape = SubResource( 1 )
+[node name="CollisionShape" type="CollisionShape3D" parent="Attention"]
+shape = SubResource("1")
 
 [node name="AI" type="Node" parent="."]
-script = ExtResource( 3 )
+script = ExtResource("3")
 
-[node name="DistanceLOD" parent="." instance=ExtResource( 4 )]
+[node name="DistanceLOD" parent="." instance=ExtResource("4")]
 
-[node name="Marker" type="Area" parent="."]
+[node name="Marker" type="Area3D" parent="."]
 monitoring = false
 monitorable = false
 
-[node name="AimLine" type="CollisionShape" parent="Marker"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.16111, 0 )
-shape = SubResource( 2 )
+[node name="AimLine" type="CollisionShape3D" parent="Marker"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.16111, 0)
+shape = SubResource("2")
 
-[node name="PredictionMarker" type="CollisionShape" parent="Marker"]
-shape = SubResource( 3 )
+[node name="PredictionMarker" type="CollisionShape3D" parent="Marker"]
+shape = SubResource("3")
 
 [node name="MissionEndedTimer" type="Timer" parent="."]
 wait_time = 200.0

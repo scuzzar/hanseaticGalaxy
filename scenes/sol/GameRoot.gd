@@ -32,8 +32,11 @@ func newGameSetup():
 		
 		print("BodyV/t" + str(spawn_body.unshifted_linear_velocity) + " abs " +str(spawn_body.unshifted_linear_velocity.length()))
 		
-		var offset_vel = spawn_body.unshifted_linear_velocity
-		ship.linear_velocity = offset_vel
+		var offset_vel = spawn_body.unshifted_linear_velocity		
+		
+		if(!spawn_body.isPlanet or !$RotationShifter.activ):			
+			ship.linear_velocity = offset_vel
+		#ship.linear_velocity += $RotationShifter.velocity_shift
 		
 		print("ship spawned at " + str(ship.position))
 			
@@ -161,7 +164,7 @@ func _process(delta):
 	
 
 func _loadScore():
-	var result = get_tree().change_scene_to(SceneManager.endScreen)
+	var result = get_tree().change_scene_to_packed(SceneManager.endScreen)
 	if(result==OK):	
 		print("Game over")
 	else:

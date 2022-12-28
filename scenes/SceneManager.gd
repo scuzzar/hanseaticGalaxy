@@ -12,7 +12,7 @@ func load_quicksave():
 	load_save(Globals.QUICKSAVE_PATH)
 
 func load_mainMenu():
-	get_tree().change_scene_to(mainMenue_scene)
+	get_tree().change_scene_to_packed(mainMenue_scene)
 
 func exit_game():
 	get_tree().quit()

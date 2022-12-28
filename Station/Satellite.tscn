@@ -3,4 +3,4 @@
 [ext_resource type="Script" path="res://Station/Satellite.gd" id="1"]
 
 [node name="Satellite" type="Node3D"]
-script = ExtResource( "1" )
+script = ExtResource("1")

@@ -1,24 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://bpd5qk6vlt5iw"]
 
-[ext_resource type="PackedScene" path="res://Enemys/StaticEnemy.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://delfmam06l58y" path="res://Enemys/StaticEnemy.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://dmep2s5u7kdix" path="res://Ship/KillSAT/KillSat.tscn" id="2"]
 [ext_resource type="Script" path="res://Enemys/KillSatEnemy.gd" id="3"]
 
-[sub_resource type="StandardMaterial3D" id="1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_woxsj"]
 albedo_color = Color(1, 0, 0, 1)
 emission_enabled = true
 emission = Color(1, 0, 0, 1)
-emission_energy = 7.37
+emission_energy_multiplier = 7.37
 
-[node name="StaticEnemy" instance=ExtResource( "1" )]
-script = ExtResource( "3" )
+[node name="StaticEnemy" instance=ExtResource("1")]
+script = ExtResource("3")
 
-[node name="KillSat" parent="." index="0" instance=ExtResource( "2" )]
+[node name="KillSat" parent="." index="0" instance=ExtResource("2")]
 
 [node name="Alarm" type="CSGBox3D" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.219535, -0.493196)
-visible = false
-material = SubResource( "1" )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.188009, -0.41788)
+size = Vector3(0.154497, 0.150355, 0.0380251)
+material = SubResource("StandardMaterial3D_woxsj")
 
 [node name="OmniLight" type="OmniLight3D" parent="Alarm" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.468147)

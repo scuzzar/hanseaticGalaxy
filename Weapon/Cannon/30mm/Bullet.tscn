@@ -25,12 +25,10 @@ one_shot = true
 
 [node name="Shot" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3")
-unit_db = 5.735
 autoplay = true
 
 [node name="Hit" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4")
-unit_db = 5.735
 autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
