@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dmep2s5u7kdix" path="res://Ship/KillSAT/KillSat.tscn" id="2"]
 [ext_resource type="Script" path="res://Enemys/KillSatEnemy.gd" id="3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_woxsj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4agpc"]
 albedo_color = Color(1, 0, 0, 1)
 emission_enabled = true
 emission = Color(1, 0, 0, 1)
@@ -17,8 +17,9 @@ script = ExtResource("3")
 
 [node name="Alarm" type="CSGBox3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.188009, -0.41788)
+visible = false
 size = Vector3(0.154497, 0.150355, 0.0380251)
-material = SubResource("StandardMaterial3D_woxsj")
+material = SubResource("StandardMaterial3D_4agpc")
 
 [node name="OmniLight" type="OmniLight3D" parent="Alarm" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.468147)

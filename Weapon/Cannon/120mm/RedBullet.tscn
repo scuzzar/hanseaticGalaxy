@@ -7,10 +7,10 @@
 [node name="Bullet" instance=ExtResource("2")]
 
 [node name="CollisionShape" parent="." index="0"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.159094, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.153676, 0, 0)
 
 [node name="CSGBox" parent="." index="1"]
-size = Vector3(0.15, 0.15, 0.15)
+size = Vector3(0.295478, 0.15, 0.15)
 material = ExtResource("3")
 
 [node name="Hit" parent="." index="4"]

@@ -70,6 +70,10 @@ func _ready():
 		else:
 			angle = PI/2
 		derive_pos_and_vel()
+	else:
+		$Shape/Mesh.set_layer_mask_value(1,false)
+		$Shape/Mesh.set_layer_mask_value(2,true)
+		$Shape/Mesh.cast_shadow = false
 
 
 func derive_pos_and_vel():
