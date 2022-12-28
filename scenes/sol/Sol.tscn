@@ -79,7 +79,6 @@ player_spawn_point_path = NodePath("Sun/Neptun/Triton/TreePeekPort")
 
 [node name="RotationShifter" type="Node" parent="."]
 script = ExtResource("28")
-activ = false
 
 [node name="Shifter" type="Node" parent="."]
 script = ExtResource("27")

@@ -70,8 +70,7 @@ func _ready():
 		else:
 			angle = PI/2
 		derive_pos_and_vel()
-	else:
-		print(position)
+
 
 func derive_pos_and_vel():
 	self.position = Vector3(0,0,orbit_radius).rotated(Vector3(0,1,0),angle)

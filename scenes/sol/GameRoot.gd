@@ -229,7 +229,7 @@ func load_game():
 	if not FileAccess.file_exists(Globals.QUICKSAVE_PATH):
 		return # Error! We don't have a save to load.
 	var save_game = FileAccess.open(Globals.QUICKSAVE_PATH, FileAccess.READ)
-	print(save_game.get_position())
+	#print(save_game.get_position())
 	
 	if(save_game.get_length()==0):
 		print(Globals.QUICKSAVE_PATH + " is empty")
