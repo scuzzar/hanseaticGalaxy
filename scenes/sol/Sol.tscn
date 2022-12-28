@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dw7m20eh8ayhl"]
+[gd_scene load_steps=56 format=3 uid="uid://dw7m20eh8ayhl"]
 
 [ext_resource type="Material" path="res://Bodys/materials/Sun.material" id="1"]
 [ext_resource type="Material" path="res://Bodys/materials/Moon.material" id="2"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://djh418e7j4f7q" path="res://Ship/SimpleRocket/SimpelRocket.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://cgsypg1g212uo" path="res://Station/Station.tscn" id="10"]
 [ext_resource type="Material" path="res://Bodys/materials/Saturn.material" id="11"]
+[ext_resource type="Script" path="res://Util/DebugPosition.gd" id="11_pbjmm"]
 [ext_resource type="Material" path="res://Bodys/materials/Titan.material" id="12"]
 [ext_resource type="PackedScene" uid="uid://fm6kygisw8ju" path="res://SpacePort/spacePort.tscn" id="14"]
 [ext_resource type="PackedScene" path="res://Building/City.tscn" id="15"]
@@ -79,12 +80,10 @@ player_spawn_point_path = NodePath("Sun/Mars/OlympusPort")
 
 [node name="RotationShifter" type="Node" parent="."]
 script = ExtResource("28")
-activ = false
 
 [node name="Shifter" type="Node" parent="."]
 script = ExtResource("27")
 MAX_DISTANCE = 10000.0
-activ = false
 logging = true
 world_node_path = NodePath("..")
 
@@ -111,11 +110,15 @@ playerControl = true
 team = 0
 
 [node name="Sun" parent="." instance=ExtResource("16")]
+sync_to_physics = false
 material = ExtResource("1")
 isStar = true
 doRotationShift = false
 radius_description = 30000.0
 surface_g = 30.0
+
+[node name="Node3D" type="Node3D" parent="Sun"]
+script = ExtResource("11_pbjmm")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Sun"]
 omni_range = 300000.0
