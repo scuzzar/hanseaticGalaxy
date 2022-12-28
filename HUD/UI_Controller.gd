@@ -43,6 +43,8 @@ var ship:Ship
 func _ready():	
 	Player.credits_changed.connect(_on_credits_changed)
 	shipShop_button.hide()
+	refuel.hide()
+	accept_button.hide()
 	credit_labe.text = str(Player.credits)	
 	pass
 
