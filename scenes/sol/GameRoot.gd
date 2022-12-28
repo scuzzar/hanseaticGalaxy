@@ -233,6 +233,8 @@ func load_game():
 	
 	if(save_game.get_length()==0):
 		print(Globals.QUICKSAVE_PATH + " is empty")
+		
+	Player.accepted_delivery_Missions = []
 	while save_game.get_position() < save_game.get_length():
 		var line = save_game.get_line()
 		var error = json.parse(line)

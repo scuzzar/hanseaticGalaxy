@@ -15,7 +15,8 @@ func update():
 		var root = $MissionTable.create_item()
 		missions.sort_custom(self._sortByDistance)		
 		for m in missions:
-			_add_mission(m)
+			if m != null: 
+				_add_mission(m)
 	#mass_value.text = str(ship.mass)
 	
 
