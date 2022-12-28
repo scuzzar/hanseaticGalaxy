@@ -237,9 +237,7 @@ func load_game():
 		var line = save_game.get_line()
 		var error = json.parse(line)
 		var node_data = json.get_data()
-		print("attemt to laod:")
-		print(node_data)
-		
+				
 		if(node_data==null): 
 			print(line)
 			continue
@@ -259,9 +257,7 @@ func load_game():
 			laoded_node_parent.add_child(laoded_PlayerShip)	
 			laoded_PlayerShip.load_save(node_data)	
 			print("set Player Ship")
-			self.setShip(laoded_PlayerShip)			
-			print("done")
-			print("")
+			self.setShip(laoded_PlayerShip)	
 			continue
 			
 			
@@ -272,8 +268,7 @@ func load_game():
 			var laoded_node_parent = get_node(node_data["parent"])
 			laoded_node_parent.add_child(laoded_node)
 		laoded_node.load_save(node_data)
-		print("done")
-		print("")
+
 
 	loaded = true	
 	save_game = null

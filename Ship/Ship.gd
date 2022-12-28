@@ -323,7 +323,6 @@ func fire():
 func toggelInfo():
 	if(!$ShipInfo.visible):
 		$ShipInfo.setShip(self)				
-		$ShipInfo.show()
-		$ShipInfo.update()
+		$ShipInfo.show()		
 	else:
 		$ShipInfo.hide()
