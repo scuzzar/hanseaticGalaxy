@@ -75,14 +75,17 @@ size = Vector2(700, 700)
 [node name="Sol" type="Node3D"]
 script = ExtResource("23")
 MaxtimeWarpFactor_Moon = 6
-player_spawn_point_path = NodePath("Sun/Mars/OlympusPort")
+player_spawn_point_path = NodePath("Sun/Neptun/Triton/TreePeekPort")
 
 [node name="RotationShifter" type="Node" parent="."]
 script = ExtResource("28")
+activ = false
 
 [node name="Shifter" type="Node" parent="."]
 script = ExtResource("27")
 MAX_DISTANCE = 10000.0
+activ = false
+logging = true
 world_node_path = NodePath("..")
 
 [node name="Simulator" parent="." instance=ExtResource("6")]
@@ -204,7 +207,6 @@ defaultMissionDestination_path = NodePath("../../Mars/OlympusPort")
 
 [node name="Moon" parent="Sun/Earth" groups=["bodys"] instance=ExtResource("16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 665.034, 0, -2.90696e-05)
-sync_to_physics = true
 material = ExtResource("2")
 radius_description = 2500.0
 surface_g = 1.0

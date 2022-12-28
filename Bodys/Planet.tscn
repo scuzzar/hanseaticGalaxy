@@ -17,11 +17,8 @@ absorbent = true
 [node name="Planet" type="AnimatableBody3D" groups=["persist"]]
 collision_layer = 9
 physics_material_override = SubResource("PhysicsMaterial_ttkkl")
-sync_to_physics = false
 script = ExtResource("1")
 material = ExtResource("2")
-planetaryRotation = 0.0
-radius_description = 6371.0
 
 [node name="Shape" type="CollisionShape3D" parent="."]
 transform = Transform3D(136, 0, 0, 0, 136, 0, 0, 0, 136, 0, 0, 0)
@@ -37,5 +34,7 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Planet"
 script = ExtResource("4")
