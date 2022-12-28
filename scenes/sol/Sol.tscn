@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dw7m20eh8ayhl"]
+[gd_scene load_steps=56 format=3 uid="uid://dw7m20eh8ayhl"]
 
 [ext_resource type="Material" uid="uid://226bef8utq8" path="res://Bodys/materials/Sun.material" id="1"]
 [ext_resource type="Material" path="res://Bodys/materials/Moon.material" id="2"]
@@ -31,7 +31,6 @@
 [ext_resource type="Material" path="res://Bodys/materials/Uranus.tres" id="29"]
 [ext_resource type="Material" path="res://Bodys/materials/Europa.material" id="30"]
 [ext_resource type="Material" path="res://Bodys/materials/IO.material" id="31"]
-[ext_resource type="PackedScene" uid="uid://btqatipcbtfes" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="31_ksm6q"]
 [ext_resource type="Material" path="res://Bodys/materials/Kallisto.material" id="32"]
 [ext_resource type="Material" path="res://Bodys/materials/Ganimede.material" id="33"]
 [ext_resource type="PackedScene" path="res://Building/GasExtractor.tscn" id="34"]
@@ -270,8 +269,6 @@ freeze = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12000, 0, -0.000524537)
 isPlanet = true
 surface_g = 3.69
-
-[node name="PlanetAthmosphere" parent="Sun/Mars" instance=ExtResource("31_ksm6q")]
 
 [node name="MarsST" parent="Sun/Mars" instance=ExtResource("10")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.126, 0, 0)

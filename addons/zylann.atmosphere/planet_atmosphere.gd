@@ -18,7 +18,7 @@ var planet_radius := 1.0:
 		if planet_radius == new_radius:
 			return
 		planet_radius = max(new_radius, 0.0)
-		_mesh_instance.material_override.set_shader_param("u_planet_radius", planet_radius)
+		_mesh_instance.material_override.set_shader_parameter("u_planet_radius", planet_radius)
 		_update_cull_margin()
 		
 
@@ -27,7 +27,7 @@ var planet_radius := 1.0:
 		if atmosphere_height == new_height:
 			return
 		atmosphere_height = max(new_height, 0.0)
-		_mesh_instance.material_override.set_shader_param("u_atmosphere_height", atmosphere_height)
+		_mesh_instance.material_override.set_shader_parameter("u_atmosphere_height", atmosphere_height)
 		_update_cull_margin()
 
 @export var sun_path : NodePath:
@@ -99,7 +99,6 @@ func get_shader_param(param_name: String):
 func _get_property_list():
 	var props = []
 	var mat = _mesh_instance.material_override
-	print(AtmosphereShader)
 	var shader_params := RenderingServer.get_shader_parameter_list(mat.shader.get_rid())
 	for p in shader_params:
 		if _api_shader_params.has(p.name):
@@ -157,7 +156,7 @@ func _set_mode(mode: int):
 			print("Switching ", name, " to near mode")
 		# If camera is close enough, switch shader to near clip mode
 		# otherwise it will pass through the quad
-		mat.set_shader_param("u_clip_mode", true)
+		mat.set_shader_parameter("u_clip_mode", true)
 		_mesh_instance.mesh = _near_mesh
 		_mesh_instance.transform = Transform3D()
 		# TODO Sometimes there is a short flicker, figure out why
@@ -165,7 +164,7 @@ func _set_mode(mode: int):
 	else:
 		if OS.is_stdout_verbose():
 			print("Switching ", name, " to far mode")
-		mat.set_shader_param("u_clip_mode", false)
+		mat.set_shader_parameter("u_clip_mode", false)
 		_mesh_instance.mesh = _far_mesh
 
 
@@ -208,5 +207,5 @@ func _process(_delta):
 	if has_node(sun_path):
 		var sun = get_node(sun_path)
 		if sun is Node3D:
-			_mesh_instance.material_override.set_shader_param(
+			_mesh_instance.material_override.set_shader_parameter(
 				"u_sun_position", sun.global_transform.origin)
