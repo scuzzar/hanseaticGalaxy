@@ -237,6 +237,9 @@ func load_game():
 		var line = save_game.get_line()
 		var error = json.parse(line)
 		var node_data = json.get_data()
+		print("attemt to laod:")
+		print(node_data)
+		
 		if(node_data==null): 
 			print(line)
 			continue
@@ -245,16 +248,20 @@ func load_game():
 			continue
 			
 		if(node_data["nodePath"]=="/root/Sol/PlayerShip"):
+			
 			$PlayerShip.free()
 			var laoded_PlayerShip :Ship = load(node_data["filename"]).instantiate()
-			laoded_PlayerShip.physicActiv = true
+			laoded_PlayerShip.freeze = false
 			
 			laoded_PlayerShip.playerControl = true			
 			laoded_PlayerShip.name = "PlayerShip"
 			var laoded_node_parent = get_node(node_data["parent"])
 			laoded_node_parent.add_child(laoded_PlayerShip)	
 			laoded_PlayerShip.load_save(node_data)	
-			self.setShip(laoded_PlayerShip)
+			print("set Player Ship")
+			self.setShip(laoded_PlayerShip)			
+			print("done")
+			print("")
 			continue
 			
 			
@@ -265,9 +272,11 @@ func load_game():
 			var laoded_node_parent = get_node(node_data["parent"])
 			laoded_node_parent.add_child(laoded_node)
 		laoded_node.load_save(node_data)
+		print("done")
+		print("")
 
-	loaded = true
-	save_game.close()
+	loaded = true	
+	save_game = null
 
 func buyShip(newShip:Ship):
 	if(!Player.credits>=newShip.price-ship.price):

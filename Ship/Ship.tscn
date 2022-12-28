@@ -60,3 +60,5 @@ offset_right = 140.0
 offset_bottom = 167.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[connection signal="strongest_body_changed" from="." to="Tail" method="_on_reference_changed"]

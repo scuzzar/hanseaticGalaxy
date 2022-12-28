@@ -26,10 +26,10 @@ var history_update_interfall = 0.2
 var history_update_timer = 0
 var width = 1
 
-func _process(delta):
+func _process(delta):	
 	if(owner.playerControl):
 		history_update_timer += delta
-	#orbit._draw_list(simulation)
+		#orbit._draw_list(simulation)
 	if history_update_timer >= history_update_interfall:		
 		history_update_timer -= history_update_interfall
 		appendHistory()
@@ -43,7 +43,7 @@ func appendHistory():
 	var new_relativ_point = getPositionInFrame()
 	history.append(new_relativ_point)
 	if(history.size()>history_lenth):
-		history.pop_front()
+		history.pop_front()	
 	pass
 
 func _draw():

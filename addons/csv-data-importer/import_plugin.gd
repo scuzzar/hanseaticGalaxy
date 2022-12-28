@@ -105,7 +105,7 @@ func _import(source_file, save_path, options, platform_variants, gen_files):
 			lines.append(detected)
 		else:
 			lines.append(line)
-	file.close()
+	file = null
 	
 	# Remove trailing empty line
 	if not lines.is_empty()and lines.back().size() == 1 and lines.back()[0] == "":
@@ -138,3 +138,6 @@ func _import(source_file, save_path, options, platform_variants, gen_files):
 	if err != OK:
 		printerr("Failed to save resource: ", err)
 	return err
+
+func _get_import_order():
+	return 0

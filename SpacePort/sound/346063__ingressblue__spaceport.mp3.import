@@ -14,3 +14,6 @@ dest_files=["res://.godot/imported/346063__ingressblue__spaceport.mp3-d24042b175
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

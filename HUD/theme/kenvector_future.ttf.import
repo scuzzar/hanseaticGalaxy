@@ -13,11 +13,12 @@ dest_files=["res://.godot/imported/kenvector_future.ttf-4fbeafbf44d37b0e13f9545b
 [params]
 
 Rendering=null
-antialiased=true
+antialiasing=1
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
+allow_system_fallback=true
 force_autohinter=false
 hinting=1
 subpixel_positioning=1

@@ -292,6 +292,7 @@ func save():
 	return save_dict
 
 func load_save(dict):	
+	
 	transform.origin = Vector3(dict["pos_x"], dict["pos_y"],dict["pos_z"])	
 	self.linear_velocity = Vector3(dict["velocety_x"], dict["velocety_y"],dict["velocety_z"])
 	rotation.y = dict["rotation"]	
@@ -304,7 +305,7 @@ func load_save(dict):
 	#hitpoints = dict["hitpoints"]
 	last_g_force = Vector3(0,0,0)
 	self.contact_monitor = true
-	self.contacts_reported = 5
+	self.max_contacts_reported = 5
 	self.calcWetMass()
 
 func takeDamege(damage):

@@ -1,7 +1,7 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
+type="AudioStreamWAV"
 uid="uid://ckjssw72kb3xt"
 path="res://.godot/imported/163455__lemudcrab__shotgun-shot.wav-a43965d7e3366bcc02fcada9d7177e47.sample"
 
@@ -18,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

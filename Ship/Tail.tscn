@@ -1,12 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://db48lbbsb7j1w"]
 
-[ext_resource path="res://Ship/tail.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://Ship/tail.gd" id="1"]
 
 [node name="Tail" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1")
 frameOfReference_Node = NodePath("..")

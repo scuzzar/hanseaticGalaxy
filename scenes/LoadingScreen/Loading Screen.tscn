@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/LoadingScreen/Loading Screen.gd" id="1"]
 [ext_resource type="Theme" uid="uid://7tcar65meo7i" path="res://HUD/theme/default_theme.theme" id="2"]
-[ext_resource type="Texture2D" uid="uid://dasm0fww1nrnh" path="res://Banner.png" id="3_yfhav"]
+[ext_resource type="Texture2D" uid="uid://dasm0fww1nrnh" path="res://Banner.png" id="3_isf23"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -27,7 +27,7 @@ grow_vertical = 2
 [node name="S1" type="Sprite2D" parent="CenterContainer"]
 position = Vector2(3, -5)
 scale = Vector2(1.06947, 1.06947)
-texture = ExtResource("3_yfhav")
+texture = ExtResource("3_isf23")
 
 [node name="FullScreen" type="Button" parent="."]
 layout_mode = 1
@@ -75,22 +75,14 @@ grow_vertical = 2
 
 [node name="Resume" type="Button" parent="Menu"]
 layout_mode = 2
-offset_right = 114.0
-offset_bottom = 26.0
 text = "Resume"
 
 [node name="Start" type="Button" parent="Menu"]
 layout_mode = 2
-offset_top = 30.0
-offset_right = 114.0
-offset_bottom = 56.0
 text = "New Game"
 
 [node name="Exit" type="Button" parent="Menu"]
 layout_mode = 2
-offset_top = 60.0
-offset_right = 114.0
-offset_bottom = 86.0
 text = "Exit"
 
 [connection signal="pressed" from="FullScreen" to="." method="_on_FullScreen_pressed"]
