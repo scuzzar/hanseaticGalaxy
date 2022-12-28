@@ -20,7 +20,7 @@ func _ready():
 	else:
 		newGameSetup()		
 
-func newGameSetup():
+func newGameSetup():	
 	for cg in get_tree().get_nodes_in_group("cargoGenerator"):
 		cg.generateInitialStock()
 	ship.fuel = ship.fuel_cap

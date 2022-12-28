@@ -1,7 +1,7 @@
 extends Node
 
 var mainMenue_scene = load("res://scenes/LoadingScreen/Loading Screen.tscn")
-var sol_scene_res :PackedScene
+var sol_scene_res =load("res://scenes/sol/Sol.tscn")
 var endScreen = load("res://scenes/GameEnded/EndGameScreen.tscn")
 
 func load_save(path):

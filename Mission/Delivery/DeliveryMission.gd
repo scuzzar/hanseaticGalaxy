@@ -67,6 +67,10 @@ func load_save(dict):
 	reward = dict["reward"]
 	destination = get_node(dict["destination"])
 	origin = get_node(dict["origin"])
+	
+	### this is not working on Beta 10
+	var cargoTypes = TYP.CARGO.values()
+	
 	cargo = TYP.CARGO.values()[dict["cargo"]]
 	self._createContainer(dict["amount"])
 	accepted = dict["accepted"]

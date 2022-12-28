@@ -8,8 +8,7 @@ func _ready():
 	Globals.RAN = RandomNumberGenerator.new()
 	Globals.RAN.seed = 42
 	$Menu.hide()
-	$Menu/Resume.hide()
-	SceneManager.sol_scene_res = ResourceLoader.load("res://scenes/sol/Sol.tscn")
+	$Menu/Resume.hide()	
 	print("loaded")
 	$Loading_Lable.hide()
 	$Menu.show()

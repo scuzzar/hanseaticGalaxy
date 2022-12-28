@@ -325,7 +325,7 @@ transform = Transform3D(-4.37114e-08, -3.81165e-21, -1, 1, -4.37114e-08, -4.3711
 transform = Transform3D(-4.37114e-08, -3.81165e-21, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, 84.7495, -3.70452e-06)
 
 [node name="Deimos" parent="Sun/Mars" instance=ExtResource("16")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 767.007, 0, -3.3527e-05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 767.007, 0, -3.35269e-05)
 material = SubResource("2")
 securety_level = 1
 radius_description = 2000.0
@@ -346,7 +346,7 @@ freeze = false
 [node name="DomedCity" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource("37")]
 
 [node name="Phobos" parent="Sun/Mars" instance=ExtResource("16")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 530.888, 0, -2.32058e-05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 530.888, 0, -2.32059e-05)
 material = ExtResource("4")
 radius_description = 2000.0
 surface_g = 1.0
@@ -478,7 +478,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1504.13, 0, 0)
 [node name="OrbitalCity" parent="Sun/Saturn/RingStation" instance=ExtResource("35")]
 
 [node name="Mimas" parent="Sun/Saturn" instance=ExtResource("16")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1922.2, 0, -8.40222e-05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1922.2, 0, -8.4022e-05)
 material = ExtResource("7")
 securety_level = 2
 radius_description = 3500.0
