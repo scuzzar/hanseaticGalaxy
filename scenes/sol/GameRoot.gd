@@ -29,14 +29,20 @@ func newGameSetup():
 	
 		ship.transform = player_spawn_point.get_docking_globaltransform()		
 		var spawn_body :simpelPlanet = player_spawn_point.getBody()
-		
 		print("BodyV/t" + str(spawn_body.unshifted_linear_velocity) + " abs " +str(spawn_body.unshifted_linear_velocity.length()))
 		
-		var offset_vel = spawn_body.unshifted_linear_velocity		
+		var offset_vel = spawn_body.unshifted_linear_velocity
 		
-		if(!spawn_body.isPlanet or !$RotationShifter.activ):			
-			ship.linear_velocity = offset_vel
-		#ship.linear_velocity += $RotationShifter.velocity_shift
+		
+		if(!spawn_body.isPlanet):#Moon			
+			var parent_body :simpelPlanet
+			parent_body = spawn_body.get_parent()
+			offset_vel += parent_body.unshifted_linear_velocity
+		
+		#if($RotationShifter.activ):
+		#	offset_vel -= $RotationShifter.velocity_shift
+		
+		ship.linear_velocity = offset_vel	
 		
 		print("ship spawned at " + str(ship.position))
 			
@@ -196,6 +202,9 @@ func _quickload():
 	SceneManager.load_quicksave()
 
 func save_game():
+	if($RotationShifter.SOIPlanet != null):
+		$RotationShifter._unShift()
+	
 	var save_game = FileAccess.open(Globals.QUICKSAVE_PATH, FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("persist")	
 	var dataList = []
@@ -310,11 +319,11 @@ func buyShip(newShip:Ship):
 			
 		#Deal With old Ship
 		ship.playerControl = false	
-		ship.physicActiv = false
+		ship.freeze = true
 		ship.free()
 			
 		#Activate New Ship	
-		newShip.physicActiv = true
+		newShip.freeze = false
 		newShip.playerControl =true
 		newShip.name = "PlayerShip"
 		

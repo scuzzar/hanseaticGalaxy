@@ -3,6 +3,7 @@ extends Node
 var SOIPlanet: simpelPlanet=null
 var angular_speed_shift= 0;
 var velocity_shift =Vector3(0,0,0)
+var shifted = false
 
 @export var activ = true
 @export var logging = false
@@ -37,7 +38,7 @@ func on_soi_planet_changed(newPlanet:simpelPlanet):
 
 func _shiftToPlanet(newPlanet):	
 		SOIPlanet = newPlanet
-		_shift(-newPlanet.angular_speed, SOIPlanet.constant_linear_velocity*-1)		
+		_shift(-newPlanet.angular_speed, SOIPlanet.unshifted_linear_velocity*-1)		
 		
 
 func _unShift():

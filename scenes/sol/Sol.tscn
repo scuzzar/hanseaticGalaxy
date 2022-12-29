@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dw7m20eh8ayhl"]
+[gd_scene load_steps=57 format=3 uid="uid://dw7m20eh8ayhl"]
 
 [ext_resource type="Material" uid="uid://226bef8utq8" path="res://Bodys/materials/Sun.material" id="1"]
 [ext_resource type="Material" path="res://Bodys/materials/Moon.material" id="2"]
@@ -31,6 +31,7 @@
 [ext_resource type="Material" path="res://Bodys/materials/Uranus.tres" id="29"]
 [ext_resource type="Material" path="res://Bodys/materials/Europa.material" id="30"]
 [ext_resource type="Material" path="res://Bodys/materials/IO.material" id="31"]
+[ext_resource type="PackedScene" uid="uid://btqatipcbtfes" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="31_ksm6q"]
 [ext_resource type="Material" path="res://Bodys/materials/Kallisto.material" id="32"]
 [ext_resource type="Material" path="res://Bodys/materials/Ganimede.material" id="33"]
 [ext_resource type="PackedScene" path="res://Building/GasExtractor.tscn" id="34"]
@@ -85,7 +86,6 @@ logging = true
 [node name="Shifter" type="Node" parent="."]
 script = ExtResource("27")
 MAX_DISTANCE = 10000.0
-logging = true
 world_node_path = NodePath("..")
 
 [node name="Simulator" parent="." instance=ExtResource("6")]
@@ -131,6 +131,7 @@ omni_attenuation = 0.0
 light_bake_mode = 0
 light_cull_mask = 4294967293
 shadow_enabled = true
+directional_shadow_mode = 0
 sky_mode = 1
 script = ExtResource("11_sc5jn")
 
@@ -264,6 +265,14 @@ physics_material_override = SubResource("PhysicsMaterial_686gh")
 contact_monitor = false
 sleeping = true
 freeze = false
+
+[node name="PlanetAthmosphere" parent="Sun/Earth" instance=ExtResource("31_ksm6q")]
+planet_radius = 67.0
+atmosphere_height = 15.0
+shader_params/u_day_color0 = Color(0.8, 0.8, 0.8, 1)
+shader_params/u_day_color1 = Color(0.956863, 0.956863, 0.956863, 1)
+shader_params/u_density = 0.01
+shader_params/u_attenuation_distance = 1.0
 
 [node name="Mars" parent="Sun" instance=ExtResource("16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12000, 0, -0.000524537)
@@ -598,6 +607,7 @@ transform = Transform3D(-0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-1
 [node name="Mine" parent="Sun/Neptun/Triton/TreePeekPort" instance=ExtResource("42")]
 transform = Transform3D(-0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-14, -0.0627233, -2.74173e-09, -1, 4.36254e-08, 1.1875, -26.3359, 3.86592e-06)
 
+[connection signal="shipOrderd" from="UI" to="." method="_on_HUD_shipOrderd"]
 [connection signal="body_entered" from="Sun/Earth/Moon/ApolloPort/Tender" to="Sun/Earth/Moon/ApolloPort/Tender/Damage" method="_on_Ship_body_entered"]
 [connection signal="body_entered" from="Sun/Mars/MarsST/SkyCrane" to="Sun/Mars/MarsST/SkyCrane/Damage" method="_on_Ship_body_entered"]
 [connection signal="body_entered" from="Sun/Mars/MarsST/Tender" to="Sun/Mars/MarsST/Tender/Damage" method="_on_Ship_body_entered"]

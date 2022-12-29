@@ -317,12 +317,10 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [node name="ShipShop" parent="." instance=ExtResource("6_swrf6")]
-visible = false
-layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-grow_horizontal = 2
+offset_right = 0.0
 
 [node name="ShipShopButton" type="Button" parent="."]
 anchors_preset = 5

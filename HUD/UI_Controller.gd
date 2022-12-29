@@ -45,6 +45,8 @@ func _ready():
 	shipShop_button.hide()
 	refuel.hide()
 	accept_button.hide()
+	shipShop.hide()
+	shipShop_button.hide()
 	credit_labe.text = str(Player.credits)	
 	pass
 

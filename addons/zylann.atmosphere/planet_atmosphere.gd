@@ -27,7 +27,6 @@ var planet_radius := 1.0:
 		if atmosphere_height == new_height:
 			return
 		atmosphere_height = max(new_height, 0.0)
-		_mesh_instance.material_override.set_shader_parameter("u_atmosphere_height", atmosphere_height)
 		_update_cull_margin()
 
 @export var sun_path : NodePath:
