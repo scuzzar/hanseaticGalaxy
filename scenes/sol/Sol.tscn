@@ -81,6 +81,7 @@ player_spawn_point_path = NodePath("Sun/Earth/Moon/ApolloPort")
 
 [node name="RotationShifter" type="Node" parent="."]
 script = ExtResource("28")
+activ = false
 logging = true
 
 [node name="Shifter" type="Node" parent="."]
@@ -112,7 +113,6 @@ team = 0
 
 [node name="Sun" parent="." instance=ExtResource("16")]
 collision_layer = 11
-sync_to_physics = false
 material = ExtResource("1")
 isStar = true
 doRotationShift = false

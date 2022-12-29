@@ -15,6 +15,7 @@ absorbent = true
 [node name="Planet" type="AnimatableBody3D" groups=["persist"]]
 collision_layer = 9
 physics_material_override = SubResource("PhysicsMaterial_ttkkl")
+sync_to_physics = false
 script = ExtResource("1")
 material = ExtResource("2")
 

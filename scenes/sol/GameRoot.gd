@@ -202,8 +202,8 @@ func _quickload():
 	SceneManager.load_quicksave()
 
 func save_game():
-	if($RotationShifter.SOIPlanet != null):
-		$RotationShifter._unShift()
+	#if($RotationShifter.SOIPlanet != null):
+	#	$RotationShifter._unShift()
 	
 	var save_game = FileAccess.open(Globals.QUICKSAVE_PATH, FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("persist")	

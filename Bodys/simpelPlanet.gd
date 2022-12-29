@@ -65,11 +65,15 @@ func _ready():
 			angular_speed = 2*PI/(2*PI*orbit_radius/orbital_speed)	
 		non_shifted_angular_speed = angular_speed
 		if(!Engine.is_editor_hint()):
-			angle = PI/2;#Globals.RAN.randf_range(0,PI*2)
+			angle = Globals.RAN.randf_range(0,PI*2)					
 			pass
 		else:
 			angle = PI/2
 		derive_pos_and_vel()
+		
+		if(!Engine.is_editor_hint()):
+			self.sync_to_physics = true
+		
 	else:
 		$Shape/Mesh.set_layer_mask_value(1,false)
 		$Shape/Mesh.set_layer_mask_value(2,true)
