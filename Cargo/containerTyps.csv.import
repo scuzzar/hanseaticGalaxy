@@ -15,4 +15,4 @@ dest_files=["res://.godot/imported/containerTyps.csv-22547ca202670a6dcb5985d0d58
 delimiter=2
 headers=true
 detect_numbers=true
-force_float=true
+force_float=false

@@ -15,4 +15,4 @@ dest_files=["res://.godot/imported/WeaponTypes.csv-6e086aacbe22e26a87b1c726af305
 delimiter=2
 headers=true
 detect_numbers=true
-force_float=true
+force_float=false
