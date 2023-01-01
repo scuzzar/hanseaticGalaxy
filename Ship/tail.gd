@@ -26,6 +26,9 @@ var history_update_interfall = 0.2
 var history_update_timer = 0
 var width = 1
 
+@export
+var use_frameOfReference = true
+
 func _process(delta):	
 	if(owner.playerControl):
 		history_update_timer += delta
@@ -53,6 +56,7 @@ func _draw():
 	var now = [getPositionInFrame()]
 	if(_frameOfReference!=null):
 		var relativ_to = _frameOfReference.global_transform.origin
+		
 		if(history.size()>0): _draw_list(history + now ,relativ_to, history_color)	
 
 
@@ -72,8 +76,9 @@ func _draw_list(list, relativ_to, color):
 func _on_reference_changed(old_body, new_body):
 	if(new_body!=null):
 		print("now in SOI of " + str(new_body.name))
-		history.clear()
+		#history.clear()
 		self._frameOfReference = new_body
+	
 
 func _stop(port):
 	history.clear()

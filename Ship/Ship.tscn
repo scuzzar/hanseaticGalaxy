@@ -35,6 +35,7 @@ script = ExtResource("9")
 
 [node name="Tail" parent="." instance=ExtResource("1")]
 frameOfReference_Node = NodePath("")
+use_frameOfReference = false
 
 [node name="ShipInfo" parent="." instance=ExtResource("4")]
 anchors_preset = 8
