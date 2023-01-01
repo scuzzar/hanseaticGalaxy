@@ -46,7 +46,7 @@ var inventory : Inventory = $Inventory
 var team : ENUMS.TEAM = ENUMS.TEAM.NEUTRAL
 
 @export 
-var type : ShipType #= preload("res://Ship/#type/ship/rocket.tres")
+var type : ShipType = preload("res://Ship/#TYP/ship/rocket.tres")
 
 #const ShipTyp = preload("res://Ship/shipTypes.csv").records
 
@@ -313,7 +313,7 @@ func save():
 		"fuel": fuel,
 		"fuel_cap" :fuel_cap,
 		"price" : price,
-		"type" : type,
+		"type" : type.resource_path,
 		"mass" : mass#,
 		#"hitpoints" :hitpoints
 	}
@@ -328,7 +328,7 @@ func load_save(dict):
 	fuel_cap = dict["fuel_cap"]
 	mass = dryMass
 	price = dict["price"]
-	type = dict["type"]
+	type = load(dict["type"])
 	_loadType()
 	#hitpoints = dict["hitpoints"]
 	last_g_force = Vector3(0,0,0)

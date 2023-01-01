@@ -1,18 +1,3 @@
 [remap]
 
-importer="com.timothyqiu.godot-csv-importer"
-type="Resource"
-uid="uid://c7j4hu5qy05as"
-path="res://.godot/imported/shipTypes.csv-cfc70770da00cc616ca91bd31698fdad.res"
-
-[deps]
-
-source_file="res://Ship/shipTypes.csv"
-dest_files=["res://.godot/imported/shipTypes.csv-cfc70770da00cc616ca91bd31698fdad.res"]
-
-[params]
-
-delimiter=2
-headers=true
-detect_numbers=true
-force_float=false
+importer="keep"
