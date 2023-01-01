@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://i44d5vxe31df"]
+
+[ext_resource type="Resource" uid="uid://epfjiqdrrfp5" path="res://Ship/#TYP/engine/planetary_drive.tres" id="1_jfqta"]
+[ext_resource type="Resource" uid="uid://dnx087g1fmxcg" path="res://Ship/#TYP/engine/base_truster.tres" id="2_ubkcq"]
+[ext_resource type="PackedScene" uid="uid://rt7ybtkb3xk7" path="res://Ship/hull/SkyCraneHull.tscn" id="3_y4fxu"]
+[ext_resource type="Script" path="res://Ship/#TYP/#ship_type.gd" id="4_j43f8"]
+
+[resource]
+resource_name = "skycrane"
+script = ExtResource("4_j43f8")
+id = 4
+Display_name = "Skycrane"
+hull = ExtResource("3_y4fxu")
+dry_mass = 50.0
+turn_rate = 100.0
+fuel_cap = 150.0
+max_hp = 600.0
+price = 150000.0
+military = false
+default_engine = ExtResource("1_jfqta")
+default_truster = ExtResource("2_ubkcq")

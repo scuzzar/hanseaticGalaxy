@@ -46,7 +46,7 @@ var inventory : Inventory = $Inventory
 var team : ENUMS.TEAM = ENUMS.TEAM.NEUTRAL
 
 @export 
-var type : ShipType = preload("res://Ship/#TYP/ship/rocket.tres")
+var type : ShipType #= preload("res://Ship/#type/ship/rocket.tres")
 
 #const ShipTyp = preload("res://Ship/shipTypes.csv").records
 
@@ -99,7 +99,7 @@ func _loadType():
 	var shapes = hull.find_child("CollisionShape").get_children()
 	
 	for shape in shapes:
-		hull.find_child("CollisionShape").remove_child(shape)	
+		shape.get_parent().remove_child(shape)
 		self.add_child(shape)
 	
 	propulsion = hull.find_child("Propulsion")
@@ -113,8 +113,11 @@ func _loadType():
 	
 	inventory.setSlotParent(model)
 	
-
-	
+	if(type.military):
+		var mounts = hull.find_children("MountPoint*")		
+		for m in mounts:
+			m.get_parent().remove_child(m)
+			self.add_child(m)
 
 
 func _integrate_forces(state:PhysicsDirectBodyState3D):	

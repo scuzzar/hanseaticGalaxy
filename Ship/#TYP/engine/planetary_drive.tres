@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://epfjiqdrrfp5"]
+
+[ext_resource type="Script" path="res://Ship/#TYP/engine/#engine_type.gd" id="1_85ilx"]
+
+[resource]
+resource_name = "planetary_drive"
+script = ExtResource("1_85ilx")
+Display_name = "Vector"
+exaust_velocity = 150.0
+mass_rate = 3.5

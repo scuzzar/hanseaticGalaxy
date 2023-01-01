@@ -14,6 +14,8 @@ class_name ShipType
 @export var max_hp 						: float 	 = 0.0
 @export var price 						: float 	 = 0.0
 
+@export var military = true
+
 @export var default_engine : EngineType = preload("res://Ship/#TYP/engine/ip_drive.tres")
 @export var default_truster : EngineType = preload("res://Ship/#TYP/engine/base_truster.tres")
 

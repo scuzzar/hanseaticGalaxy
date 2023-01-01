@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://cj3yg2al3hhwt"]
+
+[ext_resource type="PackedScene" uid="uid://dr2lmc0fdyx3c" path="res://Ship/hull/Hull.tscn" id="1_gusyd"]
+[ext_resource type="PackedScene" uid="uid://camyig1ftxuy3" path="res://Weapon/MountPoint.tscn" id="2_3osy0"]
+[ext_resource type="PackedScene" uid="uid://b7x8cutjqnuwy" path="res://Ship/hull/SimpleRocket.escn" id="3_epial"]
+[ext_resource type="PackedScene" uid="uid://bhjv2dj2o3a02" path="res://Ship/VFX/drive.tscn" id="4_wr8h3"]
+[ext_resource type="PackedScene" uid="uid://bippvugufi4e6" path="res://Ship/VFX/truster.tscn" id="5_ts8fu"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h7cll"]
+height = 1.24207
+radius = 0.364907
+
+[node name="Hull" instance=ExtResource("1_gusyd")]
+
+[node name="MountPoint" parent="." index="0" instance=ExtResource("2_3osy0")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1.06581e-14, -4.37114e-08, -1, 1, -4.37114e-08, 1.06581e-14, 0, 0.531056, -2.32132e-08)
+mount = 1
+turn_limit = 0.3
+
+[node name="Model" parent="Model" index="0" instance=ExtResource("3_epial")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.578583, 2.52907e-08)
+
+[node name="CollisionShape" type="CollisionShape3D" parent="CollisionShape" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0297804, -1.30174e-09)
+shape = SubResource("CylinderShape3D_h7cll")
+
+[node name="particel" parent="Propulsion/mainDrive" index="0" instance=ExtResource("4_wr8h3")]
+transform = Transform3D(0.400669, 0, 0, 0, -0.400669, 3.50276e-08, 0, -3.50276e-08, -0.400669, 0, -0.592798, 2.5912e-08)
+
+[node name="particel1" parent="Propulsion/forwardTruster" index="0" instance=ExtResource("5_ts8fu")]
+transform = Transform3D(0.4, -3.49691e-08, 3.49691e-08, -3.49691e-08, -0.4, 0, 3.49691e-08, -3.0571e-15, -0.4, 0.255818, -0.578729, -0.158032)
+
+[node name="particel2" parent="Propulsion/forwardTruster" index="1" instance=ExtResource("5_ts8fu")]
+transform = Transform3D(0.4, -3.49691e-08, 3.49691e-08, -3.49691e-08, -0.4, 0, 3.49691e-08, -3.55271e-15, -0.4, -0.245696, -0.578729, -0.158032)
+
+[node name="particel3" parent="Propulsion/forwardTruster" index="2" instance=ExtResource("5_ts8fu")]
+transform = Transform3D(0.4, -3.49691e-08, 3.49691e-08, -3.49691e-08, -0.4, 0, 3.49691e-08, -3.55271e-15, -0.4, -0.00493178, -0.578729, 0.270681)
+
+[node name="particel" parent="Propulsion/leftTruster" index="0" instance=ExtResource("5_ts8fu")]
+transform = Transform3D(3.01992e-08, 0.4, 0, -0.4, 3.01992e-08, 0, 0, 0, 0.4, 0.282714, 0.0190626, -2.22045e-16)
+
+[node name="particel2" parent="Propulsion/leftTruster" index="1" instance=ExtResource("5_ts8fu")]
+transform = Transform3D(3.01992e-08, 0.4, 0, -0.4, 3.01992e-08, 0, 0, 0, 0.4, 0.268875, 0.212501, 0.00324079)
+
+[node name="particel" parent="Propulsion/rightTruster" index="0" instance=ExtResource("5_ts8fu")]
+transform = Transform3D(-1.74846e-08, -0.4, 0, 0.4, -1.74846e-08, 0, 0, 0, 0.4, -0.27321, 0.0190626, -2.22045e-16)
+
+[node name="particel2" parent="Propulsion/rightTruster" index="1" instance=ExtResource("5_ts8fu")]
+transform = Transform3D(-1.74846e-08, -0.4, 0, 0.4, -1.74846e-08, 0, 0, 0, 0.4, -0.253413, 0.212501, 0.00324079)
+
+[node name="particel3" parent="Propulsion/backTruster" index="0" instance=ExtResource("5_ts8fu")]
+transform = Transform3D(0.4, -4.76836e-08, 0, 4.76836e-08, 0.4, 0, 0, 0, 0.4, 0, 0.592892, -0.0789939)
+
+[node name="particel4" parent="Propulsion/backTruster" index="1" instance=ExtResource("5_ts8fu")]
+transform = Transform3D(0.4, -4.76836e-08, 0, 4.76836e-08, 0.4, 0, 0, 0, 0.4, -0.08, 0.593, 0.08)
+
+[node name="particel5" parent="Propulsion/backTruster" index="2" instance=ExtResource("5_ts8fu")]
+transform = Transform3D(0.4, -4.76836e-08, 0, 4.76836e-08, 0.4, 0, 0, 0, 0.4, 0.08, 0.593, 0.08)

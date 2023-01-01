@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxdxfvaax4cak"]
+
+[ext_resource type="PackedScene" uid="uid://dr2lmc0fdyx3c" path="res://Ship/hull/Hull.tscn" id="1_twwjp"]
+[ext_resource type="PackedScene" uid="uid://cbvmcu1rihfn4" path="res://Ship/hull/KillSat.escn" id="2_bv8jj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_knkm4"]
+size = Vector3(0.685874, 0.691796, 2.18178)
+
+[node name="Hull" instance=ExtResource("1_twwjp")]
+
+[node name="KillSat" parent="Model" index="0" instance=ExtResource("2_bv8jj")]
+transform = Transform3D(-4.37114e-08, 0, 1, -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 1.91069e-15, 0, 0.106834, -1.32421e-08)
+
+[node name="CollisionShape" type="CollisionShape3D" parent="CollisionShape" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.000803113, 3.51354e-11)
+shape = SubResource("BoxShape3D_knkm4")

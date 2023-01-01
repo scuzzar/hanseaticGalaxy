@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://b5qrooxxp207b"]
+
+[ext_resource type="Resource" uid="uid://bsvvdpvpfgw1f" path="res://Ship/#TYP/engine/ip_drive.tres" id="1_txlqg"]
+[ext_resource type="Resource" uid="uid://dnx087g1fmxcg" path="res://Ship/#TYP/engine/base_truster.tres" id="2_fhxjc"]
+[ext_resource type="PackedScene" uid="uid://cxdxfvaax4cak" path="res://Ship/hull/KillSatHull.tscn" id="3_5h3yi"]
+[ext_resource type="Script" path="res://Ship/#TYP/#ship_type.gd" id="4_2hhuu"]
+
+[resource]
+resource_name = "killsat"
+script = ExtResource("4_2hhuu")
+id = 6
+Display_name = "killSat"
+hull = ExtResource("3_5h3yi")
+dry_mass = 10.0
+turn_rate = 45.0
+fuel_cap = 0.0
+max_hp = 200.0
+price = 8.0
+military = true
+default_engine = ExtResource("1_txlqg")
+default_truster = ExtResource("2_fhxjc")

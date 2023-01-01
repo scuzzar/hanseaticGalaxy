@@ -26,5 +26,5 @@ skins/use_named_skins=true
 animation/import=true
 animation/fps=15
 animation/trimming=false
-import_script/path=""
+import_script/path="res://Ship/hull/ShipImportScript.gd"
 _subresources={}

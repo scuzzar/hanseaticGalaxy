@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bcdbw1bty47o4"]
+
+[ext_resource type="Script" path="res://Ship/#TYP/engine/#engine_type.gd" id="1_ofsen"]
+
+[resource]
+resource_name = "ion_drive"
+script = ExtResource("1_ofsen")
+Display_name = "Ion Drive"
+exaust_velocity = 300.0
+mass_rate = 0.5
