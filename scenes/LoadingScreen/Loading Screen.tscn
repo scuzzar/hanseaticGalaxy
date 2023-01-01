@@ -85,7 +85,7 @@ text = "New Game"
 layout_mode = 2
 text = "Exit"
 
-[connection signal="pressed" from="FullScreen" to="." method="_on_FullScreen_pressed"]
-[connection signal="pressed" from="Menu/Resume" to="." method="_on_Resume_pressed"]
-[connection signal="pressed" from="Menu/Start" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="Menu/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="FullScreen" to="." method="_on_FullScreen_pressed" flags=18]
+[connection signal="pressed" from="Menu/Resume" to="." method="_on_Resume_pressed" flags=18]
+[connection signal="pressed" from="Menu/Start" to="." method="_on_Start_pressed" flags=18]
+[connection signal="pressed" from="Menu/Exit" to="." method="_on_Exit_pressed" flags=18]

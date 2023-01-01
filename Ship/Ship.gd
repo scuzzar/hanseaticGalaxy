@@ -45,9 +45,9 @@ var inventory = $Inventory
 var team : ENUMS.TEAM = ENUMS.TEAM.NEUTRAL
 
 @export 
-var type : ENUMS.SHIPTYPES = ENUMS.SHIPTYPES.NONE
+var type : ShipType = preload("res://Ship/#TYP/ship/rocket.tres")
 
-const ShipTyp = preload("res://Ship/shipTypes.csv").records
+#const ShipTyp = preload("res://Ship/shipTypes.csv").records
 
 signal fuel_changed(fuel, fuel_cap)
 signal mass_changed(mass)
@@ -78,18 +78,18 @@ func _ready():
 	calcWetMass()
 
 func _loadType():
-	dryMass = ShipTyp[type]["dry_mass"]
-	turn_rate = ShipTyp[type]["turn_rate"]	
-	dispay_name = ShipTyp[type]["display_name"]
-	fuel_cap = ShipTyp[type]["fuel_cap"]
-	price = ShipTyp[type]["price"]
-	max_hitpoints = ShipTyp[type]["max_hp"]
+	dryMass = type.dry_mass
+	turn_rate = type.turn_rate	
+	dispay_name = type.Display_name
+	fuel_cap = type.fuel_cap
+	price = type.price
+	max_hitpoints = type.max_hp
 	
-	engine_exaust_velocity = ShipTyp[type]["engine_exaust_velocity"]
-	engine_mass_rate = ShipTyp[type]["engine_mass_rate"]
+	engine_exaust_velocity = type.default_engine.exaust_velocity
+	engine_mass_rate = type.default_engine.mass_rate
 	
-	truster_exaust_velocity = ShipTyp[type]["truster_exaust_velocity"]
-	truster_engine_mass_rate = ShipTyp[type]["truster_engine_mass_rate"]
+	truster_exaust_velocity = type.default_truster.exaust_velocity
+	truster_engine_mass_rate = type.default_truster.mass_rate
 
 
 func _integrate_forces(state:PhysicsDirectBodyState3D):	

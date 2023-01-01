@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dw7m20eh8ayhl"]
+[gd_scene load_steps=50 format=3 uid="uid://djp1t5r56l6ud"]
 
 [ext_resource type="Material" uid="uid://226bef8utq8" path="res://Bodys/materials/Sun.material" id="1"]
 [ext_resource type="Material" path="res://Bodys/materials/Moon.material" id="2"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://blxo61llgoeyr" path="res://N_Body/Simulator.tscn" id="6"]
 [ext_resource type="Material" path="res://Bodys/materials/Mimas.material" id="7"]
 [ext_resource type="PackedScene" path="res://Building/Warft.tscn" id="8"]
-[ext_resource type="PackedScene" uid="uid://djh418e7j4f7q" path="res://Ship/SimpleRocket/SimpelRocket.tscn" id="9"]
+[ext_resource type="Resource" uid="uid://cebp7t83nrec1" path="res://Ship/#TYP/ship/rocket.tres" id="9_ph1mc"]
 [ext_resource type="PackedScene" uid="uid://cgsypg1g212uo" path="res://Station/Station.tscn" id="10"]
 [ext_resource type="Material" path="res://Bodys/materials/Saturn.material" id="11"]
 [ext_resource type="Script" path="res://scenes/sol/ShipTrackingLight.gd" id="11_sc5jn"]
@@ -18,10 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://55r1r1eb23gr" path="res://Bodys/Planet.tscn" id="16"]
 [ext_resource type="PackedScene" uid="uid://byfxsrn46ev6d" path="res://HUD/UI.tscn" id="17"]
 [ext_resource type="PackedScene" uid="uid://dycob36gm60wa" path="res://Camera/ShipCamera.tscn" id="18"]
-[ext_resource type="PackedScene" uid="uid://be1j32k7ldt7y" path="res://Ship/SkyCrane/SkyCrane.tscn" id="19"]
 [ext_resource type="Environment" uid="uid://cglk2lduymfbr" path="res://scenes/sol/Weltall.tres" id="20"]
 [ext_resource type="Texture2D" uid="uid://diu7id8cmvnts" path="res://Bodys/tex/NASA/mar2kuu2.jpg" id="21"]
-[ext_resource type="PackedScene" uid="uid://y727ioc4r2il" path="res://Ship/Tender/Tender.tscn" id="22"]
 [ext_resource type="Script" path="res://scenes/sol/GameRoot.gd" id="23"]
 [ext_resource type="Material" path="res://Bodys/materials/Venus.material" id="24"]
 [ext_resource type="Material" path="res://Bodys/materials/Merkur.material" id="25"]
@@ -44,10 +42,9 @@
 [ext_resource type="PackedScene" path="res://Building/Farmes.tscn" id="41"]
 [ext_resource type="PackedScene" path="res://Building/Mine.tscn" id="42"]
 [ext_resource type="PackedScene" path="res://Building/EnergyHavester.tscn" id="43"]
-[ext_resource type="PackedScene" path="res://Ship/SkyCrane/SkyCrane_S.tscn" id="44"]
 [ext_resource type="Material" path="res://Bodys/materials/Triton.material" id="45"]
-[ext_resource type="PackedScene" uid="uid://bpd5qk6vlt5iw" path="res://Enemys/KillSatEnemy.tscn" id="46"]
-[ext_resource type="PackedScene" uid="uid://cvmf3macse5rx" path="res://Ship/SimpleRocket/Orbital Rocket.tscn" id="47"]
+[ext_resource type="PackedScene" path="res://Enemys/KillSatEnemy.tscn" id="46"]
+[ext_resource type="PackedScene" path="res://Ship/hull/Orbital Rocket.tscn" id="47"]
 
 [sub_resource type="PhysicsMaterial" id="5"]
 friction = 3.0
@@ -56,20 +53,8 @@ rough = true
 [sub_resource type="PhysicsMaterial" id="4"]
 friction = 0.5
 
-[sub_resource type="PhysicsMaterial" id="1"]
-friction = 3.0
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_686gh"]
-
-[sub_resource type="PhysicsMaterial" id="7"]
-friction = 3.0
-rough = true
-
 [sub_resource type="StandardMaterial3D" id="2"]
 albedo_texture = ExtResource("21")
-
-[sub_resource type="PhysicsMaterial" id="6"]
-friction = 3.0
 
 [sub_resource type="PlaneMesh" id="3"]
 size = Vector2(700, 700)
@@ -77,7 +62,7 @@ size = Vector2(700, 700)
 [node name="Sol" type="Node3D"]
 script = ExtResource("23")
 MaxtimeWarpFactor_Moon = 6
-player_spawn_point_path = NodePath("Sun/Earth/Moon/ApolloPort")
+player_spawn_point_path = NodePath("Sun/Mars/OlympusPort")
 
 [node name="RotationShifter" type="Node" parent="."]
 script = ExtResource("28")
@@ -110,6 +95,7 @@ physics_material_override = SubResource("5")
 freeze = false
 playerControl = true
 team = 0
+type = ExtResource("9_ph1mc")
 
 [node name="Sun" parent="." instance=ExtResource("16")]
 collision_layer = 11
@@ -128,6 +114,7 @@ omni_range = 300000.0
 omni_attenuation = 0.0
 
 [node name="ShipTrackingLight" type="DirectionalLight3D" parent="Sun"]
+transform = Transform3D(-0.687772, 0, -0.725927, 0, 1, 0, 0.725927, 0, -0.687772, 0, 0, 0)
 light_bake_mode = 0
 light_cull_mask = 4294967293
 shadow_enabled = true
@@ -157,12 +144,6 @@ surface_g = 8.87
 [node name="VenusST" parent="Sun/Venus" instance=ExtResource("10")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.503, 0, 0)
 
-[node name="Orbital SkyCrane" parent="Sun/Venus/VenusST" instance=ExtResource("44")]
-transform = Transform3D(0.3037, -0.952768, 4.16468e-08, 0, -4.37114e-08, -1, 0.952768, 0.3037, -1.32752e-08, 1.16211, -0.614387, 3.02734)
-physics_material_override = SubResource("1")
-contact_monitor = false
-freeze = false
-
 [node name="Warft" parent="Sun/Venus/VenusST" instance=ExtResource("8")]
 
 [node name="EnergHavester" parent="Sun/Venus/VenusST" instance=ExtResource("43")]
@@ -177,18 +158,6 @@ surface_g = 9.81
 
 [node name="ISS" parent="Sun/Earth" instance=ExtResource("10")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 241.56, 0, 0)
-
-[node name="SkyCrane" parent="Sun/Earth/ISS" instance=ExtResource("19")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.98047, -0.898486, 0)
-physics_material_override = SubResource("PhysicsMaterial_686gh")
-contact_monitor = false
-freeze = false
-
-[node name="Tender" parent="Sun/Earth/ISS" instance=ExtResource("22")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.83693, -0.786469, 0.382813)
-physics_material_override = SubResource("PhysicsMaterial_686gh")
-contact_monitor = false
-freeze = false
 
 [node name="Warft" parent="Sun/Earth/ISS" instance=ExtResource("8")]
 
@@ -236,36 +205,6 @@ transform = Transform3D(-0.999477, 0.0323218, 4.03254e-08, 0.0323218, 0.999477, 
 
 [node name="DomedCity" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource("37")]
 
-[node name="Tender" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource("22")]
-transform = Transform3D(1, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -1.77636e-14, 8.74228e-08, 1.06581e-14, 1, -3.50879, 0, -3.17744)
-physics_material_override = SubResource("PhysicsMaterial_686gh")
-contact_monitor = false
-freeze = false
-
-[node name="SkyCrane" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource("19")]
-transform = Transform3D(1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -3.90597)
-physics_material_override = SubResource("PhysicsMaterial_686gh")
-contact_monitor = false
-freeze = false
-
-[node name="SkyCrane S" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource("44")]
-transform = Transform3D(1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.37012, 0, -3.53617)
-physics_material_override = SubResource("7")
-contact_monitor = false
-freeze = false
-
-[node name="Orbital Rocket" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource("47")]
-transform = Transform3D(1, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -1.77636e-14, 8.74228e-08, 1.06581e-14, 1, -2.63086, 0, -3.48166)
-physics_material_override = SubResource("7")
-freeze = false
-
-[node name="SimpleRocket" parent="Sun/Earth/Moon/ApolloPort" instance=ExtResource("9")]
-transform = Transform3D(1, 0, 6.35275e-21, 0, 1, 0, 0, 0, 1, -1.79443, 0.0951424, -3.49483)
-physics_material_override = SubResource("PhysicsMaterial_686gh")
-contact_monitor = false
-sleeping = true
-freeze = false
-
 [node name="PlanetAthmosphere" parent="Sun/Earth" instance=ExtResource("31_ksm6q")]
 planet_radius = 67.0
 atmosphere_height = 15.0
@@ -282,18 +221,6 @@ surface_g = 3.69
 [node name="MarsST" parent="Sun/Mars" instance=ExtResource("10")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.126, 0, 0)
 
-[node name="SkyCrane" parent="Sun/Mars/MarsST" instance=ExtResource("19")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.98212, -0.949785, 0)
-physics_material_override = SubResource("PhysicsMaterial_686gh")
-contact_monitor = false
-freeze = false
-
-[node name="Tender" parent="Sun/Mars/MarsST" instance=ExtResource("22")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.83693, -0.786469, 0.382813)
-physics_material_override = SubResource("PhysicsMaterial_686gh")
-contact_monitor = false
-freeze = false
-
 [node name="Warft" parent="Sun/Mars/MarsST" instance=ExtResource("8")]
 
 [node name="HighTech" parent="Sun/Mars/MarsST" instance=ExtResource("39")]
@@ -303,36 +230,6 @@ freeze = false
 [node name="OlympusPort" parent="Sun/Mars" instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 68.0632, 0, 0)
 defaultMissionDestination_path = NodePath("../Deimos/DeimosPort")
-
-[node name="Tender" parent="Sun/Mars/OlympusPort" instance=ExtResource("22")]
-transform = Transform3D(1, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -1.77636e-14, 8.74228e-08, 1.06581e-14, 1, -3.50879, 0, -3.17744)
-physics_material_override = SubResource("PhysicsMaterial_686gh")
-contact_monitor = false
-freeze = false
-
-[node name="SkyCrane" parent="Sun/Mars/OlympusPort" instance=ExtResource("19")]
-transform = Transform3D(1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -3.90597)
-physics_material_override = SubResource("PhysicsMaterial_686gh")
-contact_monitor = false
-freeze = false
-
-[node name="SkyCrane S" parent="Sun/Mars/OlympusPort" instance=ExtResource("44")]
-transform = Transform3D(1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.37012, 0, -3.53617)
-physics_material_override = SubResource("7")
-contact_monitor = false
-freeze = false
-
-[node name="Orbital Rocket" parent="Sun/Mars/OlympusPort" instance=ExtResource("47")]
-transform = Transform3D(1, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -1.77636e-14, 8.74228e-08, 1.06581e-14, 1, -2.63086, 0, -3.48166)
-physics_material_override = SubResource("7")
-freeze = false
-
-[node name="SimpleRocket" parent="Sun/Mars/OlympusPort" instance=ExtResource("9")]
-transform = Transform3D(1, 0, 6.35275e-21, 0, 1, 0, 0, 0, 1, -1.79443, 0.0951424, -3.49483)
-physics_material_override = SubResource("PhysicsMaterial_686gh")
-contact_monitor = false
-sleeping = true
-freeze = false
 
 [node name="EnergHavester" parent="Sun/Mars/OlympusPort" instance=ExtResource("43")]
 
@@ -358,12 +255,6 @@ surface_g = 1.7
 [node name="DeimosPort" parent="Sun/Mars/Deimos" instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 21.4097, 0, 0)
 defaultMissionDestination_path = NodePath("../../OlympusPort")
-
-[node name="Orbital SkyCrane" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource("44")]
-transform = Transform3D(1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.33789, -0.175293, -2.06995)
-physics_material_override = SubResource("6")
-contact_monitor = false
-freeze = false
 
 [node name="Mine" parent="Sun/Mars/Deimos/DeimosPort" instance=ExtResource("42")]
 
@@ -452,18 +343,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.011
 [node name="JupiterST" parent="Sun/Jupiter" instance=ExtResource("10")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1504.13, 0, 0)
 
-[node name="SkyCrane" parent="Sun/Jupiter/JupiterST" instance=ExtResource("19")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.98047, -0.898486, 0)
-physics_material_override = SubResource("PhysicsMaterial_686gh")
-contact_monitor = false
-freeze = false
-
-[node name="Tender" parent="Sun/Jupiter/JupiterST" instance=ExtResource("22")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.83693, -0.786469, 0.382813)
-physics_material_override = SubResource("PhysicsMaterial_686gh")
-contact_monitor = false
-freeze = false
-
 [node name="GasExtractor" parent="Sun/Jupiter/JupiterST" instance=ExtResource("34")]
 
 [node name="Warft" parent="Sun/Jupiter/JupiterST" instance=ExtResource("8")]
@@ -531,36 +410,6 @@ defaultMissionDestination_path = NodePath("../../../Earth/Moon/ApolloPort")
 
 [node name="DomedCity" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource("37")]
 
-[node name="Tender" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource("22")]
-transform = Transform3D(1, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -1.77636e-14, 8.74228e-08, 1.06581e-14, 1, -3.50879, 0, -3.17744)
-physics_material_override = SubResource("PhysicsMaterial_686gh")
-contact_monitor = false
-freeze = false
-
-[node name="SkyCrane" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource("19")]
-transform = Transform3D(1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -3.90597)
-physics_material_override = SubResource("PhysicsMaterial_686gh")
-contact_monitor = false
-freeze = false
-
-[node name="SkyCrane S" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource("44")]
-transform = Transform3D(1, -8.47033e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.37012, 0, -3.53617)
-physics_material_override = SubResource("7")
-contact_monitor = false
-freeze = false
-
-[node name="Orbital Rocket" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource("47")]
-transform = Transform3D(1, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -1.77636e-14, 8.74228e-08, 1.06581e-14, 1, -2.63086, 0, -3.48166)
-physics_material_override = SubResource("7")
-freeze = false
-
-[node name="SimpleRocket" parent="Sun/Saturn/Titan/TitanPort" instance=ExtResource("9")]
-transform = Transform3D(1, 0, 6.35275e-21, 0, 1, 0, 0, 0, 1, -1.79443, 0.0951424, -3.49483)
-physics_material_override = SubResource("PhysicsMaterial_686gh")
-contact_monitor = false
-sleeping = true
-freeze = false
-
 [node name="Uranus" parent="Sun" instance=ExtResource("16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150000, 0, -0.00655671)
 physics_material_override = SubResource("4")
@@ -608,8 +457,3 @@ transform = Transform3D(-0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-1
 transform = Transform3D(-0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-14, -0.0627233, -2.74173e-09, -1, 4.36254e-08, 1.1875, -26.3359, 3.86592e-06)
 
 [connection signal="shipOrderd" from="UI" to="." method="_on_HUD_shipOrderd"]
-[connection signal="body_entered" from="Sun/Earth/Moon/ApolloPort/Tender" to="Sun/Earth/Moon/ApolloPort/Tender/Damage" method="_on_Ship_body_entered"]
-[connection signal="body_entered" from="Sun/Mars/MarsST/SkyCrane" to="Sun/Mars/MarsST/SkyCrane/Damage" method="_on_Ship_body_entered"]
-[connection signal="body_entered" from="Sun/Mars/MarsST/Tender" to="Sun/Mars/MarsST/Tender/Damage" method="_on_Ship_body_entered"]
-[connection signal="body_entered" from="Sun/Mars/OlympusPort/Tender" to="Sun/Mars/OlympusPort/Tender/Damage" method="_on_Ship_body_entered"]
-[connection signal="body_entered" from="Sun/Saturn/Titan/TitanPort/Tender" to="Sun/Saturn/Titan/TitanPort/Tender/Damage" method="_on_Ship_body_entered"]

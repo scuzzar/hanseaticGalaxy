@@ -24,6 +24,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://SpacePort/CargoTarget.gd"
 }, {
+"base": "RefCounted",
+"class": &"CellEditor",
+"language": &"GDScript",
+"path": "res://addons/resources_spreadsheet_view/typed_cells/cell_editor.gd"
+}, {
+"base": "CellEditor",
+"class": &"CellEditorArray",
+"language": &"GDScript",
+"path": "res://addons/resources_spreadsheet_view/typed_cells/cell_editor_array.gd"
+}, {
 "base": "Node",
 "class": &"D_V_Estimator",
 "language": &"GDScript",
@@ -38,6 +48,11 @@ _global_script_classes=[{
 "class": &"ENUMS",
 "language": &"GDScript",
 "path": "res://Singeltons/ENUMS.gd"
+}, {
+"base": "Resource",
+"class": &"EngineType",
+"language": &"GDScript",
+"path": "res://Ship/#TYP/engine/#engine_type.gd"
 }, {
 "base": "Node",
 "class": &"Mission",
@@ -64,10 +79,25 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://Station/Satellite.gd"
 }, {
+"base": "GridContainer",
+"class": &"SettingsGrid",
+"language": &"GDScript",
+"path": "res://addons/resources_spreadsheet_view/settings_grid.gd"
+}, {
+"base": "Control",
+"class": &"SheetsDockEditor",
+"language": &"GDScript",
+"path": "res://addons/resources_spreadsheet_view/typed_editors/dock_base.gd"
+}, {
 "base": "Rigid_N_Body",
 "class": &"Ship",
 "language": &"GDScript",
 "path": "res://Ship/Ship.gd"
+}, {
+"base": "Resource",
+"class": &"ShipType",
+"language": &"GDScript",
+"path": "res://Ship/#TYP/#ship_type.gd"
 }, {
 "base": "ImmediateMesh",
 "class": &"SimplePlanetOrbit",
@@ -89,6 +119,26 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://Singeltons/TYP.gd"
 }, {
+"base": "RefCounted",
+"class": &"TextEditingUtils",
+"language": &"GDScript",
+"path": "res://addons/resources_spreadsheet_view/text_editing_utils.gd"
+}, {
+"base": "Control",
+"class": &"ThemeColorSetter",
+"language": &"GDScript",
+"path": "res://addons/resources_spreadsheet_view/editor_color_setter.gd"
+}, {
+"base": "Button",
+"class": &"ThemeIconButton",
+"language": &"GDScript",
+"path": "res://addons/resources_spreadsheet_view/editor_icon_button.gd"
+}, {
+"base": "Control",
+"class": &"ThemeStylebox",
+"language": &"GDScript",
+"path": "res://addons/resources_spreadsheet_view/editor_stylebox_overrider.gd"
+}, {
 "base": "EditorImportPlugin",
 "class": &"csvImport",
 "language": &"GDScript",
@@ -108,23 +158,42 @@ _global_script_class_icons={
 "AI": "",
 "CargoContainer": "",
 "CargoTarget": "",
+"CellEditor": "",
+"CellEditorArray": "",
 "D_V_Estimator": "",
 "DeliveryMission": "",
 "ENUMS": "",
+"EngineType": "",
 "Mission": "",
 "MissionTable": "",
 "Port": "",
 "Rigid_N_Body": "",
 "Satellite": "",
+"SettingsGrid": "",
+"SheetsDockEditor": "",
 "Ship": "",
+"ShipType": "",
 "SimplePlanetOrbit": "",
 "SpaceStation": "",
 "StaticEnemy": "",
 "TYP": "",
+"TextEditingUtils": "",
+"ThemeColorSetter": "",
+"ThemeIconButton": "",
+"ThemeStylebox": "",
 "csvImport": "",
 "mount_point": "",
 "simpelPlanet": ""
 }
+
+[addons]
+
+resources_spreadsheet_view/color_rows=true
+resources_spreadsheet_view/color_arrays=true
+resources_spreadsheet_view/array_min_width=128.0
+resources_spreadsheet_view/resource_preview_size=8.0
+resources_spreadsheet_view/clip_headers=false
+resources_spreadsheet_view/dupe_arrays=true
 
 [application]
 
@@ -157,7 +226,7 @@ window/size/test_height=800
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/csv-data-importer/plugin.cfg")
+enabled=PackedStringArray("res://addons/csv-data-importer/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
 
 [gdnative]
 
@@ -1286,25 +1355,25 @@ ui_down={
 burn_forward={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":87,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194320,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 burn_backward={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":83,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194322,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 turn_right={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":68,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194321,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 trun_left={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":65,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194319,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 cheat_fuel={
@@ -1415,7 +1484,7 @@ fire={
 }
 toggle_fullscreen={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":16777254,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":true,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 auto_orbit={

@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpd5qk6vlt5iw"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="PackedScene" uid="uid://delfmam06l58y" path="res://Enemys/StaticEnemy.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://dmep2s5u7kdix" path="res://Ship/KillSAT/KillSat.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://dmep2s5u7kdix" path="res://Ship/hull/KillSat.tscn" id="2"]
 [ext_resource type="Script" path="res://Enemys/KillSatEnemy.gd" id="3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4agpc"]
