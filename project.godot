@@ -54,6 +54,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://Ship/#TYP/engine/#engine_type.gd"
 }, {
+"base": "Node3D",
+"class": &"Hull",
+"language": &"GDScript",
+"path": "res://Ship/hull/Hull.gd"
+}, {
+"base": "Node3D",
+"class": &"Inventory",
+"language": &"GDScript",
+"path": "res://Cargo/Inventory.gd"
+}, {
 "base": "Node",
 "class": &"Mission",
 "language": &"GDScript",
@@ -169,6 +179,8 @@ _global_script_class_icons={
 "DeliveryMission": "",
 "ENUMS": "",
 "EngineType": "",
+"Hull": "",
+"Inventory": "",
 "Mission": "",
 "MissionTable": "",
 "Port": "",

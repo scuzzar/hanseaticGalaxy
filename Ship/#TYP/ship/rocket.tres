@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://Ship/#TYP/#ship_type.gd" id="1_ce4ih"]
 [ext_resource type="Resource" uid="uid://dnx087g1fmxcg" path="res://Ship/#TYP/engine/base_truster.tres" id="1_ts73e"]
 [ext_resource type="Resource" uid="uid://sw44n3d4lon3" path="res://Ship/#TYP/engine/ip_drive.tres" id="1_tubp7"]
-[ext_resource type="PackedScene" uid="uid://dsbboiyqhd40t" path="res://Ship/hull/Orbital Rocket.tscn" id="3_qi4u1"]
+[ext_resource type="PackedScene" uid="uid://cj3yg2al3hhwt" path="res://Ship/hull/SimpelRocketHull.tscn" id="3_sa7jm"]
 
 [resource]
 resource_name = "rocket"
 script = ExtResource("1_ce4ih")
 id = 2
 Display_name = "Orbital Rocket"
-hull = ExtResource("3_qi4u1")
+hull = ExtResource("3_sa7jm")
 dry_mass = 30.0
 turn_rate = 80.0
 fuel_cap = 50.0

@@ -9,17 +9,8 @@
 height = 1.24207
 radius = 0.364907
 
-[node name="Rocket" type="RigidBody3D" groups=["persist"]]
+[node name="Rocket" type="Node3D" groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-input_ray_pickable = false
-axis_lock_linear_y = true
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-mass = 30.0
-continuous_cd = true
-contact_monitor = true
-freeze = true
-angular_damp = 4.0
 
 [node name="MountPoint" parent="." instance=ExtResource("4")]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1.06581e-14, -4.37114e-08, -1, 1, -4.37114e-08, 1.06581e-14, 0, 0.382257, -1.6709e-08)
@@ -30,7 +21,7 @@ turn_limit = 0.3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0297804, -1.30174e-09)
 shape = SubResource("1")
 
-[node name="SimpleRocket" parent="." instance=ExtResource("2")]
+[node name="Model" parent="." instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.578583, 2.52907e-08)
 
 [node name="Propulsion" type="Node3D" parent="."]

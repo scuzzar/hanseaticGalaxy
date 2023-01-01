@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr2lmc0fdyx3c"]
+
+[ext_resource type="Script" path="res://Ship/hull/Hull.gd" id="1_r2c6e"]
+[ext_resource type="Script" path="res://Ship/PropulsionControll.gd" id="3_dae64"]
+
+[node name="Hull" type="Node3D" groups=["persist"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_r2c6e")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="CollisionShape" type="Node3D" parent="."]
+
+[node name="Propulsion" type="Node3D" parent="."]
+script = ExtResource("3_dae64")
+
+[node name="mainDrive" type="Node3D" parent="Propulsion"]
+
+[node name="forwardTruster" type="Node3D" parent="Propulsion"]
+
+[node name="leftTruster" type="Node3D" parent="Propulsion"]
+
+[node name="rightTruster" type="Node3D" parent="Propulsion"]
+
+[node name="backTruster" type="Node3D" parent="Propulsion"]

@@ -16,7 +16,7 @@ var display_name = "Gun"
 var max_distance = 100
 var ran = RandomNumberGenerator.new()
 @onready var mountPoint = get_parent()
-@onready var ship:Ship = mountPoint.get_parent()
+@onready var ship = mountPoint.get_parent()
 
 func _ready():
 	bulletScene = load(WeaponTyp[type]["missile_scene"])

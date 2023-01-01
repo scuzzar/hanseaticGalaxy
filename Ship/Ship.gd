@@ -40,7 +40,7 @@ var rotational_trust :float = 0
 var propulsion : PropulsionController
 
 @onready
-var inventory = $Inventory
+var inventory : Inventory = $Inventory
 
 @export
 var team : ENUMS.TEAM = ENUMS.TEAM.NEUTRAL
@@ -92,17 +92,29 @@ func _loadType():
 	truster_exaust_velocity = type.default_truster.exaust_velocity
 	truster_engine_mass_rate = type.default_truster.mass_rate
 	
-	var hull = type.hull.instantiate()	
-	hull.name = "Hull"
-	#self.add_child(hull)
+	var hull :Hull = type.hull.instantiate()	
 	
-	var shapes = hull.find_children("*")	
+	#self.add_child(hull)
+
+	var shapes = hull.find_child("CollisionShape").get_children()
 	
 	for shape in shapes:
-		hull.remove_child(shape)	
+		hull.find_child("CollisionShape").remove_child(shape)	
 		self.add_child(shape)
-		
-	propulsion = $Propulsion
+	
+	propulsion = hull.find_child("Propulsion")
+	
+	hull.remove_child(propulsion)	
+	self.add_child(propulsion)
+	
+	var model = hull.find_child("Model").get_child(0)
+	model.get_parent().remove_child(model)
+	self.add_child(model)	
+	
+	inventory.setSlotParent(model)
+	
+
+	
 
 
 func _integrate_forces(state:PhysicsDirectBodyState3D):	

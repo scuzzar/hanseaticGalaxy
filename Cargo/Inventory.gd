@@ -1,7 +1,8 @@
 extends Node3D
 
-@export var slot_parent_path : NodePath
-@onready var slot_parent:Node
+class_name Inventory
+
+var slot_parent:Node
 var slots = []
 
 var stock ={
@@ -26,8 +27,8 @@ signal container_clicked(container)
 signal container_added(container)
 signal container_removed(container)
 
-func _ready():
-	slot_parent = self.get_node_or_null(slot_parent_path)
+func setSlotParent(parent:Node3D):
+	slot_parent = parent
 	if slot_parent == null: slot_parent=self
 	for c in slot_parent.get_children():
 		if c is Marker3D:
