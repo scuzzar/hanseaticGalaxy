@@ -37,6 +37,7 @@ var truster_vector = Vector2(0,0)
 var truster_trust :float = 0 
 var rotational_trust :float = 0  
 
+var propulsion : PropulsionController
 
 @onready
 var inventory = $Inventory
@@ -90,6 +91,18 @@ func _loadType():
 	
 	truster_exaust_velocity = type.default_truster.exaust_velocity
 	truster_engine_mass_rate = type.default_truster.mass_rate
+	
+	var hull = type.hull.instantiate()	
+	hull.name = "Hull"
+	#self.add_child(hull)
+	
+	var shapes = hull.find_children("*")	
+	
+	for shape in shapes:
+		hull.remove_child(shape)	
+		self.add_child(shape)
+		
+	propulsion = $Propulsion
 
 
 func _integrate_forces(state:PhysicsDirectBodyState3D):	
@@ -133,7 +146,7 @@ func lateral_burn(burn_vector):
 
 func _fire_truster(state:PhysicsDirectBodyState3D,direction:Vector2):
 	if(direction.length()==0): 
-		$Propulsion.trust_Vector(direction,0)
+		propulsion.trust_Vector(direction,0)
 		return
 	
 	var direction3d = Vector3(direction.x,0,direction.y)	
@@ -146,7 +159,7 @@ func _fire_truster(state:PhysicsDirectBodyState3D,direction:Vector2):
 	var force = direction3d*truster_engine_mass_rate*truster_exaust_velocity
 	state.apply_central_force(force)
 	self.burn_fuel(fuel_cost)
-	$Propulsion.trust_Vector(direction,1)
+	propulsion.trust_Vector(direction,1)
 	
 
 func _fire_main_drive(state:PhysicsDirectBodyState3D,trust:float):
@@ -156,9 +169,9 @@ func _fire_main_drive(state:PhysicsDirectBodyState3D,trust:float):
 		var force = _get_forward_vector()*engine_mass_rate*engine_exaust_velocity
 		state.apply_central_force(force)
 		self.burn_fuel(engine_mass_rate / Globals.get_fuel_mass() * state.step)
-		$Propulsion.drive_on()
+		propulsion.drive_on()
 	else:
-		$Propulsion.drive_off()
+		propulsion.drive_off()
 
 func _get_forward_vector():
 	var orientation = self.rotation.y

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dnx087g1fmxcg"]
+
+[ext_resource type="Script" path="res://Ship/#TYP/engine/#engine_type.gd" id="1_bla1l"]
+
+[resource]
+resource_name = "base_truster"
+script = ExtResource("1_bla1l")
+Display_name = "R-4D"
+exaust_velocity = 200.0
+mass_rate = 0.1

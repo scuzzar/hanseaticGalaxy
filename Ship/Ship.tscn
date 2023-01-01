@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5q8j55h24r8m"]
+[gd_scene load_steps=8 format=3 uid="uid://c5q8j55h24r8m"]
 
 [ext_resource type="PackedScene" uid="uid://db48lbbsb7j1w" path="res://Ship/Tail.tscn" id="1"]
-[ext_resource type="Script" path="res://Ship/PropulsionControll.gd" id="2"]
 [ext_resource type="Script" path="res://Ship/Ship.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://b418d6fo6c6l4" path="res://Ship/ShipInfoWindow/ShipInfo.tscn" id="4"]
 [ext_resource type="Script" path="res://Ship/Damage.gd" id="5"]
@@ -34,21 +33,8 @@ script = ExtResource("7")
 [node name="Inventory" type="Node3D" parent="."]
 script = ExtResource("9")
 
-[node name="Propulsion" type="Node3D" parent="."]
-script = ExtResource("2")
-
-[node name="mainDrive" type="Node3D" parent="Propulsion"]
-
-[node name="forwardTruster" type="Node3D" parent="Propulsion"]
-
-[node name="leftTruster" type="Node3D" parent="Propulsion"]
-
-[node name="rightTruster" type="Node3D" parent="Propulsion"]
-
-[node name="backTruster" type="Node3D" parent="Propulsion"]
-
 [node name="Tail" parent="." instance=ExtResource("1")]
-frameOfReference_Node = NodePath("../Propulsion")
+frameOfReference_Node = NodePath("")
 
 [node name="ShipInfo" parent="." instance=ExtResource("4")]
 anchors_preset = 8

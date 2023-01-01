@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://bfdfoooyr6hi0"]
+
+[ext_resource type="Resource" uid="uid://sw44n3d4lon3" path="res://Ship/#TYP/engine/ip_drive.tres" id="1_k5fkw"]
+[ext_resource type="Script" path="res://Ship/#TYP/#ship_type.gd" id="1_nj7bc"]
+[ext_resource type="Resource" uid="uid://dnx087g1fmxcg" path="res://Ship/#TYP/engine/base_truster.tres" id="2_vieff"]
+[ext_resource type="PackedScene" uid="uid://dq3hibpdf2ame" path="res://Ship/hull/SimpelRocket.tscn" id="3_eu7kp"]
+
+[resource]
+resource_name = "rocket_s"
+script = ExtResource("1_nj7bc")
+id = 3
+Display_name = "IP Rocket¶"
+hull = ExtResource("3_eu7kp")
+dry_mass = 25.0
+turn_rate = 100.0
+fuel_cap = 150.0
+max_hp = 250.0
+price = 650000.0
+default_engine = ExtResource("1_k5fkw")
+default_truster = ExtResource("2_vieff")

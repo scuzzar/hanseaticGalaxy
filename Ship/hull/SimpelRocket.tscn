@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq3hibpdf2ame"]
+
+[ext_resource type="PackedScene" uid="uid://b7x8cutjqnuwy" path="res://Ship/hull/SimpleRocket.escn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bhjv2dj2o3a02" path="res://Ship/VFX/drive.tscn" id="3"]
+[ext_resource type="Script" path="res://Ship/PropulsionControll.gd" id="3_tj1cl"]
+[ext_resource type="PackedScene" uid="uid://camyig1ftxuy3" path="res://Weapon/MountPoint.tscn" id="4"]
+
+[sub_resource type="CylinderShape3D" id="1"]
+height = 1.24207
+radius = 0.364907
+
+[node name="Rocket" type="RigidBody3D" groups=["persist"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+input_ray_pickable = false
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 30.0
+continuous_cd = true
+contact_monitor = true
+freeze = true
+angular_damp = 4.0
+
+[node name="MountPoint" parent="." instance=ExtResource("4")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1.06581e-14, -4.37114e-08, -1, 1, -4.37114e-08, 1.06581e-14, 0, 0.382257, -1.6709e-08)
+mount = 1
+turn_limit = 0.3
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0297804, -1.30174e-09)
+shape = SubResource("1")
+
+[node name="SimpleRocket" parent="." instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.578583, 2.52907e-08)
+
+[node name="Propulsion" type="Node3D" parent="."]
+script = ExtResource("3_tj1cl")
+
+[node name="mainDrive" type="Node3D" parent="Propulsion"]
+
+[node name="particel" parent="Propulsion/mainDrive" instance=ExtResource("3")]
+transform = Transform3D(0.400669, 0, 0, 0, -0.400669, 3.50276e-08, 0, -3.50276e-08, -0.400669, 0, -0.592798, 2.5912e-08)
+
+[node name="forwardTruster" type="Node3D" parent="Propulsion"]
+
+[node name="leftTruster" type="Node3D" parent="Propulsion"]
+
+[node name="rightTruster" type="Node3D" parent="Propulsion"]
+
+[node name="backTruster" type="Node3D" parent="Propulsion"]

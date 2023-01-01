@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://c2y11gete2xem"]
+
+[ext_resource type="Resource" uid="uid://sw44n3d4lon3" path="res://Ship/#TYP/engine/ip_drive.tres" id="1_avq02"]
+[ext_resource type="Resource" uid="uid://dnx087g1fmxcg" path="res://Ship/#TYP/engine/base_truster.tres" id="2_hoq83"]
+[ext_resource type="PackedScene" uid="uid://bmouxjyero6jr" path="res://Ship/hull/Tender.tscn" id="3_2deyh"]
+[ext_resource type="Script" path="res://Ship/#TYP/#ship_type.gd" id="3_jr4dg"]
+
+[resource]
+resource_name = "tender"
+script = ExtResource("3_jr4dg")
+id = 0
+Display_name = "Tender"
+hull = ExtResource("3_2deyh")
+dry_mass = 10.0
+turn_rate = 20.0
+fuel_cap = 45.0
+max_hp = 200.0
+price = 150000.0
+default_engine = ExtResource("1_avq02")
+default_truster = ExtResource("2_hoq83")
