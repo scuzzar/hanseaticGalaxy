@@ -10,5 +10,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	target =  $"../../PlayerShip"
-	self.look_at(target.position)
+	if(target != null):
+		self.look_at(target.position)
 	pass

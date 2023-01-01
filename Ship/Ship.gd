@@ -59,6 +59,7 @@ signal undocked(port)
 signal tookDamage(damage)
 signal destryed()
 
+
 func _ready():
 	super._ready()
 	self._loadType()

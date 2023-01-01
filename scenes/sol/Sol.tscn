@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://djp1t5r56l6ud"]
+[gd_scene load_steps=48 format=3 uid="uid://djp1t5r56l6ud"]
 
 [ext_resource type="Material" uid="uid://226bef8utq8" path="res://Bodys/materials/Sun.material" id="1"]
 [ext_resource type="Material" path="res://Bodys/materials/Moon.material" id="2"]
@@ -31,6 +31,7 @@
 [ext_resource type="Material" path="res://Bodys/materials/IO.material" id="31"]
 [ext_resource type="PackedScene" uid="uid://btqatipcbtfes" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="31_ksm6q"]
 [ext_resource type="Material" path="res://Bodys/materials/Kallisto.material" id="32"]
+[ext_resource type="PackedScene" uid="uid://7x74n5r6p1wo" path="res://Enemys/KillSatEnemy.tscn" id="32_y6mv7"]
 [ext_resource type="Material" path="res://Bodys/materials/Ganimede.material" id="33"]
 [ext_resource type="PackedScene" path="res://Building/GasExtractor.tscn" id="34"]
 [ext_resource type="PackedScene" path="res://Building/OrbitalCity.tscn" id="35"]
@@ -255,6 +256,9 @@ material = ExtResource("4")
 radius_description = 2000.0
 surface_g = 1.0
 
+[node name="StaticEnemy" parent="Sun/Mars/Phobos" instance=ExtResource("32_y6mv7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.9648, 0, 2.32058e-05)
+
 [node name="Jupiter" parent="Sun" instance=ExtResource("16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36000, 0, -0.00157361)
 physics_material_override = SubResource("4")
@@ -435,5 +439,8 @@ transform = Transform3D(-0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-1
 
 [node name="Mine" parent="Sun/Neptun/Triton/TreePeekPort" instance=ExtResource("42")]
 transform = Transform3D(-0.0627233, 4.37115e-08, 0.998033, -0.998033, 7.28309e-14, -0.0627233, -2.74173e-09, -1, 4.36254e-08, 1.1875, -26.3359, 3.86592e-06)
+
+[node name="Ship" parent="." instance=ExtResource("8_qbmdj")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 12451.8, 75.6299, -93.1809)
 
 [connection signal="shipOrderd" from="UI" to="." method="_on_HUD_shipOrderd"]
