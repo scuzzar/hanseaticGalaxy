@@ -41,7 +41,6 @@ shape = SubResource("2")
 
 [node name="Inventory" type="Node3D" parent="."]
 script = ExtResource("2")
-slot_parent_path = NodePath("../SpacePort")
 
 [node name="Lable3D" type="Label" parent="."]
 anchors_preset = 8

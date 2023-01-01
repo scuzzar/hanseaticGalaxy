@@ -39,6 +39,9 @@ var rotational_trust :float = 0
 
 var propulsion : PropulsionController
 
+var shapes = null
+var model = null
+
 @onready
 var inventory : Inventory = $Inventory
 
@@ -93,11 +96,13 @@ func _loadType():
 	truster_exaust_velocity = type.default_truster.exaust_velocity
 	truster_engine_mass_rate = type.default_truster.mass_rate
 	
+	
+	
 	var hull :Hull = type.hull.instantiate()	
 	
 	#self.add_child(hull)
 
-	var shapes = hull.find_child("CollisionShape").get_children()
+	shapes = hull.find_child("CollisionShape").get_children()
 	
 	for shape in shapes:
 		shape.get_parent().remove_child(shape)
@@ -108,17 +113,45 @@ func _loadType():
 	hull.remove_child(propulsion)	
 	self.add_child(propulsion)
 	
-	var model = hull.find_child("Model").get_child(0)
+	model = hull.find_child("Model").get_child(0)
 	model.get_parent().remove_child(model)
 	self.add_child(model)	
 	
 	inventory.setSlotParent(model)
 	
 	if(type.military):
-		var mounts = hull.find_children("MountPoint*")		
+		mounts = hull.find_children("MountPoint*")		
 		for m in mounts:
 			m.get_parent().remove_child(m)
 			self.add_child(m)
+
+func _cleanType():
+	dryMass = 0
+	turn_rate = 0
+	dispay_name = ""
+	fuel_cap = 0
+	price = 0
+	max_hitpoints =0 
+	
+	engine_exaust_velocity = 0
+	engine_mass_rate = 0
+	
+	truster_exaust_velocity = 0
+	truster_engine_mass_rate = 0
+	
+	self.find_child("CollisionShape")
+	
+	for shape in shapes:		
+		self.remove_child(shape)
+
+	self.remove_child(propulsion)
+
+	self.remove_child(model)		
+	inventory.setSlotParent(null)
+
+	for m in mounts:
+		self.remove_child(m)
+	mounts = []
 
 
 func _integrate_forces(state:PhysicsDirectBodyState3D):	
@@ -330,6 +363,9 @@ func load_save(dict):
 	mass = dryMass
 	price = dict["price"]
 	type = load(dict["type"])
+	print("--------------")
+	print(type.resource_path)
+	_cleanType()
 	_loadType()
 	#hitpoints = dict["hitpoints"]
 	last_g_force = Vector3(0,0,0)

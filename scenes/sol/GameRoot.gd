@@ -49,7 +49,7 @@ func newGameSetup():
 	ship.freeze = false
 	loaded = true	
 
-func setShip(newShip):
+func setShip(newShip:Ship):
 	newShip.strongest_body_changed.connect(_on_Ship_strongest_body_changed)
 	newShip.soiPlanetChanged.connect($RotationShifter.on_soi_planet_changed)	
 	newShip.undocked.connect(_on_Ship_undocked)
@@ -63,6 +63,8 @@ func setShip(newShip):
 	Player.ship = newShip
 	newShip.team = ENUMS.TEAM.PLAYER
 	newShip.freeze = false
+	
+	newShip.playerControl = true
 
 func _process(delta):
 	if(! is_instance_valid(ship)):return
