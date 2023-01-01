@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://fm6kygisw8ju"]
+[gd_scene load_steps=12 format=3 uid="uid://fm6kygisw8ju"]
 
 [ext_resource type="PackedScene" uid="uid://btepyp454xc57" path="res://SpacePort/SpacePort.escn" id="1"]
 [ext_resource type="Script" path="res://Cargo/Inventory.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://c5q8j55h24r8m" path="res://Ship/Ship.tscn" id="2_d4f1w"]
 [ext_resource type="Script" path="res://SpacePort/spacePort.gd" id="3"]
+[ext_resource type="Resource" uid="uid://i44d5vxe31df" path="res://Ship/#TYP/ship/skycrane.tres" id="3_a6ohm"]
 [ext_resource type="Script" path="res://Bodys/Label3D.gd" id="4"]
 [ext_resource type="PackedScene" path="res://Util/DistanceLOD.tscn" id="5"]
 [ext_resource type="AudioStream" uid="uid://dlcvys74gytob" path="res://SpacePort/sound/346063__ingressblue__spaceport.mp3" id="6"]
@@ -20,13 +22,22 @@ size = Vector3(3.55956, 0.56019, 2.43216)
 [node name="SpacePort" type="Node3D"]
 script = ExtResource("3")
 
+[node name="Ship" parent="." instance=ExtResource("2_d4f1w")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.47435, -0.201707, -3.7051)
+
+[node name="Ship2" parent="." instance=ExtResource("2_d4f1w")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.7958, -0.201707, -3.7051)
+type = ExtResource("3_a6ohm")
+
 [node name="LandingPad" type="AnimatableBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 3
+collision_mask = 3
 physics_material_override = SubResource("3")
 sync_to_physics = false
 
 [node name="CollisionShape" type="CollisionShape3D" parent="LandingPad"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703545, -1.94373, -0.004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703545, -1.93845, -0.004)
 shape = SubResource("1")
 
 [node name="LandingArea" type="Area3D" parent="."]

@@ -68,6 +68,7 @@ logging = true
 [node name="Shifter" type="Node" parent="."]
 script = ExtResource("27")
 MAX_DISTANCE = 10000.0
+activ = false
 world_node_path = NodePath("..")
 
 [node name="Simulator" parent="." instance=ExtResource("6")]
