@@ -36,7 +36,10 @@ func _process(delta):
 	self.queue_redraw()
 
 func getPositionInFrame() -> Vector3:
-	return tracked_Node.position-_frameOfReference.global_transform.origin
+	if(_frameOfReference != null):
+		return tracked_Node.position-_frameOfReference.global_transform.origin
+	else:
+		return tracked_Node.position
 
 func appendHistory():
 	#if(g_force_strongest_Body_changed): history = []
