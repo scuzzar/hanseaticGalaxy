@@ -54,6 +54,9 @@ size = Vector2(700, 700)
 
 [node name="Sol" type="Node3D"]
 script = ExtResource("23")
+MaxtimeWarpFactor = 400
+WarpTargetSpeed_Planet = 12
+WarpTargetSpeed_Moon = 1
 player_spawn_point_path = NodePath("Sun/Mars/Deimos/DeimosPort")
 
 [node name="Simulator" parent="." instance=ExtResource("6")]
