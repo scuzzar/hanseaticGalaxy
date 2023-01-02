@@ -4,9 +4,13 @@ extends Node3D
 #var loader : ResourceInteractiveLoader
 @onready var ship:Ship = $PlayerShip
 @onready var all = self.get_children()
-@export var MaxtimeWarpFactor = 400
-@export var MaxtimeWarpFactor_Planet = 50
-@export var MaxtimeWarpFactor_Moon = 5
+
+@export var MaxtimeWarpFactor = 1800
+@export var WarpTargetSpeed_Sun = 30
+
+@export var WarpTargetSpeed_Planet = 15
+@export var WarpTargetSpeed_Moon = 200
+
 
 @export var player_spawn_point_path : NodePath 
 @onready var player_spawn_point:Port = get_node_or_null(player_spawn_point_path)
@@ -96,17 +100,20 @@ func _process(delta):
 		
 		var p = ship.last_g_force_strongest_Body as simpelPlanet
 		var factor = 1
+		var g = ship.last_g_force_strongest_Body_force.length()
+		var v = ship.linear_velocity.length()
 		
 		if(ship.docking_location != null and ship.docking_location is SpaceStation):
-			factor = 50
+			factor = WarpTargetSpeed_Planet
 		elif(p.isStar):
-			factor = clamp(1 / ship.last_g_force.length()*200,5,MaxtimeWarpFactor)
+			factor = clamp(1 / v * WarpTargetSpeed_Sun * 1/g ,10,MaxtimeWarpFactor)
 		elif(p.isPlanet):
-			factor = clamp(1 / ship.last_g_force.length()*p.radius/2,5,MaxtimeWarpFactor_Planet)	
+			factor = clamp(1 / v * WarpTargetSpeed_Planet * p.radius/60.0 * 1/g,5,MaxtimeWarpFactor)	
 		else:
-			factor = MaxtimeWarpFactor_Moon
+			factor = clamp(1 / v * WarpTargetSpeed_Moon,5,MaxtimeWarpFactor)
 			
 		Engine.time_scale =  factor
+		print(str(g) + " " + str(factor) + " x " + str(v) + " = " + str(factor * v))
 	
 	if Input.is_action_just_pressed("cheat_fuel"):
 		Player.pay(ship.get_refule_costs()*2)
