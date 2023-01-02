@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://djp1t5r56l6ud"]
+[gd_scene load_steps=46 format=3 uid="uid://djp1t5r56l6ud"]
 
 [ext_resource type="Material" uid="uid://226bef8utq8" path="res://Bodys/materials/Sun.material" id="1"]
 [ext_resource type="Material" path="res://Bodys/materials/Moon.material" id="2"]
@@ -9,7 +9,6 @@
 [ext_resource type="Material" path="res://Bodys/materials/Mimas.material" id="7"]
 [ext_resource type="PackedScene" path="res://Building/Warft.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://c5q8j55h24r8m" path="res://Ship/Ship.tscn" id="8_qbmdj"]
-[ext_resource type="Resource" uid="uid://2np1p31lqv73" path="res://Ship/#TYP/ship/tender_s.tres" id="9_68pu3"]
 [ext_resource type="PackedScene" uid="uid://cgsypg1g212uo" path="res://Station/Station.tscn" id="10"]
 [ext_resource type="Material" path="res://Bodys/materials/Saturn.material" id="11"]
 [ext_resource type="Script" path="res://scenes/sol/ShipTrackingLight.gd" id="11_sc5jn"]
@@ -76,7 +75,6 @@ min_zoom = 1.0
 [node name="PlayerShip" parent="." instance=ExtResource("8_qbmdj")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 12000.1, 0, -74.6905)
 playerControl = true
-type = ExtResource("9_68pu3")
 
 [node name="Sun" parent="." instance=ExtResource("16")]
 collision_layer = 11
