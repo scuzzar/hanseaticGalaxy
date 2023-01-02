@@ -26,9 +26,6 @@ var history_update_interfall = 0.2
 var history_update_timer = 0
 var width = 1
 
-@export
-var use_frameOfReference = true
-
 func _process(delta):	
 	if(owner.playerControl):
 		history_update_timer += delta
@@ -39,10 +36,7 @@ func _process(delta):
 	self.queue_redraw()
 
 func getPositionInFrame() -> Vector3:
-	if(_frameOfReference==null):
-		return tracked_Node.position
-	else:
-		return tracked_Node.position-_frameOfReference.global_transform.origin
+	return tracked_Node.position-_frameOfReference.global_transform.origin
 
 func appendHistory():
 	#if(g_force_strongest_Body_changed): history = []
@@ -56,7 +50,6 @@ func _draw():
 	var now = [getPositionInFrame()]
 	if(_frameOfReference!=null):
 		var relativ_to = _frameOfReference.global_transform.origin
-		
 		if(history.size()>0): _draw_list(history + now ,relativ_to, history_color)	
 
 
@@ -75,10 +68,9 @@ func _draw_list(list, relativ_to, color):
 
 func _on_reference_changed(old_body, new_body):
 	if(new_body!=null):
-		print("now in SOI of " + str(new_body.name))
-		#history.clear()
+		print("now in SOI of" + str(new_body.name))
+		history.clear()
 		self._frameOfReference = new_body
-	
 
 func _stop(port):
 	history.clear()

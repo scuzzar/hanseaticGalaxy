@@ -15,7 +15,6 @@ axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 30.0
-continuous_cd = true
 contact_monitor = true
 freeze = true
 angular_damp = 4.0

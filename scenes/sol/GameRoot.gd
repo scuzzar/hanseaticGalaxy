@@ -50,16 +50,14 @@ func newGameSetup():
 	loaded = true	
 
 func setShip(newShip:Ship):
-	newShip.strongest_body_changed.connect(_on_Ship_strongest_body_changed)
-	newShip.soiPlanetChanged.connect($RotationShifter.on_soi_planet_changed)	
+	newShip.strongest_body_changed.connect(_on_Ship_strongest_body_changed)	
 	newShip.undocked.connect(_on_Ship_undocked)
 	newShip.docked.connect(self._on_Ship_docked)
 	$UI.setShip(newShip)
 	
 	$Camera.ship =newShip
 	$Simulator._simulation_Object = newShip
-	self.ship = newShip
-	$Shifter.parent = newShip
+	self.ship = newShip	
 	Player.ship = newShip
 	newShip.team = ENUMS.TEAM.PLAYER
 	newShip.freeze = false

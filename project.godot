@@ -217,7 +217,7 @@ resources_spreadsheet_view/dupe_arrays=true
 
 config/name="hanseaticGalaxy"
 run/main_scene="res://scenes/LoadingScreen/Loading Screen.tscn"
-config/features=PackedStringArray("4.0")
+config/features=PackedStringArray("4.0", "Double Precision")
 config/icon="res://Artemis.png"
 config/windows_native_icon="res://Artemis.ico"
 
